@@ -109,6 +109,7 @@ import { removeBackslashes } from "./ops/removeBackslashes.js";
 import { removeAsterisks } from "./ops/removeAsterisks.js";
 import { removeHashes } from "./ops/removeHashes.js";
 import { removeAtSigns } from "./ops/removeAtSigns.js";
+import { removeDollarSigns } from "./ops/removeDollarSigns.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -221,6 +222,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeAsterisks);
     registry.register(removeHashes);
     registry.register(removeAtSigns);
+    registry.register(removeDollarSigns);
     registry.register(sha256);
   }
 };

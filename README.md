@@ -189,6 +189,7 @@ Operations are grouped by package priority:
   - `text.removeAsterisks`
   - `text.removeHashes`
   - `text.removeAtSigns`
+  - `text.removeDollarSigns`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
