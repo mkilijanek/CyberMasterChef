@@ -33,6 +33,7 @@ const usageText =
   "  --strict-cyberchef               fail if CyberChef import skips steps\n" +
   "  --fail-on-warning                fail if import warnings are emitted\n" +
   "  --quiet-warnings                 suppress warning output on stderr\n" +
+  "  --print-recipe-source            print detected recipe source to stderr\n" +
   "  --show-trace                     print human-readable trace to stderr\n" +
   "  --trace-json                     print trace JSON to stderr\n" +
   "  --list-ops                       print available operation ids and names\n" +
@@ -73,6 +74,7 @@ type CliOptions = {
   strictCyberChef: boolean;
   failOnWarning: boolean;
   quietWarnings: boolean;
+  printRecipeSource: boolean;
   showTrace: boolean;
   traceJson: boolean;
   listOps: boolean;
@@ -86,6 +88,7 @@ function parseArgs(args: string[]): CliOptions {
   let strictCyberChef = false;
   let failOnWarning = false;
   let quietWarnings = false;
+  let printRecipeSource = false;
   let showTrace = false;
   let traceJson = false;
   let listOps = false;
@@ -107,6 +110,10 @@ function parseArgs(args: string[]): CliOptions {
     }
     if (arg === "--quiet-warnings") {
       quietWarnings = true;
+      continue;
+    }
+    if (arg === "--print-recipe-source") {
+      printRecipeSource = true;
       continue;
     }
     if (arg === "--help") {
@@ -181,6 +188,7 @@ function parseArgs(args: string[]): CliOptions {
     strictCyberChef,
     failOnWarning,
     quietWarnings,
+    printRecipeSource,
     showTrace,
     traceJson,
     listOps,
@@ -207,6 +215,9 @@ if (opts.listOps) {
 
 const recipeJson = fs.readFileSync(opts.recipePath, "utf-8");
 const parsedRecipe = parseRecipeAny(recipeJson, opts.quietWarnings);
+if (opts.printRecipeSource) {
+  process.stderr.write(`[info] recipe-source=${parsedRecipe.source}\n`);
+}
 if (opts.strictCyberChef && parsedRecipe.source === "cyberchef" && parsedRecipe.warningCount > 0) {
   die(
     `Strict CyberChef mode failed: ${parsedRecipe.warningCount} unsupported step(s) were skipped.`
