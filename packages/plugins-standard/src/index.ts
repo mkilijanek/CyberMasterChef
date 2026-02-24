@@ -88,6 +88,7 @@ import { countUppercase } from "./ops/countUppercase.js";
 import { countLowercase } from "./ops/countLowercase.js";
 import { countAscii } from "./ops/countAscii.js";
 import { countNonAscii } from "./ops/countNonAscii.js";
+import { countNonEmptyLines } from "./ops/countNonEmptyLines.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -179,6 +180,7 @@ export const standardPlugin: Plugin = {
     registry.register(countLowercase);
     registry.register(countAscii);
     registry.register(countNonAscii);
+    registry.register(countNonEmptyLines);
     registry.register(sha256);
   }
 };

@@ -193,6 +193,7 @@ Example operation IDs in use:
 - `text.countLowercase`
 - `text.countAscii`
 - `text.countNonAscii`
+- `text.countNonEmptyLines`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
