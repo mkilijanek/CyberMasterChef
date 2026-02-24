@@ -478,6 +478,9 @@ export function App(): React.JSX.Element {
               placeholder={t("traceSearch")}
               aria-label={t("traceSearch")}
             />
+            <button className="buttonSmall" onClick={() => setTraceQuery("")}>
+              {t("clearTraceSearch")}
+            </button>
             {trace.length === 0 ? (
               <div className="muted">{t("traceEmpty")}</div>
             ) : filteredTrace.length === 0 ? (

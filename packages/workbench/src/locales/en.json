@@ -46,6 +46,7 @@
   "args": "Arguments",
   "trace": "Trace",
   "traceSearch": "Filter trace…",
+  "clearTraceSearch": "Clear trace filter",
   "traceSteps": "Trace steps",
   "runDurationMs": "Run duration (ms)",
   "traceEmpty": "No execution trace yet",

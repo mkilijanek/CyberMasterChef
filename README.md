@@ -59,6 +59,7 @@ Operations are grouped by package priority:
   - run recipe up to a selected step (pipeline debugging)
   - rerun to selected step directly from trace list
   - trace filtering by operation ID and input/output types
+  - quick clear action for trace filter
   - deep-link sharing (`#state=` hash with recipe + input)
   - quick input/output copy actions in UI
   - quick trace copy action in UI

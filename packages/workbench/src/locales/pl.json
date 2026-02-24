@@ -46,6 +46,7 @@
   "args": "Argumenty",
   "trace": "Ślad",
   "traceSearch": "Filtruj ślad…",
+  "clearTraceSearch": "Wyczyść filtr śladu",
   "traceSteps": "Kroki śladu",
   "runDurationMs": "Czas wykonania (ms)",
   "traceEmpty": "Brak śladu wykonania",
