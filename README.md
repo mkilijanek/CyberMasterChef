@@ -56,6 +56,7 @@ Operations are grouped by package priority:
 
 - C1 domain matrix: generated and published under `docs/parity/c1-operation-domain-summary.md`.
 - C2 execution board: `docs/parity/c2-execution-board.md`.
+- Wave 1 date-time baseline operations added: `date.isoToUnix`, `date.unixToIso`.
 - C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
 
 ## Current functionality

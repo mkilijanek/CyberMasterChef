@@ -171,6 +171,11 @@ CLI behavior:
 
 ## C2 domain implementation plan
 
+Wave 1 implemented so far:
+- `date.isoToUnix`
+- `date.unixToIso`
+
+
 - Generate domain implementation gap/coverage plan:
   - `pnpm c2:plan`
 - Artifacts:
