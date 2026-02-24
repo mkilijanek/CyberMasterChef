@@ -181,6 +181,7 @@ Operations are grouped by package priority:
   - `text.collapseMultipleNewlines`
   - `text.trimLeadingDots`
   - `text.trimTrailingDots`
+  - `text.linesNumbered`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
