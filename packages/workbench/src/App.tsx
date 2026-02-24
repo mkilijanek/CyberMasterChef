@@ -1,6 +1,16 @@
 import React from "react";
 import type { DataValue, Recipe } from "@cybermasterchef/core";
-import { base64ToBytes, bytesToBase64, bytesToUtf8, emptyRecipe, utf8ToBytes } from "@cybermasterchef/core";
+import {
+  base64ToBytes,
+  bytesToBase64,
+  bytesToUtf8,
+  emptyRecipe,
+  exportCyberChefRecipe,
+  importCyberChefRecipe,
+  parseRecipe,
+  stringifyRecipe,
+  utf8ToBytes
+} from "@cybermasterchef/core";
 import { useTranslation } from "react-i18next";
 import { SandboxClient } from "./worker/workerClient";
 import { OperationCatalog } from "./components/OperationCatalog";
@@ -128,6 +138,59 @@ export function App(): JSX.Element {
     }
   }
 
+  async function copyText(value: string): Promise<boolean> {
+    try {
+      await navigator.clipboard.writeText(value);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  async function exportNativeRecipe(): Promise<void> {
+    const payload = stringifyRecipe(recipe);
+    const copied = await copyText(payload);
+    if (!copied) {
+      window.prompt(t("copyPrompt"), payload);
+    }
+  }
+
+  async function exportCyberChef(): Promise<void> {
+    const payload = exportCyberChefRecipe(recipe);
+    const copied = await copyText(payload);
+    if (!copied) {
+      window.prompt(t("copyPrompt"), payload);
+    }
+  }
+
+  function importAnyRecipe(): void {
+    const raw = window.prompt(t("importPrompt"), "");
+    if (!raw) return;
+    try {
+      let parsed: Recipe;
+      let warnCount = 0;
+      try {
+        parsed = parseRecipe(raw);
+      } catch {
+        const imported = importCyberChefRecipe(raw);
+        parsed = imported.recipe;
+        warnCount = imported.warnings.length;
+      }
+      setRecipe(parsed);
+      if (warnCount > 0) {
+        setError(t("importWarnings", { count: warnCount }));
+        setStatus("error");
+      } else {
+        setError(null);
+        setStatus("ready");
+      }
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      setError(`${t("importFailed")}: ${msg}`);
+      setStatus("error");
+    }
+  }
+
   return (
     <div className="layout">
       <header className="header">
@@ -145,6 +208,15 @@ export function App(): JSX.Element {
         </button>
         <button className="buttonSmall" onClick={() => void shareLink()}>
           {t("shareLink")}
+        </button>
+        <button className="buttonSmall" onClick={() => void exportNativeRecipe()}>
+          {t("exportRecipe")}
+        </button>
+        <button className="buttonSmall" onClick={() => void exportCyberChef()}>
+          {t("exportCyberChef")}
+        </button>
+        <button className="buttonSmall" onClick={() => importAnyRecipe()}>
+          {t("importRecipe")}
         </button>
         <div className="status" aria-live="polite">
           {status === "working" ? t("statusWorking") : t("statusReady")}
