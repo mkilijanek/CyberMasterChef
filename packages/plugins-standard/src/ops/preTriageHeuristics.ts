@@ -51,4 +51,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "base64_blob_long", description: "Long base64-like blob", pattern: new RegExp("[A-Za-z0-9+/]{120,}={0,2}", "g") },
   { id: "hex_blob_long", description: "Long hex-like blob", pattern: new RegExp("[A-Fa-f0-9]{128,}", "g") },
   { id: "url_shortener_bitly", description: "URL shortener bitly indicator", pattern: new RegExp("bit\\.ly", "i") },
+  { id: "url_shortener_tinyurl", description: "URL shortener tinyurl indicator", pattern: new RegExp("tinyurl\\.com", "i") },
 ];
