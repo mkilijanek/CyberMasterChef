@@ -25,6 +25,18 @@ function warn(msg: string): void {
   process.stderr.write(`[warn] ${msg}\n`);
 }
 
+const usageText =
+  "Usage: cybermasterchef <recipe.json> [input.txt] [options]\n" +
+  "  Reads input from stdin if [input.txt] is omitted.\n" +
+  "Options:\n" +
+  "  --timeout-ms <n>                  execution timeout in milliseconds\n" +
+  "  --strict-cyberchef               fail if CyberChef import skips steps\n" +
+  "  --show-trace                     print human-readable trace to stderr\n" +
+  "  --trace-json                     print trace JSON to stderr\n" +
+  "  --input-encoding text|hex|base64 parse CLI input before execution\n" +
+  "  --bytes-output hex|base64|utf8   bytes output rendering on stdout\n" +
+  "  --help                           print this help text";
+
 function parseRecipeAny(json: string): {
   recipe: Recipe;
   source: "native" | "cyberchef";
@@ -77,6 +89,10 @@ function parseArgs(args: string[]): CliOptions {
       strictCyberChef = true;
       continue;
     }
+    if (arg === "--help") {
+      process.stdout.write(usageText + "\n");
+      process.exit(0);
+    }
     if (arg === "--show-trace") {
       showTrace = true;
       continue;
@@ -122,10 +138,7 @@ function parseArgs(args: string[]): CliOptions {
 
   const recipePath = positional[0];
   if (!recipePath) {
-    die(
-      "Usage: cybermasterchef <recipe.json> [input.txt] [--timeout-ms <n>] [--strict-cyberchef] [--show-trace|--trace-json] [--input-encoding text|hex|base64] [--bytes-output hex|base64|utf8]\n" +
-        "  Reads input from stdin if [input.txt] is omitted."
-    );
+    die(usageText);
   }
   const out: CliOptions = {
     recipePath,
