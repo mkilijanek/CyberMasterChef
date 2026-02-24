@@ -81,6 +81,9 @@ export function App(): React.JSX.Element {
   const [catalogQuery, setCatalogQuery] = React.useState<string>(
     () => localStorage.getItem("catalogQuery.v1") ?? ""
   );
+  const [traceQuery, setTraceQuery] = React.useState<string>(
+    () => localStorage.getItem("traceQuery.v1") ?? ""
+  );
   const [recipe, setRecipe] = React.useState<Recipe>(initial.recipe);
   const [input, setInput] = React.useState<string>(initial.input);
   const [autoBake, setAutoBake] = React.useState<boolean>(() => {
@@ -115,10 +118,22 @@ export function App(): React.JSX.Element {
     localStorage.setItem("autobake.v1", autoBake ? "1" : "0");
     localStorage.setItem("timeoutMs.v1", String(timeoutMs));
     localStorage.setItem("catalogQuery.v1", catalogQuery);
+    localStorage.setItem("traceQuery.v1", traceQuery);
 
     const shared = toBase64Url(JSON.stringify({ recipe, input }));
     window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${HASH_PREFIX}${shared}`);
-  }, [autoBake, catalogQuery, input, recipe, timeoutMs]);
+  }, [autoBake, catalogQuery, input, recipe, timeoutMs, traceQuery]);
+
+  const filteredTrace = React.useMemo(() => {
+    const q = traceQuery.trim().toLowerCase();
+    if (!q) return trace;
+    return trace.filter(
+      (row) =>
+        row.opId.toLowerCase().includes(q) ||
+        row.inputType.toLowerCase().includes(q) ||
+        row.outputType.toLowerCase().includes(q)
+    );
+  }, [trace, traceQuery]);
 
   const executeRecipe = React.useCallback(async (recipeToRun: Recipe): Promise<void> => {
     sandboxRef.current?.cancelActive();
@@ -456,11 +471,20 @@ export function App(): React.JSX.Element {
           ) : null}
           <div className="traceBox">
             <h3>{t("trace")}</h3>
+            <input
+              className="input"
+              value={traceQuery}
+              onChange={(e) => setTraceQuery(e.target.value)}
+              placeholder={t("traceSearch")}
+              aria-label={t("traceSearch")}
+            />
             {trace.length === 0 ? (
               <div className="muted">{t("traceEmpty")}</div>
+            ) : filteredTrace.length === 0 ? (
+              <div className="muted">{t("noTraceMatch")}</div>
             ) : (
               <ol className="traceList">
-                {trace.map((row) => (
+                {filteredTrace.map((row) => (
                   <li key={`${row.step}-${row.opId}`} className="traceItem">
                     <strong>
                       {t("step")} {row.step + 1}
