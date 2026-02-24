@@ -114,6 +114,16 @@ Deliver a complete, auditable, and operationally useful C-track:
 2. `[PLANNED]` operation-level crypto parity expansion (digest/mac/kdf)
 3. `[DEFERRED]` high-cost wasm-heavy algorithms after baseline C2 closure
 
+### Wave E: Basic Pre-Triage (Forensic/Malware Analysis)
+
+1. `[PLANNED]` Basic pre-triage module for binary/text sample input:
+   - core IOC extraction (domains, URLs, IPs, emails, hashes)
+   - optional fuzzy/signature style hashes (`imphash`, `TLSH`, `ssdeep`) when feasible
+   - binary metadata pre-triage (sections, VA/offsets, sizes, entropy)
+2. `[PLANNED]` deterministic report schema for pre-triage output.
+3. `[PLANNED]` safety constraints and bounded parsing for untrusted samples.
+4. `[PLANNED]` contract tests + golden fixtures for known malware-like samples.
+
 ## C3 Contract and Determinism Program
 
 1. `[DONE]` contract catalog generator and schema.
@@ -128,6 +138,13 @@ Deliver a complete, auditable, and operationally useful C-track:
 3. `M3`: C3 contracts enforced in CI with generated regression suites.
 4. `M4`: Security/quality governance (worker/CSP/supply-chain gates) automated.
 5. `M5`: Dev-to-main merge readiness with deterministic parity evidence.
+
+## Current Execution Queue Extension
+
+- Queue tasks `1-20`: active C2 wave implementation tasks.
+- Queue task `21` (new final item): `Basic Pre-Triage (Forensic/Malware Analysis)` module.
+  - Status: `[PLANNED]`
+  - Trigger point: starts after completion of tasks `1-20`.
 
 ## Current Implementation Range
 

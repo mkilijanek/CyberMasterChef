@@ -71,6 +71,10 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 - [x] `network.extractIPv6` IOC operation.
 - [ ] `network.defangIPs` safe-sharing operation.
 
+## Queue extension
+
+- [ ] Task 21: `Basic Pre-Triage (Forensic/Malware Analysis)` module (post Wave 1-20 completion).
+
 ## Quality gates
 
 - New operation must include:
