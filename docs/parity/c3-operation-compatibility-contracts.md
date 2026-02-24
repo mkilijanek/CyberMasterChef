@@ -1,0 +1,1085 @@
+# C3 Operation Compatibility Contracts
+
+Generated: 2026-02-24T22:16:43.408Z
+Total contracts: 154
+
+## Contract entries (compact)
+
+- codec.fromBase64
+  - name: From Base64
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.fromBinary
+  - name: From Binary
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.fromHex
+  - name: From Hex
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toBase64
+  - name: To Base64
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toBinary
+  - name: To Binary
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toHex
+  - name: To Hex
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.urlDecode
+  - name: URL Decode
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.urlEncode
+  - name: URL Encode
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.sha256
+  - name: SHA-256
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.append
+  - name: Append
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.collapseDashes
+  - name: Collapse Dashes
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.collapseMultipleNewlines
+  - name: Collapse Multiple Newlines
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.collapseUnderscores
+  - name: Collapse Underscores
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.compactLines
+  - name: Compact Lines
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countAscii
+  - name: Count ASCII
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countBackslashes
+  - name: Count Backslashes
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countBrackets
+  - name: Count Brackets
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countColons
+  - name: Count Colons
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countCommas
+  - name: Count Commas
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countDashes
+  - name: Count Dashes
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countDots
+  - name: Count Dots
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countExclamations
+  - name: Count Exclamations
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countLowercase
+  - name: Count Lowercase
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countNonAscii
+  - name: Count Non-ASCII
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countNonEmptyLines
+  - name: Count Non-empty Lines
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countParentheses
+  - name: Count Parentheses
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countPluses
+  - name: Count Pluses
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countQuestionMarks
+  - name: Count Question Marks
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countQuotes
+  - name: Count Quotes
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countSemicolons
+  - name: Count Semicolons
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countSlashes
+  - name: Count Slashes
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countSpaces
+  - name: Count Spaces
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countTabs
+  - name: Count Tabs
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countUnderscores
+  - name: Count Underscores
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.countUppercase
+  - name: Count Uppercase
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.csvToLines
+  - name: CSV To Lines
+  - domain: data-formats
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.endsWith
+  - name: Ends With
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.firstLine
+  - name: First Line
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.firstWord
+  - name: First Word
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.includes
+  - name: Includes
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.keepAlnum
+  - name: Keep Alnum
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.keepDigits
+  - name: Keep Digits
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.keepDigitsAndDots
+  - name: Keep Digits And Dots
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.keepHexChars
+  - name: Keep Hex Chars
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.keepLetters
+  - name: Keep Letters
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.keepNonAscii
+  - name: Keep Non-ASCII
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.keepPunctuation
+  - name: Keep Punctuation
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.keepVowels
+  - name: Keep Vowels
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.keepWhitespace
+  - name: Keep Whitespace
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.lastLine
+  - name: Last Line
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.lastWord
+  - name: Last Word
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.length
+  - name: Length
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.lineCount
+  - name: Line Count
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.linesNumbered
+  - name: Lines Numbered
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.linesToCsv
+  - name: Lines To CSV
+  - domain: data-formats
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.linesToWords
+  - name: Lines To Words
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.linesTrimLeft
+  - name: Lines Trim Left
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.linesTrimRight
+  - name: Lines Trim Right
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.lowercase
+  - name: Lowercase
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.lowerFirst
+  - name: Lower First
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.maskDigits
+  - name: Mask Digits
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.normalizeCommas
+  - name: Normalize Commas
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.normalizeNewlines
+  - name: Normalize Newlines
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.normalizeWhitespace
+  - name: Normalize Whitespace
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.onlyAlnumAndSpaces
+  - name: Only Alnum And Spaces
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.onlyLettersAndSpaces
+  - name: Only Letters And Spaces
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.onlyPrintableAscii
+  - name: Only Printable ASCII
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.padEnd
+  - name: Pad End
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.padStart
+  - name: Pad Start
+  - domain: compression-archive
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.prepend
+  - name: Prepend
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeAlnum
+  - name: Remove Alnum
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeAmpersands
+  - name: Remove Ampersands
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeAngles
+  - name: Remove Angle Brackets
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeAsterisks
+  - name: Remove Asterisks
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeAtSigns
+  - name: Remove At Signs
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeBackslashes
+  - name: Remove Backslashes
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeBackticks
+  - name: Remove Backticks
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeBlankLines
+  - name: Remove Blank Lines
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeBraces
+  - name: Remove Braces
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeBrackets
+  - name: Remove Brackets
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeCarets
+  - name: Remove Carets
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeColons
+  - name: Remove Colons
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeCommas
+  - name: Remove Commas
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeControlChars
+  - name: Remove Control Chars
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeCurrencySymbols
+  - name: Remove Currency Symbols
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeDigits
+  - name: Remove Digits
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeDigitsAndSpaces
+  - name: Remove Digits And Spaces
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeDollarSigns
+  - name: Remove Dollar Signs
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeDots
+  - name: Remove Dots
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeDoubleQuotes
+  - name: Remove Double Quotes
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeDoubleSpaces
+  - name: Remove Double Spaces
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeEmojis
+  - name: Remove Emojis
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeEquals
+  - name: Remove Equals
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeExclamations
+  - name: Remove Exclamations
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeHashes
+  - name: Remove Hashes
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeHexChars
+  - name: Remove Hex Chars
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeHyphens
+  - name: Remove Hyphens
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeLetters
+  - name: Remove Letters
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeMathSymbols
+  - name: Remove Math Symbols
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeNonAscii
+  - name: Remove Non-ASCII
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeParentheses
+  - name: Remove Parentheses
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removePercents
+  - name: Remove Percents
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removePipes
+  - name: Remove Pipes
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removePluses
+  - name: Remove Pluses
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removePunctuation
+  - name: Remove Punctuation
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeQuestionMarks
+  - name: Remove Question Marks
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeSemicolons
+  - name: Remove Semicolons
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeSingleQuotes
+  - name: Remove Single Quotes
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeSlashes
+  - name: Remove Slashes
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeSpaces
+  - name: Remove Spaces
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeSpacesAndTabs
+  - name: Remove Spaces And Tabs
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeTabs
+  - name: Remove Tabs
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeTildes
+  - name: Remove Tildes
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeUnderscores
+  - name: Remove Underscores
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.removeVowels
+  - name: Remove Vowels
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.repeat
+  - name: Repeat
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.replace
+  - name: Replace
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.replaceNewlinesWithSpace
+  - name: Newlines To Space
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.replaceSpacesWithNewlines
+  - name: Spaces To Newlines
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.reverse
+  - name: Reverse
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.reverseCharsInWords
+  - name: Reverse Chars In Words
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.reverseLines
+  - name: Reverse Lines
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.reverseWords
+  - name: Reverse Words
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.rot13
+  - name: ROT13
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.slice
+  - name: Slice
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.sortLines
+  - name: Sort Lines
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.sortWords
+  - name: Sort Words
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.spacesToTabs
+  - name: Spaces To Tabs
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.startsWith
+  - name: Starts With
+  - domain: compression-archive
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.stripAccents
+  - name: Strip Accents
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.surroundBrackets
+  - name: Surround Brackets
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.surroundQuotes
+  - name: Surround Quotes
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.swapCase
+  - name: Swap Case
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.tabsToSingleSpace
+  - name: Tabs To Single Space
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.tabsToSpaces
+  - name: Tabs To Spaces
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.toCamelCase
+  - name: Camel Case
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.toKebabCase
+  - name: Kebab Case
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.toPascalCase
+  - name: Pascal Case
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.toSnakeCase
+  - name: Snake Case
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.toTitleCase
+  - name: Title Case
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.trim
+  - name: Trim
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.trimCommas
+  - name: Trim Commas
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.trimEnd
+  - name: Trim End
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.trimLeadingDots
+  - name: Trim Leading Dots
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.trimLines
+  - name: Trim Lines
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.trimQuotes
+  - name: Trim Quotes
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.trimStart
+  - name: Trim Start
+  - domain: compression-archive
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.trimTrailingDots
+  - name: Trim Trailing Dots
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.uniqueLines
+  - name: Unique Lines
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.uniqueWords
+  - name: Unique Words
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.uppercase
+  - name: Uppercase
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.upperFirst
+  - name: Upper First
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.wordCount
+  - name: Word Count
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.wordsToLines
+  - name: Words To Lines
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE

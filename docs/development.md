@@ -177,6 +177,15 @@ CLI behavior:
   - `docs/parity/c2-domain-implementation-plan.json`
   - `docs/parity/c2-domain-implementation-plan.md`
 
+## C3 compatibility contracts
+
+- Generate operation compatibility contract catalog:
+  - `pnpm c3:contracts`
+- Artifacts:
+  - `docs/parity/c3-operation-compatibility-contracts.json`
+  - `docs/parity/c3-operation-compatibility-contracts.md`
+  - `docs/parity/c3-contract-schema.md`
+
 ## Adding a new operation
 
 1. Create `packages/plugins-standard/src/ops/myOp.ts`

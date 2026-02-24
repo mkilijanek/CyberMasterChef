@@ -9,5 +9,6 @@ A clean-slate, modular, and secure workbench for data operations — successor t
 - [Development](development.md)
 - [C1 Domain Matrix](parity/c1-operation-domain-summary.md)
 - [C2 Domain Plan](parity/c2-domain-implementation-plan.md)
+- [C3 Contracts](parity/c3-operation-compatibility-contracts.md)
 - [Phase A Definition of Done](phase-a-definition-of-done.md)
 - [Phase B Definition of Done](phase-b-definition-of-done.md)
