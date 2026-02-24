@@ -1,5 +1,6 @@
 import type { Operation } from "@cybermasterchef/core";
 import { bytesToHex } from "@cybermasterchef/core";
+import { PRETRIAGE_HEURISTICS } from "./preTriageHeuristics.js";
 
 type TriageSection = {
   name: string;
@@ -42,6 +43,11 @@ type TriageReport = {
     cves: string[];
     jwt: string[];
   };
+  heuristics: Array<{
+    id: string;
+    description: string;
+    matches: string[];
+  }>;
   binaryAnalysis: {
     format: "pe" | "unknown" | "text";
     sections: TriageSection[];
@@ -208,6 +214,12 @@ export const basicPreTriage: Operation = {
       label: "Max entropy segments",
       type: "number",
       defaultValue: 16
+    },
+    {
+      key: "maxHeuristicMatches",
+      label: "Max heuristic matches",
+      type: "number",
+      defaultValue: 25
     }
   ],
   run: async ({ input, args }) => {
@@ -217,6 +229,9 @@ export const basicPreTriage: Operation = {
     const segmentWindow = Math.max(256, Math.min(65536, Math.floor(segmentWindowArg)));
     const segmentLimitArg = typeof args.segmentLimit === "number" ? args.segmentLimit : 16;
     const segmentLimit = Math.max(1, Math.min(256, Math.floor(segmentLimitArg)));
+    const maxHeuristicMatchesArg =
+      typeof args.maxHeuristicMatches === "number" ? args.maxHeuristicMatches : 25;
+    const maxHeuristicMatches = Math.max(1, Math.min(500, Math.floor(maxHeuristicMatchesArg)));
 
     if (input.type !== "bytes" && input.type !== "string") {
       throw new Error("Expected bytes or string input");
@@ -233,6 +248,11 @@ export const basicPreTriage: Operation = {
     const ipv6 = uniqueMatches(text, IPV6_REGEX, (v) => v.toLowerCase(), maxMatches);
     const cves = uniqueMatches(text, CVE_REGEX, (v) => v.toUpperCase(), maxMatches);
     const jwt = uniqueMatches(text, JWT_REGEX, (v) => v, maxMatches);
+    const heuristics = PRETRIAGE_HEURISTICS.map((h) => ({
+      id: h.id,
+      description: h.description,
+      matches: uniqueMatches(text, h.pattern, (v) => v, maxHeuristicMatches)
+    })).filter((h) => h.matches.length > 0);
 
     const sections = seemsBinary ? parsePeSections(data) : [];
     const format: "pe" | "unknown" | "text" = !seemsBinary ? "text" : sections.length > 0 ? "pe" : "unknown";
@@ -267,6 +287,7 @@ export const basicPreTriage: Operation = {
         cves,
         jwt
       },
+      heuristics,
       binaryAnalysis: {
         format,
         sections,

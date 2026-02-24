@@ -64,6 +64,7 @@ describe("forensic basic pre-triage", () => {
       input: { type: string; seemsBinary: boolean };
       hashes: { sha256: string | null; md5: null };
       iocs: { urls: string[]; emails: string[]; cves: string[]; ipv4: string[] };
+      heuristics: Array<{ id: string; matches: string[] }>;
       binaryAnalysis: { format: string };
     };
     expect(report.input.type).toBe("string");
@@ -74,6 +75,7 @@ describe("forensic basic pre-triage", () => {
     expect(report.iocs.emails).toEqual(["admin@example.com"]);
     expect(report.iocs.cves).toEqual(["CVE-2024-12345"]);
     expect(report.iocs.ipv4).toEqual(["10.0.0.1"]);
+    expect(Array.isArray(report.heuristics)).toBe(true);
     expect(report.binaryAnalysis.format).toBe("text");
   });
 
