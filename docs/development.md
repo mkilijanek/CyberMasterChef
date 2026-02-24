@@ -195,6 +195,7 @@ Wave 1 implemented so far:
 - Wave 11 network: `network.extractIPv6`
 - Wave 11 network: `network.defangIPs`
 - Wave 11 network: `network.fangIPs`
+- Wave 12 forensic hash: `forensic.extractSha1`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip
 

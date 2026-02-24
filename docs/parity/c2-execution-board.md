@@ -72,6 +72,11 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 - [x] `network.defangIPs` safe-sharing operation.
 - [x] `network.fangIPs` reversal operation.
 
+## Wave 12 backlog
+
+- [x] `forensic.extractSha1` hash IOC operation.
+- [ ] `forensic.extractSha512` hash IOC operation.
+
 ## Queue extension
 
 - [ ] Task 21: `Basic Pre-Triage (Forensic/Malware Analysis)` module (post Wave 1-20 completion).

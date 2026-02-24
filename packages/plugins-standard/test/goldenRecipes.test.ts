@@ -203,6 +203,15 @@ const goldenCases: GoldenCase[] = [
     expected: "src 1.2.3.4 dst 8.8.8.8"
   },
   {
+    name: "Extract SHA-1 IOCs",
+    input: "sha1=da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "forensic.extractSha1" }]
+    },
+    expected: "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {
