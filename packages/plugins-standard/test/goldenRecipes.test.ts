@@ -11,6 +11,15 @@ type GoldenCase = {
 
 const goldenCases: GoldenCase[] = [
   {
+    name: "ISO to Unix and back",
+    input: "1970-01-01T00:00:01.000Z",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "date.isoToUnix" }, { opId: "date.unixToIso" }]
+    },
+    expected: "1970-01-01T00:00:01.000Z"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {

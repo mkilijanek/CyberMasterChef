@@ -242,6 +242,8 @@ Operations are grouped by package priority:
   - `text.removeMathSymbols`
   - `text.normalizeCommas`
   - `hash.sha256`
+  - `date.isoToUnix`
+  - `date.unixToIso`
   - `text.reverse`
 - CLI compatibility:
   - accepts native recipe JSON

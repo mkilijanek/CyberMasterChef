@@ -154,6 +154,8 @@ import { onlyAlnumAndSpaces } from "./ops/onlyAlnumAndSpaces.js";
 import { removeCurrencySymbols } from "./ops/removeCurrencySymbols.js";
 import { removeMathSymbols } from "./ops/removeMathSymbols.js";
 import { normalizeCommas } from "./ops/normalizeCommas.js";
+import { isoToUnix } from "./ops/isoToUnix.js";
+import { unixToIso } from "./ops/unixToIso.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -311,6 +313,8 @@ export const standardPlugin: Plugin = {
     registry.register(removeCurrencySymbols);
     registry.register(removeMathSymbols);
     registry.register(normalizeCommas);
+    registry.register(isoToUnix);
+    registry.register(unixToIso);
     registry.register(sha256);
   }
 };
