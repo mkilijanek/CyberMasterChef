@@ -172,6 +172,7 @@ Example operation IDs in use:
 - `text.spacesToTabs`
 - `text.trimCommas`
 - `text.trimQuotes`
+- `text.surroundBrackets`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

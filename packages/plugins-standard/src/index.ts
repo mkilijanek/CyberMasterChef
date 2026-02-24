@@ -67,6 +67,7 @@ import { tabsToSpaces } from "./ops/tabsToSpaces.js";
 import { spacesToTabs } from "./ops/spacesToTabs.js";
 import { trimCommas } from "./ops/trimCommas.js";
 import { trimQuotes } from "./ops/trimQuotes.js";
+import { surroundBrackets } from "./ops/surroundBrackets.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -137,6 +138,7 @@ export const standardPlugin: Plugin = {
     registry.register(spacesToTabs);
     registry.register(trimCommas);
     registry.register(trimQuotes);
+    registry.register(surroundBrackets);
     registry.register(sha256);
   }
 };
