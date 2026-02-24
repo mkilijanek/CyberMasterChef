@@ -177,6 +177,7 @@ Wave 1 implemented so far:
 - `format.jsonMinify`
 - `format.jsonBeautify`
 - `forensic.extractStrings`
+- Wave 5 kickoff: `network.extractIPs`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip
 

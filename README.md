@@ -60,6 +60,7 @@ Operations are grouped by package priority:
 - Wave 1 data-format baseline operations added: `format.jsonMinify`, `format.jsonBeautify`.
 - Wave 1 forensic baseline operation added: `forensic.extractStrings`.
 - Wave 1 closure: `forensic.extractStrings` is now registered in standard plugin and covered by golden parity suite.
+- Wave 5 IOC baseline started with `network.extractIPs` (unique IPv4 extraction).
 - C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
 
 ## Current functionality
@@ -249,6 +250,8 @@ Operations are grouped by package priority:
   - `date.unixToIso`
   - `format.jsonMinify`
   - `format.jsonBeautify`
+  - `forensic.extractStrings`
+  - `network.extractIPs`
   - `text.reverse`
 - CLI compatibility:
   - accepts native recipe JSON

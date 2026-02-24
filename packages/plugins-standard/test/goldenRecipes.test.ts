@@ -38,6 +38,15 @@ const goldenCases: GoldenCase[] = [
     expected: "HELLO\nBYE!"
   },
   {
+    name: "Extract unique IPv4 addresses",
+    input: "src=10.0.0.1 dst=172.16.0.2 invalid=999.1.1.1 src=10.0.0.1",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "network.extractIPs" }]
+    },
+    expected: "10.0.0.1\n172.16.0.2"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {

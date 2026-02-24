@@ -29,9 +29,14 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 
 ## Wave 3 backlog
 
-- [ ] `format.jsonMinify` and `format.jsonBeautify`.
+- [x] `format.jsonMinify` and `format.jsonBeautify`.
 - [ ] Structured error taxonomy for invalid JSON payloads.
-- [ ] Unit + golden tests.
+- [x] Unit + golden tests.
+
+## Wave 5 backlog
+
+- [x] `network.extractIPs` baseline IOC operation.
+- [ ] `network.extractUrls` baseline IOC operation.
 
 ## Quality gates
 
