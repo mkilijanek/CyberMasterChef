@@ -225,6 +225,7 @@ Operations are grouped by package priority:
   - `text.countDashes`
   - `text.countQuestionMarks`
   - `text.countExclamations`
+  - `text.countBrackets`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
