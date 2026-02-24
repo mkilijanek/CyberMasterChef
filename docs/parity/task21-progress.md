@@ -46,3 +46,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 36: `curl_usage` - Curl command usage
 - [x] Stage 37: `wget_usage` - Wget command usage
 - [x] Stage 38: `http_plain_download` - Plain HTTP URL present
+- [x] Stage 39: `pastebin_reference` - Pastebin indicator
