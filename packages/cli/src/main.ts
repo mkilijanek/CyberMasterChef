@@ -39,6 +39,7 @@ const usageText =
   "  --show-trace                     print human-readable trace to stderr\n" +
   "  --trace-json                     print trace JSON to stderr\n" +
   "  --list-ops                       print available operation ids and names\n" +
+  "  --list-ops-json                  print available operations as JSON\n" +
   "  --input-encoding text|hex|base64 parse CLI input before execution\n" +
   "  --bytes-output hex|base64|utf8   bytes output rendering on stdout\n" +
   "  --max-output-chars <n>           limit output length for string/json/bytes rendering\n" +
@@ -82,6 +83,7 @@ type CliOptions = {
   showTrace: boolean;
   traceJson: boolean;
   listOps: boolean;
+  listOpsJson: boolean;
   inputEncoding: "text" | "hex" | "base64";
   bytesOutput: "hex" | "base64" | "utf8";
   maxOutputChars?: number;
@@ -97,6 +99,7 @@ function parseArgs(args: string[]): CliOptions {
   let showTrace = false;
   let traceJson = false;
   let listOps = false;
+  let listOpsJson = false;
   let inputEncoding: CliOptions["inputEncoding"] = "text";
   let bytesOutput: CliOptions["bytesOutput"] = "hex";
   let maxOutputChars: number | undefined;
@@ -143,6 +146,10 @@ function parseArgs(args: string[]): CliOptions {
     }
     if (arg === "--list-ops") {
       listOps = true;
+      continue;
+    }
+    if (arg === "--list-ops-json") {
+      listOpsJson = true;
       continue;
     }
     if (arg === "--input-encoding") {
@@ -192,7 +199,7 @@ function parseArgs(args: string[]): CliOptions {
   }
 
   const recipePath = positional[0];
-  if (!recipePath && !listOps) {
+  if (!recipePath && !listOps && !listOpsJson) {
     die(usageText);
   }
   const out: CliOptions = {
@@ -206,6 +213,7 @@ function parseArgs(args: string[]): CliOptions {
     showTrace,
     traceJson,
     listOps,
+    listOpsJson,
     inputEncoding,
     bytesOutput
   };
@@ -224,6 +232,10 @@ if (opts.listOps) {
   for (const op of registry.list()) {
     process.stdout.write(`${op.id}\t${op.name}\n`);
   }
+  process.exit(0);
+}
+if (opts.listOpsJson) {
+  process.stdout.write(`${JSON.stringify(registry.list())}\n`);
   process.exit(0);
 }
 
