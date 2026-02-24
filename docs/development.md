@@ -224,6 +224,7 @@ Example operation IDs in use:
 - `text.removeBackticks`
 - `text.removeQuestionMarks`
 - `text.removeExclamations`
+- `text.removeParentheses`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
