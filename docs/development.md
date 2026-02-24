@@ -198,6 +198,7 @@ Wave 1 implemented so far:
 - Wave 12 forensic hash: `forensic.extractSha1`
 - Wave 12 forensic hash: `forensic.extractSha512`
 - Wave 13 forensic token: `forensic.extractJwt`
+- Wave 13 forensic vuln IOC: `forensic.extractCves`
 - Wave 14 data-format: `format.jsonArrayLength`
 - Wave 14 data-format: `format.jsonStringValues`
 - Wave 14 data-format: `format.jsonNumberValues`

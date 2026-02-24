@@ -81,6 +81,7 @@ Operations are grouped by package priority:
 - Wave 12 forensic hash expansion adds `forensic.extractSha1`.
 - Wave 12 forensic hash expansion adds `forensic.extractSha512`.
 - Wave 13 forensic token IOC expansion adds `forensic.extractJwt`.
+- Wave 13 forensic vulnerability IOC expansion adds `forensic.extractCves`.
 - Wave 14 JSON inspection adds `format.jsonArrayLength`.
 - Wave 14 JSON extraction adds `format.jsonStringValues`.
 - Wave 14 JSON extraction adds `format.jsonNumberValues`.
@@ -291,6 +292,7 @@ Operations are grouped by package priority:
   - `forensic.extractSha256`
   - `forensic.extractSha512`
   - `forensic.extractJwt`
+  - `forensic.extractCves`
   - `network.extractIPs`
   - `network.extractIPv6`
   - `network.defangIPs`

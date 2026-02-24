@@ -80,7 +80,7 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 ## Wave 13 backlog
 
 - [x] `forensic.extractJwt` token IOC operation.
-- [ ] `forensic.extractCves` vulnerability IOC operation.
+- [x] `forensic.extractCves` vulnerability IOC operation.
 
 ## Wave 14 backlog
 

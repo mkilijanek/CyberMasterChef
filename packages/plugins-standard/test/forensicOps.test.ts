@@ -8,6 +8,7 @@ import { extractSha256 } from "../src/ops/extractSha256.js";
 import { extractSha1 } from "../src/ops/extractSha1.js";
 import { extractSha512 } from "../src/ops/extractSha512.js";
 import { extractJwt } from "../src/ops/extractJwt.js";
+import { extractCves } from "../src/ops/extractCves.js";
 
 describe("forensic operations", () => {
   it("extracts printable strings from bytes", async () => {
@@ -161,5 +162,20 @@ describe("forensic operations", () => {
       input: { type: "string", value: `${token} ${token}` }
     });
     expect(out.output).toEqual({ type: "string", value: token });
+  });
+
+  it("extracts unique CVE identifiers", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(extractCves);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "forensic.extractCves" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "CVE-2024-12345 cve-2024-12345 CVE-2023-0001" }
+    });
+    expect(out.output).toEqual({
+      type: "string",
+      value: "CVE-2024-12345\nCVE-2023-0001"
+    });
   });
 });

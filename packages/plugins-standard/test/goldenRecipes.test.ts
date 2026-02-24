@@ -261,6 +261,15 @@ const goldenCases: GoldenCase[] = [
     expected: "1\n2\n3"
   },
   {
+    name: "Extract CVE identifiers",
+    input: "patched CVE-2024-12345 and CVE-2021-44228",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "forensic.extractCves" }]
+    },
+    expected: "CVE-2024-12345\nCVE-2021-44228"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {
