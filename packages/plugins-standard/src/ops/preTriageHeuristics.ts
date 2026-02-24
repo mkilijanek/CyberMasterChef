@@ -134,4 +134,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "defender_disable_cmd", description: "Defender disable marker", pattern: new RegExp("set-mppreference\\s+-disablerealtimemonitoring", "i") },
   { id: "amsi_bypass_marker", description: "AMSI bypass marker", pattern: new RegExp("amsiutils", "i") },
   { id: "etw_bypass_marker", description: "ETW bypass marker", pattern: new RegExp("eventprovider", "i") },
+  { id: "reflective_loader_marker", description: "Reflective loader marker", pattern: new RegExp("reflective(pe)?loader", "i") },
 ];

@@ -141,3 +141,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 127: `defender_disable_cmd` - Defender disable marker
 - [x] Stage 128: `amsi_bypass_marker` - AMSI bypass marker
 - [x] Stage 129: `etw_bypass_marker` - ETW bypass marker
+- [x] Stage 130: `reflective_loader_marker` - Reflective loader marker
