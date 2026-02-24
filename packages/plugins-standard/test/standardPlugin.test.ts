@@ -19,6 +19,7 @@ describe("standardPlugin", () => {
       "codec.urlEncode",
       "hash.sha256",
       "text.append",
+      "text.length",
       "text.lowercase",
       "text.padEnd",
       "text.padStart",

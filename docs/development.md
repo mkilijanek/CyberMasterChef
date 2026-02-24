@@ -103,6 +103,7 @@ Example operation IDs in use:
 - `text.uppercase`
 - `text.prepend`
 - `text.append`
+- `text.length`
 - `text.replace`
 - `text.slice`
 - `text.repeat`

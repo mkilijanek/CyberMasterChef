@@ -78,6 +78,7 @@ Operations are grouped by package priority:
   - `text.uppercase`
   - `text.prepend`
   - `text.append`
+  - `text.length`
   - `text.replace`
   - `text.slice`
   - `text.repeat`

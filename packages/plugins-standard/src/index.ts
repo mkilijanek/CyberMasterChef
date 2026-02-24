@@ -21,6 +21,7 @@ import { padStart } from "./ops/padStart.js";
 import { padEnd } from "./ops/padEnd.js";
 import { trimStart } from "./ops/trimStart.js";
 import { trimEnd } from "./ops/trimEnd.js";
+import { length } from "./ops/length.js";
 
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
@@ -47,6 +48,7 @@ export const standardPlugin: Plugin = {
     registry.register(padEnd);
     registry.register(trimStart);
     registry.register(trimEnd);
+    registry.register(length);
     registry.register(sha256);
   }
 };
