@@ -160,6 +160,15 @@ CLI behavior:
 - Phase A checklist: `docs/phase-a-definition-of-done.md`
 - Phase B checklist: `docs/phase-b-definition-of-done.md`
 
+## C1 domain matrix
+
+- Generate operation-domain matrix from CyberChef reference list:
+  - `pnpm c1:domain-matrix`
+- Artifacts:
+  - `docs/parity/c1-operation-domain-matrix.json`
+  - `docs/parity/c1-operation-domain-matrix.csv`
+  - `docs/parity/c1-operation-domain-summary.md`
+
 ## Adding a new operation
 
 1. Create `packages/plugins-standard/src/ops/myOp.ts`

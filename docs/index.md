@@ -7,5 +7,6 @@ A clean-slate, modular, and secure workbench for data operations — successor t
 - [Architecture](architecture.md)
 - [Plugin API](plugin-api.md)
 - [Development](development.md)
+- [C1 Domain Matrix](parity/c1-operation-domain-summary.md)
 - [Phase A Definition of Done](phase-a-definition-of-done.md)
 - [Phase B Definition of Done](phase-b-definition-of-done.md)

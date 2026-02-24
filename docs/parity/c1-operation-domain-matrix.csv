@@ -1,0 +1,466 @@
+index,operationName,file,originalCategory,domain,confidence,matchedBy
+9,Alphabet,FromBase58.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+10,Alphabet,ToBase58.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+53,Convert,ToHexContent.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+73,Delimiter,FromBinary.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+75,Delimiter,FromDecimal.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+76,Delimiter,FromOctal.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+88,Delimiter,ToBinary.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+90,Delimiter,ToDecimal.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+91,Delimiter,ToOctal.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+98,DropNthBytes,DropNthBytes.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+134,Format options,ToMorseCode.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+135,FromBase32,FromBase32.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+136,FromBase45,FromBase45.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+137,FromBase62,FromBase62.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+138,FromBase64,FromBase64.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+139,FromBase85,FromBase85.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+140,FromBase92,FromBase92.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+143,FromHex,FromHex.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+144,FromHexContent,FromHexContent.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+148,FromModhex,FromModhex.mjs,crypto/hash,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+149,FromQuotedPrintable,FromQuotedPrintable.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+177,HexDensityChart,HexDensityChart.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+178,HexToObjectIdentifier,HexToObjectIdentifier.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+208,Internationalised domain name,FromPunycode.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+209,Internationalised domain name,ToPunycode.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+216,JPathExpression,JPathExpression.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+264,Letter delimiter,FromMorseCode.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+296,ObjectIdentifierToHex,ObjectIdentifierToHex.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+321,PEMToHex,PEMToHex.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+355,RemoveNullBytes,RemoveNullBytes.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+361,ROT13,ROT13.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+362,ROT13BruteForce,ROT13BruteForce.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+363,ROT47,ROT47.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+364,ROT47BruteForce,ROT47BruteForce.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+365,ROT8000,ROT8000.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+395,ShowBase64Offsets,ShowBase64Offsets.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+405,Size (bytes),BLAKE3.mjs,crypto/hash,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+425,TakeNthBytes,TakeNthBytes.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+430,ToBase32,ToBase32.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+431,ToBase45,ToBase45.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+432,ToBase62,ToBase62.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+433,ToBase64,ToBase64.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+434,ToBase85,ToBase85.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+435,ToBase92,ToBase92.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+438,ToHex,ToHex.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+441,ToModhex,ToModhex.mjs,crypto/hash,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+442,ToQuotedPrintable,ToQuotedPrintable.mjs,misc,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+460,XPath,XPathExpression.mjs,encoding/cipher,encodings-codecs,medium,/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+1,a,AffineCipherDecode.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+2,a,AffineCipherEncode.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+3,A1Z26CipherDecode,A1Z26CipherDecode.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+4,A1Z26CipherEncode,A1Z26CipherEncode.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+6,Adler32Checksum,Adler32Checksum.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+7,Alphabet,BaconCipherDecode.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+8,Alphabet,BaconCipherEncode.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+16,AnalyseHash,AnalyseHash.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+18,AtbashCipher,AtbashCipher.mjs,encoding/cipher,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+23,BcryptParse,BcryptParse.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+27,BSONDeserialise,BSONDeserialise.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+36,CaesarBoxCipher,CaesarBoxCipher.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+43,CetaceanCipherDecode,CetaceanCipherDecode.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+44,CetaceanCipherEncode,CetaceanCipherEncode.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+46,CipherSaber2Decrypt,CipherSaber2Decrypt.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+47,CipherSaber2Encrypt,CipherSaber2Encrypt.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+59,CRCChecksum,CRCChecksum.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+68,Delimiter,CompareCTPHHashes.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+69,Delimiter,CompareSSDEEPHashes.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+99,ECDSASign,ECDSASign.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+100,ECDSASignatureConversion,ECDSASignatureConversion.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+101,ECDSAVerify,ECDSAVerify.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+104,Encoded hash,Argon2Compare.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+117,ExtractHashes,ExtractHashes.mjs,text/transform,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+129,Fletcher16Checksum,Fletcher16Checksum.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+130,Fletcher32Checksum,Fletcher32Checksum.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+131,Fletcher64Checksum,Fletcher64Checksum.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+132,Fletcher8Checksum,Fletcher8Checksum.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+151,GenerateAllChecksums,GenerateAllChecksums.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+152,GenerateAllHashes,GenerateAllHashes.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+154,GenerateECDSAKeyPair,GenerateECDSAKeyPair.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+156,GenerateRSAKeyPair,GenerateRSAKeyPair.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+161,GOSTDecrypt,GOSTDecrypt.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+162,GOSTEncrypt,GOSTEncrypt.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+163,GOSTHash,GOSTHash.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+171,Hash,BcryptCompare.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+201,Input Format,SM2Decrypt.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+227,Key,AESDecrypt.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+228,Key,AESEncrypt.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+230,Key,BlowfishDecrypt.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+231,Key,BlowfishEncrypt.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+233,Key,ChaCha.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+234,Key,DESDecrypt.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+235,Key,DESEncrypt.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+236,Key,FernetDecrypt.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+237,Key,FernetEncrypt.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+238,Key,HMAC.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+240,Key,RC2Decrypt.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+241,Key,RC2Encrypt.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+243,Key,SM4Decrypt.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+244,Key,SM4Encrypt.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+247,Key,TripleDESDecrypt.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+248,Key,TripleDESEncrypt.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+253,Key,XXTEADecrypt.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+254,Key,XXTEAEncrypt.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+255,Key (KEK),AESKeyUnwrap.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+256,Key (KEK),AESKeyWrap.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+259,Keyword,BifidCipherDecode.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+260,Keyword,BifidCipherEncode.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+266,LMHash,LMHash.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+269,LS47Decrypt,LS47Decrypt.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+270,LS47Encrypt,LS47Encrypt.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+279,MD2,MD2.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+280,MD4,MD4.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+281,MD5,MD5.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+286,MurmurHash3,MurmurHash3.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+293,NTHash,NTHash.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+302,Output Format,SM2Encrypt.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+304,Output valid JSON,PHPDeserialize.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+318,Passphrase,DerivePBKDF2Key.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+319,Passphrase,RC4.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+320,Passphrase,RC4Drop.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+333,Private key of recipient,PGPDecrypt.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+334,Private key of signer,PGPEncryptAndSign.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+339,Public key of recipient,PGPEncrypt.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+340,Public key of signer,PGPDecryptAndVerify.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+343,Radix,LuhnChecksum.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+345,RailFenceCipherDecode,RailFenceCipherDecode.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+346,RailFenceCipherEncode,RailFenceCipherEncode.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+369,Rounds,Bcrypt.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+370,RSADecrypt,RSADecrypt.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+371,RSAEncrypt,RSAEncrypt.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+372,RSASign,RSASign.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+373,RSAVerify,RSAVerify.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+374,Salt,Argon2.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+375,Salt,DeriveHKDFKey.mjs,parsing/format,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+376,Salt,Scrypt.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+390,SHA0,SHA0.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+391,SHA1,SHA1.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+392,SHA2,SHA2.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+401,Size,Keccak.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+402,Size,MD6.mjs,misc,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+403,Size,RIPEMD.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+404,Size,SHA3.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+426,TCPIPChecksum,TCPIPChecksum.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+456,Whirlpool,Whirlpool.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+459,XORChecksum,XORChecksum.mjs,crypto/hash,crypto-hash-kdf,high,/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+34,Bzip2Compress,Bzip2Compress.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+35,Bzip2Decompress,Bzip2Decompress.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+126,Filename,Tar.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+168,Gunzip,Gunzip.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+169,Gzip,Gzip.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+202,Input units,ConvertArea.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+271,LZ4Compress,LZ4Compress.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+272,LZ4Decompress,LZ4Decompress.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+273,LZMACompress,LZMACompress.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+274,LZMADecompress,LZMADecompress.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+275,LZNT1Decompress,LZNT1Decompress.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+276,LZStringCompress,LZStringCompress.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+277,LZStringDecompress,LZStringDecompress.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+349,RawDeflate,RawDeflate.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+350,RawInflate,RawInflate.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+415,Start,DropBytes.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+416,Start,TakeBytes.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+417,Starting index,ParseASN1HexString.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+450,Untar,Untar.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+451,Unzip,Unzip.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+463,Zip,Zip.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+464,ZlibDeflate,ZlibDeflate.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+465,ZlibInflate,ZlibInflate.mjs,compression,compression-archive,high,/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i
+29,Built in formats,DateTimeDelta.mjs,misc,date-time,high,/date|time|timestamp|epoch|unix|iso\s?8601|utc|timezone|fromnow|moment/i
+30,Built in formats,ParseDateTime.mjs,parsing/format,date-time,high,/date|time|timestamp|epoch|unix|iso\s?8601|utc|timezone|fromnow|moment/i
+31,Built in formats,TranslateDateTimeFormat.mjs,misc,date-time,high,/date|time|timestamp|epoch|unix|iso\s?8601|utc|timezone|fromnow|moment/i
+95,Display total,ExtractDates.mjs,text/transform,date-time,high,/date|time|timestamp|epoch|unix|iso\s?8601|utc|timezone|fromnow|moment/i
+160,GetTime,GetTime.mjs,misc,date-time,high,/date|time|timestamp|epoch|unix|iso\s?8601|utc|timezone|fromnow|moment/i
+207,Input units,UNIXTimestampToWindowsFiletime.mjs,misc,date-time,high,/date|time|timestamp|epoch|unix|iso\s?8601|utc|timezone|fromnow|moment/i
+303,Output units,WindowsFiletimeToUNIXTimestamp.mjs,misc,date-time,high,/date|time|timestamp|epoch|unix|iso\s?8601|utc|timezone|fromnow|moment/i
+307,ParseObjectIDTimestamp,ParseObjectIDTimestamp.mjs,parsing/format,date-time,high,/date|time|timestamp|epoch|unix|iso\s?8601|utc|timezone|fromnow|moment/i
+314,ParseUNIXFilePermissions,ParseUNIXFilePermissions.mjs,parsing/format,date-time,high,/date|time|timestamp|epoch|unix|iso\s?8601|utc|timezone|fromnow|moment/i
+429,Time (ms),Sleep.mjs,misc,date-time,high,/date|time|timestamp|epoch|unix|iso\s?8601|utc|timezone|fromnow|moment/i
+448,Units,FromUNIXTimestamp.mjs,misc,date-time,high,/date|time|timestamp|epoch|unix|iso\s?8601|utc|timezone|fromnow|moment/i
+449,Units,ToUNIXTimestamp.mjs,misc,date-time,high,/date|time|timestamp|epoch|unix|iso\s?8601|utc|timezone|fromnow|moment/i
+22,AvroToJSON,AvroToJSON.mjs,encoding/cipher,data-formats,high,/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i
+54,Convert all characters,ToHTMLEntity.mjs,parsing/format,data-formats,high,/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i
+62,CSVToJSON,CSVToJSON.mjs,parsing/format,data-formats,high,/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i
+146,FromHTMLEntity,FromHTMLEntity.mjs,parsing/format,data-formats,high,/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i
+179,HTMLToText,HTMLToText.mjs,parsing/format,data-formats,high,/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i
+191,Indent string,XMLBeautify.mjs,parsing/format,data-formats,high,/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i
+218,JsonataQuery,Jsonata.mjs,parsing/format,data-formats,high,/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i
+219,JSONBeautify,JSONBeautify.mjs,parsing/format,data-formats,high,/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i
+220,JSONMinify,JSONMinify.mjs,parsing/format,data-formats,high,/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i
+221,JSONToCSV,JSONToCSV.mjs,parsing/format,data-formats,high,/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i
+222,JSONtoYAML,JSONtoYAML.mjs,parsing/format,data-formats,high,/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i
+332,Preserve comments,XMLMinify.mjs,parsing/format,data-formats,high,/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i
+335,ProtobufDecode,ProtobufDecode.mjs,encoding/cipher,data-formats,high,/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i
+336,ProtobufEncode,ProtobufEncode.mjs,encoding/cipher,data-formats,high,/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i
+351,Remove indentation,StripHTMLTags.mjs,parsing/format,data-formats,high,/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i
+461,YAMLToJSON,YAMLToJSON.mjs,parsing/format,data-formats,high,/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i
+19,Attempt to be context aware,ToCamelCase.mjs,misc,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+20,Attempt to be context aware,ToKebabCase.mjs,misc,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+21,Attempt to be context aware,ToSnakeCase.mjs,misc,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+32,Built in regexes,RegularExpression.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+33,By,Reverse.mjs,misc,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+83,Delimiter,Sort.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+112,ExtractDomains,ExtractDomains.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+113,ExtractEmailAddresses,ExtractEmailAddresses.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+114,ExtractEXIF,ExtractEXIF.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+115,ExtractFilePaths,ExtractFilePaths.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+116,ExtractFiles,ExtractFiles.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+118,ExtractID3,ExtractID3.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+120,ExtractLSB,ExtractLSB.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+122,Extractor,Register.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+123,ExtractRGBA,ExtractRGBA.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+128,Find,FindReplace.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+142,FromCaseInsensitiveRegex,FromCaseInsensitiveRegex.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+150,FuzzyMatch,FuzzyMatch.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+278,Match (regex),ConditionalJump.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+291,NormaliseUnicode,NormaliseUnicode.mjs,encoding/cipher,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+327,Position,PadLines.mjs,misc,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+329,Prefix,EscapeUnicodeCharacters.mjs,encoding/cipher,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+330,Prefix,UnescapeUnicodeCharacters.mjs,encoding/cipher,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+383,Scope,ToUpperCase.mjs,misc,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+385,Section (regex),Subsection.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+408,Spaces,RemoveWhitespace.mjs,misc,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+409,Split delimiter,Fork.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+410,Split delimiter,Split.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+411,SplitColourChannels,SplitColourChannels.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+423,SwapCase,SwapCase.mjs,misc,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+437,ToCaseInsensitiveRegex,ToCaseInsensitiveRegex.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+439,ToLowerCase,ToLowerCase.mjs,misc,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+446,UnicodeTextFormat,UnicodeTextFormat.mjs,encoding/cipher,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+447,Unique,Unique.mjs,text/transform,regex-text-advanced,medium,/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i
+25,BlurImage,BlurImage.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+65,DechunkHTTPResponse,DechunkHTTPResponse.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+66,DefangIPAddresses,DefangIPAddresses.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+67,DefangURL,DefangURL.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+77,Delimiter,GroupIPAddresses.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+82,Delimiter,Multiply.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+97,DNSOverHTTPS,DNSOverHTTPS.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+103,Encode all special chars,URLEncode.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+119,ExtractIPAddresses,ExtractIPAddresses.mjs,text/transform,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+121,ExtractMACAddresses,ExtractMACAddresses.mjs,text/transform,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+124,ExtractURLs,ExtractURLs.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+125,FangURL,FangURL.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+133,FlipImage,FlipImage.mjs,media,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+175,Header string,HexToPEM.mjs,encoding/cipher,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+181,Ignore ranges,IPv6TransitionAddresses.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+187,Include network info,ParseIPRange.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+189,Indent string,JavaScriptBeautify.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+193,Input format,ChangeIPFormat.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+196,Input format,ParseIPv4Header.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+197,Input format,ParseX509CRL.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+198,Input format,ParseX509Certificate.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+200,Input format,RenderImage.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+215,JavaScriptMinify,JavaScriptMinify.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+223,JWTDecode,JWTDecode.mjs,crypto/hash,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+224,JWTSign,JWTSign.mjs,crypto/hash,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+225,JWTVerify,JWTVerify.mjs,crypto/hash,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+263,Length,GenerateLoremIpsum.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+267,Location info,JavaScriptParser.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+283,Method,HTTPRequest.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+284,MicrosoftScriptDecoder,MicrosoftScriptDecoder.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+285,MIMEDecoding,MIMEDecoding.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+294,Number of bytes,PseudoRandomNumberGenerator.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+295,Numberwang,Numberwang.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+297,Offset,AddLineNumbers.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+301,Output case,FormatMACAddresses.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+306,ParseIPv6Address,ParseIPv6Address.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+315,ParseURI,ParseURI.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+317,Passphrase,DeriveEVPKey.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+354,RemoveLineNumbers,RemoveLineNumbers.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+356,RenderMarkdown,RenderMarkdown.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+414,Standard Enigmas,MultipleBombe.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+419,StripHTTPHeaders,StripHTTPHeaders.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+420,StripIPv4Header,StripIPv4Header.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+421,StripTCPHeader,StripTCPHeader.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+422,StripUDPHeader,StripUDPHeader.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+443,Treat \,URLDecode.mjs,parsing/format,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+458,XKCDRandomNumber,XKCDRandomNumber.mjs,misc,network-protocol-parsers,high,/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i
+102,ELFInfo,ELFInfo.mjs,misc,forensic-malware-helper,high,/ioc|indicator|entropy|yara|pe\s?header|elf|shellcode|strings|hex\s?dump|byte\s?histogram|malware|forensic/i
+145,FromHexdump,FromHexdump.mjs,encoding/cipher,forensic-malware-helper,high,/ioc|indicator|entropy|yara|pe\s?header|elf|shellcode|strings|hex\s?dump|byte\s?histogram|malware|forensic/i
+418,Strings,Strings.mjs,misc,forensic-malware-helper,high,/ioc|indicator|entropy|yara|pe\s?header|elf|shellcode|strings|hex\s?dump|byte\s?histogram|malware|forensic/i
+455,Visualisation,Entropy.mjs,misc,forensic-malware-helper,high,/ioc|indicator|entropy|yara|pe\s?header|elf|shellcode|strings|hex\s?dump|byte\s?histogram|malware|forensic/i
+457,Width,ToHexdump.mjs,encoding/cipher,forensic-malware-helper,high,/ioc|indicator|entropy|yara|pe\s?header|elf|shellcode|strings|hex\s?dump|byte\s?histogram|malware|forensic/i
+462,YARARules,YARARules.mjs,misc,forensic-malware-helper,high,/ioc|indicator|entropy|yara|pe\s?header|elf|shellcode|strings|hex\s?dump|byte\s?histogram|malware|forensic/i
+5,AddTextToImage,AddTextToImage.mjs,media,misc-uncategorized,low,<no-rule-match>
+11,AlternatingCaps,AlternatingCaps.mjs,misc,misc-uncategorized,low,<no-rule-match>
+12,AMFDecode,AMFDecode.mjs,misc,misc-uncategorized,low,<no-rule-match>
+13,AMFEncode,AMFEncode.mjs,misc,misc-uncategorized,low,<no-rule-match>
+14,Amount,BitShiftLeft.mjs,misc,misc-uncategorized,low,<no-rule-match>
+15,Amount,BitShiftRight.mjs,misc,misc-uncategorized,low,<no-rule-match>
+17,AnalyseUUID,AnalyseUUID.mjs,misc,misc-uncategorized,low,<no-rule-match>
+24,Bit mode,DisassembleX86.mjs,misc,misc-uncategorized,low,<no-rule-match>
+26,Bombe,Bombe.mjs,misc,misc-uncategorized,low,<no-rule-match>
+28,BSONSerialise,BSONSerialise.mjs,misc,misc-uncategorized,low,<no-rule-match>
+37,Capacity,Shake.mjs,crypto/hash,misc-uncategorized,low,<no-rule-match>
+38,CaretMdecode,CaretMdecode.mjs,misc,misc-uncategorized,low,<no-rule-match>
+39,CartesianProduct,CartesianProduct.mjs,misc,misc-uncategorized,low,<no-rule-match>
+40,CBORDecode,CBORDecode.mjs,misc,misc-uncategorized,low,<no-rule-match>
+41,CBOREncode,CBOREncode.mjs,misc,misc-uncategorized,low,<no-rule-match>
+42,Cell delimiters,ToTable.mjs,misc,misc-uncategorized,low,<no-rule-match>
+45,ChiSquare,ChiSquare.mjs,misc,misc-uncategorized,low,<no-rule-match>
+48,CitrixCTX1Decode,CitrixCTX1Decode.mjs,misc,misc-uncategorized,low,<no-rule-match>
+49,CitrixCTX1Encode,CitrixCTX1Encode.mjs,misc,misc-uncategorized,low,<no-rule-match>
+50,Colossus,Colossus.mjs,misc,misc-uncategorized,low,<no-rule-match>
+51,Comment,Comment.mjs,misc,misc-uncategorized,low,<no-rule-match>
+52,ContainImage,ContainImage.mjs,media,misc-uncategorized,low,<no-rule-match>
+55,ConvertImageFormat,ConvertImageFormat.mjs,media,misc-uncategorized,low,<no-rule-match>
+56,ConvertLeetSpeak,ConvertLeetSpeak.mjs,misc,misc-uncategorized,low,<no-rule-match>
+57,ConvertToNATOAlphabet,ConvertToNATOAlphabet.mjs,misc,misc-uncategorized,low,<no-rule-match>
+58,CoverImage,CoverImage.mjs,media,misc-uncategorized,low,<no-rule-match>
+60,CropImage,CropImage.mjs,media,misc-uncategorized,low,<no-rule-match>
+61,CSS selector,CSSSelector.mjs,misc,misc-uncategorized,low,<no-rule-match>
+63,CTPH,CTPH.mjs,misc,misc-uncategorized,low,<no-rule-match>
+64,Data format,SwapEndianness.mjs,misc,misc-uncategorized,low,<no-rule-match>
+70,Delimiter,Divide.mjs,misc,misc-uncategorized,low,<no-rule-match>
+71,Delimiter,ExpandAlphabetRange.mjs,misc,misc-uncategorized,low,<no-rule-match>
+72,Delimiter,Filter.mjs,text/transform,misc-uncategorized,low,<no-rule-match>
+74,Delimiter,FromCharcode.mjs,misc,misc-uncategorized,low,<no-rule-match>
+78,Delimiter,HammingDistance.mjs,misc,misc-uncategorized,low,<no-rule-match>
+79,Delimiter,Head.mjs,misc,misc-uncategorized,low,<no-rule-match>
+80,Delimiter,Mean.mjs,misc,misc-uncategorized,low,<no-rule-match>
+81,Delimiter,Median.mjs,misc,misc-uncategorized,low,<no-rule-match>
+84,Delimiter,StandardDeviation.mjs,misc,misc-uncategorized,low,<no-rule-match>
+85,Delimiter,Subtract.mjs,misc,misc-uncategorized,low,<no-rule-match>
+86,Delimiter,Sum.mjs,misc,misc-uncategorized,low,<no-rule-match>
+87,Delimiter,Tail.mjs,misc,misc-uncategorized,low,<no-rule-match>
+89,Delimiter,ToCharcode.mjs,misc,misc-uncategorized,low,<no-rule-match>
+92,Depth,Magic.mjs,misc,misc-uncategorized,low,<no-rule-match>
+93,DetectFileType,DetectFileType.mjs,misc,misc-uncategorized,low,<no-rule-match>
+94,Digest length,Streebog.mjs,misc,misc-uncategorized,low,<no-rule-match>
+96,DitherImage,DitherImage.mjs,media,misc-uncategorized,low,<no-rule-match>
+105,Encoding,DecodeText.mjs,misc,misc-uncategorized,low,<no-rule-match>
+106,Encoding,EncodeText.mjs,misc,misc-uncategorized,low,<no-rule-match>
+107,Encoding,FromBech32.mjs,misc,misc-uncategorized,low,<no-rule-match>
+108,Endianness,FromFloat.mjs,misc,misc-uncategorized,low,<no-rule-match>
+109,Endianness,ToFloat.mjs,misc,misc-uncategorized,low,<no-rule-match>
+110,Enigma,Enigma.mjs,misc,misc-uncategorized,low,<no-rule-match>
+111,Escape level,EscapeString.mjs,misc,misc-uncategorized,low,<no-rule-match>
+127,FileTree,FileTree.mjs,misc,misc-uncategorized,low,<no-rule-match>
+141,FromBraille,FromBraille.mjs,misc,misc-uncategorized,low,<no-rule-match>
+147,FromMessagePack,FromMessagePack.mjs,misc,misc-uncategorized,low,<no-rule-match>
+153,GenerateDeBruijnSequence,GenerateDeBruijnSequence.mjs,misc,misc-uncategorized,low,<no-rule-match>
+155,GenerateImage,GenerateImage.mjs,media,misc-uncategorized,low,<no-rule-match>
+157,GenerateUUID,GenerateUUID.mjs,misc,misc-uncategorized,low,<no-rule-match>
+158,GenericCodeBeautify,GenericCodeBeautify.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+159,GetAllCasings,GetAllCasings.mjs,misc,misc-uncategorized,low,<no-rule-match>
+164,GOSTKeyUnwrap,GOSTKeyUnwrap.mjs,misc,misc-uncategorized,low,<no-rule-match>
+165,GOSTKeyWrap,GOSTKeyWrap.mjs,misc,misc-uncategorized,low,<no-rule-match>
+166,GOSTSign,GOSTSign.mjs,misc,misc-uncategorized,low,<no-rule-match>
+167,GOSTVerify,GOSTVerify.mjs,misc,misc-uncategorized,low,<no-rule-match>
+170,HAS160,HAS160.mjs,misc,misc-uncategorized,low,<no-rule-match>
+172,HASSHClientFingerprint,HASSHClientFingerprint.mjs,misc,misc-uncategorized,low,<no-rule-match>
+173,HASSHServerFingerprint,HASSHServerFingerprint.mjs,misc,misc-uncategorized,low,<no-rule-match>
+174,HaversineDistance,HaversineDistance.mjs,misc,misc-uncategorized,low,<no-rule-match>
+176,HeatmapChart,HeatmapChart.mjs,misc,misc-uncategorized,low,<no-rule-match>
+180,Human-Readable Part (HRP),ToBech32.mjs,misc,misc-uncategorized,low,<no-rule-match>
+182,Image Format,GenerateQRCode.mjs,media,misc-uncategorized,low,<no-rule-match>
+183,ImageBrightnessContrast,ImageBrightnessContrast.mjs,media,misc-uncategorized,low,<no-rule-match>
+184,ImageFilter,ImageFilter.mjs,media,misc-uncategorized,low,<no-rule-match>
+185,ImageHueSaturationLightness,ImageHueSaturationLightness.mjs,media,misc-uncategorized,low,<no-rule-match>
+186,ImageOpacity,ImageOpacity.mjs,media,misc-uncategorized,low,<no-rule-match>
+188,Indent string,CSSBeautify.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+190,Indent string,SQLBeautify.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+192,IndexOfCoincidence,IndexOfCoincidence.mjs,misc,misc-uncategorized,low,<no-rule-match>
+194,Input Format,ConvertCoordinateFormat.mjs,misc,misc-uncategorized,low,<no-rule-match>
+195,Input format,ParseCSR.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+199,Input format,PlayMedia.mjs,misc,misc-uncategorized,low,<no-rule-match>
+203,Input units,ConvertDataUnits.mjs,misc,misc-uncategorized,low,<no-rule-match>
+204,Input units,ConvertDistance.mjs,misc,misc-uncategorized,low,<no-rule-match>
+205,Input units,ConvertMass.mjs,misc,misc-uncategorized,low,<no-rule-match>
+206,Input units,ConvertSpeed.mjs,misc,misc-uncategorized,low,<no-rule-match>
+210,InvertImage,InvertImage.mjs,media,misc-uncategorized,low,<no-rule-match>
+211,JA3Fingerprint,JA3Fingerprint.mjs,misc,misc-uncategorized,low,<no-rule-match>
+212,JA3SFingerprint,JA3SFingerprint.mjs,misc,misc-uncategorized,low,<no-rule-match>
+213,JA4Fingerprint,JA4Fingerprint.mjs,misc,misc-uncategorized,low,<no-rule-match>
+214,JA4ServerFingerprint,JA4ServerFingerprint.mjs,misc,misc-uncategorized,low,<no-rule-match>
+217,Jq,Jq.mjs,misc,misc-uncategorized,low,<no-rule-match>
+226,Key,ADD.mjs,misc,misc-uncategorized,low,<no-rule-match>
+229,Key,AND.mjs,misc,misc-uncategorized,low,<no-rule-match>
+232,Key,CMAC.mjs,misc,misc-uncategorized,low,<no-rule-match>
+239,Key,OR.mjs,misc,misc-uncategorized,low,<no-rule-match>
+242,Key,Rabbit.mjs,misc,misc-uncategorized,low,<no-rule-match>
+245,Key,SUB.mjs,misc,misc-uncategorized,low,<no-rule-match>
+246,Key,Salsa20.mjs,crypto/hash,misc-uncategorized,low,<no-rule-match>
+249,Key,VigenèreDecode.mjs,misc,misc-uncategorized,low,<no-rule-match>
+250,Key,VigenèreEncode.mjs,misc,misc-uncategorized,low,<no-rule-match>
+251,Key,XOR.mjs,encoding/cipher,misc-uncategorized,low,<no-rule-match>
+252,Key,XSalsa20.mjs,crypto/hash,misc-uncategorized,low,<no-rule-match>
+257,Key length,XORBruteForce.mjs,encoding/cipher,misc-uncategorized,low,<no-rule-match>
+258,Key type,GeneratePGPKeyPair.mjs,misc,misc-uncategorized,low,<no-rule-match>
+261,Label name,Jump.mjs,misc,misc-uncategorized,low,<no-rule-match>
+262,Language,SyntaxHighlighter.mjs,misc,misc-uncategorized,low,<no-rule-match>
+265,LevenshteinDistance,LevenshteinDistance.mjs,misc,misc-uncategorized,low,<no-rule-match>
+268,Lorenz,Lorenz.mjs,misc,misc-uncategorized,low,<no-rule-match>
+282,Merge,Merge.mjs,misc,misc-uncategorized,low,<no-rule-match>
+287,Name,GenerateHOTP.mjs,misc,misc-uncategorized,low,<no-rule-match>
+288,Name,GenerateTOTP.mjs,misc,misc-uncategorized,low,<no-rule-match>
+289,Name,Label.mjs,misc,misc-uncategorized,low,<no-rule-match>
+290,NormaliseImage,NormaliseImage.mjs,media,misc-uncategorized,low,<no-rule-match>
+292,NOT,NOT.mjs,misc,misc-uncategorized,low,<no-rule-match>
+298,Offset,DecodeNetBIOSName.mjs,misc,misc-uncategorized,low,<no-rule-match>
+299,Offset,EncodeNetBIOSName.mjs,misc,misc-uncategorized,low,<no-rule-match>
+300,OpticalCharacterRecognition,OpticalCharacterRecognition.mjs,misc,misc-uncategorized,low,<no-rule-match>
+305,ParseColourCode,ParseColourCode.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+308,ParseQRCode,ParseQRCode.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+309,ParseSSHHostKey,ParseSSHHostKey.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+310,ParseTCP,ParseTCP.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+311,ParseTLSRecord,ParseTLSRecord.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+312,ParseTLV,ParseTLV.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+313,ParseUDP,ParseUDP.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+316,ParseUserAgent,ParseUserAgent.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+322,PEMToJWK,JWKToPem.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+323,PEMToJWK,PEMToJWK.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+324,PHPSerialize,PHPSerialize.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+325,Plaintext,Substitute.mjs,misc,misc-uncategorized,low,<no-rule-match>
+326,PlistViewer,PLISTViewer.mjs,misc,misc-uncategorized,low,<no-rule-match>
+328,PowerSet,PowerSet.mjs,misc,misc-uncategorized,low,<no-rule-match>
+331,Preserve comments,CSSMinify.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+337,PubKeyFromCert,PubKeyFromCert.mjs,misc,misc-uncategorized,low,<no-rule-match>
+338,PubKeyFromPrivKey,PubKeyFromPrivKey.mjs,misc,misc-uncategorized,low,<no-rule-match>
+341,Public key of signer,PGPVerify.mjs,misc,misc-uncategorized,low,<no-rule-match>
+342,Radix,FromBase.mjs,misc,misc-uncategorized,low,<no-rule-match>
+344,Radix,ToBase.mjs,misc,misc-uncategorized,low,<no-rule-match>
+347,RAKE,RAKE.mjs,misc,misc-uncategorized,low,<no-rule-match>
+348,RandomizeColourPalette,RandomizeColourPalette.mjs,misc,misc-uncategorized,low,<no-rule-match>
+352,RemoveDiacritics,RemoveDiacritics.mjs,misc,misc-uncategorized,low,<no-rule-match>
+353,RemoveEXIF,RemoveEXIF.mjs,misc,misc-uncategorized,low,<no-rule-match>
+357,ResizeImage,ResizeImage.mjs,media,misc-uncategorized,low,<no-rule-match>
+358,Return,Return.mjs,misc,misc-uncategorized,low,<no-rule-match>
+359,RisonDecode,RisonDecode.mjs,misc,misc-uncategorized,low,<no-rule-match>
+360,RisonEncode,RisonEncode.mjs,misc,misc-uncategorized,low,<no-rule-match>
+366,RotateImage,RotateImage.mjs,encoding/cipher,misc-uncategorized,low,<no-rule-match>
+367,RotateLeft,RotateLeft.mjs,encoding/cipher,misc-uncategorized,low,<no-rule-match>
+368,RotateRight,RotateRight.mjs,encoding/cipher,misc-uncategorized,low,<no-rule-match>
+377,Sample delimiter,Diff.mjs,text/transform,misc-uncategorized,low,<no-rule-match>
+378,Sample delimiter,OffsetChecker.mjs,misc,misc-uncategorized,low,<no-rule-match>
+379,ScanForEmbeddedFiles,ScanForEmbeddedFiles.mjs,misc,misc-uncategorized,low,<no-rule-match>
+380,ScatterChart,ScatterChart.mjs,misc,misc-uncategorized,low,<no-rule-match>
+381,Scheme,FromBCD.mjs,misc,misc-uncategorized,low,<no-rule-match>
+382,Scheme,ToBCD.mjs,misc,misc-uncategorized,low,<no-rule-match>
+384,Search string,CountOccurrences.mjs,misc,misc-uncategorized,low,<no-rule-match>
+386,SeriesChart,SeriesChart.mjs,misc,misc-uncategorized,low,<no-rule-match>
+387,SetDifference,SetDifference.mjs,text/transform,misc-uncategorized,low,<no-rule-match>
+388,SetIntersection,SetIntersection.mjs,misc,misc-uncategorized,low,<no-rule-match>
+389,SetUnion,SetUnion.mjs,misc,misc-uncategorized,low,<no-rule-match>
+393,SharpenImage,SharpenImage.mjs,crypto/hash,misc-uncategorized,low,<no-rule-match>
+394,Show 0%s,FrequencyDistribution.mjs,misc,misc-uncategorized,low,<no-rule-match>
+396,ShowOnMap,ShowOnMap.mjs,misc,misc-uncategorized,low,<no-rule-match>
+397,Shuffle,Shuffle.mjs,misc,misc-uncategorized,low,<no-rule-match>
+398,Sigaba,SIGABA.mjs,misc,misc-uncategorized,low,<no-rule-match>
+399,Size,BLAKE2b.mjs,crypto/hash,misc-uncategorized,low,<no-rule-match>
+400,Size,BLAKE2s.mjs,crypto/hash,misc-uncategorized,low,<no-rule-match>
+406,SM3,SM3.mjs,misc,misc-uncategorized,low,<no-rule-match>
+407,Snefru,Snefru.mjs,misc,misc-uncategorized,low,<no-rule-match>
+412,SQLMinify,SQLMinify.mjs,parsing/format,misc-uncategorized,low,<no-rule-match>
+413,SSDEEP,SSDEEP.mjs,misc,misc-uncategorized,low,<no-rule-match>
+424,SymmetricDifference,SymmetricDifference.mjs,text/transform,misc-uncategorized,low,<no-rule-match>
+427,Template,Template.mjs,misc,misc-uncategorized,low,<no-rule-match>
+428,TextEncodingBruteForce,TextEncodingBruteForce.mjs,misc,misc-uncategorized,low,<no-rule-match>
+436,ToBraille,ToBraille.mjs,misc,misc-uncategorized,low,<no-rule-match>
+440,ToMessagePack,ToMessagePack.mjs,misc,misc-uncategorized,low,<no-rule-match>
+444,Typex,Typex.mjs,misc,misc-uncategorized,low,<no-rule-match>
+445,UnescapeString,UnescapeString.mjs,misc,misc-uncategorized,low,<no-rule-match>
+452,VarIntDecode,VarIntDecode.mjs,misc,misc-uncategorized,low,<no-rule-match>
+453,VarIntEncode,VarIntEncode.mjs,misc,misc-uncategorized,low,<no-rule-match>
+454,ViewBitPlane,ViewBitPlane.mjs,misc,misc-uncategorized,low,<no-rule-match>

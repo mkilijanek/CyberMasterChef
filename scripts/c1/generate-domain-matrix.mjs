@@ -1,14 +1,18 @@
-import { readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { classifyOperation, DOMAIN_DESCRIPTIONS, DOMAIN_ORDER } from "./domain-taxonomy.mjs";
 import { parseCsv, toCsv } from "./csv-utils.mjs";
 
 const repoRoot = resolve(import.meta.dirname, "..", "..");
 const refDir = resolve(repoRoot, "..", "ref");
+const repoParityDir = resolve(repoRoot, "docs", "parity");
 const sourceCsvPath = resolve(refDir, "CyberChef_all_operations_list.csv");
 const outJsonPath = resolve(refDir, "c1-operation-domain-matrix.json");
 const outCsvPath = resolve(refDir, "c1-operation-domain-matrix.csv");
 const outMdPath = resolve(refDir, "c1-operation-domain-summary.md");
+const repoOutJsonPath = resolve(repoParityDir, "c1-operation-domain-matrix.json");
+const repoOutCsvPath = resolve(repoParityDir, "c1-operation-domain-matrix.csv");
+const repoOutMdPath = resolve(repoParityDir, "c1-operation-domain-summary.md");
 
 const csvText = readFileSync(sourceCsvPath, "utf-8");
 const records = parseCsv(csvText);
@@ -41,8 +45,23 @@ for (const row of mapped) {
 }
 
 writeFileSync(outJsonPath, `${JSON.stringify(mapped, null, 2)}\n`, "utf-8");
+mkdirSync(repoParityDir, { recursive: true });
+writeFileSync(repoOutJsonPath, `${JSON.stringify(mapped, null, 2)}\n`, "utf-8");
 writeFileSync(
   outCsvPath,
+  toCsv(mapped, [
+    "index",
+    "operationName",
+    "file",
+    "originalCategory",
+    "domain",
+    "confidence",
+    "matchedBy"
+  ]),
+  "utf-8"
+);
+writeFileSync(
+  repoOutCsvPath,
   toCsv(mapped, [
     "index",
     "operationName",
@@ -92,7 +111,8 @@ summaryLines.push(`- Summary: ${outMdPath}`);
 summaryLines.push("");
 
 writeFileSync(outMdPath, `${summaryLines.join("\n")}\n`, "utf-8");
+writeFileSync(repoOutMdPath, `${summaryLines.join("\n")}\n`, "utf-8");
 
 process.stdout.write(
-  `[c1] generated domain matrix for ${mapped.length} operations -> ${outJsonPath}, ${outCsvPath}, ${outMdPath}\n`
+  `[c1] generated domain matrix for ${mapped.length} operations -> ${repoOutJsonPath}, ${repoOutCsvPath}, ${repoOutMdPath}\n`
 );

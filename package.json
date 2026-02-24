@@ -15,7 +15,8 @@
     "test:e2e": "playwright test",
     "format": "prettier -w .",
     "ci": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
-    "test:parity": "PARITY_THRESHOLD=0.90 node scripts/check-parity-coverage.mjs"
+    "test:parity": "PARITY_THRESHOLD=0.90 node scripts/check-parity-coverage.mjs",
+    "c1:domain-matrix": "node scripts/c1/generate-domain-matrix.mjs"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
