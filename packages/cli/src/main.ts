@@ -64,6 +64,7 @@ const usageText =
   "  --batch-output-dir <path>        write per-input rendered outputs to directory\n" +
   "  --batch-output-format <fmt>      format for batch output files: text|json|jsonl\n" +
   "  --batch-max-files <n>            process at most N batch files\n" +
+  "  --batch-concurrency <n>          process up to N batch files in parallel\n" +
   "  --batch-skip-empty               skip empty input files during batch execution\n" +
   "  --batch-fail-empty               treat empty input files as batch errors\n" +
   "  --batch-fail-fast                stop batch execution on first file error\n" +
@@ -133,6 +134,7 @@ type CliOptions = {
   batchOutputDir?: string;
   batchOutputFormat: "text" | "json" | "jsonl";
   batchMaxFiles?: number;
+  batchConcurrency: number;
   batchSkipEmpty: boolean;
   batchFailEmpty: boolean;
   batchFailFast: boolean;
@@ -173,6 +175,7 @@ function parseArgs(args: string[]): CliOptions {
   let batchOutputDir: string | undefined;
   let batchOutputFormat: CliOptions["batchOutputFormat"] = "text";
   let batchMaxFiles: number | undefined;
+  let batchConcurrency = 1;
   let batchSkipEmpty = false;
   let batchFailEmpty = false;
   let batchFailFast = false;
@@ -384,6 +387,17 @@ function parseArgs(args: string[]): CliOptions {
       i++;
       continue;
     }
+    if (arg === "--batch-concurrency") {
+      const raw = args[i + 1];
+      if (!raw) die("Missing value for --batch-concurrency");
+      const parsed = Number(raw);
+      if (!Number.isFinite(parsed) || parsed <= 0) {
+        die(`Invalid --batch-concurrency value: ${raw}`);
+      }
+      batchConcurrency = Math.floor(parsed);
+      i++;
+      continue;
+    }
     if (arg === "--batch-skip-empty") {
       batchSkipEmpty = true;
       continue;
@@ -455,6 +469,7 @@ function parseArgs(args: string[]): CliOptions {
     batchOutputFormat,
     batchSkipEmpty,
     batchFailEmpty,
+    batchConcurrency,
     batchFailFast,
     failEmptyOutput,
     noNewline
@@ -650,7 +665,7 @@ if (opts.batchInputDir) {
   if (opts.batchMaxFiles !== undefined) {
     entries = entries.slice(0, opts.batchMaxFiles);
   }
-  const report: Array<{
+  type BatchReportRow = {
     file: string;
     ok: boolean;
     durationMs: number;
@@ -660,26 +675,41 @@ if (opts.batchInputDir) {
     recipeHash?: string;
     inputHash?: string;
     error?: string;
-  }> = [];
-  for (const filePath of entries) {
+  };
+  async function processBatchFile(filePath: string): Promise<BatchReportRow> {
     try {
       const raw = readFileSync(filePath, "utf-8");
       if (raw.length === 0 && opts.batchSkipEmpty) {
-        continue;
+        return {
+          file: filePath,
+          ok: true,
+          durationMs: 0,
+          outputType: "string",
+          outputPreview: "",
+          error: "Skipped empty input file"
+        };
       }
       if (raw.length === 0 && opts.batchFailEmpty) {
-        report.push({
+        return {
           file: filePath,
           ok: false,
           durationMs: 0,
           outputType: "string",
           error: "Empty input file"
-        });
-        if (opts.batchFailFast) break;
-        continue;
+        };
       }
       const run = await executeOne(raw);
-      report.push({
+      if (opts.batchOutputDir) {
+        const ext =
+          opts.batchOutputFormat === "text"
+            ? "txt"
+            : opts.batchOutputFormat === "jsonl"
+              ? "jsonl"
+              : "json";
+        const outPath = `${opts.batchOutputDir}/${fileLeaf(filePath)}.out.${ext}`;
+        writeFileSync(outPath, renderBatchOutputFile(filePath, run), "utf-8");
+      }
+      return {
         file: filePath,
         ok: true,
         durationMs: run.elapsed,
@@ -688,30 +718,46 @@ if (opts.batchInputDir) {
         traceSummary: run.traceSummary,
         recipeHash: run.reproBundle.recipeHash,
         inputHash: run.reproBundle.inputHash
-      });
-    if (opts.batchOutputDir) {
-      const ext =
-        opts.batchOutputFormat === "text"
-          ? "txt"
-          : opts.batchOutputFormat === "jsonl"
-            ? "jsonl"
-            : "json";
-      const outPath = `${opts.batchOutputDir}/${fileLeaf(filePath)}.out.${ext}`;
-      writeFileSync(outPath, renderBatchOutputFile(filePath, run), "utf-8");
-    }
+      };
     } catch {
-      report.push({
+      return {
         file: filePath,
         ok: false,
         durationMs: 0,
         outputType: "string",
         error: "Failed to read or process input file"
-      });
-      if (opts.batchFailFast) {
-        break;
-      }
+      };
     }
   }
+
+  async function runBatchWithConcurrency(paths: string[], concurrency: number): Promise<BatchReportRow[]> {
+    if (concurrency <= 1 || opts.batchFailFast) {
+      const rows: BatchReportRow[] = [];
+      for (const p of paths) {
+        const row = await processBatchFile(p);
+        rows.push(row);
+        if (opts.batchFailFast && !row.ok) break;
+      }
+      return rows;
+    }
+    const rows: Array<BatchReportRow | undefined> = Array.from(
+      { length: paths.length },
+      () => undefined
+    );
+    let cursor = 0;
+    async function worker(): Promise<void> {
+      while (true) {
+        const idx = cursor++;
+        if (idx >= paths.length) return;
+        rows[idx] = await processBatchFile(paths[idx] as string);
+      }
+    }
+    const workerCount = Math.min(concurrency, paths.length);
+    await Promise.all(Array.from({ length: workerCount }, () => worker()));
+    return rows.filter((r): r is BatchReportRow => r !== undefined);
+  }
+
+  const report = await runBatchWithConcurrency(entries, opts.batchConcurrency);
   if (opts.batchSummaryJson) {
     const durations = report.filter((r) => r.ok).map((r) => r.durationMs).sort((a, b) => a - b);
     const pickPercentile = (p: number): number => {
