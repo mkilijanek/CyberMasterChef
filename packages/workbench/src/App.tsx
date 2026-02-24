@@ -436,6 +436,12 @@ export function App(): React.JSX.Element {
                     <span className="muted">
                       ({row.inputType} -&gt; {row.outputType})
                     </span>
+                    <button
+                      className="buttonSmall traceButton"
+                      onClick={() => void runToStep(row.step)}
+                    >
+                      {t("runToStep")}
+                    </button>
                   </li>
                 ))}
               </ol>

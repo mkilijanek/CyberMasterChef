@@ -46,6 +46,7 @@ All recipe execution happens inside a Web Worker:
 - `Escape` keyboard shortcut cancels active execution
 - `Ctrl+Enter` / `Cmd+Enter` triggers recipe execution
 - Run-to-step action for partial pipeline execution
+- Run-to-step can be triggered from recipe steps and trace entries
 - Run duration telemetry visible in header (`ms`) for quick performance feedback
 - Recipe and input persisted in local storage
 - Shareable deep links via URL hash (`#state=` payload)

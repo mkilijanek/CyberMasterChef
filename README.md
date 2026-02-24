@@ -54,6 +54,7 @@ Operations are grouped by package priority:
   - keyboard run shortcut (`Ctrl+Enter` / `Cmd+Enter`)
   - per-run sandbox timeout protection with configurable timeout (default: 10s)
   - run recipe up to a selected step (pipeline debugging)
+  - rerun to selected step directly from trace list
   - deep-link sharing (`#state=` hash with recipe + input)
   - quick output copy action in UI
   - quick trace copy action in UI

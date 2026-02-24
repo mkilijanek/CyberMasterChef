@@ -122,3 +122,6 @@ body { margin: 0; }
 .traceItem {
   margin: 4px 0;
 }
+.traceButton {
+  margin-left: 8px;
+}
