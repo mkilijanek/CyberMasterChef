@@ -65,12 +65,12 @@ class ControlledClient implements ExecutionClient {
 class FlakyClient implements ExecutionClient {
   private calls = 0;
   async init(): Promise<void> {}
-  async bake(): Promise<BakeResult> {
+  bake(): Promise<BakeResult> {
     this.calls++;
     if (this.calls === 1) {
-      throw new Error("Transient failure");
+      return Promise.reject(new Error("Transient failure"));
     }
-    return makeResult("flaky-ok");
+    return Promise.resolve(makeResult("flaky-ok"));
   }
   cancelActive(): void {}
   dispose(): void {}
