@@ -37,6 +37,7 @@ import { removeDigits } from "./ops/removeDigits.js";
 import { keepLetters } from "./ops/keepLetters.js";
 import { removeLetters } from "./ops/removeLetters.js";
 import { keepAlnum } from "./ops/keepAlnum.js";
+import { removeAlnum } from "./ops/removeAlnum.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -77,6 +78,7 @@ export const standardPlugin: Plugin = {
     registry.register(keepLetters);
     registry.register(removeLetters);
     registry.register(keepAlnum);
+    registry.register(removeAlnum);
     registry.register(sha256);
   }
 };
