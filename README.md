@@ -83,6 +83,7 @@ Operations are grouped by package priority:
   - `text.repeat`
   - `text.padStart`
   - `text.padEnd`
+  - `text.trimStart`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
