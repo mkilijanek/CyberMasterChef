@@ -14,6 +14,7 @@ import { uppercase } from "./ops/uppercase.js";
 import { trim } from "./ops/trim.js";
 import { prepend } from "./ops/prepend.js";
 import { append } from "./ops/append.js";
+import { replace } from "./ops/replace.js";
 
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
@@ -33,6 +34,7 @@ export const standardPlugin: Plugin = {
     registry.register(trim);
     registry.register(prepend);
     registry.register(append);
+    registry.register(replace);
     registry.register(sha256);
   }
 };
