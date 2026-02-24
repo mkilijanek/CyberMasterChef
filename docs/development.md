@@ -173,6 +173,7 @@ Example operation IDs in use:
 - `text.trimCommas`
 - `text.trimQuotes`
 - `text.surroundBrackets`
+- `text.surroundQuotes`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

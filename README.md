@@ -148,6 +148,7 @@ Operations are grouped by package priority:
   - `text.trimCommas`
   - `text.trimQuotes`
   - `text.surroundBrackets`
+  - `text.surroundQuotes`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
