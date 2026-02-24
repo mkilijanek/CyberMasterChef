@@ -174,6 +174,14 @@ export function App(): React.JSX.Element {
     }
   }
 
+  async function copyOutput(): Promise<void> {
+    const copied = await copyText(output);
+    if (!copied) {
+      setError(t("copyOutputFailed"));
+      setStatus("error");
+    }
+  }
+
   function cancelRun(): void {
     sandboxRef.current?.cancelActive();
   }
@@ -281,6 +289,9 @@ export function App(): React.JSX.Element {
         </button>
         <button className="buttonSmall" onClick={() => importAnyRecipe()}>
           {t("importRecipe")}
+        </button>
+        <button className="buttonSmall" onClick={() => void copyOutput()}>
+          {t("copyOutput")}
         </button>
         <div className="status" aria-live="polite">
           {status === "working" ? t("statusWorking") : t("statusReady")}

@@ -13,6 +13,8 @@
   "exportRecipe": "Eksport receptury",
   "exportCyberChef": "Eksport CyberChef",
   "importRecipe": "Import receptury",
+  "copyOutput": "Kopiuj wyjście",
+  "copyOutputFailed": "Nie udało się skopiować wyjścia",
   "importPrompt": "Wklej JSON receptury (format natywny lub CyberChef):",
   "importFailed": "Import nieudany",
   "importWarnings": "Zaimportowano, pominięto {{count}} nieobsługiwanych kroków",

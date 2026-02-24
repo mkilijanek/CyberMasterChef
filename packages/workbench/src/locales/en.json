@@ -13,6 +13,8 @@
   "exportRecipe": "Export recipe",
   "exportCyberChef": "Export CyberChef",
   "importRecipe": "Import recipe",
+  "copyOutput": "Copy output",
+  "copyOutputFailed": "Could not copy output",
   "importPrompt": "Paste recipe JSON (native or CyberChef format):",
   "importFailed": "Import failed",
   "importWarnings": "Imported with {{count}} unsupported step(s) skipped",
