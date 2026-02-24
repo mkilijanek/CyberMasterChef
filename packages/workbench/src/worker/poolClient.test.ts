@@ -81,6 +81,11 @@ describe("WorkerPoolClient", () => {
     expect(out[1]?.run.workerId).toBeTypeOf("number");
     expect(out[2]?.run.workerId).toBeTypeOf("number");
     expect(out[2]?.run.queuedMs).toBeGreaterThanOrEqual(0);
+    expect(out[0]?.run.queueDepthAtEnqueue).toBeGreaterThanOrEqual(1);
+    expect(out[1]?.run.queueDepthAtEnqueue).toBeGreaterThanOrEqual(1);
+    expect(out[2]?.run.queueDepthAtStart).toBeGreaterThanOrEqual(0);
+    expect(out[2]?.run.maxQueueDepthObserved).toBeGreaterThanOrEqual(1);
+    expect(out[2]?.run.inFlightAtStart).toBeGreaterThanOrEqual(0);
   });
 
   it("prefers high-priority jobs over queued normal jobs", async () => {
