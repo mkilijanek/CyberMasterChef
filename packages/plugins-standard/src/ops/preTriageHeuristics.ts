@@ -71,4 +71,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "url_nonstandard_port", description: "URL with non-standard port", pattern: new RegExp("https?://[^\\s/:]+:(?!80\\b", "443\\b)\\d{2,5}|i") },
   { id: "dns_txt_record_hint", description: "DNS TXT record manipulation hint", pattern: new RegExp("\\bdns\\s+txt\\b", "i") },
   { id: "powershell_bypass_hidden", description: "PowerShell hidden window usage", pattern: new RegExp("-windowstyle\\s+hidden", "i") },
+  { id: "powershell_noprofile", description: "PowerShell -NoProfile usage", pattern: new RegExp("-noprofile", "i") },
 ];

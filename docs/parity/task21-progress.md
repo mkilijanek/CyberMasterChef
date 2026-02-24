@@ -76,3 +76,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 064: `url_nonstandard_port` - URL with non-standard port
 - [x] Stage 065: `dns_txt_record_hint` - DNS TXT record manipulation hint
 - [x] Stage 066: `powershell_bypass_hidden` - PowerShell hidden window usage
+- [x] Stage 067: `powershell_noprofile` - PowerShell -NoProfile usage
