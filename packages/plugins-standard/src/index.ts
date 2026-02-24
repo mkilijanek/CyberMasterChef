@@ -121,6 +121,7 @@ import { removeQuestionMarks } from "./ops/removeQuestionMarks.js";
 import { removeExclamations } from "./ops/removeExclamations.js";
 import { removeParentheses } from "./ops/removeParentheses.js";
 import { removeBrackets } from "./ops/removeBrackets.js";
+import { removeBraces } from "./ops/removeBraces.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -245,6 +246,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeExclamations);
     registry.register(removeParentheses);
     registry.register(removeBrackets);
+    registry.register(removeBraces);
     registry.register(sha256);
   }
 };

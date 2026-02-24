@@ -201,6 +201,7 @@ Operations are grouped by package priority:
   - `text.removeExclamations`
   - `text.removeParentheses`
   - `text.removeBrackets`
+  - `text.removeBraces`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
