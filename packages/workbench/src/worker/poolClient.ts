@@ -116,6 +116,7 @@ export class WorkerPoolClient implements ExecutionClient {
     const task = this.queue.shift();
     if (!task) return;
 
+    const inFlightAtStart = this.slots.filter((s) => s.busy).length;
     available.busy = true;
     available.activeTaskId = task.id;
     const startedAt = Date.now();
@@ -137,7 +138,8 @@ export class WorkerPoolClient implements ExecutionClient {
             attempt: 1,
             queueDepthAtEnqueue: task.queueDepthAtEnqueue,
             queueDepthAtStart,
-            maxQueueDepthObserved: this.maxQueueDepthObserved
+            maxQueueDepthObserved: this.maxQueueDepthObserved,
+            inFlightAtStart
           }
         });
       })
