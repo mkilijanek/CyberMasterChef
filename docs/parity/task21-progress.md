@@ -132,3 +132,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 118: `onedrive_reference` - OneDrive hosting indicator
 - [x] Stage 119: `ftp_protocol_usage` - FTP protocol usage
 - [x] Stage 120: `smb_unc_path` - UNC network path usage
+- [x] Stage 121: `admin_share_access` - Admin share access marker

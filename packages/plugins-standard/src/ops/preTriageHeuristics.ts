@@ -125,4 +125,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "onedrive_reference", description: "OneDrive hosting indicator", pattern: new RegExp("1drv\\.ms", "i") },
   { id: "ftp_protocol_usage", description: "FTP protocol usage", pattern: new RegExp("\\bftp://", "i") },
   { id: "smb_unc_path", description: "UNC network path usage", pattern: new RegExp("\\\\\\\\[A-Za-z0-9._-]+\\\\[A-Za-z0-9$._-]+", "g") },
+  { id: "admin_share_access", description: "Admin share access marker", pattern: new RegExp("\\\\c\\$\\b", "i") },
 ];
