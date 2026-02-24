@@ -40,6 +40,7 @@ import { keepAlnum } from "./ops/keepAlnum.js";
 import { removeAlnum } from "./ops/removeAlnum.js";
 import { toTitleCase } from "./ops/toTitleCase.js";
 import { reverseLines } from "./ops/reverseLines.js";
+import { sortLines } from "./ops/sortLines.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -83,6 +84,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeAlnum);
     registry.register(toTitleCase);
     registry.register(reverseLines);
+    registry.register(sortLines);
     registry.register(sha256);
   }
 };
