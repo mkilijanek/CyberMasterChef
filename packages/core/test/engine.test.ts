@@ -65,4 +65,29 @@ describe("engine", () => {
     expect(result.output).toEqual({ type: "string", value: "unchanged" });
     expect(result.trace).toHaveLength(0);
   });
+
+  it("aborts when signal is already aborted", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register({
+      id: "test.pass",
+      name: "Pass-through",
+      description: "returns input",
+      input: ["string"],
+      output: "string",
+      args: [],
+      run: ({ input }) => input
+    });
+    const recipe: Recipe = { version: 1, steps: [{ opId: "test.pass" }] };
+    const controller = new AbortController();
+    controller.abort();
+
+    await expect(
+      runRecipe({
+        registry,
+        recipe,
+        input: { type: "string", value: "x" },
+        signal: controller.signal
+      })
+    ).rejects.toThrow("Aborted");
+  });
 });
