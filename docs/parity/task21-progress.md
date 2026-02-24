@@ -104,3 +104,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 092: `vssadmin_delete` - Shadow copy deletion
 - [x] Stage 093: `wbadmin_delete` - Backup catalog deletion
 - [x] Stage 094: `bcdedit_recovery_off` - Recovery disable via bcdedit
+- [x] Stage 095: `bcdedit_bootstatus_ignore` - Bootstatus ignore failures
