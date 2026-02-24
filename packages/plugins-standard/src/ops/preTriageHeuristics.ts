@@ -13,4 +13,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "rundll32_launch", description: "Rundll32 execution chain", pattern: new RegExp("rundll32(\\.exe)?", "i") },
   { id: "wmic_process_create", description: "WMIC process creation", pattern: new RegExp("wmic\\s+process\\s+call\\s+create", "i") },
   { id: "bitsadmin_transfer", description: "BITSAdmin transfer pattern", pattern: new RegExp("bitsadmin\\s+/transfer", "i") },
+  { id: "certutil_decode", description: "Certutil decode or urlcache usage", pattern: new RegExp("certutil\\s+-(decode", "urlcache)|i") },
 ];
