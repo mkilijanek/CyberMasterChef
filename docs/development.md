@@ -64,6 +64,7 @@ CLI behavior:
 - Unsupported CyberChef steps are reported on stderr as warnings.
 - `--timeout-ms <n>` bounds execution time in milliseconds.
 - `--strict-cyberchef` fails if CyberChef import would skip unsupported steps.
+- `--show-trace` prints execution trace (step/op/input->output types) on stderr.
 
 ## Adding a new operation
 

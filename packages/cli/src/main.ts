@@ -50,11 +50,13 @@ type CliOptions = {
   inputPath?: string;
   timeoutMs: number;
   strictCyberChef: boolean;
+  showTrace: boolean;
 };
 
 function parseArgs(args: string[]): CliOptions {
   let timeoutMs = DEFAULT_TIMEOUT_MS;
   let strictCyberChef = false;
+  let showTrace = false;
   const positional: string[] = [];
 
   for (let i = 0; i < args.length; i++) {
@@ -62,6 +64,10 @@ function parseArgs(args: string[]): CliOptions {
     if (!arg) continue;
     if (arg === "--strict-cyberchef") {
       strictCyberChef = true;
+      continue;
+    }
+    if (arg === "--show-trace") {
+      showTrace = true;
       continue;
     }
     if (arg === "--timeout-ms") {
@@ -91,7 +97,8 @@ function parseArgs(args: string[]): CliOptions {
   const out: CliOptions = {
     recipePath,
     timeoutMs,
-    strictCyberChef
+    strictCyberChef,
+    showTrace
   };
   const inputPath = positional[1];
   if (inputPath) out.inputPath = inputPath;
@@ -124,6 +131,14 @@ const res = await runRecipe({
 }).finally(() => {
   clearTimeout(timeoutHandle);
 });
+
+if (opts.showTrace) {
+  for (const t of res.trace) {
+    process.stderr.write(
+      `[trace] step=${t.step + 1} op=${t.opId} ${t.inputType}->${t.outputType}\n`
+    );
+  }
+}
 
 if (res.output.type === "bytes") {
   const hex = [...res.output.value].map((b) => b.toString(16).padStart(2, "0")).join("");
