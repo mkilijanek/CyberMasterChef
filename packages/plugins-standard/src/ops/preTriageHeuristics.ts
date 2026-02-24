@@ -126,4 +126,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "ftp_protocol_usage", description: "FTP protocol usage", pattern: new RegExp("\\bftp://", "i") },
   { id: "smb_unc_path", description: "UNC network path usage", pattern: new RegExp("\\\\\\\\[A-Za-z0-9._-]+\\\\[A-Za-z0-9$._-]+", "g") },
   { id: "admin_share_access", description: "Admin share access marker", pattern: new RegExp("\\\\c\\$\\b", "i") },
+  { id: "psexec_usage", description: "PsExec remote exec marker", pattern: new RegExp("psexec(\\.exe)?", "i") },
 ];
