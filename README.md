@@ -161,6 +161,7 @@ Operations are grouped by package priority:
   - `text.stripAccents`
   - `text.removeDoubleQuotes`
   - `text.removeSingleQuotes`
+  - `text.replaceNewlinesWithSpace`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
