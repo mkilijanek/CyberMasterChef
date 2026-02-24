@@ -58,6 +58,7 @@ const usageText =
   "  --json-indent <n>                indentation for JSON output rendering\n" +
   "  --output-file <path>             write rendered output to file instead of stdout\n" +
   "  --batch-input-dir <path>         execute recipe for each file in directory and print JSON report\n" +
+  "  --batch-ext <list>               comma-separated extension filter for batch inputs (e.g. .txt,.log)\n" +
   "  --batch-report-file <path>       write batch JSON report to file\n" +
   "  --batch-output-dir <path>        write per-input rendered outputs to directory\n" +
   "  --batch-fail-fast                stop batch execution on first file error\n" +
@@ -121,6 +122,7 @@ type CliOptions = {
   jsonIndent: number;
   outputFile?: string;
   batchInputDir?: string;
+  batchExt?: string[];
   batchReportFile?: string;
   batchOutputDir?: string;
   batchFailFast: boolean;
@@ -155,6 +157,7 @@ function parseArgs(args: string[]): CliOptions {
   let jsonIndent = 2;
   let outputFile: string | undefined;
   let batchInputDir: string | undefined;
+  let batchExt: string[] | undefined;
   let batchReportFile: string | undefined;
   let batchOutputDir: string | undefined;
   let batchFailFast = false;
@@ -317,6 +320,17 @@ function parseArgs(args: string[]): CliOptions {
       i++;
       continue;
     }
+    if (arg === "--batch-ext") {
+      const raw = args[i + 1];
+      if (!raw) die("Missing value for --batch-ext");
+      batchExt = raw
+        .split(",")
+        .map((x) => x.trim().toLowerCase())
+        .filter((x) => x.length > 0)
+        .map((x) => (x.startsWith(".") ? x : `.${x}`));
+      i++;
+      continue;
+    }
     if (arg === "--batch-report-file") {
       const raw = args[i + 1];
       if (!raw) die("Missing value for --batch-report-file");
@@ -398,6 +412,7 @@ function parseArgs(args: string[]): CliOptions {
   if (listOpsFilter !== undefined) out.listOpsFilter = listOpsFilter;
   if (outputFile !== undefined) out.outputFile = outputFile;
   if (batchInputDir !== undefined) out.batchInputDir = batchInputDir;
+  if (batchExt !== undefined) out.batchExt = batchExt;
   if (batchReportFile !== undefined) out.batchReportFile = batchReportFile;
   if (batchOutputDir !== undefined) out.batchOutputDir = batchOutputDir;
   if (reproFile !== undefined) out.reproFile = reproFile;
@@ -552,6 +567,11 @@ async function executeOne(rawInput: string): Promise<{
 if (opts.batchInputDir) {
   const entries = readdirSync(opts.batchInputDir)
     .map((name) => `${opts.batchInputDir as string}/${name}`)
+    .filter((name) =>
+      !opts.batchExt || opts.batchExt.length === 0
+        ? true
+        : opts.batchExt.some((ext) => name.toLowerCase().endsWith(ext))
+    )
     .sort();
   const report: Array<{
     file: string;
