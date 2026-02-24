@@ -1,0 +1,44 @@
+import { describe, expect, it } from "vitest";
+import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core";
+import { jsonMinify } from "../src/ops/jsonMinify.js";
+import { jsonBeautify } from "../src/ops/jsonBeautify.js";
+
+describe("json format operations", () => {
+  it("minifies JSON payload", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(jsonMinify);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "format.jsonMinify" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: '{\n  "a": 1,\n  "b": [1,2]\n}' }
+    });
+    expect(out.output).toEqual({ type: "string", value: '{"a":1,"b":[1,2]}' });
+  });
+
+  it("beautifies JSON payload", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(jsonBeautify);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "format.jsonBeautify", args: { indent: 2 } }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: '{"a":1,"b":[1,2]}' }
+    });
+    expect(out.output.type).toBe("string");
+    if (out.output.type !== "string") return;
+    expect(out.output.value.includes("\n  \"a\"")).toBe(true);
+  });
+
+  it("rejects invalid JSON input", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(jsonMinify);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "format.jsonMinify" }] };
+    await expect(
+      runRecipe({ registry, recipe, input: { type: "string", value: "{not-json}" } })
+    ).rejects.toThrow("Invalid JSON input");
+  });
+});
