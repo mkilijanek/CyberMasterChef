@@ -481,6 +481,9 @@ export function App(): React.JSX.Element {
             <button className="buttonSmall" onClick={() => setTraceQuery("")}>
               {t("clearTraceSearch")}
             </button>
+            <div className="muted">
+              {t("traceFilteredCount", { visible: filteredTrace.length, total: trace.length })}
+            </div>
             {trace.length === 0 ? (
               <div className="muted">{t("traceEmpty")}</div>
             ) : filteredTrace.length === 0 ? (

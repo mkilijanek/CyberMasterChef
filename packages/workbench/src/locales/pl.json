@@ -47,6 +47,7 @@
   "trace": "Ślad",
   "traceSearch": "Filtruj ślad…",
   "clearTraceSearch": "Wyczyść filtr śladu",
+  "traceFilteredCount": "Widoczne: {{visible}} / {{total}}",
   "traceSteps": "Kroki śladu",
   "runDurationMs": "Czas wykonania (ms)",
   "traceEmpty": "Brak śladu wykonania",

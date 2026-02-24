@@ -60,6 +60,7 @@ Operations are grouped by package priority:
   - rerun to selected step directly from trace list
   - trace filtering by operation ID and input/output types
   - quick clear action for trace filter
+  - visible counter for filtered vs total trace steps
   - deep-link sharing (`#state=` hash with recipe + input)
   - quick input/output copy actions in UI
   - quick trace copy action in UI
