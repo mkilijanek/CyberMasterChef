@@ -37,6 +37,7 @@ All recipe execution happens inside a Web Worker:
 - Cancellable runs via worker `cancel` message
 - Per-run timeout (default 10s in workbench, user-configurable) wired from UI -> client -> worker -> engine signal
 - Worker results include reproducibility metadata (`runId`, `startedAt`, `endedAt`, `durationMs`, `recipeHash`, `inputHash`) and trace summary (`stepDurationTotalMs`, `stepDurationAvgMs`, `slowestStep`)
+- Workbench worker-pool client supports configurable parallelism (`1..8`) with queue telemetry (`queuedMs`, `workerId`)
 - Workbench enforces timeout bounds (`100..120000 ms`) to avoid invalid runtime settings
 - Client-side worker lifecycle cleanup on unmount (`dispose`) to prevent pending-request leaks
 

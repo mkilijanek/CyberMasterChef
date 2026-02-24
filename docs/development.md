@@ -66,7 +66,8 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
   - `packages/plugins-standard/test/goldenNegative.test.ts` (malformed input and degradation coverage)
   - `packages/plugins-standard/test/semanticRoundtrip.test.ts` (semantic parity for recipe round-trips)
   - `packages/plugins-standard/test/determinism.test.ts` (repeatability of outputs and traces)
-  - `packages/workbench/src/worker/runtime.test.ts` (worker protocol cancel/timeout/race)
+- `packages/workbench/src/worker/runtime.test.ts` (worker protocol cancel/timeout/race)
+  - `packages/workbench/src/worker/poolClient.test.ts` (pool queueing, worker assignment, priority)
 - E2E Playwright:
   - `e2e/workbench.spec.ts` (import, run-to-step, share link, timeout config persistence)
   - `e2e/workbench-negative.spec.ts` (invalid import, no-compatible-import, empty-search states)
@@ -128,6 +129,7 @@ CLI behavior:
 - `--show-repro` prints compact reproducibility metadata on stderr.
 - `--repro-json` prints reproducibility bundle as JSON on stderr.
 - `--repro-file <path>` writes reproducibility bundle as JSON to file.
+- `--batch-input-dir <path>` executes recipe for each file in directory and prints JSON report.
 - `--list-ops` prints available operation IDs/names and exits.
 - `--list-ops-json` prints full operation metadata as JSON and exits.
 - `--list-ops-filter <query>` filters both list outputs by ID/name/description.
