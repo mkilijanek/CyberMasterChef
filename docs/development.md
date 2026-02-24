@@ -144,6 +144,7 @@ Example operation IDs in use:
 - `text.reverseWords`
 - `text.sortWords`
 - `text.uniqueWords`
+- `text.removeVowels`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
