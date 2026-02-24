@@ -120,3 +120,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 106: `mail_attachment_xlsm` - Macro-enabled spreadsheet marker
 - [x] Stage 107: `macro_autoopen` - Macro AutoOpen marker
 - [x] Stage 108: `macro_document_open` - Macro Document_Open marker
+- [x] Stage 109: `macro_shell_call` - Macro Shell call marker

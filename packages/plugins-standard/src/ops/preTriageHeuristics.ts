@@ -113,4 +113,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "mail_attachment_xlsm", description: "Macro-enabled spreadsheet marker", pattern: new RegExp("\\.xlsm\\b", "i") },
   { id: "macro_autoopen", description: "Macro AutoOpen marker", pattern: new RegExp("autoopen\\s*\\(", "i") },
   { id: "macro_document_open", description: "Macro Document_Open marker", pattern: new RegExp("document_open\\s*\\(", "i") },
+  { id: "macro_shell_call", description: "Macro Shell call marker", pattern: new RegExp("\\bshell\\s*\\(", "i") },
 ];
