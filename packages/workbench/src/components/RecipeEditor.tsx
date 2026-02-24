@@ -9,7 +9,8 @@ const registry = createRegistryWithBuiltins();
 export function RecipeEditor(props: {
   recipe: Recipe;
   onChange: (r: Recipe) => void;
-}): JSX.Element {
+  onRunToStep?: (stepIndex: number) => void;
+}): React.JSX.Element {
   const { t } = useTranslation();
   const [selected, setSelected] = React.useState<number | null>(null);
 
@@ -28,6 +29,21 @@ export function RecipeEditor(props: {
     const steps = props.recipe.steps.filter((_, idx) => idx !== i);
     props.onChange({ ...props.recipe, steps });
     setSelected(null);
+  }
+
+  function duplicate(i: number): void {
+    const source = props.recipe.steps[i];
+    if (!source) return;
+    const copy = source.args
+      ? { ...source, args: { ...source.args } }
+      : { ...source };
+    const steps = [
+      ...props.recipe.steps.slice(0, i + 1),
+      copy,
+      ...props.recipe.steps.slice(i + 1)
+    ];
+    props.onChange({ ...props.recipe, steps });
+    setSelected(i + 1);
   }
 
   function setArgs(i: number, args: Record<string, unknown>): void {
@@ -73,6 +89,21 @@ export function RecipeEditor(props: {
                   aria-label={t("remove")}
                 >
                   {t("remove")}
+                </button>
+                <button
+                  className="buttonSmall"
+                  onClick={() => duplicate(i)}
+                  aria-label={t("duplicate")}
+                >
+                  {t("duplicate")}
+                </button>
+                <button
+                  className="buttonSmall"
+                  onClick={() => props.onRunToStep?.(i)}
+                  aria-label={t("runToStep")}
+                  data-testid={`recipe-run-to-step-${i}`}
+                >
+                  {t("runToStep")}
                 </button>
               </div>
               {selected === i && op ? (

@@ -1,7 +1,8 @@
 /// <reference lib="webworker" />
 import { runRecipe } from "@cybermasterchef/core";
-import type { WorkerRequest, WorkerResponse } from "./protocol";
+import type { WorkerRequest } from "./protocol";
 import { createRegistryWithBuiltins } from "../plugins/builtins";
+import { createWorkerRuntime } from "./runtime";
 
 // Defense-in-depth: disable network APIs inside the worker.
 // Production hosting must also enforce CSP connect-src 'none'.
@@ -9,14 +10,16 @@ function disableNetworkApis(): void {
   const deny = (): never => {
     throw new Error("Network APIs are disabled in sandbox worker");
   };
-  // @ts-expect-error — intentional runtime override
-  self.fetch = deny;
-  // @ts-expect-error — intentional runtime override
-  self.XMLHttpRequest = function () {
+  const globalScope = self as unknown as typeof globalThis & {
+    fetch: typeof fetch;
+    XMLHttpRequest: typeof XMLHttpRequest;
+    WebSocket: typeof WebSocket;
+  };
+  globalScope.fetch = deny as unknown as typeof fetch;
+  globalScope.XMLHttpRequest = function () {
     deny();
   } as unknown as typeof XMLHttpRequest;
-  // @ts-expect-error — intentional runtime override
-  self.WebSocket = function () {
+  globalScope.WebSocket = function () {
     deny();
   } as unknown as typeof WebSocket;
 }
@@ -24,41 +27,20 @@ function disableNetworkApis(): void {
 disableNetworkApis();
 
 const registry = createRegistryWithBuiltins();
-
-self.addEventListener("message", (ev: MessageEvent<WorkerRequest>) => {
-  void handle(ev.data);
+const runtime = createWorkerRuntime({
+  registry,
+  runRecipe,
+  postMessage: (msg, transfer) => {
+    if (transfer && transfer.length > 0) {
+      self.postMessage(msg, transfer);
+    } else {
+      self.postMessage(msg);
+    }
+  },
+  setTimeoutFn: (handler, ms) => self.setTimeout(handler, ms),
+  clearTimeoutFn: (id) => self.clearTimeout(id)
 });
 
-async function handle(msg: WorkerRequest): Promise<void> {
-  if (msg.type === "init") {
-    const out: WorkerResponse = { type: "ready" };
-    self.postMessage(out);
-    return;
-  }
-
-  if (msg.type === "bake") {
-    try {
-      const res = await runRecipe({
-        registry,
-        recipe: msg.recipe,
-        input: msg.input
-      });
-      const out: WorkerResponse = {
-        type: "result",
-        id: msg.id,
-        output: res.output,
-        trace: res.trace.map((t) => ({ step: t.step, opId: t.opId }))
-      };
-      // Transfer bytes buffer to avoid copy
-      if (res.output.type === "bytes") {
-        self.postMessage(out, [res.output.value.buffer]);
-      } else {
-        self.postMessage(out);
-      }
-    } catch (e) {
-      const message = e instanceof Error ? e.message : String(e);
-      const out: WorkerResponse = { type: "error", id: msg.id, message };
-      self.postMessage(out);
-    }
-  }
-}
+self.addEventListener("message", (ev: MessageEvent<WorkerRequest>) => {
+  void runtime.handle(ev.data);
+});
