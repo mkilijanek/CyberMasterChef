@@ -51,3 +51,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 41: `telegram_api_reference` - Telegram API indicator
 - [x] Stage 42: `discord_cdn_reference` - Discord CDN indicator
 - [x] Stage 43: `tor_onion_reference` - Onion service indicator
+- [x] Stage 44: `base64_blob_long` - Long base64-like blob
