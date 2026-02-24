@@ -35,6 +35,6 @@ export const isoWeekday: Operation = {
     if (numeric) {
       return { type: "string", value: String(day === 0 ? 7 : day) };
     }
-    return { type: "string", value: WEEKDAY_NAMES[day] };
+    return { type: "string", value: WEEKDAY_NAMES[day] ?? "Sunday" };
   }
 };

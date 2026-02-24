@@ -42,12 +42,13 @@ Deliver a complete, auditable, and operationally useful C-track:
 ### C2 Domain Implementation
 
 - Status: `[IN-PROGRESS]`
-- Realization (current): `~35%` of planned baseline wave scope for priority domains.
+- Realization (current): `~55%` of planned baseline wave scope for priority domains.
 - Completed baseline waves:
   - date-time baseline and telemetry parsing helpers
   - data-format baseline (JSON minify/beautify/sort/extract-keys)
   - network IOC baseline (extract, defang/fang)
-  - forensic IOC baseline (strings, emails, domains, hash extractors)
+  - forensic IOC baseline (strings, emails, domains, hash/token/vuln extractors)
+  - basic pre-triage baseline (`forensic.basicPreTriage`)
 - Still missing for C2 baseline completeness:
   - compression/archive baseline (`gzip`, `gunzip`, and compatibility strategy)
   - structured error taxonomy standardization across new operations
@@ -116,13 +117,14 @@ Deliver a complete, auditable, and operationally useful C-track:
 
 ### Wave E: Basic Pre-Triage (Forensic/Malware Analysis)
 
-1. `[PLANNED]` Basic pre-triage module for binary/text sample input:
+1. `[DONE]` Basic pre-triage module baseline for binary/text sample input:
    - core IOC extraction (domains, URLs, IPs, emails, hashes)
-   - optional fuzzy/signature style hashes (`imphash`, `TLSH`, `ssdeep`) when feasible
-   - binary metadata pre-triage (sections, VA/offsets, sizes, entropy)
-2. `[PLANNED]` deterministic report schema for pre-triage output.
-3. `[PLANNED]` safety constraints and bounded parsing for untrusted samples.
-4. `[PLANNED]` contract tests + golden fixtures for known malware-like samples.
+   - SHA-family hashes via WebCrypto; placeholders for `md5`, `imphash`, `TLSH`, `ssdeep`
+   - binary metadata pre-triage (PE sections + VA/offset/size/entropy, plus entropy segments)
+2. `[DONE]` deterministic report schema for pre-triage output.
+3. `[DONE]` safety constraints baseline (bounded IOC/segment extraction controls).
+4. `[IN-PROGRESS]` contract tests + golden fixtures for known malware-like samples.
+5. `[PLANNED]` advanced triage add-ons: full `imphash`, TLSH/ssdeep adapters, broader binary format support.
 
 ## C3 Contract and Determinism Program
 
@@ -141,18 +143,18 @@ Deliver a complete, auditable, and operationally useful C-track:
 
 ## Current Execution Queue Extension
 
-- Queue tasks `1-20`: active C2 wave implementation tasks.
+- Queue tasks `1-20`: completed.
 - Queue task `21` (new final item): `Basic Pre-Triage (Forensic/Malware Analysis)` module.
-  - Status: `[PLANNED]`
-  - Trigger point: starts after completion of tasks `1-20`.
+  - Status: `[DONE]` (baseline)
+  - Next: harden with advanced hash adapters and expanded fixture corpus.
 
 ## Current Implementation Range
 
 - Achieved now:
   - `C1: 100%`
-  - `C2: ~35%`
+  - `C2: ~55%`
   - `C3: ~70%`
-- Combined C-track completion snapshot: `~55%`
+- Combined C-track completion snapshot: `~65%`
 - Active focus for next execution queue:
-  - raise C2 from `~35%` to `>=50%` by adding high-value baseline operations and tests
-  - keep docs parity and README synchronized after each significant functional change.
+  - complete compression baseline (`gzip`/`gunzip`) and structured error taxonomy
+  - evolve pre-triage from baseline to full malware-analysis module (`imphash`/TLSH/ssdeep + richer binary parsing)

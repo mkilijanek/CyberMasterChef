@@ -206,6 +206,7 @@ Wave 1 implemented so far:
 - Wave 15 date-time classification: `date.isoWeekday`
 - Wave 16 network metadata: `network.extractPorts`
 - Wave 16 host IOC: `forensic.extractRegistryKeys`
+- Wave 17 baseline triage: `forensic.basicPreTriage`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip
 

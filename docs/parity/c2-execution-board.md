@@ -101,7 +101,10 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 ## Queue extension
 
 - [x] Queue tasks `1-20` completed on `dev`.
-- [ ] Task 21: `Basic Pre-Triage (Forensic/Malware Analysis)` module (post Wave 1-20 completion).
+- [x] Task 21: `Basic Pre-Triage (Forensic/Malware Analysis)` baseline module.
+  - implemented as `forensic.basicPreTriage`
+  - includes IOC extraction, SHA-family hashes (where WebCrypto supports), binary entropy segments and PE section metadata
+  - placeholders (`null`) kept for `md5`, `imphash`, `TLSH`, `ssdeep` in this baseline
 
 ## Quality gates
 

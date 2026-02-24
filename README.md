@@ -1,412 +1,169 @@
 # CyberMasterChef
 
-A clean-slate successor to CyberChef: modular, maintainable, and secure data-operation workbench.
+CyberMasterChef is a modular, security-oriented data transformation workbench inspired by CyberChef.
 
-## Architecture
+It is built for three audiences:
+- developers extending operations and runtime behavior,
+- users running recipes in UI/CLI,
+- administrators operating CI/CD, quality gates, and dependency/security controls.
 
-```
+## What You Get
+
+- Typed recipe engine (`@cybermasterchef/core`) with deterministic trace metadata.
+- Standard operation plugin (`@cybermasterchef/plugins-standard`) with codec/text/date/forensic/network/data-format operations.
+- Browser workbench (`@cybermasterchef/workbench`) running recipes in a worker sandbox.
+- Automation-ready CLI (`@cybermasterchef/cli`) with batch mode and reproducibility metadata.
+
+## Repository Layout
+
+```text
 packages/
-  core/               — recipe engine, types, converters, registry
-  plugins-standard/   — built-in operations (Base64, Hex, Binary, URL, SHA-256, Reverse)
-  workbench/          — React UI + Web Worker sandbox + i18n (PL/EN)
-  cli/                — Node.js recipe runner (stdin/file → stdout)
+  core/               recipe engine, types, converters, registry, serde
+  plugins-standard/   built-in operations
+  workbench/          React UI + Web Worker runtime
+  cli/                Node CLI runner
+scripts/
+  c1/                 domain matrix generation
+  c2/                 domain implementation planning
+  c3/                 compatibility contract generation
+docs/
+  parity/             C-program artifacts and plans
 ```
 
-### Key design decisions
+## Quick Start
 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- **TypeScript strict** throughout — no `any`, full type safety
-- **pnpm workspaces** — deduplication, supply-chain controls
-- **Plugin model** — operations are isolated packages; `core` has no op-specific code
-- **Sandbox execution** — all recipes run inside a Web Worker; network APIs blocked at runtime + CSP
-- **i18n baseline** — PL/EN from the start (i18next + react-i18next)
-- **a11y baseline** — WCAG 2.2 intent; keyboard navigation, proper ARIA roles
-
-### Roadmap toward CyberChef parity (465 ops)
-
-Operations are grouped by package priority:
-
-| Package | Operations | WASM? |
-|---|---|---|
-| `ops-codec` | Base64/32/58/85, Hex, URL, Binary, … | No |
-| `ops-hash` | SHA-2/3, HMAC, checksums | WebCrypto first |
-| `ops-crypto-symmetric` | AES, ChaCha, XOR, … | WebCrypto first |
-| `ops-compression` | Gzip, Bzip2, LZ4, LZMA, Zip, … | **WASM (Rust)** — High priority |
-| `ops-kdf` | Argon2, Scrypt, PBKDF2, Bcrypt | **WASM** — CPU-intensive |
-| `ops-crypto-pk` | RSA, ECDSA, PGP, X.509 | WebCrypto + WASM for parsing |
-| `ops-parsing` | ASN.1, Protobuf, TLS, IPv4/6, … | WASM for binary parsers |
-| `ops-forensics` | EXIF, File magic, Strings, YARA, … | Low — JS sufficient |
-| `ops-flow` | Fork, Jump, Subsection, Register | No |
-| `ops-magic` | Auto-detect encoding layers | No (heuristics in TS) |
-
-**WASM high-priority candidates** (31 ops): all compression/decompression + KDF (Argon2, Scrypt, Bcrypt, PBKDF2).
-
-## C Parity Program Status
-
-- C1 domain matrix: generated and published under `docs/parity/c1-operation-domain-summary.md`.
-- C2 execution board: `docs/parity/c2-execution-board.md`.
-- Wave 1 date-time baseline operations added: `date.isoToUnix`, `date.unixToIso`.
-- Wave 1 data-format baseline operations added: `format.jsonMinify`, `format.jsonBeautify`.
-- Wave 1 forensic baseline operation added: `forensic.extractStrings`.
-- Wave 1 closure: `forensic.extractStrings` is now registered in standard plugin and covered by golden parity suite.
-- Wave 5 IOC baseline started with `network.extractIPs` (unique IPv4 extraction).
-- Wave 5 IOC expansion adds `network.extractUrls` for deterministic URL extraction.
-- Wave 5 safe-sharing step adds `network.defangUrls`.
-- Wave 5 reversal step adds `network.fangUrls`.
-- Wave 6 date-time expansion adds `date.unixToWindowsFiletime`.
-- Wave 6 date-time expansion adds `date.windowsFiletimeToUnix`.
-- Wave 6 date-time expansion adds `date.parseObjectIdTimestamp`.
-- Wave 7 forensic expansion adds `forensic.extractEmails`.
-- Wave 7 forensic expansion adds `forensic.extractDomains`.
-- Wave 8 data-format expansion adds `format.jsonSortKeys`.
-- Wave 8 data-format expansion adds `format.jsonExtractKeys`.
-- Wave 9 forensic hash expansion adds `forensic.extractMd5`.
-- Wave 9 forensic hash expansion adds `forensic.extractSha256`.
-- Wave 10 telemetry parsing adds `date.extractUnixTimestamps`.
-- Wave 10 telemetry parsing adds `date.extractIsoTimestamps`.
-- Wave 11 network IOC expansion adds `network.extractIPv6`.
-- Wave 11 network safe-sharing adds `network.defangIPs`.
-- Wave 11 network safe-sharing adds `network.fangIPs`.
-- Wave 12 forensic hash expansion adds `forensic.extractSha1`.
-- Wave 12 forensic hash expansion adds `forensic.extractSha512`.
-- Wave 13 forensic token IOC expansion adds `forensic.extractJwt`.
-- Wave 13 forensic vulnerability IOC expansion adds `forensic.extractCves`.
-- Wave 14 JSON inspection adds `format.jsonArrayLength`.
-- Wave 14 JSON extraction adds `format.jsonStringValues`.
-- Wave 14 JSON extraction adds `format.jsonNumberValues`.
-- Wave 15 date normalization adds `date.isoToDateOnly`.
-- Wave 15 date classification adds `date.isoWeekday`.
-- Wave 16 network metadata adds `network.extractPorts`.
-- Wave 16 host IOC extraction adds `forensic.extractRegistryKeys`.
-- C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
-
-## Current functionality
-
-- Core recipe engine with typed coercion (`string`, `bytes`, `json`, `number`)
-- Worker-based sandbox execution for all operations
-- Workbench features:
-  - operation catalog with search by name/description/ID and visible operation IDs in list
-  - explicit empty-state message when search query has no matching operations
-  - quick clear-search action in operation catalog
-  - recipe editing (add/reorder/remove + arg forms)
-  - recipe step duplication in editor
-  - auto-bake mode (debounced re-run on changes)
-  - cancel in-flight execution from the UI
-  - keyboard cancel shortcut (`Escape`) while execution is running
-  - keyboard run shortcut (`Ctrl+Enter` / `Cmd+Enter`)
-  - keyboard catalog-focus shortcut (`Ctrl+K` / `Cmd+K`)
-  - keyboard trace-filter-focus shortcut (`Ctrl+Shift+K` / `Cmd+Shift+K`)
-  - per-run sandbox timeout protection with configurable timeout (default: 10s)
-  - run recipe up to a selected step (pipeline debugging)
-  - rerun to selected step directly from trace list
-  - trace filtering by operation ID and input/output types
-  - quick clear action for trace filter
-  - visible counter for filtered vs total trace steps
-  - deep-link sharing (`#state=` hash with recipe + input)
-  - quick input/output copy actions in UI
-  - quick trace copy action in UI
-  - quick filtered-trace copy action in UI
-  - quick recipe JSON copy action in UI
-  - clear-trace action without resetting recipe/input
-  - clear-trace also clears active trace filter
-  - workspace reset action (recipe + IO + trace)
-  - recipe import/export (native JSON and CyberChef-compatible JSON)
-  - detailed import warnings for skipped CyberChef steps (step index + operation + reason)
-  - local persistence for recipe, input, auto-bake preference and operation search query
-- Built-in operations (`@cybermasterchef/plugins-standard`):
-  - `codec.toBase64`, `codec.fromBase64`
-  - `codec.toHex`, `codec.fromHex`
-  - `codec.toBinary`, `codec.fromBinary`
-  - `codec.urlEncode`, `codec.urlDecode`
-  - `text.lowercase`
-  - `text.trim`
-  - `text.uppercase`
-  - `text.prepend`
-  - `text.append`
-  - `text.length`
-  - `text.wordCount`
-  - `text.lineCount`
-  - `text.firstLine`
-  - `text.lastLine`
-  - `text.normalizeWhitespace`
-  - `text.removeBlankLines`
-  - `text.startsWith`
-  - `text.replace`
-  - `text.slice`
-  - `text.repeat`
-  - `text.padStart`
-  - `text.padEnd`
-  - `text.trimStart`
-  - `text.trimEnd`
-  - `text.trimLines`
-  - `text.toSnakeCase`
-  - `text.toKebabCase`
-  - `text.toCamelCase`
-  - `text.toPascalCase`
-  - `text.compactLines`
-  - `text.reverseWords`
-  - `text.sortWords`
-  - `text.uniqueWords`
-  - `text.removeVowels`
-  - `text.keepVowels`
-  - `text.normalizeNewlines`
-  - `text.swapCase`
-  - `text.removeSpaces`
-  - `text.keepDigits`
-  - `text.removeDigits`
-  - `text.keepLetters`
-  - `text.removeLetters`
-  - `text.keepAlnum`
-  - `text.removeAlnum`
-  - `text.toTitleCase`
-  - `text.reverseLines`
-  - `text.sortLines`
-  - `text.uniqueLines`
-  - `text.endsWith`
-  - `text.includes`
-  - `text.lowerFirst`
-  - `text.upperFirst`
-  - `text.removePunctuation`
-  - `text.keepPunctuation`
-  - `text.collapseDashes`
-  - `text.collapseUnderscores`
-  - `text.removeTabs`
-  - `text.tabsToSpaces`
-  - `text.spacesToTabs`
-  - `text.trimCommas`
-  - `text.trimQuotes`
-  - `text.surroundBrackets`
-  - `text.surroundQuotes`
-  - `text.rot13`
-  - `text.maskDigits`
-  - `text.removeNonAscii`
-  - `text.keepNonAscii`
-  - `text.reverseCharsInWords`
-  - `text.wordsToLines`
-  - `text.linesToWords`
-  - `text.linesToCsv`
-  - `text.csvToLines`
-  - `text.stripAccents`
-  - `text.removeDoubleQuotes`
-  - `text.removeSingleQuotes`
-  - `text.replaceNewlinesWithSpace`
-  - `text.replaceSpacesWithNewlines`
-  - `text.tabsToSingleSpace`
-  - `text.countUppercase`
-  - `text.countLowercase`
-  - `text.countAscii`
-  - `text.countNonAscii`
-  - `text.countNonEmptyLines`
-  - `text.firstWord`
-  - `text.lastWord`
-  - `text.removeCommas`
-  - `text.removeDots`
-  - `text.removeSemicolons`
-  - `text.keepHexChars`
-  - `text.removeHexChars`
-  - `text.onlyPrintableAscii`
-  - `text.removeControlChars`
-  - `text.collapseMultipleNewlines`
-  - `text.trimLeadingDots`
-  - `text.trimTrailingDots`
-  - `text.linesNumbered`
-  - `text.removeColons`
-  - `text.removeSlashes`
-  - `text.removePipes`
-  - `text.removeBackslashes`
-  - `text.removeAsterisks`
-  - `text.removeHashes`
-  - `text.removeAtSigns`
-  - `text.removeDollarSigns`
-  - `text.removePercents`
-  - `text.removeAmpersands`
-  - `text.removePluses`
-  - `text.removeEquals`
-  - `text.removeTildes`
-  - `text.removeCarets`
-  - `text.removeBackticks`
-  - `text.removeQuestionMarks`
-  - `text.removeExclamations`
-  - `text.removeParentheses`
-  - `text.removeBrackets`
-  - `text.removeBraces`
-  - `text.removeAngles`
-  - `text.removeDoubleSpaces`
-  - `text.linesTrimRight`
-  - `text.linesTrimLeft`
-  - `text.removeDigitsAndSpaces`
-  - `text.keepDigitsAndDots`
-  - `text.removeEmojis`
-  - `text.removeUnderscores`
-  - `text.removeHyphens`
-  - `text.removeSpacesAndTabs`
-  - `text.keepWhitespace`
-  - `text.countTabs`
-  - `text.countSpaces`
-  - `text.countCommas`
-  - `text.countDots`
-  - `text.countColons`
-  - `text.countSemicolons`
-  - `text.countSlashes`
-  - `text.countBackslashes`
-  - `text.countPluses`
-  - `text.countDashes`
-  - `text.countQuestionMarks`
-  - `text.countExclamations`
-  - `text.countBrackets`
-  - `text.countParentheses`
-  - `text.countQuotes`
-  - `text.countUnderscores`
-  - `text.onlyLettersAndSpaces`
-  - `text.onlyAlnumAndSpaces`
-  - `text.removeCurrencySymbols`
-  - `text.removeMathSymbols`
-  - `text.normalizeCommas`
-  - `hash.sha256`
-  - `date.isoToUnix`
-  - `date.unixToIso`
-  - `date.unixToWindowsFiletime`
-  - `date.windowsFiletimeToUnix`
-  - `date.parseObjectIdTimestamp`
-  - `date.extractUnixTimestamps`
-  - `date.extractIsoTimestamps`
-  - `date.isoToDateOnly`
-  - `date.isoWeekday`
-  - `format.jsonMinify`
-  - `format.jsonBeautify`
-  - `format.jsonSortKeys`
-  - `format.jsonExtractKeys`
-  - `format.jsonArrayLength`
-  - `format.jsonStringValues`
-  - `format.jsonNumberValues`
-  - `forensic.extractStrings`
-  - `forensic.extractEmails`
-  - `forensic.extractDomains`
-  - `forensic.extractMd5`
-  - `forensic.extractSha1`
-  - `forensic.extractSha256`
-  - `forensic.extractSha512`
-  - `forensic.extractJwt`
-  - `forensic.extractCves`
-  - `forensic.extractRegistryKeys`
-  - `network.extractIPs`
-  - `network.extractIPv6`
-  - `network.defangIPs`
-  - `network.fangIPs`
-  - `network.extractPorts`
-  - `network.extractUrls`
-  - `network.defangUrls`
-  - `network.fangUrls`
-  - `text.reverse`
-- CLI compatibility:
-  - accepts native recipe JSON
-  - accepts `-` as input path to force reading payload from stdin
-  - falls back to CyberChef recipe import and prints warnings for unsupported steps
-  - supports `--timeout-ms` for bounded execution and `--strict-cyberchef` for strict import mode
-  - supports `--dry-run` to validate recipe import/shape without running steps
-  - supports `--fail-on-warning` to make imports with warnings fail in CI pipelines
-  - supports `--quiet-warnings` to keep stderr clean in scripted runs
-  - supports `--print-recipe-source` to audit parser path in automation
-  - supports `--show-summary` for lightweight runtime diagnostics in CLI
-  - supports `--summary-json` for machine-readable runtime diagnostics in CLI
-  - supports `--show-trace` and `--trace-json` for pipeline debugging in terminal
-  - supports `--trace-limit` to cap trace verbosity in terminal/CI logs
-  - supports `--show-trace-summary` and `--trace-summary-json` for aggregated step timing diagnostics
-  - supports `--show-repro`, `--repro-json`, and `--repro-file` for reproducibility metadata and bundle export
-  - supports `--batch-input-dir <path>` for directory-wide recipe execution report in JSON
-  - supports `--batch-ext <list>` for extension-based batch input filtering
-  - supports `--batch-summary-json` for aggregate batch metrics on stderr
-  - supports `--batch-report-file <path>` and `--batch-output-dir <path>` for batch artifacts export
-  - supports `--batch-output-format text|json|jsonl` for per-file artifact format selection
-  - supports `--batch-max-files <n>` to cap batch workload size
-  - supports `--batch-skip-empty` and `--batch-fail-empty` for explicit empty-input policy
-  - supports `--batch-fail-fast` and `--batch-continue-on-error` for failure strategy control
-  - supports `--batch-concurrency <n>` for bounded parallel batch processing
-  - supports `--list-ops` to inspect currently registered operations
-  - supports `--list-ops-json` for machine-readable operation discovery
-  - supports `--list-ops-filter` to narrow operation listings in both list modes
-  - supports `--input-encoding text|hex|base64` for binary-oriented CLI runs
-  - supports `--bytes-output hex|base64|utf8` to choose stdout format for byte outputs
-  - supports `--hex-uppercase` for uppercase hex rendering
-  - supports `--json-indent` for JSON output formatting control
-  - supports `--output-file` to write rendered output directly to a file
-  - supports `--fail-empty-output` to enforce non-empty pipeline results
-  - supports `--no-newline` for exact output framing in pipelines
-  - supports `--max-output-chars` for bounded stdout in scripts/CI
-- Quality baseline:
-  - golden parity corpus covering representative CyberChef-style chains in `packages/plugins-standard/test/goldenRecipes.test.ts`
-  - golden negative/degradation suite for malformed inputs in `packages/plugins-standard/test/goldenNegative.test.ts`
-  - semantic round-trip parity suite (`native -> cyberchef -> native`) in `packages/plugins-standard/test/semanticRoundtrip.test.ts`
-  - determinism suite (stable output + trace across repeated runs) in `packages/plugins-standard/test/determinism.test.ts`
-  - run telemetry in trace (`durationMs` per step) with run-level metadata (`startedAt/endedAt/durationMs`) and trace summary stats (total/avg/slowest)
-  - reproducibility hashes (`recipeHash` + `inputHash`) in worker run results and workbench UI
-  - worker pool MVP in workbench with configurable pool size (`1..8`) and queue telemetry (`queuedMs`, `workerId`)
-  - worker pool queue controls and telemetry: configurable `maxQueue`, queue-depth metrics, in-flight-at-start metric
-  - worker protocol integration suite for cancel/timeout/race in `packages/workbench/src/worker/runtime.test.ts`
-  - Playwright suite for import/run-to-step/share-link/timeout UX in `e2e/workbench.spec.ts`
-  - Playwright negative-flow suite for invalid import and empty-search behavior in `e2e/workbench-negative.spec.ts`
-  - Playwright persistence suite for recipe/input/preferences restore in `e2e/workbench-persistence.spec.ts`
-  - Playwright reproducibility suite for run metadata visibility in `e2e/workbench-repro.spec.ts`
-  - Playwright pool-settings suite for persisted pool controls in `e2e/workbench-pool-settings.spec.ts`
-  - extended CyberChef args mapping coverage (`lower/upper/trim/replace`) in `packages/core/test/serde.test.ts`
-  - CI workflow now runs Playwright E2E (`pnpm test:e2e`) with Chromium install
-
-## Getting started
-
-Requirements: Node 20+ and pnpm.
+Prerequisites:
+- Node.js `24.x`
+- pnpm `10.x`
 
 ```bash
 pnpm install
-pnpm dev        # starts workbench at http://localhost:5173
+pnpm dev
 ```
 
-## Development
+Workbench starts from workspace script (`@cybermasterchef/workbench dev`).
+
+## User Guide
+
+### Workbench
 
 ```bash
-pnpm typecheck  # TypeScript check (separate from Vite build)
-pnpm lint       # ESLint
-pnpm test       # Vitest
-pnpm test:coverage # Vitest + V8 coverage reports with thresholds
-pnpm test:parity # parity coverage gate for golden recipe corpus
-pnpm test:e2e   # Playwright critical flows
-pnpm build      # full build all packages
-pnpm ci         # lint + typecheck + test + build
+pnpm dev
 ```
 
-Coverage baseline:
-- `packages/core`: statements/lines `>= 80%`, branches `>= 70%`, functions `>= 70%`
-- `packages/plugins-standard`: statements `>= 45%`, branches `>= 15%`, functions `>= 30%`, lines `>= 55%`
-- `packages/workbench`: statements/lines `>= 80%`, branches `>= 70%`, functions `>= 95%`
+Main capabilities:
+- search/add/reorder/remove recipe steps,
+- import/export native and CyberChef-compatible recipes,
+- run-to-step debugging and trace filtering,
+- timeout and cancellation controls,
+- local state persistence and deep-link state sharing.
 
-Phase A status:
-- Completed baseline parity-and-tests scope (golden parity recipes, worker protocol integration tests, Playwright critical flows).
-- Formal acceptance checklist: see `docs/phase-a-definition-of-done.md`.
+### CLI
 
-Phase B status:
-- Worker pool queue controls/telemetry and queue saturation UX are implemented.
-- CLI batch MVP is implemented with bounded concurrency and integration test fixtures.
-- Formal acceptance checklist: see `docs/phase-b-definition-of-done.md`.
+Build and run:
 
-## Security
+```bash
+pnpm build
+pnpm --filter @cybermasterchef/cli exec cybermasterchef --help
+```
 
-- Operations run inside a Web Worker (no DOM access)
-- Network APIs blocked in worker (defense-in-depth; CSP is the primary control)
-- Production hosting: HTTPS + strict CSP (`connect-src 'none'`, `worker-src 'self'`, etc.)
-- Supply-chain: pnpm allowlist build scripts + Dependabot + CodeQL
+Common examples:
 
-See [SECURITY.md](SECURITY.md) and [docs/architecture.md](docs/architecture.md).
+```bash
+# run recipe against stdin
+pnpm --filter @cybermasterchef/cli exec cybermasterchef recipe.json -
+
+# show summary + reproducibility metadata
+pnpm --filter @cybermasterchef/cli exec cybermasterchef recipe.json input.txt --show-summary --show-repro
+
+# batch execution with concurrency
+pnpm --filter @cybermasterchef/cli exec cybermasterchef recipe.json --batch-input-dir ./samples --batch-concurrency 4 --batch-summary-json
+```
+
+Useful CLI flags:
+- parsing/import: `--strict-cyberchef`, `--dry-run`, `--fail-on-warning`
+- execution: `--timeout-ms`, `--show-trace`, `--trace-json`, `--show-trace-summary`
+- output: `--output-file`, `--bytes-output`, `--json-indent`, `--max-output-chars`
+- batch: `--batch-input-dir`, `--batch-ext`, `--batch-concurrency`, `--batch-fail-fast`
+
+## Developer Guide
+
+### Core commands
+
+```bash
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm test:coverage
+pnpm test:e2e
+pnpm build
+pnpm ci
+```
+
+### C-parity artifact generators
+
+```bash
+pnpm c1:domain-matrix
+pnpm c2:plan
+pnpm c3:contracts
+pnpm test:parity
+```
+
+### Adding a new operation
+
+1. Add file in `packages/plugins-standard/src/ops`.
+2. Register it in `packages/plugins-standard/src/index.ts`.
+3. Add unit tests in `packages/plugins-standard/test`.
+4. Add/extend golden parity scenario if relevant.
+5. Update docs (`README`, `docs/development.md`, `docs/parity/c2-execution-board.md`).
+
+## Administrator Guide
+
+### CI/CD quality gates
+
+Recommended minimum pipeline:
+- `pnpm lint`
+- `pnpm typecheck`
+- `pnpm test`
+- `pnpm build`
+- parity gate: `pnpm test:parity`
+- e2e gate (for workbench changes): `pnpm test:e2e`
+
+### Security baseline
+
+- Worker sandbox blocks direct network APIs in runtime.
+- Keep strict dependency control via `pnpm` and committed lockfile.
+- Use CodeQL + Dependabot for continuous scanning/update workflow.
+- Enforce deployment CSP (`worker-src`, `connect-src`) at hosting layer.
+
+## C Program Status (Implementation Track)
+
+Authoritative planning artifacts:
+- [C Implementation Master Plan](docs/parity/c-implementation-master-plan.md)
+- [C2 Execution Board](docs/parity/c2-execution-board.md)
+- [C3 Compatibility Contracts](docs/parity/c3-operation-compatibility-contracts.md)
+
+Current state:
+- C1: complete and published.
+- C2: active expansion waves implemented through queue tasks `1-20`.
+- Task `21`: `forensic.basicPreTriage` baseline module implemented.
+
+## Documentation Index
+
+- [Architecture](docs/architecture.md)
+- [Plugin API](docs/plugin-api.md)
+- [Development Guide](docs/development.md)
+- [Docs Index](docs/index.md)
+- [Phase A Definition of Done](docs/phase-a-definition-of-done.md)
+- [Phase B Definition of Done](docs/phase-b-definition-of-done.md)
+
+## Contribution Workflow
+
+- Branch from `dev` for implementation work.
+- Keep commits focused and test-backed.
+- Update docs in the same change when behavior/capabilities change.
+- Prefer small, reviewable PRs with explicit validation steps.
 
 ## License
 
-BSD 3-Clause — see [LICENSE](LICENSE).
+No license file is defined yet in this repository.
