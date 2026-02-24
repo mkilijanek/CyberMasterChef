@@ -237,6 +237,7 @@ Example operation IDs in use:
 - `text.removeUnderscores`
 - `text.removeHyphens`
 - `text.removeSpacesAndTabs`
+- `text.keepWhitespace`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

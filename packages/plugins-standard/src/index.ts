@@ -132,6 +132,7 @@ import { removeEmojis } from "./ops/removeEmojis.js";
 import { removeUnderscores } from "./ops/removeUnderscores.js";
 import { removeHyphens } from "./ops/removeHyphens.js";
 import { removeSpacesAndTabs } from "./ops/removeSpacesAndTabs.js";
+import { keepWhitespace } from "./ops/keepWhitespace.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -267,6 +268,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeUnderscores);
     registry.register(removeHyphens);
     registry.register(removeSpacesAndTabs);
+    registry.register(keepWhitespace);
     registry.register(sha256);
   }
 };
