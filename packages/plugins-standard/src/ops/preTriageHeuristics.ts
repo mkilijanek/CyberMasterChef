@@ -76,4 +76,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "powershell_noni_abbrev", description: "PowerShell -noni abbreviation", pattern: new RegExp("\\s-noni\\b", "i") },
   { id: "powershell_w_hidden", description: "PowerShell -w hidden usage", pattern: new RegExp("\\s-w\\s+hidden", "i") },
   { id: "encoded_scriptblock", description: "Encoded scriptblock marker", pattern: new RegExp("\\$encodedcommand", "i") },
+  { id: "download_to_temp", description: "Download path pointing to temp", pattern: new RegExp("\\\	emp\\\\", "i") },
 ];

@@ -81,3 +81,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 069: `powershell_noni_abbrev` - PowerShell -noni abbreviation
 - [x] Stage 070: `powershell_w_hidden` - PowerShell -w hidden usage
 - [x] Stage 071: `encoded_scriptblock` - Encoded scriptblock marker
+- [x] Stage 072: `download_to_temp` - Download path pointing to temp
