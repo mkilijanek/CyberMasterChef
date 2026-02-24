@@ -168,6 +168,7 @@ Example operation IDs in use:
 - `text.collapseDashes`
 - `text.collapseUnderscores`
 - `text.removeTabs`
+- `text.tabsToSpaces`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
