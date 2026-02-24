@@ -92,4 +92,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "ipconfig_all", description: "Network discovery ipconfig /all", pattern: new RegExp("ipconfig\\s+/all", "i") },
   { id: "arp_scan", description: "ARP table query", pattern: new RegExp("\\barp\\s+-a\\b", "i") },
   { id: "netstat_scan", description: "Network sockets netstat", pattern: new RegExp("netstat\\s+-an", "i") },
+  { id: "nslookup_usage", description: "DNS lookup usage", pattern: new RegExp("\\bnslookup\\b", "i") },
 ];
