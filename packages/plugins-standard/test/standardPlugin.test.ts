@@ -23,6 +23,7 @@ describe("standardPlugin", () => {
       "text.prepend",
       "text.replace",
       "text.reverse",
+      "text.slice",
       "text.trim",
       "text.uppercase"
     ]);
