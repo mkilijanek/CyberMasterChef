@@ -16,4 +16,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "certutil_decode", description: "Certutil decode or urlcache usage", pattern: new RegExp("certutil\\s+-(decode", "urlcache)|i") },
   { id: "schtasks_create", description: "Scheduled task persistence", pattern: new RegExp("schtasks\\s+/create", "i") },
   { id: "at_job_create", description: "Legacy at job persistence", pattern: new RegExp("\\bat\\s+\\d{1,2}:\\d{2}", "i") },
+  { id: "reg_run_key", description: "Registry Run key persistence", pattern: new RegExp("\\\\currentversion\\\\run", "i") },
 ];
