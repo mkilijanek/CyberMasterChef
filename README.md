@@ -115,6 +115,7 @@ Operations are grouped by package priority:
   - `text.toKebabCase`
   - `text.toCamelCase`
   - `text.toPascalCase`
+  - `text.compactLines`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
