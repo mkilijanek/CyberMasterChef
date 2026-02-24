@@ -58,6 +58,7 @@ const usageText =
   "  --json-indent <n>                indentation for JSON output rendering\n" +
   "  --output-file <path>             write rendered output to file instead of stdout\n" +
   "  --batch-input-dir <path>         execute recipe for each file in directory and print JSON report\n" +
+  "  --batch-report-file <path>       write batch JSON report to file\n" +
   "  --fail-empty-output              fail when rendered output is empty\n" +
   "  --no-newline                     do not append trailing newline to output\n" +
   "  --max-output-chars <n>           limit output length for string/json/bytes rendering\n" +
@@ -117,6 +118,7 @@ type CliOptions = {
   jsonIndent: number;
   outputFile?: string;
   batchInputDir?: string;
+  batchReportFile?: string;
   failEmptyOutput: boolean;
   noNewline: boolean;
   maxOutputChars?: number;
@@ -148,6 +150,7 @@ function parseArgs(args: string[]): CliOptions {
   let jsonIndent = 2;
   let outputFile: string | undefined;
   let batchInputDir: string | undefined;
+  let batchReportFile: string | undefined;
   let failEmptyOutput = false;
   let noNewline = false;
   let maxOutputChars: number | undefined;
@@ -307,6 +310,13 @@ function parseArgs(args: string[]): CliOptions {
       i++;
       continue;
     }
+    if (arg === "--batch-report-file") {
+      const raw = args[i + 1];
+      if (!raw) die("Missing value for --batch-report-file");
+      batchReportFile = raw;
+      i++;
+      continue;
+    }
     if (arg === "--no-newline") {
       noNewline = true;
       continue;
@@ -365,6 +375,7 @@ function parseArgs(args: string[]): CliOptions {
   if (listOpsFilter !== undefined) out.listOpsFilter = listOpsFilter;
   if (outputFile !== undefined) out.outputFile = outputFile;
   if (batchInputDir !== undefined) out.batchInputDir = batchInputDir;
+  if (batchReportFile !== undefined) out.batchReportFile = batchReportFile;
   if (reproFile !== undefined) out.reproFile = reproFile;
   const inputPath = positional[1];
   if (inputPath) out.inputPath = inputPath;
@@ -540,7 +551,11 @@ if (opts.batchInputDir) {
       inputHash: run.reproBundle.inputHash
     });
   }
-  process.stdout.write(`${JSON.stringify(report, null, 2)}\n`);
+  const payload = `${JSON.stringify(report, null, 2)}\n`;
+  if (opts.batchReportFile) {
+    writeFileSync(opts.batchReportFile, payload, "utf-8");
+  }
+  process.stdout.write(payload);
   process.exit(0);
 }
 
