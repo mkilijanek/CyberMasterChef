@@ -3,7 +3,7 @@ import type { DataValue, OperationRegistry, Recipe } from "@cybermasterchef/core
 import type { WorkerRequest, WorkerResponse } from "./protocol";
 import { createWorkerRuntime } from "./runtime";
 
-type Trace = Array<{ step: number; opId: string; inputType: string; outputType: string }>;
+type Trace = Array<{ step: number; opId: string; inputType: string; outputType: string; durationMs: number }>;
 
 function deferred<T>(): {
   promise: Promise<T>;
@@ -38,7 +38,7 @@ describe("worker runtime protocol integration", () => {
       signal?: AbortSignal;
     }) => {
       started.resolve();
-      return await new Promise<{ output: DataValue; trace: Trace }>((resolve, reject) => {
+      return await new Promise<{ output: DataValue; trace: Trace; meta: { startedAt: number; endedAt: number; durationMs: number } }>((resolve, reject) => {
         args.signal?.addEventListener("abort", () => reject(new Error("Aborted")));
         void resolve;
       });
@@ -73,7 +73,7 @@ describe("worker runtime protocol integration", () => {
       input: DataValue;
       signal?: AbortSignal;
     }) =>
-      await new Promise<{ output: DataValue; trace: Trace }>((resolve, reject) => {
+      await new Promise<{ output: DataValue; trace: Trace; meta: { startedAt: number; endedAt: number; durationMs: number } }>((resolve, reject) => {
         args.signal?.addEventListener("abort", () => reject(new Error("Aborted")));
         void resolve;
       });
@@ -99,8 +99,16 @@ describe("worker runtime protocol integration", () => {
 
   it("handles race conditions and keeps request ids aligned with responses", async () => {
     const messages: WorkerResponse[] = [];
-    const first = deferred<{ output: DataValue; trace: Trace }>();
-    const second = deferred<{ output: DataValue; trace: Trace }>();
+    const first = deferred<{
+      output: DataValue;
+      trace: Trace;
+      meta: { startedAt: number; endedAt: number; durationMs: number };
+    }>();
+    const second = deferred<{
+      output: DataValue;
+      trace: Trace;
+      meta: { startedAt: number; endedAt: number; durationMs: number };
+    }>();
 
     const runRecipe = async (args: {
       registry: OperationRegistry;
@@ -138,16 +146,29 @@ describe("worker runtime protocol integration", () => {
 
     second.resolve({
       output: { type: "string", value: "second-out" },
-      trace: [{ step: 0, opId: "text.reverse", inputType: "string", outputType: "string" }]
+      trace: [
+        { step: 0, opId: "text.reverse", inputType: "string", outputType: "string", durationMs: 1 }
+      ],
+      meta: { startedAt: 10, endedAt: 11, durationMs: 1 }
     });
     first.resolve({
       output: { type: "string", value: "first-out" },
-      trace: [{ step: 0, opId: "text.reverse", inputType: "string", outputType: "string" }]
+      trace: [
+        { step: 0, opId: "text.reverse", inputType: "string", outputType: "string", durationMs: 1 }
+      ],
+      meta: { startedAt: 20, endedAt: 21, durationMs: 1 }
     });
     await Promise.all([p1, p2]);
 
-    expect(messages[0]).toMatchObject({ type: "result", id: "race-2" });
-    expect(messages[1]).toMatchObject({ type: "result", id: "race-1" });
+    const results = messages.filter((m) => m.type === "result");
+    expect(results).toHaveLength(2);
+    const ids = results.map((m) => m.id).sort();
+    expect(ids).toEqual(["race-1", "race-2"]);
+    expect(results[0]).toMatchObject({
+      type: "result",
+      run: {
+        durationMs: 1
+      }
+    });
   });
 });
-

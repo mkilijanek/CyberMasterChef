@@ -1,9 +1,13 @@
-import type { DataValue, OperationRegistry, Recipe } from "@cybermasterchef/core";
+import { hashDataValue, hashRecipe, type DataValue, type OperationRegistry, type Recipe } from "@cybermasterchef/core";
 import type { WorkerRequest, WorkerResponse } from "./protocol";
 
-type TraceRow = Array<{ step: number; opId: string; inputType: string; outputType: string }>;
+type TraceRow = Array<{ step: number; opId: string; inputType: string; outputType: string; durationMs: number }>;
 
-type RunRecipeResult = { output: DataValue; trace: TraceRow };
+type RunRecipeResult = {
+  output: DataValue;
+  trace: TraceRow;
+  meta: { startedAt: number; endedAt: number; durationMs: number };
+};
 
 type RunRecipeFn = (args: {
   registry: OperationRegistry;
@@ -45,6 +49,10 @@ export function createWorkerRuntime(deps: RuntimeDeps): {
             }, timeoutMs)
           : null;
       try {
+        const [recipeHash, inputHash] = await Promise.all([
+          hashRecipe(msg.recipe),
+          hashDataValue(msg.input)
+        ]);
         const res = await deps.runRecipe({
           registry: deps.registry,
           recipe: msg.recipe,
@@ -57,7 +65,15 @@ export function createWorkerRuntime(deps: RuntimeDeps): {
               type: "result",
               id: msg.id,
               output: res.output,
-              trace: res.trace
+              trace: res.trace,
+              run: {
+                runId: msg.id,
+                startedAt: res.meta.startedAt,
+                endedAt: res.meta.endedAt,
+                durationMs: res.meta.durationMs,
+                recipeHash,
+                inputHash
+              }
             },
             [res.output.value.buffer]
           );
@@ -66,7 +82,15 @@ export function createWorkerRuntime(deps: RuntimeDeps): {
             type: "result",
             id: msg.id,
             output: res.output,
-            trace: res.trace
+            trace: res.trace,
+            run: {
+              runId: msg.id,
+              startedAt: res.meta.startedAt,
+              endedAt: res.meta.endedAt,
+              durationMs: res.meta.durationMs,
+              recipeHash,
+              inputHash
+            }
           });
         }
       } catch (e) {
@@ -89,4 +113,3 @@ export function createWorkerRuntime(deps: RuntimeDeps): {
 
   return { handle };
 }
-

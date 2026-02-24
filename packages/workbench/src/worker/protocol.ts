@@ -11,6 +11,14 @@ export type WorkerResponse =
       type: "result";
       id: string;
       output: DataValue;
-      trace: Array<{ step: number; opId: string; inputType: string; outputType: string }>;
+      trace: Array<{ step: number; opId: string; inputType: string; outputType: string; durationMs: number }>;
+      run: {
+        runId: string;
+        startedAt: number;
+        endedAt: number;
+        durationMs: number;
+        recipeHash: string;
+        inputHash: string;
+      };
     }
   | { type: "error"; id: string; message: string };
