@@ -73,6 +73,7 @@ CLI behavior:
 - `--input-encoding text|hex|base64` controls how CLI input is parsed before recipe execution.
 - `--bytes-output hex|base64|utf8` controls how bytes outputs are rendered on stdout.
 - `--help` prints CLI usage and option reference.
+- `--max-output-chars <n>` truncates stdout payload for safer automation/logging.
 
 ## Adding a new operation
 

@@ -36,6 +36,7 @@ const usageText =
   "  --trace-json                     print trace JSON to stderr\n" +
   "  --input-encoding text|hex|base64 parse CLI input before execution\n" +
   "  --bytes-output hex|base64|utf8   bytes output rendering on stdout\n" +
+  "  --max-output-chars <n>           limit output length for string/json/bytes rendering\n" +
   "  --help                           print this help text";
 
 function parseRecipeAny(json: string): {
@@ -73,6 +74,7 @@ type CliOptions = {
   traceJson: boolean;
   inputEncoding: "text" | "hex" | "base64";
   bytesOutput: "hex" | "base64" | "utf8";
+  maxOutputChars?: number;
 };
 
 function parseArgs(args: string[]): CliOptions {
@@ -83,6 +85,7 @@ function parseArgs(args: string[]): CliOptions {
   let traceJson = false;
   let inputEncoding: CliOptions["inputEncoding"] = "text";
   let bytesOutput: CliOptions["bytesOutput"] = "hex";
+  let maxOutputChars: number | undefined;
   const positional: string[] = [];
 
   for (let i = 0; i < args.length; i++) {
@@ -126,6 +129,17 @@ function parseArgs(args: string[]): CliOptions {
       i++;
       continue;
     }
+    if (arg === "--max-output-chars") {
+      const raw = args[i + 1];
+      if (!raw) die("Missing value for --max-output-chars");
+      const parsed = Number(raw);
+      if (!Number.isFinite(parsed) || parsed <= 0) {
+        die(`Invalid --max-output-chars value: ${raw}`);
+      }
+      maxOutputChars = Math.floor(parsed);
+      i++;
+      continue;
+    }
     if (arg === "--timeout-ms") {
       const raw = args[i + 1];
       if (!raw) die("Missing value for --timeout-ms");
@@ -159,6 +173,7 @@ function parseArgs(args: string[]): CliOptions {
   };
   const inputPath = positional[1];
   if (inputPath) out.inputPath = inputPath;
+  if (maxOutputChars !== undefined) out.maxOutputChars = maxOutputChars;
   return out;
 }
 
@@ -216,9 +231,17 @@ if (res.output.type === "bytes") {
       : opts.bytesOutput === "utf8"
         ? bytesToUtf8(res.output.value)
         : [...res.output.value].map((b) => b.toString(16).padStart(2, "0")).join("");
-  process.stdout.write(out + "\n");
+  const printed =
+    opts.maxOutputChars !== undefined ? out.slice(0, opts.maxOutputChars) : out;
+  process.stdout.write(printed + "\n");
 } else if (res.output.type === "json") {
-  process.stdout.write(JSON.stringify(res.output.value, null, 2) + "\n");
+  const out = JSON.stringify(res.output.value, null, 2);
+  const printed =
+    opts.maxOutputChars !== undefined ? out.slice(0, opts.maxOutputChars) : out;
+  process.stdout.write(printed + "\n");
 } else {
-  process.stdout.write(String(res.output.value) + "\n");
+  const out = String(res.output.value);
+  const printed =
+    opts.maxOutputChars !== undefined ? out.slice(0, opts.maxOutputChars) : out;
+  process.stdout.write(printed + "\n");
 }

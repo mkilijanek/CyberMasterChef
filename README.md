@@ -73,6 +73,7 @@ Operations are grouped by package priority:
   - supports `--show-trace` and `--trace-json` for pipeline debugging in terminal
   - supports `--input-encoding text|hex|base64` for binary-oriented CLI runs
   - supports `--bytes-output hex|base64|utf8` to choose stdout format for byte outputs
+  - supports `--max-output-chars` for bounded stdout in scripts/CI
 - Quality baseline:
   - golden recipe regression suite for core operation chains in `packages/plugins-standard/test/goldenRecipes.test.ts`
 
