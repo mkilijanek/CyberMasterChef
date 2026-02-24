@@ -20,3 +20,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 10: `schtasks_create` - Scheduled task persistence
 - [x] Stage 11: `at_job_create` - Legacy at job persistence
 - [x] Stage 12: `reg_run_key` - Registry Run key persistence
+- [x] Stage 13: `reg_runonce_key` - Registry RunOnce persistence

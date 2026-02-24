@@ -17,4 +17,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "schtasks_create", description: "Scheduled task persistence", pattern: new RegExp("schtasks\\s+/create", "i") },
   { id: "at_job_create", description: "Legacy at job persistence", pattern: new RegExp("\\bat\\s+\\d{1,2}:\\d{2}", "i") },
   { id: "reg_run_key", description: "Registry Run key persistence", pattern: new RegExp("\\\\currentversion\\\\run", "i") },
+  { id: "reg_runonce_key", description: "Registry RunOnce persistence", pattern: new RegExp("\\\\currentversion\\\\runonce", "i") },
 ];
