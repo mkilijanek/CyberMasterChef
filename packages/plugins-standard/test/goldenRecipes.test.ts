@@ -47,6 +47,15 @@ const goldenCases: GoldenCase[] = [
     expected: "10.0.0.1\n172.16.0.2"
   },
   {
+    name: "Extract URLs from text",
+    input: "go https://a.example/x and http://b.example/y, then https://a.example/x",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "network.extractUrls" }]
+    },
+    expected: "https://a.example/x\nhttp://b.example/y"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {

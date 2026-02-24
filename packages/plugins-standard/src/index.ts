@@ -160,6 +160,7 @@ import { jsonMinify } from "./ops/jsonMinify.js";
 import { jsonBeautify } from "./ops/jsonBeautify.js";
 import { extractStrings } from "./ops/extractStrings.js";
 import { extractIPs } from "./ops/extractIPs.js";
+import { extractUrls } from "./ops/extractUrls.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -323,6 +324,7 @@ export const standardPlugin: Plugin = {
     registry.register(jsonBeautify);
     registry.register(extractStrings);
     registry.register(extractIPs);
+    registry.register(extractUrls);
     registry.register(sha256);
   }
 };

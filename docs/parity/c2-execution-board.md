@@ -36,7 +36,7 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 ## Wave 5 backlog
 
 - [x] `network.extractIPs` baseline IOC operation.
-- [ ] `network.extractUrls` baseline IOC operation.
+- [x] `network.extractUrls` baseline IOC operation.
 
 ## Quality gates
 
