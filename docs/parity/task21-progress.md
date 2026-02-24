@@ -143,3 +143,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 129: `etw_bypass_marker` - ETW bypass marker
 - [x] Stage 130: `reflective_loader_marker` - Reflective loader marker
 - [x] Stage 131: `shellcode_marker` - Shellcode marker keyword
+- [x] Stage 132: `xor_decoder_loop` - XOR decoder loop marker
