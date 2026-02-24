@@ -171,6 +171,7 @@ Operations are grouped by package priority:
   - `text.countNonEmptyLines`
   - `text.firstWord`
   - `text.lastWord`
+  - `text.removeCommas`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:

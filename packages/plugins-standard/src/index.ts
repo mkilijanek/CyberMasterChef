@@ -91,6 +91,7 @@ import { countNonAscii } from "./ops/countNonAscii.js";
 import { countNonEmptyLines } from "./ops/countNonEmptyLines.js";
 import { firstWord } from "./ops/firstWord.js";
 import { lastWord } from "./ops/lastWord.js";
+import { removeCommas } from "./ops/removeCommas.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -185,6 +186,7 @@ export const standardPlugin: Plugin = {
     registry.register(countNonEmptyLines);
     registry.register(firstWord);
     registry.register(lastWord);
+    registry.register(removeCommas);
     registry.register(sha256);
   }
 };
