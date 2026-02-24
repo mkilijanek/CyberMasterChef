@@ -60,6 +60,8 @@ CLI behavior:
 - `packages/cli` accepts native JSON directly.
 - If native parsing fails, it falls back to `importCyberChefRecipe`.
 - Unsupported CyberChef steps are reported on stderr as warnings.
+- `--timeout-ms <n>` bounds execution time in milliseconds.
+- `--strict-cyberchef` fails if CyberChef import would skip unsupported steps.
 
 ## Adding a new operation
 

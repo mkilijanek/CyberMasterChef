@@ -65,6 +65,7 @@ Operations are grouped by package priority:
 - CLI compatibility:
   - accepts native recipe JSON
   - falls back to CyberChef recipe import and prints warnings for unsupported steps
+  - supports `--timeout-ms` for bounded execution and `--strict-cyberchef` for strict import mode
 
 ## Getting started
 

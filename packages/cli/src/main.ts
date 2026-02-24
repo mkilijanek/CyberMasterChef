@@ -9,6 +9,8 @@ import {
 import { standardPlugin } from "@cybermasterchef/plugins-standard";
 import fs from "node:fs";
 
+const DEFAULT_TIMEOUT_MS = 10_000;
+
 function die(msg: string): never {
   process.stderr.write(msg + "\n");
   process.exit(1);
@@ -18,9 +20,13 @@ function warn(msg: string): void {
   process.stderr.write(`[warn] ${msg}\n`);
 }
 
-function parseRecipeAny(json: string): Recipe {
+function parseRecipeAny(json: string): {
+  recipe: Recipe;
+  source: "native" | "cyberchef";
+  warningCount: number;
+} {
   try {
-    return parseRecipe(json);
+    return { recipe: parseRecipe(json), source: "native", warningCount: 0 };
   } catch {
     const imported = importCyberChefRecipe(json);
     if (imported.warnings.length > 0) {
@@ -31,29 +37,92 @@ function parseRecipeAny(json: string): Recipe {
         warn(`step ${w.step + 1}: ${w.op} (${w.reason})`);
       }
     }
-    return imported.recipe;
+    return {
+      recipe: imported.recipe,
+      source: "cyberchef",
+      warningCount: imported.warnings.length
+    };
   }
 }
 
-const args = process.argv.slice(2);
-const recipePath = args[0];
-const inputPath = args[1];
+type CliOptions = {
+  recipePath: string;
+  inputPath?: string;
+  timeoutMs: number;
+  strictCyberChef: boolean;
+};
 
-if (!recipePath) {
-  die("Usage: cybermasterchef <recipe.json> [input.txt]\n  Reads input from stdin if [input.txt] is omitted.");
+function parseArgs(args: string[]): CliOptions {
+  let timeoutMs = DEFAULT_TIMEOUT_MS;
+  let strictCyberChef = false;
+  const positional: string[] = [];
+
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    if (!arg) continue;
+    if (arg === "--strict-cyberchef") {
+      strictCyberChef = true;
+      continue;
+    }
+    if (arg === "--timeout-ms") {
+      const raw = args[i + 1];
+      if (!raw) die("Missing value for --timeout-ms");
+      const parsed = Number(raw);
+      if (!Number.isFinite(parsed) || parsed <= 0) {
+        die(`Invalid --timeout-ms value: ${raw}`);
+      }
+      timeoutMs = parsed;
+      i++;
+      continue;
+    }
+    if (arg?.startsWith("--")) {
+      die(`Unknown option: ${arg}`);
+    }
+    positional.push(arg);
+  }
+
+  const recipePath = positional[0];
+  if (!recipePath) {
+    die(
+      "Usage: cybermasterchef <recipe.json> [input.txt] [--timeout-ms <n>] [--strict-cyberchef]\n" +
+        "  Reads input from stdin if [input.txt] is omitted."
+    );
+  }
+  const out: CliOptions = {
+    recipePath,
+    timeoutMs,
+    strictCyberChef
+  };
+  const inputPath = positional[1];
+  if (inputPath) out.inputPath = inputPath;
+  return out;
 }
 
-const recipeJson = fs.readFileSync(recipePath, "utf-8");
-const recipe = parseRecipeAny(recipeJson);
-const input = inputPath ? fs.readFileSync(inputPath, "utf-8") : fs.readFileSync(0, "utf-8");
+const opts = parseArgs(process.argv.slice(2));
+
+const recipeJson = fs.readFileSync(opts.recipePath, "utf-8");
+const parsedRecipe = parseRecipeAny(recipeJson);
+if (opts.strictCyberChef && parsedRecipe.source === "cyberchef" && parsedRecipe.warningCount > 0) {
+  die(
+    `Strict CyberChef mode failed: ${parsedRecipe.warningCount} unsupported step(s) were skipped.`
+  );
+}
+const input = opts.inputPath ? fs.readFileSync(opts.inputPath, "utf-8") : fs.readFileSync(0, "utf-8");
 
 const registry = new InMemoryRegistry();
 standardPlugin.register(registry);
 
+const controller = new AbortController();
+const timeoutHandle = setTimeout(() => {
+  controller.abort();
+}, opts.timeoutMs);
 const res = await runRecipe({
   registry,
-  recipe,
-  input: { type: "string", value: input }
+  recipe: parsedRecipe.recipe,
+  input: { type: "string", value: input },
+  signal: controller.signal
+}).finally(() => {
+  clearTimeout(timeoutHandle);
 });
 
 if (res.output.type === "bytes") {
