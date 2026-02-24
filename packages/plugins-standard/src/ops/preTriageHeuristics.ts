@@ -135,4 +135,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "amsi_bypass_marker", description: "AMSI bypass marker", pattern: new RegExp("amsiutils", "i") },
   { id: "etw_bypass_marker", description: "ETW bypass marker", pattern: new RegExp("eventprovider", "i") },
   { id: "reflective_loader_marker", description: "Reflective loader marker", pattern: new RegExp("reflective(pe)?loader", "i") },
+  { id: "shellcode_marker", description: "Shellcode marker keyword", pattern: new RegExp("shellcode", "i") },
 ];
