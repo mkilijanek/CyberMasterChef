@@ -178,6 +178,7 @@ Operations are grouped by package priority:
   - `text.removeHexChars`
   - `text.onlyPrintableAscii`
   - `text.removeControlChars`
+  - `text.collapseMultipleNewlines`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:

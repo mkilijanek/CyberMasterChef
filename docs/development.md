@@ -203,6 +203,7 @@ Example operation IDs in use:
 - `text.removeHexChars`
 - `text.onlyPrintableAscii`
 - `text.removeControlChars`
+- `text.collapseMultipleNewlines`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

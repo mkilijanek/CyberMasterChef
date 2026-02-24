@@ -98,6 +98,7 @@ import { keepHexChars } from "./ops/keepHexChars.js";
 import { removeHexChars } from "./ops/removeHexChars.js";
 import { onlyPrintableAscii } from "./ops/onlyPrintableAscii.js";
 import { removeControlChars } from "./ops/removeControlChars.js";
+import { collapseMultipleNewlines } from "./ops/collapseMultipleNewlines.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -199,6 +200,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeHexChars);
     registry.register(onlyPrintableAscii);
     registry.register(removeControlChars);
+    registry.register(collapseMultipleNewlines);
     registry.register(sha256);
   }
 };
