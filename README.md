@@ -110,6 +110,7 @@ Operations are grouped by package priority:
   - `text.padEnd`
   - `text.trimStart`
   - `text.trimEnd`
+  - `text.trimLines`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:

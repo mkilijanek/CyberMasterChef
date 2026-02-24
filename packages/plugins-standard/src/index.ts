@@ -42,6 +42,7 @@ import { toTitleCase } from "./ops/toTitleCase.js";
 import { reverseLines } from "./ops/reverseLines.js";
 import { sortLines } from "./ops/sortLines.js";
 import { uniqueLines } from "./ops/uniqueLines.js";
+import { trimLines } from "./ops/trimLines.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -87,6 +88,7 @@ export const standardPlugin: Plugin = {
     registry.register(reverseLines);
     registry.register(sortLines);
     registry.register(uniqueLines);
+    registry.register(trimLines);
     registry.register(sha256);
   }
 };
