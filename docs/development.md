@@ -138,6 +138,7 @@ Example operation IDs in use:
 - `text.trimLines`
 - `text.toSnakeCase`
 - `text.toKebabCase`
+- `text.toCamelCase`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
