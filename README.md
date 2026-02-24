@@ -162,6 +162,7 @@ Operations are grouped by package priority:
   - `text.removeDoubleQuotes`
   - `text.removeSingleQuotes`
   - `text.replaceNewlinesWithSpace`
+  - `text.replaceSpacesWithNewlines`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:

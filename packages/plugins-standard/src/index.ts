@@ -82,6 +82,7 @@ import { stripAccents } from "./ops/stripAccents.js";
 import { removeDoubleQuotes } from "./ops/removeDoubleQuotes.js";
 import { removeSingleQuotes } from "./ops/removeSingleQuotes.js";
 import { replaceNewlinesWithSpace } from "./ops/replaceNewlinesWithSpace.js";
+import { replaceSpacesWithNewlines } from "./ops/replaceSpacesWithNewlines.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -167,6 +168,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeDoubleQuotes);
     registry.register(removeSingleQuotes);
     registry.register(replaceNewlinesWithSpace);
+    registry.register(replaceSpacesWithNewlines);
     registry.register(sha256);
   }
 };
