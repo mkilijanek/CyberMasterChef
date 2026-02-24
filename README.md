@@ -57,7 +57,7 @@ Operations are grouped by package priority:
   - workspace reset action (recipe + IO + trace)
   - recipe import/export (native JSON and CyberChef-compatible JSON)
   - detailed import warnings for skipped CyberChef steps (step index + operation + reason)
-  - local persistence for recipe, input, and auto-bake preference
+  - local persistence for recipe, input, auto-bake preference and operation search query
 - Built-in operations (`@cybermasterchef/plugins-standard`):
   - `codec.toBase64`, `codec.fromBase64`
   - `codec.toHex`, `codec.fromHex`

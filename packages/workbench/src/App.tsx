@@ -78,7 +78,9 @@ function loadInitialState(): SharedState {
 export function App(): React.JSX.Element {
   const { t } = useTranslation();
   const initial = React.useMemo(() => loadInitialState(), []);
-  const [catalogQuery, setCatalogQuery] = React.useState("");
+  const [catalogQuery, setCatalogQuery] = React.useState<string>(
+    () => localStorage.getItem("catalogQuery.v1") ?? ""
+  );
   const [recipe, setRecipe] = React.useState<Recipe>(initial.recipe);
   const [input, setInput] = React.useState<string>(initial.input);
   const [autoBake, setAutoBake] = React.useState<boolean>(() => {
@@ -109,10 +111,11 @@ export function App(): React.JSX.Element {
     localStorage.setItem("input.v1", input);
     localStorage.setItem("autobake.v1", autoBake ? "1" : "0");
     localStorage.setItem("timeoutMs.v1", String(timeoutMs));
+    localStorage.setItem("catalogQuery.v1", catalogQuery);
 
     const shared = toBase64Url(JSON.stringify({ recipe, input }));
     window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${HASH_PREFIX}${shared}`);
-  }, [autoBake, input, recipe, timeoutMs]);
+  }, [autoBake, catalogQuery, input, recipe, timeoutMs]);
 
   const executeRecipe = React.useCallback(async (recipeToRun: Recipe): Promise<void> => {
     sandboxRef.current?.cancelActive();
