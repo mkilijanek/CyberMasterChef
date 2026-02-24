@@ -1,0 +1,80 @@
+:root {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.3;
+  font-size: 14px;
+}
+body { margin: 0; }
+.layout { display: flex; flex-direction: column; height: 100vh; }
+.header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid #ddd;
+}
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1.2fr;
+  gap: 12px;
+  padding: 12px;
+  flex: 1;
+  min-height: 0;
+}
+.panel {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 6px;
+  min-height: 0;
+  overflow: auto;
+}
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 8px;
+  margin: 6px 0 10px 0;
+}
+.textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 160px;
+  padding: 8px;
+  resize: vertical;
+}
+.button { padding: 6px 10px; }
+.buttonSmall { padding: 4px 8px; }
+.list { list-style: none; padding: 0; margin: 0; }
+.listItem { border-top: 1px solid #eee; padding: 8px 0; }
+.opTitle { font-weight: 600; }
+.opDesc { opacity: 0.8; margin: 4px 0; }
+.recipeList { padding-left: 18px; }
+.step { padding: 6px 0; border-bottom: 1px solid #eee; }
+.selected { background: #f7f7f7; }
+.stepActions { display: flex; gap: 6px; margin: 6px 0; }
+.link {
+  border: none;
+  background: none;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+.io { display: flex; flex-direction: column; gap: 10px; }
+.ioBlock { display: flex; flex-direction: column; gap: 6px; }
+.ioTitle { font-weight: 600; }
+.argsBox {
+  border: 1px dashed #ccc;
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+.args { display: flex; flex-direction: column; gap: 8px; }
+.argRow { display: flex; gap: 8px; align-items: center; }
+.argLabel { width: 120px; }
+.muted { opacity: 0.7; }
+.status { margin-left: auto; opacity: 0.8; }
+.error {
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px solid #f2b8b5;
+  background: #fff4f4;
+  border-radius: 6px;
+}

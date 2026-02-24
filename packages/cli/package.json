@@ -1,0 +1,17 @@
+{
+  "name": "@cybermasterchef/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "cybermasterchef": "./dist/main.js"
+  },
+  "dependencies": {
+    "@cybermasterchef/core": "workspace:*",
+    "@cybermasterchef/plugins-standard": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint ."
+  }
+}
