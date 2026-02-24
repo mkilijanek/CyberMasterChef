@@ -182,6 +182,17 @@ export function App(): React.JSX.Element {
     }
   }
 
+  function resetWorkspace(): void {
+    if (!window.confirm(t("resetConfirm"))) return;
+    setRecipe(emptyRecipe());
+    setInput("");
+    setOutput("");
+    setTrace([]);
+    setImportWarnings([]);
+    setError(null);
+    setStatus("ready");
+  }
+
   function cancelRun(): void {
     sandboxRef.current?.cancelActive();
   }
@@ -292,6 +303,9 @@ export function App(): React.JSX.Element {
         </button>
         <button className="buttonSmall" onClick={() => void copyOutput()}>
           {t("copyOutput")}
+        </button>
+        <button className="buttonSmall" onClick={() => resetWorkspace()}>
+          {t("reset")}
         </button>
         <div className="status" aria-live="polite">
           {status === "working" ? t("statusWorking") : t("statusReady")}
