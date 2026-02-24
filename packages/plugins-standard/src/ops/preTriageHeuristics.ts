@@ -145,4 +145,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "virtualalloc_exec", description: "Executable memory allocation marker", pattern: new RegExp("virtualalloc", "i") },
   { id: "writeprocessmemory_call", description: "WriteProcessMemory marker", pattern: new RegExp("writeprocessmemory", "i") },
   { id: "ntqueueapcthread_call", description: "NtQueueApcThread marker", pattern: new RegExp("ntqueueapcthread", "i") },
+  { id: "syscall_stub_marker", description: "Direct syscall marker", pattern: new RegExp("syscall\\s*stub", "i") },
 ];
