@@ -32,6 +32,7 @@ const usageText =
   "Options:\n" +
   "  --timeout-ms <n>                  execution timeout in milliseconds\n" +
   "  --strict-cyberchef               fail if CyberChef import skips steps\n" +
+  "  --dry-run                        validate recipe and exit without execution\n" +
   "  --fail-on-warning                fail if import warnings are emitted\n" +
   "  --quiet-warnings                 suppress warning output on stderr\n" +
   "  --print-recipe-source            print detected recipe source to stderr\n" +
@@ -84,6 +85,7 @@ type CliOptions = {
   inputPath?: string;
   timeoutMs: number;
   strictCyberChef: boolean;
+  dryRun: boolean;
   failOnWarning: boolean;
   quietWarnings: boolean;
   printRecipeSource: boolean;
@@ -108,6 +110,7 @@ type CliOptions = {
 function parseArgs(args: string[]): CliOptions {
   let timeoutMs = DEFAULT_TIMEOUT_MS;
   let strictCyberChef = false;
+  let dryRun = false;
   let failOnWarning = false;
   let quietWarnings = false;
   let printRecipeSource = false;
@@ -138,6 +141,10 @@ function parseArgs(args: string[]): CliOptions {
     }
     if (arg === "--fail-on-warning") {
       failOnWarning = true;
+      continue;
+    }
+    if (arg === "--dry-run") {
+      dryRun = true;
       continue;
     }
     if (arg === "--quiet-warnings") {
@@ -282,6 +289,7 @@ function parseArgs(args: string[]): CliOptions {
     recipePath: recipePath ?? "",
     timeoutMs,
     strictCyberChef,
+    dryRun,
     failOnWarning,
     quietWarnings,
     printRecipeSource,
@@ -351,6 +359,12 @@ if (opts.strictCyberChef && parsedRecipe.source === "cyberchef" && parsedRecipe.
 }
 if (opts.failOnWarning && parsedRecipe.warningCount > 0) {
   die(`Execution failed due to warnings: ${parsedRecipe.warningCount}`);
+}
+if (opts.dryRun) {
+  process.stderr.write(
+    `[dry-run] steps=${parsedRecipe.recipe.steps.length} source=${parsedRecipe.source} warnings=${parsedRecipe.warningCount}\n`
+  );
+  process.exit(0);
 }
 const input = opts.inputPath ? readFileSync(opts.inputPath, "utf-8") : readFileSync(0, "utf-8");
 const inputValue: DataValue =

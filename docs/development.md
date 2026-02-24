@@ -67,6 +67,7 @@ CLI behavior:
 - Unsupported CyberChef steps are reported on stderr as warnings.
 - `--timeout-ms <n>` bounds execution time in milliseconds.
 - `--strict-cyberchef` fails if CyberChef import would skip unsupported steps.
+- `--dry-run` validates recipe parsing/import and exits before execution.
 - `--fail-on-warning` fails execution when any import warning is emitted.
 - `--quiet-warnings` suppresses warning lines from import fallback.
 - `--print-recipe-source` prints whether recipe was parsed as `native` or `cyberchef`.

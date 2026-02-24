@@ -99,6 +99,7 @@ Operations are grouped by package priority:
   - accepts native recipe JSON
   - falls back to CyberChef recipe import and prints warnings for unsupported steps
   - supports `--timeout-ms` for bounded execution and `--strict-cyberchef` for strict import mode
+  - supports `--dry-run` to validate recipe import/shape without running steps
   - supports `--fail-on-warning` to make imports with warnings fail in CI pipelines
   - supports `--quiet-warnings` to keep stderr clean in scripted runs
   - supports `--print-recipe-source` to audit parser path in automation
