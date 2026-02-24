@@ -95,6 +95,7 @@ export function App(): React.JSX.Element {
   const [output, setOutput] = React.useState<string>("");
   const [trace, setTrace] = React.useState<TraceRow[]>([]);
   const [lastRunMs, setLastRunMs] = React.useState<number | null>(null);
+  const [lastImportSource, setLastImportSource] = React.useState<"native" | "cyberchef" | null>(null);
   const [status, setStatus] = React.useState<Status>("ready");
   const [error, setError] = React.useState<string | null>(null);
   const [importWarnings, setImportWarnings] = React.useState<RecipeImportWarning[]>([]);
@@ -123,6 +124,7 @@ export function App(): React.JSX.Element {
     setStatus("working");
     setError(null);
     setImportWarnings([]);
+    setLastImportSource(null);
     setTrace([]);
     setLastRunMs(null);
     const startedAt = performance.now();
@@ -272,10 +274,12 @@ export function App(): React.JSX.Element {
       let warnings: RecipeImportWarning[] = [];
       try {
         parsed = parseRecipe(raw);
+        setLastImportSource("native");
       } catch {
         const imported = importCyberChefRecipe(raw);
         parsed = imported.recipe;
         warnings = imported.warnings;
+        setLastImportSource("cyberchef");
       }
       setRecipe(parsed);
       setImportWarnings(warnings);
@@ -407,6 +411,14 @@ export function App(): React.JSX.Element {
                   </li>
                 ))}
               </ul>
+            </div>
+          ) : null}
+          {lastImportSource ? (
+            <div className="muted">
+              {t("lastImportSource")}:{" "}
+              {lastImportSource === "cyberchef"
+                ? t("importSourceCyberChef")
+                : t("importSourceNative")}
             </div>
           ) : null}
           <div className="traceBox">
