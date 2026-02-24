@@ -188,6 +188,7 @@ Wave 1 implemented so far:
 - Wave 7 forensic: `forensic.extractDomains`
 - Wave 8 data-format: `format.jsonSortKeys`
 - Wave 8 data-format: `format.jsonExtractKeys`
+- Wave 9 forensic hash: `forensic.extractMd5`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip
 

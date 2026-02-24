@@ -56,6 +56,11 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 - [x] `format.jsonSortKeys` canonicalization operation.
 - [x] `format.jsonExtractKeys` inspection operation.
 
+## Wave 9 backlog
+
+- [x] `forensic.extractMd5` hash IOC operation.
+- [ ] `forensic.extractSha256` hash IOC operation.
+
 ## Quality gates
 
 - New operation must include:

@@ -71,6 +71,7 @@ Operations are grouped by package priority:
 - Wave 7 forensic expansion adds `forensic.extractDomains`.
 - Wave 8 data-format expansion adds `format.jsonSortKeys`.
 - Wave 8 data-format expansion adds `format.jsonExtractKeys`.
+- Wave 9 forensic hash expansion adds `forensic.extractMd5`.
 - C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
 
 ## Current functionality
@@ -268,6 +269,7 @@ Operations are grouped by package priority:
   - `forensic.extractStrings`
   - `forensic.extractEmails`
   - `forensic.extractDomains`
+  - `forensic.extractMd5`
   - `network.extractIPs`
   - `network.extractUrls`
   - `network.defangUrls`

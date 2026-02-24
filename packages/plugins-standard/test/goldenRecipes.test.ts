@@ -140,6 +140,15 @@ const goldenCases: GoldenCase[] = [
     expected: "user\nuser.id\nuser.roles\nuser.roles[0]\nuser.roles[0].name"
   },
   {
+    name: "Extract MD5 IOCs",
+    input: "hash=d41d8cd98f00b204e9800998ecf8427e dup=D41D8CD98F00B204E9800998ECF8427E",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "forensic.extractMd5" }]
+    },
+    expected: "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {

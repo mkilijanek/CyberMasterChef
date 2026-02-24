@@ -3,6 +3,7 @@ import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core"
 import { extractStrings } from "../src/ops/extractStrings.js";
 import { extractEmails } from "../src/ops/extractEmails.js";
 import { extractDomains } from "../src/ops/extractDomains.js";
+import { extractMd5 } from "../src/ops/extractMd5.js";
 
 describe("forensic operations", () => {
   it("extracts printable strings from bytes", async () => {
@@ -72,6 +73,25 @@ describe("forensic operations", () => {
     expect(out.output).toEqual({
       type: "string",
       value: "portal.example.com\nexample.com\nmirror.test.io"
+    });
+  });
+
+  it("extracts unique MD5 hashes", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(extractMd5);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "forensic.extractMd5" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: {
+        type: "string",
+        value:
+          "d41d8cd98f00b204e9800998ecf8427e and D41D8CD98F00B204E9800998ECF8427E and zzzz"
+      }
+    });
+    expect(out.output).toEqual({
+      type: "string",
+      value: "d41d8cd98f00b204e9800998ecf8427e"
     });
   });
 });
