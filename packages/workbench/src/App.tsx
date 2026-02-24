@@ -298,7 +298,11 @@ export function App(): React.JSX.Element {
               if (!Number.isFinite(raw)) return;
               setTimeoutMs(Math.min(MAX_TIMEOUT_MS, Math.max(MIN_TIMEOUT_MS, raw)));
             }}
+            onBlur={() => {
+              setTimeoutMs((v) => Math.min(MAX_TIMEOUT_MS, Math.max(MIN_TIMEOUT_MS, v)));
+            }}
           />
+          <span className="muted">{t("timeoutRange")}</span>
         </label>
         <button
           className="buttonSmall"

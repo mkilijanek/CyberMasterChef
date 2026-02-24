@@ -25,6 +25,7 @@
   "copyPrompt": "Skopiuj ten JSON:",
   "run": "Uruchom",
   "timeoutMs": "Timeout (ms)",
+  "timeoutRange": "(100-120000)",
   "add": "Dodaj",
   "remove": "Usuń",
   "runToStep": "Uruchom do kroku",

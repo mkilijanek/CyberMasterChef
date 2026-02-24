@@ -36,6 +36,7 @@ All recipe execution happens inside a Web Worker:
 - Hard abort via `AbortSignal`
 - Cancellable runs via worker `cancel` message
 - Per-run timeout (default 10s in workbench, user-configurable) wired from UI -> client -> worker -> engine signal
+- Workbench enforces timeout bounds (`100..120000 ms`) to avoid invalid runtime settings
 - Client-side worker lifecycle cleanup on unmount (`dispose`) to prevent pending-request leaks
 
 ## Workbench UX (current)
