@@ -35,3 +35,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 25: `iso_archive_drop` - ISO archive payload
 - [x] Stage 26: `img_archive_drop` - IMG disk image payload
 - [x] Stage 27: `rar_archive_drop` - RAR archive payload
+- [x] Stage 28: `7z_archive_drop` - 7z archive payload
