@@ -150,6 +150,7 @@ Operations are grouped by package priority:
   - `text.surroundBrackets`
   - `text.surroundQuotes`
   - `text.rot13`
+  - `text.maskDigits`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
