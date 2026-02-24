@@ -27,7 +27,12 @@ async function sha256Hex(bytes: Uint8Array): Promise<string> {
   if (!globalThis.crypto?.subtle) {
     throw new Error("WebCrypto subtle API is not available");
   }
-  const digest = await globalThis.crypto.subtle.digest("SHA-256", bytes);
+  const src = bytes.buffer;
+  const buffer =
+    src instanceof ArrayBuffer
+      ? src.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength)
+      : Uint8Array.from(bytes).buffer;
+  const digest = await globalThis.crypto.subtle.digest("SHA-256", buffer);
   return bytesToHex(new Uint8Array(digest));
 }
 

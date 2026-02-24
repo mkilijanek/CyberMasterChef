@@ -19,7 +19,15 @@ import { IOPane } from "./components/IOPane";
 
 type Status = "ready" | "working" | "error";
 type SharedState = { recipe: Recipe; input: string };
-type TraceRow = { step: number; opId: string; inputType: string; outputType: string };
+type TraceRow = { step: number; opId: string; inputType: string; outputType: string; durationMs: number };
+type RunInfo = {
+  runId: string;
+  startedAt: number;
+  endedAt: number;
+  durationMs: number;
+  recipeHash: string;
+  inputHash: string;
+};
 
 const HASH_PREFIX = "#state=";
 const DEFAULT_TIMEOUT_MS = 10_000;
@@ -100,6 +108,7 @@ export function App(): React.JSX.Element {
   const [output, setOutput] = React.useState<string>("");
   const [trace, setTrace] = React.useState<TraceRow[]>([]);
   const [lastRunMs, setLastRunMs] = React.useState<number | null>(null);
+  const [lastRunInfo, setLastRunInfo] = React.useState<RunInfo | null>(null);
   const [lastImportSource, setLastImportSource] = React.useState<"native" | "cyberchef" | null>(null);
   const [status, setStatus] = React.useState<Status>("ready");
   const [error, setError] = React.useState<string | null>(null);
@@ -153,6 +162,7 @@ export function App(): React.JSX.Element {
     setLastImportSource(null);
     setTrace([]);
     setLastRunMs(null);
+    setLastRunInfo(null);
     const startedAt = performance.now();
     try {
       const inVal: DataValue = { type: "string", value: input };
@@ -161,6 +171,7 @@ export function App(): React.JSX.Element {
       });
       setTrace(res.trace);
       setLastRunMs(Math.round(performance.now() - startedAt));
+      setLastRunInfo(res.run);
       if (res.output.type === "bytes") {
         const hex = [...res.output.value]
           .map((b) => b.toString(16).padStart(2, "0"))
@@ -298,6 +309,7 @@ export function App(): React.JSX.Element {
     setTrace([]);
     setTraceQuery("");
     setLastRunMs(null);
+    setLastRunInfo(null);
   }
 
   function cancelRun(): void {
@@ -443,6 +455,15 @@ export function App(): React.JSX.Element {
         <div className="traceCount">
           {t("runDurationMs")}: {lastRunMs ?? "-"}
         </div>
+        <div className="traceCount">
+          {t("runId")}: {lastRunInfo ? lastRunInfo.runId.slice(0, 8) : "-"}
+        </div>
+        <div className="traceCount">
+          {t("recipeHashShort")}: {lastRunInfo ? lastRunInfo.recipeHash.slice(0, 12) : "-"}
+        </div>
+        <div className="traceCount">
+          {t("inputHashShort")}: {lastRunInfo ? lastRunInfo.inputHash.slice(0, 12) : "-"}
+        </div>
         <div className="status" aria-live="polite">
           {status === "working" ? t("statusWorking") : t("statusReady")}
         </div>
@@ -530,7 +551,7 @@ export function App(): React.JSX.Element {
                     </strong>{" "}
                     <code>{row.opId}</code>{" "}
                     <span className="muted">
-                      ({row.inputType} -&gt; {row.outputType})
+                      ({row.inputType} -&gt; {row.outputType}, {row.durationMs} ms)
                     </span>
                     <button
                       className="buttonSmall traceButton"

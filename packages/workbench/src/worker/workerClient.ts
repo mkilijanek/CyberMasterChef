@@ -11,7 +11,15 @@ export class SandboxClient {
     {
       resolve: (value: {
         output: DataValue;
-        trace: Array<{ step: number; opId: string; inputType: string; outputType: string }>;
+        trace: Array<{ step: number; opId: string; inputType: string; outputType: string; durationMs: number }>;
+        run: {
+          runId: string;
+          startedAt: number;
+          endedAt: number;
+          durationMs: number;
+          recipeHash: string;
+          inputHash: string;
+        };
       }) => void;
       reject: (reason?: unknown) => void;
     }
@@ -29,7 +37,7 @@ export class SandboxClient {
       this.pending.delete(msg.id);
       if (this.activeId === msg.id) this.activeId = null;
       if (msg.type === "result") {
-        handler.resolve({ output: msg.output, trace: msg.trace });
+        handler.resolve({ output: msg.output, trace: msg.trace, run: msg.run });
       } else {
         handler.reject(new Error(msg.message));
       }
@@ -59,7 +67,15 @@ export class SandboxClient {
     opts?: { timeoutMs?: number }
   ): Promise<{
     output: DataValue;
-    trace: Array<{ step: number; opId: string; inputType: string; outputType: string }>;
+    trace: Array<{ step: number; opId: string; inputType: string; outputType: string; durationMs: number }>;
+    run: {
+      runId: string;
+      startedAt: number;
+      endedAt: number;
+      durationMs: number;
+      recipeHash: string;
+      inputHash: string;
+    };
   }> {
     if (this.disposed) throw new Error("SandboxClient is disposed");
     await this.init();
