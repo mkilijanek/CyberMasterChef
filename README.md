@@ -64,6 +64,7 @@ Operations are grouped by package priority:
   - deep-link sharing (`#state=` hash with recipe + input)
   - quick input/output copy actions in UI
   - quick trace copy action in UI
+  - quick filtered-trace copy action in UI
   - quick recipe JSON copy action in UI
   - clear-trace action without resetting recipe/input
   - workspace reset action (recipe + IO + trace)

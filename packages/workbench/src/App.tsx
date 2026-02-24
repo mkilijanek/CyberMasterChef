@@ -250,6 +250,15 @@ export function App(): React.JSX.Element {
     }
   }
 
+  async function copyFilteredTrace(): Promise<void> {
+    const payload = JSON.stringify(filteredTrace, null, 2);
+    const copied = await copyText(payload);
+    if (!copied) {
+      setError(t("copyFilteredTraceFailed"));
+      setStatus("error");
+    }
+  }
+
   async function copyRecipeJson(): Promise<void> {
     const payload = stringifyRecipe(recipe);
     const copied = await copyText(payload);
@@ -397,6 +406,9 @@ export function App(): React.JSX.Element {
         </button>
         <button className="buttonSmall" onClick={() => void copyTrace()}>
           {t("copyTrace")}
+        </button>
+        <button className="buttonSmall" onClick={() => void copyFilteredTrace()}>
+          {t("copyFilteredTrace")}
         </button>
         <button className="buttonSmall" onClick={() => void copyRecipeJson()}>
           {t("copyRecipe")}
