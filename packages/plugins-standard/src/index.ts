@@ -30,6 +30,7 @@ import { normalizeWhitespace } from "./ops/normalizeWhitespace.js";
 import { removeBlankLines } from "./ops/removeBlankLines.js";
 import { startsWith } from "./ops/startsWith.js";
 
+import { swapCase } from "./ops/swapCase.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -63,6 +64,7 @@ export const standardPlugin: Plugin = {
     registry.register(normalizeWhitespace);
     registry.register(removeBlankLines);
     registry.register(startsWith);
+    registry.register(swapCase);
     registry.register(sha256);
   }
 };

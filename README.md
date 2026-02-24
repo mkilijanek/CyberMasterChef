@@ -14,6 +14,7 @@ packages/
 
 ### Key design decisions
 
+- 
 - **TypeScript strict** throughout — no `any`, full type safety
 - **pnpm workspaces** — deduplication, supply-chain controls
 - **Plugin model** — operations are isolated packages; `core` has no op-specific code

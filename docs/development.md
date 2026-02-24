@@ -22,6 +22,7 @@ pnpm ci          # lint + typecheck + test + build
 ## Supply chain (pnpm v10)
 
 Consider enabling in `.npmrc`:
+- 
 - `allow-builds` / allowlist for trusted native deps
 - `minimumReleaseAge` to delay freshly published packages
 - `trustPolicy` for workspace packages
