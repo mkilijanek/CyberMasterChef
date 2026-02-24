@@ -246,6 +246,7 @@ Example operation IDs in use:
 - `text.countSemicolons`
 - `text.countSlashes`
 - `text.countBackslashes`
+- `text.countPluses`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
