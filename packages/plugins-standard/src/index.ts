@@ -22,6 +22,7 @@ import { padEnd } from "./ops/padEnd.js";
 import { trimStart } from "./ops/trimStart.js";
 import { trimEnd } from "./ops/trimEnd.js";
 import { length } from "./ops/length.js";
+import { wordCount } from "./ops/wordCount.js";
 
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
@@ -49,6 +50,7 @@ export const standardPlugin: Plugin = {
     registry.register(trimStart);
     registry.register(trimEnd);
     registry.register(length);
+    registry.register(wordCount);
     registry.register(sha256);
   }
 };

@@ -79,6 +79,7 @@ Operations are grouped by package priority:
   - `text.prepend`
   - `text.append`
   - `text.length`
+  - `text.wordCount`
   - `text.replace`
   - `text.slice`
   - `text.repeat`

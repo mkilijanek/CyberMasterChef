@@ -31,7 +31,8 @@ describe("standardPlugin", () => {
       "text.trim",
       "text.trimEnd",
       "text.trimStart",
-      "text.uppercase"
+      "text.uppercase",
+      "text.wordCount"
     ]);
   });
 
