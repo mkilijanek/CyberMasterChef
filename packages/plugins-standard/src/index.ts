@@ -87,6 +87,7 @@ import { tabsToSingleSpace } from "./ops/tabsToSingleSpace.js";
 import { countUppercase } from "./ops/countUppercase.js";
 import { countLowercase } from "./ops/countLowercase.js";
 import { countAscii } from "./ops/countAscii.js";
+import { countNonAscii } from "./ops/countNonAscii.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -177,6 +178,7 @@ export const standardPlugin: Plugin = {
     registry.register(countUppercase);
     registry.register(countLowercase);
     registry.register(countAscii);
+    registry.register(countNonAscii);
     registry.register(sha256);
   }
 };

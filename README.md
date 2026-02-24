@@ -167,6 +167,7 @@ Operations are grouped by package priority:
   - `text.countUppercase`
   - `text.countLowercase`
   - `text.countAscii`
+  - `text.countNonAscii`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
