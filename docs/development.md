@@ -143,6 +143,7 @@ Example operation IDs in use:
 - `text.compactLines`
 - `text.reverseWords`
 - `text.sortWords`
+- `text.uniqueWords`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

@@ -118,6 +118,7 @@ Operations are grouped by package priority:
   - `text.compactLines`
   - `text.reverseWords`
   - `text.sortWords`
+  - `text.uniqueWords`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
