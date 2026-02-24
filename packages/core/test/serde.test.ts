@@ -29,6 +29,7 @@ describe("serde", () => {
       recipe: [
         { op: "To Base64", args: [] },
         { op: "To Binary", args: ["-"] },
+        { op: "Find / Replace", args: ["aa", "bb", true] },
         { op: "Not Implemented", args: [] }
       ]
     };
@@ -36,7 +37,8 @@ describe("serde", () => {
 
     expect(imported.recipe.steps).toEqual([
       { opId: "codec.toBase64", args: {} },
-      { opId: "codec.toBinary", args: { delimiter: "-" } }
+      { opId: "codec.toBinary", args: { delimiter: "-" } },
+      { opId: "text.replace", args: { find: "aa", replace: "bb", all: true } }
     ]);
     expect(imported.warnings).toHaveLength(1);
     expect(imported.warnings[0]?.op).toBe("Not Implemented");
@@ -73,13 +75,15 @@ describe("serde", () => {
       version: 1,
       steps: [
         { opId: "codec.toBase64", args: {} },
-        { opId: "codec.toBinary", args: { delimiter: "|" } }
+        { opId: "codec.toBinary", args: { delimiter: "|" } },
+        { opId: "text.replace", args: { find: "x", replace: "y", all: false } }
       ]
     });
     const parsed = JSON.parse(out) as { recipe: Array<{ op: string; args: unknown[] }> };
 
     expect(parsed.recipe[0]).toEqual({ op: "To Base64", args: [] });
     expect(parsed.recipe[1]).toEqual({ op: "To Binary", args: ["|"] });
+    expect(parsed.recipe[2]).toEqual({ op: "Find / Replace", args: ["x", "y", false] });
   });
 
   it("round-trips selected operations via CyberChef format", () => {
@@ -88,6 +92,10 @@ describe("serde", () => {
       steps: [
         { opId: "codec.toHex", args: {} },
         { opId: "codec.fromHex", args: {} },
+        { opId: "text.lowercase", args: {} },
+        { opId: "text.uppercase", args: {} },
+        { opId: "text.trim", args: {} },
+        { opId: "text.replace", args: { find: "A", replace: "B", all: true } },
         { opId: "text.reverse", args: {} }
       ]
     };

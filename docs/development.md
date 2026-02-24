@@ -81,6 +81,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
   - `exportCyberChefRecipe(recipe)` -> CyberChef-compatible JSON
 - Import behavior:
   - unsupported CyberChef steps are skipped and reported as warnings
+  - args mapping covers text transforms for `To Lower case`, `To Upper case`, `Trim`, `Find / Replace`
   - import fails if no compatible operations remain (covered by serde tests)
 - Workbench import UX:
   - shows warning summary and per-step warning details (`step`, `op`, `reason`)

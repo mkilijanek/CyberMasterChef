@@ -25,7 +25,11 @@ const cyberChefToNativeMap: Record<string, string> = {
   "URL Encode": "codec.urlEncode",
   "URL Decode": "codec.urlDecode",
   "SHA2-256": "hash.sha256",
-  Reverse: "text.reverse"
+  Reverse: "text.reverse",
+  "To Lower case": "text.lowercase",
+  "To Upper case": "text.uppercase",
+  Trim: "text.trim",
+  "Find / Replace": "text.replace"
 };
 
 const nativeToCyberChefMap: Record<string, string> = Object.fromEntries(
@@ -101,6 +105,11 @@ export function importCyberChefRecipe(json: string): {
     if (mapped === "codec.toBinary" && rawArgs.length > 0 && typeof rawArgs[0] === "string") {
       args.delimiter = rawArgs[0];
     }
+    if (mapped === "text.replace") {
+      if (typeof rawArgs[0] === "string") args.find = rawArgs[0];
+      if (typeof rawArgs[1] === "string") args.replace = rawArgs[1];
+      if (typeof rawArgs[2] === "boolean") args.all = rawArgs[2];
+    }
 
     steps.push({ opId: mapped, args });
   }
@@ -120,6 +129,12 @@ export function exportCyberChefRecipe(recipe: Recipe): string {
         const delimiter =
           typeof step.args?.delimiter === "string" ? step.args.delimiter : " ";
         return { op, args: [delimiter] };
+      }
+      if (step.opId === "text.replace") {
+        const find = typeof step.args?.find === "string" ? step.args.find : "";
+        const replace = typeof step.args?.replace === "string" ? step.args.replace : "";
+        const all = typeof step.args?.all === "boolean" ? step.args.all : true;
+        return { op, args: [find, replace, all] };
       }
       return { op, args: [] };
     })
