@@ -30,6 +30,7 @@ export class WorkerPoolClient implements ExecutionClient {
   private readonly queue: QueueTask[] = [];
   private readonly maxQueue: number;
   private maxQueueDepthObserved = 0;
+  private queueOverflowCount = 0;
   private disposed = false;
 
   constructor(opts?: {
@@ -63,6 +64,7 @@ export class WorkerPoolClient implements ExecutionClient {
     const priority = opts?.priority ?? "normal";
     return await new Promise<BakeResult>((resolve, reject) => {
       if (this.queue.length >= this.maxQueue) {
+        this.queueOverflowCount++;
         reject(new Error(`Worker queue limit exceeded (${this.maxQueue})`));
         return;
       }
@@ -139,7 +141,8 @@ export class WorkerPoolClient implements ExecutionClient {
             queueDepthAtEnqueue: task.queueDepthAtEnqueue,
             queueDepthAtStart,
             maxQueueDepthObserved: this.maxQueueDepthObserved,
-            inFlightAtStart
+            inFlightAtStart,
+            queueOverflowCount: this.queueOverflowCount
           }
         });
       })

@@ -20,6 +20,7 @@ export type BakeResult = {
     queueDepthAtStart?: number;
     maxQueueDepthObserved?: number;
     inFlightAtStart?: number;
+    queueOverflowCount?: number;
   };
 };
 
