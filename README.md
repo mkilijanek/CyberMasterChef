@@ -141,6 +141,7 @@ Operations are grouped by package priority:
   - `text.removePunctuation`
   - `text.keepPunctuation`
   - `text.collapseDashes`
+  - `text.collapseUnderscores`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
