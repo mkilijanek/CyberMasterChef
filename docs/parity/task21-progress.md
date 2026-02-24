@@ -145,3 +145,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 131: `shellcode_marker` - Shellcode marker keyword
 - [x] Stage 132: `xor_decoder_loop` - XOR decoder loop marker
 - [x] Stage 133: `rc4_decoder_marker` - RC4 decoder marker
+- [x] Stage 134: `aes_decoder_marker` - AES decoder marker
