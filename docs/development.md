@@ -99,6 +99,7 @@ Example operation IDs in use:
 - `text.append`
 - `text.replace`
 - `text.slice`
+- `text.repeat`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

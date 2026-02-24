@@ -76,6 +76,7 @@ Operations are grouped by package priority:
   - `text.append`
   - `text.replace`
   - `text.slice`
+  - `text.repeat`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:

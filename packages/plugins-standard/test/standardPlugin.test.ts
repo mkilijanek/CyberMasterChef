@@ -21,6 +21,7 @@ describe("standardPlugin", () => {
       "text.append",
       "text.lowercase",
       "text.prepend",
+      "text.repeat",
       "text.replace",
       "text.reverse",
       "text.slice",

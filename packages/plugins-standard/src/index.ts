@@ -16,6 +16,7 @@ import { prepend } from "./ops/prepend.js";
 import { append } from "./ops/append.js";
 import { replace } from "./ops/replace.js";
 import { slice } from "./ops/slice.js";
+import { repeat } from "./ops/repeat.js";
 
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
@@ -37,6 +38,7 @@ export const standardPlugin: Plugin = {
     registry.register(append);
     registry.register(replace);
     registry.register(slice);
+    registry.register(repeat);
     registry.register(sha256);
   }
 };
