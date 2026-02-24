@@ -46,6 +46,7 @@ import { trimLines } from "./ops/trimLines.js";
 import { toSnakeCase } from "./ops/toSnakeCase.js";
 import { toKebabCase } from "./ops/toKebabCase.js";
 import { toCamelCase } from "./ops/toCamelCase.js";
+import { toPascalCase } from "./ops/toPascalCase.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -95,6 +96,7 @@ export const standardPlugin: Plugin = {
     registry.register(toSnakeCase);
     registry.register(toKebabCase);
     registry.register(toCamelCase);
+    registry.register(toPascalCase);
     registry.register(sha256);
   }
 };
