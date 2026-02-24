@@ -44,6 +44,7 @@ import { sortLines } from "./ops/sortLines.js";
 import { uniqueLines } from "./ops/uniqueLines.js";
 import { trimLines } from "./ops/trimLines.js";
 import { toSnakeCase } from "./ops/toSnakeCase.js";
+import { toKebabCase } from "./ops/toKebabCase.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -91,6 +92,7 @@ export const standardPlugin: Plugin = {
     registry.register(uniqueLines);
     registry.register(trimLines);
     registry.register(toSnakeCase);
+    registry.register(toKebabCase);
     registry.register(sha256);
   }
 };

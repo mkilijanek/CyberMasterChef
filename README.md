@@ -112,6 +112,7 @@ Operations are grouped by package priority:
   - `text.trimEnd`
   - `text.trimLines`
   - `text.toSnakeCase`
+  - `text.toKebabCase`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
