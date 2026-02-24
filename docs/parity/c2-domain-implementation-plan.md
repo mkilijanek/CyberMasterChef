@@ -1,34 +1,34 @@
 # C2 Domain Implementation Plan
 
-Generated: 2026-02-24T22:15:37.416Z
+Generated: 2026-02-24T22:19:52.916Z
 Implemented operations in repo: 154
 
 ## Priority order
 
-- P1: date-time (coverage 0%, missing ~12)
-- P2: forensic-malware-helper (coverage 0%, missing ~6)
-- P3: crypto-hash-kdf (coverage 6.19%, missing ~91)
-- P4: data-formats (coverage 12.5%, missing ~14)
+- P1: forensic-malware-helper (coverage 0%, missing ~16)
+- P2: date-time (coverage 0%, missing ~12)
+- P3: compression-archive (coverage 0%, missing ~7)
+- P4: data-formats (coverage 6%, missing ~47)
 
 ## Domain summary
 
 ### encodings-codecs
 - Description: Encodings, binary/text codecs, canonical representation transforms.
-- CyberChef total: 48
-- Implemented total: 15
-- Estimated missing: 33
-- Coverage: 31.25%
+- CyberChef total: 58
+- Implemented total: 14
+- Estimated missing: 44
+- Coverage: 24.14%
 - Candidate operations (first 20):
   - Alphabet (FromBase58.mjs) [medium]
   - Alphabet (ToBase58.mjs) [medium]
   - Convert (ToHexContent.mjs) [medium]
   - Delimiter (FromBinary.mjs) [medium]
+  - Delimiter (FromCharcode.mjs) [medium]
   - Delimiter (FromDecimal.mjs) [medium]
   - Delimiter (FromOctal.mjs) [medium]
   - Delimiter (ToBinary.mjs) [medium]
+  - Delimiter (ToCharcode.mjs) [medium]
   - Delimiter (ToDecimal.mjs) [medium]
-  - Delimiter (ToOctal.mjs) [medium]
-  - DropNthBytes (DropNthBytes.mjs) [medium]
 
 ### crypto-hash-kdf
 - Description: Cryptographic transforms, digests, MAC/KDF and cipher operations.
@@ -50,21 +50,18 @@ Implemented operations in repo: 154
 
 ### compression-archive
 - Description: Compression/decompression and archive container operations.
-- CyberChef total: 23
-- Implemented total: 3
-- Estimated missing: 20
-- Coverage: 13.04%
+- CyberChef total: 7
+- Implemented total: 0
+- Estimated missing: 7
+- Coverage: 0%
 - Candidate operations (first 20):
   - Bzip2Compress (Bzip2Compress.mjs) [high]
   - Bzip2Decompress (Bzip2Decompress.mjs) [high]
   - Filename (Tar.mjs) [high]
   - Gunzip (Gunzip.mjs) [high]
   - Gzip (Gzip.mjs) [high]
-  - Input units (ConvertArea.mjs) [high]
-  - LZ4Compress (LZ4Compress.mjs) [high]
-  - LZ4Decompress (LZ4Decompress.mjs) [high]
-  - LZMACompress (LZMACompress.mjs) [high]
-  - LZMADecompress (LZMADecompress.mjs) [high]
+  - Unzip (Unzip.mjs) [high]
+  - Zip (Zip.mjs) [high]
 
 ### date-time
 - Description: Date/time parsing, formatting, conversion and timestamp operations.
@@ -86,87 +83,91 @@ Implemented operations in repo: 154
 
 ### data-formats
 - Description: Structured formats (JSON/XML/CSV/YAML/TOML/HTML and format conversion).
-- CyberChef total: 16
-- Implemented total: 2
-- Estimated missing: 14
-- Coverage: 12.5%
+- CyberChef total: 50
+- Implemented total: 3
+- Estimated missing: 47
+- Coverage: 6%
 - Candidate operations (first 20):
+  - AddTextToImage (AddTextToImage.mjs) [high]
+  - AMFDecode (AMFDecode.mjs) [high]
+  - AMFEncode (AMFEncode.mjs) [high]
   - AvroToJSON (AvroToJSON.mjs) [high]
-  - Convert all characters (ToHTMLEntity.mjs) [high]
-  - CSVToJSON (CSVToJSON.mjs) [high]
-  - FromHTMLEntity (FromHTMLEntity.mjs) [high]
-  - HTMLToText (HTMLToText.mjs) [high]
-  - Indent string (XMLBeautify.mjs) [high]
-  - JsonataQuery (Jsonata.mjs) [high]
-  - JSONBeautify (JSONBeautify.mjs) [high]
-  - JSONMinify (JSONMinify.mjs) [high]
-  - JSONToCSV (JSONToCSV.mjs) [high]
+  - BlurImage (BlurImage.mjs) [high]
+  - BSONSerialise (BSONSerialise.mjs) [high]
+  - CBORDecode (CBORDecode.mjs) [high]
+  - CBOREncode (CBOREncode.mjs) [high]
+  - Cell delimiters (ToTable.mjs) [high]
+  - ContainImage (ContainImage.mjs) [high]
 
 ### regex-text-advanced
 - Description: Regex and advanced text analysis/normalization operations.
-- CyberChef total: 34
-- Implemented total: 47
-- Estimated missing: 0
-- Coverage: 138.24%
+- CyberChef total: 51
+- Implemented total: 50
+- Estimated missing: 1
+- Coverage: 98.04%
 - Candidate operations (first 20):
   - Attempt to be context aware (ToCamelCase.mjs) [medium]
   - Attempt to be context aware (ToKebabCase.mjs) [medium]
   - Attempt to be context aware (ToSnakeCase.mjs) [medium]
   - Built in regexes (RegularExpression.mjs) [medium]
   - By (Reverse.mjs) [medium]
-  - Delimiter (Sort.mjs) [medium]
-  - ExtractDomains (ExtractDomains.mjs) [medium]
-  - ExtractEmailAddresses (ExtractEmailAddresses.mjs) [medium]
-  - ExtractEXIF (ExtractEXIF.mjs) [medium]
-  - ExtractFilePaths (ExtractFilePaths.mjs) [medium]
+  - CartesianProduct (CartesianProduct.mjs) [medium]
+  - ConvertLeetSpeak (ConvertLeetSpeak.mjs) [medium]
+  - ConvertToNATOAlphabet (ConvertToNATOAlphabet.mjs) [medium]
+  - Delimiter (Filter.mjs) [medium]
+  - Delimiter (Head.mjs) [medium]
 
 ### network-protocol-parsers
 - Description: Protocol/header/parsing operations for network/web payloads.
-- CyberChef total: 47
-- Implemented total: 9
-- Estimated missing: 38
-- Coverage: 19.15%
+- CyberChef total: 25
+- Implemented total: 2
+- Estimated missing: 23
+- Coverage: 8%
 - Candidate operations (first 20):
-  - BlurImage (BlurImage.mjs) [high]
+  - CSS selector (CSSSelector.mjs) [high]
   - DechunkHTTPResponse (DechunkHTTPResponse.mjs) [high]
   - DefangIPAddresses (DefangIPAddresses.mjs) [high]
   - DefangURL (DefangURL.mjs) [high]
   - Delimiter (GroupIPAddresses.mjs) [high]
-  - Delimiter (Multiply.mjs) [high]
   - DNSOverHTTPS (DNSOverHTTPS.mjs) [high]
   - Encode all special chars (URLEncode.mjs) [high]
   - ExtractIPAddresses (ExtractIPAddresses.mjs) [high]
-  - ExtractMACAddresses (ExtractMACAddresses.mjs) [high]
+  - ExtractURLs (ExtractURLs.mjs) [high]
+  - FangURL (FangURL.mjs) [high]
 
 ### forensic-malware-helper
 - Description: IOC extraction, entropy/byte analysis and malware triage helpers.
-- CyberChef total: 6
+- CyberChef total: 16
 - Implemented total: 0
-- Estimated missing: 6
+- Estimated missing: 16
 - Coverage: 0%
 - Candidate operations (first 20):
+  - AnalyseUUID (AnalyseUUID.mjs) [high]
+  - Bit mode (DisassembleX86.mjs) [high]
+  - Bombe (Bombe.mjs) [high]
+  - ChiSquare (ChiSquare.mjs) [high]
+  - Colossus (Colossus.mjs) [high]
+  - CTPH (CTPH.mjs) [high]
+  - DetectFileType (DetectFileType.mjs) [high]
   - ELFInfo (ELFInfo.mjs) [high]
-  - FromHexdump (FromHexdump.mjs) [high]
-  - Strings (Strings.mjs) [high]
-  - Visualisation (Entropy.mjs) [high]
-  - Width (ToHexdump.mjs) [high]
-  - YARARules (YARARules.mjs) [high]
+  - Enigma (Enigma.mjs) [high]
+  - FileTree (FileTree.mjs) [high]
 
 ### misc-uncategorized
 - Description: Operations that require manual triage or do not fit current taxonomy.
-- CyberChef total: 182
-- Implemented total: 72
-- Estimated missing: 110
-- Coverage: 39.56%
+- CyberChef total: 149
+- Implemented total: 79
+- Estimated missing: 70
+- Coverage: 53.02%
 - Candidate operations (first 20):
-  - AddTextToImage (AddTextToImage.mjs) [low]
   - AlternatingCaps (AlternatingCaps.mjs) [low]
-  - AMFDecode (AMFDecode.mjs) [low]
-  - AMFEncode (AMFEncode.mjs) [low]
   - Amount (BitShiftLeft.mjs) [low]
   - Amount (BitShiftRight.mjs) [low]
-  - AnalyseUUID (AnalyseUUID.mjs) [low]
-  - Bit mode (DisassembleX86.mjs) [low]
-  - Bombe (Bombe.mjs) [low]
-  - BSONSerialise (BSONSerialise.mjs) [low]
+  - Capacity (Shake.mjs) [low]
+  - CaretMdecode (CaretMdecode.mjs) [low]
+  - CitrixCTX1Decode (CitrixCTX1Decode.mjs) [low]
+  - CitrixCTX1Encode (CitrixCTX1Encode.mjs) [low]
+  - Comment (Comment.mjs) [low]
+  - Data format (SwapEndianness.mjs) [low]
+  - Delimiter (Divide.mjs) [low]
 

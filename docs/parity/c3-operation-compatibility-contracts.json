@@ -285,7 +285,7 @@
   {
     "operationId": "text.collapseMultipleNewlines",
     "name": "Collapse Multiple Newlines",
-    "domain": "network-protocol-parsers",
+    "domain": "regex-text-advanced",
     "inputTypes": [
       "string"
     ],
@@ -309,7 +309,7 @@
   {
     "operationId": "text.collapseUnderscores",
     "name": "Collapse Underscores",
-    "domain": "network-protocol-parsers",
+    "domain": "misc-uncategorized",
     "inputTypes": [
       "string"
     ],
@@ -813,7 +813,7 @@
   {
     "operationId": "text.countUnderscores",
     "name": "Count Underscores",
-    "domain": "network-protocol-parsers",
+    "domain": "misc-uncategorized",
     "inputTypes": [
       "string"
     ],
@@ -1307,7 +1307,7 @@
   {
     "operationId": "text.linesNumbered",
     "name": "Lines Numbered",
-    "domain": "network-protocol-parsers",
+    "domain": "regex-text-advanced",
     "inputTypes": [
       "string"
     ],
@@ -1619,7 +1619,7 @@
   {
     "operationId": "text.onlyPrintableAscii",
     "name": "Only Printable ASCII",
-    "domain": "encodings-codecs",
+    "domain": "data-formats",
     "inputTypes": [
       "string"
     ],
@@ -1680,7 +1680,7 @@
   {
     "operationId": "text.padStart",
     "name": "Pad Start",
-    "domain": "compression-archive",
+    "domain": "misc-uncategorized",
     "inputTypes": [
       "string"
     ],
@@ -2516,7 +2516,7 @@
   {
     "operationId": "text.removePipes",
     "name": "Remove Pipes",
-    "domain": "network-protocol-parsers",
+    "domain": "misc-uncategorized",
     "inputTypes": [
       "string"
     ],
@@ -2780,7 +2780,7 @@
   {
     "operationId": "text.removeUnderscores",
     "name": "Remove Underscores",
-    "domain": "network-protocol-parsers",
+    "domain": "misc-uncategorized",
     "inputTypes": [
       "string"
     ],
@@ -3179,7 +3179,7 @@
   {
     "operationId": "text.startsWith",
     "name": "Starts With",
-    "domain": "compression-archive",
+    "domain": "misc-uncategorized",
     "inputTypes": [
       "string"
     ],
@@ -3210,7 +3210,7 @@
   {
     "operationId": "text.stripAccents",
     "name": "Strip Accents",
-    "domain": "network-protocol-parsers",
+    "domain": "misc-uncategorized",
     "inputTypes": [
       "string"
     ],
@@ -3618,7 +3618,7 @@
   {
     "operationId": "text.trimStart",
     "name": "Trim Start",
-    "domain": "compression-archive",
+    "domain": "regex-text-advanced",
     "inputTypes": [
       "string"
     ],

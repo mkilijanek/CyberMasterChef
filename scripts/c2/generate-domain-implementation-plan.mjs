@@ -103,5 +103,5 @@ for (const row of summary) {
 writeFileSync(outMdPath, `${md.join("\n")}\n`, "utf-8");
 
 process.stdout.write(
-  `[c2] generated implementation plan -> ${outJsonPath}, ${outMdPath}\\n`
+  `[c2] generated implementation plan -> ${outJsonPath}, ${outMdPath}\n`
 );

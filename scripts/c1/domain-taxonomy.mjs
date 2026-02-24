@@ -33,7 +33,9 @@ const rules = [
   {
     domain: "compression-archive",
     confidence: "high",
-    patterns: [/gzip|deflate|inflate|zlib|brotli|lz|bzip|xz|compress|decompress|zip|tar|archive/i]
+    patterns: [
+      /\bgzip\b|\bgunzip\b|\bdeflate\b|\binflate\b|\bzlib\b|\bbrotli\b|\blz4\b|\blzma\b|\bbzip2?|\bxz\b|\bcompress(ion)?\b|\bdecompress(ion)?\b|\bunzip\b|\bzip\b|\btar\b|\barchive\b/i
+    ]
   },
   {
     domain: "date-time",
@@ -43,27 +45,37 @@ const rules = [
   {
     domain: "data-formats",
     confidence: "high",
-    patterns: [/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack/i]
+    patterns: [
+      /json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\s?64\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i
+    ]
   },
   {
     domain: "network-protocol-parsers",
     confidence: "high",
-    patterns: [/url|uri|jwt|http|https|dns|ip(v4|v6)?|mac\s?address|asn\.1|ber|der|x509|certificate|mime|header|cookie|query/i]
+    patterns: [
+      /url|uri|jwt|http|https|dns|defang|refang|cidr|\bipv?4\b|\bipv?6\b|\bip\s*address\b|\bmac\s*address\b|groupip|extractip|asn\.1|\bber\b|\bder\b|x509|certificate|mime|header|cookie|query|css\s*selector/i
+    ]
   },
   {
     domain: "forensic-malware-helper",
     confidence: "high",
-    patterns: [/ioc|indicator|entropy|yara|pe\s?header|elf|shellcode|strings|hex\s?dump|byte\s?histogram|malware|forensic/i]
+    patterns: [
+      /ioc|indicator|entropy|yara|pe\s?header|elf|shellcode|strings|hex\s?dump|byte\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\s?square|detectfiletype|filetree/i
+    ]
   },
   {
     domain: "regex-text-advanced",
     confidence: "medium",
-    patterns: [/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation/i]
+    patterns: [
+      /regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\s?deviation|filter|beautify|casing/i
+    ]
   },
   {
     domain: "encodings-codecs",
     confidence: "medium",
-    patterns: [/base\d+|base\s?\d+|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|percent|url\s?encode|url\s?decode|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i]
+    patterns: [
+      /base\d+|base\s?\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\d+|utf8|utf16|utf32|charcode|braille|percent|url\s?encode|url\s?decode|encode\s*text|decode\s*text|rot\d+|morse|a1z26|punycode|quoted\s?printable|bytes?/i
+    ]
   }
 ];
 

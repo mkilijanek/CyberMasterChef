@@ -1,6 +1,6 @@
 # C3 Operation Compatibility Contracts
 
-Generated: 2026-02-24T22:16:43.408Z
+Generated: 2026-02-24T22:19:53.813Z
 Total contracts: 154
 
 ## Contract entries (compact)
@@ -84,14 +84,14 @@ Total contracts: 154
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.collapseMultipleNewlines
   - name: Collapse Multiple Newlines
-  - domain: network-protocol-parsers
+  - domain: regex-text-advanced
   - inputTypes: string
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.collapseUnderscores
   - name: Collapse Underscores
-  - domain: network-protocol-parsers
+  - domain: misc-uncategorized
   - inputTypes: string
   - outputType: string
   - deterministic: true
@@ -238,7 +238,7 @@ Total contracts: 154
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.countUnderscores
   - name: Count Underscores
-  - domain: network-protocol-parsers
+  - domain: misc-uncategorized
   - inputTypes: string
   - outputType: number
   - deterministic: true
@@ -378,7 +378,7 @@ Total contracts: 154
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.linesNumbered
   - name: Lines Numbered
-  - domain: network-protocol-parsers
+  - domain: regex-text-advanced
   - inputTypes: string
   - outputType: string
   - deterministic: true
@@ -469,7 +469,7 @@ Total contracts: 154
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.onlyPrintableAscii
   - name: Only Printable ASCII
-  - domain: encodings-codecs
+  - domain: data-formats
   - inputTypes: string
   - outputType: string
   - deterministic: true
@@ -483,7 +483,7 @@ Total contracts: 154
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.padStart
   - name: Pad Start
-  - domain: compression-archive
+  - domain: misc-uncategorized
   - inputTypes: string
   - outputType: string
   - deterministic: true
@@ -721,7 +721,7 @@ Total contracts: 154
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.removePipes
   - name: Remove Pipes
-  - domain: network-protocol-parsers
+  - domain: misc-uncategorized
   - inputTypes: string
   - outputType: string
   - deterministic: true
@@ -798,7 +798,7 @@ Total contracts: 154
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.removeUnderscores
   - name: Remove Underscores
-  - domain: network-protocol-parsers
+  - domain: misc-uncategorized
   - inputTypes: string
   - outputType: string
   - deterministic: true
@@ -903,14 +903,14 @@ Total contracts: 154
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.startsWith
   - name: Starts With
-  - domain: compression-archive
+  - domain: misc-uncategorized
   - inputTypes: string
   - outputType: number
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.stripAccents
   - name: Strip Accents
-  - domain: network-protocol-parsers
+  - domain: misc-uncategorized
   - inputTypes: string
   - outputType: string
   - deterministic: true
@@ -1029,7 +1029,7 @@ Total contracts: 154
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.trimStart
   - name: Trim Start
-  - domain: compression-archive
+  - domain: regex-text-advanced
   - inputTypes: string
   - outputType: string
   - deterministic: true

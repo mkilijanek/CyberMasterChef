@@ -105,9 +105,12 @@ summaryLines.push(uncategorizedPreview.length > 0 ? uncategorizedPreview : "- no
 summaryLines.push("");
 summaryLines.push("## Artifacts");
 summaryLines.push("");
-summaryLines.push(`- JSON: ${outJsonPath}`);
-summaryLines.push(`- CSV: ${outCsvPath}`);
-summaryLines.push(`- Summary: ${outMdPath}`);
+summaryLines.push(`- JSON: ${repoOutJsonPath}`);
+summaryLines.push(`- CSV: ${repoOutCsvPath}`);
+summaryLines.push(`- Summary: ${repoOutMdPath}`);
+summaryLines.push(`- Ref copy JSON: ${outJsonPath}`);
+summaryLines.push(`- Ref copy CSV: ${outCsvPath}`);
+summaryLines.push(`- Ref copy summary: ${outMdPath}`);
 summaryLines.push("");
 
 writeFileSync(outMdPath, `${summaryLines.join("\n")}\n`, "utf-8");
