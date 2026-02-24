@@ -40,6 +40,64 @@ const goldenCases: GoldenCase[] = [
       steps: [{ opId: "codec.toBinary", args: { delimiter: "-" } }]
     },
     expected: "01000001-01000010"
+  },
+  {
+    name: "Trim + lowercase + snake_case",
+    input: "  Hello   Cyber Master Chef  ",
+    recipe: {
+      version: 1,
+      steps: [
+        { opId: "text.trim" },
+        { opId: "text.lowercase" },
+        { opId: "text.toSnakeCase" }
+      ]
+    },
+    expected: "hello_cyber_master_chef"
+  },
+  {
+    name: "CSV <-> lines round-trip shape",
+    input: "alpha\nbeta\ngamma",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.linesToCsv" }, { opId: "text.csvToLines" }]
+    },
+    expected: "alpha\nbeta\ngamma"
+  },
+  {
+    name: "Normalize whitespace then title case",
+    input: "  cyber   master\tchef ",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.normalizeWhitespace" }, { opId: "text.toTitleCase" }]
+    },
+    expected: "Cyber Master Chef"
+  },
+  {
+    name: "Word counting chain",
+    input: "a  bb   ccc",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.wordCount" }]
+    },
+    expected: "3"
+  },
+  {
+    name: "Line counting chain",
+    input: "one\ntwo\n\nthree",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.countNonEmptyLines" }]
+    },
+    expected: "3"
+  },
+  {
+    name: "Reverse words",
+    input: "one two three",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.reverseWords" }]
+    },
+    expected: "three two one"
   }
 ];
 
