@@ -222,6 +222,7 @@ Operations are grouped by package priority:
   - `text.countSlashes`
   - `text.countBackslashes`
   - `text.countPluses`
+  - `text.countDashes`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
