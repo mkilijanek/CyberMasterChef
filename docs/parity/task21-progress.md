@@ -72,3 +72,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 060: `suspicious_tld_ml` - Suspicious ML TLD reference
 - [x] Stage 061: `suspicious_tld_cf` - Suspicious CF TLD reference
 - [x] Stage 062: `suspicious_tld_tk` - Suspicious TK TLD reference
+- [x] Stage 063: `url_ip_literal` - URL with IP literal host
