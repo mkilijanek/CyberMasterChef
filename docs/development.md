@@ -101,6 +101,7 @@ Example operation IDs in use:
 - `text.slice`
 - `text.repeat`
 - `text.padStart`
+- `text.padEnd`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
