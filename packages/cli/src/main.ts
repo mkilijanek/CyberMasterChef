@@ -60,6 +60,8 @@ const usageText =
   "  --batch-input-dir <path>         execute recipe for each file in directory and print JSON report\n" +
   "  --batch-report-file <path>       write batch JSON report to file\n" +
   "  --batch-output-dir <path>        write per-input rendered outputs to directory\n" +
+  "  --batch-fail-fast                stop batch execution on first file error\n" +
+  "  --batch-continue-on-error        continue batch execution despite file errors (default)\n" +
   "  --fail-empty-output              fail when rendered output is empty\n" +
   "  --no-newline                     do not append trailing newline to output\n" +
   "  --max-output-chars <n>           limit output length for string/json/bytes rendering\n" +
@@ -121,6 +123,7 @@ type CliOptions = {
   batchInputDir?: string;
   batchReportFile?: string;
   batchOutputDir?: string;
+  batchFailFast: boolean;
   failEmptyOutput: boolean;
   noNewline: boolean;
   maxOutputChars?: number;
@@ -154,6 +157,7 @@ function parseArgs(args: string[]): CliOptions {
   let batchInputDir: string | undefined;
   let batchReportFile: string | undefined;
   let batchOutputDir: string | undefined;
+  let batchFailFast = false;
   let failEmptyOutput = false;
   let noNewline = false;
   let maxOutputChars: number | undefined;
@@ -327,6 +331,14 @@ function parseArgs(args: string[]): CliOptions {
       i++;
       continue;
     }
+    if (arg === "--batch-fail-fast") {
+      batchFailFast = true;
+      continue;
+    }
+    if (arg === "--batch-continue-on-error") {
+      batchFailFast = false;
+      continue;
+    }
     if (arg === "--no-newline") {
       noNewline = true;
       continue;
@@ -378,6 +390,7 @@ function parseArgs(args: string[]): CliOptions {
     bytesOutput,
     hexUppercase,
     jsonIndent,
+    batchFailFast,
     failEmptyOutput,
     noNewline
   };
@@ -542,33 +555,44 @@ if (opts.batchInputDir) {
     .sort();
   const report: Array<{
     file: string;
+    ok: boolean;
     durationMs: number;
     outputType: DataValue["type"];
-    outputPreview: string;
-    traceSummary: ReturnType<typeof summarizeTrace>;
-    recipeHash: string;
-    inputHash: string;
+    outputPreview?: string;
+    traceSummary?: ReturnType<typeof summarizeTrace>;
+    recipeHash?: string;
+    inputHash?: string;
+    error?: string;
   }> = [];
   for (const filePath of entries) {
-    let raw = "";
     try {
-      raw = readFileSync(filePath, "utf-8");
+      const raw = readFileSync(filePath, "utf-8");
+      const run = await executeOne(raw);
+      report.push({
+        file: filePath,
+        ok: true,
+        durationMs: run.elapsed,
+        outputType: run.outputType,
+        outputPreview: run.rendered,
+        traceSummary: run.traceSummary,
+        recipeHash: run.reproBundle.recipeHash,
+        inputHash: run.reproBundle.inputHash
+      });
+      if (opts.batchOutputDir) {
+        const outPath = `${opts.batchOutputDir}/${fileLeaf(filePath)}.out.txt`;
+        writeFileSync(outPath, `${run.rendered}\n`, "utf-8");
+      }
     } catch {
-      continue;
-    }
-    const run = await executeOne(raw);
-    report.push({
-      file: filePath,
-      durationMs: run.elapsed,
-      outputType: run.outputType,
-      outputPreview: run.rendered,
-      traceSummary: run.traceSummary,
-      recipeHash: run.reproBundle.recipeHash,
-      inputHash: run.reproBundle.inputHash
-    });
-    if (opts.batchOutputDir) {
-      const outPath = `${opts.batchOutputDir}/${fileLeaf(filePath)}.out.txt`;
-      writeFileSync(outPath, `${run.rendered}\n`, "utf-8");
+      report.push({
+        file: filePath,
+        ok: false,
+        durationMs: 0,
+        outputType: "string",
+        error: "Failed to read or process input file"
+      });
+      if (opts.batchFailFast) {
+        break;
+      }
     }
   }
   const payload = `${JSON.stringify(report, null, 2)}\n`;
