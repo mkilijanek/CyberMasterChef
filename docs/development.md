@@ -207,6 +207,7 @@ Example operation IDs in use:
 - `text.trimLeadingDots`
 - `text.trimTrailingDots`
 - `text.linesNumbered`
+- `text.removeColons`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
