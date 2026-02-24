@@ -229,6 +229,7 @@ Example operation IDs in use:
 - `text.removeBraces`
 - `text.removeAngles`
 - `text.removeDoubleSpaces`
+- `text.linesTrimRight`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
