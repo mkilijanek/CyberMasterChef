@@ -146,6 +146,7 @@ Operations are grouped by package priority:
   - `text.tabsToSpaces`
   - `text.spacesToTabs`
   - `text.trimCommas`
+  - `text.trimQuotes`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
