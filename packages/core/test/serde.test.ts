@@ -30,6 +30,22 @@ describe("serde", () => {
     expect(imported.warnings[0]?.op).toBe("Not Implemented");
   });
 
+  it("keeps original step indexes in CyberChef import warnings", () => {
+    const source = {
+      recipe: [
+        { op: "To Base64", args: [] },
+        { op: "Unknown #1", args: [] },
+        { op: "Unknown #2", args: [] }
+      ]
+    };
+    const imported = importCyberChefRecipe(JSON.stringify(source));
+
+    expect(imported.warnings).toEqual([
+      { step: 1, op: "Unknown #1", reason: "Unsupported operation" },
+      { step: 2, op: "Unknown #2", reason: "Unsupported operation" }
+    ]);
+  });
+
   it("exports native recipe to CyberChef-compatible format", () => {
     const out = exportCyberChefRecipe({
       version: 1,

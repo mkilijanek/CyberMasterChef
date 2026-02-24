@@ -57,6 +57,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
   - import fails if no compatible operations remain
 - Workbench import UX:
   - shows warning summary and per-step warning details (`step`, `op`, `reason`)
+  - warning `step` values preserve original CyberChef recipe indexes
 
 CLI behavior:
 - `packages/cli` accepts native JSON directly.
