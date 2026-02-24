@@ -240,6 +240,7 @@ Example operation IDs in use:
 - `text.keepWhitespace`
 - `text.countTabs`
 - `text.countSpaces`
+- `text.countCommas`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

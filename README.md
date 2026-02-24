@@ -215,6 +215,7 @@ Operations are grouped by package priority:
   - `text.keepWhitespace`
   - `text.countTabs`
   - `text.countSpaces`
+  - `text.countCommas`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
