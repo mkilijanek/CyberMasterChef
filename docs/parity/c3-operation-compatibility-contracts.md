@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
-Generated: 2026-02-24T23:57:37.276Z
-Total contracts: 192
+Generated: 2026-02-24T23:59:10.343Z
+Total contracts: 193
 
 ## Contract entries (compact)
 
@@ -117,6 +117,13 @@ Total contracts: 192
   - outputType: string
   - deterministic: false
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- date.parseUnixFilePermissions
+  - name: Parse UNIX File Permissions
+  - domain: date-time
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
 - date.unixToIso
   - name: Unix to ISO
   - domain: date-time

@@ -166,6 +166,7 @@ import { fangUrls } from "./ops/fangUrls.js";
 import { unixToWindowsFiletime } from "./ops/unixToWindowsFiletime.js";
 import { windowsFiletimeToUnix } from "./ops/windowsFiletimeToUnix.js";
 import { parseObjectIdTimestamp } from "./ops/parseObjectIdTimestamp.js";
+import { parseUnixFilePermissions } from "./ops/parseUnixFilePermissions.js";
 import { extractEmails } from "./ops/extractEmails.js";
 import { extractDomains } from "./ops/extractDomains.js";
 import { jsonSortKeys } from "./ops/jsonSortKeys.js";
@@ -354,6 +355,7 @@ export const standardPlugin: Plugin = {
     registry.register(unixToWindowsFiletime);
     registry.register(windowsFiletimeToUnix);
     registry.register(parseObjectIdTimestamp);
+    registry.register(parseUnixFilePermissions);
     registry.register(extractUnixTimestamps);
     registry.register(extractIsoTimestamps);
     registry.register(isoToDateOnly);

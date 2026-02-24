@@ -45,6 +45,7 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 - [x] `date.unixToWindowsFiletime` operation.
 - [x] `date.windowsFiletimeToUnix` operation.
 - [x] `date.parseObjectIdTimestamp` operation.
+- [x] `date.parseUnixFilePermissions` operation.
 
 ## Wave 7 backlog
 

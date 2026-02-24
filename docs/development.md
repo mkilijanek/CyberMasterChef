@@ -175,6 +175,7 @@ Wave 1 implemented so far:
 - Wave 6 date-time: `date.unixToWindowsFiletime`
 - Wave 6 date-time: `date.windowsFiletimeToUnix`
 - Wave 6 date-time: `date.parseObjectIdTimestamp`
+- Wave 6 date-time: `date.parseUnixFilePermissions`
 - Wave 7 forensic: `forensic.extractEmails`
 - Wave 7 forensic: `forensic.extractDomains`
 - Wave 8 data-format: `format.jsonSortKeys`

@@ -9,6 +9,7 @@ import { extractUnixTimestamps } from "../src/ops/extractUnixTimestamps.js";
 import { extractIsoTimestamps } from "../src/ops/extractIsoTimestamps.js";
 import { isoToDateOnly } from "../src/ops/isoToDateOnly.js";
 import { isoWeekday } from "../src/ops/isoWeekday.js";
+import { parseUnixFilePermissions } from "../src/ops/parseUnixFilePermissions.js";
 
 describe("date operations", () => {
   it("converts ISO to Unix milliseconds", async () => {
@@ -162,5 +163,35 @@ describe("date operations", () => {
       input: { type: "string", value: "2024-02-05T00:00:00.000Z" }
     });
     expect(out.output).toEqual({ type: "string", value: "Monday" });
+  });
+
+  it("parses UNIX permission mode into symbolic representation", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(parseUnixFilePermissions);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "date.parseUnixFilePermissions" }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "0755" }
+    });
+    expect(out.output).toEqual({ type: "string", value: "rwxr-xr-x (755)" });
+  });
+
+  it("parses special UNIX permission bits", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(parseUnixFilePermissions);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "date.parseUnixFilePermissions", args: { includeNumeric: false } }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "4755" }
+    });
+    expect(out.output).toEqual({ type: "string", value: "rwsr-xr-x" });
   });
 });

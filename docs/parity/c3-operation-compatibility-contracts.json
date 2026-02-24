@@ -412,6 +412,40 @@
     }
   },
   {
+    "operationId": "date.parseUnixFilePermissions",
+    "name": "Parse UNIX File Permissions",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "includeNumeric",
+        "type": "boolean",
+        "label": "Include numeric mode",
+        "defaultValue": "true"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected octal UNIX permission mode (e.g. 755, 0644, 0o600)",
+        "Invalid UNIX permission mode",
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseUnixFilePermissions.ts",
+      "description": "Converts octal UNIX file mode into symbolic rwx notation."
+    }
+  },
+  {
     "operationId": "date.unixToIso",
     "name": "Unix to ISO",
     "domain": "date-time",

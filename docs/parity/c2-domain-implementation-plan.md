@@ -1,7 +1,7 @@
 # C2 Domain Implementation Plan
 
-Generated: 2026-02-24T23:57:37.290Z
-Implemented operations in repo: 192
+Generated: 2026-02-24T23:59:10.327Z
+Implemented operations in repo: 193
 
 ## Priority order
 
@@ -66,9 +66,9 @@ Implemented operations in repo: 192
 ### date-time
 - Description: Date/time parsing, formatting, conversion and timestamp operations.
 - CyberChef total: 12
-- Implemented total: 8
-- Estimated missing: 4
-- Coverage: 66.67%
+- Implemented total: 9
+- Estimated missing: 3
+- Coverage: 75%
 - Candidate operations (first 20):
   - Built in formats (DateTimeDelta.mjs) [high]
   - Built in formats (ParseDateTime.mjs) [high]

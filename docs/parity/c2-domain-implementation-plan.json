@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-02-24T23:57:37.290Z",
+  "generatedAt": "2026-02-24T23:59:10.327Z",
   "source": {
     "c1MatrixPath": "/home/kili/Repo/CyberMasterChef/CyberMasterChef/docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 192
+    "implementedOpsCount": 193
   },
   "summary": [
     {
@@ -274,9 +274,9 @@
       "domain": "date-time",
       "description": "Date/time parsing, formatting, conversion and timestamp operations.",
       "cyberChefTotal": 12,
-      "implementedTotal": 8,
-      "missingEstimated": 4,
-      "coveragePct": 66.67,
+      "implementedTotal": 9,
+      "missingEstimated": 3,
+      "coveragePct": 75,
       "implementationCandidates": [
         {
           "operationName": "Built in formats",
