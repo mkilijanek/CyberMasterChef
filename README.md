@@ -207,6 +207,7 @@ Operations are grouped by package priority:
   - `text.linesTrimRight`
   - `text.linesTrimLeft`
   - `text.removeDigitsAndSpaces`
+  - `text.keepDigitsAndDots`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:

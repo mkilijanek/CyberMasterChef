@@ -127,6 +127,7 @@ import { removeDoubleSpaces } from "./ops/removeDoubleSpaces.js";
 import { linesTrimRight } from "./ops/linesTrimRight.js";
 import { linesTrimLeft } from "./ops/linesTrimLeft.js";
 import { removeDigitsAndSpaces } from "./ops/removeDigitsAndSpaces.js";
+import { keepDigitsAndDots } from "./ops/keepDigitsAndDots.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -257,6 +258,7 @@ export const standardPlugin: Plugin = {
     registry.register(linesTrimRight);
     registry.register(linesTrimLeft);
     registry.register(removeDigitsAndSpaces);
+    registry.register(keepDigitsAndDots);
     registry.register(sha256);
   }
 };
