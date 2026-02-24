@@ -85,7 +85,7 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 ## Wave 14 backlog
 
 - [x] `format.jsonArrayLength` inspection operation.
-- [ ] `format.jsonStringValues` extraction operation.
+- [x] `format.jsonStringValues` extraction operation.
 
 ## Queue extension
 

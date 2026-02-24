@@ -243,6 +243,15 @@ const goldenCases: GoldenCase[] = [
     expected: "3"
   },
   {
+    name: "Extract JSON string values",
+    input: "{\"a\":\"alpha\",\"b\":{\"c\":\"beta\"},\"d\":[1,\"gamma\"]}",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "format.jsonStringValues" }]
+    },
+    expected: "alpha\nbeta\ngamma"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {

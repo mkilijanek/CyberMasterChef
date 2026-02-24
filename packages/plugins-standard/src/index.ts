@@ -172,6 +172,7 @@ import { jsonSortKeys } from "./ops/jsonSortKeys.js";
 import { jsonExtractKeys } from "./ops/jsonExtractKeys.js";
 import { extractMd5 } from "./ops/extractMd5.js";
 import { jsonArrayLength } from "./ops/jsonArrayLength.js";
+import { jsonStringValues } from "./ops/jsonStringValues.js";
 import { extractSha256 } from "./ops/extractSha256.js";
 import { extractSha1 } from "./ops/extractSha1.js";
 import { extractSha512 } from "./ops/extractSha512.js";
@@ -357,6 +358,7 @@ export const standardPlugin: Plugin = {
     registry.register(jsonSortKeys);
     registry.register(jsonExtractKeys);
     registry.register(jsonArrayLength);
+    registry.register(jsonStringValues);
     registry.register(extractStrings);
     registry.register(extractIPs);
     registry.register(extractIPv6);

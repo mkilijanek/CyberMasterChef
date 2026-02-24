@@ -199,6 +199,7 @@ Wave 1 implemented so far:
 - Wave 12 forensic hash: `forensic.extractSha512`
 - Wave 13 forensic token: `forensic.extractJwt`
 - Wave 14 data-format: `format.jsonArrayLength`
+- Wave 14 data-format: `format.jsonStringValues`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip
 

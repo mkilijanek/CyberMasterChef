@@ -82,6 +82,7 @@ Operations are grouped by package priority:
 - Wave 12 forensic hash expansion adds `forensic.extractSha512`.
 - Wave 13 forensic token IOC expansion adds `forensic.extractJwt`.
 - Wave 14 JSON inspection adds `format.jsonArrayLength`.
+- Wave 14 JSON extraction adds `format.jsonStringValues`.
 - C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
 
 ## Current functionality
@@ -279,6 +280,7 @@ Operations are grouped by package priority:
   - `format.jsonSortKeys`
   - `format.jsonExtractKeys`
   - `format.jsonArrayLength`
+  - `format.jsonStringValues`
   - `forensic.extractStrings`
   - `forensic.extractEmails`
   - `forensic.extractDomains`
