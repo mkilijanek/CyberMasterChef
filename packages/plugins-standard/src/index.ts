@@ -57,6 +57,7 @@ import { normalizeNewlines } from "./ops/normalizeNewlines.js";
 import { endsWith } from "./ops/endsWith.js";
 import { includesText } from "./ops/includesText.js";
 import { lowerFirst } from "./ops/lowerFirst.js";
+import { upperFirst } from "./ops/upperFirst.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -117,6 +118,7 @@ export const standardPlugin: Plugin = {
     registry.register(endsWith);
     registry.register(includesText);
     registry.register(lowerFirst);
+    registry.register(upperFirst);
     registry.register(sha256);
   }
 };

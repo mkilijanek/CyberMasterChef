@@ -137,6 +137,7 @@ Operations are grouped by package priority:
   - `text.endsWith`
   - `text.includes`
   - `text.lowerFirst`
+  - `text.upperFirst`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
