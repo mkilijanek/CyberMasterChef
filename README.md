@@ -50,6 +50,7 @@ Operations are grouped by package priority:
   - auto-bake mode (debounced re-run on changes)
   - cancel in-flight execution from the UI
   - per-run sandbox timeout protection (default: 10s)
+  - run recipe up to a selected step (pipeline debugging)
   - deep-link sharing (`#state=` hash with recipe + input)
   - recipe import/export (native JSON and CyberChef-compatible JSON)
   - local persistence for recipe, input, and auto-bake preference

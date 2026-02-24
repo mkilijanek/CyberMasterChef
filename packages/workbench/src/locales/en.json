@@ -20,6 +20,7 @@
   "run": "Run",
   "add": "Add",
   "remove": "Remove",
+  "runToStep": "Run to step",
   "moveUp": "Up",
   "moveDown": "Down",
   "args": "Arguments",

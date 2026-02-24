@@ -20,6 +20,7 @@
   "run": "Uruchom",
   "add": "Dodaj",
   "remove": "Usuń",
+  "runToStep": "Uruchom do kroku",
   "moveUp": "W górę",
   "moveDown": "W dół",
   "args": "Argumenty",

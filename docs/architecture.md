@@ -41,6 +41,7 @@ All recipe execution happens inside a Web Worker:
 
 - Manual run + optional auto-bake mode
 - Cancel button for in-flight execution
+- Run-to-step action for partial pipeline execution
 - Recipe and input persisted in local storage
 - Shareable deep links via URL hash (`#state=` payload)
 - Recipe import/export:

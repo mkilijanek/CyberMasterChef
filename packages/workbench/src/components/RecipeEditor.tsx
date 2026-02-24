@@ -9,6 +9,7 @@ const registry = createRegistryWithBuiltins();
 export function RecipeEditor(props: {
   recipe: Recipe;
   onChange: (r: Recipe) => void;
+  onRunToStep?: (stepIndex: number) => void;
 }): React.JSX.Element {
   const { t } = useTranslation();
   const [selected, setSelected] = React.useState<number | null>(null);
@@ -73,6 +74,13 @@ export function RecipeEditor(props: {
                   aria-label={t("remove")}
                 >
                   {t("remove")}
+                </button>
+                <button
+                  className="buttonSmall"
+                  onClick={() => props.onRunToStep?.(i)}
+                  aria-label={t("runToStep")}
+                >
+                  {t("runToStep")}
                 </button>
               </div>
               {selected === i && op ? (

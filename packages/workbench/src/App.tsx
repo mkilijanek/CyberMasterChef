@@ -99,14 +99,14 @@ export function App(): React.JSX.Element {
     window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${HASH_PREFIX}${shared}`);
   }, [autoBake, input, recipe]);
 
-  const run = React.useCallback(async (): Promise<void> => {
+  const executeRecipe = React.useCallback(async (recipeToRun: Recipe): Promise<void> => {
     sandboxRef.current?.cancelActive();
     setStatus("working");
     setError(null);
     setTrace([]);
     try {
       const inVal: DataValue = { type: "string", value: input };
-      const res = await sandboxRef.current!.bake(recipe, inVal, {
+      const res = await sandboxRef.current!.bake(recipeToRun, inVal, {
         timeoutMs: RUN_TIMEOUT_MS
       });
       setTrace(res.trace);
@@ -131,7 +131,20 @@ export function App(): React.JSX.Element {
       setError(msg);
       setStatus("error");
     }
-  }, [input, recipe, t]);
+  }, [input, t]);
+
+  const run = React.useCallback(async (): Promise<void> => {
+    await executeRecipe(recipe);
+  }, [executeRecipe, recipe]);
+
+  const runToStep = React.useCallback(async (stepIndex: number): Promise<void> => {
+    if (stepIndex < 0 || stepIndex >= recipe.steps.length) return;
+    const partial: Recipe = {
+      ...recipe,
+      steps: recipe.steps.slice(0, stepIndex + 1)
+    };
+    await executeRecipe(partial);
+  }, [executeRecipe, recipe]);
 
   React.useEffect(() => {
     if (!autoBake) return;
@@ -268,7 +281,7 @@ export function App(): React.JSX.Element {
         </section>
         <section className="panel">
           <h2>{t("recipe")}</h2>
-          <RecipeEditor recipe={recipe} onChange={setRecipe} />
+          <RecipeEditor recipe={recipe} onChange={setRecipe} onRunToStep={(i) => void runToStep(i)} />
           {error ? (
             <div className="error" role="alert">
               {t("error")}: {error}
