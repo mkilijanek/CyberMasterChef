@@ -100,4 +100,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "wbadmin_delete", description: "Backup catalog deletion", pattern: new RegExp("wbadmin\\s+delete\\s+catalog", "i") },
   { id: "bcdedit_recovery_off", description: "Recovery disable via bcdedit", pattern: new RegExp("bcdedit\\s+/set\\s+\\{default\\}\\s+recoveryenabled\\s+no", "i") },
   { id: "bcdedit_bootstatus_ignore", description: "Bootstatus ignore failures", pattern: new RegExp("bcdedit\\s+/set\\s+\\{default\\}\\s+bootstatuspolicy\\s+ignoreallfailures", "i") },
+  { id: "ransom_note_marker", description: "Common ransom note marker", pattern: new RegExp("readme\\.(txt", "hta)|i") },
 ];
