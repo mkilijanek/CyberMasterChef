@@ -1,6 +1,7 @@
 import type { DataValue, OperationRegistry, Recipe } from "./types.js";
 import { OperationNotFoundError, OperationRuntimeError } from "./errors.js";
 import { coerce, coerceToAnyOf } from "./conversion.js";
+import { summarizeTrace } from "./traceSummary.js";
 
 export type EngineResult = {
   output: DataValue;
@@ -15,6 +16,9 @@ export type EngineResult = {
     startedAt: number;
     endedAt: number;
     durationMs: number;
+    stepDurationTotalMs: number;
+    stepDurationAvgMs: number;
+    slowestStep: { step: number; opId: string; durationMs: number } | null;
   };
 };
 
@@ -62,13 +66,17 @@ export async function runRecipe(opts: {
   }
 
   const endedAt = Date.now();
+  const traceSummary = summarizeTrace(trace);
   return {
     output: current,
     trace,
     meta: {
       startedAt,
       endedAt,
-      durationMs: Math.max(0, endedAt - startedAt)
+      durationMs: Math.max(0, endedAt - startedAt),
+      stepDurationTotalMs: traceSummary.totalDurationMs,
+      stepDurationAvgMs: traceSummary.averageDurationMs,
+      slowestStep: traceSummary.slowestStep
     }
   };
 }
