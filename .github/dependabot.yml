@@ -28,6 +28,5 @@ updates:
     open-pull-requests-limit: 5
     labels:
       - "dependencies"
-      - "github_actions"
     commit-message:
       prefix: "ci"
