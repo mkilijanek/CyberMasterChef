@@ -209,6 +209,7 @@ Operations are grouped by package priority:
   - `text.removeDigitsAndSpaces`
   - `text.keepDigitsAndDots`
   - `text.removeEmojis`
+  - `text.removeUnderscores`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:

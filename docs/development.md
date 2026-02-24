@@ -234,6 +234,7 @@ Example operation IDs in use:
 - `text.removeDigitsAndSpaces`
 - `text.keepDigitsAndDots`
 - `text.removeEmojis`
+- `text.removeUnderscores`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
