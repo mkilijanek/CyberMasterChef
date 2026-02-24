@@ -1,6 +1,6 @@
 # C3 Operation Compatibility Contracts
 
-Generated: 2026-02-24T23:55:16.931Z
+Generated: 2026-02-24T23:57:37.276Z
 Total contracts: 192
 
 ## Contract entries (compact)
@@ -74,7 +74,7 @@ Total contracts: 192
   - inputTypes: bytes, string
   - outputType: bytes
   - deterministic: true
-  - error categories: EXECUTION_ERROR
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - date.extractIsoTimestamps
   - name: Extract ISO Timestamps
   - domain: date-time

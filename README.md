@@ -172,7 +172,7 @@ Module groups checklist:
 
 Forensic Triage currently mocked capabilities:
 - [ ] ZIP password pipeline and production-grade safe unpack engine.
-- [ ] MD5 / imphash / TLSH / ssdeep generation.
+- [ ] imphash / TLSH / ssdeep generation.
 - [ ] YARA / YARA-X scanning integration.
 - [ ] Authenticode/X509 verification.
 - [ ] STIX/MISP export.

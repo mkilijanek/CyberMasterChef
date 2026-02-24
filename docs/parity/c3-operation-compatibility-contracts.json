@@ -238,9 +238,12 @@
     "deterministic": true,
     "errorTaxonomy": {
       "categories": [
-        "EXECUTION_ERROR"
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
       ],
-      "examples": []
+      "examples": [
+        "Expected bytes or string input"
+      ]
     },
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/gzip.ts",

@@ -62,7 +62,7 @@ describe("forensic basic pre-triage", () => {
     if (out.output.type !== "string") return;
     const report = JSON.parse(out.output.value) as {
       input: { type: string; seemsBinary: boolean };
-      hashes: { sha256: string | null; md5: null };
+      hashes: { sha256: string | null; md5: string | null };
       iocs: { urls: string[]; emails: string[]; cves: string[]; ipv4: string[] };
       heuristics: Array<{ id: string; matches: string[] }>;
       binaryAnalysis: { format: string };
@@ -70,7 +70,7 @@ describe("forensic basic pre-triage", () => {
     expect(report.input.type).toBe("string");
     expect(report.input.seemsBinary).toBe(false);
     expect(report.hashes.sha256).toHaveLength(64);
-    expect(report.hashes.md5).toBeNull();
+    expect(report.hashes.md5).toHaveLength(32);
     expect(report.iocs.urls).toEqual(["https://example.com"]);
     expect(report.iocs.emails).toEqual(["admin@example.com"]);
     expect(report.iocs.cves).toEqual(["CVE-2024-12345"]);

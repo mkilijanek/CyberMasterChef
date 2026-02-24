@@ -1,5 +1,6 @@
 import type { Operation } from "@cybermasterchef/core";
 import { bytesToHex } from "@cybermasterchef/core";
+import { md5 } from "hash-wasm";
 import { PRETRIAGE_HEURISTICS } from "./preTriageHeuristics.js";
 
 type TriageSection = {
@@ -29,7 +30,7 @@ type TriageReport = {
     sha1: string | null;
     sha256: string | null;
     sha512: string | null;
-    md5: null;
+    md5: string | null;
     imphash: null;
     tlsh: null;
     ssdeep: null;
@@ -191,6 +192,14 @@ async function digestHex(data: Uint8Array, algorithm: "SHA-1" | "SHA-256" | "SHA
   }
 }
 
+async function digestMd5Hex(data: Uint8Array): Promise<string | null> {
+  try {
+    return await md5(Uint8Array.from(data));
+  } catch {
+    return null;
+  }
+}
+
 export const basicPreTriage: Operation = {
   id: "forensic.basicPreTriage",
   name: "Basic Pre-Triage",
@@ -259,7 +268,7 @@ export const basicPreTriage: Operation = {
     const sections = seemsBinary ? parsePeSections(data) : [];
     const format: "pe" | "unknown" | "text" = !seemsBinary ? "text" : sections.length > 0 ? "pe" : "unknown";
     const notes: string[] = [];
-    notes.push("md5/imphash/TLSH/ssdeep are placeholders in this baseline and return null.");
+    notes.push("imphash/TLSH/ssdeep are placeholders in this baseline and return null.");
     if (seemsBinary && sections.length === 0) {
       notes.push("PE section table not detected; generic entropy segments provided.");
     }
@@ -275,7 +284,7 @@ export const basicPreTriage: Operation = {
         sha1: await digestHex(data, "SHA-1"),
         sha256: await digestHex(data, "SHA-256"),
         sha512: await digestHex(data, "SHA-512"),
-        md5: null,
+        md5: await digestMd5Hex(data),
         imphash: null,
         tlsh: null,
         ssdeep: null

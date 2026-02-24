@@ -120,7 +120,7 @@ Deliver a complete, auditable, and operationally useful C-track:
 
 1. `[DONE]` Built-in baseline modules for binary/text sample input:
    - core IOC extraction (domains, URLs, IPs, emails, hashes)
-   - SHA-family hashes via WebCrypto; placeholders for `md5`, `imphash`, `TLSH`, `ssdeep`
+   - SHA-family hashes via WebCrypto + `md5`; placeholders for `imphash`, `TLSH`, `ssdeep`
    - binary metadata pre-triage (PE sections + VA/offset/size/entropy, plus entropy segments)
 2. `[DONE]` deterministic report schema for triage output.
 3. `[DONE]` baseline triage verdict module with scored findings and recommendations.
