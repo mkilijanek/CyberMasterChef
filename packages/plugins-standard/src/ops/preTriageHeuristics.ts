@@ -120,4 +120,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "msiexec_remote_install", description: "Remote install via msiexec", pattern: new RegExp("msiexec\\s+/i\\s+https?://", "i") },
   { id: "rclone_usage", description: "Rclone tooling usage", pattern: new RegExp("\\brclone\\b", "i") },
   { id: "mega_nz_reference", description: "MEGA hosting indicator", pattern: new RegExp("mega\\.nz", "i") },
+  { id: "dropbox_reference", description: "Dropbox hosting indicator", pattern: new RegExp("dropbox\\.com", "i") },
 ];
