@@ -148,3 +148,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 134: `aes_decoder_marker` - AES decoder marker
 - [x] Stage 135: `chacha_decoder_marker` - ChaCha decoder marker
 - [x] Stage 136: `process_hollowing_marker` - Process hollowing marker
+- [x] Stage 137: `remote_thread_injection` - Remote thread injection marker
