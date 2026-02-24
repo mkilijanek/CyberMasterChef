@@ -107,4 +107,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "lsass_dump_indicator", description: "LSASS dump indicator", pattern: new RegExp("lsass\.dmp", "i") },
   { id: "mail_attachment_lnk", description: "Email LNK attachment marker", pattern: new RegExp("\\.lnk\\b", "i") },
   { id: "mail_attachment_iso", description: "Email ISO attachment marker", pattern: new RegExp("\\.iso\\b", "i") },
+  { id: "mail_attachment_js", description: "Email JS attachment marker", pattern: new RegExp("\\.js\\b", "i") },
 ];
