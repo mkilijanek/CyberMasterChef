@@ -4,6 +4,8 @@ import {
   runRecipe,
   parseRecipe,
   importCyberChefRecipe,
+  hashDataValue,
+  hashRecipe,
   base64ToBytes,
   bytesToBase64,
   bytesToUtf8,
@@ -41,6 +43,9 @@ const usageText =
   "  --show-trace                     print human-readable trace to stderr\n" +
   "  --trace-json                     print trace JSON to stderr\n" +
   "  --trace-limit <n>                limit number of trace steps printed\n" +
+  "  --show-repro                     print compact reproducibility metadata to stderr\n" +
+  "  --repro-json                     print reproducibility bundle JSON to stderr\n" +
+  "  --repro-file <path>              write reproducibility bundle JSON to file\n" +
   "  --list-ops                       print available operation ids and names\n" +
   "  --list-ops-json                  print available operations as JSON\n" +
   "  --list-ops-filter <query>        filter operation listings by id/name/description\n" +
@@ -94,6 +99,9 @@ type CliOptions = {
   showTrace: boolean;
   traceJson: boolean;
   traceLimit?: number;
+  showRepro: boolean;
+  reproJson: boolean;
+  reproFile?: string;
   listOps: boolean;
   listOpsJson: boolean;
   listOpsFilter?: string;
@@ -119,6 +127,9 @@ function parseArgs(args: string[]): CliOptions {
   let showTrace = false;
   let traceJson = false;
   let traceLimit: number | undefined;
+  let showRepro = false;
+  let reproJson = false;
+  let reproFile: string | undefined;
   let listOps = false;
   let listOpsJson = false;
   let listOpsFilter: string | undefined;
@@ -177,6 +188,21 @@ function parseArgs(args: string[]): CliOptions {
     }
     if (arg === "--trace-json") {
       traceJson = true;
+      continue;
+    }
+    if (arg === "--show-repro") {
+      showRepro = true;
+      continue;
+    }
+    if (arg === "--repro-json") {
+      reproJson = true;
+      continue;
+    }
+    if (arg === "--repro-file") {
+      const raw = args[i + 1];
+      if (!raw) die("Missing value for --repro-file");
+      reproFile = raw;
+      i++;
       continue;
     }
     if (arg === "--trace-limit") {
@@ -297,6 +323,8 @@ function parseArgs(args: string[]): CliOptions {
     summaryJson,
     showTrace,
     traceJson,
+    showRepro,
+    reproJson,
     listOps,
     listOpsJson,
     inputEncoding,
@@ -309,6 +337,7 @@ function parseArgs(args: string[]): CliOptions {
   if (traceLimit !== undefined) out.traceLimit = traceLimit;
   if (listOpsFilter !== undefined) out.listOpsFilter = listOpsFilter;
   if (outputFile !== undefined) out.outputFile = outputFile;
+  if (reproFile !== undefined) out.reproFile = reproFile;
   const inputPath = positional[1];
   if (inputPath) out.inputPath = inputPath;
   if (maxOutputChars !== undefined) out.maxOutputChars = maxOutputChars;
@@ -390,17 +419,47 @@ const res = await runRecipe({
 }).finally(() => {
   clearTimeout(timeoutHandle);
 });
+const recipeHash = await hashRecipe(parsedRecipe.recipe);
+const inputHash = await hashDataValue(inputValue);
+const elapsed = Date.now() - startedAt;
+const reproBundle = {
+  runId: crypto.randomUUID(),
+  startedAt,
+  endedAt: startedAt + elapsed,
+  durationMs: elapsed,
+  recipeHash,
+  inputHash,
+  recipeSource: parsedRecipe.source,
+  warningCount: parsedRecipe.warningCount,
+  traceSteps: res.trace.length,
+  outputType: res.output.type,
+  pluginSet: [
+    {
+      pluginId: standardPlugin.pluginId,
+      version: standardPlugin.version
+    }
+  ]
+};
 if (opts.showSummary) {
-  const elapsed = Date.now() - startedAt;
   process.stderr.write(
     `[summary] outputType=${res.output.type} traceSteps=${res.trace.length} durationMs=${elapsed}\n`
   );
 }
 if (opts.summaryJson) {
-  const elapsed = Date.now() - startedAt;
   process.stderr.write(
     `${JSON.stringify({ outputType: res.output.type, traceSteps: res.trace.length, durationMs: elapsed })}\n`
   );
+}
+if (opts.showRepro) {
+  process.stderr.write(
+    `[repro] recipeHash=${reproBundle.recipeHash} inputHash=${reproBundle.inputHash} durationMs=${reproBundle.durationMs}\n`
+  );
+}
+if (opts.reproJson) {
+  process.stderr.write(`${JSON.stringify(reproBundle)}\n`);
+}
+if (opts.reproFile) {
+  writeFileSync(opts.reproFile, `${JSON.stringify(reproBundle, null, 2)}\n`, "utf-8");
 }
 
 if (opts.showTrace) {
