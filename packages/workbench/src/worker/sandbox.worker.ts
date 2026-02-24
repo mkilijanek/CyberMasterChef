@@ -24,6 +24,7 @@ function disableNetworkApis(): void {
 disableNetworkApis();
 
 const registry = createRegistryWithBuiltins();
+const activeRuns = new Map<string, AbortController>();
 
 self.addEventListener("message", (ev: MessageEvent<WorkerRequest>) => {
   void handle(ev.data);
@@ -37,11 +38,24 @@ async function handle(msg: WorkerRequest): Promise<void> {
   }
 
   if (msg.type === "bake") {
+    const controller = new AbortController();
+    activeRuns.set(msg.id, controller);
+    const timeoutMs =
+      typeof msg.timeoutMs === "number" && Number.isFinite(msg.timeoutMs) && msg.timeoutMs > 0
+        ? msg.timeoutMs
+        : 0;
+    const timeoutHandle =
+      timeoutMs > 0
+        ? self.setTimeout(() => {
+            controller.abort();
+          }, timeoutMs)
+        : null;
     try {
       const res = await runRecipe({
         registry,
         recipe: msg.recipe,
-        input: msg.input
+        input: msg.input,
+        signal: controller.signal
       });
       const out: WorkerResponse = {
         type: "result",
@@ -59,6 +73,14 @@ async function handle(msg: WorkerRequest): Promise<void> {
       const message = e instanceof Error ? e.message : String(e);
       const out: WorkerResponse = { type: "error", id: msg.id, message };
       self.postMessage(out);
+    } finally {
+      if (timeoutHandle !== null) self.clearTimeout(timeoutHandle);
+      activeRuns.delete(msg.id);
     }
+    return;
+  }
+
+  if (msg.type === "cancel") {
+    activeRuns.get(msg.id)?.abort();
   }
 }

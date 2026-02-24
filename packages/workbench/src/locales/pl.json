@@ -8,6 +8,8 @@
   "autoBake": "Auto-bake",
   "shareLink": "Kopiuj link",
   "shareFailed": "Nie udało się skopiować linku",
+  "cancel": "Anuluj",
+  "runCancelled": "Uruchomienie anulowane",
   "exportRecipe": "Eksport receptury",
   "exportCyberChef": "Eksport CyberChef",
   "importRecipe": "Import receptury",

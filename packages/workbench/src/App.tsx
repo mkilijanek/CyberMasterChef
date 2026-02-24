@@ -21,6 +21,7 @@ type Status = "ready" | "working" | "error";
 type SharedState = { recipe: Recipe; input: string };
 
 const HASH_PREFIX = "#state=";
+const RUN_TIMEOUT_MS = 10_000;
 
 function isRecipe(value: unknown): value is Recipe {
   if (typeof value !== "object" || value === null) return false;
@@ -97,11 +98,14 @@ export function App(): JSX.Element {
   }, [autoBake, input, recipe]);
 
   const run = React.useCallback(async (): Promise<void> => {
+    sandboxRef.current?.cancelActive();
     setStatus("working");
     setError(null);
     try {
       const inVal: DataValue = { type: "string", value: input };
-      const res = await sandboxRef.current!.bake(recipe, inVal);
+      const res = await sandboxRef.current!.bake(recipe, inVal, {
+        timeoutMs: RUN_TIMEOUT_MS
+      });
       if (res.output.type === "bytes") {
         const hex = [...res.output.value]
           .map((b) => b.toString(16).padStart(2, "0"))
@@ -115,10 +119,15 @@ export function App(): JSX.Element {
       setStatus("ready");
     } catch (e) {
       const msg = e instanceof Error ? e.message : String(e);
+      if (msg === "Aborted") {
+        setError(t("runCancelled"));
+        setStatus("ready");
+        return;
+      }
       setError(msg);
       setStatus("error");
     }
-  }, [input, recipe]);
+  }, [input, recipe, t]);
 
   React.useEffect(() => {
     if (!autoBake) return;
@@ -136,6 +145,10 @@ export function App(): JSX.Element {
       setError(t("shareFailed"));
       setStatus("error");
     }
+  }
+
+  function cancelRun(): void {
+    sandboxRef.current?.cancelActive();
   }
 
   async function copyText(value: string): Promise<boolean> {
@@ -205,6 +218,13 @@ export function App(): JSX.Element {
         </label>
         <button className="button" onClick={() => void run()}>
           {t("run")}
+        </button>
+        <button
+          className="buttonSmall"
+          onClick={() => cancelRun()}
+          disabled={status !== "working"}
+        >
+          {t("cancel")}
         </button>
         <button className="buttonSmall" onClick={() => void shareLink()}>
           {t("shareLink")}
