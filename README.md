@@ -269,6 +269,7 @@ Operations are grouped by package priority:
   - Playwright suite for import/run-to-step/share-link/timeout UX in `e2e/workbench.spec.ts`
   - Playwright negative-flow suite for invalid import and empty-search behavior in `e2e/workbench-negative.spec.ts`
   - Playwright persistence suite for recipe/input/preferences restore in `e2e/workbench-persistence.spec.ts`
+  - Playwright reproducibility suite for run metadata visibility in `e2e/workbench-repro.spec.ts`
   - extended CyberChef args mapping coverage (`lower/upper/trim/replace`) in `packages/core/test/serde.test.ts`
   - CI workflow now runs Playwright E2E (`pnpm test:e2e`) with Chromium install
 

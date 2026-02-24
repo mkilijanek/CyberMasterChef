@@ -71,6 +71,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
   - `e2e/workbench.spec.ts` (import, run-to-step, share link, timeout config persistence)
   - `e2e/workbench-negative.spec.ts` (invalid import, no-compatible-import, empty-search states)
   - `e2e/workbench-persistence.spec.ts` (recipe/input/toggles/search restore after reload)
+  - `e2e/workbench-repro.spec.ts` (run metadata visibility: run id + recipe/input hash)
 - CI now enforces Playwright E2E (`pnpm test:e2e`) in `.github/workflows/ci.yml`.
 - `engine` tests include abort/cancel behavior coverage (`AbortSignal` path).
 - Golden recipes: regression tests against CyberChef-compatible recipe JSON (actively extended).
