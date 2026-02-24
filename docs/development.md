@@ -231,6 +231,7 @@ Example operation IDs in use:
 - `text.removeDoubleSpaces`
 - `text.linesTrimRight`
 - `text.linesTrimLeft`
+- `text.removeDigitsAndSpaces`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
