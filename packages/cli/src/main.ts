@@ -5,6 +5,8 @@ import {
   parseRecipe,
   importCyberChefRecipe,
   base64ToBytes,
+  bytesToBase64,
+  bytesToUtf8,
   hexToBytes,
   type DataValue,
   type Recipe
@@ -55,6 +57,7 @@ type CliOptions = {
   strictCyberChef: boolean;
   showTrace: boolean;
   inputEncoding: "text" | "hex" | "base64";
+  bytesOutput: "hex" | "base64" | "utf8";
 };
 
 function parseArgs(args: string[]): CliOptions {
@@ -62,6 +65,7 @@ function parseArgs(args: string[]): CliOptions {
   let strictCyberChef = false;
   let showTrace = false;
   let inputEncoding: CliOptions["inputEncoding"] = "text";
+  let bytesOutput: CliOptions["bytesOutput"] = "hex";
   const positional: string[] = [];
 
   for (let i = 0; i < args.length; i++) {
@@ -81,6 +85,15 @@ function parseArgs(args: string[]): CliOptions {
         die(`Invalid --input-encoding value: ${String(raw)}`);
       }
       inputEncoding = raw;
+      i++;
+      continue;
+    }
+    if (arg === "--bytes-output") {
+      const raw = args[i + 1];
+      if (raw !== "hex" && raw !== "base64" && raw !== "utf8") {
+        die(`Invalid --bytes-output value: ${String(raw)}`);
+      }
+      bytesOutput = raw;
       i++;
       continue;
     }
@@ -104,7 +117,7 @@ function parseArgs(args: string[]): CliOptions {
   const recipePath = positional[0];
   if (!recipePath) {
     die(
-      "Usage: cybermasterchef <recipe.json> [input.txt] [--timeout-ms <n>] [--strict-cyberchef] [--show-trace] [--input-encoding text|hex|base64]\n" +
+      "Usage: cybermasterchef <recipe.json> [input.txt] [--timeout-ms <n>] [--strict-cyberchef] [--show-trace] [--input-encoding text|hex|base64] [--bytes-output hex|base64|utf8]\n" +
         "  Reads input from stdin if [input.txt] is omitted."
     );
   }
@@ -113,7 +126,8 @@ function parseArgs(args: string[]): CliOptions {
     timeoutMs,
     strictCyberChef,
     showTrace,
-    inputEncoding
+    inputEncoding,
+    bytesOutput
   };
   const inputPath = positional[1];
   if (inputPath) out.inputPath = inputPath;
@@ -162,8 +176,13 @@ if (opts.showTrace) {
 }
 
 if (res.output.type === "bytes") {
-  const hex = [...res.output.value].map((b) => b.toString(16).padStart(2, "0")).join("");
-  process.stdout.write(hex + "\n");
+  const out =
+    opts.bytesOutput === "base64"
+      ? bytesToBase64(res.output.value)
+      : opts.bytesOutput === "utf8"
+        ? bytesToUtf8(res.output.value)
+        : [...res.output.value].map((b) => b.toString(16).padStart(2, "0")).join("");
+  process.stdout.write(out + "\n");
 } else if (res.output.type === "json") {
   process.stdout.write(JSON.stringify(res.output.value, null, 2) + "\n");
 } else {

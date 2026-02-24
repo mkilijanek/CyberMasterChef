@@ -68,6 +68,7 @@ CLI behavior:
 - `--strict-cyberchef` fails if CyberChef import would skip unsupported steps.
 - `--show-trace` prints execution trace (step/op/input->output types) on stderr.
 - `--input-encoding text|hex|base64` controls how CLI input is parsed before recipe execution.
+- `--bytes-output hex|base64|utf8` controls how bytes outputs are rendered on stdout.
 
 ## Adding a new operation
 

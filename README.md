@@ -71,6 +71,7 @@ Operations are grouped by package priority:
   - supports `--timeout-ms` for bounded execution and `--strict-cyberchef` for strict import mode
   - supports `--show-trace` for debugging pipeline execution in terminal
   - supports `--input-encoding text|hex|base64` for binary-oriented CLI runs
+  - supports `--bytes-output hex|base64|utf8` to choose stdout format for byte outputs
 - Quality baseline:
   - golden recipe regression suite for core operation chains in `packages/plugins-standard/test/goldenRecipes.test.ts`
 
