@@ -53,6 +53,8 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
 - Import behavior:
   - unsupported CyberChef steps are skipped and reported as warnings
   - import fails if no compatible operations remain
+- Workbench import UX:
+  - shows warning summary and per-step warning details (`step`, `op`, `reason`)
 
 CLI behavior:
 - `packages/cli` accepts native JSON directly.

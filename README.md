@@ -53,6 +53,7 @@ Operations are grouped by package priority:
   - run recipe up to a selected step (pipeline debugging)
   - deep-link sharing (`#state=` hash with recipe + input)
   - recipe import/export (native JSON and CyberChef-compatible JSON)
+  - detailed import warnings for skipped CyberChef steps (step index + operation + reason)
   - local persistence for recipe, input, and auto-bake preference
 - Built-in operations (`@cybermasterchef/plugins-standard`):
   - `codec.toBase64`, `codec.fromBase64`

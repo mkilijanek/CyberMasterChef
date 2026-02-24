@@ -1,5 +1,5 @@
 import React from "react";
-import type { DataValue, Recipe } from "@cybermasterchef/core";
+import type { DataValue, Recipe, RecipeImportWarning } from "@cybermasterchef/core";
 import {
   base64ToBytes,
   bytesToBase64,
@@ -94,6 +94,7 @@ export function App(): React.JSX.Element {
   const [trace, setTrace] = React.useState<TraceRow[]>([]);
   const [status, setStatus] = React.useState<Status>("ready");
   const [error, setError] = React.useState<string | null>(null);
+  const [importWarnings, setImportWarnings] = React.useState<RecipeImportWarning[]>([]);
   const sandboxRef = React.useRef<SandboxClient | null>(null);
   if (!sandboxRef.current) sandboxRef.current = new SandboxClient();
 
@@ -111,6 +112,7 @@ export function App(): React.JSX.Element {
     sandboxRef.current?.cancelActive();
     setStatus("working");
     setError(null);
+    setImportWarnings([]);
     setTrace([]);
     try {
       const inVal: DataValue = { type: "string", value: input };
@@ -206,18 +208,19 @@ export function App(): React.JSX.Element {
     if (!raw) return;
     try {
       let parsed: Recipe;
-      let warnCount = 0;
+      let warnings: RecipeImportWarning[] = [];
       try {
         parsed = parseRecipe(raw);
       } catch {
         const imported = importCyberChefRecipe(raw);
         parsed = imported.recipe;
-        warnCount = imported.warnings.length;
+        warnings = imported.warnings;
       }
       setRecipe(parsed);
-      if (warnCount > 0) {
-        setError(t("importWarnings", { count: warnCount }));
-        setStatus("error");
+      setImportWarnings(warnings);
+      if (warnings.length > 0) {
+        setError(null);
+        setStatus("ready");
       } else {
         setError(null);
         setStatus("ready");
@@ -309,6 +312,18 @@ export function App(): React.JSX.Element {
           {error ? (
             <div className="error" role="alert">
               {t("error")}: {error}
+            </div>
+          ) : null}
+          {importWarnings.length > 0 ? (
+            <div className="warning" role="status" aria-live="polite">
+              <strong>{t("importWarnings", { count: importWarnings.length })}</strong>
+              <ul className="warningList">
+                {importWarnings.map((w) => (
+                  <li key={`${w.step}-${w.op}`}>
+                    {t("step")} {w.step + 1}: <code>{w.op}</code> ({w.reason})
+                  </li>
+                ))}
+              </ul>
             </div>
           ) : null}
           <div className="traceBox">

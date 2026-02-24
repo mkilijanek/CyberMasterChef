@@ -92,6 +92,17 @@ body { margin: 0; }
   background: #fff4f4;
   border-radius: 6px;
 }
+.warning {
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px solid #f3d37a;
+  background: #fff9e8;
+  border-radius: 6px;
+}
+.warningList {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
 .traceBox {
   margin-top: 10px;
   border-top: 1px solid #eee;
