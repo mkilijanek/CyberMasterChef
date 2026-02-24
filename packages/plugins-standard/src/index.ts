@@ -54,6 +54,7 @@ import { uniqueWords } from "./ops/uniqueWords.js";
 import { removeVowels } from "./ops/removeVowels.js";
 import { keepVowels } from "./ops/keepVowels.js";
 import { normalizeNewlines } from "./ops/normalizeNewlines.js";
+import { endsWith } from "./ops/endsWith.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -111,6 +112,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeVowels);
     registry.register(keepVowels);
     registry.register(normalizeNewlines);
+    registry.register(endsWith);
     registry.register(sha256);
   }
 };

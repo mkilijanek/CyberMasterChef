@@ -134,6 +134,7 @@ Operations are grouped by package priority:
   - `text.reverseLines`
   - `text.sortLines`
   - `text.uniqueLines`
+  - `text.endsWith`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
