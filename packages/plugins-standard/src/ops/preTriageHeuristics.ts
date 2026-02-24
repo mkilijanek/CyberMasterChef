@@ -29,4 +29,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "bat_file_drop", description: "Batch payload reference", pattern: new RegExp("\\.bat\\b", "i") },
   { id: "cmd_file_drop", description: "CMD payload reference", pattern: new RegExp("\\.cmd\\b", "i") },
   { id: "zip_archive_drop", description: "ZIP archive payload", pattern: new RegExp("\\.zip\\b", "i") },
+  { id: "iso_archive_drop", description: "ISO archive payload", pattern: new RegExp("\\.iso\\b", "i") },
 ];
