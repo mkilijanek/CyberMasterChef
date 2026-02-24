@@ -96,3 +96,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 084: `whoami_priv` - Privilege discovery whoami
 - [x] Stage 085: `ipconfig_all` - Network discovery ipconfig /all
 - [x] Stage 086: `arp_scan` - ARP table query
+- [x] Stage 087: `netstat_scan` - Network sockets netstat
