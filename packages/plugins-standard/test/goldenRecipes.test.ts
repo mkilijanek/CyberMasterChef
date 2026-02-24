@@ -98,6 +98,141 @@ const goldenCases: GoldenCase[] = [
       steps: [{ opId: "text.reverseWords" }]
     },
     expected: "three two one"
+  },
+  {
+    name: "Hex round-trip",
+    input: "EdgeCase42",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "codec.toHex" }, { opId: "codec.fromHex" }]
+    },
+    expected: "EdgeCase42"
+  },
+  {
+    name: "Non-empty lines after cleanup",
+    input: "a\n\n b \n\n\nc",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.removeBlankLines" }, { opId: "text.countNonEmptyLines" }]
+    },
+    expected: "3"
+  },
+  {
+    name: "CSV generation from words",
+    input: "a b c",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.wordsToLines" }, { opId: "text.linesToCsv" }]
+    },
+    expected: "a,b,c"
+  },
+  {
+    name: "Reverse line ordering",
+    input: "line1\nline2\nline3",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.reverseLines" }]
+    },
+    expected: "line3\nline2\nline1"
+  },
+  {
+    name: "Sort and unique lines chain",
+    input: "z\na\nz\nb\na",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.uniqueLines" }, { opId: "text.sortLines" }]
+    },
+    expected: "a\nb\nz"
+  },
+  {
+    name: "snake to camel flow",
+    input: "hello_world_again",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.toCamelCase" }]
+    },
+    expected: "helloWorldAgain"
+  },
+  {
+    name: "pascal to kebab flow",
+    input: "CyberMasterChef",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.toKebabCase" }]
+    },
+    expected: "cybermasterchef"
+  },
+  {
+    name: "strip accents and lowercase",
+    input: "Żółć",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.stripAccents" }, { opId: "text.lowercase" }]
+    },
+    expected: "zołc"
+  },
+  {
+    name: "mask digits in mixed text",
+    input: "id=1234,port=80",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.maskDigits" }]
+    },
+    expected: "id=****,port=**"
+  },
+  {
+    name: "count punctuation sample",
+    input: "a,b;c:d",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.countCommas" }]
+    },
+    expected: "1"
+  },
+  {
+    name: "remove control chars chain",
+    input: "a\u0000b\u0007c",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.removeControlChars" }]
+    },
+    expected: "abc"
+  },
+  {
+    name: "compact lines after trim",
+    input: " aa \n\n bb \ncc ",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.compactLines" }]
+    },
+    expected: "aa bb cc"
+  },
+  {
+    name: "rot13 twice restores input",
+    input: "CyberMasterChef",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.rot13" }, { opId: "text.rot13" }]
+    },
+    expected: "CyberMasterChef"
+  },
+  {
+    name: "normalize commas and split lines",
+    input: "a,,,b,,c",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.normalizeCommas" }, { opId: "text.csvToLines" }]
+    },
+    expected: "a\nb\nc"
+  },
+  {
+    name: "bracket surround then trim quotes",
+    input: "abc",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "text.surroundQuotes" }, { opId: "text.trimQuotes" }]
+    },
+    expected: "abc"
   }
 ];
 

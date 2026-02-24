@@ -56,7 +56,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
   - `packages/core/test/engine.test.ts`
   - `packages/core/test/serde.test.ts` (includes CyberChef import/export round-trip checks)
   - `packages/plugins-standard/test/standardPlugin.test.ts`
-  - `packages/plugins-standard/test/goldenRecipes.test.ts` (golden regression baseline)
+  - `packages/plugins-standard/test/goldenRecipes.test.ts` (expanded parity corpus from references)
   - `packages/workbench/src/worker/runtime.test.ts` (worker protocol cancel/timeout/race)
 - E2E Playwright:
   - `e2e/workbench.spec.ts` (import, run-to-step, share link, timeout config persistence)

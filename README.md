@@ -261,7 +261,7 @@ Operations are grouped by package priority:
   - supports `--no-newline` for exact output framing in pipelines
   - supports `--max-output-chars` for bounded stdout in scripts/CI
 - Quality baseline:
-  - golden recipe regression suite for core operation chains in `packages/plugins-standard/test/goldenRecipes.test.ts`
+  - golden parity corpus covering representative CyberChef-style chains in `packages/plugins-standard/test/goldenRecipes.test.ts`
   - worker protocol integration suite for cancel/timeout/race in `packages/workbench/src/worker/runtime.test.ts`
   - Playwright suite for import/run-to-step/share-link/timeout UX in `e2e/workbench.spec.ts`
 
