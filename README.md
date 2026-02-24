@@ -122,6 +122,18 @@ Operations are grouped by package priority:
   - `text.removeVowels`
   - `text.keepVowels`
   - `text.normalizeNewlines`
+  - `text.swapCase`
+  - `text.removeSpaces`
+  - `text.keepDigits`
+  - `text.removeDigits`
+  - `text.keepLetters`
+  - `text.removeLetters`
+  - `text.keepAlnum`
+  - `text.removeAlnum`
+  - `text.toTitleCase`
+  - `text.reverseLines`
+  - `text.sortLines`
+  - `text.uniqueLines`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
