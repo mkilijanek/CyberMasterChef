@@ -14,3 +14,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 04: `mshta_invocation` - MSHTA execution chain
 - [x] Stage 05: `regsvr32_silent` - Regsvr32 silent registration
 - [x] Stage 06: `rundll32_launch` - Rundll32 execution chain
+- [x] Stage 07: `wmic_process_create` - WMIC process creation
