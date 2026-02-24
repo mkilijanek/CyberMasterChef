@@ -60,6 +60,7 @@ import { lowerFirst } from "./ops/lowerFirst.js";
 import { upperFirst } from "./ops/upperFirst.js";
 import { removePunctuation } from "./ops/removePunctuation.js";
 import { keepPunctuation } from "./ops/keepPunctuation.js";
+import { collapseDashes } from "./ops/collapseDashes.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -123,6 +124,7 @@ export const standardPlugin: Plugin = {
     registry.register(upperFirst);
     registry.register(removePunctuation);
     registry.register(keepPunctuation);
+    registry.register(collapseDashes);
     registry.register(sha256);
   }
 };
