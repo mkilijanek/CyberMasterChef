@@ -94,3 +94,4 @@ Example operation IDs in use:
 - `codec.urlEncode`, `codec.urlDecode`
 - `hash.sha256`
 - `text.reverse`
+- conversion tests include invalid `string -> number` failure path.
