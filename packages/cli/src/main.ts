@@ -31,6 +31,7 @@ const usageText =
   "Options:\n" +
   "  --timeout-ms <n>                  execution timeout in milliseconds\n" +
   "  --strict-cyberchef               fail if CyberChef import skips steps\n" +
+  "  --fail-on-warning                fail if import warnings are emitted\n" +
   "  --show-trace                     print human-readable trace to stderr\n" +
   "  --trace-json                     print trace JSON to stderr\n" +
   "  --input-encoding text|hex|base64 parse CLI input before execution\n" +
@@ -67,6 +68,7 @@ type CliOptions = {
   inputPath?: string;
   timeoutMs: number;
   strictCyberChef: boolean;
+  failOnWarning: boolean;
   showTrace: boolean;
   traceJson: boolean;
   inputEncoding: "text" | "hex" | "base64";
@@ -76,6 +78,7 @@ type CliOptions = {
 function parseArgs(args: string[]): CliOptions {
   let timeoutMs = DEFAULT_TIMEOUT_MS;
   let strictCyberChef = false;
+  let failOnWarning = false;
   let showTrace = false;
   let traceJson = false;
   let inputEncoding: CliOptions["inputEncoding"] = "text";
@@ -87,6 +90,10 @@ function parseArgs(args: string[]): CliOptions {
     if (!arg) continue;
     if (arg === "--strict-cyberchef") {
       strictCyberChef = true;
+      continue;
+    }
+    if (arg === "--fail-on-warning") {
+      failOnWarning = true;
       continue;
     }
     if (arg === "--help") {
@@ -144,6 +151,7 @@ function parseArgs(args: string[]): CliOptions {
     recipePath,
     timeoutMs,
     strictCyberChef,
+    failOnWarning,
     showTrace,
     traceJson,
     inputEncoding,
@@ -162,6 +170,9 @@ if (opts.strictCyberChef && parsedRecipe.source === "cyberchef" && parsedRecipe.
   die(
     `Strict CyberChef mode failed: ${parsedRecipe.warningCount} unsupported step(s) were skipped.`
   );
+}
+if (opts.failOnWarning && parsedRecipe.warningCount > 0) {
+  die(`Execution failed due to warnings: ${parsedRecipe.warningCount}`);
 }
 const input = opts.inputPath ? fs.readFileSync(opts.inputPath, "utf-8") : fs.readFileSync(0, "utf-8");
 const inputValue: DataValue =

@@ -67,6 +67,7 @@ CLI behavior:
 - Unsupported CyberChef steps are reported on stderr as warnings.
 - `--timeout-ms <n>` bounds execution time in milliseconds.
 - `--strict-cyberchef` fails if CyberChef import would skip unsupported steps.
+- `--fail-on-warning` fails execution when any import warning is emitted.
 - `--show-trace` prints execution trace (step/op/input->output types) on stderr.
 - `--trace-json` prints execution trace as JSON on stderr.
 - `--input-encoding text|hex|base64` controls how CLI input is parsed before recipe execution.
