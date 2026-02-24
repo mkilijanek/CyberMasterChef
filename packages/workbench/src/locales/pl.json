@@ -17,6 +17,8 @@
   "importRecipe": "Import receptury",
   "copyOutput": "Kopiuj wyjście",
   "copyOutputFailed": "Nie udało się skopiować wyjścia",
+  "copyInput": "Kopiuj wejście",
+  "copyInputFailed": "Nie udało się skopiować wejścia",
   "copyTrace": "Kopiuj ślad",
   "copyTraceFailed": "Nie udało się skopiować śladu",
   "clearTrace": "Wyczyść ślad",

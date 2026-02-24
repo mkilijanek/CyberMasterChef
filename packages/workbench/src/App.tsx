@@ -212,6 +212,14 @@ export function App(): React.JSX.Element {
     }
   }
 
+  async function copyInput(): Promise<void> {
+    const copied = await copyText(input);
+    if (!copied) {
+      setError(t("copyInputFailed"));
+      setStatus("error");
+    }
+  }
+
   async function copyTrace(): Promise<void> {
     const payload = JSON.stringify(trace, null, 2);
     const copied = await copyText(payload);
@@ -353,6 +361,9 @@ export function App(): React.JSX.Element {
         </button>
         <button className="buttonSmall" onClick={() => void copyOutput()}>
           {t("copyOutput")}
+        </button>
+        <button className="buttonSmall" onClick={() => void copyInput()}>
+          {t("copyInput")}
         </button>
         <button className="buttonSmall" onClick={() => void copyTrace()}>
           {t("copyTrace")}

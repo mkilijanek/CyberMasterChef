@@ -17,6 +17,8 @@
   "importRecipe": "Import recipe",
   "copyOutput": "Copy output",
   "copyOutputFailed": "Could not copy output",
+  "copyInput": "Copy input",
+  "copyInputFailed": "Could not copy input",
   "copyTrace": "Copy trace",
   "copyTraceFailed": "Could not copy trace",
   "clearTrace": "Clear trace",

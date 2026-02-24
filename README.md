@@ -56,7 +56,7 @@ Operations are grouped by package priority:
   - run recipe up to a selected step (pipeline debugging)
   - rerun to selected step directly from trace list
   - deep-link sharing (`#state=` hash with recipe + input)
-  - quick output copy action in UI
+  - quick input/output copy actions in UI
   - quick trace copy action in UI
   - clear-trace action without resetting recipe/input
   - workspace reset action (recipe + IO + trace)
