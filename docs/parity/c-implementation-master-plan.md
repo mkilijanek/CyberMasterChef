@@ -49,6 +49,7 @@ Deliver a complete, auditable, and operationally useful C-track:
   - network IOC baseline (extract, defang/fang)
   - forensic IOC baseline (strings, emails, domains, hash/token/vuln extractors)
   - basic pre-triage baseline (`forensic.basicPreTriage`)
+  - basic triage baseline (`forensic.basicTriage`)
 - Still missing for C2 baseline completeness:
   - compression/archive baseline (`gzip`, `gunzip`, and compatibility strategy)
   - structured error taxonomy standardization across new operations
@@ -115,16 +116,18 @@ Deliver a complete, auditable, and operationally useful C-track:
 2. `[PLANNED]` operation-level crypto parity expansion (digest/mac/kdf)
 3. `[DEFERRED]` high-cost wasm-heavy algorithms after baseline C2 closure
 
-### Wave E: Basic Pre-Triage (Forensic/Malware Analysis)
+### Wave E: Forensic Triage (CSIRT/SOC)
 
-1. `[DONE]` Basic pre-triage module baseline for binary/text sample input:
+1. `[DONE]` Built-in baseline modules for binary/text sample input:
    - core IOC extraction (domains, URLs, IPs, emails, hashes)
    - SHA-family hashes via WebCrypto; placeholders for `md5`, `imphash`, `TLSH`, `ssdeep`
    - binary metadata pre-triage (PE sections + VA/offset/size/entropy, plus entropy segments)
-2. `[DONE]` deterministic report schema for pre-triage output.
-3. `[DONE]` safety constraints baseline (bounded IOC/segment extraction controls).
-4. `[IN-PROGRESS]` contract tests + golden fixtures for known malware-like samples.
-5. `[PLANNED]` advanced triage add-ons: full `imphash`, TLSH/ssdeep adapters, broader binary format support.
+2. `[DONE]` deterministic report schema for triage output.
+3. `[DONE]` baseline triage verdict module with scored findings and recommendations.
+4. `[DONE]` safety constraints baseline (bounded IOC/segment extraction controls).
+5. `[IN-PROGRESS]` contract tests + golden fixtures for known malware-like samples.
+6. `[IN-PROGRESS]` production integrations currently mocked (ZIP password pipeline, YARA, STIX/MISP, dynamic sandbox connector).
+7. `[PLANNED]` advanced triage add-ons: full `imphash`, TLSH/ssdeep adapters, broader binary format support.
 
 ## C3 Contract and Determinism Program
 
@@ -144,7 +147,7 @@ Deliver a complete, auditable, and operationally useful C-track:
 ## Current Execution Queue Extension
 
 - Queue tasks `1-20`: completed.
-- Queue task `21` (new final item): `Basic Pre-Triage (Forensic/Malware Analysis)` module.
+- Forensic Triage (CSIRT/SOC) baseline module.
   - Status: `[DONE]` (baseline)
   - Next: harden with advanced hash adapters and expanded fixture corpus.
 
@@ -157,4 +160,4 @@ Deliver a complete, auditable, and operationally useful C-track:
 - Combined C-track completion snapshot: `~65%`
 - Active focus for next execution queue:
   - complete compression baseline (`gzip`/`gunzip`) and structured error taxonomy
-  - evolve pre-triage from baseline to full malware-analysis module (`imphash`/TLSH/ssdeep + richer binary parsing)
+  - evolve Forensic Triage from baseline to full malware-analysis module (`imphash`/TLSH/ssdeep + richer binary parsing)

@@ -3,7 +3,7 @@
 ## Setup
 
 ```bash
-node --version   # 20+
+node --version   # 24+
 pnpm --version   # 10+
 pnpm install
 pnpm dev         # starts workbench at http://localhost:5173
@@ -25,18 +25,6 @@ pnpm ci          # lint + typecheck + test + build
 ## Supply chain (pnpm v10)
 
 Consider enabling in `.npmrc`:
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
 - `allow-builds` / allowlist for trusted native deps
 - `minimumReleaseAge` to delay freshly published packages
 - `trustPolicy` for workspace packages
@@ -63,11 +51,13 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
   - `packages/core/test/serde.test.ts` (includes CyberChef import/export round-trip checks)
   - `packages/plugins-standard/test/standardPlugin.test.ts`
   - `packages/plugins-standard/test/goldenRecipes.test.ts` (expanded parity corpus from references)
-  - `packages/plugins-standard/test/goldenNegative.test.ts` (malformed input and degradation coverage)
-  - `packages/plugins-standard/test/semanticRoundtrip.test.ts` (semantic parity for recipe round-trips)
-  - `packages/plugins-standard/test/determinism.test.ts` (repeatability of outputs and traces)
+- `packages/plugins-standard/test/goldenNegative.test.ts` (malformed input and degradation coverage)
+- `packages/plugins-standard/test/semanticRoundtrip.test.ts` (semantic parity for recipe round-trips)
+- `packages/plugins-standard/test/determinism.test.ts` (repeatability of outputs and traces)
+- `packages/plugins-standard/test/basicPreTriage.test.ts` (baseline forensic pre-triage report)
+- `packages/plugins-standard/test/basicTriage.test.ts` (risk score/verdict + mocked capability transparency)
 - `packages/workbench/src/worker/runtime.test.ts` (worker protocol cancel/timeout/race)
-  - `packages/workbench/src/worker/poolClient.test.ts` (pool queueing, worker assignment, priority)
+- `packages/workbench/src/worker/poolClient.test.ts` (pool queueing, worker assignment, priority)
 - E2E Playwright:
   - `e2e/workbench.spec.ts` (import, run-to-step, share link, timeout config persistence)
   - `e2e/workbench-negative.spec.ts` (invalid import, no-compatible-import, empty-search states)
@@ -207,6 +197,7 @@ Wave 1 implemented so far:
 - Wave 16 network metadata: `network.extractPorts`
 - Wave 16 host IOC: `forensic.extractRegistryKeys`
 - Wave 17 baseline triage: `forensic.basicPreTriage`
+- Wave 17 baseline triage: `forensic.basicTriage`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip
 

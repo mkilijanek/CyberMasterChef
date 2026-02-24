@@ -14,6 +14,15 @@ It is built for three audiences:
 - Browser workbench (`@cybermasterchef/workbench`) running recipes in a worker sandbox.
 - Automation-ready CLI (`@cybermasterchef/cli`) with batch mode and reproducibility metadata.
 
+## Key Design Decisions
+
+- TypeScript strict throughout — no `any`, full type safety
+- pnpm workspaces — deduplication, supply-chain controls
+- Plugin model — operations are isolated packages; `core` has no op-specific code
+- Sandbox execution — all recipes run inside a Web Worker; network APIs blocked at runtime + CSP
+- i18n baseline — PL/EN from the start (i18next + react-i18next)
+- a11y baseline — WCAG 2.2 intent; keyboard navigation, proper ARIA roles
+
 ## Repository Layout
 
 ```text
@@ -136,17 +145,38 @@ Recommended minimum pipeline:
 - Use CodeQL + Dependabot for continuous scanning/update workflow.
 - Enforce deployment CSP (`worker-src`, `connect-src`) at hosting layer.
 
-## C Program Status (Implementation Track)
+## C Program TODO & Milestones
 
-Authoritative planning artifacts:
+Planning artifacts:
 - [C Implementation Master Plan](docs/parity/c-implementation-master-plan.md)
 - [C2 Execution Board](docs/parity/c2-execution-board.md)
 - [C3 Compatibility Contracts](docs/parity/c3-operation-compatibility-contracts.md)
 
-Current state:
-- C1: complete and published.
-- C2: active expansion waves implemented through queue tasks `1-20`.
-- Task `21`: `forensic.basicPreTriage` baseline module implemented.
+Milestones:
+- [x] M1: C1 taxonomy/matrix complete and published.
+- [x] M2: C2 waves `1-20` completed on `dev`.
+- [x] M3: Forensic Triage baseline modules implemented (`forensic.basicPreTriage`, `forensic.basicTriage`).
+- [ ] M4: Compression/archive baseline (`compression.gzip`, `compression.gunzip`) complete.
+- [ ] M5: C3 contract-driven tests and CI contract gate enabled.
+- [ ] M6: Security and integration hardening complete (YARA/STIX/MISP/dynamic sandbox non-mocked).
+
+Module groups checklist:
+- [x] Date-time baseline group.
+- [x] Data-format baseline group.
+- [x] Network IOC baseline group.
+- [x] Forensic IOC baseline group.
+- [x] Pre-Triage/Triage baseline group.
+- [ ] Compression/archive group.
+- [ ] Crypto/KDF expansion group.
+- [ ] Advanced binary triage group (non-PE parsers and signature verification).
+
+Forensic Triage currently mocked capabilities:
+- [ ] ZIP password pipeline and production-grade safe unpack engine.
+- [ ] MD5 / imphash / TLSH / ssdeep generation.
+- [ ] YARA / YARA-X scanning integration.
+- [ ] Authenticode/X509 verification.
+- [ ] STIX/MISP export.
+- [ ] External dynamic sandbox connector (e.g. Cuckoo).
 
 ## Documentation Index
 
