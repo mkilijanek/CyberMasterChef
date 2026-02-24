@@ -96,6 +96,7 @@ Example operation IDs in use:
 - `text.trim`
 - `text.uppercase`
 - `text.prepend`
+- `text.append`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

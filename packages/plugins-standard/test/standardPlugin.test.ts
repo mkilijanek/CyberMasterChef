@@ -18,6 +18,7 @@ describe("standardPlugin", () => {
       "codec.urlDecode",
       "codec.urlEncode",
       "hash.sha256",
+      "text.append",
       "text.lowercase",
       "text.prepend",
       "text.reverse",
