@@ -117,4 +117,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "ole_object_marker", description: "OLE object marker", pattern: new RegExp("oleobject", "i") },
   { id: "office_child_powershell", description: "Office spawning PowerShell", pattern: new RegExp("winword\\.exe.*powershell", "i") },
   { id: "office_child_cmd", description: "Office spawning cmd", pattern: new RegExp("excel\\.exe.*cmd\\.exe", "i") },
+  { id: "msiexec_remote_install", description: "Remote install via msiexec", pattern: new RegExp("msiexec\\s+/i\\s+https?://", "i") },
 ];
