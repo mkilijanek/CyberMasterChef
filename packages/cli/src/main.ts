@@ -35,6 +35,7 @@ const usageText =
   "  --quiet-warnings                 suppress warning output on stderr\n" +
   "  --show-trace                     print human-readable trace to stderr\n" +
   "  --trace-json                     print trace JSON to stderr\n" +
+  "  --list-ops                       print available operation ids and names\n" +
   "  --input-encoding text|hex|base64 parse CLI input before execution\n" +
   "  --bytes-output hex|base64|utf8   bytes output rendering on stdout\n" +
   "  --max-output-chars <n>           limit output length for string/json/bytes rendering\n" +
@@ -74,6 +75,7 @@ type CliOptions = {
   quietWarnings: boolean;
   showTrace: boolean;
   traceJson: boolean;
+  listOps: boolean;
   inputEncoding: "text" | "hex" | "base64";
   bytesOutput: "hex" | "base64" | "utf8";
   maxOutputChars?: number;
@@ -86,6 +88,7 @@ function parseArgs(args: string[]): CliOptions {
   let quietWarnings = false;
   let showTrace = false;
   let traceJson = false;
+  let listOps = false;
   let inputEncoding: CliOptions["inputEncoding"] = "text";
   let bytesOutput: CliOptions["bytesOutput"] = "hex";
   let maxOutputChars: number | undefined;
@@ -116,6 +119,10 @@ function parseArgs(args: string[]): CliOptions {
     }
     if (arg === "--trace-json") {
       traceJson = true;
+      continue;
+    }
+    if (arg === "--list-ops") {
+      listOps = true;
       continue;
     }
     if (arg === "--input-encoding") {
@@ -165,17 +172,18 @@ function parseArgs(args: string[]): CliOptions {
   }
 
   const recipePath = positional[0];
-  if (!recipePath) {
+  if (!recipePath && !listOps) {
     die(usageText);
   }
   const out: CliOptions = {
-    recipePath,
+    recipePath: recipePath ?? "",
     timeoutMs,
     strictCyberChef,
     failOnWarning,
     quietWarnings,
     showTrace,
     traceJson,
+    listOps,
     inputEncoding,
     bytesOutput
   };
@@ -186,6 +194,16 @@ function parseArgs(args: string[]): CliOptions {
 }
 
 const opts = parseArgs(process.argv.slice(2));
+
+const registry = new InMemoryRegistry();
+standardPlugin.register(registry);
+
+if (opts.listOps) {
+  for (const op of registry.list()) {
+    process.stdout.write(`${op.id}\t${op.name}\n`);
+  }
+  process.exit(0);
+}
 
 const recipeJson = fs.readFileSync(opts.recipePath, "utf-8");
 const parsedRecipe = parseRecipeAny(recipeJson, opts.quietWarnings);
@@ -204,9 +222,6 @@ const inputValue: DataValue =
     : opts.inputEncoding === "base64"
       ? { type: "bytes", value: base64ToBytes(input.trim()) }
       : { type: "string", value: input };
-
-const registry = new InMemoryRegistry();
-standardPlugin.register(registry);
 
 const controller = new AbortController();
 const timeoutHandle = setTimeout(() => {

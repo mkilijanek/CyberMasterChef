@@ -74,6 +74,7 @@ Operations are grouped by package priority:
   - supports `--fail-on-warning` to make imports with warnings fail in CI pipelines
   - supports `--quiet-warnings` to keep stderr clean in scripted runs
   - supports `--show-trace` and `--trace-json` for pipeline debugging in terminal
+  - supports `--list-ops` to inspect currently registered operations
   - supports `--input-encoding text|hex|base64` for binary-oriented CLI runs
   - supports `--bytes-output hex|base64|utf8` to choose stdout format for byte outputs
   - supports `--max-output-chars` for bounded stdout in scripts/CI
