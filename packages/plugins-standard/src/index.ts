@@ -114,6 +114,7 @@ import { removePercents } from "./ops/removePercents.js";
 import { removeAmpersands } from "./ops/removeAmpersands.js";
 import { removePluses } from "./ops/removePluses.js";
 import { removeEquals } from "./ops/removeEquals.js";
+import { removeTildes } from "./ops/removeTildes.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -231,6 +232,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeAmpersands);
     registry.register(removePluses);
     registry.register(removeEquals);
+    registry.register(removeTildes);
     registry.register(sha256);
   }
 };

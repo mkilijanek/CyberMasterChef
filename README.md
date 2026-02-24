@@ -194,6 +194,7 @@ Operations are grouped by package priority:
   - `text.removeAmpersands`
   - `text.removePluses`
   - `text.removeEquals`
+  - `text.removeTildes`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
