@@ -34,6 +34,7 @@ type RunInfo = {
   inputHash: string;
   queuedMs?: number;
   workerId?: number;
+  attempt?: number;
 };
 
 const HASH_PREFIX = "#state=";
@@ -572,6 +573,9 @@ export function App(): React.JSX.Element {
         </div>
         <div className="traceCount">
           {t("workerIdLabel")}: {lastRunInfo?.workerId ?? "-"}
+        </div>
+        <div className="traceCount">
+          {t("attemptLabel")}: {lastRunInfo?.attempt ?? "-"}
         </div>
         <div className="traceCount">
           {t("recipeHashShort")}: {lastRunInfo ? lastRunInfo.recipeHash.slice(0, 12) : "-"}

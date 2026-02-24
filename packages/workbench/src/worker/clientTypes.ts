@@ -15,6 +15,7 @@ export type BakeResult = {
     inputHash: string;
     queuedMs?: number;
     workerId?: number;
+    attempt?: number;
   };
 };
 

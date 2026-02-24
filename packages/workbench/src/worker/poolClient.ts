@@ -128,7 +128,8 @@ export class WorkerPoolClient implements ExecutionClient {
           run: {
             ...result.run,
             queuedMs: Math.max(0, startedAt - task.enqueuedAt),
-            workerId: available.id
+            workerId: available.id,
+            attempt: 1
           }
         });
       })

@@ -66,6 +66,7 @@
   "runId": "ID uruchomienia",
   "queueWaitMs": "Oczekiwanie w kolejce (ms)",
   "workerIdLabel": "ID workera",
+  "attemptLabel": "Próba",
   "recipeHashShort": "Hash receptury",
   "inputHashShort": "Hash wejścia",
   "traceEmpty": "Brak śladu wykonania",
