@@ -84,6 +84,7 @@ import { removeSingleQuotes } from "./ops/removeSingleQuotes.js";
 import { replaceNewlinesWithSpace } from "./ops/replaceNewlinesWithSpace.js";
 import { replaceSpacesWithNewlines } from "./ops/replaceSpacesWithNewlines.js";
 import { tabsToSingleSpace } from "./ops/tabsToSingleSpace.js";
+import { countUppercase } from "./ops/countUppercase.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -171,6 +172,7 @@ export const standardPlugin: Plugin = {
     registry.register(replaceNewlinesWithSpace);
     registry.register(replaceSpacesWithNewlines);
     registry.register(tabsToSingleSpace);
+    registry.register(countUppercase);
     registry.register(sha256);
   }
 };

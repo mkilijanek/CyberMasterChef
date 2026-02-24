@@ -189,6 +189,7 @@ Example operation IDs in use:
 - `text.replaceNewlinesWithSpace`
 - `text.replaceSpacesWithNewlines`
 - `text.tabsToSingleSpace`
+- `text.countUppercase`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
