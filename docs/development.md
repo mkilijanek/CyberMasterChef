@@ -93,6 +93,7 @@ Example operation IDs in use:
 - `codec.toBinary`, `codec.fromBinary`
 - `codec.urlEncode`, `codec.urlDecode`
 - `text.lowercase`
+- `text.uppercase`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

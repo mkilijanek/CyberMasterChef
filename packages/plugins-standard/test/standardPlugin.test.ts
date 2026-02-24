@@ -19,7 +19,8 @@ describe("standardPlugin", () => {
       "codec.urlEncode",
       "hash.sha256",
       "text.lowercase",
-      "text.reverse"
+      "text.reverse",
+      "text.uppercase"
     ]);
   });
 

@@ -10,6 +10,7 @@ import { urlEncode } from "./ops/urlEncode.js";
 import { urlDecode } from "./ops/urlDecode.js";
 import { reverse } from "./ops/reverse.js";
 import { lowercase } from "./ops/lowercase.js";
+import { uppercase } from "./ops/uppercase.js";
 
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
@@ -25,6 +26,7 @@ export const standardPlugin: Plugin = {
     registry.register(urlDecode);
     registry.register(reverse);
     registry.register(lowercase);
+    registry.register(uppercase);
     registry.register(sha256);
   }
 };
