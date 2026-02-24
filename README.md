@@ -169,6 +169,7 @@ Operations are grouped by package priority:
   - `text.countAscii`
   - `text.countNonAscii`
   - `text.countNonEmptyLines`
+  - `text.firstWord`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
