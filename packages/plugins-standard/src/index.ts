@@ -163,6 +163,7 @@ import { extractIPs } from "./ops/extractIPs.js";
 import { extractUrls } from "./ops/extractUrls.js";
 import { defangUrls } from "./ops/defangUrls.js";
 import { fangUrls } from "./ops/fangUrls.js";
+import { unixToWindowsFiletime } from "./ops/unixToWindowsFiletime.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -322,6 +323,7 @@ export const standardPlugin: Plugin = {
     registry.register(normalizeCommas);
     registry.register(isoToUnix);
     registry.register(unixToIso);
+    registry.register(unixToWindowsFiletime);
     registry.register(jsonMinify);
     registry.register(jsonBeautify);
     registry.register(extractStrings);

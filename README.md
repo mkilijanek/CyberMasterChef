@@ -64,6 +64,7 @@ Operations are grouped by package priority:
 - Wave 5 IOC expansion adds `network.extractUrls` for deterministic URL extraction.
 - Wave 5 safe-sharing step adds `network.defangUrls`.
 - Wave 5 reversal step adds `network.fangUrls`.
+- Wave 6 date-time expansion adds `date.unixToWindowsFiletime`.
 - C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
 
 ## Current functionality
@@ -251,6 +252,7 @@ Operations are grouped by package priority:
   - `hash.sha256`
   - `date.isoToUnix`
   - `date.unixToIso`
+  - `date.unixToWindowsFiletime`
   - `format.jsonMinify`
   - `format.jsonBeautify`
   - `forensic.extractStrings`

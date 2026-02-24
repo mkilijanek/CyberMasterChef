@@ -40,6 +40,11 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 - [x] `network.defangUrls` safe-sharing operation.
 - [x] `network.fangUrls` reversal operation.
 
+## Wave 6 backlog
+
+- [x] `date.unixToWindowsFiletime` operation.
+- [ ] `date.windowsFiletimeToUnix` operation.
+
 ## Quality gates
 
 - New operation must include:

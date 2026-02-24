@@ -74,6 +74,15 @@ const goldenCases: GoldenCase[] = [
     expected: "https://ioc.example.com/path"
   },
   {
+    name: "Unix epoch to Windows FILETIME",
+    input: "0",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "date.unixToWindowsFiletime" }]
+    },
+    expected: "116444736000000000"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {
