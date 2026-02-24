@@ -144,4 +144,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "remote_thread_injection", description: "Remote thread injection marker", pattern: new RegExp("createremotethread", "i") },
   { id: "virtualalloc_exec", description: "Executable memory allocation marker", pattern: new RegExp("virtualalloc", "i") },
   { id: "writeprocessmemory_call", description: "WriteProcessMemory marker", pattern: new RegExp("writeprocessmemory", "i") },
+  { id: "ntqueueapcthread_call", description: "NtQueueApcThread marker", pattern: new RegExp("ntqueueapcthread", "i") },
 ];
