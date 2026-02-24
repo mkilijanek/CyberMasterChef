@@ -63,6 +63,7 @@ const usageText =
   "  --batch-summary-json             print aggregate JSON summary for batch run to stderr\n" +
   "  --batch-output-dir <path>        write per-input rendered outputs to directory\n" +
   "  --batch-output-format <fmt>      format for batch output files: text|json|jsonl\n" +
+  "  --batch-max-files <n>            process at most N batch files\n" +
   "  --batch-fail-fast                stop batch execution on first file error\n" +
   "  --batch-continue-on-error        continue batch execution despite file errors (default)\n" +
   "  --fail-empty-output              fail when rendered output is empty\n" +
@@ -129,6 +130,7 @@ type CliOptions = {
   batchSummaryJson: boolean;
   batchOutputDir?: string;
   batchOutputFormat: "text" | "json" | "jsonl";
+  batchMaxFiles?: number;
   batchFailFast: boolean;
   failEmptyOutput: boolean;
   noNewline: boolean;
@@ -166,6 +168,7 @@ function parseArgs(args: string[]): CliOptions {
   let batchSummaryJson = false;
   let batchOutputDir: string | undefined;
   let batchOutputFormat: CliOptions["batchOutputFormat"] = "text";
+  let batchMaxFiles: number | undefined;
   let batchFailFast = false;
   let failEmptyOutput = false;
   let noNewline = false;
@@ -364,6 +367,17 @@ function parseArgs(args: string[]): CliOptions {
       i++;
       continue;
     }
+    if (arg === "--batch-max-files") {
+      const raw = args[i + 1];
+      if (!raw) die("Missing value for --batch-max-files");
+      const parsed = Number(raw);
+      if (!Number.isFinite(parsed) || parsed <= 0) {
+        die(`Invalid --batch-max-files value: ${raw}`);
+      }
+      batchMaxFiles = Math.floor(parsed);
+      i++;
+      continue;
+    }
     if (arg === "--batch-fail-fast") {
       batchFailFast = true;
       continue;
@@ -436,6 +450,7 @@ function parseArgs(args: string[]): CliOptions {
   if (batchExt !== undefined) out.batchExt = batchExt;
   if (batchReportFile !== undefined) out.batchReportFile = batchReportFile;
   if (batchOutputDir !== undefined) out.batchOutputDir = batchOutputDir;
+  if (batchMaxFiles !== undefined) out.batchMaxFiles = batchMaxFiles;
   if (reproFile !== undefined) out.reproFile = reproFile;
   const inputPath = positional[1];
   if (inputPath) out.inputPath = inputPath;
@@ -608,7 +623,7 @@ async function executeOne(rawInput: string): Promise<{
 }
 
 if (opts.batchInputDir) {
-  const entries = readdirSync(opts.batchInputDir)
+  let entries = readdirSync(opts.batchInputDir)
     .map((name) => `${opts.batchInputDir as string}/${name}`)
     .filter((name) =>
       !opts.batchExt || opts.batchExt.length === 0
@@ -616,6 +631,9 @@ if (opts.batchInputDir) {
         : opts.batchExt.some((ext) => name.toLowerCase().endsWith(ext))
     )
     .sort();
+  if (opts.batchMaxFiles !== undefined) {
+    entries = entries.slice(0, opts.batchMaxFiles);
+  }
   const report: Array<{
     file: string;
     ok: boolean;
