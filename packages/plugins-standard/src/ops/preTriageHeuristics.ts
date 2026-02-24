@@ -26,4 +26,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "ps1_file_drop", description: "PowerShell script reference", pattern: new RegExp("\\.ps1\\b", "i") },
   { id: "dll_file_drop", description: "DLL payload reference", pattern: new RegExp("\\.dll\\b", "i") },
   { id: "scr_file_drop", description: "Screensaver payload reference", pattern: new RegExp("\\.scr\\b", "i") },
+  { id: "bat_file_drop", description: "Batch payload reference", pattern: new RegExp("\\.bat\\b", "i") },
 ];
