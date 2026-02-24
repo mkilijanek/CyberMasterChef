@@ -70,6 +70,7 @@ CLI behavior:
 - `--fail-on-warning` fails execution when any import warning is emitted.
 - `--quiet-warnings` suppresses warning lines from import fallback.
 - `--print-recipe-source` prints whether recipe was parsed as `native` or `cyberchef`.
+- `--show-summary` prints execution summary (`outputType`, `traceSteps`, `durationMs`).
 - `--show-trace` prints execution trace (step/op/input->output types) on stderr.
 - `--trace-json` prints execution trace as JSON on stderr.
 - `--list-ops` prints available operation IDs/names and exits.

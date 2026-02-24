@@ -76,6 +76,7 @@ Operations are grouped by package priority:
   - supports `--fail-on-warning` to make imports with warnings fail in CI pipelines
   - supports `--quiet-warnings` to keep stderr clean in scripted runs
   - supports `--print-recipe-source` to audit parser path in automation
+  - supports `--show-summary` for lightweight runtime diagnostics in CLI
   - supports `--show-trace` and `--trace-json` for pipeline debugging in terminal
   - supports `--list-ops` to inspect currently registered operations
   - supports `--input-encoding text|hex|base64` for binary-oriented CLI runs

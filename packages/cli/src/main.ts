@@ -34,6 +34,7 @@ const usageText =
   "  --fail-on-warning                fail if import warnings are emitted\n" +
   "  --quiet-warnings                 suppress warning output on stderr\n" +
   "  --print-recipe-source            print detected recipe source to stderr\n" +
+  "  --show-summary                   print execution summary to stderr\n" +
   "  --show-trace                     print human-readable trace to stderr\n" +
   "  --trace-json                     print trace JSON to stderr\n" +
   "  --list-ops                       print available operation ids and names\n" +
@@ -75,6 +76,7 @@ type CliOptions = {
   failOnWarning: boolean;
   quietWarnings: boolean;
   printRecipeSource: boolean;
+  showSummary: boolean;
   showTrace: boolean;
   traceJson: boolean;
   listOps: boolean;
@@ -89,6 +91,7 @@ function parseArgs(args: string[]): CliOptions {
   let failOnWarning = false;
   let quietWarnings = false;
   let printRecipeSource = false;
+  let showSummary = false;
   let showTrace = false;
   let traceJson = false;
   let listOps = false;
@@ -114,6 +117,10 @@ function parseArgs(args: string[]): CliOptions {
     }
     if (arg === "--print-recipe-source") {
       printRecipeSource = true;
+      continue;
+    }
+    if (arg === "--show-summary") {
+      showSummary = true;
       continue;
     }
     if (arg === "--help") {
@@ -189,6 +196,7 @@ function parseArgs(args: string[]): CliOptions {
     failOnWarning,
     quietWarnings,
     printRecipeSource,
+    showSummary,
     showTrace,
     traceJson,
     listOps,
@@ -235,6 +243,7 @@ const inputValue: DataValue =
       : { type: "string", value: input };
 
 const controller = new AbortController();
+const startedAt = Date.now();
 const timeoutHandle = setTimeout(() => {
   controller.abort();
 }, opts.timeoutMs);
@@ -246,6 +255,12 @@ const res = await runRecipe({
 }).finally(() => {
   clearTimeout(timeoutHandle);
 });
+if (opts.showSummary) {
+  const elapsed = Date.now() - startedAt;
+  process.stderr.write(
+    `[summary] outputType=${res.output.type} traceSteps=${res.trace.length} durationMs=${elapsed}\n`
+  );
+}
 
 if (opts.showTrace) {
   for (const t of res.trace) {
