@@ -125,3 +125,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 111: `office_child_powershell` - Office spawning PowerShell
 - [x] Stage 112: `office_child_cmd` - Office spawning cmd
 - [x] Stage 113: `msiexec_remote_install` - Remote install via msiexec
+- [x] Stage 114: `rclone_usage` - Rclone tooling usage
