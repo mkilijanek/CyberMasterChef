@@ -158,3 +158,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 144: `com_hijack_marker` - COM hijack marker
 - [x] Stage 145: `dll_search_order_hijack` - DLL search order hijack marker
 - [x] Stage 146: `scheduled_task_hidden` - Hidden scheduled task marker
+- [x] Stage 147: `runas_admin_marker` - RunAs admin marker

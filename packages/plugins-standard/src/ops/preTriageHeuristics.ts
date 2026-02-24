@@ -151,4 +151,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "com_hijack_marker", description: "COM hijack marker", pattern: new RegExp("inprocserver32", "i") },
   { id: "dll_search_order_hijack", description: "DLL search order hijack marker", pattern: new RegExp("dll\\s+search\\s+order", "i") },
   { id: "scheduled_task_hidden", description: "Hidden scheduled task marker", pattern: new RegExp("schtasks\\s+/create.*?/ru\\s+system", "i") },
+  { id: "runas_admin_marker", description: "RunAs admin marker", pattern: new RegExp("runas\\s+/user:administrator", "i") },
 ];
