@@ -65,6 +65,7 @@ import { collapseUnderscores } from "./ops/collapseUnderscores.js";
 import { removeTabs } from "./ops/removeTabs.js";
 import { tabsToSpaces } from "./ops/tabsToSpaces.js";
 import { spacesToTabs } from "./ops/spacesToTabs.js";
+import { trimCommas } from "./ops/trimCommas.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -133,6 +134,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeTabs);
     registry.register(tabsToSpaces);
     registry.register(spacesToTabs);
+    registry.register(trimCommas);
     registry.register(sha256);
   }
 };
