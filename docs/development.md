@@ -197,6 +197,7 @@ Example operation IDs in use:
 - `text.firstWord`
 - `text.lastWord`
 - `text.removeCommas`
+- `text.removeDots`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
