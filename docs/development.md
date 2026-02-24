@@ -177,6 +177,7 @@ Example operation IDs in use:
 - `text.rot13`
 - `text.maskDigits`
 - `text.removeNonAscii`
+- `text.keepNonAscii`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

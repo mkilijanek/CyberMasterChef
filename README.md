@@ -152,6 +152,7 @@ Operations are grouped by package priority:
   - `text.rot13`
   - `text.maskDigits`
   - `text.removeNonAscii`
+  - `text.keepNonAscii`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
