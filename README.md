@@ -183,6 +183,7 @@ Operations are grouped by package priority:
   - `text.trimTrailingDots`
   - `text.linesNumbered`
   - `text.removeColons`
+  - `text.removeSlashes`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
