@@ -1,0 +1,11 @@
+[
+  "Base64 round-trip",
+  "URL encode + decode + reverse",
+  "String to binary with delimiter",
+  "Trim + lowercase + snake_case",
+  "CSV <-> lines round-trip shape",
+  "Normalize whitespace then title case",
+  "Word counting chain",
+  "Line counting chain",
+  "Reverse words"
+]

@@ -15,6 +15,7 @@ pnpm dev         # starts workbench at http://localhost:5173
 pnpm typecheck   # TypeScript check (Vite is transpile-only!)
 pnpm lint        # ESLint across all packages
 pnpm test        # Vitest
+pnpm test:parity # parity coverage gate vs reference corpus
 pnpm test:e2e    # Playwright critical flows (workbench)
 pnpm build       # full build
 pnpm ci          # lint + typecheck + test + build

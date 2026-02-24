@@ -280,6 +280,7 @@ pnpm dev        # starts workbench at http://localhost:5173
 pnpm typecheck  # TypeScript check (separate from Vite build)
 pnpm lint       # ESLint
 pnpm test       # Vitest
+pnpm test:parity # parity coverage gate for golden recipe corpus
 pnpm test:e2e   # Playwright critical flows
 pnpm build      # full build all packages
 pnpm ci         # lint + typecheck + test + build

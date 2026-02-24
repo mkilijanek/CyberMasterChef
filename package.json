@@ -13,7 +13,8 @@
     "test": "pnpm -r test",
     "test:e2e": "playwright test",
     "format": "prettier -w .",
-    "ci": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+    "ci": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "test:parity": "PARITY_THRESHOLD=0.90 node scripts/check-parity-coverage.mjs"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
