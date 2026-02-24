@@ -9,6 +9,11 @@ export const swapCase: Operation = {
   args: [],
   run: ({ input }) => {
     if (input.type !== "string") throw new Error("Expected string input");
-    return {\n      type: "string",\n      value: [...input.value].map((ch) => ch === ch.toLowerCase() ? ch.toUpperCase() : ch.toLowerCase()).join("")\n    };
+    return {
+      type: "string",
+      value: [...input.value]
+        .map((ch) => (ch === ch.toLowerCase() ? ch.toUpperCase() : ch.toLowerCase()))
+        .join("")
+    };
   }
 };

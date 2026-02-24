@@ -9,6 +9,10 @@ export const reverseWords: Operation = {
   args: [],
   run: ({ input }) => {
     if (input.type !== "string") throw new Error("Expected string input");
-    const words = input.value.trim().split(/\s+/u).filter((w) => w.length > 0);\n    return { type: "string", value: words.reverse().join(" ") };
+    const words = input.value
+      .trim()
+      .split(/\s+/u)
+      .filter((w) => w.length > 0);
+    return { type: "string", value: words.reverse().join(" ") };
   }
 };

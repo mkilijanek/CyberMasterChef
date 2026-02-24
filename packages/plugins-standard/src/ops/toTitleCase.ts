@@ -9,6 +9,12 @@ export const toTitleCase: Operation = {
   args: [],
   run: ({ input }) => {
     if (input.type !== "string") throw new Error("Expected string input");
-    const words = input.value.toLowerCase().split(/(\s+)/u);\n    return { type: "string", value: words.map((w) => /\s+/u.test(w) ? w : (w[0] ? w[0].toUpperCase() + w.slice(1) : w)).join("") };
+    const words = input.value.toLowerCase().split(/(\s+)/u);
+    return {
+      type: "string",
+      value: words
+        .map((w) => (/\s+/u.test(w) ? w : w[0] ? w[0].toUpperCase() + w.slice(1) : w))
+        .join("")
+    };
   }
 };

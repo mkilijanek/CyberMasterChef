@@ -9,6 +9,10 @@ export const compactLines: Operation = {
   args: [],
   run: ({ input }) => {
     if (input.type !== "string") throw new Error("Expected string input");
-    const words = input.value.split(/\r?\n/u).map((line) => line.trim()).filter((line) => line.length > 0);\n    return { type: "string", value: words.join(" ") };
+    const words = input.value
+      .split(/\r?\n/u)
+      .map((line) => line.trim())
+      .filter((line) => line.length > 0);
+    return { type: "string", value: words.join(" ") };
   }
 };

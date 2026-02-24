@@ -9,6 +9,13 @@ export const uniqueWords: Operation = {
   args: [],
   run: ({ input }) => {
     if (input.type !== "string") throw new Error("Expected string input");
-    const out: string[] = [];\n    const seen = new Set<string>();\n    for (const word of input.value.trim().split(/\s+/u).filter((w) => w.length > 0)) {\n      if (seen.has(word)) continue;\n      seen.add(word);\n      out.push(word);\n    }\n    return { type: "string", value: out.join(" ") };
+    const out: string[] = [];
+    const seen = new Set<string>();
+    for (const word of input.value.trim().split(/\s+/u).filter((w) => w.length > 0)) {
+      if (seen.has(word)) continue;
+      seen.add(word);
+      out.push(word);
+    }
+    return { type: "string", value: out.join(" ") };
   }
 };

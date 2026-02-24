@@ -9,6 +9,13 @@ export const uniqueLines: Operation = {
   args: [],
   run: ({ input }) => {
     if (input.type !== "string") throw new Error("Expected string input");
-    const out: string[] = [];\n    const seen = new Set<string>();\n    for (const line of input.value.split(/\r?\n/u)) {\n      if (seen.has(line)) continue;\n      seen.add(line);\n      out.push(line);\n    }\n    return { type: "string", value: out.join("\n") };
+    const out: string[] = [];
+    const seen = new Set<string>();
+    for (const line of input.value.split(/\r?\n/u)) {
+      if (seen.has(line)) continue;
+      seen.add(line);
+      out.push(line);
+    }
+    return { type: "string", value: out.join("\n") };
   }
 };
