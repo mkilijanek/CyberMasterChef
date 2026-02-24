@@ -128,4 +128,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "admin_share_access", description: "Admin share access marker", pattern: new RegExp("\\\\c\\$\\b", "i") },
   { id: "psexec_usage", description: "PsExec remote exec marker", pattern: new RegExp("psexec(\\.exe)?", "i") },
   { id: "winrm_usage", description: "WinRM command marker", pattern: new RegExp("\\bwinrm\\b", "i") },
+  { id: "wmi_exec_remote", description: "WMI remote process marker", pattern: new RegExp("wmic\\s+/node:", "i") },
 ];

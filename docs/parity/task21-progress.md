@@ -135,3 +135,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 121: `admin_share_access` - Admin share access marker
 - [x] Stage 122: `psexec_usage` - PsExec remote exec marker
 - [x] Stage 123: `winrm_usage` - WinRM command marker
+- [x] Stage 124: `wmi_exec_remote` - WMI remote process marker
