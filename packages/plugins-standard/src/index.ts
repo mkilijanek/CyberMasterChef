@@ -125,6 +125,7 @@ import { removeBraces } from "./ops/removeBraces.js";
 import { removeAngles } from "./ops/removeAngles.js";
 import { removeDoubleSpaces } from "./ops/removeDoubleSpaces.js";
 import { linesTrimRight } from "./ops/linesTrimRight.js";
+import { linesTrimLeft } from "./ops/linesTrimLeft.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -253,6 +254,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeAngles);
     registry.register(removeDoubleSpaces);
     registry.register(linesTrimRight);
+    registry.register(linesTrimLeft);
     registry.register(sha256);
   }
 };

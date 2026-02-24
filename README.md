@@ -205,6 +205,7 @@ Operations are grouped by package priority:
   - `text.removeAngles`
   - `text.removeDoubleSpaces`
   - `text.linesTrimRight`
+  - `text.linesTrimLeft`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
