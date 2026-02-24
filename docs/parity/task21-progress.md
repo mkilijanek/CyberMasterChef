@@ -82,3 +82,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 070: `powershell_w_hidden` - PowerShell -w hidden usage
 - [x] Stage 071: `encoded_scriptblock` - Encoded scriptblock marker
 - [x] Stage 072: `download_to_temp` - Download path pointing to temp
+- [x] Stage 073: `appdata_execution` - Execution from AppData path
