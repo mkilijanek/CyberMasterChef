@@ -89,6 +89,7 @@ Operations are grouped by package priority:
   - supports `--quiet-warnings` to keep stderr clean in scripted runs
   - supports `--print-recipe-source` to audit parser path in automation
   - supports `--show-summary` for lightweight runtime diagnostics in CLI
+  - supports `--summary-json` for machine-readable runtime diagnostics in CLI
   - supports `--show-trace` and `--trace-json` for pipeline debugging in terminal
   - supports `--trace-limit` to cap trace verbosity in terminal/CI logs
   - supports `--list-ops` to inspect currently registered operations

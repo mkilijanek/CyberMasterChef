@@ -71,6 +71,7 @@ CLI behavior:
 - `--quiet-warnings` suppresses warning lines from import fallback.
 - `--print-recipe-source` prints whether recipe was parsed as `native` or `cyberchef`.
 - `--show-summary` prints execution summary (`outputType`, `traceSteps`, `durationMs`).
+- `--summary-json` prints the same summary in JSON format on stderr.
 - `--version` prints CLI package version.
 - `--show-trace` prints execution trace (step/op/input->output types) on stderr.
 - `--trace-json` prints execution trace as JSON on stderr.

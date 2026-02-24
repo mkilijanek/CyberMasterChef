@@ -36,6 +36,7 @@ const usageText =
   "  --quiet-warnings                 suppress warning output on stderr\n" +
   "  --print-recipe-source            print detected recipe source to stderr\n" +
   "  --show-summary                   print execution summary to stderr\n" +
+  "  --summary-json                   print execution summary as JSON to stderr\n" +
   "  --show-trace                     print human-readable trace to stderr\n" +
   "  --trace-json                     print trace JSON to stderr\n" +
   "  --trace-limit <n>                limit number of trace steps printed\n" +
@@ -82,6 +83,7 @@ type CliOptions = {
   quietWarnings: boolean;
   printRecipeSource: boolean;
   showSummary: boolean;
+  summaryJson: boolean;
   showTrace: boolean;
   traceJson: boolean;
   traceLimit?: number;
@@ -100,6 +102,7 @@ function parseArgs(args: string[]): CliOptions {
   let quietWarnings = false;
   let printRecipeSource = false;
   let showSummary = false;
+  let summaryJson = false;
   let showTrace = false;
   let traceJson = false;
   let traceLimit: number | undefined;
@@ -132,6 +135,10 @@ function parseArgs(args: string[]): CliOptions {
     }
     if (arg === "--show-summary") {
       showSummary = true;
+      continue;
+    }
+    if (arg === "--summary-json") {
+      summaryJson = true;
       continue;
     }
     if (arg === "--help") {
@@ -234,6 +241,7 @@ function parseArgs(args: string[]): CliOptions {
     quietWarnings,
     printRecipeSource,
     showSummary,
+    summaryJson,
     showTrace,
     traceJson,
     listOps,
@@ -319,6 +327,12 @@ if (opts.showSummary) {
   const elapsed = Date.now() - startedAt;
   process.stderr.write(
     `[summary] outputType=${res.output.type} traceSteps=${res.trace.length} durationMs=${elapsed}\n`
+  );
+}
+if (opts.summaryJson) {
+  const elapsed = Date.now() - startedAt;
+  process.stderr.write(
+    `${JSON.stringify({ outputType: res.output.type, traceSteps: res.trace.length, durationMs: elapsed })}\n`
   );
 }
 
