@@ -14,6 +14,9 @@ describe("serde", () => {
 
   it("rejects malformed native recipe steps", () => {
     expect(() =>
+      parseRecipe(JSON.stringify({ version: 1, steps: [123] }))
+    ).toThrow("Invalid recipe step");
+    expect(() =>
       parseRecipe(JSON.stringify({ version: 1, steps: [{ opId: "" }] }))
     ).toThrow("Invalid recipe step");
     expect(() =>
