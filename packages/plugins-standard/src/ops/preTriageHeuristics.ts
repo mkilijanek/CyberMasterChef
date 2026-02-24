@@ -64,4 +64,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "suspicious_tld_click", description: "Suspicious CLICK TLD reference", pattern: new RegExp("\\.click\\b", "i") },
   { id: "suspicious_tld_cam", description: "Suspicious CAM TLD reference", pattern: new RegExp("\\.cam\\b", "i") },
   { id: "suspicious_tld_gq", description: "Suspicious GQ TLD reference", pattern: new RegExp("\\.gq\\b", "i") },
+  { id: "suspicious_tld_ml", description: "Suspicious ML TLD reference", pattern: new RegExp("\\.ml\\b", "i") },
 ];
