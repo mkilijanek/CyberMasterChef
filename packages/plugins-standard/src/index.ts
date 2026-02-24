@@ -106,6 +106,7 @@ import { removeColons } from "./ops/removeColons.js";
 import { removeSlashes } from "./ops/removeSlashes.js";
 import { removePipes } from "./ops/removePipes.js";
 import { removeBackslashes } from "./ops/removeBackslashes.js";
+import { removeAsterisks } from "./ops/removeAsterisks.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -215,6 +216,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeSlashes);
     registry.register(removePipes);
     registry.register(removeBackslashes);
+    registry.register(removeAsterisks);
     registry.register(sha256);
   }
 };

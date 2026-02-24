@@ -211,6 +211,7 @@ Example operation IDs in use:
 - `text.removeSlashes`
 - `text.removePipes`
 - `text.removeBackslashes`
+- `text.removeAsterisks`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
