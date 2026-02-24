@@ -84,6 +84,7 @@ CLI behavior:
 - `--hex-uppercase` renders hex byte output using uppercase letters.
 - `--json-indent <n>` controls indentation for JSON output rendering.
 - `--output-file <path>` writes rendered output to a file.
+- `--fail-empty-output` fails if rendered output is empty.
 - `--no-newline` disables automatic trailing newline in output.
 - `--help` prints CLI usage and option reference.
 - `--max-output-chars <n>` truncates stdout payload for safer automation/logging.

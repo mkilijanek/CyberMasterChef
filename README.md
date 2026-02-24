@@ -114,6 +114,7 @@ Operations are grouped by package priority:
   - supports `--hex-uppercase` for uppercase hex rendering
   - supports `--json-indent` for JSON output formatting control
   - supports `--output-file` to write rendered output directly to a file
+  - supports `--fail-empty-output` to enforce non-empty pipeline results
   - supports `--no-newline` for exact output framing in pipelines
   - supports `--max-output-chars` for bounded stdout in scripts/CI
 - Quality baseline:

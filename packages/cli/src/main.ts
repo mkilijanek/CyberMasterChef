@@ -48,6 +48,7 @@ const usageText =
   "  --hex-uppercase                  render hex bytes output using uppercase letters\n" +
   "  --json-indent <n>                indentation for JSON output rendering\n" +
   "  --output-file <path>             write rendered output to file instead of stdout\n" +
+  "  --fail-empty-output              fail when rendered output is empty\n" +
   "  --no-newline                     do not append trailing newline to output\n" +
   "  --max-output-chars <n>           limit output length for string/json/bytes rendering\n" +
   "  --version                        print CLI package version\n" +
@@ -99,6 +100,7 @@ type CliOptions = {
   hexUppercase: boolean;
   jsonIndent: number;
   outputFile?: string;
+  failEmptyOutput: boolean;
   noNewline: boolean;
   maxOutputChars?: number;
 };
@@ -122,6 +124,7 @@ function parseArgs(args: string[]): CliOptions {
   let hexUppercase = false;
   let jsonIndent = 2;
   let outputFile: string | undefined;
+  let failEmptyOutput = false;
   let noNewline = false;
   let maxOutputChars: number | undefined;
   const positional: string[] = [];
@@ -250,6 +253,10 @@ function parseArgs(args: string[]): CliOptions {
       noNewline = true;
       continue;
     }
+    if (arg === "--fail-empty-output") {
+      failEmptyOutput = true;
+      continue;
+    }
     if (arg === "--timeout-ms") {
       const raw = args[i + 1];
       if (!raw) die("Missing value for --timeout-ms");
@@ -288,6 +295,7 @@ function parseArgs(args: string[]): CliOptions {
     bytesOutput,
     hexUppercase,
     jsonIndent,
+    failEmptyOutput,
     noNewline
   };
   if (traceLimit !== undefined) out.traceLimit = traceLimit;
@@ -409,6 +417,9 @@ if (res.output.type === "bytes") {
 }
 const printed =
   opts.maxOutputChars !== undefined ? rendered.slice(0, opts.maxOutputChars) : rendered;
+if (opts.failEmptyOutput && printed.length === 0) {
+  die("Execution failed: output is empty.");
+}
 if (opts.outputFile) {
   writeFileSync(opts.outputFile, opts.noNewline ? printed : `${printed}\n`, "utf-8");
 } else {
