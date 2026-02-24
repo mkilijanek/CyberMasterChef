@@ -288,6 +288,27 @@ export function App(): React.JSX.Element {
     }
   }
 
+  async function copyTraceSummary(): Promise<void> {
+    if (!lastRunInfo) {
+      setError(t("traceSummaryMissing"));
+      setStatus("error");
+      return;
+    }
+    const summary = {
+      runId: lastRunInfo.runId,
+      durationMs: lastRunInfo.durationMs,
+      traceSteps: trace.length,
+      stepDurationTotalMs: lastRunInfo.stepDurationTotalMs,
+      stepDurationAvgMs: lastRunInfo.stepDurationAvgMs,
+      slowestStep: lastRunInfo.slowestStep
+    };
+    const copied = await copyText(JSON.stringify(summary, null, 2));
+    if (!copied) {
+      setError(t("copyTraceSummaryFailed"));
+      setStatus("error");
+    }
+  }
+
   async function copyRecipeJson(): Promise<void> {
     const payload = stringifyRecipe(recipe);
     const copied = await copyText(payload);
@@ -463,6 +484,9 @@ export function App(): React.JSX.Element {
         </button>
         <button className="buttonSmall" onClick={() => void copyFilteredTrace()}>
           {t("copyFilteredTrace")}
+        </button>
+        <button className="buttonSmall" onClick={() => void copyTraceSummary()}>
+          {t("copyTraceSummary")}
         </button>
         <button className="buttonSmall" onClick={() => void copyRecipeJson()}>
           {t("copyRecipe")}
