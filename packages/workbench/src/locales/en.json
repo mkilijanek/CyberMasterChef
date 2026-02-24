@@ -1,0 +1,17 @@
+{
+  "title": "CyberMasterChef",
+  "input": "Input",
+  "output": "Output",
+  "operations": "Operations",
+  "recipe": "Recipe",
+  "search": "Search…",
+  "run": "Run",
+  "add": "Add",
+  "remove": "Remove",
+  "moveUp": "Up",
+  "moveDown": "Down",
+  "args": "Arguments",
+  "statusReady": "Ready",
+  "statusWorking": "Working…",
+  "error": "Error"
+}

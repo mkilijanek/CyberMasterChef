@@ -1,0 +1,10 @@
+site_name: CyberMasterChef Docs
+repo_url: https://github.com/mkilijanek/CyberMasterChef
+theme:
+  name: readthedocs
+nav:
+  - Home: index.md
+  - Architecture: architecture.md
+  - Plugin API: plugin-api.md
+  - Development: development.md
+docs_dir: docs
