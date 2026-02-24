@@ -31,4 +31,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "zip_archive_drop", description: "ZIP archive payload", pattern: new RegExp("\\.zip\\b", "i") },
   { id: "iso_archive_drop", description: "ISO archive payload", pattern: new RegExp("\\.iso\\b", "i") },
   { id: "img_archive_drop", description: "IMG disk image payload", pattern: new RegExp("\\.img\\b", "i") },
+  { id: "rar_archive_drop", description: "RAR archive payload", pattern: new RegExp("\\.rar\\b", "i") },
 ];
