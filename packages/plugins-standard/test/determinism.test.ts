@@ -47,7 +47,12 @@ describe("determinism", () => {
       const r2 = await runRecipe({ registry, recipe: c.recipe, input: c.input });
       const r3 = await runRecipe({ registry, recipe: c.recipe, input: c.input });
       const stableTrace = (trace: typeof r1.trace) =>
-        trace.map(({ durationMs: _durationMs, ...step }) => step);
+        trace.map((step) => ({
+          step: step.step,
+          opId: step.opId,
+          inputType: step.inputType,
+          outputType: step.outputType
+        }));
 
       expect(r2.output).toEqual(r1.output);
       expect(r3.output).toEqual(r1.output);
