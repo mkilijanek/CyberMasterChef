@@ -12,6 +12,15 @@ describe("serde", () => {
     expect(recipe).toEqual(emptyRecipe());
   });
 
+  it("rejects malformed native recipe steps", () => {
+    expect(() =>
+      parseRecipe(JSON.stringify({ version: 1, steps: [{ opId: "" }] }))
+    ).toThrow("Invalid recipe step");
+    expect(() =>
+      parseRecipe(JSON.stringify({ version: 1, steps: [{ opId: "x", args: "bad" }] }))
+    ).toThrow("Invalid recipe step args");
+  });
+
   it("imports CyberChef recipe with supported and unsupported steps", () => {
     const source = {
       recipe: [

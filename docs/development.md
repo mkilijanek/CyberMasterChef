@@ -49,6 +49,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
 ## Recipe formats
 
 - Native format: `Recipe` (`version: 1`, `steps[]`)
+- Native parser validates each step shape (`opId` non-empty string, optional `args` object).
 - Compatibility helpers in `@cybermasterchef/core`:
   - `importCyberChefRecipe(json)` -> `{ recipe, warnings }`
   - `exportCyberChefRecipe(recipe)` -> CyberChef-compatible JSON

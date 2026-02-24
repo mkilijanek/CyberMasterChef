@@ -38,13 +38,21 @@ export function emptyRecipe(): Recipe {
 
 export function parseRecipe(json: string): Recipe {
   const x = JSON.parse(json) as unknown;
-  if (
-    typeof x !== "object" ||
-    x === null ||
-    (x as { version?: unknown }).version !== 1 ||
-    !Array.isArray((x as { steps?: unknown }).steps)
-  ) {
+  if (typeof x !== "object" || x === null) {
     throw new Error("Invalid recipe format");
+  }
+  if ((x as { version?: unknown }).version !== 1) throw new Error("Invalid recipe format");
+  const steps = (x as { steps?: unknown }).steps;
+  if (!Array.isArray(steps)) throw new Error("Invalid recipe format");
+  for (const step of steps) {
+    if (typeof step !== "object" || step === null) throw new Error("Invalid recipe step");
+    const s = step as { opId?: unknown; args?: unknown };
+    if (typeof s.opId !== "string" || s.opId.length === 0) {
+      throw new Error("Invalid recipe step");
+    }
+    if (s.args !== undefined && (typeof s.args !== "object" || s.args === null)) {
+      throw new Error("Invalid recipe step args");
+    }
   }
   return x as Recipe;
 }
