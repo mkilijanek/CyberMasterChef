@@ -245,6 +245,8 @@ Operations are grouped by package priority:
   - `hash.sha256`
   - `date.isoToUnix`
   - `date.unixToIso`
+  - `format.jsonMinify`
+  - `format.jsonBeautify`
   - `text.reverse`
 - CLI compatibility:
   - accepts native recipe JSON

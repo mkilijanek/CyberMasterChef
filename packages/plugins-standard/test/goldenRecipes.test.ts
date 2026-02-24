@@ -20,6 +20,15 @@ const goldenCases: GoldenCase[] = [
     expected: "1970-01-01T00:00:01.000Z"
   },
   {
+    name: "JSON beautify and minify round-trip",
+    input: "{\"a\":1,\"b\":[2,3]}",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "format.jsonBeautify" }, { opId: "format.jsonMinify" }]
+    },
+    expected: "{\"a\":1,\"b\":[2,3]}"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {

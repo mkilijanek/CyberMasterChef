@@ -156,6 +156,8 @@ import { removeMathSymbols } from "./ops/removeMathSymbols.js";
 import { normalizeCommas } from "./ops/normalizeCommas.js";
 import { isoToUnix } from "./ops/isoToUnix.js";
 import { unixToIso } from "./ops/unixToIso.js";
+import { jsonMinify } from "./ops/jsonMinify.js";
+import { jsonBeautify } from "./ops/jsonBeautify.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -315,6 +317,8 @@ export const standardPlugin: Plugin = {
     registry.register(normalizeCommas);
     registry.register(isoToUnix);
     registry.register(unixToIso);
+    registry.register(jsonMinify);
+    registry.register(jsonBeautify);
     registry.register(sha256);
   }
 };

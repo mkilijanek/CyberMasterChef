@@ -174,7 +174,10 @@ CLI behavior:
 Wave 1 implemented so far:
 - `date.isoToUnix`
 - `date.unixToIso`
-
+- `format.jsonMinify`
+- `format.jsonBeautify`
+- golden parity case for date round-trip
+- golden parity case for JSON format round-trip
 
 - Generate domain implementation gap/coverage plan:
   - `pnpm c2:plan`
