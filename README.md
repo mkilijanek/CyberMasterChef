@@ -49,6 +49,7 @@ Operations are grouped by package priority:
   - explicit empty-state message when search query has no matching operations
   - quick clear-search action in operation catalog
   - recipe editing (add/reorder/remove + arg forms)
+  - recipe step duplication in editor
   - auto-bake mode (debounced re-run on changes)
   - cancel in-flight execution from the UI
   - keyboard cancel shortcut (`Escape`) while execution is running

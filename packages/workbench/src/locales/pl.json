@@ -39,6 +39,7 @@
   "timeoutRange": "(100-120000)",
   "add": "Dodaj",
   "remove": "Usuń",
+  "duplicate": "Duplikuj",
   "runToStep": "Uruchom do kroku",
   "moveUp": "W górę",
   "moveDown": "W dół",
