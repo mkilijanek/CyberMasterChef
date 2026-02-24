@@ -11,6 +11,11 @@ export type EngineResult = {
     outputType: string;
     durationMs: number;
   }>;
+  meta: {
+    startedAt: number;
+    endedAt: number;
+    durationMs: number;
+  };
 };
 
 export async function runRecipe(opts: {
@@ -20,6 +25,7 @@ export async function runRecipe(opts: {
   signal?: AbortSignal;
 }): Promise<EngineResult> {
   const { registry, recipe, signal } = opts;
+  const startedAt = Date.now();
   let current = opts.input;
   const trace: EngineResult["trace"] = [];
 
@@ -55,5 +61,14 @@ export async function runRecipe(opts: {
     }
   }
 
-  return { output: current, trace };
+  const endedAt = Date.now();
+  return {
+    output: current,
+    trace,
+    meta: {
+      startedAt,
+      endedAt,
+      durationMs: Math.max(0, endedAt - startedAt)
+    }
+  };
 }
