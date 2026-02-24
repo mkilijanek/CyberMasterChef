@@ -53,6 +53,7 @@ Operations are grouped by package priority:
   - cancel in-flight execution from the UI
   - keyboard cancel shortcut (`Escape`) while execution is running
   - keyboard run shortcut (`Ctrl+Enter` / `Cmd+Enter`)
+  - keyboard catalog-focus shortcut (`Ctrl+K` / `Cmd+K`)
   - per-run sandbox timeout protection with configurable timeout (default: 10s)
   - run recipe up to a selected step (pipeline debugging)
   - rerun to selected step directly from trace list

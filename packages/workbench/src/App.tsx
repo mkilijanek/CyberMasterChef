@@ -100,6 +100,7 @@ export function App(): React.JSX.Element {
   const [error, setError] = React.useState<string | null>(null);
   const [importWarnings, setImportWarnings] = React.useState<RecipeImportWarning[]>([]);
   const sandboxRef = React.useRef<SandboxClient | null>(null);
+  const searchInputRef = React.useRef<HTMLInputElement | null>(null);
   if (!sandboxRef.current) sandboxRef.current = new SandboxClient();
 
   React.useEffect(() => {
@@ -188,6 +189,11 @@ export function App(): React.JSX.Element {
       if ((ev.ctrlKey || ev.metaKey) && ev.key === "Enter") {
         ev.preventDefault();
         void run();
+      }
+      if ((ev.ctrlKey || ev.metaKey) && ev.key.toLowerCase() === "k") {
+        ev.preventDefault();
+        searchInputRef.current?.focus();
+        searchInputRef.current?.select();
       }
     };
     window.addEventListener("keydown", onKeyDown);
@@ -388,6 +394,7 @@ export function App(): React.JSX.Element {
         <section className="panel">
           <h2>{t("operations")}</h2>
           <input
+            ref={searchInputRef}
             className="input"
             value={catalogQuery}
             onChange={(e) => setCatalogQuery(e.target.value)}
