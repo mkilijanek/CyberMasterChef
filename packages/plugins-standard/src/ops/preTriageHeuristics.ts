@@ -119,4 +119,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "office_child_cmd", description: "Office spawning cmd", pattern: new RegExp("excel\\.exe.*cmd\\.exe", "i") },
   { id: "msiexec_remote_install", description: "Remote install via msiexec", pattern: new RegExp("msiexec\\s+/i\\s+https?://", "i") },
   { id: "rclone_usage", description: "Rclone tooling usage", pattern: new RegExp("\\brclone\\b", "i") },
+  { id: "mega_nz_reference", description: "MEGA hosting indicator", pattern: new RegExp("mega\\.nz", "i") },
 ];
