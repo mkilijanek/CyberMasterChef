@@ -123,4 +123,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "dropbox_reference", description: "Dropbox hosting indicator", pattern: new RegExp("dropbox\\.com", "i") },
   { id: "google_drive_uc", description: "Google Drive direct-download indicator", pattern: new RegExp("drive\\.google\\.com", "i") },
   { id: "onedrive_reference", description: "OneDrive hosting indicator", pattern: new RegExp("1drv\\.ms", "i") },
+  { id: "ftp_protocol_usage", description: "FTP protocol usage", pattern: new RegExp("\\bftp://", "i") },
 ];

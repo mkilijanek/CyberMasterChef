@@ -130,3 +130,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 116: `dropbox_reference` - Dropbox hosting indicator
 - [x] Stage 117: `google_drive_uc` - Google Drive direct-download indicator
 - [x] Stage 118: `onedrive_reference` - OneDrive hosting indicator
+- [x] Stage 119: `ftp_protocol_usage` - FTP protocol usage
