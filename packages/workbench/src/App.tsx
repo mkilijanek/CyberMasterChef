@@ -14,6 +14,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { SandboxClient } from "./worker/workerClient";
 import type { ExecutionClient } from "./worker/clientTypes";
+import { WorkerPoolClient } from "./worker/poolClient";
 import { OperationCatalog } from "./components/OperationCatalog";
 import { RecipeEditor } from "./components/RecipeEditor";
 import { IOPane } from "./components/IOPane";
@@ -37,6 +38,9 @@ const HASH_PREFIX = "#state=";
 const DEFAULT_TIMEOUT_MS = 10_000;
 const MIN_TIMEOUT_MS = 100;
 const MAX_TIMEOUT_MS = 120_000;
+const DEFAULT_POOL_SIZE = 2;
+const MIN_POOL_SIZE = 1;
+const MAX_POOL_SIZE = 8;
 
 function isRecipe(value: unknown): value is Recipe {
   if (typeof value !== "object" || value === null) return false;
@@ -122,7 +126,12 @@ export function App(): React.JSX.Element {
   const traceSearchInputRef = React.useRef<HTMLInputElement | null>(null);
 
   function getSandboxClient(): ExecutionClient {
-    if (!sandboxRef.current) sandboxRef.current = new SandboxClient();
+    if (!sandboxRef.current) {
+      sandboxRef.current =
+        workerPoolSize <= 1
+          ? new SandboxClient()
+          : new WorkerPoolClient({ size: workerPoolSize });
+    }
     return sandboxRef.current;
   }
 
@@ -636,3 +645,9 @@ export function App(): React.JSX.Element {
     </div>
   );
 }
+  const workerPoolSize = React.useMemo(() => {
+    const raw = localStorage.getItem("workerPoolSize.v1");
+    const parsed = raw === null ? DEFAULT_POOL_SIZE : Number(raw);
+    if (!Number.isFinite(parsed)) return DEFAULT_POOL_SIZE;
+    return Math.min(MAX_POOL_SIZE, Math.max(MIN_POOL_SIZE, Math.floor(parsed)));
+  }, []);
