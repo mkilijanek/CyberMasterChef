@@ -80,6 +80,10 @@ export class WorkerPoolClient implements ExecutionClient {
     for (const slot of this.slots) {
       if (slot.busy) slot.client.cancelActive();
     }
+    while (this.queue.length > 0) {
+      const task = this.queue.shift();
+      task?.reject(new Error("Cancelled while waiting in queue"));
+    }
   }
 
   dispose(): void {
