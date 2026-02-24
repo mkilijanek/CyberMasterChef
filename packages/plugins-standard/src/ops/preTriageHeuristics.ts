@@ -33,4 +33,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "img_archive_drop", description: "IMG disk image payload", pattern: new RegExp("\\.img\\b", "i") },
   { id: "rar_archive_drop", description: "RAR archive payload", pattern: new RegExp("\\.rar\\b", "i") },
   { id: "7z_archive_drop", description: "7z archive payload", pattern: new RegExp("\\.7z\\b", "i") },
+  { id: "powershell_downloadstring", description: "PowerShell DownloadString usage", pattern: new RegExp("downloadstring\\s*\\(", "i") },
 ];
