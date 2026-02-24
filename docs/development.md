@@ -255,6 +255,7 @@ Example operation IDs in use:
 - `text.countQuotes`
 - `text.countUnderscores`
 - `text.onlyLettersAndSpaces`
+- `text.onlyAlnumAndSpaces`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

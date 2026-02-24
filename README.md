@@ -230,6 +230,7 @@ Operations are grouped by package priority:
   - `text.countQuotes`
   - `text.countUnderscores`
   - `text.onlyLettersAndSpaces`
+  - `text.onlyAlnumAndSpaces`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:

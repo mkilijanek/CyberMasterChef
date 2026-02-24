@@ -150,6 +150,7 @@ import { countParentheses } from "./ops/countParentheses.js";
 import { countQuotes } from "./ops/countQuotes.js";
 import { countUnderscores } from "./ops/countUnderscores.js";
 import { onlyLettersAndSpaces } from "./ops/onlyLettersAndSpaces.js";
+import { onlyAlnumAndSpaces } from "./ops/onlyAlnumAndSpaces.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -303,6 +304,7 @@ export const standardPlugin: Plugin = {
     registry.register(countQuotes);
     registry.register(countUnderscores);
     registry.register(onlyLettersAndSpaces);
+    registry.register(onlyAlnumAndSpaces);
     registry.register(sha256);
   }
 };
