@@ -149,4 +149,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "uac_bypass_fodhelper", description: "UAC bypass fodhelper marker", pattern: new RegExp("fodhelper\\.exe", "i") },
   { id: "uac_bypass_eventvwr", description: "UAC bypass eventvwr marker", pattern: new RegExp("eventvwr\\.exe", "i") },
   { id: "com_hijack_marker", description: "COM hijack marker", pattern: new RegExp("inprocserver32", "i") },
+  { id: "dll_search_order_hijack", description: "DLL search order hijack marker", pattern: new RegExp("dll\\s+search\\s+order", "i") },
 ];
