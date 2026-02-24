@@ -172,6 +172,7 @@ import { jsonSortKeys } from "./ops/jsonSortKeys.js";
 import { jsonExtractKeys } from "./ops/jsonExtractKeys.js";
 import { extractMd5 } from "./ops/extractMd5.js";
 import { extractSha256 } from "./ops/extractSha256.js";
+import { extractUnixTimestamps } from "./ops/extractUnixTimestamps.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -334,6 +335,7 @@ export const standardPlugin: Plugin = {
     registry.register(unixToWindowsFiletime);
     registry.register(windowsFiletimeToUnix);
     registry.register(parseObjectIdTimestamp);
+    registry.register(extractUnixTimestamps);
     registry.register(extractEmails);
     registry.register(extractDomains);
     registry.register(extractMd5);

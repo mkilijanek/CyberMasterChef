@@ -61,6 +61,11 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 - [x] `forensic.extractMd5` hash IOC operation.
 - [x] `forensic.extractSha256` hash IOC operation.
 
+## Wave 10 backlog
+
+- [x] `date.extractUnixTimestamps` telemetry parsing operation.
+- [ ] `date.extractIsoTimestamps` telemetry parsing operation.
+
 ## Quality gates
 
 - New operation must include:

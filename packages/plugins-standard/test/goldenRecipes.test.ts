@@ -158,6 +158,15 @@ const goldenCases: GoldenCase[] = [
     expected: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   {
+    name: "Extract Unix timestamp candidates",
+    input: "start=1700000000 end=1700000000123 invalid=1234",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "date.extractUnixTimestamps" }]
+    },
+    expected: "1700000000\n1700000000123"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {
