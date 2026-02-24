@@ -118,6 +118,7 @@ import { removeTildes } from "./ops/removeTildes.js";
 import { removeCarets } from "./ops/removeCarets.js";
 import { removeBackticks } from "./ops/removeBackticks.js";
 import { removeQuestionMarks } from "./ops/removeQuestionMarks.js";
+import { removeExclamations } from "./ops/removeExclamations.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -239,6 +240,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeCarets);
     registry.register(removeBackticks);
     registry.register(removeQuestionMarks);
+    registry.register(removeExclamations);
     registry.register(sha256);
   }
 };

@@ -198,6 +198,7 @@ Operations are grouped by package priority:
   - `text.removeCarets`
   - `text.removeBackticks`
   - `text.removeQuestionMarks`
+  - `text.removeExclamations`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
