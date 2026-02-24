@@ -60,6 +60,7 @@ const usageText =
   "  --batch-input-dir <path>         execute recipe for each file in directory and print JSON report\n" +
   "  --batch-ext <list>               comma-separated extension filter for batch inputs (e.g. .txt,.log)\n" +
   "  --batch-report-file <path>       write batch JSON report to file\n" +
+  "  --batch-summary-json             print aggregate JSON summary for batch run to stderr\n" +
   "  --batch-output-dir <path>        write per-input rendered outputs to directory\n" +
   "  --batch-fail-fast                stop batch execution on first file error\n" +
   "  --batch-continue-on-error        continue batch execution despite file errors (default)\n" +
@@ -124,6 +125,7 @@ type CliOptions = {
   batchInputDir?: string;
   batchExt?: string[];
   batchReportFile?: string;
+  batchSummaryJson: boolean;
   batchOutputDir?: string;
   batchFailFast: boolean;
   failEmptyOutput: boolean;
@@ -159,6 +161,7 @@ function parseArgs(args: string[]): CliOptions {
   let batchInputDir: string | undefined;
   let batchExt: string[] | undefined;
   let batchReportFile: string | undefined;
+  let batchSummaryJson = false;
   let batchOutputDir: string | undefined;
   let batchFailFast = false;
   let failEmptyOutput = false;
@@ -338,6 +341,10 @@ function parseArgs(args: string[]): CliOptions {
       i++;
       continue;
     }
+    if (arg === "--batch-summary-json") {
+      batchSummaryJson = true;
+      continue;
+    }
     if (arg === "--batch-output-dir") {
       const raw = args[i + 1];
       if (!raw) die("Missing value for --batch-output-dir");
@@ -404,6 +411,7 @@ function parseArgs(args: string[]): CliOptions {
     bytesOutput,
     hexUppercase,
     jsonIndent,
+    batchSummaryJson,
     batchFailFast,
     failEmptyOutput,
     noNewline
@@ -614,6 +622,28 @@ if (opts.batchInputDir) {
         break;
       }
     }
+  }
+  if (opts.batchSummaryJson) {
+    const durations = report.filter((r) => r.ok).map((r) => r.durationMs).sort((a, b) => a - b);
+    const pickPercentile = (p: number): number => {
+      if (durations.length === 0) return 0;
+      const idx = Math.min(durations.length - 1, Math.max(0, Math.floor((durations.length - 1) * p)));
+      return durations[idx] ?? 0;
+    };
+    const total = durations.reduce((acc, v) => acc + v, 0);
+    const summary = {
+      filesTotal: report.length,
+      filesOk: report.filter((r) => r.ok).length,
+      filesFailed: report.filter((r) => !r.ok).length,
+      durationMs: {
+        min: durations.length > 0 ? durations[0] : 0,
+        max: durations.length > 0 ? durations[durations.length - 1] : 0,
+        avg: durations.length > 0 ? total / durations.length : 0,
+        p50: pickPercentile(0.5),
+        p95: pickPercentile(0.95)
+      }
+    };
+    process.stderr.write(`${JSON.stringify(summary)}\n`);
   }
   const payload = `${JSON.stringify(report, null, 2)}\n`;
   if (opts.batchReportFile) {
