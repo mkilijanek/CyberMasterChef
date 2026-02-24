@@ -39,6 +39,14 @@ type RunInfo = {
   queueDepthAtStart?: number;
   maxQueueDepthObserved?: number;
   inFlightAtStart?: number;
+  queueOverflowCount?: number;
+};
+type PoolStats = {
+  queueDepth: number;
+  inFlight: number;
+  maxQueue: number;
+  maxQueueDepthObserved: number;
+  queueOverflowCount: number;
 };
 
 const HASH_PREFIX = "#state=";
@@ -142,6 +150,7 @@ export function App(): React.JSX.Element {
   const [lastImportSource, setLastImportSource] = React.useState<"native" | "cyberchef" | null>(null);
   const [status, setStatus] = React.useState<Status>("ready");
   const [error, setError] = React.useState<string | null>(null);
+  const [poolStats, setPoolStats] = React.useState<PoolStats | null>(null);
   const [importWarnings, setImportWarnings] = React.useState<RecipeImportWarning[]>([]);
   const sandboxRef = React.useRef<ExecutionClient | null>(null);
   const searchInputRef = React.useRef<HTMLInputElement | null>(null);
@@ -165,6 +174,18 @@ export function App(): React.JSX.Element {
       client?.dispose();
     };
   }, [workerMaxQueue, workerPoolSize]);
+
+  React.useEffect(() => {
+    const handle = window.setInterval(() => {
+      const client = sandboxRef.current;
+      if (client instanceof WorkerPoolClient) {
+        setPoolStats(client.getStats());
+      } else {
+        setPoolStats(null);
+      }
+    }, 300);
+    return () => window.clearInterval(handle);
+  }, []);
 
   React.useEffect(() => {
     localStorage.setItem("recipe.v1", JSON.stringify(recipe));
@@ -191,11 +212,18 @@ export function App(): React.JSX.Element {
     );
   }, [trace, traceQuery]);
 
+  const queueSaturationRatio = React.useMemo(() => {
+    const liveDepth = poolStats?.queueDepth ?? 0;
+    const lastDepth = lastRunInfo?.queueDepthAtEnqueue ?? 0;
+    const depth = Math.max(liveDepth, lastDepth);
+    return workerMaxQueue > 0 ? depth / workerMaxQueue : 0;
+  }, [lastRunInfo, poolStats, workerMaxQueue]);
+
   const executeRecipe = React.useCallback(async (
     recipeToRun: Recipe,
     priority: "normal" | "high" = "high"
   ): Promise<void> => {
-    sandboxRef.current?.cancelActive();
+    if (priority === "high") sandboxRef.current?.cancelActive();
     setStatus("working");
     setError(null);
     setImportWarnings([]);
@@ -344,7 +372,8 @@ export function App(): React.JSX.Element {
       queueDepthAtEnqueue: lastRunInfo.queueDepthAtEnqueue ?? null,
       queueDepthAtStart: lastRunInfo.queueDepthAtStart ?? null,
       maxQueueDepthObserved: lastRunInfo.maxQueueDepthObserved ?? null,
-      inFlightAtStart: lastRunInfo.inFlightAtStart ?? null
+      inFlightAtStart: lastRunInfo.inFlightAtStart ?? null,
+      queueOverflowCount: lastRunInfo.queueOverflowCount ?? null
     };
     const copied = await copyText(JSON.stringify(summary, null, 2));
     if (!copied) {
@@ -629,6 +658,15 @@ export function App(): React.JSX.Element {
           {t("inFlightAtStart")}: {lastRunInfo?.inFlightAtStart ?? "-"}
         </div>
         <div className="traceCount">
+          {t("queueDepthLive")}: {poolStats?.queueDepth ?? "-"}
+        </div>
+        <div className="traceCount">
+          {t("inFlightLive")}: {poolStats?.inFlight ?? "-"}
+        </div>
+        <div className="traceCount">
+          {t("queueOverflowCount")}: {poolStats?.queueOverflowCount ?? lastRunInfo?.queueOverflowCount ?? "-"}
+        </div>
+        <div className="traceCount">
           {t("recipeHashShort")}: {lastRunInfo ? lastRunInfo.recipeHash.slice(0, 12) : "-"}
         </div>
         <div className="traceCount">
@@ -637,6 +675,14 @@ export function App(): React.JSX.Element {
         <div className="status" aria-live="polite">
           {status === "working" ? t("statusWorking") : t("statusReady")}
         </div>
+        {queueSaturationRatio >= 0.8 ? (
+          <div className="warning" role="status" aria-live="polite">
+            {t("queueSaturationWarning", {
+              percent: Math.round(queueSaturationRatio * 100),
+              maxQueue: workerMaxQueue
+            })}
+          </div>
+        ) : null}
       </header>
       <main className="main">
         <section className="panel">
