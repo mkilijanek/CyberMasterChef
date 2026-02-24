@@ -5,6 +5,7 @@ export class SandboxClient {
   private readonly worker: Worker;
   private ready = false;
   private activeId: string | null = null;
+  private disposed = false;
   private readonly pending = new Map<
     string,
     {
@@ -36,6 +37,7 @@ export class SandboxClient {
   }
 
   async init(): Promise<void> {
+    if (this.disposed) throw new Error("SandboxClient is disposed");
     if (this.ready) return;
     await new Promise<void>((resolve) => {
       const onMsg = (ev: MessageEvent<WorkerResponse>) => {
@@ -59,6 +61,7 @@ export class SandboxClient {
     output: DataValue;
     trace: Array<{ step: number; opId: string; inputType: string; outputType: string }>;
   }> {
+    if (this.disposed) throw new Error("SandboxClient is disposed");
     await this.init();
     const id = crypto.randomUUID();
     this.activeId = id;
@@ -81,5 +84,17 @@ export class SandboxClient {
     const id = this.activeId;
     const req: WorkerRequest = { type: "cancel", id };
     this.worker.postMessage(req);
+  }
+
+  dispose(): void {
+    if (this.disposed) return;
+    this.disposed = true;
+    this.worker.terminate();
+    for (const [, handler] of this.pending) {
+      handler.reject(new Error("Sandbox client disposed"));
+    }
+    this.pending.clear();
+    this.activeId = null;
+    this.ready = false;
   }
 }

@@ -99,6 +99,12 @@ export function App(): React.JSX.Element {
   if (!sandboxRef.current) sandboxRef.current = new SandboxClient();
 
   React.useEffect(() => {
+    return () => {
+      sandboxRef.current?.dispose();
+    };
+  }, []);
+
+  React.useEffect(() => {
     localStorage.setItem("recipe.v1", JSON.stringify(recipe));
     localStorage.setItem("input.v1", input);
     localStorage.setItem("autobake.v1", autoBake ? "1" : "0");
