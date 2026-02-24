@@ -228,6 +228,7 @@ Operations are grouped by package priority:
   - `text.countBrackets`
   - `text.countParentheses`
   - `text.countQuotes`
+  - `text.countUnderscores`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
