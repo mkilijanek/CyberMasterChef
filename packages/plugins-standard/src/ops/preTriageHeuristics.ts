@@ -154,4 +154,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "runas_admin_marker", description: "RunAs admin marker", pattern: new RegExp("runas\\s+/user:administrator", "i") },
   { id: "wmic_shadowcopy", description: "WMIC shadowcopy marker", pattern: new RegExp("wmic\\s+shadowcopy", "i") },
   { id: "esentutl_copy_locked", description: "Esentutl copy locked file marker", pattern: new RegExp("esentutl\\s+/y", "i") },
+  { id: "credential_files_marker", description: "Credential file target marker", pattern: new RegExp("sam\\s+system\\s+security", "i") },
 ];

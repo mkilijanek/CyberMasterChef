@@ -161,3 +161,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 147: `runas_admin_marker` - RunAs admin marker
 - [x] Stage 148: `wmic_shadowcopy` - WMIC shadowcopy marker
 - [x] Stage 149: `esentutl_copy_locked` - Esentutl copy locked file marker
+- [x] Stage 150: `credential_files_marker` - Credential file target marker
