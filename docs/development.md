@@ -179,6 +179,7 @@ Example operation IDs in use:
 - `text.removeNonAscii`
 - `text.keepNonAscii`
 - `text.reverseCharsInWords`
+- `text.wordsToLines`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

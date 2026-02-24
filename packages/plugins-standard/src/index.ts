@@ -74,6 +74,7 @@ import { maskDigits } from "./ops/maskDigits.js";
 import { removeNonAscii } from "./ops/removeNonAscii.js";
 import { keepNonAscii } from "./ops/keepNonAscii.js";
 import { reverseCharsInWords } from "./ops/reverseCharsInWords.js";
+import { wordsToLines } from "./ops/wordsToLines.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -151,6 +152,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeNonAscii);
     registry.register(keepNonAscii);
     registry.register(reverseCharsInWords);
+    registry.register(wordsToLines);
     registry.register(sha256);
   }
 };
