@@ -52,6 +52,12 @@ Operations are grouped by package priority:
 
 **WASM high-priority candidates** (31 ops): all compression/decompression + KDF (Argon2, Scrypt, Bcrypt, PBKDF2).
 
+## C Parity Program Status
+
+- C1 domain matrix: generated and published under `docs/parity/c1-operation-domain-summary.md`.
+- C2 execution board: `docs/parity/c2-execution-board.md`.
+- C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
+
 ## Current functionality
 
 - Core recipe engine with typed coercion (`string`, `bytes`, `json`, `number`)
