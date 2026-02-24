@@ -79,4 +79,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "download_to_temp", description: "Download path pointing to temp", pattern: new RegExp("\\\	emp\\\\", "i") },
   { id: "appdata_execution", description: "Execution from AppData path", pattern: new RegExp("\\\\\appdata\\\\", "i") },
   { id: "programdata_execution", description: "Execution from ProgramData path", pattern: new RegExp("\\\\\programdata\\\\", "i") },
+  { id: "public_user_execution", description: "Execution from Public user folder", pattern: new RegExp("\\\\\users\\\\public\\\\", "i") },
 ];
