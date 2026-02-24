@@ -152,6 +152,7 @@ import { countUnderscores } from "./ops/countUnderscores.js";
 import { onlyLettersAndSpaces } from "./ops/onlyLettersAndSpaces.js";
 import { onlyAlnumAndSpaces } from "./ops/onlyAlnumAndSpaces.js";
 import { removeCurrencySymbols } from "./ops/removeCurrencySymbols.js";
+import { removeMathSymbols } from "./ops/removeMathSymbols.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -307,6 +308,7 @@ export const standardPlugin: Plugin = {
     registry.register(onlyLettersAndSpaces);
     registry.register(onlyAlnumAndSpaces);
     registry.register(removeCurrencySymbols);
+    registry.register(removeMathSymbols);
     registry.register(sha256);
   }
 };
