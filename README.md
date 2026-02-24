@@ -74,6 +74,7 @@ Operations are grouped by package priority:
 - Wave 9 forensic hash expansion adds `forensic.extractMd5`.
 - Wave 9 forensic hash expansion adds `forensic.extractSha256`.
 - Wave 10 telemetry parsing adds `date.extractUnixTimestamps`.
+- Wave 10 telemetry parsing adds `date.extractIsoTimestamps`.
 - C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
 
 ## Current functionality
@@ -265,6 +266,7 @@ Operations are grouped by package priority:
   - `date.windowsFiletimeToUnix`
   - `date.parseObjectIdTimestamp`
   - `date.extractUnixTimestamps`
+  - `date.extractIsoTimestamps`
   - `format.jsonMinify`
   - `format.jsonBeautify`
   - `format.jsonSortKeys`

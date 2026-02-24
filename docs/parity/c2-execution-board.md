@@ -64,7 +64,7 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 ## Wave 10 backlog
 
 - [x] `date.extractUnixTimestamps` telemetry parsing operation.
-- [ ] `date.extractIsoTimestamps` telemetry parsing operation.
+- [x] `date.extractIsoTimestamps` telemetry parsing operation.
 
 ## Quality gates
 

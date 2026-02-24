@@ -6,6 +6,7 @@ import { unixToWindowsFiletime } from "../src/ops/unixToWindowsFiletime.js";
 import { windowsFiletimeToUnix } from "../src/ops/windowsFiletimeToUnix.js";
 import { parseObjectIdTimestamp } from "../src/ops/parseObjectIdTimestamp.js";
 import { extractUnixTimestamps } from "../src/ops/extractUnixTimestamps.js";
+import { extractIsoTimestamps } from "../src/ops/extractIsoTimestamps.js";
 
 describe("date operations", () => {
   it("converts ISO to Unix milliseconds", async () => {
@@ -107,6 +108,27 @@ describe("date operations", () => {
     expect(out.output).toEqual({
       type: "string",
       value: "1700000000\n1700000000123"
+    });
+  });
+
+  it("extracts ISO-8601 UTC timestamps", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(extractIsoTimestamps);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "date.extractIsoTimestamps" }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: {
+        type: "string",
+        value: "a=2024-01-01T00:00:00Z b=2024-01-01T00:00:00.000Z c=invalid"
+      }
+    });
+    expect(out.output).toEqual({
+      type: "string",
+      value: "2024-01-01T00:00:00.000Z"
     });
   });
 });

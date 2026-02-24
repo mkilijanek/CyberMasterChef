@@ -191,6 +191,7 @@ Wave 1 implemented so far:
 - Wave 9 forensic hash: `forensic.extractMd5`
 - Wave 9 forensic hash: `forensic.extractSha256`
 - Wave 10 date-time parsing: `date.extractUnixTimestamps`
+- Wave 10 date-time parsing: `date.extractIsoTimestamps`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip
 

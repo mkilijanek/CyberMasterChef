@@ -167,6 +167,15 @@ const goldenCases: GoldenCase[] = [
     expected: "1700000000\n1700000000123"
   },
   {
+    name: "Extract ISO timestamps",
+    input: "x=2025-01-02T03:04:05Z y=2025-01-02T03:04:05.000Z",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "date.extractIsoTimestamps" }]
+    },
+    expected: "2025-01-02T03:04:05.000Z"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {
