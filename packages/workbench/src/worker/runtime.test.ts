@@ -219,8 +219,11 @@ describe("worker runtime protocol integration", () => {
       run: {
         durationMs: 1,
         stepDurationTotalMs: 1,
-        stepDurationAvgMs: 1
+        stepDurationAvgMs: 1,
+        slowestStep: { step: 0, opId: "text.reverse", durationMs: 1 }
       }
     });
+    expect(results[0].run.recipeHash).toMatch(/^[0-9a-f]{64}$/);
+    expect(results[0].run.inputHash).toMatch(/^[0-9a-f]{64}$/);
   });
 });
