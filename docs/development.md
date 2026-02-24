@@ -37,6 +37,9 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
 ## Testing
 
 - Unit: Vitest (`pnpm test`)
+- Current suites:
+  - `packages/core/test/engine.test.ts`
+  - `packages/plugins-standard/test/standardPlugin.test.ts`
 - E2E: Playwright (roadmap)
 - Golden recipes: regression tests against CyberChef-compatible recipe JSON (roadmap)
 
@@ -46,3 +49,11 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
 2. Export from `packages/plugins-standard/src/index.ts`
 3. Add unit tests
 4. Run `pnpm lint && pnpm typecheck && pnpm test`
+
+Example operation IDs in use:
+- `codec.toBase64`, `codec.fromBase64`
+- `codec.toHex`, `codec.fromHex`
+- `codec.toBinary`, `codec.fromBinary`
+- `codec.urlEncode`, `codec.urlDecode`
+- `hash.sha256`
+- `text.reverse`

@@ -39,6 +39,14 @@ const myPlugin: Plugin = {
 Edit `packages/plugins-standard/src/index.ts` to include new operations.
 For new operation groups, create a separate package (e.g. `packages/ops-crypto`).
 
+Current built-in operation IDs:
+- `codec.toBase64`, `codec.fromBase64`
+- `codec.toHex`, `codec.fromHex`
+- `codec.toBinary`, `codec.fromBinary`
+- `codec.urlEncode`, `codec.urlDecode`
+- `hash.sha256`
+- `text.reverse`
+
 ## ArgSpec types
 
 | type | UI control |
@@ -47,3 +55,6 @@ For new operation groups, create a separate package (e.g. `packages/ops-crypto`)
 | `number` | number input |
 | `boolean` | checkbox |
 | `select` | dropdown (requires `options`) |
+
+Example ArgSpec in production code:
+- `codec.toBinary` exposes `delimiter` as `type: "string"` with default `" "`.

@@ -7,7 +7,7 @@ A clean-slate successor to CyberChef: modular, maintainable, and secure data-ope
 ```
 packages/
   core/               — recipe engine, types, converters, registry
-  plugins-standard/   — example operations (Base64, Hex, SHA-256)
+  plugins-standard/   — built-in operations (Base64, Hex, Binary, URL, SHA-256, Reverse)
   workbench/          — React UI + Web Worker sandbox + i18n (PL/EN)
   cli/                — Node.js recipe runner (stdin/file → stdout)
 ```
@@ -39,6 +39,24 @@ Operations are grouped by package priority:
 | `ops-magic` | Auto-detect encoding layers | No (heuristics in TS) |
 
 **WASM high-priority candidates** (31 ops): all compression/decompression + KDF (Argon2, Scrypt, Bcrypt, PBKDF2).
+
+## Current functionality
+
+- Core recipe engine with typed coercion (`string`, `bytes`, `json`, `number`)
+- Worker-based sandbox execution for all operations
+- Workbench features:
+  - operation catalog with search
+  - recipe editing (add/reorder/remove + arg forms)
+  - auto-bake mode (debounced re-run on changes)
+  - deep-link sharing (`#state=` hash with recipe + input)
+  - local persistence for recipe, input, and auto-bake preference
+- Built-in operations (`@cybermasterchef/plugins-standard`):
+  - `codec.toBase64`, `codec.fromBase64`
+  - `codec.toHex`, `codec.fromHex`
+  - `codec.toBinary`, `codec.fromBinary`
+  - `codec.urlEncode`, `codec.urlDecode`
+  - `hash.sha256`
+  - `text.reverse`
 
 ## Getting started
 

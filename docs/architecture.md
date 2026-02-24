@@ -18,7 +18,7 @@ UI (React) ──postMessage──► Web Worker (sandbox)
 | Package | Role |
 |---|---|
 | `@cybermasterchef/core` | Recipe engine, types, converters, registry |
-| `@cybermasterchef/plugins-standard` | Built-in operations (Base64, Hex, SHA-256, …) |
+| `@cybermasterchef/plugins-standard` | Built-in operations (Base64/Hex/Binary/URL codecs, SHA-256, Reverse) |
 | `@cybermasterchef/workbench` | React UI + Web Worker sandbox |
 | `@cybermasterchef/cli` | Node.js CLI runner |
 
@@ -34,6 +34,13 @@ All recipe execution happens inside a Web Worker:
 - Network APIs (`fetch`, `XHR`, `WebSocket`) blocked at runtime — defense-in-depth on top of CSP
 - Transferable `ArrayBuffer` for bytes output (no copy)
 - Hard abort via `AbortSignal` + worker termination for timeouts
+
+## Workbench UX (current)
+
+- Manual run + optional auto-bake mode
+- Recipe and input persisted in local storage
+- Shareable deep links via URL hash (`#state=` payload)
+- Catalog-driven operation discovery with argument editing
 
 ## Security: CSP for production hosting
 
