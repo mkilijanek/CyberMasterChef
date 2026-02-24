@@ -160,6 +160,7 @@ Example operation IDs in use:
 - `text.sortLines`
 - `text.uniqueLines`
 - `text.endsWith`
+- `text.includes`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
