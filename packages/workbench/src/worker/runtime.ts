@@ -23,12 +23,14 @@ type RunRecipeFn = (args: {
   signal?: AbortSignal;
 }) => Promise<RunRecipeResult>;
 
+type TimeoutHandle = number | ReturnType<typeof setTimeout>;
+
 type RuntimeDeps = {
   registry: OperationRegistry;
   runRecipe: RunRecipeFn;
   postMessage: (msg: WorkerResponse, transfer?: Transferable[]) => void;
-  setTimeoutFn: (handler: () => void, ms: number) => ReturnType<typeof setTimeout>;
-  clearTimeoutFn: (id: ReturnType<typeof setTimeout>) => void;
+  setTimeoutFn: (handler: () => void, ms: number) => TimeoutHandle;
+  clearTimeoutFn: (id: TimeoutHandle) => void;
 };
 
 export function createWorkerRuntime(deps: RuntimeDeps): {

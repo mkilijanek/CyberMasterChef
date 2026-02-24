@@ -1,8 +1,8 @@
 /// <reference lib="webworker" />
 import { runRecipe } from "@cybermasterchef/core";
-import type { WorkerRequest } from "./protocol";
 import { createRegistryWithBuiltins } from "../plugins/builtins";
 import { createWorkerRuntime } from "./runtime";
+import { isTrustedWorkerMessage } from "./messageTrust";
 
 // Defense-in-depth: disable network APIs inside the worker.
 // Production hosting must also enforce CSP connect-src 'none'.
@@ -41,6 +41,8 @@ const runtime = createWorkerRuntime({
   clearTimeoutFn: (id) => self.clearTimeout(id)
 });
 
-self.addEventListener("message", (ev: MessageEvent<WorkerRequest>) => {
+self.addEventListener("message", (ev: MessageEvent<unknown>) => {
+  const workerOrigin = self.location.origin;
+  if (!isTrustedWorkerMessage(ev, workerOrigin)) return;
   void runtime.handle(ev.data);
 });
