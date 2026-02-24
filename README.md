@@ -175,6 +175,7 @@ Operations are grouped by package priority:
   - `text.removeDots`
   - `text.removeSemicolons`
   - `text.keepHexChars`
+  - `text.removeHexChars`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
