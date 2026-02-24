@@ -1,12 +1,10 @@
-import { fileURLToPath } from "node:url";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   resolve: {
     alias: {
-      "@cybermasterchef/core": fileURLToPath(
-        new URL("../core/src/index.ts", import.meta.url)
-      )
+      "@cybermasterchef/core": new URL("../core/src/index.ts", import.meta.url)
+        .pathname
     }
   }
 });

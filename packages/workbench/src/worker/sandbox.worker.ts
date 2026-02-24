@@ -9,14 +9,16 @@ function disableNetworkApis(): void {
   const deny = (): never => {
     throw new Error("Network APIs are disabled in sandbox worker");
   };
-  // @ts-ignore — intentional runtime override
-  self.fetch = deny;
-  // @ts-ignore — intentional runtime override
-  self.XMLHttpRequest = function () {
+  const globalScope = self as unknown as typeof globalThis & {
+    fetch: typeof fetch;
+    XMLHttpRequest: typeof XMLHttpRequest;
+    WebSocket: typeof WebSocket;
+  };
+  globalScope.fetch = deny as unknown as typeof fetch;
+  globalScope.XMLHttpRequest = function () {
     deny();
   } as unknown as typeof XMLHttpRequest;
-  // @ts-ignore — intentional runtime override
-  self.WebSocket = function () {
+  globalScope.WebSocket = function () {
     deny();
   } as unknown as typeof WebSocket;
 }

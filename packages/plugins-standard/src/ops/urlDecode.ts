@@ -13,7 +13,7 @@ export const urlDecode: Operation = {
       return { type: "string", value: decodeURIComponent(input.value) };
     } catch (e) {
       const msg = e instanceof Error ? e.message : String(e);
-      throw new Error(`Invalid URL-encoded input: ${msg}`);
+      throw new Error(`Invalid URL-encoded input: ${msg}`, { cause: e });
     }
   }
 };
