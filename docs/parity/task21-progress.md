@@ -90,3 +90,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 078: `run_key_hklm_short` - HKLM Run key short path
 - [x] Stage 079: `taskcache_reference` - TaskCache persistence reference
 - [x] Stage 080: `service_create_sc` - Service creation via sc.exe
+- [x] Stage 081: `service_config_sc` - Service config via sc.exe
