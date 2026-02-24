@@ -159,7 +159,9 @@ function buildSegments(data: Uint8Array, windowSize: number, limit: number): Tri
 
 function uniqueMatches(input: string, pattern: RegExp, normalize: (value: string) => string, limit: number): string[] {
   const set = new Set<string>();
-  for (const match of input.matchAll(pattern)) {
+  const flags = pattern.flags.includes("g") ? pattern.flags : `${pattern.flags}g`;
+  const safePattern = new RegExp(pattern.source, flags);
+  for (const match of input.matchAll(safePattern)) {
     const raw = match[0];
     if (raw === undefined) continue;
     set.add(normalize(raw));

@@ -13,7 +13,7 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "rundll32_launch", description: "Rundll32 execution chain", pattern: new RegExp("rundll32(\\.exe)?", "i") },
   { id: "wmic_process_create", description: "WMIC process creation", pattern: new RegExp("wmic\\s+process\\s+call\\s+create", "i") },
   { id: "bitsadmin_transfer", description: "BITSAdmin transfer pattern", pattern: new RegExp("bitsadmin\\s+/transfer", "i") },
-  { id: "certutil_decode", description: "Certutil decode or urlcache usage", pattern: new RegExp("certutil\\s+-(decode", "urlcache)|i") },
+  { id: "certutil_decode", description: "Certutil decode or urlcache usage", pattern: new RegExp("certutil\\s+-(decode|urlcache)", "i") },
   { id: "schtasks_create", description: "Scheduled task persistence", pattern: new RegExp("schtasks\\s+/create", "i") },
   { id: "at_job_create", description: "Legacy at job persistence", pattern: new RegExp("\\bat\\s+\\d{1,2}:\\d{2}", "i") },
   { id: "reg_run_key", description: "Registry Run key persistence", pattern: new RegExp("\\\\currentversion\\\\run", "i") },
