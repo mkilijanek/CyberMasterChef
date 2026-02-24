@@ -297,6 +297,16 @@ const goldenCases: GoldenCase[] = [
     expected: "53\n443\n8080"
   },
   {
+    name: "Extract registry key paths",
+    input: "set HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run and HKLM\\Software\\Policies",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "forensic.extractRegistryKeys" }]
+    },
+    expected:
+      "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\nHKLM\\Software\\Policies"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {

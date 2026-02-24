@@ -179,6 +179,7 @@ import { extractSha1 } from "./ops/extractSha1.js";
 import { extractSha512 } from "./ops/extractSha512.js";
 import { extractJwt } from "./ops/extractJwt.js";
 import { extractCves } from "./ops/extractCves.js";
+import { extractRegistryKeys } from "./ops/extractRegistryKeys.js";
 import { extractUnixTimestamps } from "./ops/extractUnixTimestamps.js";
 import { extractIsoTimestamps } from "./ops/extractIsoTimestamps.js";
 import { isoToDateOnly } from "./ops/isoToDateOnly.js";
@@ -361,6 +362,7 @@ export const standardPlugin: Plugin = {
     registry.register(extractSha512);
     registry.register(extractJwt);
     registry.register(extractCves);
+    registry.register(extractRegistryKeys);
     registry.register(jsonMinify);
     registry.register(jsonBeautify);
     registry.register(jsonSortKeys);

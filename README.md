@@ -88,6 +88,7 @@ Operations are grouped by package priority:
 - Wave 15 date normalization adds `date.isoToDateOnly`.
 - Wave 15 date classification adds `date.isoWeekday`.
 - Wave 16 network metadata adds `network.extractPorts`.
+- Wave 16 host IOC extraction adds `forensic.extractRegistryKeys`.
 - C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
 
 ## Current functionality
@@ -298,6 +299,7 @@ Operations are grouped by package priority:
   - `forensic.extractSha512`
   - `forensic.extractJwt`
   - `forensic.extractCves`
+  - `forensic.extractRegistryKeys`
   - `network.extractIPs`
   - `network.extractIPv6`
   - `network.defangIPs`

@@ -96,10 +96,11 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 ## Wave 16 backlog
 
 - [x] `network.extractPorts` network metadata operation.
-- [ ] `forensic.extractRegistryKeys` host IOC operation.
+- [x] `forensic.extractRegistryKeys` host IOC operation.
 
 ## Queue extension
 
+- [x] Queue tasks `1-20` completed on `dev`.
 - [ ] Task 21: `Basic Pre-Triage (Forensic/Malware Analysis)` module (post Wave 1-20 completion).
 
 ## Quality gates

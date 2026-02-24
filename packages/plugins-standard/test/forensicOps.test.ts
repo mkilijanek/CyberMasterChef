@@ -9,6 +9,7 @@ import { extractSha1 } from "../src/ops/extractSha1.js";
 import { extractSha512 } from "../src/ops/extractSha512.js";
 import { extractJwt } from "../src/ops/extractJwt.js";
 import { extractCves } from "../src/ops/extractCves.js";
+import { extractRegistryKeys } from "../src/ops/extractRegistryKeys.js";
 
 describe("forensic operations", () => {
   it("extracts printable strings from bytes", async () => {
@@ -176,6 +177,26 @@ describe("forensic operations", () => {
     expect(out.output).toEqual({
       type: "string",
       value: "CVE-2024-12345\nCVE-2023-0001"
+    });
+  });
+
+  it("extracts unique registry key paths", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(extractRegistryKeys);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "forensic.extractRegistryKeys" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: {
+        type: "string",
+        value:
+          "HKCU\\Software\\Microsoft\\Windows and HKEY_LOCAL_MACHINE\\Software\\Classes\\CLSID"
+      }
+    });
+    expect(out.output).toEqual({
+      type: "string",
+      value:
+        "HKCU\\Software\\Microsoft\\Windows\nHKEY_LOCAL_MACHINE\\Software\\Classes\\CLSID"
     });
   });
 });
