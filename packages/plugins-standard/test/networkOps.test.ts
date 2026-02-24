@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core";
 import { extractIPs } from "../src/ops/extractIPs.js";
 import { extractUrls } from "../src/ops/extractUrls.js";
+import { defangUrls } from "../src/ops/defangUrls.js";
 
 describe("network operations", () => {
   it("extracts unique valid IPv4 addresses", async () => {
@@ -39,6 +40,23 @@ describe("network operations", () => {
     expect(out.output).toEqual({
       type: "string",
       value: "https://example.com/a?b=1\nhttp://test.local/path"
+    });
+  });
+
+  it("defangs URL protocol and host dots", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(defangUrls);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.defangUrls" }] };
+
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "Check https://example.com/path?q=a.b#frag now" }
+    });
+
+    expect(out.output).toEqual({
+      type: "string",
+      value: "Check hxxps://example[.]com/path?q=a.b#frag now"
     });
   });
 });

@@ -179,6 +179,7 @@ Wave 1 implemented so far:
 - `forensic.extractStrings`
 - Wave 5 kickoff: `network.extractIPs`
 - Wave 5 expansion: `network.extractUrls`
+- Wave 5 safe-sharing: `network.defangUrls`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip
 

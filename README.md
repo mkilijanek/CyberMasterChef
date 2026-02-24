@@ -62,6 +62,7 @@ Operations are grouped by package priority:
 - Wave 1 closure: `forensic.extractStrings` is now registered in standard plugin and covered by golden parity suite.
 - Wave 5 IOC baseline started with `network.extractIPs` (unique IPv4 extraction).
 - Wave 5 IOC expansion adds `network.extractUrls` for deterministic URL extraction.
+- Wave 5 safe-sharing step adds `network.defangUrls`.
 - C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
 
 ## Current functionality
@@ -254,6 +255,7 @@ Operations are grouped by package priority:
   - `forensic.extractStrings`
   - `network.extractIPs`
   - `network.extractUrls`
+  - `network.defangUrls`
   - `text.reverse`
 - CLI compatibility:
   - accepts native recipe JSON

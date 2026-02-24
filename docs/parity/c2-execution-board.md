@@ -37,6 +37,8 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 
 - [x] `network.extractIPs` baseline IOC operation.
 - [x] `network.extractUrls` baseline IOC operation.
+- [x] `network.defangUrls` safe-sharing operation.
+- [ ] `network.fangUrls` reversal operation.
 
 ## Quality gates
 

@@ -56,6 +56,15 @@ const goldenCases: GoldenCase[] = [
     expected: "https://a.example/x\nhttp://b.example/y"
   },
   {
+    name: "Defang URL payload",
+    input: "ping https://ioc.example.com/dropper.exe",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "network.defangUrls" }]
+    },
+    expected: "ping hxxps://ioc[.]example[.]com/dropper.exe"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {
