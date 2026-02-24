@@ -137,4 +137,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "reflective_loader_marker", description: "Reflective loader marker", pattern: new RegExp("reflective(pe)?loader", "i") },
   { id: "shellcode_marker", description: "Shellcode marker keyword", pattern: new RegExp("shellcode", "i") },
   { id: "xor_decoder_loop", description: "XOR decoder loop marker", pattern: new RegExp("\\bxor\\b.*\\bloop\\b", "i") },
+  { id: "rc4_decoder_marker", description: "RC4 decoder marker", pattern: new RegExp("\\brc4\\b", "i") },
 ];
