@@ -47,6 +47,15 @@ body { margin: 0; }
   gap: 6px;
   align-items: center;
 }
+.timeoutControl {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+.timeoutInput {
+  width: 90px;
+  padding: 4px 6px;
+}
 .list { list-style: none; padding: 0; margin: 0; }
 .listItem { border-top: 1px solid #eee; padding: 8px 0; }
 .opTitle { font-weight: 600; }

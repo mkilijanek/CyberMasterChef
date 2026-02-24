@@ -18,6 +18,7 @@
   "importWarnings": "Imported with {{count}} unsupported step(s) skipped",
   "copyPrompt": "Copy this JSON:",
   "run": "Run",
+  "timeoutMs": "Timeout (ms)",
   "add": "Add",
   "remove": "Remove",
   "runToStep": "Run to step",

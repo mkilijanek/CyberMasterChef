@@ -35,7 +35,7 @@ All recipe execution happens inside a Web Worker:
 - Transferable `ArrayBuffer` for bytes output (no copy)
 - Hard abort via `AbortSignal`
 - Cancellable runs via worker `cancel` message
-- Per-run timeout (default 10s in workbench) wired from UI -> client -> worker -> engine signal
+- Per-run timeout (default 10s in workbench, user-configurable) wired from UI -> client -> worker -> engine signal
 
 ## Workbench UX (current)
 

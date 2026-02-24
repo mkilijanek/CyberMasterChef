@@ -18,6 +18,7 @@
   "importWarnings": "Zaimportowano, pominięto {{count}} nieobsługiwanych kroków",
   "copyPrompt": "Skopiuj ten JSON:",
   "run": "Uruchom",
+  "timeoutMs": "Timeout (ms)",
   "add": "Dodaj",
   "remove": "Usuń",
   "runToStep": "Uruchom do kroku",

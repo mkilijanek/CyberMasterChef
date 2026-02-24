@@ -22,7 +22,9 @@ type SharedState = { recipe: Recipe; input: string };
 type TraceRow = { step: number; opId: string; inputType: string; outputType: string };
 
 const HASH_PREFIX = "#state=";
-const RUN_TIMEOUT_MS = 10_000;
+const DEFAULT_TIMEOUT_MS = 10_000;
+const MIN_TIMEOUT_MS = 100;
+const MAX_TIMEOUT_MS = 120_000;
 
 function isRecipe(value: unknown): value is Recipe {
   if (typeof value !== "object" || value === null) return false;
@@ -83,6 +85,11 @@ export function App(): React.JSX.Element {
     const saved = localStorage.getItem("autobake.v1");
     return saved === null ? false : saved === "1";
   });
+  const [timeoutMs, setTimeoutMs] = React.useState<number>(() => {
+    const saved = Number(localStorage.getItem("timeoutMs.v1"));
+    if (!Number.isFinite(saved)) return DEFAULT_TIMEOUT_MS;
+    return Math.min(MAX_TIMEOUT_MS, Math.max(MIN_TIMEOUT_MS, saved));
+  });
   const [output, setOutput] = React.useState<string>("");
   const [trace, setTrace] = React.useState<TraceRow[]>([]);
   const [status, setStatus] = React.useState<Status>("ready");
@@ -94,10 +101,11 @@ export function App(): React.JSX.Element {
     localStorage.setItem("recipe.v1", JSON.stringify(recipe));
     localStorage.setItem("input.v1", input);
     localStorage.setItem("autobake.v1", autoBake ? "1" : "0");
+    localStorage.setItem("timeoutMs.v1", String(timeoutMs));
 
     const shared = toBase64Url(JSON.stringify({ recipe, input }));
     window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${HASH_PREFIX}${shared}`);
-  }, [autoBake, input, recipe]);
+  }, [autoBake, input, recipe, timeoutMs]);
 
   const executeRecipe = React.useCallback(async (recipeToRun: Recipe): Promise<void> => {
     sandboxRef.current?.cancelActive();
@@ -107,7 +115,7 @@ export function App(): React.JSX.Element {
     try {
       const inVal: DataValue = { type: "string", value: input };
       const res = await sandboxRef.current!.bake(recipeToRun, inVal, {
-        timeoutMs: RUN_TIMEOUT_MS
+        timeoutMs
       });
       setTrace(res.trace);
       if (res.output.type === "bytes") {
@@ -131,7 +139,7 @@ export function App(): React.JSX.Element {
       setError(msg);
       setStatus("error");
     }
-  }, [input, t]);
+  }, [input, t, timeoutMs]);
 
   const run = React.useCallback(async (): Promise<void> => {
     await executeRecipe(recipe);
@@ -236,6 +244,22 @@ export function App(): React.JSX.Element {
         <button className="button" onClick={() => void run()}>
           {t("run")}
         </button>
+        <label className="timeoutControl">
+          <span>{t("timeoutMs")}</span>
+          <input
+            className="timeoutInput"
+            type="number"
+            min={MIN_TIMEOUT_MS}
+            max={MAX_TIMEOUT_MS}
+            step={100}
+            value={timeoutMs}
+            onChange={(e) => {
+              const raw = Number(e.target.value);
+              if (!Number.isFinite(raw)) return;
+              setTimeoutMs(Math.min(MAX_TIMEOUT_MS, Math.max(MIN_TIMEOUT_MS, raw)));
+            }}
+          />
+        </label>
         <button
           className="buttonSmall"
           onClick={() => cancelRun()}
