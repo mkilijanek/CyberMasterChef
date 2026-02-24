@@ -105,4 +105,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "crypto_wallet_xmr", description: "Monero wallet marker", pattern: new RegExp("\b4[0-9AB][1-9A-HJ-NP-Za-km-z]{93}\b", "g") },
   { id: "credential_dump_mimikatz", description: "Mimikatz keyword indicator", pattern: new RegExp("mimikatz", "i") },
   { id: "lsass_dump_indicator", description: "LSASS dump indicator", pattern: new RegExp("lsass\.dmp", "i") },
+  { id: "mail_attachment_lnk", description: "Email LNK attachment marker", pattern: new RegExp("\\.lnk\\b", "i") },
 ];

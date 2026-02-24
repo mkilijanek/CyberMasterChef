@@ -110,3 +110,6 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 098: `crypto_wallet_xmr` - Monero wallet marker
 - [x] Stage 099: `credential_dump_mimikatz` - Mimikatz keyword indicator
 - [x] Stage 100: `lsass_dump_indicator` - LSASS dump indicator
+
+## Queue 3/3 (50 stages)
+- [x] Stage 101: `mail_attachment_lnk` - Email LNK attachment marker
