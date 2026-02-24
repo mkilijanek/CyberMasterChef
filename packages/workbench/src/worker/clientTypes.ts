@@ -16,6 +16,8 @@ export type BakeResult = {
     queuedMs?: number;
     workerId?: number;
     attempt?: number;
+    queueDepthAtEnqueue?: number;
+    queueDepthAtStart?: number;
   };
 };
 

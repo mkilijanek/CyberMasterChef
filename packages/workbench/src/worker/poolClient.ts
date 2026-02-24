@@ -9,6 +9,7 @@ type QueueTask = {
   timeoutMs?: number;
   priority: "normal" | "high";
   enqueuedAt: number;
+  queueDepthAtEnqueue: number;
   resolve: (value: BakeResult) => void;
   reject: (reason?: unknown) => void;
 };
@@ -70,6 +71,7 @@ export class WorkerPoolClient implements ExecutionClient {
         input,
         priority,
         enqueuedAt: Date.now(),
+        queueDepthAtEnqueue: this.queue.length + 1,
         resolve,
         reject
       };
@@ -115,6 +117,7 @@ export class WorkerPoolClient implements ExecutionClient {
     available.busy = true;
     available.activeTaskId = task.id;
     const startedAt = Date.now();
+    const queueDepthAtStart = this.queue.length;
 
     void available.client
       .bake(
@@ -129,7 +132,9 @@ export class WorkerPoolClient implements ExecutionClient {
             ...result.run,
             queuedMs: Math.max(0, startedAt - task.enqueuedAt),
             workerId: available.id,
-            attempt: 1
+            attempt: 1,
+            queueDepthAtEnqueue: task.queueDepthAtEnqueue,
+            queueDepthAtStart
           }
         });
       })
