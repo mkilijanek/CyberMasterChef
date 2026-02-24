@@ -9,6 +9,7 @@ export type EngineResult = {
     opId: string;
     inputType: string;
     outputType: string;
+    durationMs: number;
   }>;
 };
 
@@ -32,6 +33,7 @@ export async function runRecipe(opts: {
     if (!op) throw new OperationNotFoundError(step.opId);
 
     const coercedIn = coerceToAnyOf(current, op.input);
+    const stepStartedAt = Date.now();
     try {
       const ctx =
         signal === undefined
@@ -43,7 +45,8 @@ export async function runRecipe(opts: {
         step: i,
         opId: op.id,
         inputType: coercedIn.type,
-        outputType: coercedOut.type
+        outputType: coercedOut.type,
+        durationMs: Math.max(0, Date.now() - stepStartedAt)
       });
       current = coercedOut;
     } catch (e) {
