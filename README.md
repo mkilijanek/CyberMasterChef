@@ -85,6 +85,7 @@ Operations are grouped by package priority:
 - Wave 14 JSON inspection adds `format.jsonArrayLength`.
 - Wave 14 JSON extraction adds `format.jsonStringValues`.
 - Wave 14 JSON extraction adds `format.jsonNumberValues`.
+- Wave 15 date normalization adds `date.isoToDateOnly`.
 - C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
 
 ## Current functionality
@@ -277,6 +278,7 @@ Operations are grouped by package priority:
   - `date.parseObjectIdTimestamp`
   - `date.extractUnixTimestamps`
   - `date.extractIsoTimestamps`
+  - `date.isoToDateOnly`
   - `format.jsonMinify`
   - `format.jsonBeautify`
   - `format.jsonSortKeys`

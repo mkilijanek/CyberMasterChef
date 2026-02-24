@@ -88,6 +88,11 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 - [x] `format.jsonStringValues` extraction operation.
 - [x] `format.jsonNumberValues` extraction operation.
 
+## Wave 15 backlog
+
+- [x] `date.isoToDateOnly` normalization operation.
+- [ ] `date.isoWeekday` classification operation.
+
 ## Queue extension
 
 - [ ] Task 21: `Basic Pre-Triage (Forensic/Malware Analysis)` module (post Wave 1-20 completion).

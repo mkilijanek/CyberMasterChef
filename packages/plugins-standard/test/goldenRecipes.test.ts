@@ -270,6 +270,15 @@ const goldenCases: GoldenCase[] = [
     expected: "CVE-2024-12345\nCVE-2021-44228"
   },
   {
+    name: "ISO to date-only conversion",
+    input: "2024-02-03T04:05:06.000Z",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "date.isoToDateOnly" }]
+    },
+    expected: "2024-02-03"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {
