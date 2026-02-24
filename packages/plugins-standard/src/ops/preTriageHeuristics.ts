@@ -74,4 +74,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "powershell_noprofile", description: "PowerShell -NoProfile usage", pattern: new RegExp("-noprofile", "i") },
   { id: "powershell_noninteractive", description: "PowerShell -NonInteractive usage", pattern: new RegExp("-noninteractive", "i") },
   { id: "powershell_noni_abbrev", description: "PowerShell -noni abbreviation", pattern: new RegExp("\\s-noni\\b", "i") },
+  { id: "powershell_w_hidden", description: "PowerShell -w hidden usage", pattern: new RegExp("\\s-w\\s+hidden", "i") },
 ];

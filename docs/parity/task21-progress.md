@@ -79,3 +79,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 067: `powershell_noprofile` - PowerShell -NoProfile usage
 - [x] Stage 068: `powershell_noninteractive` - PowerShell -NonInteractive usage
 - [x] Stage 069: `powershell_noni_abbrev` - PowerShell -noni abbreviation
+- [x] Stage 070: `powershell_w_hidden` - PowerShell -w hidden usage
