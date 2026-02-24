@@ -64,6 +64,8 @@ const usageText =
   "  --batch-output-dir <path>        write per-input rendered outputs to directory\n" +
   "  --batch-output-format <fmt>      format for batch output files: text|json|jsonl\n" +
   "  --batch-max-files <n>            process at most N batch files\n" +
+  "  --batch-skip-empty               skip empty input files during batch execution\n" +
+  "  --batch-fail-empty               treat empty input files as batch errors\n" +
   "  --batch-fail-fast                stop batch execution on first file error\n" +
   "  --batch-continue-on-error        continue batch execution despite file errors (default)\n" +
   "  --fail-empty-output              fail when rendered output is empty\n" +
@@ -131,6 +133,8 @@ type CliOptions = {
   batchOutputDir?: string;
   batchOutputFormat: "text" | "json" | "jsonl";
   batchMaxFiles?: number;
+  batchSkipEmpty: boolean;
+  batchFailEmpty: boolean;
   batchFailFast: boolean;
   failEmptyOutput: boolean;
   noNewline: boolean;
@@ -169,6 +173,8 @@ function parseArgs(args: string[]): CliOptions {
   let batchOutputDir: string | undefined;
   let batchOutputFormat: CliOptions["batchOutputFormat"] = "text";
   let batchMaxFiles: number | undefined;
+  let batchSkipEmpty = false;
+  let batchFailEmpty = false;
   let batchFailFast = false;
   let failEmptyOutput = false;
   let noNewline = false;
@@ -378,6 +384,14 @@ function parseArgs(args: string[]): CliOptions {
       i++;
       continue;
     }
+    if (arg === "--batch-skip-empty") {
+      batchSkipEmpty = true;
+      continue;
+    }
+    if (arg === "--batch-fail-empty") {
+      batchFailEmpty = true;
+      continue;
+    }
     if (arg === "--batch-fail-fast") {
       batchFailFast = true;
       continue;
@@ -439,6 +453,8 @@ function parseArgs(args: string[]): CliOptions {
     jsonIndent,
     batchSummaryJson,
     batchOutputFormat,
+    batchSkipEmpty,
+    batchFailEmpty,
     batchFailFast,
     failEmptyOutput,
     noNewline
@@ -648,6 +664,20 @@ if (opts.batchInputDir) {
   for (const filePath of entries) {
     try {
       const raw = readFileSync(filePath, "utf-8");
+      if (raw.length === 0 && opts.batchSkipEmpty) {
+        continue;
+      }
+      if (raw.length === 0 && opts.batchFailEmpty) {
+        report.push({
+          file: filePath,
+          ok: false,
+          durationMs: 0,
+          outputType: "string",
+          error: "Empty input file"
+        });
+        if (opts.batchFailFast) break;
+        continue;
+      }
       const run = await executeOne(raw);
       report.push({
         file: filePath,
