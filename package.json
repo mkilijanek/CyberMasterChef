@@ -16,7 +16,8 @@
     "format": "prettier -w .",
     "ci": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
     "test:parity": "PARITY_THRESHOLD=0.90 node scripts/check-parity-coverage.mjs",
-    "c1:domain-matrix": "node scripts/c1/generate-domain-matrix.mjs"
+    "c1:domain-matrix": "node scripts/c1/generate-domain-matrix.mjs",
+    "c2:plan": "node scripts/c2/generate-domain-implementation-plan.mjs"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

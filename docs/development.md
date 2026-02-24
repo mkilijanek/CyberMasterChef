@@ -169,6 +169,14 @@ CLI behavior:
   - `docs/parity/c1-operation-domain-matrix.csv`
   - `docs/parity/c1-operation-domain-summary.md`
 
+## C2 domain implementation plan
+
+- Generate domain implementation gap/coverage plan:
+  - `pnpm c2:plan`
+- Artifacts:
+  - `docs/parity/c2-domain-implementation-plan.json`
+  - `docs/parity/c2-domain-implementation-plan.md`
+
 ## Adding a new operation
 
 1. Create `packages/plugins-standard/src/ops/myOp.ts`
