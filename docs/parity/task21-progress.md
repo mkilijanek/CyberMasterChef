@@ -139,3 +139,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 125: `rdp_registry_enable` - RDP registry enable marker
 - [x] Stage 126: `firewall_disable_cmd` - Firewall disable marker
 - [x] Stage 127: `defender_disable_cmd` - Defender disable marker
+- [x] Stage 128: `amsi_bypass_marker` - AMSI bypass marker
