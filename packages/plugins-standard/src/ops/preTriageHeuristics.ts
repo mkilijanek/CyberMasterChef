@@ -94,4 +94,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "netstat_scan", description: "Network sockets netstat", pattern: new RegExp("netstat\\s+-an", "i") },
   { id: "nslookup_usage", description: "DNS lookup usage", pattern: new RegExp("\\bnslookup\\b", "i") },
   { id: "tracert_usage", description: "Route tracing usage", pattern: new RegExp("\\btracert\\b", "i") },
+  { id: "route_print_usage", description: "Route table dump", pattern: new RegExp("route\\s+print", "i") },
 ];

@@ -99,3 +99,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 087: `netstat_scan` - Network sockets netstat
 - [x] Stage 088: `nslookup_usage` - DNS lookup usage
 - [x] Stage 089: `tracert_usage` - Route tracing usage
+- [x] Stage 090: `route_print_usage` - Route table dump
