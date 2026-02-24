@@ -210,6 +210,7 @@ Operations are grouped by package priority:
   - `text.keepDigitsAndDots`
   - `text.removeEmojis`
   - `text.removeUnderscores`
+  - `text.removeHyphens`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:

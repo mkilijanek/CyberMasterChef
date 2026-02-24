@@ -130,6 +130,7 @@ import { removeDigitsAndSpaces } from "./ops/removeDigitsAndSpaces.js";
 import { keepDigitsAndDots } from "./ops/keepDigitsAndDots.js";
 import { removeEmojis } from "./ops/removeEmojis.js";
 import { removeUnderscores } from "./ops/removeUnderscores.js";
+import { removeHyphens } from "./ops/removeHyphens.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -263,6 +264,7 @@ export const standardPlugin: Plugin = {
     registry.register(keepDigitsAndDots);
     registry.register(removeEmojis);
     registry.register(removeUnderscores);
+    registry.register(removeHyphens);
     registry.register(sha256);
   }
 };
