@@ -251,6 +251,7 @@ Example operation IDs in use:
 - `text.countQuestionMarks`
 - `text.countExclamations`
 - `text.countBrackets`
+- `text.countParentheses`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
