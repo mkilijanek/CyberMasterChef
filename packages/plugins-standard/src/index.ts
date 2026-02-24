@@ -167,6 +167,7 @@ import { unixToWindowsFiletime } from "./ops/unixToWindowsFiletime.js";
 import { windowsFiletimeToUnix } from "./ops/windowsFiletimeToUnix.js";
 import { parseObjectIdTimestamp } from "./ops/parseObjectIdTimestamp.js";
 import { extractEmails } from "./ops/extractEmails.js";
+import { extractDomains } from "./ops/extractDomains.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -330,6 +331,7 @@ export const standardPlugin: Plugin = {
     registry.register(windowsFiletimeToUnix);
     registry.register(parseObjectIdTimestamp);
     registry.register(extractEmails);
+    registry.register(extractDomains);
     registry.register(jsonMinify);
     registry.register(jsonBeautify);
     registry.register(extractStrings);

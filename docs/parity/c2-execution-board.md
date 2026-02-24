@@ -49,7 +49,7 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 ## Wave 7 backlog
 
 - [x] `forensic.extractEmails` IOC operation.
-- [ ] `forensic.extractDomains` IOC operation.
+- [x] `forensic.extractDomains` IOC operation.
 
 ## Quality gates
 

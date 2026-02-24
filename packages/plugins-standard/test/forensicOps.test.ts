@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core";
 import { extractStrings } from "../src/ops/extractStrings.js";
 import { extractEmails } from "../src/ops/extractEmails.js";
+import { extractDomains } from "../src/ops/extractDomains.js";
 
 describe("forensic operations", () => {
   it("extracts printable strings from bytes", async () => {
@@ -49,6 +50,28 @@ describe("forensic operations", () => {
     expect(out.output).toEqual({
       type: "string",
       value: "admin@example.com\nsec.ops@test.io"
+    });
+  });
+
+  it("extracts unique domains from mixed text", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(extractDomains);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "forensic.extractDomains" }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: {
+        type: "string",
+        value:
+          "https://Portal.EXAMPLE.com/a admin@example.com mirror.test.io portal.example.com"
+      }
+    });
+    expect(out.output).toEqual({
+      type: "string",
+      value: "portal.example.com\nexample.com\nmirror.test.io"
     });
   });
 });

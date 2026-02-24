@@ -113,6 +113,15 @@ const goldenCases: GoldenCase[] = [
     expected: "alice@example.com\nbob@test.org"
   },
   {
+    name: "Extract domains from URL and email text",
+    input: "hxxps://ignore x https://a.example.com and sec@b.test.org and A.EXAMPLE.COM",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "forensic.extractDomains" }]
+    },
+    expected: "a.example.com\nb.test.org"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {
