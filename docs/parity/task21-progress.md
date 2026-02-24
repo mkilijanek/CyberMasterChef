@@ -12,3 +12,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 02: `ps_execution_policy_bypass` - PowerShell execution policy bypass
 - [x] Stage 03: `cmd_from_powershell` - PowerShell launching cmd
 - [x] Stage 04: `mshta_invocation` - MSHTA execution chain
+- [x] Stage 05: `regsvr32_silent` - Regsvr32 silent registration

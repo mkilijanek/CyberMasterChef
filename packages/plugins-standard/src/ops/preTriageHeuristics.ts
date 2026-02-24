@@ -9,4 +9,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "ps_execution_policy_bypass", description: "PowerShell execution policy bypass", pattern: new RegExp("-executionpolicy\\s+bypass", "i") },
   { id: "cmd_from_powershell", description: "PowerShell launching cmd", pattern: new RegExp("powershell.*cmd\\.exe", "i") },
   { id: "mshta_invocation", description: "MSHTA execution chain", pattern: new RegExp("mshta(\\.exe)?", "i") },
+  { id: "regsvr32_silent", description: "Regsvr32 silent registration", pattern: new RegExp("regsvr32(\\.exe)?\\s+/s", "i") },
 ];
