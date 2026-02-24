@@ -98,4 +98,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "wevtutil_clearlog", description: "Event log clearing", pattern: new RegExp("wevtutil\\s+cl", "i") },
   { id: "vssadmin_delete", description: "Shadow copy deletion", pattern: new RegExp("vssadmin\\s+delete\\s+shadows", "i") },
   { id: "wbadmin_delete", description: "Backup catalog deletion", pattern: new RegExp("wbadmin\\s+delete\\s+catalog", "i") },
+  { id: "bcdedit_recovery_off", description: "Recovery disable via bcdedit", pattern: new RegExp("bcdedit\\s+/set\\s+\\{default\\}\\s+recoveryenabled\\s+no", "i") },
 ];
