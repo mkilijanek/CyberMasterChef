@@ -53,4 +53,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "url_shortener_bitly", description: "URL shortener bitly indicator", pattern: new RegExp("bit\\.ly", "i") },
   { id: "url_shortener_tinyurl", description: "URL shortener tinyurl indicator", pattern: new RegExp("tinyurl\\.com", "i") },
   { id: "lolbin_makecab", description: "LOLBIN makecab usage", pattern: new RegExp("makecab(\\.exe)?", "i") },
+  { id: "lolbin_expand", description: "LOLBIN expand usage", pattern: new RegExp("expand(\\.exe)?", "i") },
 ];
