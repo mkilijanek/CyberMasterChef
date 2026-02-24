@@ -55,4 +55,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "lolbin_makecab", description: "LOLBIN makecab usage", pattern: new RegExp("makecab(\\.exe)?", "i") },
   { id: "lolbin_expand", description: "LOLBIN expand usage", pattern: new RegExp("expand(\\.exe)?", "i") },
   { id: "lolbin_msbuild", description: "LOLBIN msbuild usage", pattern: new RegExp("msbuild(\\.exe)?", "i") },
+  { id: "suspicious_tld_ru", description: "Suspicious RU TLD reference", pattern: new RegExp("\\.ru\\b", "i") },
 ];

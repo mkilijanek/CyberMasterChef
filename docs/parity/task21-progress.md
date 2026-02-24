@@ -58,3 +58,6 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 48: `lolbin_makecab` - LOLBIN makecab usage
 - [x] Stage 49: `lolbin_expand` - LOLBIN expand usage
 - [x] Stage 50: `lolbin_msbuild` - LOLBIN msbuild usage
+
+## Queue 2/3 (50 stages)
+- [x] Stage 051: `suspicious_tld_ru` - Suspicious RU TLD reference
