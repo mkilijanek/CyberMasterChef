@@ -153,6 +153,7 @@ import { onlyLettersAndSpaces } from "./ops/onlyLettersAndSpaces.js";
 import { onlyAlnumAndSpaces } from "./ops/onlyAlnumAndSpaces.js";
 import { removeCurrencySymbols } from "./ops/removeCurrencySymbols.js";
 import { removeMathSymbols } from "./ops/removeMathSymbols.js";
+import { normalizeCommas } from "./ops/normalizeCommas.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -309,6 +310,7 @@ export const standardPlugin: Plugin = {
     registry.register(onlyAlnumAndSpaces);
     registry.register(removeCurrencySymbols);
     registry.register(removeMathSymbols);
+    registry.register(normalizeCommas);
     registry.register(sha256);
   }
 };

@@ -233,6 +233,7 @@ Operations are grouped by package priority:
   - `text.onlyAlnumAndSpaces`
   - `text.removeCurrencySymbols`
   - `text.removeMathSymbols`
+  - `text.normalizeCommas`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
