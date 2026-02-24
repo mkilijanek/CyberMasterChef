@@ -239,6 +239,7 @@ Example operation IDs in use:
 - `text.removeSpacesAndTabs`
 - `text.keepWhitespace`
 - `text.countTabs`
+- `text.countSpaces`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
