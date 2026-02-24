@@ -44,6 +44,12 @@ describe("engine", () => {
     expect(result.output.type).toBe("string");
     expect(result.output.value).toBe("hello");
     expect(result.trace).toHaveLength(2);
+    expect(result.trace[0]?.durationMs).toBeTypeOf("number");
+    expect(result.trace[1]?.durationMs).toBeTypeOf("number");
+    expect(result.meta.startedAt).toBeTypeOf("number");
+    expect(result.meta.endedAt).toBeTypeOf("number");
+    expect(result.meta.durationMs).toBeGreaterThanOrEqual(0);
+    expect(result.meta.endedAt).toBeGreaterThanOrEqual(result.meta.startedAt);
   });
 
   it("throws OperationNotFoundError for unknown opId", async () => {
@@ -64,6 +70,7 @@ describe("engine", () => {
     });
     expect(result.output).toEqual({ type: "string", value: "unchanged" });
     expect(result.trace).toHaveLength(0);
+    expect(result.meta.durationMs).toBeGreaterThanOrEqual(0);
   });
 
   it("aborts when signal is already aborted", async () => {
