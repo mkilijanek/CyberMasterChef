@@ -6,9 +6,17 @@ export const endsWith: Operation = {
   description: "Returns 1 if text ends with provided value, else 0.",
   input: ["string"],
   output: "number",
-  args: [],
-  run: ({ input }) => {
+  args: [
+    {
+      key: "value",
+      label: "Value",
+      type: "string",
+      defaultValue: ""
+    }
+  ],
+  run: ({ input, args }) => {
     if (input.type !== "string") throw new Error("Expected string input");
-    return { type: "number", value: input.value.endsWith("") ? 1 : 1 };
+    const value = typeof args.value === "string" ? args.value : "";
+    return { type: "number", value: input.value.endsWith(value) ? 1 : 0 };
   }
 };
