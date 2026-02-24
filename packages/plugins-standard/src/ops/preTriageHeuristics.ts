@@ -41,4 +41,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "invoke_webrequest_usage", description: "Invoke-WebRequest usage", pattern: new RegExp("invoke-webrequest", "i") },
   { id: "invoke_restmethod_usage", description: "Invoke-RestMethod usage", pattern: new RegExp("invoke-restmethod", "i") },
   { id: "curl_usage", description: "Curl command usage", pattern: new RegExp("\\bcurl\\b", "i") },
+  { id: "wget_usage", description: "Wget command usage", pattern: new RegExp("\\bwget\\b", "i") },
 ];

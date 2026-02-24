@@ -44,3 +44,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 34: `invoke_webrequest_usage` - Invoke-WebRequest usage
 - [x] Stage 35: `invoke_restmethod_usage` - Invoke-RestMethod usage
 - [x] Stage 36: `curl_usage` - Curl command usage
+- [x] Stage 37: `wget_usage` - Wget command usage
