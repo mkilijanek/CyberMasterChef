@@ -201,6 +201,7 @@ Example operation IDs in use:
 - `text.removeSemicolons`
 - `text.keepHexChars`
 - `text.removeHexChars`
+- `text.onlyPrintableAscii`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

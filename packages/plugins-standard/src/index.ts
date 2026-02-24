@@ -96,6 +96,7 @@ import { removeDots } from "./ops/removeDots.js";
 import { removeSemicolons } from "./ops/removeSemicolons.js";
 import { keepHexChars } from "./ops/keepHexChars.js";
 import { removeHexChars } from "./ops/removeHexChars.js";
+import { onlyPrintableAscii } from "./ops/onlyPrintableAscii.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -195,6 +196,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeSemicolons);
     registry.register(keepHexChars);
     registry.register(removeHexChars);
+    registry.register(onlyPrintableAscii);
     registry.register(sha256);
   }
 };
