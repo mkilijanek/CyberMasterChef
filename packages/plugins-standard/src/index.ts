@@ -12,6 +12,7 @@ import { reverse } from "./ops/reverse.js";
 import { lowercase } from "./ops/lowercase.js";
 import { uppercase } from "./ops/uppercase.js";
 import { trim } from "./ops/trim.js";
+import { prepend } from "./ops/prepend.js";
 
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
@@ -29,6 +30,7 @@ export const standardPlugin: Plugin = {
     registry.register(lowercase);
     registry.register(uppercase);
     registry.register(trim);
+    registry.register(prepend);
     registry.register(sha256);
   }
 };
