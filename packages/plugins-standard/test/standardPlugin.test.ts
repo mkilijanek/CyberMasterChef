@@ -20,6 +20,7 @@ describe("standardPlugin", () => {
       "hash.sha256",
       "text.append",
       "text.lowercase",
+      "text.padStart",
       "text.prepend",
       "text.repeat",
       "text.replace",

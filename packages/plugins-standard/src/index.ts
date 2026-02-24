@@ -17,6 +17,7 @@ import { append } from "./ops/append.js";
 import { replace } from "./ops/replace.js";
 import { slice } from "./ops/slice.js";
 import { repeat } from "./ops/repeat.js";
+import { padStart } from "./ops/padStart.js";
 
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
@@ -39,6 +40,7 @@ export const standardPlugin: Plugin = {
     registry.register(replace);
     registry.register(slice);
     registry.register(repeat);
+    registry.register(padStart);
     registry.register(sha256);
   }
 };
