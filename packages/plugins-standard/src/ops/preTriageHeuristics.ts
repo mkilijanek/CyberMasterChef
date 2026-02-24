@@ -131,4 +131,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "wmi_exec_remote", description: "WMI remote process marker", pattern: new RegExp("wmic\\s+/node:", "i") },
   { id: "rdp_registry_enable", description: "RDP registry enable marker", pattern: new RegExp("fdenytsconnections", "i") },
   { id: "firewall_disable_cmd", description: "Firewall disable marker", pattern: new RegExp("netsh\\s+advfirewall\\s+set\\s+allprofiles\\s+state\\s+off", "i") },
+  { id: "defender_disable_cmd", description: "Defender disable marker", pattern: new RegExp("set-mppreference\\s+-disablerealtimemonitoring", "i") },
 ];
