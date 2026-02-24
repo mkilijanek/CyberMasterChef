@@ -211,6 +211,7 @@ Operations are grouped by package priority:
   - `text.removeEmojis`
   - `text.removeUnderscores`
   - `text.removeHyphens`
+  - `text.removeSpacesAndTabs`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
