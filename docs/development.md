@@ -25,6 +25,7 @@ Consider enabling in `.npmrc`:
 - 
 - 
 - 
+- 
 - `allow-builds` / allowlist for trusted native deps
 - `minimumReleaseAge` to delay freshly published packages
 - `trustPolicy` for workspace packages
