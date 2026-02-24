@@ -10,4 +10,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "cmd_from_powershell", description: "PowerShell launching cmd", pattern: new RegExp("powershell.*cmd\\.exe", "i") },
   { id: "mshta_invocation", description: "MSHTA execution chain", pattern: new RegExp("mshta(\\.exe)?", "i") },
   { id: "regsvr32_silent", description: "Regsvr32 silent registration", pattern: new RegExp("regsvr32(\\.exe)?\\s+/s", "i") },
+  { id: "rundll32_launch", description: "Rundll32 execution chain", pattern: new RegExp("rundll32(\\.exe)?", "i") },
 ];
