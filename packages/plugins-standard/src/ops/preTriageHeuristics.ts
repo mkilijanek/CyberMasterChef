@@ -39,4 +39,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "iex_alias_usage", description: "IEX alias usage", pattern: new RegExp("\\biex\\b", "i") },
   { id: "new_object_net_webclient", description: "WebClient download primitive", pattern: new RegExp("new-object\\s+net\\.webclient", "i") },
   { id: "invoke_webrequest_usage", description: "Invoke-WebRequest usage", pattern: new RegExp("invoke-webrequest", "i") },
+  { id: "invoke_restmethod_usage", description: "Invoke-RestMethod usage", pattern: new RegExp("invoke-restmethod", "i") },
 ];
