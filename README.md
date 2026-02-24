@@ -97,6 +97,7 @@ Operations are grouped by package priority:
   - `text.reverse`
 - CLI compatibility:
   - accepts native recipe JSON
+  - accepts `-` as input path to force reading payload from stdin
   - falls back to CyberChef recipe import and prints warnings for unsupported steps
   - supports `--timeout-ms` for bounded execution and `--strict-cyberchef` for strict import mode
   - supports `--dry-run` to validate recipe import/shape without running steps

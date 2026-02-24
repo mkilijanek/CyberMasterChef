@@ -63,6 +63,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
 
 CLI behavior:
 - `packages/cli` accepts native JSON directly.
+- positional input path can be `-` to read from stdin explicitly.
 - If native parsing fails, it falls back to `importCyberChefRecipe`.
 - Unsupported CyberChef steps are reported on stderr as warnings.
 - `--timeout-ms <n>` bounds execution time in milliseconds.

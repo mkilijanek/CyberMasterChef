@@ -27,8 +27,8 @@ function warn(msg: string): void {
 }
 
 const usageText =
-  "Usage: cybermasterchef <recipe.json> [input.txt] [options]\n" +
-  "  Reads input from stdin if [input.txt] is omitted.\n" +
+  "Usage: cybermasterchef <recipe.json> [input.txt|-] [options]\n" +
+  "  Reads input from stdin if [input.txt] is omitted or set to '-'.\n" +
   "Options:\n" +
   "  --timeout-ms <n>                  execution timeout in milliseconds\n" +
   "  --strict-cyberchef               fail if CyberChef import skips steps\n" +
@@ -366,7 +366,10 @@ if (opts.dryRun) {
   );
   process.exit(0);
 }
-const input = opts.inputPath ? readFileSync(opts.inputPath, "utf-8") : readFileSync(0, "utf-8");
+const input =
+  opts.inputPath && opts.inputPath !== "-"
+    ? readFileSync(opts.inputPath, "utf-8")
+    : readFileSync(0, "utf-8");
 const inputValue: DataValue =
   opts.inputEncoding === "hex"
     ? { type: "bytes", value: hexToBytes(input.trim()) }
