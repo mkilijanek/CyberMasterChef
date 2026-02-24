@@ -64,6 +64,8 @@
   "traceDurationAvgMs": "Trace avg (ms)",
   "slowestStepLabel": "Slowest step",
   "runId": "Run ID",
+  "queueWaitMs": "Queue wait (ms)",
+  "workerIdLabel": "Worker ID",
   "recipeHashShort": "Recipe hash",
   "inputHashShort": "Input hash",
   "traceEmpty": "No execution trace yet",

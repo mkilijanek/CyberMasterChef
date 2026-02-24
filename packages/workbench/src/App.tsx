@@ -32,6 +32,8 @@ type RunInfo = {
   slowestStep: { step: number; opId: string; durationMs: number } | null;
   recipeHash: string;
   inputHash: string;
+  queuedMs?: number;
+  workerId?: number;
 };
 
 const HASH_PREFIX = "#state=";
@@ -321,7 +323,9 @@ export function App(): React.JSX.Element {
       traceSteps: trace.length,
       stepDurationTotalMs: lastRunInfo.stepDurationTotalMs,
       stepDurationAvgMs: lastRunInfo.stepDurationAvgMs,
-      slowestStep: lastRunInfo.slowestStep
+      slowestStep: lastRunInfo.slowestStep,
+      queuedMs: lastRunInfo.queuedMs ?? null,
+      workerId: lastRunInfo.workerId ?? null
     };
     const copied = await copyText(JSON.stringify(summary, null, 2));
     if (!copied) {
@@ -562,6 +566,12 @@ export function App(): React.JSX.Element {
         </div>
         <div className="traceCount">
           {t("runId")}: {lastRunInfo ? lastRunInfo.runId.slice(0, 8) : "-"}
+        </div>
+        <div className="traceCount">
+          {t("queueWaitMs")}: {lastRunInfo?.queuedMs ?? "-"}
+        </div>
+        <div className="traceCount">
+          {t("workerIdLabel")}: {lastRunInfo?.workerId ?? "-"}
         </div>
         <div className="traceCount">
           {t("recipeHashShort")}: {lastRunInfo ? lastRunInfo.recipeHash.slice(0, 12) : "-"}

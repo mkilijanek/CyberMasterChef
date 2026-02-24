@@ -64,6 +64,8 @@
   "traceDurationAvgMs": "Średnia śladu (ms)",
   "slowestStepLabel": "Najwolniejszy krok",
   "runId": "ID uruchomienia",
+  "queueWaitMs": "Oczekiwanie w kolejce (ms)",
+  "workerIdLabel": "ID workera",
   "recipeHashShort": "Hash receptury",
   "inputHashShort": "Hash wejścia",
   "traceEmpty": "Brak śladu wykonania",
