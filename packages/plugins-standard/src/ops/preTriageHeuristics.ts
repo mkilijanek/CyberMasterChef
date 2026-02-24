@@ -153,4 +153,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "scheduled_task_hidden", description: "Hidden scheduled task marker", pattern: new RegExp("schtasks\\s+/create.*?/ru\\s+system", "i") },
   { id: "runas_admin_marker", description: "RunAs admin marker", pattern: new RegExp("runas\\s+/user:administrator", "i") },
   { id: "wmic_shadowcopy", description: "WMIC shadowcopy marker", pattern: new RegExp("wmic\\s+shadowcopy", "i") },
+  { id: "esentutl_copy_locked", description: "Esentutl copy locked file marker", pattern: new RegExp("esentutl\\s+/y", "i") },
 ];
