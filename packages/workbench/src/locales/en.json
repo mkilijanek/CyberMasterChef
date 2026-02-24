@@ -22,6 +22,8 @@
   "copyInputFailed": "Could not copy input",
   "copyTrace": "Copy trace",
   "copyTraceFailed": "Could not copy trace",
+  "copyRecipe": "Copy recipe",
+  "copyRecipeFailed": "Could not copy recipe",
   "clearTrace": "Clear trace",
   "reset": "Reset",
   "resetConfirm": "Reset recipe and input/output?",

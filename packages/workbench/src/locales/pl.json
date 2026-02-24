@@ -22,6 +22,8 @@
   "copyInputFailed": "Nie udało się skopiować wejścia",
   "copyTrace": "Kopiuj ślad",
   "copyTraceFailed": "Nie udało się skopiować śladu",
+  "copyRecipe": "Kopiuj recepturę",
+  "copyRecipeFailed": "Nie udało się skopiować receptury",
   "clearTrace": "Wyczyść ślad",
   "reset": "Reset",
   "resetConfirm": "Zresetować recepturę i wejście/wyjście?",

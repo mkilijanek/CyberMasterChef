@@ -235,6 +235,15 @@ export function App(): React.JSX.Element {
     }
   }
 
+  async function copyRecipeJson(): Promise<void> {
+    const payload = stringifyRecipe(recipe);
+    const copied = await copyText(payload);
+    if (!copied) {
+      setError(t("copyRecipeFailed"));
+      setStatus("error");
+    }
+  }
+
   function resetWorkspace(): void {
     if (!window.confirm(t("resetConfirm"))) return;
     setRecipe(emptyRecipe());
@@ -373,6 +382,9 @@ export function App(): React.JSX.Element {
         </button>
         <button className="buttonSmall" onClick={() => void copyTrace()}>
           {t("copyTrace")}
+        </button>
+        <button className="buttonSmall" onClick={() => void copyRecipeJson()}>
+          {t("copyRecipe")}
         </button>
         <button className="buttonSmall" onClick={() => clearTrace()}>
           {t("clearTrace")}
