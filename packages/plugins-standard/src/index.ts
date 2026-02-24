@@ -27,6 +27,7 @@ import { lineCount } from "./ops/lineCount.js";
 import { firstLine } from "./ops/firstLine.js";
 import { lastLine } from "./ops/lastLine.js";
 import { normalizeWhitespace } from "./ops/normalizeWhitespace.js";
+import { removeBlankLines } from "./ops/removeBlankLines.js";
 
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
@@ -59,6 +60,7 @@ export const standardPlugin: Plugin = {
     registry.register(firstLine);
     registry.register(lastLine);
     registry.register(normalizeWhitespace);
+    registry.register(removeBlankLines);
     registry.register(sha256);
   }
 };

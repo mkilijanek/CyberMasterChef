@@ -29,6 +29,7 @@ describe("standardPlugin", () => {
       "text.padStart",
       "text.prepend",
       "text.repeat",
+      "text.removeBlankLines",
       "text.replace",
       "text.reverse",
       "text.slice",
