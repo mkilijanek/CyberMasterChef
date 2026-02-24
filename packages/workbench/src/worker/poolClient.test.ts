@@ -149,4 +149,24 @@ describe("WorkerPoolClient", () => {
     controlled.release();
     await expect(Promise.all([running, queued])).resolves.toBeTruthy();
   });
+
+  it("handles overflow and queued cancel in one scenario", async () => {
+    const controlled = new ControlledClient();
+    const pool = new WorkerPoolClient({
+      size: 1,
+      maxQueue: 1,
+      clientFactory: () => controlled
+    });
+    const recipe: Recipe = { version: 1, steps: [] };
+
+    const running = pool.bake(recipe, { type: "string", value: "running" });
+    const queued = pool.bake(recipe, { type: "string", value: "queued" });
+    const overflow = pool.bake(recipe, { type: "string", value: "overflow" });
+
+    await expect(overflow).rejects.toThrow("Worker queue limit exceeded (1)");
+    pool.cancelActive();
+    controlled.release();
+    await expect(queued).rejects.toThrow("Cancelled while waiting in queue");
+    await expect(running).resolves.toBeTruthy();
+  });
 });
