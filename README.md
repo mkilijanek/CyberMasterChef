@@ -97,6 +97,7 @@ Operations are grouped by package priority:
   - supports `--list-ops-filter` to narrow operation listings in both list modes
   - supports `--input-encoding text|hex|base64` for binary-oriented CLI runs
   - supports `--bytes-output hex|base64|utf8` to choose stdout format for byte outputs
+  - supports `--output-file` to write rendered output directly to a file
   - supports `--max-output-chars` for bounded stdout in scripts/CI
 - Quality baseline:
   - golden recipe regression suite for core operation chains in `packages/plugins-standard/test/goldenRecipes.test.ts`

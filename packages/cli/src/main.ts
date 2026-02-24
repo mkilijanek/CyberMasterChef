@@ -12,7 +12,7 @@ import {
   type Recipe
 } from "@cybermasterchef/core";
 import { standardPlugin } from "@cybermasterchef/plugins-standard";
-import fs from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import pkg from "../package.json";
 
 const DEFAULT_TIMEOUT_MS = 10_000;
@@ -45,6 +45,7 @@ const usageText =
   "  --list-ops-filter <query>        filter operation listings by id/name/description\n" +
   "  --input-encoding text|hex|base64 parse CLI input before execution\n" +
   "  --bytes-output hex|base64|utf8   bytes output rendering on stdout\n" +
+  "  --output-file <path>             write rendered output to file instead of stdout\n" +
   "  --max-output-chars <n>           limit output length for string/json/bytes rendering\n" +
   "  --version                        print CLI package version\n" +
   "  --help                           print this help text";
@@ -92,6 +93,7 @@ type CliOptions = {
   listOpsFilter?: string;
   inputEncoding: "text" | "hex" | "base64";
   bytesOutput: "hex" | "base64" | "utf8";
+  outputFile?: string;
   maxOutputChars?: number;
 };
 
@@ -111,6 +113,7 @@ function parseArgs(args: string[]): CliOptions {
   let listOpsFilter: string | undefined;
   let inputEncoding: CliOptions["inputEncoding"] = "text";
   let bytesOutput: CliOptions["bytesOutput"] = "hex";
+  let outputFile: string | undefined;
   let maxOutputChars: number | undefined;
   const positional: string[] = [];
 
@@ -212,6 +215,13 @@ function parseArgs(args: string[]): CliOptions {
       i++;
       continue;
     }
+    if (arg === "--output-file") {
+      const raw = args[i + 1];
+      if (!raw) die("Missing value for --output-file");
+      outputFile = raw;
+      i++;
+      continue;
+    }
     if (arg === "--timeout-ms") {
       const raw = args[i + 1];
       if (!raw) die("Missing value for --timeout-ms");
@@ -251,6 +261,7 @@ function parseArgs(args: string[]): CliOptions {
   };
   if (traceLimit !== undefined) out.traceLimit = traceLimit;
   if (listOpsFilter !== undefined) out.listOpsFilter = listOpsFilter;
+  if (outputFile !== undefined) out.outputFile = outputFile;
   const inputPath = positional[1];
   if (inputPath) out.inputPath = inputPath;
   if (maxOutputChars !== undefined) out.maxOutputChars = maxOutputChars;
@@ -289,7 +300,7 @@ if (opts.listOpsJson) {
   process.exit(0);
 }
 
-const recipeJson = fs.readFileSync(opts.recipePath, "utf-8");
+const recipeJson = readFileSync(opts.recipePath, "utf-8");
 const parsedRecipe = parseRecipeAny(recipeJson, opts.quietWarnings);
 if (opts.printRecipeSource) {
   process.stderr.write(`[info] recipe-source=${parsedRecipe.source}\n`);
@@ -302,7 +313,7 @@ if (opts.strictCyberChef && parsedRecipe.source === "cyberchef" && parsedRecipe.
 if (opts.failOnWarning && parsedRecipe.warningCount > 0) {
   die(`Execution failed due to warnings: ${parsedRecipe.warningCount}`);
 }
-const input = opts.inputPath ? fs.readFileSync(opts.inputPath, "utf-8") : fs.readFileSync(0, "utf-8");
+const input = opts.inputPath ? readFileSync(opts.inputPath, "utf-8") : readFileSync(0, "utf-8");
 const inputValue: DataValue =
   opts.inputEncoding === "hex"
     ? { type: "bytes", value: hexToBytes(input.trim()) }
@@ -349,24 +360,23 @@ if (opts.traceJson) {
   process.stderr.write(`${JSON.stringify(traceRows)}\n`);
 }
 
+let rendered = "";
 if (res.output.type === "bytes") {
-  const out =
+  rendered =
     opts.bytesOutput === "base64"
       ? bytesToBase64(res.output.value)
       : opts.bytesOutput === "utf8"
         ? bytesToUtf8(res.output.value)
         : [...res.output.value].map((b) => b.toString(16).padStart(2, "0")).join("");
-  const printed =
-    opts.maxOutputChars !== undefined ? out.slice(0, opts.maxOutputChars) : out;
-  process.stdout.write(printed + "\n");
 } else if (res.output.type === "json") {
-  const out = JSON.stringify(res.output.value, null, 2);
-  const printed =
-    opts.maxOutputChars !== undefined ? out.slice(0, opts.maxOutputChars) : out;
-  process.stdout.write(printed + "\n");
+  rendered = JSON.stringify(res.output.value, null, 2);
 } else {
-  const out = String(res.output.value);
-  const printed =
-    opts.maxOutputChars !== undefined ? out.slice(0, opts.maxOutputChars) : out;
+  rendered = String(res.output.value);
+}
+const printed =
+  opts.maxOutputChars !== undefined ? rendered.slice(0, opts.maxOutputChars) : rendered;
+if (opts.outputFile) {
+  writeFileSync(opts.outputFile, `${printed}\n`, "utf-8");
+} else {
   process.stdout.write(printed + "\n");
 }
