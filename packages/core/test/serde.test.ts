@@ -55,6 +55,16 @@ describe("serde", () => {
     ]);
   });
 
+  it("fails CyberChef import when no compatible operations remain", () => {
+    expect(() =>
+      importCyberChefRecipe(
+        JSON.stringify({
+          recipe: [{ op: "Totally Unsupported", args: [] }]
+        })
+      )
+    ).toThrow("No compatible operations found");
+  });
+
   it("exports native recipe to CyberChef-compatible format", () => {
     const out = exportCyberChefRecipe({
       version: 1,
