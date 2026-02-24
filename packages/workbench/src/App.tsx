@@ -104,6 +104,7 @@ export function App(): React.JSX.Element {
   const [importWarnings, setImportWarnings] = React.useState<RecipeImportWarning[]>([]);
   const sandboxRef = React.useRef<SandboxClient | null>(null);
   const searchInputRef = React.useRef<HTMLInputElement | null>(null);
+  const traceSearchInputRef = React.useRef<HTMLInputElement | null>(null);
   if (!sandboxRef.current) sandboxRef.current = new SandboxClient();
 
   React.useEffect(() => {
@@ -209,6 +210,11 @@ export function App(): React.JSX.Element {
         ev.preventDefault();
         searchInputRef.current?.focus();
         searchInputRef.current?.select();
+      }
+      if ((ev.ctrlKey || ev.metaKey) && ev.shiftKey && ev.key.toLowerCase() === "k") {
+        ev.preventDefault();
+        traceSearchInputRef.current?.focus();
+        traceSearchInputRef.current?.select();
       }
     };
     window.addEventListener("keydown", onKeyDown);
@@ -484,6 +490,7 @@ export function App(): React.JSX.Element {
           <div className="traceBox">
             <h3>{t("trace")}</h3>
             <input
+              ref={traceSearchInputRef}
               className="input"
               value={traceQuery}
               onChange={(e) => setTraceQuery(e.target.value)}
