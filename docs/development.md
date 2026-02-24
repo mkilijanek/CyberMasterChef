@@ -228,6 +228,7 @@ Example operation IDs in use:
 - `text.removeBrackets`
 - `text.removeBraces`
 - `text.removeAngles`
+- `text.removeDoubleSpaces`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

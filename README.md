@@ -203,6 +203,7 @@ Operations are grouped by package priority:
   - `text.removeBrackets`
   - `text.removeBraces`
   - `text.removeAngles`
+  - `text.removeDoubleSpaces`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
