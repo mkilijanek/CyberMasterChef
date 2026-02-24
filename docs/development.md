@@ -243,6 +243,7 @@ Example operation IDs in use:
 - `text.countCommas`
 - `text.countDots`
 - `text.countColons`
+- `text.countSemicolons`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

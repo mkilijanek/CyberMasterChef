@@ -138,6 +138,7 @@ import { countSpaces } from "./ops/countSpaces.js";
 import { countCommas } from "./ops/countCommas.js";
 import { countDots } from "./ops/countDots.js";
 import { countColons } from "./ops/countColons.js";
+import { countSemicolons } from "./ops/countSemicolons.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -279,6 +280,7 @@ export const standardPlugin: Plugin = {
     registry.register(countCommas);
     registry.register(countDots);
     registry.register(countColons);
+    registry.register(countSemicolons);
     registry.register(sha256);
   }
 };
