@@ -46,12 +46,13 @@ describe("determinism", () => {
       const r1 = await runRecipe({ registry, recipe: c.recipe, input: c.input });
       const r2 = await runRecipe({ registry, recipe: c.recipe, input: c.input });
       const r3 = await runRecipe({ registry, recipe: c.recipe, input: c.input });
+      const stableTrace = (trace: typeof r1.trace) =>
+        trace.map(({ durationMs: _durationMs, ...step }) => step);
 
       expect(r2.output).toEqual(r1.output);
       expect(r3.output).toEqual(r1.output);
-      expect(r2.trace).toEqual(r1.trace);
-      expect(r3.trace).toEqual(r1.trace);
+      expect(stableTrace(r2.trace)).toEqual(stableTrace(r1.trace));
+      expect(stableTrace(r3.trace)).toEqual(stableTrace(r1.trace));
     });
   }
 });
-
