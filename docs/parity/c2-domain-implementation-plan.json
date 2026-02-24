@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-02-24T22:19:52.916Z",
+  "generatedAt": "2026-02-24T23:55:16.896Z",
   "source": {
     "c1MatrixPath": "/home/kili/Repo/CyberMasterChef/CyberMasterChef/docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 154
+    "implementedOpsCount": 192
   },
   "summary": [
     {
@@ -119,9 +119,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 97,
-      "implementedTotal": 6,
-      "missingEstimated": 91,
-      "coveragePct": 6.19,
+      "implementedTotal": 10,
+      "missingEstimated": 87,
+      "coveragePct": 10.31,
       "implementationCandidates": [
         {
           "operationName": "a",
@@ -229,9 +229,9 @@
       "domain": "compression-archive",
       "description": "Compression/decompression and archive container operations.",
       "cyberChefTotal": 7,
-      "implementedTotal": 0,
-      "missingEstimated": 7,
-      "coveragePct": 0,
+      "implementedTotal": 2,
+      "missingEstimated": 5,
+      "coveragePct": 28.57,
       "implementationCandidates": [
         {
           "operationName": "Bzip2Compress",
@@ -274,9 +274,9 @@
       "domain": "date-time",
       "description": "Date/time parsing, formatting, conversion and timestamp operations.",
       "cyberChefTotal": 12,
-      "implementedTotal": 0,
-      "missingEstimated": 12,
-      "coveragePct": 0,
+      "implementedTotal": 8,
+      "missingEstimated": 4,
+      "coveragePct": 66.67,
       "implementationCandidates": [
         {
           "operationName": "Built in formats",
@@ -344,9 +344,9 @@
       "domain": "data-formats",
       "description": "Structured formats (JSON/XML/CSV/YAML/TOML/HTML and format conversion).",
       "cyberChefTotal": 50,
-      "implementedTotal": 3,
-      "missingEstimated": 47,
-      "coveragePct": 6,
+      "implementedTotal": 10,
+      "missingEstimated": 40,
+      "coveragePct": 20,
       "implementationCandidates": [
         {
           "operationName": "AddTextToImage",
@@ -454,9 +454,9 @@
       "domain": "regex-text-advanced",
       "description": "Regex and advanced text analysis/normalization operations.",
       "cyberChefTotal": 51,
-      "implementedTotal": 50,
-      "missingEstimated": 1,
-      "coveragePct": 98.04,
+      "implementedTotal": 55,
+      "missingEstimated": 0,
+      "coveragePct": 107.84,
       "implementationCandidates": [
         {
           "operationName": "Attempt to be context aware",
@@ -564,9 +564,9 @@
       "domain": "network-protocol-parsers",
       "description": "Protocol/header/parsing operations for network/web payloads.",
       "cyberChefTotal": 25,
-      "implementedTotal": 2,
-      "missingEstimated": 23,
-      "coveragePct": 8,
+      "implementedTotal": 9,
+      "missingEstimated": 16,
+      "coveragePct": 36,
       "implementationCandidates": [
         {
           "operationName": "CSS selector",
@@ -674,9 +674,9 @@
       "domain": "forensic-malware-helper",
       "description": "IOC extraction, entropy/byte analysis and malware triage helpers.",
       "cyberChefTotal": 16,
-      "implementedTotal": 0,
-      "missingEstimated": 16,
-      "coveragePct": 0,
+      "implementedTotal": 1,
+      "missingEstimated": 15,
+      "coveragePct": 6.25,
       "implementationCandidates": [
         {
           "operationName": "AnalyseUUID",
@@ -764,9 +764,9 @@
       "domain": "misc-uncategorized",
       "description": "Operations that require manual triage or do not fit current taxonomy.",
       "cyberChefTotal": 149,
-      "implementedTotal": 79,
-      "missingEstimated": 70,
-      "coveragePct": 53.02,
+      "implementedTotal": 83,
+      "missingEstimated": 66,
+      "coveragePct": 55.7,
       "implementationCandidates": [
         {
           "operationName": "AlternatingCaps",
@@ -875,26 +875,26 @@
     {
       "priority": 1,
       "domain": "forensic-malware-helper",
-      "coveragePct": 0,
-      "missingEstimated": 16
+      "coveragePct": 6.25,
+      "missingEstimated": 15
     },
     {
       "priority": 2,
-      "domain": "date-time",
-      "coveragePct": 0,
-      "missingEstimated": 12
+      "domain": "crypto-hash-kdf",
+      "coveragePct": 10.31,
+      "missingEstimated": 87
     },
     {
       "priority": 3,
-      "domain": "compression-archive",
-      "coveragePct": 0,
-      "missingEstimated": 7
+      "domain": "data-formats",
+      "coveragePct": 20,
+      "missingEstimated": 40
     },
     {
       "priority": 4,
-      "domain": "data-formats",
-      "coveragePct": 6,
-      "missingEstimated": 47
+      "domain": "encodings-codecs",
+      "coveragePct": 24.14,
+      "missingEstimated": 44
     }
   ]
 }

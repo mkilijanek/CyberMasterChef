@@ -98,6 +98,11 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 - [x] `network.extractPorts` network metadata operation.
 - [x] `forensic.extractRegistryKeys` host IOC operation.
 
+## Wave 18 backlog
+
+- [x] `compression.gzip` compression baseline operation.
+- [x] `compression.gunzip` decompression baseline operation.
+
 ## Queue extension
 
 - [x] Queue tasks `1-20` completed on `dev`.

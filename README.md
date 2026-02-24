@@ -156,7 +156,7 @@ Milestones:
 - [x] M1: C1 taxonomy/matrix complete and published.
 - [x] M2: C2 waves `1-20` completed on `dev`.
 - [x] M3: Forensic Triage baseline modules implemented (`forensic.basicPreTriage`, `forensic.basicTriage`).
-- [ ] M4: Compression/archive baseline (`compression.gzip`, `compression.gunzip`) complete.
+- [x] M4: Compression/archive baseline (`compression.gzip`, `compression.gunzip`) complete.
 - [ ] M5: C3 contract-driven tests and CI contract gate enabled.
 - [ ] M6: Security and integration hardening complete (YARA/STIX/MISP/dynamic sandbox non-mocked).
 
@@ -166,7 +166,7 @@ Module groups checklist:
 - [x] Network IOC baseline group.
 - [x] Forensic IOC baseline group.
 - [x] Pre-Triage/Triage baseline group.
-- [ ] Compression/archive group.
+- [x] Compression/archive group.
 - [ ] Crypto/KDF expansion group.
 - [ ] Advanced binary triage group (non-PE parsers and signature verification).
 

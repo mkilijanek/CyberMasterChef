@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
-Generated: 2026-02-24T22:19:53.813Z
-Total contracts: 154
+Generated: 2026-02-24T23:55:16.931Z
+Total contracts: 192
 
 ## Contract entries (compact)
 
@@ -61,10 +61,276 @@ Total contracts: 154
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- compression.gunzip
+  - name: Gunzip
+  - domain: compression-archive
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- compression.gzip
+  - name: Gzip
+  - domain: compression-archive
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
+- date.extractIsoTimestamps
+  - name: Extract ISO Timestamps
+  - domain: date-time
+  - inputTypes: string
+  - outputType: string
+  - deterministic: false
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- date.extractUnixTimestamps
+  - name: Extract Unix Timestamps
+  - domain: date-time
+  - inputTypes: string
+  - outputType: string
+  - deterministic: false
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- date.isoToDateOnly
+  - name: ISO to Date Only
+  - domain: date-time
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- date.isoToUnix
+  - name: ISO to Unix
+  - domain: date-time
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- date.isoWeekday
+  - name: ISO Weekday
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- date.parseObjectIdTimestamp
+  - name: Parse ObjectId Timestamp
+  - domain: date-time
+  - inputTypes: string
+  - outputType: string
+  - deterministic: false
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- date.unixToIso
+  - name: Unix to ISO
+  - domain: date-time
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- date.unixToWindowsFiletime
+  - name: Unix to Windows FILETIME
+  - domain: date-time
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- date.windowsFiletimeToUnix
+  - name: Windows FILETIME to Unix
+  - domain: date-time
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.basicPreTriage
+  - name: Basic Pre-Triage
+  - domain: misc-uncategorized
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.extractCves
+  - name: Extract CVEs
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.extractDomains
+  - name: Extract Domains
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.extractEmails
+  - name: Extract Emails
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.extractJwt
+  - name: Extract JWT
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.extractMd5
+  - name: Extract MD5
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.extractRegistryKeys
+  - name: Extract Registry Keys
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.extractSha1
+  - name: Extract SHA-1
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.extractSha256
+  - name: Extract SHA-256
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.extractSha512
+  - name: Extract SHA-512
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.extractStrings
+  - name: Extract Strings
+  - domain: forensic-malware-helper
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.jsonArrayLength
+  - name: JSON Array Length
+  - domain: data-formats
+  - inputTypes: string, json
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- format.jsonBeautify
+  - name: JSON Beautify
+  - domain: data-formats
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- format.jsonExtractKeys
+  - name: JSON Extract Keys
+  - domain: data-formats
+  - inputTypes: string, json
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- format.jsonMinify
+  - name: JSON Minify
+  - domain: data-formats
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- format.jsonNumberValues
+  - name: JSON Number Values
+  - domain: data-formats
+  - inputTypes: string, json
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- format.jsonSortKeys
+  - name: JSON Sort Keys
+  - domain: data-formats
+  - inputTypes: string, json
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- format.jsonStringValues
+  - name: JSON String Values
+  - domain: data-formats
+  - inputTypes: string, json
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
 - hash.sha256
   - name: SHA-256
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- heuristic-matches
+  - name: Basic Triage
+  - domain: misc-uncategorized
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.defangIPs
+  - name: Defang IPs
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.defangUrls
+  - name: Defang URLs
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.extractIPs
+  - name: Extract IPs
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.extractIPv6
+  - name: Extract IPv6
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.extractPorts
+  - name: Extract Ports
+  - domain: regex-text-advanced
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.extractUrls
+  - name: Extract URLs
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.fangIPs
+  - name: Fang IPs
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.fangUrls
+  - name: Fang URLs
+  - domain: network-protocol-parsers
+  - inputTypes: string
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE

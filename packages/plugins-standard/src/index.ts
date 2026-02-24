@@ -190,6 +190,8 @@ import { extractIPv6 } from "./ops/extractIPv6.js";
 import { defangIPs } from "./ops/defangIPs.js";
 import { fangIPs } from "./ops/fangIPs.js";
 import { extractPorts } from "./ops/extractPorts.js";
+import { gzip } from "./ops/gzip.js";
+import { gunzip } from "./ops/gunzip.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -380,6 +382,8 @@ export const standardPlugin: Plugin = {
     registry.register(defangIPs);
     registry.register(fangIPs);
     registry.register(extractPorts);
+    registry.register(gzip);
+    registry.register(gunzip);
     registry.register(extractUrls);
     registry.register(defangUrls);
     registry.register(fangUrls);

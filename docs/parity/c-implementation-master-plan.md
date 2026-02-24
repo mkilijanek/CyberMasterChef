@@ -105,9 +105,9 @@ Deliver a complete, auditable, and operationally useful C-track:
 
 ### Wave C: Compression/Archive Baseline
 
-1. `[PLANNED]` `compression.gzip`
-2. `[PLANNED]` `compression.gunzip`
-3. `[PLANNED]` browser/node compatibility strategy and deterministic tests
+1. `[DONE]` `compression.gzip`
+2. `[DONE]` `compression.gunzip`
+3. `[DONE]` browser/node compatibility strategy and deterministic tests
 4. `[DEFERRED]` zip/tar/bzip2 full parity (after baseline compatibility proof)
 
 ### Wave D: Crypto/Hash/KDF Expansion

@@ -1,14 +1,14 @@
 # C2 Domain Implementation Plan
 
-Generated: 2026-02-24T22:19:52.916Z
-Implemented operations in repo: 154
+Generated: 2026-02-24T23:55:16.896Z
+Implemented operations in repo: 192
 
 ## Priority order
 
-- P1: forensic-malware-helper (coverage 0%, missing ~16)
-- P2: date-time (coverage 0%, missing ~12)
-- P3: compression-archive (coverage 0%, missing ~7)
-- P4: data-formats (coverage 6%, missing ~47)
+- P1: forensic-malware-helper (coverage 6.25%, missing ~15)
+- P2: crypto-hash-kdf (coverage 10.31%, missing ~87)
+- P3: data-formats (coverage 20%, missing ~40)
+- P4: encodings-codecs (coverage 24.14%, missing ~44)
 
 ## Domain summary
 
@@ -33,9 +33,9 @@ Implemented operations in repo: 154
 ### crypto-hash-kdf
 - Description: Cryptographic transforms, digests, MAC/KDF and cipher operations.
 - CyberChef total: 97
-- Implemented total: 6
-- Estimated missing: 91
-- Coverage: 6.19%
+- Implemented total: 10
+- Estimated missing: 87
+- Coverage: 10.31%
 - Candidate operations (first 20):
   - a (AffineCipherDecode.mjs) [high]
   - a (AffineCipherEncode.mjs) [high]
@@ -51,9 +51,9 @@ Implemented operations in repo: 154
 ### compression-archive
 - Description: Compression/decompression and archive container operations.
 - CyberChef total: 7
-- Implemented total: 0
-- Estimated missing: 7
-- Coverage: 0%
+- Implemented total: 2
+- Estimated missing: 5
+- Coverage: 28.57%
 - Candidate operations (first 20):
   - Bzip2Compress (Bzip2Compress.mjs) [high]
   - Bzip2Decompress (Bzip2Decompress.mjs) [high]
@@ -66,9 +66,9 @@ Implemented operations in repo: 154
 ### date-time
 - Description: Date/time parsing, formatting, conversion and timestamp operations.
 - CyberChef total: 12
-- Implemented total: 0
-- Estimated missing: 12
-- Coverage: 0%
+- Implemented total: 8
+- Estimated missing: 4
+- Coverage: 66.67%
 - Candidate operations (first 20):
   - Built in formats (DateTimeDelta.mjs) [high]
   - Built in formats (ParseDateTime.mjs) [high]
@@ -84,9 +84,9 @@ Implemented operations in repo: 154
 ### data-formats
 - Description: Structured formats (JSON/XML/CSV/YAML/TOML/HTML and format conversion).
 - CyberChef total: 50
-- Implemented total: 3
-- Estimated missing: 47
-- Coverage: 6%
+- Implemented total: 10
+- Estimated missing: 40
+- Coverage: 20%
 - Candidate operations (first 20):
   - AddTextToImage (AddTextToImage.mjs) [high]
   - AMFDecode (AMFDecode.mjs) [high]
@@ -102,9 +102,9 @@ Implemented operations in repo: 154
 ### regex-text-advanced
 - Description: Regex and advanced text analysis/normalization operations.
 - CyberChef total: 51
-- Implemented total: 50
-- Estimated missing: 1
-- Coverage: 98.04%
+- Implemented total: 55
+- Estimated missing: 0
+- Coverage: 107.84%
 - Candidate operations (first 20):
   - Attempt to be context aware (ToCamelCase.mjs) [medium]
   - Attempt to be context aware (ToKebabCase.mjs) [medium]
@@ -120,9 +120,9 @@ Implemented operations in repo: 154
 ### network-protocol-parsers
 - Description: Protocol/header/parsing operations for network/web payloads.
 - CyberChef total: 25
-- Implemented total: 2
-- Estimated missing: 23
-- Coverage: 8%
+- Implemented total: 9
+- Estimated missing: 16
+- Coverage: 36%
 - Candidate operations (first 20):
   - CSS selector (CSSSelector.mjs) [high]
   - DechunkHTTPResponse (DechunkHTTPResponse.mjs) [high]
@@ -138,9 +138,9 @@ Implemented operations in repo: 154
 ### forensic-malware-helper
 - Description: IOC extraction, entropy/byte analysis and malware triage helpers.
 - CyberChef total: 16
-- Implemented total: 0
-- Estimated missing: 16
-- Coverage: 0%
+- Implemented total: 1
+- Estimated missing: 15
+- Coverage: 6.25%
 - Candidate operations (first 20):
   - AnalyseUUID (AnalyseUUID.mjs) [high]
   - Bit mode (DisassembleX86.mjs) [high]
@@ -156,9 +156,9 @@ Implemented operations in repo: 154
 ### misc-uncategorized
 - Description: Operations that require manual triage or do not fit current taxonomy.
 - CyberChef total: 149
-- Implemented total: 79
-- Estimated missing: 70
-- Coverage: 53.02%
+- Implemented total: 83
+- Estimated missing: 66
+- Coverage: 55.7%
 - Candidate operations (first 20):
   - AlternatingCaps (AlternatingCaps.mjs) [low]
   - Amount (BitShiftLeft.mjs) [low]

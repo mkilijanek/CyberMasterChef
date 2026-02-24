@@ -202,6 +202,814 @@
     }
   },
   {
+    "operationId": "compression.gunzip",
+    "name": "Gunzip",
+    "domain": "compression-archive",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/gunzip.ts",
+      "description": "Decompresses GZIP bytes and returns bytes."
+    }
+  },
+  {
+    "operationId": "compression.gzip",
+    "name": "Gzip",
+    "domain": "compression-archive",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/gzip.ts",
+      "description": "Compresses input using GZIP and returns bytes."
+    }
+  },
+  {
+    "operationId": "date.extractIsoTimestamps",
+    "name": "Extract ISO Timestamps",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": false,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractIsoTimestamps.ts",
+      "description": "Extracts unique ISO-8601 UTC timestamp strings from text input."
+    }
+  },
+  {
+    "operationId": "date.extractUnixTimestamps",
+    "name": "Extract Unix Timestamps",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": false,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractUnixTimestamps.ts",
+      "description": "Extracts unique 10 or 13 digit Unix timestamp candidates from text input."
+    }
+  },
+  {
+    "operationId": "date.isoToDateOnly",
+    "name": "ISO to Date Only",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Expected non-empty ISO timestamp",
+        "Invalid ISO timestamp"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/isoToDateOnly.ts",
+      "description": "Converts ISO-8601 timestamp to date-only format (YYYY-MM-DD)."
+    }
+  },
+  {
+    "operationId": "date.isoToUnix",
+    "name": "ISO to Unix",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Expected non-empty ISO timestamp",
+        "Invalid ISO timestamp"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/isoToUnix.ts",
+      "description": "Converts ISO-8601 timestamp to Unix epoch milliseconds."
+    }
+  },
+  {
+    "operationId": "date.isoWeekday",
+    "name": "ISO Weekday",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "numeric",
+        "type": "boolean",
+        "label": "Numeric (1-7)",
+        "defaultValue": "false"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Expected non-empty ISO timestamp",
+        "Invalid ISO timestamp"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/isoWeekday.ts",
+      "description": "Resolves weekday from ISO-8601 timestamp (UTC)."
+    }
+  },
+  {
+    "operationId": "date.parseObjectIdTimestamp",
+    "name": "Parse ObjectId Timestamp",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": false,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input",
+        "Expected 24-char hex ObjectId"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseObjectIdTimestamp.ts",
+      "description": "Extracts MongoDB ObjectId timestamp and renders it as ISO-8601 UTC."
+    }
+  },
+  {
+    "operationId": "date.unixToIso",
+    "name": "Unix to ISO",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "seconds",
+        "type": "boolean",
+        "label": "Unix in seconds",
+        "defaultValue": "false"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Expected integer Unix timestamp",
+        "Invalid Unix timestamp"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/unixToIso.ts",
+      "description": "Converts Unix timestamp to ISO-8601 UTC format."
+    }
+  },
+  {
+    "operationId": "date.unixToWindowsFiletime",
+    "name": "Unix to Windows FILETIME",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "seconds",
+        "type": "boolean",
+        "label": "Unix in seconds",
+        "defaultValue": "false"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Expected integer Unix timestamp",
+        "Invalid Unix timestamp"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/unixToWindowsFiletime.ts",
+      "description": "Converts Unix timestamp to Windows FILETIME (100ns ticks since 1601)."
+    }
+  },
+  {
+    "operationId": "date.windowsFiletimeToUnix",
+    "name": "Windows FILETIME to Unix",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "seconds",
+        "type": "boolean",
+        "label": "Output seconds",
+        "defaultValue": "false"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input",
+        "Expected integer FILETIME value",
+        "FILETIME value out of range"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/windowsFiletimeToUnix.ts",
+      "description": "Converts Windows FILETIME (100ns ticks since 1601) to Unix timestamp."
+    }
+  },
+  {
+    "operationId": "forensic.basicPreTriage",
+    "name": "Basic Pre-Triage",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "maxMatches",
+        "type": "number",
+        "label": "Max matches per IOC type",
+        "defaultValue": "200"
+      },
+      {
+        "key": "segmentWindow",
+        "type": "number",
+        "label": "Entropy segment size (bytes)",
+        "defaultValue": "4096"
+      },
+      {
+        "key": "segmentLimit",
+        "type": "number",
+        "label": "Max entropy segments",
+        "defaultValue": "16"
+      },
+      {
+        "key": "maxHeuristicMatches",
+        "type": "number",
+        "label": "Max heuristic matches",
+        "defaultValue": "25"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/basicPreTriage.ts",
+      "description": "Generates a baseline forensic pre-triage report (IOCs, hashes, binary structure and entropy)."
+    }
+  },
+  {
+    "operationId": "forensic.extractCves",
+    "name": "Extract CVEs",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractCves.ts",
+      "description": "Extracts unique CVE identifiers from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractDomains",
+    "name": "Extract Domains",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractDomains.ts",
+      "description": "Extracts unique domain names from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractEmails",
+    "name": "Extract Emails",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractEmails.ts",
+      "description": "Extracts unique email addresses from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractJwt",
+    "name": "Extract JWT",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractJwt.ts",
+      "description": "Extracts unique JWT token candidates from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractMd5",
+    "name": "Extract MD5",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractMd5.ts",
+      "description": "Extracts unique MD5 hashes from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractRegistryKeys",
+    "name": "Extract Registry Keys",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractRegistryKeys.ts",
+      "description": "Extracts unique Windows registry key paths from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractSha1",
+    "name": "Extract SHA-1",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractSha1.ts",
+      "description": "Extracts unique SHA-1 hashes from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractSha256",
+    "name": "Extract SHA-256",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractSha256.ts",
+      "description": "Extracts unique SHA-256 hashes from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractSha512",
+    "name": "Extract SHA-512",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractSha512.ts",
+      "description": "Extracts unique SHA-512 hashes from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractStrings",
+    "name": "Extract Strings",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "minLength",
+        "type": "number",
+        "label": "Min length",
+        "defaultValue": "4"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractStrings.ts",
+      "description": "Extracts printable ASCII strings from bytes/string payload."
+    }
+  },
+  {
+    "operationId": "format.jsonArrayLength",
+    "name": "JSON Array Length",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "path",
+        "type": "string",
+        "label": "Path",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Invalid JSON input",
+        "Expected string or json input",
+        "Target is not an array"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonArrayLength.ts",
+      "description": "Returns length of root or nested JSON array."
+    }
+  },
+  {
+    "operationId": "format.jsonBeautify",
+    "name": "JSON Beautify",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "indent",
+        "type": "number",
+        "label": "Indent",
+        "defaultValue": "2"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Invalid JSON input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonBeautify.ts",
+      "description": "Pretty-prints valid JSON string payload."
+    }
+  },
+  {
+    "operationId": "format.jsonExtractKeys",
+    "name": "JSON Extract Keys",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Invalid JSON input",
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonExtractKeys.ts",
+      "description": "Extracts recursively discovered key paths from JSON input."
+    }
+  },
+  {
+    "operationId": "format.jsonMinify",
+    "name": "JSON Minify",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Invalid JSON input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonMinify.ts",
+      "description": "Minifies valid JSON string payload."
+    }
+  },
+  {
+    "operationId": "format.jsonNumberValues",
+    "name": "JSON Number Values",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Invalid JSON input",
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonNumberValues.ts",
+      "description": "Extracts all numeric leaf values from JSON payload."
+    }
+  },
+  {
+    "operationId": "format.jsonSortKeys",
+    "name": "JSON Sort Keys",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Invalid JSON input",
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonSortKeys.ts",
+      "description": "Parses JSON input and emits canonical JSON with recursively sorted object keys."
+    }
+  },
+  {
+    "operationId": "format.jsonStringValues",
+    "name": "JSON String Values",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Invalid JSON input",
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonStringValues.ts",
+      "description": "Extracts all string leaf values from JSON payload."
+    }
+  },
+  {
     "operationId": "hash.sha256",
     "name": "SHA-256",
     "domain": "crypto-hash-kdf",
@@ -225,6 +1033,236 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/sha256.ts",
       "description": "Computes SHA-256 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "heuristic-matches",
+    "name": "Basic Triage",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "suspiciousThreshold",
+        "type": "number",
+        "label": "Suspicious threshold",
+        "defaultValue": "30"
+      },
+      {
+        "key": "maliciousThreshold",
+        "type": "number",
+        "label": "Malicious threshold",
+        "defaultValue": "60"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Unexpected pre-triage output type"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/basicTriage.ts",
+      "description": "Found CVE references in sample content."
+    }
+  },
+  {
+    "operationId": "network.defangIPs",
+    "name": "Defang IPs",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/defangIPs.ts",
+      "description": "Defangs IPv4 addresses by replacing dots with [.] markers."
+    }
+  },
+  {
+    "operationId": "network.defangUrls",
+    "name": "Defang URLs",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/defangUrls.ts",
+      "description": "Defangs HTTP/HTTPS URLs by replacing protocol and host dots."
+    }
+  },
+  {
+    "operationId": "network.extractIPs",
+    "name": "Extract IPs",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractIPs.ts",
+      "description": "Extracts unique IPv4 addresses from text input."
+    }
+  },
+  {
+    "operationId": "network.extractIPv6",
+    "name": "Extract IPv6",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractIPv6.ts",
+      "description": "Extracts unique IPv6 address candidates from text input."
+    }
+  },
+  {
+    "operationId": "network.extractPorts",
+    "name": "Extract Ports",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractPorts.ts",
+      "description": "Extracts unique network port numbers (1-65535) from text input."
+    }
+  },
+  {
+    "operationId": "network.extractUrls",
+    "name": "Extract URLs",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractUrls.ts",
+      "description": "Extracts unique HTTP/HTTPS URLs from text input."
+    }
+  },
+  {
+    "operationId": "network.fangIPs",
+    "name": "Fang IPs",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fangIPs.ts",
+      "description": "Reverts defanged IPv4 markers [.] back to regular dots."
+    }
+  },
+  {
+    "operationId": "network.fangUrls",
+    "name": "Fang URLs",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fangUrls.ts",
+      "description": "Reverts common defanged URL markers back to standard URL form."
     }
   },
   {

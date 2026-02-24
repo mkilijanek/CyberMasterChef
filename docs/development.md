@@ -56,6 +56,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
 - `packages/plugins-standard/test/determinism.test.ts` (repeatability of outputs and traces)
 - `packages/plugins-standard/test/basicPreTriage.test.ts` (baseline forensic pre-triage report)
 - `packages/plugins-standard/test/basicTriage.test.ts` (risk score/verdict + mocked capability transparency)
+- `packages/plugins-standard/test/compressionOps.test.ts` (gzip/gunzip round-trip + deterministic bytes + invalid input path)
 - `packages/workbench/src/worker/runtime.test.ts` (worker protocol cancel/timeout/race)
 - `packages/workbench/src/worker/poolClient.test.ts` (pool queueing, worker assignment, priority)
 - E2E Playwright:
@@ -198,6 +199,8 @@ Wave 1 implemented so far:
 - Wave 16 host IOC: `forensic.extractRegistryKeys`
 - Wave 17 baseline triage: `forensic.basicPreTriage`
 - Wave 17 baseline triage: `forensic.basicTriage`
+- Wave 18 compression baseline: `compression.gzip`
+- Wave 18 compression baseline: `compression.gunzip`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip
 
