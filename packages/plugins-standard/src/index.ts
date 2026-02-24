@@ -104,6 +104,7 @@ import { trimTrailingDots } from "./ops/trimTrailingDots.js";
 import { linesNumbered } from "./ops/linesNumbered.js";
 import { removeColons } from "./ops/removeColons.js";
 import { removeSlashes } from "./ops/removeSlashes.js";
+import { removePipes } from "./ops/removePipes.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -211,6 +212,7 @@ export const standardPlugin: Plugin = {
     registry.register(linesNumbered);
     registry.register(removeColons);
     registry.register(removeSlashes);
+    registry.register(removePipes);
     registry.register(sha256);
   }
 };

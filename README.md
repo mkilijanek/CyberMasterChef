@@ -184,6 +184,7 @@ Operations are grouped by package priority:
   - `text.linesNumbered`
   - `text.removeColons`
   - `text.removeSlashes`
+  - `text.removePipes`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
