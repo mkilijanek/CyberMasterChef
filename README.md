@@ -165,6 +165,7 @@ Operations are grouped by package priority:
   - `text.replaceSpacesWithNewlines`
   - `text.tabsToSingleSpace`
   - `text.countUppercase`
+  - `text.countLowercase`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
