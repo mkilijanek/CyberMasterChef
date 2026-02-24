@@ -173,6 +173,7 @@ Operations are grouped by package priority:
   - `text.lastWord`
   - `text.removeCommas`
   - `text.removeDots`
+  - `text.removeSemicolons`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:

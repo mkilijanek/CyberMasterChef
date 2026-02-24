@@ -93,6 +93,7 @@ import { firstWord } from "./ops/firstWord.js";
 import { lastWord } from "./ops/lastWord.js";
 import { removeCommas } from "./ops/removeCommas.js";
 import { removeDots } from "./ops/removeDots.js";
+import { removeSemicolons } from "./ops/removeSemicolons.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -189,6 +190,7 @@ export const standardPlugin: Plugin = {
     registry.register(lastWord);
     registry.register(removeCommas);
     registry.register(removeDots);
+    registry.register(removeSemicolons);
     registry.register(sha256);
   }
 };
