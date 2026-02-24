@@ -13,6 +13,7 @@ import {
 } from "@cybermasterchef/core";
 import { standardPlugin } from "@cybermasterchef/plugins-standard";
 import fs from "node:fs";
+import pkg from "../package.json";
 
 const DEFAULT_TIMEOUT_MS = 10_000;
 
@@ -41,6 +42,7 @@ const usageText =
   "  --input-encoding text|hex|base64 parse CLI input before execution\n" +
   "  --bytes-output hex|base64|utf8   bytes output rendering on stdout\n" +
   "  --max-output-chars <n>           limit output length for string/json/bytes rendering\n" +
+  "  --version                        print CLI package version\n" +
   "  --help                           print this help text";
 
 function parseRecipeAny(json: string, quietWarnings: boolean): {
@@ -125,6 +127,10 @@ function parseArgs(args: string[]): CliOptions {
     }
     if (arg === "--help") {
       process.stdout.write(usageText + "\n");
+      process.exit(0);
+    }
+    if (arg === "--version") {
+      process.stdout.write(`${pkg.version}\n`);
       process.exit(0);
     }
     if (arg === "--show-trace") {
