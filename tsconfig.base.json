@@ -4,6 +4,11 @@
     "lib": ["ES2022", "DOM", "WebWorker"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@cybermasterchef/core": ["packages/core/src/index.ts"],
+      "@cybermasterchef/plugins-standard": ["packages/plugins-standard/src/index.ts"]
+    },
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,

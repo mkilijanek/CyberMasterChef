@@ -21,8 +21,19 @@ export default [
     }
   },
   {
+    files: ["packages/plugins-standard/src/ops/**/*.ts"],
+    rules: {
+      "no-control-regex": "off",
+      "no-useless-escape": "off",
+      "no-regex-spaces": "off"
+    }
+  },
+  {
     ignores: [
       "**/dist/**",
+      "**/coverage/**",
+      "**/playwright-report/**",
+      "**/test-results/**",
       "**/.vite/**",
       "**/node_modules/**"
     ]

@@ -12,11 +12,9 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: "10"
       - name: Install
         run: pnpm install
       - name: Lint
@@ -25,5 +23,9 @@ jobs:
         run: pnpm typecheck
       - name: Test
         run: pnpm test
+      - name: Install Playwright browser
+        run: pnpm exec playwright install --with-deps chromium
+      - name: E2E
+        run: pnpm test:e2e
       - name: Build
         run: pnpm build
