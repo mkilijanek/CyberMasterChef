@@ -34,6 +34,7 @@
   "args": "Arguments",
   "trace": "Trace",
   "traceSteps": "Trace steps",
+  "runDurationMs": "Run duration (ms)",
   "traceEmpty": "No execution trace yet",
   "step": "Step",
   "statusReady": "Ready",

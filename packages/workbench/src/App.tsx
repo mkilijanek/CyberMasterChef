@@ -94,6 +94,7 @@ export function App(): React.JSX.Element {
   });
   const [output, setOutput] = React.useState<string>("");
   const [trace, setTrace] = React.useState<TraceRow[]>([]);
+  const [lastRunMs, setLastRunMs] = React.useState<number | null>(null);
   const [status, setStatus] = React.useState<Status>("ready");
   const [error, setError] = React.useState<string | null>(null);
   const [importWarnings, setImportWarnings] = React.useState<RecipeImportWarning[]>([]);
@@ -123,12 +124,15 @@ export function App(): React.JSX.Element {
     setError(null);
     setImportWarnings([]);
     setTrace([]);
+    setLastRunMs(null);
+    const startedAt = performance.now();
     try {
       const inVal: DataValue = { type: "string", value: input };
       const res = await sandboxRef.current!.bake(recipeToRun, inVal, {
         timeoutMs
       });
       setTrace(res.trace);
+      setLastRunMs(Math.round(performance.now() - startedAt));
       if (res.output.type === "bytes") {
         const hex = [...res.output.value]
           .map((b) => b.toString(16).padStart(2, "0"))
@@ -334,6 +338,9 @@ export function App(): React.JSX.Element {
         </button>
         <div className="traceCount">
           {t("traceSteps")}: {trace.length}
+        </div>
+        <div className="traceCount">
+          {t("runDurationMs")}: {lastRunMs ?? "-"}
         </div>
         <div className="status" aria-live="polite">
           {status === "working" ? t("statusWorking") : t("statusReady")}
