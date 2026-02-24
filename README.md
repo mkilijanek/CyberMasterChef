@@ -50,6 +50,7 @@ Operations are grouped by package priority:
   - auto-bake mode (debounced re-run on changes)
   - cancel in-flight execution from the UI
   - keyboard cancel shortcut (`Escape`) while execution is running
+  - keyboard run shortcut (`Ctrl+Enter` / `Cmd+Enter`)
   - per-run sandbox timeout protection with configurable timeout (default: 10s)
   - run recipe up to a selected step (pipeline debugging)
   - deep-link sharing (`#state=` hash with recipe + input)

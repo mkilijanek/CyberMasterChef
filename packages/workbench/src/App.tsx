@@ -183,10 +183,14 @@ export function App(): React.JSX.Element {
         ev.preventDefault();
         cancelRun();
       }
+      if ((ev.ctrlKey || ev.metaKey) && ev.key === "Enter") {
+        ev.preventDefault();
+        void run();
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [status]);
+  }, [run, status]);
 
   async function shareLink(): Promise<void> {
     const url = `${window.location.origin}${window.location.pathname}${window.location.search}${window.location.hash}`;
