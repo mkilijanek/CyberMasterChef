@@ -38,6 +38,7 @@ import { keepLetters } from "./ops/keepLetters.js";
 import { removeLetters } from "./ops/removeLetters.js";
 import { keepAlnum } from "./ops/keepAlnum.js";
 import { removeAlnum } from "./ops/removeAlnum.js";
+import { toTitleCase } from "./ops/toTitleCase.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -79,6 +80,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeLetters);
     registry.register(keepAlnum);
     registry.register(removeAlnum);
+    registry.register(toTitleCase);
     registry.register(sha256);
   }
 };
