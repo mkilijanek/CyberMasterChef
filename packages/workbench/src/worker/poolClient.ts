@@ -27,13 +27,16 @@ function nextTaskId(): string {
 export class WorkerPoolClient implements ExecutionClient {
   private readonly slots: WorkerSlot[];
   private readonly queue: QueueTask[] = [];
+  private readonly maxQueue: number;
   private disposed = false;
 
   constructor(opts?: {
     size?: number;
+    maxQueue?: number;
     clientFactory?: () => ExecutionClient;
   }) {
     const size = Math.max(1, Math.floor(opts?.size ?? 2));
+    this.maxQueue = Math.max(1, Math.floor(opts?.maxQueue ?? 64));
     const clientFactory = opts?.clientFactory ?? (() => new SandboxClient());
     this.slots = Array.from({ length: size }, (_, index) => ({
       id: index,
@@ -57,6 +60,10 @@ export class WorkerPoolClient implements ExecutionClient {
     await this.init();
     const priority = opts?.priority ?? "normal";
     return await new Promise<BakeResult>((resolve, reject) => {
+      if (this.queue.length >= this.maxQueue) {
+        reject(new Error(`Worker queue limit exceeded (${this.maxQueue})`));
+        return;
+      }
       const task: QueueTask = {
         id: nextTaskId(),
         recipe,
