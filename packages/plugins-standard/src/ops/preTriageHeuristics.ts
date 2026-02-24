@@ -95,4 +95,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "nslookup_usage", description: "DNS lookup usage", pattern: new RegExp("\\bnslookup\\b", "i") },
   { id: "tracert_usage", description: "Route tracing usage", pattern: new RegExp("\\btracert\\b", "i") },
   { id: "route_print_usage", description: "Route table dump", pattern: new RegExp("route\\s+print", "i") },
+  { id: "wevtutil_clearlog", description: "Event log clearing", pattern: new RegExp("wevtutil\\s+cl", "i") },
 ];
