@@ -95,6 +95,15 @@ const goldenCases: GoldenCase[] = [
     expected: "1500"
   },
   {
+    name: "Parse ObjectId timestamp",
+    input: "507f1f77bcf86cd799439011",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "date.parseObjectIdTimestamp" }]
+    },
+    expected: "2012-10-17T21:13:27.000Z"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {
