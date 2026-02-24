@@ -159,6 +159,7 @@ Operations are grouped by package priority:
   - `text.linesToCsv`
   - `text.csvToLines`
   - `text.stripAccents`
+  - `text.removeDoubleQuotes`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:

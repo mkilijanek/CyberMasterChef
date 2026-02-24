@@ -184,6 +184,7 @@ Example operation IDs in use:
 - `text.linesToCsv`
 - `text.csvToLines`
 - `text.stripAccents`
+- `text.removeDoubleQuotes`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
