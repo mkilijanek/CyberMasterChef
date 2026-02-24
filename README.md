@@ -264,6 +264,7 @@ Operations are grouped by package priority:
   - golden parity corpus covering representative CyberChef-style chains in `packages/plugins-standard/test/goldenRecipes.test.ts`
   - golden negative/degradation suite for malformed inputs in `packages/plugins-standard/test/goldenNegative.test.ts`
   - semantic round-trip parity suite (`native -> cyberchef -> native`) in `packages/plugins-standard/test/semanticRoundtrip.test.ts`
+  - determinism suite (stable output + trace across repeated runs) in `packages/plugins-standard/test/determinism.test.ts`
   - worker protocol integration suite for cancel/timeout/race in `packages/workbench/src/worker/runtime.test.ts`
   - Playwright suite for import/run-to-step/share-link/timeout UX in `e2e/workbench.spec.ts`
   - extended CyberChef args mapping coverage (`lower/upper/trim/replace`) in `packages/core/test/serde.test.ts`
