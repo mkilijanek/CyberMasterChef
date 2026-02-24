@@ -71,6 +71,7 @@ import { surroundBrackets } from "./ops/surroundBrackets.js";
 import { surroundQuotes } from "./ops/surroundQuotes.js";
 import { rot13 } from "./ops/rot13.js";
 import { maskDigits } from "./ops/maskDigits.js";
+import { removeNonAscii } from "./ops/removeNonAscii.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -145,6 +146,7 @@ export const standardPlugin: Plugin = {
     registry.register(surroundQuotes);
     registry.register(rot13);
     registry.register(maskDigits);
+    registry.register(removeNonAscii);
     registry.register(sha256);
   }
 };

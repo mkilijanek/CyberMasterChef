@@ -176,6 +176,7 @@ Example operation IDs in use:
 - `text.surroundQuotes`
 - `text.rot13`
 - `text.maskDigits`
+- `text.removeNonAscii`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
