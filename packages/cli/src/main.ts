@@ -46,6 +46,7 @@ const usageText =
   "  --input-encoding text|hex|base64 parse CLI input before execution\n" +
   "  --bytes-output hex|base64|utf8   bytes output rendering on stdout\n" +
   "  --output-file <path>             write rendered output to file instead of stdout\n" +
+  "  --no-newline                     do not append trailing newline to output\n" +
   "  --max-output-chars <n>           limit output length for string/json/bytes rendering\n" +
   "  --version                        print CLI package version\n" +
   "  --help                           print this help text";
@@ -94,6 +95,7 @@ type CliOptions = {
   inputEncoding: "text" | "hex" | "base64";
   bytesOutput: "hex" | "base64" | "utf8";
   outputFile?: string;
+  noNewline: boolean;
   maxOutputChars?: number;
 };
 
@@ -114,6 +116,7 @@ function parseArgs(args: string[]): CliOptions {
   let inputEncoding: CliOptions["inputEncoding"] = "text";
   let bytesOutput: CliOptions["bytesOutput"] = "hex";
   let outputFile: string | undefined;
+  let noNewline = false;
   let maxOutputChars: number | undefined;
   const positional: string[] = [];
 
@@ -222,6 +225,10 @@ function parseArgs(args: string[]): CliOptions {
       i++;
       continue;
     }
+    if (arg === "--no-newline") {
+      noNewline = true;
+      continue;
+    }
     if (arg === "--timeout-ms") {
       const raw = args[i + 1];
       if (!raw) die("Missing value for --timeout-ms");
@@ -257,7 +264,8 @@ function parseArgs(args: string[]): CliOptions {
     listOps,
     listOpsJson,
     inputEncoding,
-    bytesOutput
+    bytesOutput,
+    noNewline
   };
   if (traceLimit !== undefined) out.traceLimit = traceLimit;
   if (listOpsFilter !== undefined) out.listOpsFilter = listOpsFilter;
@@ -376,7 +384,7 @@ if (res.output.type === "bytes") {
 const printed =
   opts.maxOutputChars !== undefined ? rendered.slice(0, opts.maxOutputChars) : rendered;
 if (opts.outputFile) {
-  writeFileSync(opts.outputFile, `${printed}\n`, "utf-8");
+  writeFileSync(opts.outputFile, opts.noNewline ? printed : `${printed}\n`, "utf-8");
 } else {
-  process.stdout.write(printed + "\n");
+  process.stdout.write(opts.noNewline ? printed : printed + "\n");
 }
