@@ -169,6 +169,7 @@ import { parseObjectIdTimestamp } from "./ops/parseObjectIdTimestamp.js";
 import { extractEmails } from "./ops/extractEmails.js";
 import { extractDomains } from "./ops/extractDomains.js";
 import { jsonSortKeys } from "./ops/jsonSortKeys.js";
+import { jsonExtractKeys } from "./ops/jsonExtractKeys.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -336,6 +337,7 @@ export const standardPlugin: Plugin = {
     registry.register(jsonMinify);
     registry.register(jsonBeautify);
     registry.register(jsonSortKeys);
+    registry.register(jsonExtractKeys);
     registry.register(extractStrings);
     registry.register(extractIPs);
     registry.register(extractUrls);

@@ -131,6 +131,15 @@ const goldenCases: GoldenCase[] = [
     expected: "{\"a\":{\"b\":3,\"k\":2},\"z\":1}"
   },
   {
+    name: "Extract nested JSON key paths",
+    input: "{\"user\":{\"id\":1,\"roles\":[{\"name\":\"admin\"}]}}",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "format.jsonExtractKeys" }]
+    },
+    expected: "user\nuser.id\nuser.roles\nuser.roles[0]\nuser.roles[0].name"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {

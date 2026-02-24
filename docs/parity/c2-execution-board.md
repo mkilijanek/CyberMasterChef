@@ -54,7 +54,7 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 ## Wave 8 backlog
 
 - [x] `format.jsonSortKeys` canonicalization operation.
-- [ ] `format.jsonExtractKeys` inspection operation.
+- [x] `format.jsonExtractKeys` inspection operation.
 
 ## Quality gates
 

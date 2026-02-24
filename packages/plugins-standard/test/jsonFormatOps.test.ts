@@ -3,6 +3,7 @@ import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core"
 import { jsonMinify } from "../src/ops/jsonMinify.js";
 import { jsonBeautify } from "../src/ops/jsonBeautify.js";
 import { jsonSortKeys } from "../src/ops/jsonSortKeys.js";
+import { jsonExtractKeys } from "../src/ops/jsonExtractKeys.js";
 
 describe("json format operations", () => {
   it("minifies JSON payload", async () => {
@@ -53,5 +54,20 @@ describe("json format operations", () => {
       input: { type: "string", value: '{"b":1,"a":{"d":2,"c":3}}' }
     });
     expect(out.output).toEqual({ type: "string", value: '{"a":{"c":3,"d":2},"b":1}' });
+  });
+
+  it("extracts nested key paths from JSON payload", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(jsonExtractKeys);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "format.jsonExtractKeys" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: '{"a":{"b":[{"c":1}]}}' }
+    });
+    expect(out.output).toEqual({
+      type: "string",
+      value: "a\na.b\na.b[0]\na.b[0].c"
+    });
   });
 });
