@@ -15,6 +15,7 @@ pnpm dev         # starts workbench at http://localhost:5173
 pnpm typecheck   # TypeScript check (Vite is transpile-only!)
 pnpm lint        # ESLint across all packages
 pnpm test        # Vitest
+pnpm test:coverage # Vitest coverage reports + thresholds
 pnpm test:parity # parity coverage gate vs reference corpus
 pnpm test:e2e    # Playwright critical flows (workbench)
 pnpm build       # full build
@@ -51,6 +52,11 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
 ## Testing
 
 - Unit: Vitest (`pnpm test`)
+- Coverage: `pnpm test:coverage` (V8 provider; reports: text/json-summary/lcov)
+- Coverage thresholds:
+  - `core`: statements/lines `>= 80%`, branches `>= 70%`, functions `>= 70%`
+  - `plugins-standard`: statements `>= 45%`, branches `>= 15%`, functions `>= 30%`, lines `>= 55%`
+  - `workbench`: statements/lines `>= 80%`, branches `>= 70%`, functions `>= 95%`
 - Current suites:
   - `packages/core/test/conversion.test.ts`
   - `packages/core/test/engine.test.ts`

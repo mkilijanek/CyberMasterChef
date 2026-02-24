@@ -8,7 +8,8 @@
     "build": "vite build",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "eslint .",
-    "test": "vitest run -c vitest.config.ts"
+    "test": "vitest run -c vitest.config.ts",
+    "test:coverage": "vitest run -c vitest.config.ts --coverage"
   },
   "dependencies": {
     "@cybermasterchef/core": "workspace:*",

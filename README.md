@@ -286,11 +286,17 @@ pnpm dev        # starts workbench at http://localhost:5173
 pnpm typecheck  # TypeScript check (separate from Vite build)
 pnpm lint       # ESLint
 pnpm test       # Vitest
+pnpm test:coverage # Vitest + V8 coverage reports with thresholds
 pnpm test:parity # parity coverage gate for golden recipe corpus
 pnpm test:e2e   # Playwright critical flows
 pnpm build      # full build all packages
 pnpm ci         # lint + typecheck + test + build
 ```
+
+Coverage baseline:
+- `packages/core`: statements/lines `>= 80%`, branches `>= 70%`, functions `>= 70%`
+- `packages/plugins-standard`: statements `>= 45%`, branches `>= 15%`, functions `>= 30%`, lines `>= 55%`
+- `packages/workbench`: statements/lines `>= 80%`, branches `>= 70%`, functions `>= 95%`
 
 Phase A status:
 - Completed baseline parity-and-tests scope (golden parity recipes, worker protocol integration tests, Playwright critical flows).
