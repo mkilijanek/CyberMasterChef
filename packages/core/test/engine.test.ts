@@ -50,6 +50,13 @@ describe("engine", () => {
     expect(result.meta.endedAt).toBeTypeOf("number");
     expect(result.meta.durationMs).toBeGreaterThanOrEqual(0);
     expect(result.meta.endedAt).toBeGreaterThanOrEqual(result.meta.startedAt);
+    expect(result.meta.stepDurationTotalMs).toBeGreaterThanOrEqual(0);
+    expect(result.meta.stepDurationAvgMs).toBeGreaterThanOrEqual(0);
+    expect(result.meta.slowestStep).not.toBeNull();
+    expect(
+      result.meta.slowestStep?.opId === "test.toBytes" ||
+        result.meta.slowestStep?.opId === "test.toString"
+    ).toBe(true);
   });
 
   it("throws OperationNotFoundError for unknown opId", async () => {
@@ -71,6 +78,9 @@ describe("engine", () => {
     expect(result.output).toEqual({ type: "string", value: "unchanged" });
     expect(result.trace).toHaveLength(0);
     expect(result.meta.durationMs).toBeGreaterThanOrEqual(0);
+    expect(result.meta.stepDurationTotalMs).toBe(0);
+    expect(result.meta.stepDurationAvgMs).toBe(0);
+    expect(result.meta.slowestStep).toBeNull();
   });
 
   it("aborts when signal is already aborted", async () => {
