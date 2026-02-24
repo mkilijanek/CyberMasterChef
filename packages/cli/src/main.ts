@@ -62,6 +62,7 @@ const usageText =
   "  --batch-report-file <path>       write batch JSON report to file\n" +
   "  --batch-summary-json             print aggregate JSON summary for batch run to stderr\n" +
   "  --batch-output-dir <path>        write per-input rendered outputs to directory\n" +
+  "  --batch-output-format <fmt>      format for batch output files: text|json|jsonl\n" +
   "  --batch-fail-fast                stop batch execution on first file error\n" +
   "  --batch-continue-on-error        continue batch execution despite file errors (default)\n" +
   "  --fail-empty-output              fail when rendered output is empty\n" +
@@ -127,6 +128,7 @@ type CliOptions = {
   batchReportFile?: string;
   batchSummaryJson: boolean;
   batchOutputDir?: string;
+  batchOutputFormat: "text" | "json" | "jsonl";
   batchFailFast: boolean;
   failEmptyOutput: boolean;
   noNewline: boolean;
@@ -163,6 +165,7 @@ function parseArgs(args: string[]): CliOptions {
   let batchReportFile: string | undefined;
   let batchSummaryJson = false;
   let batchOutputDir: string | undefined;
+  let batchOutputFormat: CliOptions["batchOutputFormat"] = "text";
   let batchFailFast = false;
   let failEmptyOutput = false;
   let noNewline = false;
@@ -352,6 +355,15 @@ function parseArgs(args: string[]): CliOptions {
       i++;
       continue;
     }
+    if (arg === "--batch-output-format") {
+      const raw = args[i + 1];
+      if (raw !== "text" && raw !== "json" && raw !== "jsonl") {
+        die(`Invalid --batch-output-format value: ${String(raw)}`);
+      }
+      batchOutputFormat = raw;
+      i++;
+      continue;
+    }
     if (arg === "--batch-fail-fast") {
       batchFailFast = true;
       continue;
@@ -412,6 +424,7 @@ function parseArgs(args: string[]): CliOptions {
     hexUppercase,
     jsonIndent,
     batchSummaryJson,
+    batchOutputFormat,
     batchFailFast,
     failEmptyOutput,
     noNewline
@@ -512,6 +525,27 @@ function fileLeaf(path: string): string {
   return parts[parts.length - 1] ?? path;
 }
 
+function renderBatchOutputFile(
+  filePath: string,
+  run: {
+    rendered: string;
+    outputType: DataValue["type"];
+    elapsed: number;
+    traceSummary: ReturnType<typeof summarizeTrace>;
+  }
+): string {
+  if (opts.batchOutputFormat === "text") return `${run.rendered}\n`;
+  const payload = {
+    file: filePath,
+    output: run.rendered,
+    outputType: run.outputType,
+    durationMs: run.elapsed,
+    traceSummary: run.traceSummary
+  };
+  if (opts.batchOutputFormat === "jsonl") return `${JSON.stringify(payload)}\n`;
+  return `${JSON.stringify(payload, null, 2)}\n`;
+}
+
 async function executeOne(rawInput: string): Promise<{
   rendered: string;
   elapsed: number;
@@ -607,10 +641,16 @@ if (opts.batchInputDir) {
         recipeHash: run.reproBundle.recipeHash,
         inputHash: run.reproBundle.inputHash
       });
-      if (opts.batchOutputDir) {
-        const outPath = `${opts.batchOutputDir}/${fileLeaf(filePath)}.out.txt`;
-        writeFileSync(outPath, `${run.rendered}\n`, "utf-8");
-      }
+    if (opts.batchOutputDir) {
+      const ext =
+        opts.batchOutputFormat === "text"
+          ? "txt"
+          : opts.batchOutputFormat === "jsonl"
+            ? "jsonl"
+            : "json";
+      const outPath = `${opts.batchOutputDir}/${fileLeaf(filePath)}.out.${ext}`;
+      writeFileSync(outPath, renderBatchOutputFile(filePath, run), "utf-8");
+    }
     } catch {
       report.push({
         file: filePath,
