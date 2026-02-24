@@ -74,6 +74,7 @@ CLI behavior:
 - `--version` prints CLI package version.
 - `--show-trace` prints execution trace (step/op/input->output types) on stderr.
 - `--trace-json` prints execution trace as JSON on stderr.
+- `--trace-limit <n>` limits how many trace rows are printed for trace outputs.
 - `--list-ops` prints available operation IDs/names and exits.
 - `--list-ops-json` prints full operation metadata as JSON and exits.
 - `--list-ops-filter <query>` filters both list outputs by ID/name/description.

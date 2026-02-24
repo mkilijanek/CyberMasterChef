@@ -38,6 +38,7 @@ const usageText =
   "  --show-summary                   print execution summary to stderr\n" +
   "  --show-trace                     print human-readable trace to stderr\n" +
   "  --trace-json                     print trace JSON to stderr\n" +
+  "  --trace-limit <n>                limit number of trace steps printed\n" +
   "  --list-ops                       print available operation ids and names\n" +
   "  --list-ops-json                  print available operations as JSON\n" +
   "  --list-ops-filter <query>        filter operation listings by id/name/description\n" +
@@ -83,6 +84,7 @@ type CliOptions = {
   showSummary: boolean;
   showTrace: boolean;
   traceJson: boolean;
+  traceLimit?: number;
   listOps: boolean;
   listOpsJson: boolean;
   listOpsFilter?: string;
@@ -100,6 +102,7 @@ function parseArgs(args: string[]): CliOptions {
   let showSummary = false;
   let showTrace = false;
   let traceJson = false;
+  let traceLimit: number | undefined;
   let listOps = false;
   let listOpsJson = false;
   let listOpsFilter: string | undefined;
@@ -145,6 +148,17 @@ function parseArgs(args: string[]): CliOptions {
     }
     if (arg === "--trace-json") {
       traceJson = true;
+      continue;
+    }
+    if (arg === "--trace-limit") {
+      const raw = args[i + 1];
+      if (!raw) die("Missing value for --trace-limit");
+      const parsed = Number(raw);
+      if (!Number.isFinite(parsed) || parsed < 0) {
+        die(`Invalid --trace-limit value: ${raw}`);
+      }
+      traceLimit = Math.floor(parsed);
+      i++;
       continue;
     }
     if (arg === "--list-ops") {
@@ -227,6 +241,7 @@ function parseArgs(args: string[]): CliOptions {
     inputEncoding,
     bytesOutput
   };
+  if (traceLimit !== undefined) out.traceLimit = traceLimit;
   if (listOpsFilter !== undefined) out.listOpsFilter = listOpsFilter;
   const inputPath = positional[1];
   if (inputPath) out.inputPath = inputPath;
@@ -308,14 +323,16 @@ if (opts.showSummary) {
 }
 
 if (opts.showTrace) {
-  for (const t of res.trace) {
+  const traceRows = opts.traceLimit !== undefined ? res.trace.slice(0, opts.traceLimit) : res.trace;
+  for (const t of traceRows) {
     process.stderr.write(
       `[trace] step=${t.step + 1} op=${t.opId} ${t.inputType}->${t.outputType}\n`
     );
   }
 }
 if (opts.traceJson) {
-  process.stderr.write(`${JSON.stringify(res.trace)}\n`);
+  const traceRows = opts.traceLimit !== undefined ? res.trace.slice(0, opts.traceLimit) : res.trace;
+  process.stderr.write(`${JSON.stringify(traceRows)}\n`);
 }
 
 if (res.output.type === "bytes") {

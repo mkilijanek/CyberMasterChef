@@ -90,6 +90,7 @@ Operations are grouped by package priority:
   - supports `--print-recipe-source` to audit parser path in automation
   - supports `--show-summary` for lightweight runtime diagnostics in CLI
   - supports `--show-trace` and `--trace-json` for pipeline debugging in terminal
+  - supports `--trace-limit` to cap trace verbosity in terminal/CI logs
   - supports `--list-ops` to inspect currently registered operations
   - supports `--list-ops-json` for machine-readable operation discovery
   - supports `--list-ops-filter` to narrow operation listings in both list modes
