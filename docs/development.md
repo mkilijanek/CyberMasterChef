@@ -180,6 +180,7 @@ Wave 1 implemented so far:
 - Wave 5 kickoff: `network.extractIPs`
 - Wave 5 expansion: `network.extractUrls`
 - Wave 5 safe-sharing: `network.defangUrls`
+- Wave 5 reversal: `network.fangUrls`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip
 

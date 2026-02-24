@@ -63,6 +63,7 @@ Operations are grouped by package priority:
 - Wave 5 IOC baseline started with `network.extractIPs` (unique IPv4 extraction).
 - Wave 5 IOC expansion adds `network.extractUrls` for deterministic URL extraction.
 - Wave 5 safe-sharing step adds `network.defangUrls`.
+- Wave 5 reversal step adds `network.fangUrls`.
 - C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
 
 ## Current functionality
@@ -256,6 +257,7 @@ Operations are grouped by package priority:
   - `network.extractIPs`
   - `network.extractUrls`
   - `network.defangUrls`
+  - `network.fangUrls`
   - `text.reverse`
 - CLI compatibility:
   - accepts native recipe JSON

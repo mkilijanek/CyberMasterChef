@@ -3,6 +3,7 @@ import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core"
 import { extractIPs } from "../src/ops/extractIPs.js";
 import { extractUrls } from "../src/ops/extractUrls.js";
 import { defangUrls } from "../src/ops/defangUrls.js";
+import { fangUrls } from "../src/ops/fangUrls.js";
 
 describe("network operations", () => {
   it("extracts unique valid IPv4 addresses", async () => {
@@ -57,6 +58,23 @@ describe("network operations", () => {
     expect(out.output).toEqual({
       type: "string",
       value: "Check hxxps://example[.]com/path?q=a.b#frag now"
+    });
+  });
+
+  it("fangs defanged URL markers", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(fangUrls);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.fangUrls" }] };
+
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "hxxps://ioc[.]example[.]com/path?q=1" }
+    });
+
+    expect(out.output).toEqual({
+      type: "string",
+      value: "https://ioc.example.com/path?q=1"
     });
   });
 });

@@ -162,6 +162,7 @@ import { extractStrings } from "./ops/extractStrings.js";
 import { extractIPs } from "./ops/extractIPs.js";
 import { extractUrls } from "./ops/extractUrls.js";
 import { defangUrls } from "./ops/defangUrls.js";
+import { fangUrls } from "./ops/fangUrls.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -327,6 +328,7 @@ export const standardPlugin: Plugin = {
     registry.register(extractIPs);
     registry.register(extractUrls);
     registry.register(defangUrls);
+    registry.register(fangUrls);
     registry.register(sha256);
   }
 };
