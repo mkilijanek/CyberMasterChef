@@ -4,6 +4,7 @@ import { extractStrings } from "../src/ops/extractStrings.js";
 import { extractEmails } from "../src/ops/extractEmails.js";
 import { extractDomains } from "../src/ops/extractDomains.js";
 import { extractMd5 } from "../src/ops/extractMd5.js";
+import { extractSha256 } from "../src/ops/extractSha256.js";
 
 describe("forensic operations", () => {
   it("extracts printable strings from bytes", async () => {
@@ -93,5 +94,22 @@ describe("forensic operations", () => {
       type: "string",
       value: "d41d8cd98f00b204e9800998ecf8427e"
     });
+  });
+
+  it("extracts unique SHA-256 hashes", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(extractSha256);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "forensic.extractSha256" }] };
+    const hash =
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: {
+        type: "string",
+        value: `${hash} ${hash.toUpperCase()} not-a-hash`
+      }
+    });
+    expect(out.output).toEqual({ type: "string", value: hash });
   });
 });

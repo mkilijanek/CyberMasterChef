@@ -149,6 +149,15 @@ const goldenCases: GoldenCase[] = [
     expected: "d41d8cd98f00b204e9800998ecf8427e"
   },
   {
+    name: "Extract SHA-256 IOCs",
+    input: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 duplicate",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "forensic.extractSha256" }]
+    },
+    expected: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {

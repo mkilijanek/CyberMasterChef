@@ -59,7 +59,7 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 ## Wave 9 backlog
 
 - [x] `forensic.extractMd5` hash IOC operation.
-- [ ] `forensic.extractSha256` hash IOC operation.
+- [x] `forensic.extractSha256` hash IOC operation.
 
 ## Quality gates
 
