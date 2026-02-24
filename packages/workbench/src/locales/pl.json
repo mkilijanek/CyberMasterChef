@@ -18,6 +18,7 @@
   "copyOutputFailed": "Nie udało się skopiować wyjścia",
   "copyTrace": "Kopiuj ślad",
   "copyTraceFailed": "Nie udało się skopiować śladu",
+  "clearTrace": "Wyczyść ślad",
   "reset": "Reset",
   "resetConfirm": "Zresetować recepturę i wejście/wyjście?",
   "importPrompt": "Wklej JSON receptury (format natywny lub CyberChef):",

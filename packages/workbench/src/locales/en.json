@@ -18,6 +18,7 @@
   "copyOutputFailed": "Could not copy output",
   "copyTrace": "Copy trace",
   "copyTraceFailed": "Could not copy trace",
+  "clearTrace": "Clear trace",
   "reset": "Reset",
   "resetConfirm": "Reset recipe and input/output?",
   "importPrompt": "Paste recipe JSON (native or CyberChef format):",

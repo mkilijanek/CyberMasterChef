@@ -226,6 +226,11 @@ export function App(): React.JSX.Element {
     setStatus("ready");
   }
 
+  function clearTrace(): void {
+    setTrace([]);
+    setLastRunMs(null);
+  }
+
   function cancelRun(): void {
     sandboxRef.current?.cancelActive();
   }
@@ -343,6 +348,9 @@ export function App(): React.JSX.Element {
         </button>
         <button className="buttonSmall" onClick={() => void copyTrace()}>
           {t("copyTrace")}
+        </button>
+        <button className="buttonSmall" onClick={() => clearTrace()}>
+          {t("clearTrace")}
         </button>
         <button className="buttonSmall" onClick={() => resetWorkspace()}>
           {t("reset")}
