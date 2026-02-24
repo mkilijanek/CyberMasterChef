@@ -71,6 +71,8 @@
   "attemptLabel": "Attempt",
   "queueDepthEnqueue": "Queue depth on enqueue",
   "queueDepthStart": "Queue depth on start",
+  "maxQueueDepthObserved": "Max queue depth observed",
+  "inFlightAtStart": "In-flight at start",
   "recipeHashShort": "Recipe hash",
   "inputHashShort": "Input hash",
   "traceEmpty": "No execution trace yet",

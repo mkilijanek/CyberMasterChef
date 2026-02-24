@@ -37,6 +37,8 @@ type RunInfo = {
   attempt?: number;
   queueDepthAtEnqueue?: number;
   queueDepthAtStart?: number;
+  maxQueueDepthObserved?: number;
+  inFlightAtStart?: number;
 };
 
 const HASH_PREFIX = "#state=";
@@ -340,7 +342,9 @@ export function App(): React.JSX.Element {
       queuedMs: lastRunInfo.queuedMs ?? null,
       workerId: lastRunInfo.workerId ?? null,
       queueDepthAtEnqueue: lastRunInfo.queueDepthAtEnqueue ?? null,
-      queueDepthAtStart: lastRunInfo.queueDepthAtStart ?? null
+      queueDepthAtStart: lastRunInfo.queueDepthAtStart ?? null,
+      maxQueueDepthObserved: lastRunInfo.maxQueueDepthObserved ?? null,
+      inFlightAtStart: lastRunInfo.inFlightAtStart ?? null
     };
     const copied = await copyText(JSON.stringify(summary, null, 2));
     if (!copied) {
@@ -617,6 +621,12 @@ export function App(): React.JSX.Element {
         </div>
         <div className="traceCount">
           {t("queueDepthStart")}: {lastRunInfo?.queueDepthAtStart ?? "-"}
+        </div>
+        <div className="traceCount">
+          {t("maxQueueDepthObserved")}: {lastRunInfo?.maxQueueDepthObserved ?? "-"}
+        </div>
+        <div className="traceCount">
+          {t("inFlightAtStart")}: {lastRunInfo?.inFlightAtStart ?? "-"}
         </div>
         <div className="traceCount">
           {t("recipeHashShort")}: {lastRunInfo ? lastRunInfo.recipeHash.slice(0, 12) : "-"}

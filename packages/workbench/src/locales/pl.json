@@ -71,6 +71,8 @@
   "attemptLabel": "Próba",
   "queueDepthEnqueue": "Głębokość kolejki przy dodaniu",
   "queueDepthStart": "Głębokość kolejki przy starcie",
+  "maxQueueDepthObserved": "Maksymalna głębokość kolejki",
+  "inFlightAtStart": "Aktywne przy starcie",
   "recipeHashShort": "Hash receptury",
   "inputHashShort": "Hash wejścia",
   "traceEmpty": "Brak śladu wykonania",
