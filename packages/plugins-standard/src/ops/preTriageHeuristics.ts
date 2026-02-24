@@ -121,4 +121,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "rclone_usage", description: "Rclone tooling usage", pattern: new RegExp("\\brclone\\b", "i") },
   { id: "mega_nz_reference", description: "MEGA hosting indicator", pattern: new RegExp("mega\\.nz", "i") },
   { id: "dropbox_reference", description: "Dropbox hosting indicator", pattern: new RegExp("dropbox\\.com", "i") },
+  { id: "google_drive_uc", description: "Google Drive direct-download indicator", pattern: new RegExp("drive\\.google\\.com", "i") },
 ];
