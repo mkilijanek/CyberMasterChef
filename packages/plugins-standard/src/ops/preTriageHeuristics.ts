@@ -90,4 +90,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "net_localgroup_admin", description: "Admin group assignment", pattern: new RegExp("net\\s+localgroup\\s+administrators", "i") },
   { id: "whoami_priv", description: "Privilege discovery whoami", pattern: new RegExp("whoami\\s+/priv", "i") },
   { id: "ipconfig_all", description: "Network discovery ipconfig /all", pattern: new RegExp("ipconfig\\s+/all", "i") },
+  { id: "arp_scan", description: "ARP table query", pattern: new RegExp("\\barp\\s+-a\\b", "i") },
 ];
