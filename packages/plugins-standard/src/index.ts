@@ -144,6 +144,7 @@ import { countBackslashes } from "./ops/countBackslashes.js";
 import { countPluses } from "./ops/countPluses.js";
 import { countDashes } from "./ops/countDashes.js";
 import { countQuestionMarks } from "./ops/countQuestionMarks.js";
+import { countExclamations } from "./ops/countExclamations.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -291,6 +292,7 @@ export const standardPlugin: Plugin = {
     registry.register(countPluses);
     registry.register(countDashes);
     registry.register(countQuestionMarks);
+    registry.register(countExclamations);
     registry.register(sha256);
   }
 };
