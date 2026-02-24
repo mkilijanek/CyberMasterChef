@@ -88,3 +88,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 076: `startup_folder_persistence` - Startup folder persistence path
 - [x] Stage 077: `run_key_hkcu_short` - HKCU Run key short path
 - [x] Stage 078: `run_key_hklm_short` - HKLM Run key short path
+- [x] Stage 079: `taskcache_reference` - TaskCache persistence reference

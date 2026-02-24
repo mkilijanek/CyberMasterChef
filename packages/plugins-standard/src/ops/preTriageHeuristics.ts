@@ -83,4 +83,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "startup_folder_persistence", description: "Startup folder persistence path", pattern: new RegExp("\\\\\start menu\\\\programs\\\\startup", "i") },
   { id: "run_key_hkcu_short", description: "HKCU Run key short path", pattern: new RegExp("hkcu\\\\software\\\\microsoft\\\\windows\\\\currentversion\\\\run", "i") },
   { id: "run_key_hklm_short", description: "HKLM Run key short path", pattern: new RegExp("hklm\\\\software\\\\microsoft\\\\windows\\\\currentversion\\\\run", "i") },
+  { id: "taskcache_reference", description: "TaskCache persistence reference", pattern: new RegExp("taskcache", "i") },
 ];
