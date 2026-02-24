@@ -137,3 +137,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 123: `winrm_usage` - WinRM command marker
 - [x] Stage 124: `wmi_exec_remote` - WMI remote process marker
 - [x] Stage 125: `rdp_registry_enable` - RDP registry enable marker
+- [x] Stage 126: `firewall_disable_cmd` - Firewall disable marker

@@ -130,4 +130,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "winrm_usage", description: "WinRM command marker", pattern: new RegExp("\\bwinrm\\b", "i") },
   { id: "wmi_exec_remote", description: "WMI remote process marker", pattern: new RegExp("wmic\\s+/node:", "i") },
   { id: "rdp_registry_enable", description: "RDP registry enable marker", pattern: new RegExp("fdenytsconnections", "i") },
+  { id: "firewall_disable_cmd", description: "Firewall disable marker", pattern: new RegExp("netsh\\s+advfirewall\\s+set\\s+allprofiles\\s+state\\s+off", "i") },
 ];
