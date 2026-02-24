@@ -52,4 +52,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "hex_blob_long", description: "Long hex-like blob", pattern: new RegExp("[A-Fa-f0-9]{128,}", "g") },
   { id: "url_shortener_bitly", description: "URL shortener bitly indicator", pattern: new RegExp("bit\\.ly", "i") },
   { id: "url_shortener_tinyurl", description: "URL shortener tinyurl indicator", pattern: new RegExp("tinyurl\\.com", "i") },
+  { id: "lolbin_makecab", description: "LOLBIN makecab usage", pattern: new RegExp("makecab(\\.exe)?", "i") },
 ];
