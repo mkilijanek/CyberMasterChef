@@ -124,4 +124,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "google_drive_uc", description: "Google Drive direct-download indicator", pattern: new RegExp("drive\\.google\\.com", "i") },
   { id: "onedrive_reference", description: "OneDrive hosting indicator", pattern: new RegExp("1drv\\.ms", "i") },
   { id: "ftp_protocol_usage", description: "FTP protocol usage", pattern: new RegExp("\\bftp://", "i") },
+  { id: "smb_unc_path", description: "UNC network path usage", pattern: new RegExp("\\\\\\\\[A-Za-z0-9._-]+\\\\[A-Za-z0-9$._-]+", "g") },
 ];
