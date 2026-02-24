@@ -47,4 +47,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "github_raw_reference", description: "GitHub raw payload indicator", pattern: new RegExp("raw\\.githubusercontent\\.com", "i") },
   { id: "telegram_api_reference", description: "Telegram API indicator", pattern: new RegExp("api\\.telegram\\.org", "i") },
   { id: "discord_cdn_reference", description: "Discord CDN indicator", pattern: new RegExp("cdn\\.discordapp\\.com", "i") },
+  { id: "tor_onion_reference", description: "Onion service indicator", pattern: new RegExp("\\.onion\\b", "i") },
 ];
