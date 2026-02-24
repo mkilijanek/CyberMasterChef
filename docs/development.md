@@ -218,6 +218,7 @@ Example operation IDs in use:
 - `text.removePercents`
 - `text.removeAmpersands`
 - `text.removePluses`
+- `text.removeEquals`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
