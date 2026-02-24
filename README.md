@@ -117,6 +117,7 @@ Operations are grouped by package priority:
   - `text.toPascalCase`
   - `text.compactLines`
   - `text.reverseWords`
+  - `text.sortWords`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:

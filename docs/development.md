@@ -142,6 +142,7 @@ Example operation IDs in use:
 - `text.toPascalCase`
 - `text.compactLines`
 - `text.reverseWords`
+- `text.sortWords`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

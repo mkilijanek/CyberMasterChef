@@ -49,6 +49,7 @@ import { toCamelCase } from "./ops/toCamelCase.js";
 import { toPascalCase } from "./ops/toPascalCase.js";
 import { compactLines } from "./ops/compactLines.js";
 import { reverseWords } from "./ops/reverseWords.js";
+import { sortWords } from "./ops/sortWords.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -101,6 +102,7 @@ export const standardPlugin: Plugin = {
     registry.register(toPascalCase);
     registry.register(compactLines);
     registry.register(reverseWords);
+    registry.register(sortWords);
     registry.register(sha256);
   }
 };
