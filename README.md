@@ -267,6 +267,7 @@ Operations are grouped by package priority:
   - determinism suite (stable output + trace across repeated runs) in `packages/plugins-standard/test/determinism.test.ts`
   - worker protocol integration suite for cancel/timeout/race in `packages/workbench/src/worker/runtime.test.ts`
   - Playwright suite for import/run-to-step/share-link/timeout UX in `e2e/workbench.spec.ts`
+  - Playwright negative-flow suite for invalid import and empty-search behavior in `e2e/workbench-negative.spec.ts`
   - extended CyberChef args mapping coverage (`lower/upper/trim/replace`) in `packages/core/test/serde.test.ts`
 
 ## Getting started
