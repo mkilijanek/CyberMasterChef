@@ -86,6 +86,7 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 
 - [x] `format.jsonArrayLength` inspection operation.
 - [x] `format.jsonStringValues` extraction operation.
+- [x] `format.jsonNumberValues` extraction operation.
 
 ## Queue extension
 

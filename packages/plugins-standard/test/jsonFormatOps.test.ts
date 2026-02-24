@@ -6,6 +6,7 @@ import { jsonSortKeys } from "../src/ops/jsonSortKeys.js";
 import { jsonExtractKeys } from "../src/ops/jsonExtractKeys.js";
 import { jsonArrayLength } from "../src/ops/jsonArrayLength.js";
 import { jsonStringValues } from "../src/ops/jsonStringValues.js";
+import { jsonNumberValues } from "../src/ops/jsonNumberValues.js";
 
 describe("json format operations", () => {
   it("minifies JSON payload", async () => {
@@ -98,5 +99,17 @@ describe("json format operations", () => {
       input: { type: "string", value: '{"a":"x","b":[1,{"c":"y"}],"d":"z"}' }
     });
     expect(out.output).toEqual({ type: "string", value: "x\ny\nz" });
+  });
+
+  it("extracts all nested JSON number values", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(jsonNumberValues);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "format.jsonNumberValues" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: '{"a":1,"b":[2,{"c":3}],"d":"x"}' }
+    });
+    expect(out.output).toEqual({ type: "string", value: "1\n2\n3" });
   });
 });
