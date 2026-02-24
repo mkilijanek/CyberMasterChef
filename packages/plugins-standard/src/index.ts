@@ -26,6 +26,7 @@ import { wordCount } from "./ops/wordCount.js";
 import { lineCount } from "./ops/lineCount.js";
 import { firstLine } from "./ops/firstLine.js";
 import { lastLine } from "./ops/lastLine.js";
+import { normalizeWhitespace } from "./ops/normalizeWhitespace.js";
 
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
@@ -57,6 +58,7 @@ export const standardPlugin: Plugin = {
     registry.register(lineCount);
     registry.register(firstLine);
     registry.register(lastLine);
+    registry.register(normalizeWhitespace);
     registry.register(sha256);
   }
 };

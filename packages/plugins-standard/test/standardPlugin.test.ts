@@ -24,6 +24,7 @@ describe("standardPlugin", () => {
       "text.lastLine",
       "text.length",
       "text.lowercase",
+      "text.normalizeWhitespace",
       "text.padEnd",
       "text.padStart",
       "text.prepend",
