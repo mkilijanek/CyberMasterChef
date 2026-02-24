@@ -84,6 +84,7 @@ Operations are grouped by package priority:
   - `text.padStart`
   - `text.padEnd`
   - `text.trimStart`
+  - `text.trimEnd`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:

@@ -28,6 +28,7 @@ describe("standardPlugin", () => {
       "text.reverse",
       "text.slice",
       "text.trim",
+      "text.trimEnd",
       "text.trimStart",
       "text.uppercase"
     ]);

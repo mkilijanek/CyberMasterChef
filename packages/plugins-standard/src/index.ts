@@ -20,6 +20,7 @@ import { repeat } from "./ops/repeat.js";
 import { padStart } from "./ops/padStart.js";
 import { padEnd } from "./ops/padEnd.js";
 import { trimStart } from "./ops/trimStart.js";
+import { trimEnd } from "./ops/trimEnd.js";
 
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
@@ -45,6 +46,7 @@ export const standardPlugin: Plugin = {
     registry.register(padStart);
     registry.register(padEnd);
     registry.register(trimStart);
+    registry.register(trimEnd);
     registry.register(sha256);
   }
 };
