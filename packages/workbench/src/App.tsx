@@ -177,6 +177,17 @@ export function App(): React.JSX.Element {
     return () => window.clearTimeout(handle);
   }, [autoBake, input, recipe, run]);
 
+  React.useEffect(() => {
+    const onKeyDown = (ev: KeyboardEvent) => {
+      if (ev.key === "Escape" && status === "working") {
+        ev.preventDefault();
+        cancelRun();
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [status]);
+
   async function shareLink(): Promise<void> {
     const url = `${window.location.origin}${window.location.pathname}${window.location.search}${window.location.hash}`;
     try {
