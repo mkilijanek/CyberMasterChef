@@ -23,7 +23,7 @@ type RunRecipeFn = (args: {
   signal?: AbortSignal;
 }) => Promise<RunRecipeResult>;
 
-type TimeoutHandle = number | ReturnType<typeof setTimeout>;
+type TimeoutHandle = Parameters<typeof clearTimeout>[0];
 
 type RuntimeDeps = {
   registry: OperationRegistry;
