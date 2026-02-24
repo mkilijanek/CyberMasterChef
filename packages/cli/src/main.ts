@@ -32,6 +32,7 @@ const usageText =
   "  --timeout-ms <n>                  execution timeout in milliseconds\n" +
   "  --strict-cyberchef               fail if CyberChef import skips steps\n" +
   "  --fail-on-warning                fail if import warnings are emitted\n" +
+  "  --quiet-warnings                 suppress warning output on stderr\n" +
   "  --show-trace                     print human-readable trace to stderr\n" +
   "  --trace-json                     print trace JSON to stderr\n" +
   "  --input-encoding text|hex|base64 parse CLI input before execution\n" +
@@ -39,7 +40,7 @@ const usageText =
   "  --max-output-chars <n>           limit output length for string/json/bytes rendering\n" +
   "  --help                           print this help text";
 
-function parseRecipeAny(json: string): {
+function parseRecipeAny(json: string, quietWarnings: boolean): {
   recipe: Recipe;
   source: "native" | "cyberchef";
   warningCount: number;
@@ -48,7 +49,7 @@ function parseRecipeAny(json: string): {
     return { recipe: parseRecipe(json), source: "native", warningCount: 0 };
   } catch {
     const imported = importCyberChefRecipe(json);
-    if (imported.warnings.length > 0) {
+    if (imported.warnings.length > 0 && !quietWarnings) {
       warn(
         `CyberChef import skipped ${imported.warnings.length} unsupported step(s).`
       );
@@ -70,6 +71,7 @@ type CliOptions = {
   timeoutMs: number;
   strictCyberChef: boolean;
   failOnWarning: boolean;
+  quietWarnings: boolean;
   showTrace: boolean;
   traceJson: boolean;
   inputEncoding: "text" | "hex" | "base64";
@@ -81,6 +83,7 @@ function parseArgs(args: string[]): CliOptions {
   let timeoutMs = DEFAULT_TIMEOUT_MS;
   let strictCyberChef = false;
   let failOnWarning = false;
+  let quietWarnings = false;
   let showTrace = false;
   let traceJson = false;
   let inputEncoding: CliOptions["inputEncoding"] = "text";
@@ -97,6 +100,10 @@ function parseArgs(args: string[]): CliOptions {
     }
     if (arg === "--fail-on-warning") {
       failOnWarning = true;
+      continue;
+    }
+    if (arg === "--quiet-warnings") {
+      quietWarnings = true;
       continue;
     }
     if (arg === "--help") {
@@ -166,6 +173,7 @@ function parseArgs(args: string[]): CliOptions {
     timeoutMs,
     strictCyberChef,
     failOnWarning,
+    quietWarnings,
     showTrace,
     traceJson,
     inputEncoding,
@@ -180,7 +188,7 @@ function parseArgs(args: string[]): CliOptions {
 const opts = parseArgs(process.argv.slice(2));
 
 const recipeJson = fs.readFileSync(opts.recipePath, "utf-8");
-const parsedRecipe = parseRecipeAny(recipeJson);
+const parsedRecipe = parseRecipeAny(recipeJson, opts.quietWarnings);
 if (opts.strictCyberChef && parsedRecipe.source === "cyberchef" && parsedRecipe.warningCount > 0) {
   die(
     `Strict CyberChef mode failed: ${parsedRecipe.warningCount} unsupported step(s) were skipped.`
