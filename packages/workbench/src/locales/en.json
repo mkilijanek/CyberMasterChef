@@ -67,6 +67,8 @@
   "queueWaitMs": "Queue wait (ms)",
   "workerIdLabel": "Worker ID",
   "attemptLabel": "Attempt",
+  "queueDepthEnqueue": "Queue depth on enqueue",
+  "queueDepthStart": "Queue depth on start",
   "recipeHashShort": "Recipe hash",
   "inputHashShort": "Input hash",
   "traceEmpty": "No execution trace yet",

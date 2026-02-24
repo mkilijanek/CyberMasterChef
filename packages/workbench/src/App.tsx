@@ -35,6 +35,8 @@ type RunInfo = {
   queuedMs?: number;
   workerId?: number;
   attempt?: number;
+  queueDepthAtEnqueue?: number;
+  queueDepthAtStart?: number;
 };
 
 const HASH_PREFIX = "#state=";
@@ -326,7 +328,9 @@ export function App(): React.JSX.Element {
       stepDurationAvgMs: lastRunInfo.stepDurationAvgMs,
       slowestStep: lastRunInfo.slowestStep,
       queuedMs: lastRunInfo.queuedMs ?? null,
-      workerId: lastRunInfo.workerId ?? null
+      workerId: lastRunInfo.workerId ?? null,
+      queueDepthAtEnqueue: lastRunInfo.queueDepthAtEnqueue ?? null,
+      queueDepthAtStart: lastRunInfo.queueDepthAtStart ?? null
     };
     const copied = await copyText(JSON.stringify(summary, null, 2));
     if (!copied) {
@@ -576,6 +580,12 @@ export function App(): React.JSX.Element {
         </div>
         <div className="traceCount">
           {t("attemptLabel")}: {lastRunInfo?.attempt ?? "-"}
+        </div>
+        <div className="traceCount">
+          {t("queueDepthEnqueue")}: {lastRunInfo?.queueDepthAtEnqueue ?? "-"}
+        </div>
+        <div className="traceCount">
+          {t("queueDepthStart")}: {lastRunInfo?.queueDepthAtStart ?? "-"}
         </div>
         <div className="traceCount">
           {t("recipeHashShort")}: {lastRunInfo ? lastRunInfo.recipeHash.slice(0, 12) : "-"}

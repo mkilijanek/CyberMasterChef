@@ -67,6 +67,8 @@
   "queueWaitMs": "Oczekiwanie w kolejce (ms)",
   "workerIdLabel": "ID workera",
   "attemptLabel": "Próba",
+  "queueDepthEnqueue": "Głębokość kolejki przy dodaniu",
+  "queueDepthStart": "Głębokość kolejki przy starcie",
   "recipeHashShort": "Hash receptury",
   "inputHashShort": "Hash wejścia",
   "traceEmpty": "Brak śladu wykonania",
