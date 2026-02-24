@@ -133,4 +133,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "firewall_disable_cmd", description: "Firewall disable marker", pattern: new RegExp("netsh\\s+advfirewall\\s+set\\s+allprofiles\\s+state\\s+off", "i") },
   { id: "defender_disable_cmd", description: "Defender disable marker", pattern: new RegExp("set-mppreference\\s+-disablerealtimemonitoring", "i") },
   { id: "amsi_bypass_marker", description: "AMSI bypass marker", pattern: new RegExp("amsiutils", "i") },
+  { id: "etw_bypass_marker", description: "ETW bypass marker", pattern: new RegExp("eventprovider", "i") },
 ];
