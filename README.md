@@ -80,6 +80,7 @@ Operations are grouped by package priority:
 - Wave 11 network safe-sharing adds `network.fangIPs`.
 - Wave 12 forensic hash expansion adds `forensic.extractSha1`.
 - Wave 12 forensic hash expansion adds `forensic.extractSha512`.
+- Wave 13 forensic token IOC expansion adds `forensic.extractJwt`.
 - C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
 
 ## Current functionality
@@ -283,6 +284,7 @@ Operations are grouped by package priority:
   - `forensic.extractSha1`
   - `forensic.extractSha256`
   - `forensic.extractSha512`
+  - `forensic.extractJwt`
   - `network.extractIPs`
   - `network.extractIPv6`
   - `network.defangIPs`

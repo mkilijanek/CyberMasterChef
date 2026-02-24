@@ -77,6 +77,11 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 - [x] `forensic.extractSha1` hash IOC operation.
 - [x] `forensic.extractSha512` hash IOC operation.
 
+## Wave 13 backlog
+
+- [x] `forensic.extractJwt` token IOC operation.
+- [ ] `forensic.extractCves` vulnerability IOC operation.
+
 ## Queue extension
 
 - [ ] Task 21: `Basic Pre-Triage (Forensic/Malware Analysis)` module (post Wave 1-20 completion).

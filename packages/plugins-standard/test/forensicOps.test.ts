@@ -7,6 +7,7 @@ import { extractMd5 } from "../src/ops/extractMd5.js";
 import { extractSha256 } from "../src/ops/extractSha256.js";
 import { extractSha1 } from "../src/ops/extractSha1.js";
 import { extractSha512 } from "../src/ops/extractSha512.js";
+import { extractJwt } from "../src/ops/extractJwt.js";
 
 describe("forensic operations", () => {
   it("extracts printable strings from bytes", async () => {
@@ -147,5 +148,18 @@ describe("forensic operations", () => {
       }
     });
     expect(out.output).toEqual({ type: "string", value: full });
+  });
+
+  it("extracts unique JWT candidates", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(extractJwt);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "forensic.extractJwt" }] };
+    const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjMifQ.dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk";
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: `${token} ${token}` }
+    });
+    expect(out.output).toEqual({ type: "string", value: token });
   });
 });
