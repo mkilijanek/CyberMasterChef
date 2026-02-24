@@ -332,6 +332,9 @@ export function App(): React.JSX.Element {
         <button className="buttonSmall" onClick={() => resetWorkspace()}>
           {t("reset")}
         </button>
+        <div className="traceCount">
+          {t("traceSteps")}: {trace.length}
+        </div>
         <div className="status" aria-live="polite">
           {status === "working" ? t("statusWorking") : t("statusReady")}
         </div>

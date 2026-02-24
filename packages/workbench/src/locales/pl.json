@@ -33,6 +33,7 @@
   "moveDown": "W dół",
   "args": "Argumenty",
   "trace": "Ślad",
+  "traceSteps": "Kroki śladu",
   "traceEmpty": "Brak śladu wykonania",
   "step": "Krok",
   "statusReady": "Gotowe",

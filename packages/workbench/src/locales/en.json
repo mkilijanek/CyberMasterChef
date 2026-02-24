@@ -33,6 +33,7 @@
   "moveDown": "Down",
   "args": "Arguments",
   "trace": "Trace",
+  "traceSteps": "Trace steps",
   "traceEmpty": "No execution trace yet",
   "step": "Step",
   "statusReady": "Ready",
