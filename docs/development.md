@@ -195,6 +195,7 @@ Example operation IDs in use:
 - `text.countNonAscii`
 - `text.countNonEmptyLines`
 - `text.firstWord`
+- `text.lastWord`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
