@@ -44,6 +44,19 @@ describe("engine", () => {
     expect(result.output.type).toBe("string");
     expect(result.output.value).toBe("hello");
     expect(result.trace).toHaveLength(2);
+    expect(result.trace[0]?.durationMs).toBeTypeOf("number");
+    expect(result.trace[1]?.durationMs).toBeTypeOf("number");
+    expect(result.meta.startedAt).toBeTypeOf("number");
+    expect(result.meta.endedAt).toBeTypeOf("number");
+    expect(result.meta.durationMs).toBeGreaterThanOrEqual(0);
+    expect(result.meta.endedAt).toBeGreaterThanOrEqual(result.meta.startedAt);
+    expect(result.meta.stepDurationTotalMs).toBeGreaterThanOrEqual(0);
+    expect(result.meta.stepDurationAvgMs).toBeGreaterThanOrEqual(0);
+    expect(result.meta.slowestStep).not.toBeNull();
+    expect(
+      result.meta.slowestStep?.opId === "test.toBytes" ||
+        result.meta.slowestStep?.opId === "test.toString"
+    ).toBe(true);
   });
 
   it("throws OperationNotFoundError for unknown opId", async () => {
@@ -64,5 +77,34 @@ describe("engine", () => {
     });
     expect(result.output).toEqual({ type: "string", value: "unchanged" });
     expect(result.trace).toHaveLength(0);
+    expect(result.meta.durationMs).toBeGreaterThanOrEqual(0);
+    expect(result.meta.stepDurationTotalMs).toBe(0);
+    expect(result.meta.stepDurationAvgMs).toBe(0);
+    expect(result.meta.slowestStep).toBeNull();
+  });
+
+  it("aborts when signal is already aborted", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register({
+      id: "test.pass",
+      name: "Pass-through",
+      description: "returns input",
+      input: ["string"],
+      output: "string",
+      args: [],
+      run: ({ input }) => input
+    });
+    const recipe: Recipe = { version: 1, steps: [{ opId: "test.pass" }] };
+    const controller = new AbortController();
+    controller.abort();
+
+    await expect(
+      runRecipe({
+        registry,
+        recipe,
+        input: { type: "string", value: "x" },
+        signal: controller.signal
+      })
+    ).rejects.toThrow("Aborted");
   });
 });

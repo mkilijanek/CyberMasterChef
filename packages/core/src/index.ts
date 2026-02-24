@@ -4,6 +4,8 @@ export * from "./registry.js";
 export * from "./engine.js";
 export * from "./serde.js";
 export * from "./conversion.js";
+export * from "./reproducibility.js";
+export * from "./traceSummary.js";
 export * from "./utils/base64.js";
 export * from "./utils/hex.js";
 export * from "./utils/bytes.js";

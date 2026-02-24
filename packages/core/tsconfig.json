@@ -7,5 +7,5 @@
     "sourceMap": true,
     "noEmitOnError": true
   },
-  "include": ["src", "test"]
+  "include": ["src", "test", "vitest.config.ts"]
 }
