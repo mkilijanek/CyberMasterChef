@@ -11,3 +11,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 01: `ps_encoded_command` - PowerShell encoded command usage
 - [x] Stage 02: `ps_execution_policy_bypass` - PowerShell execution policy bypass
 - [x] Stage 03: `cmd_from_powershell` - PowerShell launching cmd
+- [x] Stage 04: `mshta_invocation` - MSHTA execution chain
