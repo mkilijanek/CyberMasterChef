@@ -101,6 +101,7 @@ export function RecipeEditor(props: {
                   className="buttonSmall"
                   onClick={() => props.onRunToStep?.(i)}
                   aria-label={t("runToStep")}
+                  data-testid={`recipe-run-to-step-${i}`}
                 >
                   {t("runToStep")}
                 </button>

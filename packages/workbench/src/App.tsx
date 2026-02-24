@@ -91,7 +91,9 @@ export function App(): React.JSX.Element {
     return saved === null ? false : saved === "1";
   });
   const [timeoutMs, setTimeoutMs] = React.useState<number>(() => {
-    const saved = Number(localStorage.getItem("timeoutMs.v1"));
+    const raw = localStorage.getItem("timeoutMs.v1");
+    if (raw === null) return DEFAULT_TIMEOUT_MS;
+    const saved = Number(raw);
     if (!Number.isFinite(saved)) return DEFAULT_TIMEOUT_MS;
     return Math.min(MAX_TIMEOUT_MS, Math.max(MIN_TIMEOUT_MS, saved));
   });
@@ -105,11 +107,18 @@ export function App(): React.JSX.Element {
   const sandboxRef = React.useRef<SandboxClient | null>(null);
   const searchInputRef = React.useRef<HTMLInputElement | null>(null);
   const traceSearchInputRef = React.useRef<HTMLInputElement | null>(null);
-  if (!sandboxRef.current) sandboxRef.current = new SandboxClient();
+
+  function getSandboxClient(): SandboxClient {
+    if (!sandboxRef.current) sandboxRef.current = new SandboxClient();
+    return sandboxRef.current;
+  }
 
   React.useEffect(() => {
+    getSandboxClient();
     return () => {
-      sandboxRef.current?.dispose();
+      const client = sandboxRef.current;
+      sandboxRef.current = null;
+      client?.dispose();
     };
   }, []);
 
@@ -147,7 +156,7 @@ export function App(): React.JSX.Element {
     const startedAt = performance.now();
     try {
       const inVal: DataValue = { type: "string", value: input };
-      const res = await sandboxRef.current!.bake(recipeToRun, inVal, {
+      const res = await getSandboxClient().bake(recipeToRun, inVal, {
         timeoutMs
       });
       setTrace(res.trace);
@@ -363,13 +372,14 @@ export function App(): React.JSX.Element {
           />
           {t("autoBake")}
         </label>
-        <button className="button" onClick={() => void run()}>
+        <button className="button" data-testid="run-button" onClick={() => void run()}>
           {t("run")}
         </button>
         <label className="timeoutControl">
           <span>{t("timeoutMs")}</span>
           <input
             className="timeoutInput"
+            data-testid="timeout-input"
             type="number"
             min={MIN_TIMEOUT_MS}
             max={MAX_TIMEOUT_MS}
@@ -393,7 +403,7 @@ export function App(): React.JSX.Element {
         >
           {t("cancel")}
         </button>
-        <button className="buttonSmall" onClick={() => void shareLink()}>
+        <button className="buttonSmall" data-testid="share-link-button" onClick={() => void shareLink()}>
           {t("shareLink")}
         </button>
         <button className="buttonSmall" onClick={() => void exportNativeRecipe()}>
@@ -402,7 +412,7 @@ export function App(): React.JSX.Element {
         <button className="buttonSmall" onClick={() => void exportCyberChef()}>
           {t("exportCyberChef")}
         </button>
-        <button className="buttonSmall" onClick={() => importAnyRecipe()}>
+        <button className="buttonSmall" data-testid="import-recipe-button" onClick={() => importAnyRecipe()}>
           {t("importRecipe")}
         </button>
         <button className="buttonSmall" onClick={() => void copyOutput()}>

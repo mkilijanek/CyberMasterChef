@@ -15,6 +15,7 @@ pnpm dev         # starts workbench at http://localhost:5173
 pnpm typecheck   # TypeScript check (Vite is transpile-only!)
 pnpm lint        # ESLint across all packages
 pnpm test        # Vitest
+pnpm test:e2e    # Playwright critical flows (workbench)
 pnpm build       # full build
 pnpm ci          # lint + typecheck + test + build
 ```
@@ -56,9 +57,18 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
   - `packages/plugins-standard/test/standardPlugin.test.ts`
   - `packages/plugins-standard/test/goldenRecipes.test.ts` (golden regression baseline)
   - `packages/workbench/src/worker/runtime.test.ts` (worker protocol cancel/timeout/race)
+- E2E Playwright:
+  - `e2e/workbench.spec.ts` (import, run-to-step, share link, timeout config persistence)
 - `engine` tests include abort/cancel behavior coverage (`AbortSignal` path).
-- E2E: Playwright (roadmap)
-- Golden recipes: regression tests against CyberChef-compatible recipe JSON (roadmap)
+- Golden recipes: regression tests against CyberChef-compatible recipe JSON (actively extended).
+
+## Roadmap status
+
+- Phase A (parity + tests) is now complete in baseline scope:
+  - expanded golden parity recipe chains in `plugins-standard`,
+  - worker protocol integration coverage for cancel/timeout/race,
+  - Playwright critical flow coverage for import, run-to-step, share-link and timeout persistence.
+- Next focus shifts to Phase B (runtime scalability: worker pool + streaming/chunking).
 
 ## Recipe formats
 

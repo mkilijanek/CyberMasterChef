@@ -263,6 +263,7 @@ Operations are grouped by package priority:
 - Quality baseline:
   - golden recipe regression suite for core operation chains in `packages/plugins-standard/test/goldenRecipes.test.ts`
   - worker protocol integration suite for cancel/timeout/race in `packages/workbench/src/worker/runtime.test.ts`
+  - Playwright suite for import/run-to-step/share-link/timeout UX in `e2e/workbench.spec.ts`
 
 ## Getting started
 
@@ -279,9 +280,14 @@ pnpm dev        # starts workbench at http://localhost:5173
 pnpm typecheck  # TypeScript check (separate from Vite build)
 pnpm lint       # ESLint
 pnpm test       # Vitest
+pnpm test:e2e   # Playwright critical flows
 pnpm build      # full build all packages
 pnpm ci         # lint + typecheck + test + build
 ```
+
+Phase A status:
+- Completed baseline parity-and-tests scope (golden parity recipes, worker protocol integration tests, Playwright critical flows).
+- Next roadmap focus: runtime scalability (worker pool and streaming/chunking).
 
 ## Security
 
