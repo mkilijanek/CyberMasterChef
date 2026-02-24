@@ -67,6 +67,7 @@ Operations are grouped by package priority:
 - Wave 6 date-time expansion adds `date.unixToWindowsFiletime`.
 - Wave 6 date-time expansion adds `date.windowsFiletimeToUnix`.
 - Wave 6 date-time expansion adds `date.parseObjectIdTimestamp`.
+- Wave 7 forensic expansion adds `forensic.extractEmails`.
 - C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
 
 ## Current functionality
@@ -260,6 +261,7 @@ Operations are grouped by package priority:
   - `format.jsonMinify`
   - `format.jsonBeautify`
   - `forensic.extractStrings`
+  - `forensic.extractEmails`
   - `network.extractIPs`
   - `network.extractUrls`
   - `network.defangUrls`

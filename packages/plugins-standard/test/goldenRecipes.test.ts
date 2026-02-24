@@ -104,6 +104,15 @@ const goldenCases: GoldenCase[] = [
     expected: "2012-10-17T21:13:27.000Z"
   },
   {
+    name: "Extract emails from mixed input",
+    input: "contact: alice@example.com, ALICE@example.com, bob@test.org",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "forensic.extractEmails" }]
+    },
+    expected: "alice@example.com\nbob@test.org"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {

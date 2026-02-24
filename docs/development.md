@@ -184,6 +184,7 @@ Wave 1 implemented so far:
 - Wave 6 date-time: `date.unixToWindowsFiletime`
 - Wave 6 date-time: `date.windowsFiletimeToUnix`
 - Wave 6 date-time: `date.parseObjectIdTimestamp`
+- Wave 7 forensic: `forensic.extractEmails`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip
 

@@ -46,6 +46,11 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 - [x] `date.windowsFiletimeToUnix` operation.
 - [x] `date.parseObjectIdTimestamp` operation.
 
+## Wave 7 backlog
+
+- [x] `forensic.extractEmails` IOC operation.
+- [ ] `forensic.extractDomains` IOC operation.
+
 ## Quality gates
 
 - New operation must include:

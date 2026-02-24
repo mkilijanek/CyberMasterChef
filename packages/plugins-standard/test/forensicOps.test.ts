@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core";
 import { extractStrings } from "../src/ops/extractStrings.js";
+import { extractEmails } from "../src/ops/extractEmails.js";
 
 describe("forensic operations", () => {
   it("extracts printable strings from bytes", async () => {
@@ -28,5 +29,26 @@ describe("forensic operations", () => {
       input: { type: "string", value: "\u0000abc\u0000de\u0000WXYZ" }
     });
     expect(out.output).toEqual({ type: "string", value: "abc\nWXYZ" });
+  });
+
+  it("extracts unique emails from text input", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(extractEmails);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "forensic.extractEmails" }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: {
+        type: "string",
+        value: "Admin@Example.com copy admin@example.com and sec.ops@test.io"
+      }
+    });
+    expect(out.output).toEqual({
+      type: "string",
+      value: "admin@example.com\nsec.ops@test.io"
+    });
   });
 });
