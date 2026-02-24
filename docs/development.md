@@ -76,6 +76,7 @@ CLI behavior:
 - `--trace-json` prints execution trace as JSON on stderr.
 - `--list-ops` prints available operation IDs/names and exits.
 - `--list-ops-json` prints full operation metadata as JSON and exits.
+- `--list-ops-filter <query>` filters both list outputs by ID/name/description.
 - `--input-encoding text|hex|base64` controls how CLI input is parsed before recipe execution.
 - `--bytes-output hex|base64|utf8` controls how bytes outputs are rendered on stdout.
 - `--help` prints CLI usage and option reference.

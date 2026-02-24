@@ -92,6 +92,7 @@ Operations are grouped by package priority:
   - supports `--show-trace` and `--trace-json` for pipeline debugging in terminal
   - supports `--list-ops` to inspect currently registered operations
   - supports `--list-ops-json` for machine-readable operation discovery
+  - supports `--list-ops-filter` to narrow operation listings in both list modes
   - supports `--input-encoding text|hex|base64` for binary-oriented CLI runs
   - supports `--bytes-output hex|base64|utf8` to choose stdout format for byte outputs
   - supports `--max-output-chars` for bounded stdout in scripts/CI

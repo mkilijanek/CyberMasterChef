@@ -40,6 +40,7 @@ const usageText =
   "  --trace-json                     print trace JSON to stderr\n" +
   "  --list-ops                       print available operation ids and names\n" +
   "  --list-ops-json                  print available operations as JSON\n" +
+  "  --list-ops-filter <query>        filter operation listings by id/name/description\n" +
   "  --input-encoding text|hex|base64 parse CLI input before execution\n" +
   "  --bytes-output hex|base64|utf8   bytes output rendering on stdout\n" +
   "  --max-output-chars <n>           limit output length for string/json/bytes rendering\n" +
@@ -84,6 +85,7 @@ type CliOptions = {
   traceJson: boolean;
   listOps: boolean;
   listOpsJson: boolean;
+  listOpsFilter?: string;
   inputEncoding: "text" | "hex" | "base64";
   bytesOutput: "hex" | "base64" | "utf8";
   maxOutputChars?: number;
@@ -100,6 +102,7 @@ function parseArgs(args: string[]): CliOptions {
   let traceJson = false;
   let listOps = false;
   let listOpsJson = false;
+  let listOpsFilter: string | undefined;
   let inputEncoding: CliOptions["inputEncoding"] = "text";
   let bytesOutput: CliOptions["bytesOutput"] = "hex";
   let maxOutputChars: number | undefined;
@@ -150,6 +153,13 @@ function parseArgs(args: string[]): CliOptions {
     }
     if (arg === "--list-ops-json") {
       listOpsJson = true;
+      continue;
+    }
+    if (arg === "--list-ops-filter") {
+      const raw = args[i + 1];
+      if (!raw) die("Missing value for --list-ops-filter");
+      listOpsFilter = raw;
+      i++;
       continue;
     }
     if (arg === "--input-encoding") {
@@ -217,6 +227,7 @@ function parseArgs(args: string[]): CliOptions {
     inputEncoding,
     bytesOutput
   };
+  if (listOpsFilter !== undefined) out.listOpsFilter = listOpsFilter;
   const inputPath = positional[1];
   if (inputPath) out.inputPath = inputPath;
   if (maxOutputChars !== undefined) out.maxOutputChars = maxOutputChars;
@@ -229,13 +240,29 @@ const registry = new InMemoryRegistry();
 standardPlugin.register(registry);
 
 if (opts.listOps) {
-  for (const op of registry.list()) {
+  const filter = opts.listOpsFilter?.trim().toLowerCase();
+  const ops = registry.list().filter((op) =>
+    !filter
+      ? true
+      : op.id.toLowerCase().includes(filter) ||
+        op.name.toLowerCase().includes(filter) ||
+        op.description.toLowerCase().includes(filter)
+  );
+  for (const op of ops) {
     process.stdout.write(`${op.id}\t${op.name}\n`);
   }
   process.exit(0);
 }
 if (opts.listOpsJson) {
-  process.stdout.write(`${JSON.stringify(registry.list())}\n`);
+  const filter = opts.listOpsFilter?.trim().toLowerCase();
+  const ops = registry.list().filter((op) =>
+    !filter
+      ? true
+      : op.id.toLowerCase().includes(filter) ||
+        op.name.toLowerCase().includes(filter) ||
+        op.description.toLowerCase().includes(filter)
+  );
+  process.stdout.write(`${JSON.stringify(ops)}\n`);
   process.exit(0);
 }
 
