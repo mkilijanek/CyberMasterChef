@@ -33,6 +33,7 @@ describe("standardPlugin", () => {
       "text.replace",
       "text.reverse",
       "text.slice",
+      "text.startsWith",
       "text.trim",
       "text.trimEnd",
       "text.trimStart",

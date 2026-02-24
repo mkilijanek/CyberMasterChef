@@ -110,6 +110,7 @@ Example operation IDs in use:
 - `text.lastLine`
 - `text.normalizeWhitespace`
 - `text.removeBlankLines`
+- `text.startsWith`
 - `text.replace`
 - `text.slice`
 - `text.repeat`
