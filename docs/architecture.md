@@ -36,6 +36,7 @@ All recipe execution happens inside a Web Worker:
 - Hard abort via `AbortSignal`
 - Cancellable runs via worker `cancel` message
 - Per-run timeout (default 10s in workbench, user-configurable) wired from UI -> client -> worker -> engine signal
+- Worker results include reproducibility metadata (`runId`, `startedAt`, `endedAt`, `durationMs`, `recipeHash`, `inputHash`)
 - Workbench enforces timeout bounds (`100..120000 ms`) to avoid invalid runtime settings
 - Client-side worker lifecycle cleanup on unmount (`dispose`) to prevent pending-request leaks
 
@@ -48,6 +49,8 @@ All recipe execution happens inside a Web Worker:
 - Run-to-step action for partial pipeline execution
 - Run-to-step can be triggered from recipe steps and trace entries
 - Run duration telemetry visible in header (`ms`) for quick performance feedback
+- Trace entries include per-step execution time (`durationMs`)
+- Header surfaces run id and short recipe/input hashes for quick verification
 - Recipe and input persisted in local storage
 - Shareable deep links via URL hash (`#state=` payload)
 - Recipe import/export:

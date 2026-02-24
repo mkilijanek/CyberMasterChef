@@ -249,6 +249,7 @@ Operations are grouped by package priority:
   - supports `--summary-json` for machine-readable runtime diagnostics in CLI
   - supports `--show-trace` and `--trace-json` for pipeline debugging in terminal
   - supports `--trace-limit` to cap trace verbosity in terminal/CI logs
+  - supports `--show-repro`, `--repro-json`, and `--repro-file` for reproducibility metadata and bundle export
   - supports `--list-ops` to inspect currently registered operations
   - supports `--list-ops-json` for machine-readable operation discovery
   - supports `--list-ops-filter` to narrow operation listings in both list modes
@@ -265,6 +266,8 @@ Operations are grouped by package priority:
   - golden negative/degradation suite for malformed inputs in `packages/plugins-standard/test/goldenNegative.test.ts`
   - semantic round-trip parity suite (`native -> cyberchef -> native`) in `packages/plugins-standard/test/semanticRoundtrip.test.ts`
   - determinism suite (stable output + trace across repeated runs) in `packages/plugins-standard/test/determinism.test.ts`
+  - run telemetry in trace (`durationMs` per step) with run-level metadata (`startedAt/endedAt/durationMs`)
+  - reproducibility hashes (`recipeHash` + `inputHash`) in worker run results and workbench UI
   - worker protocol integration suite for cancel/timeout/race in `packages/workbench/src/worker/runtime.test.ts`
   - Playwright suite for import/run-to-step/share-link/timeout UX in `e2e/workbench.spec.ts`
   - Playwright negative-flow suite for invalid import and empty-search behavior in `e2e/workbench-negative.spec.ts`

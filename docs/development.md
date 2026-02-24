@@ -75,6 +75,11 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
 - CI now enforces Playwright E2E (`pnpm test:e2e`) in `.github/workflows/ci.yml`.
 - `engine` tests include abort/cancel behavior coverage (`AbortSignal` path).
 - Golden recipes: regression tests against CyberChef-compatible recipe JSON (actively extended).
+- Reproducibility helpers in core:
+  - `hashRecipe(recipe)` and `hashDataValue(input)` in `packages/core/src/reproducibility.ts`
+- Engine trace metadata:
+  - per-step `durationMs`
+  - run-level `meta` with `startedAt`, `endedAt`, `durationMs`
 
 ## Roadmap status
 
@@ -117,6 +122,9 @@ CLI behavior:
 - `--show-trace` prints execution trace (step/op/input->output types) on stderr.
 - `--trace-json` prints execution trace as JSON on stderr.
 - `--trace-limit <n>` limits how many trace rows are printed for trace outputs.
+- `--show-repro` prints compact reproducibility metadata on stderr.
+- `--repro-json` prints reproducibility bundle as JSON on stderr.
+- `--repro-file <path>` writes reproducibility bundle as JSON to file.
 - `--list-ops` prints available operation IDs/names and exits.
 - `--list-ops-json` prints full operation metadata as JSON and exits.
 - `--list-ops-filter <query>` filters both list outputs by ID/name/description.
