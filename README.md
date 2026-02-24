@@ -144,6 +144,7 @@ Operations are grouped by package priority:
   - `text.collapseUnderscores`
   - `text.removeTabs`
   - `text.tabsToSpaces`
+  - `text.spacesToTabs`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
