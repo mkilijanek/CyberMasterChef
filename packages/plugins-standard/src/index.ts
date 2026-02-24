@@ -78,6 +78,7 @@ import { wordsToLines } from "./ops/wordsToLines.js";
 import { linesToWords } from "./ops/linesToWords.js";
 import { linesToCsv } from "./ops/linesToCsv.js";
 import { csvToLines } from "./ops/csvToLines.js";
+import { stripAccents } from "./ops/stripAccents.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -159,6 +160,7 @@ export const standardPlugin: Plugin = {
     registry.register(linesToWords);
     registry.register(linesToCsv);
     registry.register(csvToLines);
+    registry.register(stripAccents);
     registry.register(sha256);
   }
 };
