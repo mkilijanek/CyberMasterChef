@@ -122,6 +122,15 @@ const goldenCases: GoldenCase[] = [
     expected: "a.example.com\nb.test.org"
   },
   {
+    name: "Sort JSON keys recursively",
+    input: "{\"z\":1,\"a\":{\"k\":2,\"b\":3}}",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "format.jsonSortKeys" }]
+    },
+    expected: "{\"a\":{\"b\":3,\"k\":2},\"z\":1}"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {

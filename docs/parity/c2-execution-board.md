@@ -51,6 +51,11 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 - [x] `forensic.extractEmails` IOC operation.
 - [x] `forensic.extractDomains` IOC operation.
 
+## Wave 8 backlog
+
+- [x] `format.jsonSortKeys` canonicalization operation.
+- [ ] `format.jsonExtractKeys` inspection operation.
+
 ## Quality gates
 
 - New operation must include:

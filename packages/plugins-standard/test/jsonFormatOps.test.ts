@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core";
 import { jsonMinify } from "../src/ops/jsonMinify.js";
 import { jsonBeautify } from "../src/ops/jsonBeautify.js";
+import { jsonSortKeys } from "../src/ops/jsonSortKeys.js";
 
 describe("json format operations", () => {
   it("minifies JSON payload", async () => {
@@ -40,5 +41,17 @@ describe("json format operations", () => {
     await expect(
       runRecipe({ registry, recipe, input: { type: "string", value: "{not-json}" } })
     ).rejects.toThrow("Invalid JSON input");
+  });
+
+  it("sorts keys recursively in JSON objects", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(jsonSortKeys);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "format.jsonSortKeys" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: '{"b":1,"a":{"d":2,"c":3}}' }
+    });
+    expect(out.output).toEqual({ type: "string", value: '{"a":{"c":3,"d":2},"b":1}' });
   });
 });
