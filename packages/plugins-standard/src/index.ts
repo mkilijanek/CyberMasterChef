@@ -24,6 +24,7 @@ import { trimEnd } from "./ops/trimEnd.js";
 import { length } from "./ops/length.js";
 import { wordCount } from "./ops/wordCount.js";
 import { lineCount } from "./ops/lineCount.js";
+import { firstLine } from "./ops/firstLine.js";
 
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
@@ -53,6 +54,7 @@ export const standardPlugin: Plugin = {
     registry.register(length);
     registry.register(wordCount);
     registry.register(lineCount);
+    registry.register(firstLine);
     registry.register(sha256);
   }
 };

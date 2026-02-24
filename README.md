@@ -81,6 +81,7 @@ Operations are grouped by package priority:
   - `text.length`
   - `text.wordCount`
   - `text.lineCount`
+  - `text.firstLine`
   - `text.replace`
   - `text.slice`
   - `text.repeat`
