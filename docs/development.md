@@ -55,6 +55,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
   - `packages/core/test/serde.test.ts` (includes CyberChef import/export round-trip checks)
   - `packages/plugins-standard/test/standardPlugin.test.ts`
   - `packages/plugins-standard/test/goldenRecipes.test.ts` (golden regression baseline)
+  - `packages/workbench/src/worker/runtime.test.ts` (worker protocol cancel/timeout/race)
 - `engine` tests include abort/cancel behavior coverage (`AbortSignal` path).
 - E2E: Playwright (roadmap)
 - Golden recipes: regression tests against CyberChef-compatible recipe JSON (roadmap)

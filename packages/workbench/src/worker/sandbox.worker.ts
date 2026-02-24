@@ -1,7 +1,8 @@
 /// <reference lib="webworker" />
 import { runRecipe } from "@cybermasterchef/core";
-import type { WorkerRequest, WorkerResponse } from "./protocol";
+import type { WorkerRequest } from "./protocol";
 import { createRegistryWithBuiltins } from "../plugins/builtins";
+import { createWorkerRuntime } from "./runtime";
 
 // Defense-in-depth: disable network APIs inside the worker.
 // Production hosting must also enforce CSP connect-src 'none'.
@@ -26,63 +27,20 @@ function disableNetworkApis(): void {
 disableNetworkApis();
 
 const registry = createRegistryWithBuiltins();
-const activeRuns = new Map<string, AbortController>();
-
-self.addEventListener("message", (ev: MessageEvent<WorkerRequest>) => {
-  void handle(ev.data);
+const runtime = createWorkerRuntime({
+  registry,
+  runRecipe,
+  postMessage: (msg, transfer) => {
+    if (transfer && transfer.length > 0) {
+      self.postMessage(msg, transfer);
+    } else {
+      self.postMessage(msg);
+    }
+  },
+  setTimeoutFn: (handler, ms) => self.setTimeout(handler, ms),
+  clearTimeoutFn: (id) => self.clearTimeout(id)
 });
 
-async function handle(msg: WorkerRequest): Promise<void> {
-  if (msg.type === "init") {
-    const out: WorkerResponse = { type: "ready" };
-    self.postMessage(out);
-    return;
-  }
-
-  if (msg.type === "bake") {
-    const controller = new AbortController();
-    activeRuns.set(msg.id, controller);
-    const timeoutMs =
-      typeof msg.timeoutMs === "number" && Number.isFinite(msg.timeoutMs) && msg.timeoutMs > 0
-        ? msg.timeoutMs
-        : 0;
-    const timeoutHandle =
-      timeoutMs > 0
-        ? self.setTimeout(() => {
-            controller.abort();
-          }, timeoutMs)
-        : null;
-    try {
-      const res = await runRecipe({
-        registry,
-        recipe: msg.recipe,
-        input: msg.input,
-        signal: controller.signal
-      });
-      const out: WorkerResponse = {
-        type: "result",
-        id: msg.id,
-        output: res.output,
-        trace: res.trace
-      };
-      // Transfer bytes buffer to avoid copy
-      if (res.output.type === "bytes") {
-        self.postMessage(out, [res.output.value.buffer]);
-      } else {
-        self.postMessage(out);
-      }
-    } catch (e) {
-      const message = e instanceof Error ? e.message : String(e);
-      const out: WorkerResponse = { type: "error", id: msg.id, message };
-      self.postMessage(out);
-    } finally {
-      if (timeoutHandle !== null) self.clearTimeout(timeoutHandle);
-      activeRuns.delete(msg.id);
-    }
-    return;
-  }
-
-  if (msg.type === "cancel") {
-    activeRuns.get(msg.id)?.abort();
-  }
-}
+self.addEventListener("message", (ev: MessageEvent<WorkerRequest>) => {
+  void runtime.handle(ev.data);
+});

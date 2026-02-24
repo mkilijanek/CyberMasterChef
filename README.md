@@ -262,6 +262,7 @@ Operations are grouped by package priority:
   - supports `--max-output-chars` for bounded stdout in scripts/CI
 - Quality baseline:
   - golden recipe regression suite for core operation chains in `packages/plugins-standard/test/goldenRecipes.test.ts`
+  - worker protocol integration suite for cancel/timeout/race in `packages/workbench/src/worker/runtime.test.ts`
 
 ## Getting started
 
