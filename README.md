@@ -220,6 +220,7 @@ Operations are grouped by package priority:
   - `text.countColons`
   - `text.countSemicolons`
   - `text.countSlashes`
+  - `text.countBackslashes`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
