@@ -1,0 +1,136 @@
+import type { DataValue, Recipe } from "@cybermasterchef/core";
+import type { BakeResult, ExecutionClient } from "./clientTypes";
+import { SandboxClient } from "./workerClient";
+
+type QueueTask = {
+  id: string;
+  recipe: Recipe;
+  input: DataValue;
+  timeoutMs?: number;
+  priority: "normal" | "high";
+  enqueuedAt: number;
+  resolve: (value: BakeResult) => void;
+  reject: (reason?: unknown) => void;
+};
+
+type WorkerSlot = {
+  id: number;
+  busy: boolean;
+  client: ExecutionClient;
+  activeTaskId: string | null;
+};
+
+function nextTaskId(): string {
+  return crypto.randomUUID();
+}
+
+export class WorkerPoolClient implements ExecutionClient {
+  private readonly slots: WorkerSlot[];
+  private readonly queue: QueueTask[] = [];
+  private disposed = false;
+
+  constructor(opts?: {
+    size?: number;
+    clientFactory?: () => ExecutionClient;
+  }) {
+    const size = Math.max(1, Math.floor(opts?.size ?? 2));
+    const clientFactory = opts?.clientFactory ?? (() => new SandboxClient());
+    this.slots = Array.from({ length: size }, (_, index) => ({
+      id: index,
+      busy: false,
+      client: clientFactory(),
+      activeTaskId: null
+    }));
+  }
+
+  async init(): Promise<void> {
+    if (this.disposed) throw new Error("WorkerPoolClient is disposed");
+    await Promise.all(this.slots.map((s) => s.client.init()));
+  }
+
+  async bake(
+    recipe: Recipe,
+    input: DataValue,
+    opts?: { timeoutMs?: number; priority?: "normal" | "high" }
+  ): Promise<BakeResult> {
+    if (this.disposed) throw new Error("WorkerPoolClient is disposed");
+    await this.init();
+    const priority = opts?.priority ?? "normal";
+    return await new Promise<BakeResult>((resolve, reject) => {
+      const task: QueueTask = {
+        id: nextTaskId(),
+        recipe,
+        input,
+        priority,
+        enqueuedAt: Date.now(),
+        resolve,
+        reject
+      };
+      if (opts?.timeoutMs !== undefined) task.timeoutMs = opts.timeoutMs;
+      if (priority === "high") {
+        this.queue.unshift(task);
+      } else {
+        this.queue.push(task);
+      }
+      this.pumpQueue();
+    });
+  }
+
+  cancelActive(): void {
+    for (const slot of this.slots) {
+      if (slot.busy) slot.client.cancelActive();
+    }
+  }
+
+  dispose(): void {
+    if (this.disposed) return;
+    this.disposed = true;
+    for (const slot of this.slots) {
+      slot.client.dispose();
+    }
+    while (this.queue.length > 0) {
+      const task = this.queue.shift();
+      task?.reject(new Error("Worker pool disposed"));
+    }
+  }
+
+  private pumpQueue(): void {
+    if (this.disposed) return;
+    const available = this.slots.find((s) => !s.busy);
+    const task = this.queue.shift();
+    if (!available || !task) return;
+
+    available.busy = true;
+    available.activeTaskId = task.id;
+    const startedAt = Date.now();
+
+    void available.client
+      .bake(
+        task.recipe,
+        task.input,
+        task.timeoutMs === undefined ? undefined : { timeoutMs: task.timeoutMs }
+      )
+      .then((result) => {
+        task.resolve({
+          ...result,
+          run: {
+            ...result.run,
+            queuedMs: Math.max(0, startedAt - task.enqueuedAt),
+            workerId: available.id
+          }
+        });
+      })
+      .catch((error) => {
+        task.reject(error);
+      })
+      .finally(() => {
+        available.busy = false;
+        available.activeTaskId = null;
+        this.pumpQueue();
+      });
+
+    if (this.queue.length > 0 && this.slots.some((s) => !s.busy)) {
+      this.pumpQueue();
+    }
+  }
+}

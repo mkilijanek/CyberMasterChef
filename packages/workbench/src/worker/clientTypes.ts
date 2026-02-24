@@ -13,6 +13,8 @@ export type BakeResult = {
     slowestStep: { step: number; opId: string; durationMs: number } | null;
     recipeHash: string;
     inputHash: string;
+    queuedMs?: number;
+    workerId?: number;
   };
 };
 
