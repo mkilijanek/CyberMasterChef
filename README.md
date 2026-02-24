@@ -166,6 +166,7 @@ Operations are grouped by package priority:
   - `text.tabsToSingleSpace`
   - `text.countUppercase`
   - `text.countLowercase`
+  - `text.countAscii`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
