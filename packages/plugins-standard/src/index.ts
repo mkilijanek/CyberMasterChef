@@ -32,6 +32,7 @@ import { startsWith } from "./ops/startsWith.js";
 
 import { swapCase } from "./ops/swapCase.js";
 import { removeSpaces } from "./ops/removeSpaces.js";
+import { keepDigits } from "./ops/keepDigits.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -67,6 +68,7 @@ export const standardPlugin: Plugin = {
     registry.register(startsWith);
     registry.register(swapCase);
     registry.register(removeSpaces);
+    registry.register(keepDigits);
     registry.register(sha256);
   }
 };
