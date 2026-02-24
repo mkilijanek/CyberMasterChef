@@ -244,6 +244,7 @@ Example operation IDs in use:
 - `text.countDots`
 - `text.countColons`
 - `text.countSemicolons`
+- `text.countSlashes`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
