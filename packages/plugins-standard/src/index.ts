@@ -52,6 +52,7 @@ import { reverseWords } from "./ops/reverseWords.js";
 import { sortWords } from "./ops/sortWords.js";
 import { uniqueWords } from "./ops/uniqueWords.js";
 import { removeVowels } from "./ops/removeVowels.js";
+import { keepVowels } from "./ops/keepVowels.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -107,6 +108,7 @@ export const standardPlugin: Plugin = {
     registry.register(sortWords);
     registry.register(uniqueWords);
     registry.register(removeVowels);
+    registry.register(keepVowels);
     registry.register(sha256);
   }
 };
