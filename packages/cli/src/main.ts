@@ -6,6 +6,7 @@ import {
   importCyberChefRecipe,
   hashDataValue,
   hashRecipe,
+  summarizeTrace,
   base64ToBytes,
   bytesToBase64,
   bytesToUtf8,
@@ -43,6 +44,8 @@ const usageText =
   "  --show-trace                     print human-readable trace to stderr\n" +
   "  --trace-json                     print trace JSON to stderr\n" +
   "  --trace-limit <n>                limit number of trace steps printed\n" +
+  "  --show-trace-summary             print trace summary line to stderr\n" +
+  "  --trace-summary-json             print trace summary JSON to stderr\n" +
   "  --show-repro                     print compact reproducibility metadata to stderr\n" +
   "  --repro-json                     print reproducibility bundle JSON to stderr\n" +
   "  --repro-file <path>              write reproducibility bundle JSON to file\n" +
@@ -99,6 +102,8 @@ type CliOptions = {
   showTrace: boolean;
   traceJson: boolean;
   traceLimit?: number;
+  showTraceSummary: boolean;
+  traceSummaryJson: boolean;
   showRepro: boolean;
   reproJson: boolean;
   reproFile?: string;
@@ -127,6 +132,8 @@ function parseArgs(args: string[]): CliOptions {
   let showTrace = false;
   let traceJson = false;
   let traceLimit: number | undefined;
+  let showTraceSummary = false;
+  let traceSummaryJson = false;
   let showRepro = false;
   let reproJson = false;
   let reproFile: string | undefined;
@@ -188,6 +195,14 @@ function parseArgs(args: string[]): CliOptions {
     }
     if (arg === "--trace-json") {
       traceJson = true;
+      continue;
+    }
+    if (arg === "--show-trace-summary") {
+      showTraceSummary = true;
+      continue;
+    }
+    if (arg === "--trace-summary-json") {
+      traceSummaryJson = true;
       continue;
     }
     if (arg === "--show-repro") {
@@ -323,6 +338,8 @@ function parseArgs(args: string[]): CliOptions {
     summaryJson,
     showTrace,
     traceJson,
+    showTraceSummary,
+    traceSummaryJson,
     showRepro,
     reproJson,
     listOps,
@@ -440,6 +457,7 @@ const reproBundle = {
     }
   ]
 };
+const traceSummary = summarizeTrace(res.trace);
 if (opts.showSummary) {
   process.stderr.write(
     `[summary] outputType=${res.output.type} traceSteps=${res.trace.length} durationMs=${elapsed}\n`
@@ -473,6 +491,14 @@ if (opts.showTrace) {
 if (opts.traceJson) {
   const traceRows = opts.traceLimit !== undefined ? res.trace.slice(0, opts.traceLimit) : res.trace;
   process.stderr.write(`${JSON.stringify(traceRows)}\n`);
+}
+if (opts.showTraceSummary) {
+  process.stderr.write(
+    `[trace-summary] steps=${traceSummary.steps} totalMs=${traceSummary.totalDurationMs} avgMs=${traceSummary.averageDurationMs.toFixed(2)} slowest=${traceSummary.slowestStep ? `${traceSummary.slowestStep.step + 1}:${traceSummary.slowestStep.opId}:${traceSummary.slowestStep.durationMs}` : "none"}\n`
+  );
+}
+if (opts.traceSummaryJson) {
+  process.stderr.write(`${JSON.stringify(traceSummary)}\n`);
 }
 
 let rendered = "";
