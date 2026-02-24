@@ -68,6 +68,7 @@ Operations are grouped by package priority:
   - quick filtered-trace copy action in UI
   - quick recipe JSON copy action in UI
   - clear-trace action without resetting recipe/input
+  - clear-trace also clears active trace filter
   - workspace reset action (recipe + IO + trace)
   - recipe import/export (native JSON and CyberChef-compatible JSON)
   - detailed import warnings for skipped CyberChef steps (step index + operation + reason)

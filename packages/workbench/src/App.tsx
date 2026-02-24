@@ -287,6 +287,7 @@ export function App(): React.JSX.Element {
 
   function clearTrace(): void {
     setTrace([]);
+    setTraceQuery("");
     setLastRunMs(null);
   }
 
