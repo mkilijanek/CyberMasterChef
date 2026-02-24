@@ -174,7 +174,10 @@ export function App(): React.JSX.Element {
     );
   }, [trace, traceQuery]);
 
-  const executeRecipe = React.useCallback(async (recipeToRun: Recipe): Promise<void> => {
+  const executeRecipe = React.useCallback(async (
+    recipeToRun: Recipe,
+    priority: "normal" | "high" = "high"
+  ): Promise<void> => {
     sandboxRef.current?.cancelActive();
     setStatus("working");
     setError(null);
@@ -187,7 +190,8 @@ export function App(): React.JSX.Element {
     try {
       const inVal: DataValue = { type: "string", value: input };
       const res = await getSandboxClient().bake(recipeToRun, inVal, {
-        timeoutMs
+        timeoutMs,
+        priority
       });
       setTrace(res.trace);
       setLastRunMs(Math.round(performance.now() - startedAt));
@@ -216,7 +220,7 @@ export function App(): React.JSX.Element {
   }, [input, t, timeoutMs]);
 
   const run = React.useCallback(async (): Promise<void> => {
-    await executeRecipe(recipe);
+    await executeRecipe(recipe, "high");
   }, [executeRecipe, recipe]);
 
   const runToStep = React.useCallback(async (stepIndex: number): Promise<void> => {
@@ -225,16 +229,16 @@ export function App(): React.JSX.Element {
       ...recipe,
       steps: recipe.steps.slice(0, stepIndex + 1)
     };
-    await executeRecipe(partial);
+    await executeRecipe(partial, "high");
   }, [executeRecipe, recipe]);
 
   React.useEffect(() => {
     if (!autoBake) return;
     const handle = window.setTimeout(() => {
-      void run();
+      void executeRecipe(recipe, "normal");
     }, 250);
     return () => window.clearTimeout(handle);
-  }, [autoBake, input, recipe, run]);
+  }, [autoBake, executeRecipe, input, recipe]);
 
   React.useEffect(() => {
     const onKeyDown = (ev: KeyboardEvent) => {
