@@ -102,3 +102,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 090: `route_print_usage` - Route table dump
 - [x] Stage 091: `wevtutil_clearlog` - Event log clearing
 - [x] Stage 092: `vssadmin_delete` - Shadow copy deletion
+- [x] Stage 093: `wbadmin_delete` - Backup catalog deletion

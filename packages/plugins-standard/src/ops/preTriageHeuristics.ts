@@ -97,4 +97,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "route_print_usage", description: "Route table dump", pattern: new RegExp("route\\s+print", "i") },
   { id: "wevtutil_clearlog", description: "Event log clearing", pattern: new RegExp("wevtutil\\s+cl", "i") },
   { id: "vssadmin_delete", description: "Shadow copy deletion", pattern: new RegExp("vssadmin\\s+delete\\s+shadows", "i") },
+  { id: "wbadmin_delete", description: "Backup catalog deletion", pattern: new RegExp("wbadmin\\s+delete\\s+catalog", "i") },
 ];
