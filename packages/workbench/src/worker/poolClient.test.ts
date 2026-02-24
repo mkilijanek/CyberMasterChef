@@ -105,4 +105,23 @@ describe("WorkerPoolClient", () => {
     await Promise.all([first, second, third]);
     expect(controlled.order).toEqual(["first", "third", "second"]);
   });
+
+  it("cancels queued jobs when cancelActive is invoked", async () => {
+    const controlled = new ControlledClient();
+    const pool = new WorkerPoolClient({
+      size: 1,
+      clientFactory: () => controlled
+    });
+    const recipe: Recipe = { version: 1, steps: [] };
+
+    const running = pool.bake(recipe, { type: "string", value: "running" }, { priority: "normal" });
+    const queued = pool.bake(recipe, { type: "string", value: "queued" }, { priority: "normal" });
+
+    await new Promise((r) => setTimeout(r, 5));
+    pool.cancelActive();
+    controlled.release();
+
+    await expect(queued).rejects.toThrow("Cancelled while waiting in queue");
+    await expect(running).resolves.toBeTruthy();
+  });
 });
