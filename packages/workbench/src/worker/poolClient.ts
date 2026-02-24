@@ -29,6 +29,7 @@ export class WorkerPoolClient implements ExecutionClient {
   private readonly slots: WorkerSlot[];
   private readonly queue: QueueTask[] = [];
   private readonly maxQueue: number;
+  private maxQueueDepthObserved = 0;
   private disposed = false;
 
   constructor(opts?: {
@@ -81,6 +82,7 @@ export class WorkerPoolClient implements ExecutionClient {
       } else {
         this.queue.push(task);
       }
+      this.maxQueueDepthObserved = Math.max(this.maxQueueDepthObserved, this.queue.length);
       this.pumpQueue();
     });
   }
@@ -134,7 +136,8 @@ export class WorkerPoolClient implements ExecutionClient {
             workerId: available.id,
             attempt: 1,
             queueDepthAtEnqueue: task.queueDepthAtEnqueue,
-            queueDepthAtStart
+            queueDepthAtStart,
+            maxQueueDepthObserved: this.maxQueueDepthObserved
           }
         });
       })

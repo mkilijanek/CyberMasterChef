@@ -18,6 +18,7 @@ export type BakeResult = {
     attempt?: number;
     queueDepthAtEnqueue?: number;
     queueDepthAtStart?: number;
+    maxQueueDepthObserved?: number;
   };
 };
 
