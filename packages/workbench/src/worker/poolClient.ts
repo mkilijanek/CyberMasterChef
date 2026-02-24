@@ -97,8 +97,9 @@ export class WorkerPoolClient implements ExecutionClient {
   private pumpQueue(): void {
     if (this.disposed) return;
     const available = this.slots.find((s) => !s.busy);
+    if (!available) return;
     const task = this.queue.shift();
-    if (!available || !task) return;
+    if (!task) return;
 
     available.busy = true;
     available.activeTaskId = task.id;
