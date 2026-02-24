@@ -231,6 +231,7 @@ Operations are grouped by package priority:
   - `text.countUnderscores`
   - `text.onlyLettersAndSpaces`
   - `text.onlyAlnumAndSpaces`
+  - `text.removeCurrencySymbols`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:

@@ -256,6 +256,7 @@ Example operation IDs in use:
 - `text.countUnderscores`
 - `text.onlyLettersAndSpaces`
 - `text.onlyAlnumAndSpaces`
+- `text.removeCurrencySymbols`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
