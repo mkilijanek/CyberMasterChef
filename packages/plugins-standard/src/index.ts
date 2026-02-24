@@ -34,6 +34,7 @@ import { swapCase } from "./ops/swapCase.js";
 import { removeSpaces } from "./ops/removeSpaces.js";
 import { keepDigits } from "./ops/keepDigits.js";
 import { removeDigits } from "./ops/removeDigits.js";
+import { keepLetters } from "./ops/keepLetters.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -71,6 +72,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeSpaces);
     registry.register(keepDigits);
     registry.register(removeDigits);
+    registry.register(keepLetters);
     registry.register(sha256);
   }
 };
