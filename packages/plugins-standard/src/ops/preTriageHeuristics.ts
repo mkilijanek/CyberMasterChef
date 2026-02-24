@@ -116,4 +116,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "macro_shell_call", description: "Macro Shell call marker", pattern: new RegExp("\\bshell\\s*\\(", "i") },
   { id: "ole_object_marker", description: "OLE object marker", pattern: new RegExp("oleobject", "i") },
   { id: "office_child_powershell", description: "Office spawning PowerShell", pattern: new RegExp("winword\\.exe.*powershell", "i") },
+  { id: "office_child_cmd", description: "Office spawning cmd", pattern: new RegExp("excel\\.exe.*cmd\\.exe", "i") },
 ];

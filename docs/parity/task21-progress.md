@@ -123,3 +123,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 109: `macro_shell_call` - Macro Shell call marker
 - [x] Stage 110: `ole_object_marker` - OLE object marker
 - [x] Stage 111: `office_child_powershell` - Office spawning PowerShell
+- [x] Stage 112: `office_child_cmd` - Office spawning cmd
