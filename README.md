@@ -301,6 +301,7 @@ Coverage baseline:
 Phase A status:
 - Completed baseline parity-and-tests scope (golden parity recipes, worker protocol integration tests, Playwright critical flows).
 - Next roadmap focus: runtime scalability (worker pool and streaming/chunking).
+- Formal acceptance checklist: see `docs/phase-a-definition-of-done.md`.
 
 ## Security
 

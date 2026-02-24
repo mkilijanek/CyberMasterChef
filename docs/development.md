@@ -81,6 +81,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
   - worker protocol integration coverage for cancel/timeout/race,
   - Playwright critical flow coverage for import, run-to-step, share-link and timeout persistence.
 - Next focus shifts to Phase B (runtime scalability: worker pool + streaming/chunking).
+- Acceptance checklist is tracked in `docs/phase-a-definition-of-done.md`.
 
 ## Recipe formats
 
