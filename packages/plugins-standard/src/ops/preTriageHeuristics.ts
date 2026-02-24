@@ -45,4 +45,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "http_plain_download", description: "Plain HTTP URL present", pattern: new RegExp("http://", "i") },
   { id: "pastebin_reference", description: "Pastebin indicator", pattern: new RegExp("pastebin\\.com", "i") },
   { id: "github_raw_reference", description: "GitHub raw payload indicator", pattern: new RegExp("raw\\.githubusercontent\\.com", "i") },
+  { id: "telegram_api_reference", description: "Telegram API indicator", pattern: new RegExp("api\\.telegram\\.org", "i") },
 ];
