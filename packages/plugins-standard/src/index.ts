@@ -182,6 +182,7 @@ import { extractCves } from "./ops/extractCves.js";
 import { extractUnixTimestamps } from "./ops/extractUnixTimestamps.js";
 import { extractIsoTimestamps } from "./ops/extractIsoTimestamps.js";
 import { isoToDateOnly } from "./ops/isoToDateOnly.js";
+import { isoWeekday } from "./ops/isoWeekday.js";
 import { extractIPv6 } from "./ops/extractIPv6.js";
 import { defangIPs } from "./ops/defangIPs.js";
 import { fangIPs } from "./ops/fangIPs.js";
@@ -350,6 +351,7 @@ export const standardPlugin: Plugin = {
     registry.register(extractUnixTimestamps);
     registry.register(extractIsoTimestamps);
     registry.register(isoToDateOnly);
+    registry.register(isoWeekday);
     registry.register(extractEmails);
     registry.register(extractDomains);
     registry.register(extractMd5);

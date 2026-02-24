@@ -8,6 +8,7 @@ import { parseObjectIdTimestamp } from "../src/ops/parseObjectIdTimestamp.js";
 import { extractUnixTimestamps } from "../src/ops/extractUnixTimestamps.js";
 import { extractIsoTimestamps } from "../src/ops/extractIsoTimestamps.js";
 import { isoToDateOnly } from "../src/ops/isoToDateOnly.js";
+import { isoWeekday } from "../src/ops/isoWeekday.js";
 
 describe("date operations", () => {
   it("converts ISO to Unix milliseconds", async () => {
@@ -146,5 +147,20 @@ describe("date operations", () => {
       input: { type: "string", value: "2024-02-03T04:05:06.000Z" }
     });
     expect(out.output).toEqual({ type: "string", value: "2024-02-03" });
+  });
+
+  it("resolves weekday name from ISO timestamp", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(isoWeekday);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "date.isoWeekday" }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "2024-02-05T00:00:00.000Z" }
+    });
+    expect(out.output).toEqual({ type: "string", value: "Monday" });
   });
 });

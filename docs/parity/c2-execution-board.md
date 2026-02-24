@@ -91,7 +91,7 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 ## Wave 15 backlog
 
 - [x] `date.isoToDateOnly` normalization operation.
-- [ ] `date.isoWeekday` classification operation.
+- [x] `date.isoWeekday` classification operation.
 
 ## Queue extension
 

@@ -279,6 +279,15 @@ const goldenCases: GoldenCase[] = [
     expected: "2024-02-03"
   },
   {
+    name: "ISO weekday resolution",
+    input: "2024-02-05T00:00:00.000Z",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "date.isoWeekday" }]
+    },
+    expected: "Monday"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {
