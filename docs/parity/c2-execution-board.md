@@ -15,11 +15,11 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 
 ## Wave 1 backlog
 
-- [ ] `forensic.extractStrings` operation (bytes/string input).
-- [ ] `date.isoToUnix` operation.
-- [ ] `date.unixToIso` operation.
-- [ ] Unit tests for all Wave 1 operations.
-- [ ] Golden parity cases for new operations.
+- [x] `forensic.extractStrings` operation (bytes/string input).
+- [x] `date.isoToUnix` operation.
+- [x] `date.unixToIso` operation.
+- [x] Unit tests for all Wave 1 operations.
+- [x] Golden parity cases for new operations.
 
 ## Wave 2 backlog
 

@@ -158,6 +158,7 @@ import { isoToUnix } from "./ops/isoToUnix.js";
 import { unixToIso } from "./ops/unixToIso.js";
 import { jsonMinify } from "./ops/jsonMinify.js";
 import { jsonBeautify } from "./ops/jsonBeautify.js";
+import { extractStrings } from "./ops/extractStrings.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -319,6 +320,7 @@ export const standardPlugin: Plugin = {
     registry.register(unixToIso);
     registry.register(jsonMinify);
     registry.register(jsonBeautify);
+    registry.register(extractStrings);
     registry.register(sha256);
   }
 };

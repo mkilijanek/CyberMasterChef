@@ -29,6 +29,15 @@ const goldenCases: GoldenCase[] = [
     expected: "{\"a\":1,\"b\":[2,3]}"
   },
   {
+    name: "Extract printable strings from mixed payload",
+    input: "A\u0000HELLO\u0001BYE!",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "forensic.extractStrings", args: { minLength: 3 } }]
+    },
+    expected: "HELLO\nBYE!"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {
