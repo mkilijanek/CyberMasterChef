@@ -111,6 +111,7 @@ import { removeHashes } from "./ops/removeHashes.js";
 import { removeAtSigns } from "./ops/removeAtSigns.js";
 import { removeDollarSigns } from "./ops/removeDollarSigns.js";
 import { removePercents } from "./ops/removePercents.js";
+import { removeAmpersands } from "./ops/removeAmpersands.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -225,6 +226,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeAtSigns);
     registry.register(removeDollarSigns);
     registry.register(removePercents);
+    registry.register(removeAmpersands);
     registry.register(sha256);
   }
 };
