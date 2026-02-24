@@ -6,6 +6,7 @@
   "recipe": "Receptura",
   "search": "Szukaj…",
   "matchesCount": "Wyniki: {{count}}",
+  "noOperationsMatch": "Brak operacji pasujących do zapytania",
   "autoBake": "Auto-bake",
   "shareLink": "Kopiuj link",
   "shareFailed": "Nie udało się skopiować linku",

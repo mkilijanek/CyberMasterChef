@@ -22,6 +22,9 @@ export function OperationCatalog(props: {
     <>
       <div className="muted">{t("matchesCount", { count: ops.length })}</div>
       <ul className="list" aria-label={t("operations")}>
+        {ops.length === 0 ? (
+          <li className="listItem muted">{t("noOperationsMatch")}</li>
+        ) : null}
         {ops.map((op) => (
           <li key={op.id} className="listItem">
             <div className="opTitle">{op.name}</div>

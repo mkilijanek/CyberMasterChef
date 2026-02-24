@@ -6,6 +6,7 @@
   "recipe": "Recipe",
   "search": "Search…",
   "matchesCount": "Matches: {{count}}",
+  "noOperationsMatch": "No operations match this query",
   "autoBake": "Auto-bake",
   "shareLink": "Copy link",
   "shareFailed": "Could not copy link",
