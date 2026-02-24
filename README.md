@@ -213,6 +213,7 @@ Operations are grouped by package priority:
   - `text.removeHyphens`
   - `text.removeSpacesAndTabs`
   - `text.keepWhitespace`
+  - `text.countTabs`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
