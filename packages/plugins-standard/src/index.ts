@@ -136,6 +136,7 @@ import { keepWhitespace } from "./ops/keepWhitespace.js";
 import { countTabs } from "./ops/countTabs.js";
 import { countSpaces } from "./ops/countSpaces.js";
 import { countCommas } from "./ops/countCommas.js";
+import { countDots } from "./ops/countDots.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -275,6 +276,7 @@ export const standardPlugin: Plugin = {
     registry.register(countTabs);
     registry.register(countSpaces);
     registry.register(countCommas);
+    registry.register(countDots);
     registry.register(sha256);
   }
 };
