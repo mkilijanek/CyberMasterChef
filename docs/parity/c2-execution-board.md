@@ -70,7 +70,7 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 
 - [x] `network.extractIPv6` IOC operation.
 - [x] `network.defangIPs` safe-sharing operation.
-- [ ] `network.fangIPs` reversal operation.
+- [x] `network.fangIPs` reversal operation.
 
 ## Queue extension
 

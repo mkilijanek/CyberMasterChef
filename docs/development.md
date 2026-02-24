@@ -194,6 +194,7 @@ Wave 1 implemented so far:
 - Wave 10 date-time parsing: `date.extractIsoTimestamps`
 - Wave 11 network: `network.extractIPv6`
 - Wave 11 network: `network.defangIPs`
+- Wave 11 network: `network.fangIPs`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip
 

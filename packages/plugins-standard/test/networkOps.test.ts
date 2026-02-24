@@ -6,6 +6,7 @@ import { defangUrls } from "../src/ops/defangUrls.js";
 import { fangUrls } from "../src/ops/fangUrls.js";
 import { extractIPv6 } from "../src/ops/extractIPv6.js";
 import { defangIPs } from "../src/ops/defangIPs.js";
+import { fangIPs } from "../src/ops/fangIPs.js";
 
 describe("network operations", () => {
   it("extracts unique valid IPv4 addresses", async () => {
@@ -112,6 +113,21 @@ describe("network operations", () => {
     expect(out.output).toEqual({
       type: "string",
       value: "src 10[.]0[.]0[.]1 dst 192[.]168[.]1[.]5"
+    });
+  });
+
+  it("fangs defanged IPv4 addresses in text", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(fangIPs);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.fangIPs" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "src 10[.]0[.]0[.]1 dst 192[.]168[.]1[.]5" }
+    });
+    expect(out.output).toEqual({
+      type: "string",
+      value: "src 10.0.0.1 dst 192.168.1.5"
     });
   });
 });

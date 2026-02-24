@@ -176,6 +176,7 @@ import { extractUnixTimestamps } from "./ops/extractUnixTimestamps.js";
 import { extractIsoTimestamps } from "./ops/extractIsoTimestamps.js";
 import { extractIPv6 } from "./ops/extractIPv6.js";
 import { defangIPs } from "./ops/defangIPs.js";
+import { fangIPs } from "./ops/fangIPs.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -352,6 +353,7 @@ export const standardPlugin: Plugin = {
     registry.register(extractIPs);
     registry.register(extractIPv6);
     registry.register(defangIPs);
+    registry.register(fangIPs);
     registry.register(extractUrls);
     registry.register(defangUrls);
     registry.register(fangUrls);

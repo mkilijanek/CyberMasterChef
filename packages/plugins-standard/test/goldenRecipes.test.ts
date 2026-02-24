@@ -194,6 +194,15 @@ const goldenCases: GoldenCase[] = [
     expected: "conn 10[.]10[.]10[.]10 -> 8[.]8[.]8[.]8"
   },
   {
+    name: "Defang/fang IPv4 round-trip",
+    input: "src 1.2.3.4 dst 8.8.8.8",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "network.defangIPs" }, { opId: "network.fangIPs" }]
+    },
+    expected: "src 1.2.3.4 dst 8.8.8.8"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {
