@@ -294,6 +294,27 @@ export function App(): React.JSX.Element {
     }
   }
 
+  async function copyReproBundle(): Promise<void> {
+    if (!lastRunInfo) {
+      setError(t("reproMissingRun"));
+      setStatus("error");
+      return;
+    }
+    const bundle = {
+      run: lastRunInfo,
+      recipe,
+      input,
+      trace,
+      outputType: output.length > 0 ? "text" : "empty"
+    };
+    const payload = JSON.stringify(bundle, null, 2);
+    const copied = await copyText(payload);
+    if (!copied) {
+      setError(t("copyReproFailed"));
+      setStatus("error");
+    }
+  }
+
   function resetWorkspace(): void {
     if (!window.confirm(t("resetConfirm"))) return;
     setRecipe(emptyRecipe());
@@ -442,6 +463,9 @@ export function App(): React.JSX.Element {
         </button>
         <button className="buttonSmall" onClick={() => void copyRecipeJson()}>
           {t("copyRecipe")}
+        </button>
+        <button className="buttonSmall" data-testid="copy-repro-button" onClick={() => void copyReproBundle()}>
+          {t("copyRepro")}
         </button>
         <button className="buttonSmall" onClick={() => clearTrace()}>
           {t("clearTrace")}
