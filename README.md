@@ -58,6 +58,7 @@ Operations are grouped by package priority:
 - C2 execution board: `docs/parity/c2-execution-board.md`.
 - Wave 1 date-time baseline operations added: `date.isoToUnix`, `date.unixToIso`.
 - Wave 1 data-format baseline operations added: `format.jsonMinify`, `format.jsonBeautify`.
+- Wave 1 forensic baseline operation added: `forensic.extractStrings`.
 - C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
 
 ## Current functionality

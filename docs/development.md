@@ -176,6 +176,7 @@ Wave 1 implemented so far:
 - `date.unixToIso`
 - `format.jsonMinify`
 - `format.jsonBeautify`
+- `forensic.extractStrings`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip
 
