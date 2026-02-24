@@ -73,6 +73,7 @@ import { rot13 } from "./ops/rot13.js";
 import { maskDigits } from "./ops/maskDigits.js";
 import { removeNonAscii } from "./ops/removeNonAscii.js";
 import { keepNonAscii } from "./ops/keepNonAscii.js";
+import { reverseCharsInWords } from "./ops/reverseCharsInWords.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -149,6 +150,7 @@ export const standardPlugin: Plugin = {
     registry.register(maskDigits);
     registry.register(removeNonAscii);
     registry.register(keepNonAscii);
+    registry.register(reverseCharsInWords);
     registry.register(sha256);
   }
 };
