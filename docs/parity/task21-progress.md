@@ -40,3 +40,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 30: `powershell_invoke_expression` - PowerShell Invoke-Expression usage
 - [x] Stage 31: `frombase64string_usage` - Base64 decode in script
 - [x] Stage 32: `iex_alias_usage` - IEX alias usage
+- [x] Stage 33: `new_object_net_webclient` - WebClient download primitive

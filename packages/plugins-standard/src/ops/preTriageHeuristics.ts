@@ -37,4 +37,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "powershell_invoke_expression", description: "PowerShell Invoke-Expression usage", pattern: new RegExp("invoke-expression", "i") },
   { id: "frombase64string_usage", description: "Base64 decode in script", pattern: new RegExp("frombase64string\\s*\\(", "i") },
   { id: "iex_alias_usage", description: "IEX alias usage", pattern: new RegExp("\\biex\\b", "i") },
+  { id: "new_object_net_webclient", description: "WebClient download primitive", pattern: new RegExp("new-object\\s+net\\.webclient", "i") },
 ];
