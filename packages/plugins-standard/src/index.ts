@@ -99,6 +99,7 @@ import { removeHexChars } from "./ops/removeHexChars.js";
 import { onlyPrintableAscii } from "./ops/onlyPrintableAscii.js";
 import { removeControlChars } from "./ops/removeControlChars.js";
 import { collapseMultipleNewlines } from "./ops/collapseMultipleNewlines.js";
+import { trimLeadingDots } from "./ops/trimLeadingDots.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -201,6 +202,7 @@ export const standardPlugin: Plugin = {
     registry.register(onlyPrintableAscii);
     registry.register(removeControlChars);
     registry.register(collapseMultipleNewlines);
+    registry.register(trimLeadingDots);
     registry.register(sha256);
   }
 };
