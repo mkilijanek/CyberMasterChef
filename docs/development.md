@@ -39,7 +39,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
 - Unit: Vitest (`pnpm test`)
 - Current suites:
   - `packages/core/test/engine.test.ts`
-  - `packages/core/test/serde.test.ts`
+  - `packages/core/test/serde.test.ts` (includes CyberChef import/export round-trip checks)
   - `packages/plugins-standard/test/standardPlugin.test.ts`
   - `packages/plugins-standard/test/goldenRecipes.test.ts` (golden regression baseline)
 - `engine` tests include abort/cancel behavior coverage (`AbortSignal` path).

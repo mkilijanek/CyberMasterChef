@@ -43,4 +43,20 @@ describe("serde", () => {
     expect(parsed.recipe[0]).toEqual({ op: "To Base64", args: [] });
     expect(parsed.recipe[1]).toEqual({ op: "To Binary", args: ["|"] });
   });
+
+  it("round-trips selected operations via CyberChef format", () => {
+    const native: Parameters<typeof exportCyberChefRecipe>[0] = {
+      version: 1,
+      steps: [
+        { opId: "codec.toHex", args: {} },
+        { opId: "codec.fromHex", args: {} },
+        { opId: "text.reverse", args: {} }
+      ]
+    };
+    const exported = exportCyberChefRecipe(native);
+    const imported = importCyberChefRecipe(exported);
+
+    expect(imported.warnings).toEqual([]);
+    expect(imported.recipe).toEqual(native);
+  });
 });
