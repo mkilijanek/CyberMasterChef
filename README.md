@@ -80,6 +80,7 @@ Operations are grouped by package priority:
   - `text.append`
   - `text.length`
   - `text.wordCount`
+  - `text.lineCount`
   - `text.replace`
   - `text.slice`
   - `text.repeat`

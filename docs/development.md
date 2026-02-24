@@ -105,6 +105,7 @@ Example operation IDs in use:
 - `text.append`
 - `text.length`
 - `text.wordCount`
+- `text.lineCount`
 - `text.replace`
 - `text.slice`
 - `text.repeat`
