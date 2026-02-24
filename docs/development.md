@@ -64,6 +64,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
 - E2E Playwright:
   - `e2e/workbench.spec.ts` (import, run-to-step, share link, timeout config persistence)
   - `e2e/workbench-negative.spec.ts` (invalid import, no-compatible-import, empty-search states)
+  - `e2e/workbench-persistence.spec.ts` (recipe/input/toggles/search restore after reload)
 - `engine` tests include abort/cancel behavior coverage (`AbortSignal` path).
 - Golden recipes: regression tests against CyberChef-compatible recipe JSON (actively extended).
 

@@ -366,6 +366,7 @@ export function App(): React.JSX.Element {
         <h1>{t("title")}</h1>
         <label className="toggle">
           <input
+            data-testid="autobake-toggle"
             type="checkbox"
             checked={autoBake}
             onChange={(e) => setAutoBake(e.target.checked)}
@@ -451,6 +452,7 @@ export function App(): React.JSX.Element {
           <h2>{t("operations")}</h2>
           <input
             ref={searchInputRef}
+            data-testid="catalog-search-input"
             className="input"
             value={catalogQuery}
             onChange={(e) => setCatalogQuery(e.target.value)}
@@ -502,6 +504,7 @@ export function App(): React.JSX.Element {
             <h3>{t("trace")}</h3>
             <input
               ref={traceSearchInputRef}
+              data-testid="trace-search-input"
               className="input"
               value={traceQuery}
               onChange={(e) => setTraceQuery(e.target.value)}
