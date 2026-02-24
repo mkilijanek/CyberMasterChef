@@ -18,7 +18,7 @@ UI (React) ──postMessage──► Web Worker (sandbox)
 | Package | Role |
 |---|---|
 | `@cybermasterchef/core` | Recipe engine, types, converters, registry |
-| `@cybermasterchef/plugins-standard` | Built-in operations (Base64, Hex, SHA-256, …) |
+| `@cybermasterchef/plugins-standard` | Built-in operations (Base64/Hex/Binary/URL codecs, SHA-256, Reverse) |
 | `@cybermasterchef/workbench` | React UI + Web Worker sandbox |
 | `@cybermasterchef/cli` | Node.js CLI runner |
 
@@ -33,7 +33,32 @@ All recipe execution happens inside a Web Worker:
 - No DOM access from operations
 - Network APIs (`fetch`, `XHR`, `WebSocket`) blocked at runtime — defense-in-depth on top of CSP
 - Transferable `ArrayBuffer` for bytes output (no copy)
-- Hard abort via `AbortSignal` + worker termination for timeouts
+- Hard abort via `AbortSignal`
+- Cancellable runs via worker `cancel` message
+- Per-run timeout (default 10s in workbench, user-configurable) wired from UI -> client -> worker -> engine signal
+- Worker results include reproducibility metadata (`runId`, `startedAt`, `endedAt`, `durationMs`, `recipeHash`, `inputHash`) and trace summary (`stepDurationTotalMs`, `stepDurationAvgMs`, `slowestStep`)
+- Workbench worker-pool client supports configurable parallelism (`1..8`) and queue limit (`maxQueue`) with queue telemetry (`queuedMs`, `workerId`, queue-depth and in-flight metrics)
+- Workbench enforces timeout bounds (`100..120000 ms`) to avoid invalid runtime settings
+- Client-side worker lifecycle cleanup on unmount (`dispose`) to prevent pending-request leaks
+
+## Workbench UX (current)
+
+- Manual run + optional auto-bake mode
+- Cancel button for in-flight execution
+- `Escape` keyboard shortcut cancels active execution
+- `Ctrl+Enter` / `Cmd+Enter` triggers recipe execution
+- Run-to-step action for partial pipeline execution
+- Run-to-step can be triggered from recipe steps and trace entries
+- Run duration telemetry visible in header (`ms`) for quick performance feedback
+- Trace entries include per-step execution time (`durationMs`)
+- Header surfaces run id and short recipe/input hashes for quick verification
+- Header surfaces trace summary diagnostics (total/avg/slowest step)
+- Recipe and input persisted in local storage
+- Shareable deep links via URL hash (`#state=` payload)
+- Recipe import/export:
+  - native CyberMasterChef JSON (`version: 1`)
+  - CyberChef-compatible JSON adapter with warnings for unsupported operations
+- Catalog-driven operation discovery with argument editing
 
 ## Security: CSP for production hosting
 

@@ -1,6 +1,7 @@
 import type { DataValue, OperationRegistry, Recipe } from "./types.js";
 import { OperationNotFoundError, OperationRuntimeError } from "./errors.js";
 import { coerce, coerceToAnyOf } from "./conversion.js";
+import { summarizeTrace } from "./traceSummary.js";
 
 export type EngineResult = {
   output: DataValue;
@@ -9,7 +10,16 @@ export type EngineResult = {
     opId: string;
     inputType: string;
     outputType: string;
+    durationMs: number;
   }>;
+  meta: {
+    startedAt: number;
+    endedAt: number;
+    durationMs: number;
+    stepDurationTotalMs: number;
+    stepDurationAvgMs: number;
+    slowestStep: { step: number; opId: string; durationMs: number } | null;
+  };
 };
 
 export async function runRecipe(opts: {
@@ -19,6 +29,7 @@ export async function runRecipe(opts: {
   signal?: AbortSignal;
 }): Promise<EngineResult> {
   const { registry, recipe, signal } = opts;
+  const startedAt = Date.now();
   let current = opts.input;
   const trace: EngineResult["trace"] = [];
 
@@ -32,18 +43,20 @@ export async function runRecipe(opts: {
     if (!op) throw new OperationNotFoundError(step.opId);
 
     const coercedIn = coerceToAnyOf(current, op.input);
+    const stepStartedAt = Date.now();
     try {
-      const out = await op.run({
-        input: coercedIn,
-        args: step.args ?? {},
-        signal
-      });
+      const ctx =
+        signal === undefined
+          ? { input: coercedIn, args: step.args ?? {} }
+          : { input: coercedIn, args: step.args ?? {}, signal };
+      const out = await op.run(ctx);
       const coercedOut = coerce(out, op.output);
       trace.push({
         step: i,
         opId: op.id,
         inputType: coercedIn.type,
-        outputType: coercedOut.type
+        outputType: coercedOut.type,
+        durationMs: Math.max(0, Date.now() - stepStartedAt)
       });
       current = coercedOut;
     } catch (e) {
@@ -52,5 +65,18 @@ export async function runRecipe(opts: {
     }
   }
 
-  return { output: current, trace };
+  const endedAt = Date.now();
+  const traceSummary = summarizeTrace(trace);
+  return {
+    output: current,
+    trace,
+    meta: {
+      startedAt,
+      endedAt,
+      durationMs: Math.max(0, endedAt - startedAt),
+      stepDurationTotalMs: traceSummary.totalDurationMs,
+      stepDurationAvgMs: traceSummary.averageDurationMs,
+      slowestStep: traceSummary.slowestStep
+    }
+  };
 }

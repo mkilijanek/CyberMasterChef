@@ -42,9 +42,29 @@ body { margin: 0; }
 }
 .button { padding: 6px 10px; }
 .buttonSmall { padding: 4px 8px; }
+.toggle {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+.timeoutControl {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+.timeoutInput {
+  width: 90px;
+  padding: 4px 6px;
+}
 .list { list-style: none; padding: 0; margin: 0; }
 .listItem { border-top: 1px solid #eee; padding: 8px 0; }
 .opTitle { font-weight: 600; }
+.opId {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  opacity: 0.75;
+  margin-top: 2px;
+}
 .opDesc { opacity: 0.8; margin: 4px 0; }
 .recipeList { padding-left: 18px; }
 .step { padding: 6px 0; border-bottom: 1px solid #eee; }
@@ -71,10 +91,37 @@ body { margin: 0; }
 .argLabel { width: 120px; }
 .muted { opacity: 0.7; }
 .status { margin-left: auto; opacity: 0.8; }
+.traceCount { opacity: 0.75; font-size: 12px; }
 .error {
   margin-top: 8px;
   padding: 8px;
   border: 1px solid #f2b8b5;
   background: #fff4f4;
   border-radius: 6px;
+}
+.warning {
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px solid #f3d37a;
+  background: #fff9e8;
+  border-radius: 6px;
+}
+.warningList {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+.traceBox {
+  margin-top: 10px;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+.traceList {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+.traceItem {
+  margin: 4px 0;
+}
+.traceButton {
+  margin-left: 8px;
 }
