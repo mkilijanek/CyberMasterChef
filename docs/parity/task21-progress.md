@@ -116,3 +116,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 102: `mail_attachment_iso` - Email ISO attachment marker
 - [x] Stage 103: `mail_attachment_js` - Email JS attachment marker
 - [x] Stage 104: `mail_attachment_vbs` - Email VBS attachment marker
+- [x] Stage 105: `mail_attachment_docm` - Macro-enabled document marker

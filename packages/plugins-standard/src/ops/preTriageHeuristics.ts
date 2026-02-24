@@ -109,4 +109,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "mail_attachment_iso", description: "Email ISO attachment marker", pattern: new RegExp("\\.iso\\b", "i") },
   { id: "mail_attachment_js", description: "Email JS attachment marker", pattern: new RegExp("\\.js\\b", "i") },
   { id: "mail_attachment_vbs", description: "Email VBS attachment marker", pattern: new RegExp("\\.vbs\\b", "i") },
+  { id: "mail_attachment_docm", description: "Macro-enabled document marker", pattern: new RegExp("\\.docm\\b", "i") },
 ];
