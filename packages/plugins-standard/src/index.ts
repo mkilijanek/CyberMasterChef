@@ -94,6 +94,7 @@ import { lastWord } from "./ops/lastWord.js";
 import { removeCommas } from "./ops/removeCommas.js";
 import { removeDots } from "./ops/removeDots.js";
 import { removeSemicolons } from "./ops/removeSemicolons.js";
+import { keepHexChars } from "./ops/keepHexChars.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -191,6 +192,7 @@ export const standardPlugin: Plugin = {
     registry.register(removeCommas);
     registry.register(removeDots);
     registry.register(removeSemicolons);
+    registry.register(keepHexChars);
     registry.register(sha256);
   }
 };

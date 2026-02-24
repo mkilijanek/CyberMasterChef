@@ -199,6 +199,7 @@ Example operation IDs in use:
 - `text.removeCommas`
 - `text.removeDots`
 - `text.removeSemicolons`
+- `text.keepHexChars`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

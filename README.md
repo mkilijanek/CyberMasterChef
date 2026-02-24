@@ -174,6 +174,7 @@ Operations are grouped by package priority:
   - `text.removeCommas`
   - `text.removeDots`
   - `text.removeSemicolons`
+  - `text.keepHexChars`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
