@@ -489,20 +489,21 @@ function parseInputValue(raw: string): DataValue {
 }
 
 function renderOutput(output: DataValue): string {
-  let rendered = "";
-  if (output.type === "bytes") {
-    rendered =
-      opts.bytesOutput === "base64"
-        ? bytesToBase64(output.value)
-        : opts.bytesOutput === "utf8"
-          ? bytesToUtf8(output.value)
-          : [...output.value].map((b) => b.toString(16).padStart(2, "0")).join("");
-    if (opts.bytesOutput === "hex" && opts.hexUppercase) rendered = rendered.toUpperCase();
-  } else if (output.type === "json") {
-    rendered = JSON.stringify(output.value, null, opts.jsonIndent);
-  } else {
-    rendered = String(output.value);
-  }
+  const rendered =
+    output.type === "bytes"
+      ? (() => {
+          let value =
+            opts.bytesOutput === "base64"
+              ? bytesToBase64(output.value)
+              : opts.bytesOutput === "utf8"
+                ? bytesToUtf8(output.value)
+                : [...output.value].map((b) => b.toString(16).padStart(2, "0")).join("");
+          if (opts.bytesOutput === "hex" && opts.hexUppercase) value = value.toUpperCase();
+          return value;
+        })()
+      : output.type === "json"
+        ? JSON.stringify(output.value, null, opts.jsonIndent)
+        : String(output.value);
   return opts.maxOutputChars !== undefined ? rendered.slice(0, opts.maxOutputChars) : rendered;
 }
 
