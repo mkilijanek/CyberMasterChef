@@ -85,3 +85,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 073: `appdata_execution` - Execution from AppData path
 - [x] Stage 074: `programdata_execution` - Execution from ProgramData path
 - [x] Stage 075: `public_user_execution` - Execution from Public user folder
+- [x] Stage 076: `startup_folder_persistence` - Startup folder persistence path
