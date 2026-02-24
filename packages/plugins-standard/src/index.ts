@@ -4,6 +4,11 @@ import { fromBase64 } from "./ops/fromBase64.js";
 import { toHex } from "./ops/toHex.js";
 import { fromHex } from "./ops/fromHex.js";
 import { sha256 } from "./ops/sha256.js";
+import { toBinary } from "./ops/toBinary.js";
+import { fromBinary } from "./ops/fromBinary.js";
+import { urlEncode } from "./ops/urlEncode.js";
+import { urlDecode } from "./ops/urlDecode.js";
+import { reverse } from "./ops/reverse.js";
 
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
@@ -13,6 +18,11 @@ export const standardPlugin: Plugin = {
     registry.register(fromBase64);
     registry.register(toHex);
     registry.register(fromHex);
+    registry.register(toBinary);
+    registry.register(fromBinary);
+    registry.register(urlEncode);
+    registry.register(urlDecode);
+    registry.register(reverse);
     registry.register(sha256);
   }
 };

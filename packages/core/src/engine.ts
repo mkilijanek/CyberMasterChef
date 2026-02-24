@@ -33,11 +33,11 @@ export async function runRecipe(opts: {
 
     const coercedIn = coerceToAnyOf(current, op.input);
     try {
-      const out = await op.run({
-        input: coercedIn,
-        args: step.args ?? {},
-        signal
-      });
+      const ctx =
+        signal === undefined
+          ? { input: coercedIn, args: step.args ?? {} }
+          : { input: coercedIn, args: step.args ?? {}, signal };
+      const out = await op.run(ctx);
       const coercedOut = coerce(out, op.output);
       trace.push({
         step: i,
