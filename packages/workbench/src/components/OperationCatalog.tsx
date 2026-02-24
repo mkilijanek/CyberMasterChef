@@ -19,17 +19,20 @@ export function OperationCatalog(props: {
   );
 
   return (
-    <ul className="list" aria-label={t("operations")}>
-      {ops.map((op) => (
-        <li key={op.id} className="listItem">
-          <div className="opTitle">{op.name}</div>
-          <div className="opId">{op.id}</div>
-          <div className="opDesc">{op.description}</div>
-          <button className="buttonSmall" onClick={() => props.onAdd(op.id)}>
-            {t("add")}
-          </button>
-        </li>
-      ))}
-    </ul>
+    <>
+      <div className="muted">{t("matchesCount", { count: ops.length })}</div>
+      <ul className="list" aria-label={t("operations")}>
+        {ops.map((op) => (
+          <li key={op.id} className="listItem">
+            <div className="opTitle">{op.name}</div>
+            <div className="opId">{op.id}</div>
+            <div className="opDesc">{op.description}</div>
+            <button className="buttonSmall" onClick={() => props.onAdd(op.id)}>
+              {t("add")}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }

@@ -5,6 +5,7 @@
   "operations": "Operations",
   "recipe": "Recipe",
   "search": "Search…",
+  "matchesCount": "Matches: {{count}}",
   "autoBake": "Auto-bake",
   "shareLink": "Copy link",
   "shareFailed": "Could not copy link",

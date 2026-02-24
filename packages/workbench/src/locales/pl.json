@@ -5,6 +5,7 @@
   "operations": "Operacje",
   "recipe": "Receptura",
   "search": "Szukaj…",
+  "matchesCount": "Wyniki: {{count}}",
   "autoBake": "Auto-bake",
   "shareLink": "Kopiuj link",
   "shareFailed": "Nie udało się skopiować linku",
