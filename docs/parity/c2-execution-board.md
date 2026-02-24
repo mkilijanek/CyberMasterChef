@@ -66,6 +66,11 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 - [x] `date.extractUnixTimestamps` telemetry parsing operation.
 - [x] `date.extractIsoTimestamps` telemetry parsing operation.
 
+## Wave 11 backlog
+
+- [x] `network.extractIPv6` IOC operation.
+- [ ] `network.defangIPs` safe-sharing operation.
+
 ## Quality gates
 
 - New operation must include:

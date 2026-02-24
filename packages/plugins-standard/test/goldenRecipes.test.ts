@@ -176,6 +176,15 @@ const goldenCases: GoldenCase[] = [
     expected: "2025-01-02T03:04:05.000Z"
   },
   {
+    name: "Extract IPv6 candidates",
+    input: "src=2001:db8:0:0:0:ff00:42:8329 and src=2001:db8:0:0:0:ff00:42:8329",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "network.extractIPv6" }]
+    },
+    expected: "2001:db8:0:0:0:ff00:42:8329"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {

@@ -4,6 +4,7 @@ import { extractIPs } from "../src/ops/extractIPs.js";
 import { extractUrls } from "../src/ops/extractUrls.js";
 import { defangUrls } from "../src/ops/defangUrls.js";
 import { fangUrls } from "../src/ops/fangUrls.js";
+import { extractIPv6 } from "../src/ops/extractIPv6.js";
 
 describe("network operations", () => {
   it("extracts unique valid IPv4 addresses", async () => {
@@ -75,6 +76,26 @@ describe("network operations", () => {
     expect(out.output).toEqual({
       type: "string",
       value: "https://ioc.example.com/path?q=1"
+    });
+  });
+
+  it("extracts unique IPv6 address candidates", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(extractIPv6);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.extractIPv6" }] };
+
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: {
+        type: "string",
+        value: "src=2001:0db8:0000:0000:0000:ff00:0042:8329 dup=2001:db8:0:0:0:ff00:42:8329"
+      }
+    });
+
+    expect(out.output).toEqual({
+      type: "string",
+      value: "2001:0db8:0000:0000:0000:ff00:0042:8329\n2001:db8:0:0:0:ff00:42:8329"
     });
   });
 });

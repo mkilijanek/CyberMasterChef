@@ -174,6 +174,7 @@ import { extractMd5 } from "./ops/extractMd5.js";
 import { extractSha256 } from "./ops/extractSha256.js";
 import { extractUnixTimestamps } from "./ops/extractUnixTimestamps.js";
 import { extractIsoTimestamps } from "./ops/extractIsoTimestamps.js";
+import { extractIPv6 } from "./ops/extractIPv6.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -348,6 +349,7 @@ export const standardPlugin: Plugin = {
     registry.register(jsonExtractKeys);
     registry.register(extractStrings);
     registry.register(extractIPs);
+    registry.register(extractIPv6);
     registry.register(extractUrls);
     registry.register(defangUrls);
     registry.register(fangUrls);
