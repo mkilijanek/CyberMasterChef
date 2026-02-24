@@ -25,6 +25,9 @@ type RunInfo = {
   startedAt: number;
   endedAt: number;
   durationMs: number;
+  stepDurationTotalMs: number;
+  stepDurationAvgMs: number;
+  slowestStep: { step: number; opId: string; durationMs: number } | null;
   recipeHash: string;
   inputHash: string;
 };
@@ -478,6 +481,18 @@ export function App(): React.JSX.Element {
         </div>
         <div className="traceCount">
           {t("runDurationMs")}: {lastRunMs ?? "-"}
+        </div>
+        <div className="traceCount">
+          {t("traceDurationTotalMs")}: {lastRunInfo ? Math.round(lastRunInfo.stepDurationTotalMs) : "-"}
+        </div>
+        <div className="traceCount">
+          {t("traceDurationAvgMs")}: {lastRunInfo ? Math.round(lastRunInfo.stepDurationAvgMs) : "-"}
+        </div>
+        <div className="traceCount">
+          {t("slowestStepLabel")}:{" "}
+          {lastRunInfo?.slowestStep
+            ? `${lastRunInfo.slowestStep.step + 1} (${lastRunInfo.slowestStep.opId}, ${lastRunInfo.slowestStep.durationMs} ms)`
+            : "-"}
         </div>
         <div className="traceCount">
           {t("runId")}: {lastRunInfo ? lastRunInfo.runId.slice(0, 8) : "-"}

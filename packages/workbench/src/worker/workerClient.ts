@@ -17,6 +17,9 @@ export class SandboxClient {
           startedAt: number;
           endedAt: number;
           durationMs: number;
+          stepDurationTotalMs: number;
+          stepDurationAvgMs: number;
+          slowestStep: { step: number; opId: string; durationMs: number } | null;
           recipeHash: string;
           inputHash: string;
         };
@@ -73,6 +76,9 @@ export class SandboxClient {
       startedAt: number;
       endedAt: number;
       durationMs: number;
+      stepDurationTotalMs: number;
+      stepDurationAvgMs: number;
+      slowestStep: { step: number; opId: string; durationMs: number } | null;
       recipeHash: string;
       inputHash: string;
     };
