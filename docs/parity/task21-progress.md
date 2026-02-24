@@ -67,3 +67,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 055: `suspicious_tld_xyz` - Suspicious XYZ TLD reference
 - [x] Stage 056: `suspicious_tld_zip` - Suspicious ZIP TLD reference
 - [x] Stage 057: `suspicious_tld_click` - Suspicious CLICK TLD reference
+- [x] Stage 058: `suspicious_tld_cam` - Suspicious CAM TLD reference
