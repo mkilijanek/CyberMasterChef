@@ -143,4 +143,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "process_hollowing_marker", description: "Process hollowing marker", pattern: new RegExp("processhollow", "i") },
   { id: "remote_thread_injection", description: "Remote thread injection marker", pattern: new RegExp("createremotethread", "i") },
   { id: "virtualalloc_exec", description: "Executable memory allocation marker", pattern: new RegExp("virtualalloc", "i") },
+  { id: "writeprocessmemory_call", description: "WriteProcessMemory marker", pattern: new RegExp("writeprocessmemory", "i") },
 ];
