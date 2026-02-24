@@ -45,7 +45,7 @@ Operations are grouped by package priority:
 - Core recipe engine with typed coercion (`string`, `bytes`, `json`, `number`)
 - Worker-based sandbox execution for all operations
 - Workbench features:
-  - operation catalog with search
+  - operation catalog with search by name, description and operation ID
   - recipe editing (add/reorder/remove + arg forms)
   - auto-bake mode (debounced re-run on changes)
   - cancel in-flight execution from the UI

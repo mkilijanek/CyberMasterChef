@@ -12,7 +12,9 @@ export function OperationCatalog(props: {
   const q = props.query.trim().toLowerCase();
   const ops = registry.list().filter((op) =>
     q
-      ? op.name.toLowerCase().includes(q) || op.description.toLowerCase().includes(q)
+      ? op.name.toLowerCase().includes(q) ||
+        op.description.toLowerCase().includes(q) ||
+        op.id.toLowerCase().includes(q)
       : true
   );
 
