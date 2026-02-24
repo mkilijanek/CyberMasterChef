@@ -222,6 +222,7 @@ Example operation IDs in use:
 - `text.removeTildes`
 - `text.removeCarets`
 - `text.removeBackticks`
+- `text.removeQuestionMarks`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
