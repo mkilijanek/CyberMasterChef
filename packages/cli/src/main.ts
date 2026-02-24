@@ -56,6 +56,7 @@ type CliOptions = {
   timeoutMs: number;
   strictCyberChef: boolean;
   showTrace: boolean;
+  traceJson: boolean;
   inputEncoding: "text" | "hex" | "base64";
   bytesOutput: "hex" | "base64" | "utf8";
 };
@@ -64,6 +65,7 @@ function parseArgs(args: string[]): CliOptions {
   let timeoutMs = DEFAULT_TIMEOUT_MS;
   let strictCyberChef = false;
   let showTrace = false;
+  let traceJson = false;
   let inputEncoding: CliOptions["inputEncoding"] = "text";
   let bytesOutput: CliOptions["bytesOutput"] = "hex";
   const positional: string[] = [];
@@ -77,6 +79,10 @@ function parseArgs(args: string[]): CliOptions {
     }
     if (arg === "--show-trace") {
       showTrace = true;
+      continue;
+    }
+    if (arg === "--trace-json") {
+      traceJson = true;
       continue;
     }
     if (arg === "--input-encoding") {
@@ -117,7 +123,7 @@ function parseArgs(args: string[]): CliOptions {
   const recipePath = positional[0];
   if (!recipePath) {
     die(
-      "Usage: cybermasterchef <recipe.json> [input.txt] [--timeout-ms <n>] [--strict-cyberchef] [--show-trace] [--input-encoding text|hex|base64] [--bytes-output hex|base64|utf8]\n" +
+      "Usage: cybermasterchef <recipe.json> [input.txt] [--timeout-ms <n>] [--strict-cyberchef] [--show-trace|--trace-json] [--input-encoding text|hex|base64] [--bytes-output hex|base64|utf8]\n" +
         "  Reads input from stdin if [input.txt] is omitted."
     );
   }
@@ -126,6 +132,7 @@ function parseArgs(args: string[]): CliOptions {
     timeoutMs,
     strictCyberChef,
     showTrace,
+    traceJson,
     inputEncoding,
     bytesOutput
   };
@@ -173,6 +180,9 @@ if (opts.showTrace) {
       `[trace] step=${t.step + 1} op=${t.opId} ${t.inputType}->${t.outputType}\n`
     );
   }
+}
+if (opts.traceJson) {
+  process.stderr.write(`${JSON.stringify(res.trace)}\n`);
 }
 
 if (res.output.type === "bytes") {

@@ -69,7 +69,7 @@ Operations are grouped by package priority:
   - accepts native recipe JSON
   - falls back to CyberChef recipe import and prints warnings for unsupported steps
   - supports `--timeout-ms` for bounded execution and `--strict-cyberchef` for strict import mode
-  - supports `--show-trace` for debugging pipeline execution in terminal
+  - supports `--show-trace` and `--trace-json` for pipeline debugging in terminal
   - supports `--input-encoding text|hex|base64` for binary-oriented CLI runs
   - supports `--bytes-output hex|base64|utf8` to choose stdout format for byte outputs
 - Quality baseline:

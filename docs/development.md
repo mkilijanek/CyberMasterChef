@@ -68,6 +68,7 @@ CLI behavior:
 - `--timeout-ms <n>` bounds execution time in milliseconds.
 - `--strict-cyberchef` fails if CyberChef import would skip unsupported steps.
 - `--show-trace` prints execution trace (step/op/input->output types) on stderr.
+- `--trace-json` prints execution trace as JSON on stderr.
 - `--input-encoding text|hex|base64` controls how CLI input is parsed before recipe execution.
 - `--bytes-output hex|base64|utf8` controls how bytes outputs are rendered on stdout.
 
