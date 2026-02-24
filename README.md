@@ -156,6 +156,7 @@ Operations are grouped by package priority:
   - `text.reverseCharsInWords`
   - `text.wordsToLines`
   - `text.linesToWords`
+  - `text.linesToCsv`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:

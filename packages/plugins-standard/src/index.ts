@@ -76,6 +76,7 @@ import { keepNonAscii } from "./ops/keepNonAscii.js";
 import { reverseCharsInWords } from "./ops/reverseCharsInWords.js";
 import { wordsToLines } from "./ops/wordsToLines.js";
 import { linesToWords } from "./ops/linesToWords.js";
+import { linesToCsv } from "./ops/linesToCsv.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -155,6 +156,7 @@ export const standardPlugin: Plugin = {
     registry.register(reverseCharsInWords);
     registry.register(wordsToLines);
     registry.register(linesToWords);
+    registry.register(linesToCsv);
     registry.register(sha256);
   }
 };

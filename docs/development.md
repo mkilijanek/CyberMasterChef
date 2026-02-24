@@ -181,6 +181,7 @@ Example operation IDs in use:
 - `text.reverseCharsInWords`
 - `text.wordsToLines`
 - `text.linesToWords`
+- `text.linesToCsv`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
