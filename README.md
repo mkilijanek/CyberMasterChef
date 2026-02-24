@@ -192,6 +192,7 @@ Operations are grouped by package priority:
   - `text.removeDollarSigns`
   - `text.removePercents`
   - `text.removeAmpersands`
+  - `text.removePluses`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
