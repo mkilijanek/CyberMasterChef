@@ -106,3 +106,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 094: `bcdedit_recovery_off` - Recovery disable via bcdedit
 - [x] Stage 095: `bcdedit_bootstatus_ignore` - Bootstatus ignore failures
 - [x] Stage 096: `ransom_note_marker` - Common ransom note marker
+- [x] Stage 097: `crypto_wallet_btc` - Bitcoin wallet marker

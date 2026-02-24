@@ -101,4 +101,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "bcdedit_recovery_off", description: "Recovery disable via bcdedit", pattern: new RegExp("bcdedit\\s+/set\\s+\\{default\\}\\s+recoveryenabled\\s+no", "i") },
   { id: "bcdedit_bootstatus_ignore", description: "Bootstatus ignore failures", pattern: new RegExp("bcdedit\\s+/set\\s+\\{default\\}\\s+bootstatuspolicy\\s+ignoreallfailures", "i") },
   { id: "ransom_note_marker", description: "Common ransom note marker", pattern: new RegExp("readme\\.(txt", "hta)|i") },
+  { id: "crypto_wallet_btc", description: "Bitcoin wallet marker", pattern: new RegExp("\b[13][a-km-zA-HJ-NP-Z1-9]{25,34}\b", "g") },
 ];
