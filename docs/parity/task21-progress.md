@@ -153,3 +153,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 139: `writeprocessmemory_call` - WriteProcessMemory marker
 - [x] Stage 140: `ntqueueapcthread_call` - NtQueueApcThread marker
 - [x] Stage 141: `syscall_stub_marker` - Direct syscall marker
+- [x] Stage 142: `uac_bypass_fodhelper` - UAC bypass fodhelper marker

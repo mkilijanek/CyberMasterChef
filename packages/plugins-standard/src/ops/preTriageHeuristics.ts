@@ -146,4 +146,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "writeprocessmemory_call", description: "WriteProcessMemory marker", pattern: new RegExp("writeprocessmemory", "i") },
   { id: "ntqueueapcthread_call", description: "NtQueueApcThread marker", pattern: new RegExp("ntqueueapcthread", "i") },
   { id: "syscall_stub_marker", description: "Direct syscall marker", pattern: new RegExp("syscall\\s*stub", "i") },
+  { id: "uac_bypass_fodhelper", description: "UAC bypass fodhelper marker", pattern: new RegExp("fodhelper\\.exe", "i") },
 ];
