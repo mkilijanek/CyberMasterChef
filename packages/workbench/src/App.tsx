@@ -113,6 +113,12 @@ export function App(): React.JSX.Element {
     if (!Number.isFinite(saved)) return DEFAULT_TIMEOUT_MS;
     return Math.min(MAX_TIMEOUT_MS, Math.max(MIN_TIMEOUT_MS, saved));
   });
+  const [workerPoolSize, setWorkerPoolSize] = React.useState<number>(() => {
+    const raw = localStorage.getItem("workerPoolSize.v1");
+    const parsed = raw === null ? DEFAULT_POOL_SIZE : Number(raw);
+    if (!Number.isFinite(parsed)) return DEFAULT_POOL_SIZE;
+    return Math.min(MAX_POOL_SIZE, Math.max(MIN_POOL_SIZE, Math.floor(parsed)));
+  });
   const [output, setOutput] = React.useState<string>("");
   const [trace, setTrace] = React.useState<TraceRow[]>([]);
   const [lastRunMs, setLastRunMs] = React.useState<number | null>(null);
@@ -142,19 +148,20 @@ export function App(): React.JSX.Element {
       sandboxRef.current = null;
       client?.dispose();
     };
-  }, []);
+  }, [workerPoolSize]);
 
   React.useEffect(() => {
     localStorage.setItem("recipe.v1", JSON.stringify(recipe));
     localStorage.setItem("input.v1", input);
     localStorage.setItem("autobake.v1", autoBake ? "1" : "0");
     localStorage.setItem("timeoutMs.v1", String(timeoutMs));
+    localStorage.setItem("workerPoolSize.v1", String(workerPoolSize));
     localStorage.setItem("catalogQuery.v1", catalogQuery);
     localStorage.setItem("traceQuery.v1", traceQuery);
 
     const shared = toBase64Url(JSON.stringify({ recipe, input }));
     window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${HASH_PREFIX}${shared}`);
-  }, [autoBake, catalogQuery, input, recipe, timeoutMs, traceQuery]);
+  }, [autoBake, catalogQuery, input, recipe, timeoutMs, traceQuery, workerPoolSize]);
 
   const filteredTrace = React.useMemo(() => {
     const q = traceQuery.trim().toLowerCase();
@@ -464,6 +471,27 @@ export function App(): React.JSX.Element {
           />
           <span className="muted">{t("timeoutRange")}</span>
         </label>
+        <label className="timeoutControl">
+          <span>{t("workerPoolSize")}</span>
+          <input
+            className="timeoutInput"
+            data-testid="pool-size-input"
+            type="number"
+            min={MIN_POOL_SIZE}
+            max={MAX_POOL_SIZE}
+            step={1}
+            value={workerPoolSize}
+            onChange={(e) => {
+              const raw = Number(e.target.value);
+              if (!Number.isFinite(raw)) return;
+              setWorkerPoolSize(Math.min(MAX_POOL_SIZE, Math.max(MIN_POOL_SIZE, Math.floor(raw))));
+            }}
+            onBlur={() => {
+              setWorkerPoolSize((v) => Math.min(MAX_POOL_SIZE, Math.max(MIN_POOL_SIZE, v)));
+            }}
+          />
+          <span className="muted">{t("workerPoolSizeRange")}</span>
+        </label>
         <button
           className="buttonSmall"
           onClick={() => cancelRun()}
@@ -645,9 +673,3 @@ export function App(): React.JSX.Element {
     </div>
   );
 }
-  const workerPoolSize = React.useMemo(() => {
-    const raw = localStorage.getItem("workerPoolSize.v1");
-    const parsed = raw === null ? DEFAULT_POOL_SIZE : Number(raw);
-    if (!Number.isFinite(parsed)) return DEFAULT_POOL_SIZE;
-    return Math.min(MAX_POOL_SIZE, Math.max(MIN_POOL_SIZE, Math.floor(parsed)));
-  }, []);

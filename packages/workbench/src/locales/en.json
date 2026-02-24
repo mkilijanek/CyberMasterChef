@@ -45,6 +45,8 @@
   "run": "Run",
   "timeoutMs": "Timeout (ms)",
   "timeoutRange": "(100-120000)",
+  "workerPoolSize": "Worker pool size",
+  "workerPoolSizeRange": "(1-8)",
   "add": "Add",
   "remove": "Remove",
   "duplicate": "Duplicate",

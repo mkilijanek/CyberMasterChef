@@ -45,6 +45,8 @@
   "run": "Uruchom",
   "timeoutMs": "Timeout (ms)",
   "timeoutRange": "(100-120000)",
+  "workerPoolSize": "Rozmiar puli workerów",
+  "workerPoolSizeRange": "(1-8)",
   "add": "Dodaj",
   "remove": "Usuń",
   "duplicate": "Duplikuj",
