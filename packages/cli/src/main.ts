@@ -59,6 +59,7 @@ const usageText =
   "  --output-file <path>             write rendered output to file instead of stdout\n" +
   "  --batch-input-dir <path>         execute recipe for each file in directory and print JSON report\n" +
   "  --batch-report-file <path>       write batch JSON report to file\n" +
+  "  --batch-output-dir <path>        write per-input rendered outputs to directory\n" +
   "  --fail-empty-output              fail when rendered output is empty\n" +
   "  --no-newline                     do not append trailing newline to output\n" +
   "  --max-output-chars <n>           limit output length for string/json/bytes rendering\n" +
@@ -119,6 +120,7 @@ type CliOptions = {
   outputFile?: string;
   batchInputDir?: string;
   batchReportFile?: string;
+  batchOutputDir?: string;
   failEmptyOutput: boolean;
   noNewline: boolean;
   maxOutputChars?: number;
@@ -151,6 +153,7 @@ function parseArgs(args: string[]): CliOptions {
   let outputFile: string | undefined;
   let batchInputDir: string | undefined;
   let batchReportFile: string | undefined;
+  let batchOutputDir: string | undefined;
   let failEmptyOutput = false;
   let noNewline = false;
   let maxOutputChars: number | undefined;
@@ -317,6 +320,13 @@ function parseArgs(args: string[]): CliOptions {
       i++;
       continue;
     }
+    if (arg === "--batch-output-dir") {
+      const raw = args[i + 1];
+      if (!raw) die("Missing value for --batch-output-dir");
+      batchOutputDir = raw;
+      i++;
+      continue;
+    }
     if (arg === "--no-newline") {
       noNewline = true;
       continue;
@@ -376,6 +386,7 @@ function parseArgs(args: string[]): CliOptions {
   if (outputFile !== undefined) out.outputFile = outputFile;
   if (batchInputDir !== undefined) out.batchInputDir = batchInputDir;
   if (batchReportFile !== undefined) out.batchReportFile = batchReportFile;
+  if (batchOutputDir !== undefined) out.batchOutputDir = batchOutputDir;
   if (reproFile !== undefined) out.reproFile = reproFile;
   const inputPath = positional[1];
   if (inputPath) out.inputPath = inputPath;
@@ -457,6 +468,11 @@ function renderOutput(output: DataValue): string {
     rendered = String(output.value);
   }
   return opts.maxOutputChars !== undefined ? rendered.slice(0, opts.maxOutputChars) : rendered;
+}
+
+function fileLeaf(path: string): string {
+  const parts = path.split("/");
+  return parts[parts.length - 1] ?? path;
 }
 
 async function executeOne(rawInput: string): Promise<{
@@ -550,6 +566,10 @@ if (opts.batchInputDir) {
       recipeHash: run.reproBundle.recipeHash,
       inputHash: run.reproBundle.inputHash
     });
+    if (opts.batchOutputDir) {
+      const outPath = `${opts.batchOutputDir}/${fileLeaf(filePath)}.out.txt`;
+      writeFileSync(outPath, `${run.rendered}\n`, "utf-8");
+    }
   }
   const payload = `${JSON.stringify(report, null, 2)}\n`;
   if (opts.batchReportFile) {
