@@ -48,7 +48,10 @@ Operations are grouped by package priority:
   - operation catalog with search
   - recipe editing (add/reorder/remove + arg forms)
   - auto-bake mode (debounced re-run on changes)
+  - cancel in-flight execution from the UI
+  - per-run sandbox timeout protection (default: 10s)
   - deep-link sharing (`#state=` hash with recipe + input)
+  - recipe import/export (native JSON and CyberChef-compatible JSON)
   - local persistence for recipe, input, and auto-bake preference
 - Built-in operations (`@cybermasterchef/plugins-standard`):
   - `codec.toBase64`, `codec.fromBase64`

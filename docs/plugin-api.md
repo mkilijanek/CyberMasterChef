@@ -47,6 +47,13 @@ Current built-in operation IDs:
 - `hash.sha256`
 - `text.reverse`
 
+## Recipe compatibility API
+
+Core serde utilities expose both native and compatibility helpers:
+- `parseRecipe(json)` / `stringifyRecipe(recipe)` for native format.
+- `importCyberChefRecipe(json)` for CyberChef recipe import with warnings for unsupported ops.
+- `exportCyberChefRecipe(recipe)` for CyberChef-compatible export.
+
 ## ArgSpec types
 
 | type | UI control |

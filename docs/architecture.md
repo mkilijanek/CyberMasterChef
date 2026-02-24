@@ -33,13 +33,19 @@ All recipe execution happens inside a Web Worker:
 - No DOM access from operations
 - Network APIs (`fetch`, `XHR`, `WebSocket`) blocked at runtime — defense-in-depth on top of CSP
 - Transferable `ArrayBuffer` for bytes output (no copy)
-- Hard abort via `AbortSignal` + worker termination for timeouts
+- Hard abort via `AbortSignal`
+- Cancellable runs via worker `cancel` message
+- Per-run timeout (default 10s in workbench) wired from UI -> client -> worker -> engine signal
 
 ## Workbench UX (current)
 
 - Manual run + optional auto-bake mode
+- Cancel button for in-flight execution
 - Recipe and input persisted in local storage
 - Shareable deep links via URL hash (`#state=` payload)
+- Recipe import/export:
+  - native CyberMasterChef JSON (`version: 1`)
+  - CyberChef-compatible JSON adapter with warnings for unsupported operations
 - Catalog-driven operation discovery with argument editing
 
 ## Security: CSP for production hosting

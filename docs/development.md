@@ -39,9 +39,20 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
 - Unit: Vitest (`pnpm test`)
 - Current suites:
   - `packages/core/test/engine.test.ts`
+  - `packages/core/test/serde.test.ts`
   - `packages/plugins-standard/test/standardPlugin.test.ts`
 - E2E: Playwright (roadmap)
 - Golden recipes: regression tests against CyberChef-compatible recipe JSON (roadmap)
+
+## Recipe formats
+
+- Native format: `Recipe` (`version: 1`, `steps[]`)
+- Compatibility helpers in `@cybermasterchef/core`:
+  - `importCyberChefRecipe(json)` -> `{ recipe, warnings }`
+  - `exportCyberChefRecipe(recipe)` -> CyberChef-compatible JSON
+- Import behavior:
+  - unsupported CyberChef steps are skipped and reported as warnings
+  - import fails if no compatible operations remain
 
 ## Adding a new operation
 
