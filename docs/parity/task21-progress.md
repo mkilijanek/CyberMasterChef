@@ -61,3 +61,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 
 ## Queue 2/3 (50 stages)
 - [x] Stage 051: `suspicious_tld_ru` - Suspicious RU TLD reference
+- [x] Stage 052: `suspicious_tld_su` - Suspicious SU TLD reference
