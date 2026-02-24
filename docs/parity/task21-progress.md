@@ -94,3 +94,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 082: `net_user_add` - User creation via net user
 - [x] Stage 083: `net_localgroup_admin` - Admin group assignment
 - [x] Stage 084: `whoami_priv` - Privilege discovery whoami
+- [x] Stage 085: `ipconfig_all` - Network discovery ipconfig /all
