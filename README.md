@@ -255,6 +255,11 @@ Operations are grouped by package priority:
   - supports `--batch-ext <list>` for extension-based batch input filtering
   - supports `--batch-summary-json` for aggregate batch metrics on stderr
   - supports `--batch-report-file <path>` and `--batch-output-dir <path>` for batch artifacts export
+  - supports `--batch-output-format text|json|jsonl` for per-file artifact format selection
+  - supports `--batch-max-files <n>` to cap batch workload size
+  - supports `--batch-skip-empty` and `--batch-fail-empty` for explicit empty-input policy
+  - supports `--batch-fail-fast` and `--batch-continue-on-error` for failure strategy control
+  - supports `--batch-concurrency <n>` for bounded parallel batch processing
   - supports `--list-ops` to inspect currently registered operations
   - supports `--list-ops-json` for machine-readable operation discovery
   - supports `--list-ops-filter` to narrow operation listings in both list modes
@@ -313,8 +318,12 @@ Coverage baseline:
 
 Phase A status:
 - Completed baseline parity-and-tests scope (golden parity recipes, worker protocol integration tests, Playwright critical flows).
-- Next roadmap focus: runtime scalability (worker pool and streaming/chunking).
 - Formal acceptance checklist: see `docs/phase-a-definition-of-done.md`.
+
+Phase B status:
+- Worker pool queue controls/telemetry and queue saturation UX are implemented.
+- CLI batch MVP is implemented with bounded concurrency and integration test fixtures.
+- Formal acceptance checklist: see `docs/phase-b-definition-of-done.md`.
 
 ## Security
 

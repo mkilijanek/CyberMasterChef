@@ -135,6 +135,13 @@ CLI behavior:
 - `--batch-summary-json` prints aggregate batch metrics JSON on stderr.
 - `--batch-report-file <path>` writes full batch JSON report to a file.
 - `--batch-output-dir <path>` writes per-input rendered outputs to files.
+- `--batch-output-format <fmt>` sets output artifact format (`text|json|jsonl`).
+- `--batch-max-files <n>` limits number of processed files.
+- `--batch-concurrency <n>` enables bounded parallel batch execution.
+- `--batch-skip-empty` skips empty files as successful no-op entries.
+- `--batch-fail-empty` treats empty input files as explicit per-file errors.
+- `--batch-fail-fast` stops processing on first failed file.
+- `--batch-continue-on-error` keeps processing despite per-file failures.
 - `--list-ops` prints available operation IDs/names and exits.
 - `--list-ops-json` prints full operation metadata as JSON and exits.
 - `--list-ops-filter <query>` filters both list outputs by ID/name/description.
@@ -147,6 +154,11 @@ CLI behavior:
 - `--no-newline` disables automatic trailing newline in output.
 - `--help` prints CLI usage and option reference.
 - `--max-output-chars <n>` truncates stdout payload for safer automation/logging.
+
+## Phase acceptance
+
+- Phase A checklist: `docs/phase-a-definition-of-done.md`
+- Phase B checklist: `docs/phase-b-definition-of-done.md`
 
 ## Adding a new operation
 
