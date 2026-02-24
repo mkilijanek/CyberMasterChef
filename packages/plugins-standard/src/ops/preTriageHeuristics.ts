@@ -35,4 +35,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "7z_archive_drop", description: "7z archive payload", pattern: new RegExp("\\.7z\\b", "i") },
   { id: "powershell_downloadstring", description: "PowerShell DownloadString usage", pattern: new RegExp("downloadstring\\s*\\(", "i") },
   { id: "powershell_invoke_expression", description: "PowerShell Invoke-Expression usage", pattern: new RegExp("invoke-expression", "i") },
+  { id: "frombase64string_usage", description: "Base64 decode in script", pattern: new RegExp("frombase64string\\s*\\(", "i") },
 ];
