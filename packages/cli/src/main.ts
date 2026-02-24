@@ -1,11 +1,38 @@
 #!/usr/bin/env node
-import { InMemoryRegistry, runRecipe, parseRecipe } from "@cybermasterchef/core";
+import {
+  InMemoryRegistry,
+  runRecipe,
+  parseRecipe,
+  importCyberChefRecipe,
+  type Recipe
+} from "@cybermasterchef/core";
 import { standardPlugin } from "@cybermasterchef/plugins-standard";
 import fs from "node:fs";
 
 function die(msg: string): never {
   process.stderr.write(msg + "\n");
   process.exit(1);
+}
+
+function warn(msg: string): void {
+  process.stderr.write(`[warn] ${msg}\n`);
+}
+
+function parseRecipeAny(json: string): Recipe {
+  try {
+    return parseRecipe(json);
+  } catch {
+    const imported = importCyberChefRecipe(json);
+    if (imported.warnings.length > 0) {
+      warn(
+        `CyberChef import skipped ${imported.warnings.length} unsupported step(s).`
+      );
+      for (const w of imported.warnings) {
+        warn(`step ${w.step + 1}: ${w.op} (${w.reason})`);
+      }
+    }
+    return imported.recipe;
+  }
 }
 
 const args = process.argv.slice(2);
@@ -17,7 +44,7 @@ if (!recipePath) {
 }
 
 const recipeJson = fs.readFileSync(recipePath, "utf-8");
-const recipe = parseRecipe(recipeJson);
+const recipe = parseRecipeAny(recipeJson);
 const input = inputPath ? fs.readFileSync(inputPath, "utf-8") : fs.readFileSync(0, "utf-8");
 
 const registry = new InMemoryRegistry();

@@ -54,6 +54,11 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
   - unsupported CyberChef steps are skipped and reported as warnings
   - import fails if no compatible operations remain
 
+CLI behavior:
+- `packages/cli` accepts native JSON directly.
+- If native parsing fails, it falls back to `importCyberChefRecipe`.
+- Unsupported CyberChef steps are reported on stderr as warnings.
+
 ## Adding a new operation
 
 1. Create `packages/plugins-standard/src/ops/myOp.ts`

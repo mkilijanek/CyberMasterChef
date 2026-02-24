@@ -61,6 +61,9 @@ Operations are grouped by package priority:
   - `codec.urlEncode`, `codec.urlDecode`
   - `hash.sha256`
   - `text.reverse`
+- CLI compatibility:
+  - accepts native recipe JSON
+  - falls back to CyberChef recipe import and prints warnings for unsupported steps
 
 ## Getting started
 
