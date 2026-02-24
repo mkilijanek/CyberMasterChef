@@ -13,6 +13,7 @@ import {
 } from "@cybermasterchef/core";
 import { useTranslation } from "react-i18next";
 import { SandboxClient } from "./worker/workerClient";
+import type { ExecutionClient } from "./worker/clientTypes";
 import { OperationCatalog } from "./components/OperationCatalog";
 import { RecipeEditor } from "./components/RecipeEditor";
 import { IOPane } from "./components/IOPane";
@@ -116,11 +117,11 @@ export function App(): React.JSX.Element {
   const [status, setStatus] = React.useState<Status>("ready");
   const [error, setError] = React.useState<string | null>(null);
   const [importWarnings, setImportWarnings] = React.useState<RecipeImportWarning[]>([]);
-  const sandboxRef = React.useRef<SandboxClient | null>(null);
+  const sandboxRef = React.useRef<ExecutionClient | null>(null);
   const searchInputRef = React.useRef<HTMLInputElement | null>(null);
   const traceSearchInputRef = React.useRef<HTMLInputElement | null>(null);
 
-  function getSandboxClient(): SandboxClient {
+  function getSandboxClient(): ExecutionClient {
     if (!sandboxRef.current) sandboxRef.current = new SandboxClient();
     return sandboxRef.current;
   }

@@ -1,7 +1,8 @@
 import type { DataValue, Recipe } from "@cybermasterchef/core";
 import type { WorkerRequest, WorkerResponse } from "./protocol";
+import type { ExecutionClient } from "./clientTypes";
 
-export class SandboxClient {
+export class SandboxClient implements ExecutionClient {
   private readonly worker: Worker;
   private ready = false;
   private activeId: string | null = null;
@@ -67,7 +68,7 @@ export class SandboxClient {
   async bake(
     recipe: Recipe,
     input: DataValue,
-    opts?: { timeoutMs?: number }
+    opts?: { timeoutMs?: number; priority?: "normal" | "high" }
   ): Promise<{
     output: DataValue;
     trace: Array<{ step: number; opId: string; inputType: string; outputType: string; durationMs: number }>;
