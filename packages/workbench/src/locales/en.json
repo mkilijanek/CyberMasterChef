@@ -5,6 +5,7 @@
   "operations": "Operations",
   "recipe": "Recipe",
   "search": "Search…",
+  "clearSearch": "Clear search",
   "matchesCount": "Matches: {{count}}",
   "noOperationsMatch": "No operations match this query",
   "autoBake": "Auto-bake",

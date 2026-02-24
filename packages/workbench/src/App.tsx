@@ -394,6 +394,9 @@ export function App(): React.JSX.Element {
             placeholder={t("search")}
             aria-label={t("search")}
           />
+          <button className="buttonSmall" onClick={() => setCatalogQuery("")}>
+            {t("clearSearch")}
+          </button>
           <OperationCatalog
             query={catalogQuery}
             onAdd={(opId) => {

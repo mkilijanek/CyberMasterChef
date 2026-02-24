@@ -5,6 +5,7 @@
   "operations": "Operacje",
   "recipe": "Receptura",
   "search": "Szukaj…",
+  "clearSearch": "Wyczyść wyszukiwanie",
   "matchesCount": "Wyniki: {{count}}",
   "noOperationsMatch": "Brak operacji pasujących do zapytania",
   "autoBake": "Auto-bake",

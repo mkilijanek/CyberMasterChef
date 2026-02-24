@@ -47,6 +47,7 @@ Operations are grouped by package priority:
 - Workbench features:
   - operation catalog with search by name/description/ID and visible operation IDs in list
   - explicit empty-state message when search query has no matching operations
+  - quick clear-search action in operation catalog
   - recipe editing (add/reorder/remove + arg forms)
   - auto-bake mode (debounced re-run on changes)
   - cancel in-flight execution from the UI
