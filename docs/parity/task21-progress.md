@@ -57,3 +57,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 47: `url_shortener_tinyurl` - URL shortener tinyurl indicator
 - [x] Stage 48: `lolbin_makecab` - LOLBIN makecab usage
 - [x] Stage 49: `lolbin_expand` - LOLBIN expand usage
+- [x] Stage 50: `lolbin_msbuild` - LOLBIN msbuild usage
