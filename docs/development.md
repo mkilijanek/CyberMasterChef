@@ -174,6 +174,7 @@ Example operation IDs in use:
 - `text.trimQuotes`
 - `text.surroundBrackets`
 - `text.surroundQuotes`
+- `text.rot13`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
