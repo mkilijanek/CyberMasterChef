@@ -163,6 +163,7 @@ Operations are grouped by package priority:
   - `text.removeSingleQuotes`
   - `text.replaceNewlinesWithSpace`
   - `text.replaceSpacesWithNewlines`
+  - `text.tabsToSingleSpace`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
