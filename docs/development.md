@@ -220,6 +220,7 @@ Example operation IDs in use:
 - `text.removePluses`
 - `text.removeEquals`
 - `text.removeTildes`
+- `text.removeCarets`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

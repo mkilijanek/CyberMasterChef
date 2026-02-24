@@ -115,6 +115,7 @@ import { removeAmpersands } from "./ops/removeAmpersands.js";
 import { removePluses } from "./ops/removePluses.js";
 import { removeEquals } from "./ops/removeEquals.js";
 import { removeTildes } from "./ops/removeTildes.js";
+import { removeCarets } from "./ops/removeCarets.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -233,6 +234,7 @@ export const standardPlugin: Plugin = {
     registry.register(removePluses);
     registry.register(removeEquals);
     registry.register(removeTildes);
+    registry.register(removeCarets);
     registry.register(sha256);
   }
 };
