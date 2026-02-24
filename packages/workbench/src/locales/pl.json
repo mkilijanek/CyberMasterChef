@@ -47,6 +47,8 @@
   "timeoutRange": "(100-120000)",
   "workerPoolSize": "Rozmiar puli workerów",
   "workerPoolSizeRange": "(1-8)",
+  "workerMaxQueue": "Maks kolejka workerów",
+  "workerMaxQueueRange": "(1-256)",
   "add": "Dodaj",
   "remove": "Usuń",
   "duplicate": "Duplikuj",

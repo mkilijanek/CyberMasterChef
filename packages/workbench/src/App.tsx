@@ -46,6 +46,9 @@ const MAX_TIMEOUT_MS = 120_000;
 const DEFAULT_POOL_SIZE = 2;
 const MIN_POOL_SIZE = 1;
 const MAX_POOL_SIZE = 8;
+const DEFAULT_MAX_QUEUE = 64;
+const MIN_MAX_QUEUE = 1;
+const MAX_MAX_QUEUE = 256;
 
 function isRecipe(value: unknown): value is Recipe {
   if (typeof value !== "object" || value === null) return false;
@@ -124,6 +127,12 @@ export function App(): React.JSX.Element {
     if (!Number.isFinite(parsed)) return DEFAULT_POOL_SIZE;
     return Math.min(MAX_POOL_SIZE, Math.max(MIN_POOL_SIZE, Math.floor(parsed)));
   });
+  const [workerMaxQueue, setWorkerMaxQueue] = React.useState<number>(() => {
+    const raw = localStorage.getItem("workerMaxQueue.v1");
+    const parsed = raw === null ? DEFAULT_MAX_QUEUE : Number(raw);
+    if (!Number.isFinite(parsed)) return DEFAULT_MAX_QUEUE;
+    return Math.min(MAX_MAX_QUEUE, Math.max(MIN_MAX_QUEUE, Math.floor(parsed)));
+  });
   const [output, setOutput] = React.useState<string>("");
   const [trace, setTrace] = React.useState<TraceRow[]>([]);
   const [lastRunMs, setLastRunMs] = React.useState<number | null>(null);
@@ -141,7 +150,7 @@ export function App(): React.JSX.Element {
       sandboxRef.current =
         workerPoolSize <= 1
           ? new SandboxClient()
-          : new WorkerPoolClient({ size: workerPoolSize });
+          : new WorkerPoolClient({ size: workerPoolSize, maxQueue: workerMaxQueue });
     }
     return sandboxRef.current;
   }
@@ -153,7 +162,7 @@ export function App(): React.JSX.Element {
       sandboxRef.current = null;
       client?.dispose();
     };
-  }, [workerPoolSize]);
+  }, [workerMaxQueue, workerPoolSize]);
 
   React.useEffect(() => {
     localStorage.setItem("recipe.v1", JSON.stringify(recipe));
@@ -161,12 +170,13 @@ export function App(): React.JSX.Element {
     localStorage.setItem("autobake.v1", autoBake ? "1" : "0");
     localStorage.setItem("timeoutMs.v1", String(timeoutMs));
     localStorage.setItem("workerPoolSize.v1", String(workerPoolSize));
+    localStorage.setItem("workerMaxQueue.v1", String(workerMaxQueue));
     localStorage.setItem("catalogQuery.v1", catalogQuery);
     localStorage.setItem("traceQuery.v1", traceQuery);
 
     const shared = toBase64Url(JSON.stringify({ recipe, input }));
     window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${HASH_PREFIX}${shared}`);
-  }, [autoBake, catalogQuery, input, recipe, timeoutMs, traceQuery, workerPoolSize]);
+  }, [autoBake, catalogQuery, input, recipe, timeoutMs, traceQuery, workerMaxQueue, workerPoolSize]);
 
   const filteredTrace = React.useMemo(() => {
     const q = traceQuery.trim().toLowerCase();
@@ -504,6 +514,27 @@ export function App(): React.JSX.Element {
             }}
           />
           <span className="muted">{t("workerPoolSizeRange")}</span>
+        </label>
+        <label className="timeoutControl">
+          <span>{t("workerMaxQueue")}</span>
+          <input
+            className="timeoutInput"
+            data-testid="max-queue-input"
+            type="number"
+            min={MIN_MAX_QUEUE}
+            max={MAX_MAX_QUEUE}
+            step={1}
+            value={workerMaxQueue}
+            onChange={(e) => {
+              const raw = Number(e.target.value);
+              if (!Number.isFinite(raw)) return;
+              setWorkerMaxQueue(Math.min(MAX_MAX_QUEUE, Math.max(MIN_MAX_QUEUE, Math.floor(raw))));
+            }}
+            onBlur={() => {
+              setWorkerMaxQueue((v) => Math.min(MAX_MAX_QUEUE, Math.max(MIN_MAX_QUEUE, v)));
+            }}
+          />
+          <span className="muted">{t("workerMaxQueueRange")}</span>
         </label>
         <button
           className="buttonSmall"

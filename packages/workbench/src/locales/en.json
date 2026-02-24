@@ -47,6 +47,8 @@
   "timeoutRange": "(100-120000)",
   "workerPoolSize": "Worker pool size",
   "workerPoolSizeRange": "(1-8)",
+  "workerMaxQueue": "Worker max queue",
+  "workerMaxQueueRange": "(1-256)",
   "add": "Add",
   "remove": "Remove",
   "duplicate": "Duplicate",
