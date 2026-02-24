@@ -214,7 +214,10 @@ describe("worker runtime protocol integration", () => {
     expect(results).toHaveLength(2);
     const ids = results.map((m) => m.id).sort();
     expect(ids).toEqual(["race-1", "race-2"]);
-    expect(results[0]).toMatchObject({
+    const firstResult = results[0];
+    expect(firstResult).toBeDefined();
+    if (!firstResult) return;
+    expect(firstResult).toMatchObject({
       type: "result",
       run: {
         durationMs: 1,
@@ -223,7 +226,7 @@ describe("worker runtime protocol integration", () => {
         slowestStep: { step: 0, opId: "text.reverse", durationMs: 1 }
       }
     });
-    expect(results[0].run.recipeHash).toMatch(/^[0-9a-f]{64}$/);
-    expect(results[0].run.inputHash).toMatch(/^[0-9a-f]{64}$/);
+    expect(firstResult.run.recipeHash).toMatch(/^[0-9a-f]{64}$/);
+    expect(firstResult.run.inputHash).toMatch(/^[0-9a-f]{64}$/);
   });
 });

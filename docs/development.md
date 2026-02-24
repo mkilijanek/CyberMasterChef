@@ -80,6 +80,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
 - Engine trace metadata:
   - per-step `durationMs`
   - run-level `meta` with `startedAt`, `endedAt`, `durationMs`
+  - summary fields: `stepDurationTotalMs`, `stepDurationAvgMs`, `slowestStep`
 
 ## Roadmap status
 
@@ -122,6 +123,8 @@ CLI behavior:
 - `--show-trace` prints execution trace (step/op/input->output types) on stderr.
 - `--trace-json` prints execution trace as JSON on stderr.
 - `--trace-limit <n>` limits how many trace rows are printed for trace outputs.
+- `--show-trace-summary` prints aggregate trace timing summary on stderr.
+- `--trace-summary-json` prints aggregate trace timing summary as JSON on stderr.
 - `--show-repro` prints compact reproducibility metadata on stderr.
 - `--repro-json` prints reproducibility bundle as JSON on stderr.
 - `--repro-file <path>` writes reproducibility bundle as JSON to file.
