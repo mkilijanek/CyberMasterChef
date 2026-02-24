@@ -87,6 +87,7 @@ Operations are grouped by package priority:
 - Wave 14 JSON extraction adds `format.jsonNumberValues`.
 - Wave 15 date normalization adds `date.isoToDateOnly`.
 - Wave 15 date classification adds `date.isoWeekday`.
+- Wave 16 network metadata adds `network.extractPorts`.
 - C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
 
 ## Current functionality
@@ -301,6 +302,7 @@ Operations are grouped by package priority:
   - `network.extractIPv6`
   - `network.defangIPs`
   - `network.fangIPs`
+  - `network.extractPorts`
   - `network.extractUrls`
   - `network.defangUrls`
   - `network.fangUrls`

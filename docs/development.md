@@ -204,6 +204,7 @@ Wave 1 implemented so far:
 - Wave 14 data-format: `format.jsonNumberValues`
 - Wave 15 date-time normalization: `date.isoToDateOnly`
 - Wave 15 date-time classification: `date.isoWeekday`
+- Wave 16 network metadata: `network.extractPorts`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip
 

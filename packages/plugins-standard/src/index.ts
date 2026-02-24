@@ -186,6 +186,7 @@ import { isoWeekday } from "./ops/isoWeekday.js";
 import { extractIPv6 } from "./ops/extractIPv6.js";
 import { defangIPs } from "./ops/defangIPs.js";
 import { fangIPs } from "./ops/fangIPs.js";
+import { extractPorts } from "./ops/extractPorts.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -372,6 +373,7 @@ export const standardPlugin: Plugin = {
     registry.register(extractIPv6);
     registry.register(defangIPs);
     registry.register(fangIPs);
+    registry.register(extractPorts);
     registry.register(extractUrls);
     registry.register(defangUrls);
     registry.register(fangUrls);

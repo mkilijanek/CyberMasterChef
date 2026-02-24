@@ -7,6 +7,7 @@ import { fangUrls } from "../src/ops/fangUrls.js";
 import { extractIPv6 } from "../src/ops/extractIPv6.js";
 import { defangIPs } from "../src/ops/defangIPs.js";
 import { fangIPs } from "../src/ops/fangIPs.js";
+import { extractPorts } from "../src/ops/extractPorts.js";
 
 describe("network operations", () => {
   it("extracts unique valid IPv4 addresses", async () => {
@@ -129,5 +130,17 @@ describe("network operations", () => {
       type: "string",
       value: "src 10.0.0.1 dst 192.168.1.5"
     });
+  });
+
+  it("extracts unique valid ports", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(extractPorts);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.extractPorts" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "https://a:443 x port=8080 y port 70000 z :53" }
+    });
+    expect(out.output).toEqual({ type: "string", value: "53\n443\n8080" });
   });
 });

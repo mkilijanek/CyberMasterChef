@@ -288,6 +288,15 @@ const goldenCases: GoldenCase[] = [
     expected: "Monday"
   },
   {
+    name: "Extract network ports",
+    input: "https://example.com:443 proxy port=8080 dns:53",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "network.extractPorts" }]
+    },
+    expected: "53\n443\n8080"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {
