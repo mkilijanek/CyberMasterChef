@@ -205,6 +205,7 @@ Example operation IDs in use:
 - `text.removeControlChars`
 - `text.collapseMultipleNewlines`
 - `text.trimLeadingDots`
+- `text.trimTrailingDots`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.
