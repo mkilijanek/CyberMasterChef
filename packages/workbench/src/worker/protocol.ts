@@ -17,6 +17,9 @@ export type WorkerResponse =
         startedAt: number;
         endedAt: number;
         durationMs: number;
+        stepDurationTotalMs: number;
+        stepDurationAvgMs: number;
+        slowestStep: { step: number; opId: string; durationMs: number } | null;
         recipeHash: string;
         inputHash: string;
       };

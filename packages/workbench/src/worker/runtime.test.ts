@@ -38,7 +38,18 @@ describe("worker runtime protocol integration", () => {
       signal?: AbortSignal;
     }) => {
       started.resolve();
-      return await new Promise<{ output: DataValue; trace: Trace; meta: { startedAt: number; endedAt: number; durationMs: number } }>((resolve, reject) => {
+      return await new Promise<{
+        output: DataValue;
+        trace: Trace;
+        meta: {
+          startedAt: number;
+          endedAt: number;
+          durationMs: number;
+          stepDurationTotalMs: number;
+          stepDurationAvgMs: number;
+          slowestStep: { step: number; opId: string; durationMs: number } | null;
+        };
+      }>((resolve, reject) => {
         args.signal?.addEventListener("abort", () => reject(new Error("Aborted")));
         void resolve;
       });
@@ -73,7 +84,18 @@ describe("worker runtime protocol integration", () => {
       input: DataValue;
       signal?: AbortSignal;
     }) =>
-      await new Promise<{ output: DataValue; trace: Trace; meta: { startedAt: number; endedAt: number; durationMs: number } }>((resolve, reject) => {
+      await new Promise<{
+        output: DataValue;
+        trace: Trace;
+        meta: {
+          startedAt: number;
+          endedAt: number;
+          durationMs: number;
+          stepDurationTotalMs: number;
+          stepDurationAvgMs: number;
+          slowestStep: { step: number; opId: string; durationMs: number } | null;
+        };
+      }>((resolve, reject) => {
         args.signal?.addEventListener("abort", () => reject(new Error("Aborted")));
         void resolve;
       });
@@ -102,12 +124,26 @@ describe("worker runtime protocol integration", () => {
     const first = deferred<{
       output: DataValue;
       trace: Trace;
-      meta: { startedAt: number; endedAt: number; durationMs: number };
+      meta: {
+        startedAt: number;
+        endedAt: number;
+        durationMs: number;
+        stepDurationTotalMs: number;
+        stepDurationAvgMs: number;
+        slowestStep: { step: number; opId: string; durationMs: number } | null;
+      };
     }>();
     const second = deferred<{
       output: DataValue;
       trace: Trace;
-      meta: { startedAt: number; endedAt: number; durationMs: number };
+      meta: {
+        startedAt: number;
+        endedAt: number;
+        durationMs: number;
+        stepDurationTotalMs: number;
+        stepDurationAvgMs: number;
+        slowestStep: { step: number; opId: string; durationMs: number } | null;
+      };
     }>();
 
     const runRecipe = async (args: {
@@ -149,14 +185,28 @@ describe("worker runtime protocol integration", () => {
       trace: [
         { step: 0, opId: "text.reverse", inputType: "string", outputType: "string", durationMs: 1 }
       ],
-      meta: { startedAt: 10, endedAt: 11, durationMs: 1 }
+      meta: {
+        startedAt: 10,
+        endedAt: 11,
+        durationMs: 1,
+        stepDurationTotalMs: 1,
+        stepDurationAvgMs: 1,
+        slowestStep: { step: 0, opId: "text.reverse", durationMs: 1 }
+      }
     });
     first.resolve({
       output: { type: "string", value: "first-out" },
       trace: [
         { step: 0, opId: "text.reverse", inputType: "string", outputType: "string", durationMs: 1 }
       ],
-      meta: { startedAt: 20, endedAt: 21, durationMs: 1 }
+      meta: {
+        startedAt: 20,
+        endedAt: 21,
+        durationMs: 1,
+        stepDurationTotalMs: 1,
+        stepDurationAvgMs: 1,
+        slowestStep: { step: 0, opId: "text.reverse", durationMs: 1 }
+      }
     });
     await Promise.all([p1, p2]);
 
@@ -167,7 +217,9 @@ describe("worker runtime protocol integration", () => {
     expect(results[0]).toMatchObject({
       type: "result",
       run: {
-        durationMs: 1
+        durationMs: 1,
+        stepDurationTotalMs: 1,
+        stepDurationAvgMs: 1
       }
     });
   });

@@ -6,7 +6,14 @@ type TraceRow = Array<{ step: number; opId: string; inputType: string; outputTyp
 type RunRecipeResult = {
   output: DataValue;
   trace: TraceRow;
-  meta: { startedAt: number; endedAt: number; durationMs: number };
+  meta: {
+    startedAt: number;
+    endedAt: number;
+    durationMs: number;
+    stepDurationTotalMs: number;
+    stepDurationAvgMs: number;
+    slowestStep: { step: number; opId: string; durationMs: number } | null;
+  };
 };
 
 type RunRecipeFn = (args: {
@@ -71,6 +78,9 @@ export function createWorkerRuntime(deps: RuntimeDeps): {
                 startedAt: res.meta.startedAt,
                 endedAt: res.meta.endedAt,
                 durationMs: res.meta.durationMs,
+                stepDurationTotalMs: res.meta.stepDurationTotalMs,
+                stepDurationAvgMs: res.meta.stepDurationAvgMs,
+                slowestStep: res.meta.slowestStep,
                 recipeHash,
                 inputHash
               }
@@ -88,6 +98,9 @@ export function createWorkerRuntime(deps: RuntimeDeps): {
               startedAt: res.meta.startedAt,
               endedAt: res.meta.endedAt,
               durationMs: res.meta.durationMs,
+              stepDurationTotalMs: res.meta.stepDurationTotalMs,
+              stepDurationAvgMs: res.meta.stepDurationAvgMs,
+              slowestStep: res.meta.slowestStep,
               recipeHash,
               inputHash
             }
