@@ -18,3 +18,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 08: `bitsadmin_transfer` - BITSAdmin transfer pattern
 - [x] Stage 09: `certutil_decode` - Certutil decode or urlcache usage
 - [x] Stage 10: `schtasks_create` - Scheduled task persistence
+- [x] Stage 11: `at_job_create` - Legacy at job persistence
