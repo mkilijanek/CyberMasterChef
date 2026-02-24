@@ -23,3 +23,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 13: `reg_runonce_key` - Registry RunOnce persistence
 - [x] Stage 14: `wscript_launch` - WSH script execution via wscript
 - [x] Stage 15: `cscript_launch` - WSH script execution via cscript
+- [x] Stage 16: `hta_file_drop` - HTA payload reference
