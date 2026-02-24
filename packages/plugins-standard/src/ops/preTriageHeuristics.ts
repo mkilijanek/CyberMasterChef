@@ -86,4 +86,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "taskcache_reference", description: "TaskCache persistence reference", pattern: new RegExp("taskcache", "i") },
   { id: "service_create_sc", description: "Service creation via sc.exe", pattern: new RegExp("sc\\s+create\\s+", "i") },
   { id: "service_config_sc", description: "Service config via sc.exe", pattern: new RegExp("sc\\s+config\\s+", "i") },
+  { id: "net_user_add", description: "User creation via net user", pattern: new RegExp("net\\s+user\\s+.+\\s+/add", "i") },
 ];
