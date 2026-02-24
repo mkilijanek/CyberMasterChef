@@ -5,13 +5,14 @@ export function IOPane(props: {
   input: string;
   output: string;
   onInputChange: (v: string) => void;
-}): JSX.Element {
+}): React.JSX.Element {
   const { t } = useTranslation();
   return (
     <div className="io">
       <label className="ioBlock">
         <span className="ioTitle">{t("input")}</span>
         <textarea
+          data-testid="io-input"
           className="textarea"
           value={props.input}
           onChange={(e) => props.onInputChange(e.target.value)}
@@ -19,7 +20,7 @@ export function IOPane(props: {
       </label>
       <label className="ioBlock">
         <span className="ioTitle">{t("output")}</span>
-        <textarea className="textarea" value={props.output} readOnly />
+        <textarea data-testid="io-output" className="textarea" value={props.output} readOnly />
       </label>
     </div>
   );
