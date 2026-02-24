@@ -167,6 +167,7 @@ Example operation IDs in use:
 - `text.keepPunctuation`
 - `text.collapseDashes`
 - `text.collapseUnderscores`
+- `text.removeTabs`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

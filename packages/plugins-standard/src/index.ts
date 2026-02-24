@@ -62,6 +62,7 @@ import { removePunctuation } from "./ops/removePunctuation.js";
 import { keepPunctuation } from "./ops/keepPunctuation.js";
 import { collapseDashes } from "./ops/collapseDashes.js";
 import { collapseUnderscores } from "./ops/collapseUnderscores.js";
+import { removeTabs } from "./ops/removeTabs.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -127,6 +128,7 @@ export const standardPlugin: Plugin = {
     registry.register(keepPunctuation);
     registry.register(collapseDashes);
     registry.register(collapseUnderscores);
+    registry.register(removeTabs);
     registry.register(sha256);
   }
 };
