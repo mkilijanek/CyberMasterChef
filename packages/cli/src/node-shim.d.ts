@@ -1,5 +1,6 @@
 declare module "node:fs" {
   export function readFileSync(path: string | number, encoding: string): string;
+  export function readdirSync(path: string): string[];
   export function writeFileSync(path: string, data: string, encoding: string): void;
 }
 

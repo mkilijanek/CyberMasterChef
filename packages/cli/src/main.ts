@@ -15,7 +15,7 @@ import {
   type Recipe
 } from "@cybermasterchef/core";
 import { standardPlugin } from "@cybermasterchef/plugins-standard";
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import pkg from "../package.json";
 
 const DEFAULT_TIMEOUT_MS = 10_000;
@@ -57,6 +57,7 @@ const usageText =
   "  --hex-uppercase                  render hex bytes output using uppercase letters\n" +
   "  --json-indent <n>                indentation for JSON output rendering\n" +
   "  --output-file <path>             write rendered output to file instead of stdout\n" +
+  "  --batch-input-dir <path>         execute recipe for each file in directory and print JSON report\n" +
   "  --fail-empty-output              fail when rendered output is empty\n" +
   "  --no-newline                     do not append trailing newline to output\n" +
   "  --max-output-chars <n>           limit output length for string/json/bytes rendering\n" +
@@ -115,6 +116,7 @@ type CliOptions = {
   hexUppercase: boolean;
   jsonIndent: number;
   outputFile?: string;
+  batchInputDir?: string;
   failEmptyOutput: boolean;
   noNewline: boolean;
   maxOutputChars?: number;
@@ -145,6 +147,7 @@ function parseArgs(args: string[]): CliOptions {
   let hexUppercase = false;
   let jsonIndent = 2;
   let outputFile: string | undefined;
+  let batchInputDir: string | undefined;
   let failEmptyOutput = false;
   let noNewline = false;
   let maxOutputChars: number | undefined;
@@ -297,6 +300,13 @@ function parseArgs(args: string[]): CliOptions {
       i++;
       continue;
     }
+    if (arg === "--batch-input-dir") {
+      const raw = args[i + 1];
+      if (!raw) die("Missing value for --batch-input-dir");
+      batchInputDir = raw;
+      i++;
+      continue;
+    }
     if (arg === "--no-newline") {
       noNewline = true;
       continue;
@@ -354,6 +364,7 @@ function parseArgs(args: string[]): CliOptions {
   if (traceLimit !== undefined) out.traceLimit = traceLimit;
   if (listOpsFilter !== undefined) out.listOpsFilter = listOpsFilter;
   if (outputFile !== undefined) out.outputFile = outputFile;
+  if (batchInputDir !== undefined) out.batchInputDir = batchInputDir;
   if (reproFile !== undefined) out.reproFile = reproFile;
   const inputPath = positional[1];
   if (inputPath) out.inputPath = inputPath;
@@ -412,76 +423,156 @@ if (opts.dryRun) {
   );
   process.exit(0);
 }
+
+function parseInputValue(raw: string): DataValue {
+  if (opts.inputEncoding === "hex") return { type: "bytes", value: hexToBytes(raw.trim()) };
+  if (opts.inputEncoding === "base64") return { type: "bytes", value: base64ToBytes(raw.trim()) };
+  return { type: "string", value: raw };
+}
+
+function renderOutput(output: DataValue): string {
+  let rendered = "";
+  if (output.type === "bytes") {
+    rendered =
+      opts.bytesOutput === "base64"
+        ? bytesToBase64(output.value)
+        : opts.bytesOutput === "utf8"
+          ? bytesToUtf8(output.value)
+          : [...output.value].map((b) => b.toString(16).padStart(2, "0")).join("");
+    if (opts.bytesOutput === "hex" && opts.hexUppercase) rendered = rendered.toUpperCase();
+  } else if (output.type === "json") {
+    rendered = JSON.stringify(output.value, null, opts.jsonIndent);
+  } else {
+    rendered = String(output.value);
+  }
+  return opts.maxOutputChars !== undefined ? rendered.slice(0, opts.maxOutputChars) : rendered;
+}
+
+async function executeOne(rawInput: string): Promise<{
+  rendered: string;
+  elapsed: number;
+  outputType: DataValue["type"];
+  trace: Awaited<ReturnType<typeof runRecipe>>["trace"];
+  traceSummary: ReturnType<typeof summarizeTrace>;
+  reproBundle: {
+    runId: string;
+    startedAt: number;
+    endedAt: number;
+    durationMs: number;
+    recipeHash: string;
+    inputHash: string;
+    recipeSource: "native" | "cyberchef";
+    warningCount: number;
+    traceSteps: number;
+    outputType: DataValue["type"];
+    pluginSet: Array<{ pluginId: string; version: string }>;
+  };
+}> {
+  const inputValue = parseInputValue(rawInput);
+  const controller = new AbortController();
+  const startedAt = Date.now();
+  const timeoutHandle = setTimeout(() => {
+    controller.abort();
+  }, opts.timeoutMs);
+  const res = await runRecipe({
+    registry,
+    recipe: parsedRecipe.recipe,
+    input: inputValue,
+    signal: controller.signal
+  }).finally(() => {
+    clearTimeout(timeoutHandle);
+  });
+  const recipeHash = await hashRecipe(parsedRecipe.recipe);
+  const inputHash = await hashDataValue(inputValue);
+  const elapsed = Date.now() - startedAt;
+  const traceSummary = summarizeTrace(res.trace);
+  const reproBundle = {
+    runId: crypto.randomUUID(),
+    startedAt,
+    endedAt: startedAt + elapsed,
+    durationMs: elapsed,
+    recipeHash,
+    inputHash,
+    recipeSource: parsedRecipe.source,
+    warningCount: parsedRecipe.warningCount,
+    traceSteps: res.trace.length,
+    outputType: res.output.type,
+    pluginSet: [{ pluginId: standardPlugin.pluginId, version: standardPlugin.version }]
+  };
+  return {
+    rendered: renderOutput(res.output),
+    elapsed,
+    outputType: res.output.type,
+    trace: res.trace,
+    traceSummary,
+    reproBundle
+  };
+}
+
+if (opts.batchInputDir) {
+  const entries = readdirSync(opts.batchInputDir)
+    .map((name) => `${opts.batchInputDir as string}/${name}`)
+    .sort();
+  const report: Array<{
+    file: string;
+    durationMs: number;
+    outputType: DataValue["type"];
+    outputPreview: string;
+    traceSummary: ReturnType<typeof summarizeTrace>;
+    recipeHash: string;
+    inputHash: string;
+  }> = [];
+  for (const filePath of entries) {
+    let raw = "";
+    try {
+      raw = readFileSync(filePath, "utf-8");
+    } catch {
+      continue;
+    }
+    const run = await executeOne(raw);
+    report.push({
+      file: filePath,
+      durationMs: run.elapsed,
+      outputType: run.outputType,
+      outputPreview: run.rendered,
+      traceSummary: run.traceSummary,
+      recipeHash: run.reproBundle.recipeHash,
+      inputHash: run.reproBundle.inputHash
+    });
+  }
+  process.stdout.write(`${JSON.stringify(report, null, 2)}\n`);
+  process.exit(0);
+}
+
 const input =
   opts.inputPath && opts.inputPath !== "-"
     ? readFileSync(opts.inputPath, "utf-8")
     : readFileSync(0, "utf-8");
-const inputValue: DataValue =
-  opts.inputEncoding === "hex"
-    ? { type: "bytes", value: hexToBytes(input.trim()) }
-    : opts.inputEncoding === "base64"
-      ? { type: "bytes", value: base64ToBytes(input.trim()) }
-      : { type: "string", value: input };
+const run = await executeOne(input);
 
-const controller = new AbortController();
-const startedAt = Date.now();
-const timeoutHandle = setTimeout(() => {
-  controller.abort();
-}, opts.timeoutMs);
-const res = await runRecipe({
-  registry,
-  recipe: parsedRecipe.recipe,
-  input: inputValue,
-  signal: controller.signal
-}).finally(() => {
-  clearTimeout(timeoutHandle);
-});
-const recipeHash = await hashRecipe(parsedRecipe.recipe);
-const inputHash = await hashDataValue(inputValue);
-const elapsed = Date.now() - startedAt;
-const reproBundle = {
-  runId: crypto.randomUUID(),
-  startedAt,
-  endedAt: startedAt + elapsed,
-  durationMs: elapsed,
-  recipeHash,
-  inputHash,
-  recipeSource: parsedRecipe.source,
-  warningCount: parsedRecipe.warningCount,
-  traceSteps: res.trace.length,
-  outputType: res.output.type,
-  pluginSet: [
-    {
-      pluginId: standardPlugin.pluginId,
-      version: standardPlugin.version
-    }
-  ]
-};
-const traceSummary = summarizeTrace(res.trace);
 if (opts.showSummary) {
   process.stderr.write(
-    `[summary] outputType=${res.output.type} traceSteps=${res.trace.length} durationMs=${elapsed}\n`
+    `[summary] outputType=${run.outputType} traceSteps=${run.trace.length} durationMs=${run.elapsed}\n`
   );
 }
 if (opts.summaryJson) {
   process.stderr.write(
-    `${JSON.stringify({ outputType: res.output.type, traceSteps: res.trace.length, durationMs: elapsed })}\n`
+    `${JSON.stringify({ outputType: run.outputType, traceSteps: run.trace.length, durationMs: run.elapsed })}\n`
   );
 }
 if (opts.showRepro) {
   process.stderr.write(
-    `[repro] recipeHash=${reproBundle.recipeHash} inputHash=${reproBundle.inputHash} durationMs=${reproBundle.durationMs}\n`
+    `[repro] recipeHash=${run.reproBundle.recipeHash} inputHash=${run.reproBundle.inputHash} durationMs=${run.reproBundle.durationMs}\n`
   );
 }
 if (opts.reproJson) {
-  process.stderr.write(`${JSON.stringify(reproBundle)}\n`);
+  process.stderr.write(`${JSON.stringify(run.reproBundle)}\n`);
 }
 if (opts.reproFile) {
-  writeFileSync(opts.reproFile, `${JSON.stringify(reproBundle, null, 2)}\n`, "utf-8");
+  writeFileSync(opts.reproFile, `${JSON.stringify(run.reproBundle, null, 2)}\n`, "utf-8");
 }
-
 if (opts.showTrace) {
-  const traceRows = opts.traceLimit !== undefined ? res.trace.slice(0, opts.traceLimit) : res.trace;
+  const traceRows = opts.traceLimit !== undefined ? run.trace.slice(0, opts.traceLimit) : run.trace;
   for (const t of traceRows) {
     process.stderr.write(
       `[trace] step=${t.step + 1} op=${t.opId} ${t.inputType}->${t.outputType}\n`
@@ -489,41 +580,22 @@ if (opts.showTrace) {
   }
 }
 if (opts.traceJson) {
-  const traceRows = opts.traceLimit !== undefined ? res.trace.slice(0, opts.traceLimit) : res.trace;
+  const traceRows = opts.traceLimit !== undefined ? run.trace.slice(0, opts.traceLimit) : run.trace;
   process.stderr.write(`${JSON.stringify(traceRows)}\n`);
 }
 if (opts.showTraceSummary) {
   process.stderr.write(
-    `[trace-summary] steps=${traceSummary.steps} totalMs=${traceSummary.totalDurationMs} avgMs=${traceSummary.averageDurationMs.toFixed(2)} slowest=${traceSummary.slowestStep ? `${traceSummary.slowestStep.step + 1}:${traceSummary.slowestStep.opId}:${traceSummary.slowestStep.durationMs}` : "none"}\n`
+    `[trace-summary] steps=${run.traceSummary.steps} totalMs=${run.traceSummary.totalDurationMs} avgMs=${run.traceSummary.averageDurationMs.toFixed(2)} slowest=${run.traceSummary.slowestStep ? `${run.traceSummary.slowestStep.step + 1}:${run.traceSummary.slowestStep.opId}:${run.traceSummary.slowestStep.durationMs}` : "none"}\n`
   );
 }
 if (opts.traceSummaryJson) {
-  process.stderr.write(`${JSON.stringify(traceSummary)}\n`);
+  process.stderr.write(`${JSON.stringify(run.traceSummary)}\n`);
 }
-
-let rendered = "";
-if (res.output.type === "bytes") {
-  rendered =
-    opts.bytesOutput === "base64"
-      ? bytesToBase64(res.output.value)
-      : opts.bytesOutput === "utf8"
-        ? bytesToUtf8(res.output.value)
-        : [...res.output.value].map((b) => b.toString(16).padStart(2, "0")).join("");
-  if (opts.bytesOutput === "hex" && opts.hexUppercase) {
-    rendered = rendered.toUpperCase();
-  }
-} else if (res.output.type === "json") {
-  rendered = JSON.stringify(res.output.value, null, opts.jsonIndent);
-} else {
-  rendered = String(res.output.value);
-}
-const printed =
-  opts.maxOutputChars !== undefined ? rendered.slice(0, opts.maxOutputChars) : rendered;
-if (opts.failEmptyOutput && printed.length === 0) {
+if (opts.failEmptyOutput && run.rendered.length === 0) {
   die("Execution failed: output is empty.");
 }
 if (opts.outputFile) {
-  writeFileSync(opts.outputFile, opts.noNewline ? printed : `${printed}\n`, "utf-8");
+  writeFileSync(opts.outputFile, opts.noNewline ? run.rendered : `${run.rendered}\n`, "utf-8");
 } else {
-  process.stdout.write(opts.noNewline ? printed : printed + "\n");
+  process.stdout.write(opts.noNewline ? run.rendered : run.rendered + "\n");
 }
