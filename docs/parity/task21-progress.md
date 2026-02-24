@@ -129,3 +129,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 115: `mega_nz_reference` - MEGA hosting indicator
 - [x] Stage 116: `dropbox_reference` - Dropbox hosting indicator
 - [x] Stage 117: `google_drive_uc` - Google Drive direct-download indicator
+- [x] Stage 118: `onedrive_reference` - OneDrive hosting indicator
