@@ -21,6 +21,7 @@ describe("standardPlugin", () => {
       "text.append",
       "text.firstLine",
       "text.lineCount",
+      "text.lastLine",
       "text.length",
       "text.lowercase",
       "text.padEnd",
