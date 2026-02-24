@@ -31,3 +31,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 21: `scr_file_drop` - Screensaver payload reference
 - [x] Stage 22: `bat_file_drop` - Batch payload reference
 - [x] Stage 23: `cmd_file_drop` - CMD payload reference
+- [x] Stage 24: `zip_archive_drop` - ZIP archive payload
