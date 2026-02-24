@@ -121,6 +121,7 @@ Operations are grouped by package priority:
   - `text.uniqueWords`
   - `text.removeVowels`
   - `text.keepVowels`
+  - `text.normalizeNewlines`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
