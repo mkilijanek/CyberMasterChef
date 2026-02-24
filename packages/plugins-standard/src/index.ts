@@ -9,6 +9,7 @@ import { fromBinary } from "./ops/fromBinary.js";
 import { urlEncode } from "./ops/urlEncode.js";
 import { urlDecode } from "./ops/urlDecode.js";
 import { reverse } from "./ops/reverse.js";
+import { lowercase } from "./ops/lowercase.js";
 
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
@@ -23,6 +24,7 @@ export const standardPlugin: Plugin = {
     registry.register(urlEncode);
     registry.register(urlDecode);
     registry.register(reverse);
+    registry.register(lowercase);
     registry.register(sha256);
   }
 };

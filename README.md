@@ -69,6 +69,7 @@ Operations are grouped by package priority:
   - `codec.toHex`, `codec.fromHex`
   - `codec.toBinary`, `codec.fromBinary`
   - `codec.urlEncode`, `codec.urlDecode`
+  - `text.lowercase`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:
