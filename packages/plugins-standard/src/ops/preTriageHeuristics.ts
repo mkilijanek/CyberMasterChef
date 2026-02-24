@@ -87,4 +87,5 @@ export const PRETRIAGE_HEURISTICS: PreTriageHeuristic[] = [
   { id: "service_create_sc", description: "Service creation via sc.exe", pattern: new RegExp("sc\\s+create\\s+", "i") },
   { id: "service_config_sc", description: "Service config via sc.exe", pattern: new RegExp("sc\\s+config\\s+", "i") },
   { id: "net_user_add", description: "User creation via net user", pattern: new RegExp("net\\s+user\\s+.+\\s+/add", "i") },
+  { id: "net_localgroup_admin", description: "Admin group assignment", pattern: new RegExp("net\\s+localgroup\\s+administrators", "i") },
 ];
