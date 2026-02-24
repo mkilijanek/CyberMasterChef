@@ -252,6 +252,9 @@ Operations are grouped by package priority:
   - supports `--show-trace-summary` and `--trace-summary-json` for aggregated step timing diagnostics
   - supports `--show-repro`, `--repro-json`, and `--repro-file` for reproducibility metadata and bundle export
   - supports `--batch-input-dir <path>` for directory-wide recipe execution report in JSON
+  - supports `--batch-ext <list>` for extension-based batch input filtering
+  - supports `--batch-summary-json` for aggregate batch metrics on stderr
+  - supports `--batch-report-file <path>` and `--batch-output-dir <path>` for batch artifacts export
   - supports `--list-ops` to inspect currently registered operations
   - supports `--list-ops-json` for machine-readable operation discovery
   - supports `--list-ops-filter` to narrow operation listings in both list modes
@@ -271,11 +274,13 @@ Operations are grouped by package priority:
   - run telemetry in trace (`durationMs` per step) with run-level metadata (`startedAt/endedAt/durationMs`) and trace summary stats (total/avg/slowest)
   - reproducibility hashes (`recipeHash` + `inputHash`) in worker run results and workbench UI
   - worker pool MVP in workbench with configurable pool size (`1..8`) and queue telemetry (`queuedMs`, `workerId`)
+  - worker pool queue controls and telemetry: configurable `maxQueue`, queue-depth metrics, in-flight-at-start metric
   - worker protocol integration suite for cancel/timeout/race in `packages/workbench/src/worker/runtime.test.ts`
   - Playwright suite for import/run-to-step/share-link/timeout UX in `e2e/workbench.spec.ts`
   - Playwright negative-flow suite for invalid import and empty-search behavior in `e2e/workbench-negative.spec.ts`
   - Playwright persistence suite for recipe/input/preferences restore in `e2e/workbench-persistence.spec.ts`
   - Playwright reproducibility suite for run metadata visibility in `e2e/workbench-repro.spec.ts`
+  - Playwright pool-settings suite for persisted pool controls in `e2e/workbench-pool-settings.spec.ts`
   - extended CyberChef args mapping coverage (`lower/upper/trim/replace`) in `packages/core/test/serde.test.ts`
   - CI workflow now runs Playwright E2E (`pnpm test:e2e`) with Chromium install
 

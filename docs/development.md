@@ -73,6 +73,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
   - `e2e/workbench-negative.spec.ts` (invalid import, no-compatible-import, empty-search states)
   - `e2e/workbench-persistence.spec.ts` (recipe/input/toggles/search restore after reload)
   - `e2e/workbench-repro.spec.ts` (run metadata visibility: run id + recipe/input hash)
+  - `e2e/workbench-pool-settings.spec.ts` (pool size and max queue persistence)
 - CI now enforces Playwright E2E (`pnpm test:e2e`) in `.github/workflows/ci.yml`.
 - `engine` tests include abort/cancel behavior coverage (`AbortSignal` path).
 - Golden recipes: regression tests against CyberChef-compatible recipe JSON (actively extended).
@@ -130,6 +131,10 @@ CLI behavior:
 - `--repro-json` prints reproducibility bundle as JSON on stderr.
 - `--repro-file <path>` writes reproducibility bundle as JSON to file.
 - `--batch-input-dir <path>` executes recipe for each file in directory and prints JSON report.
+- `--batch-ext <list>` filters batch inputs by extension list.
+- `--batch-summary-json` prints aggregate batch metrics JSON on stderr.
+- `--batch-report-file <path>` writes full batch JSON report to a file.
+- `--batch-output-dir <path>` writes per-input rendered outputs to files.
 - `--list-ops` prints available operation IDs/names and exits.
 - `--list-ops-json` prints full operation metadata as JSON and exits.
 - `--list-ops-filter <query>` filters both list outputs by ID/name/description.
