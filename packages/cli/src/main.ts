@@ -4,6 +4,9 @@ import {
   runRecipe,
   parseRecipe,
   importCyberChefRecipe,
+  base64ToBytes,
+  hexToBytes,
+  type DataValue,
   type Recipe
 } from "@cybermasterchef/core";
 import { standardPlugin } from "@cybermasterchef/plugins-standard";
@@ -51,12 +54,14 @@ type CliOptions = {
   timeoutMs: number;
   strictCyberChef: boolean;
   showTrace: boolean;
+  inputEncoding: "text" | "hex" | "base64";
 };
 
 function parseArgs(args: string[]): CliOptions {
   let timeoutMs = DEFAULT_TIMEOUT_MS;
   let strictCyberChef = false;
   let showTrace = false;
+  let inputEncoding: CliOptions["inputEncoding"] = "text";
   const positional: string[] = [];
 
   for (let i = 0; i < args.length; i++) {
@@ -68,6 +73,15 @@ function parseArgs(args: string[]): CliOptions {
     }
     if (arg === "--show-trace") {
       showTrace = true;
+      continue;
+    }
+    if (arg === "--input-encoding") {
+      const raw = args[i + 1];
+      if (raw !== "text" && raw !== "hex" && raw !== "base64") {
+        die(`Invalid --input-encoding value: ${String(raw)}`);
+      }
+      inputEncoding = raw;
+      i++;
       continue;
     }
     if (arg === "--timeout-ms") {
@@ -90,7 +104,7 @@ function parseArgs(args: string[]): CliOptions {
   const recipePath = positional[0];
   if (!recipePath) {
     die(
-      "Usage: cybermasterchef <recipe.json> [input.txt] [--timeout-ms <n>] [--strict-cyberchef]\n" +
+      "Usage: cybermasterchef <recipe.json> [input.txt] [--timeout-ms <n>] [--strict-cyberchef] [--show-trace] [--input-encoding text|hex|base64]\n" +
         "  Reads input from stdin if [input.txt] is omitted."
     );
   }
@@ -98,7 +112,8 @@ function parseArgs(args: string[]): CliOptions {
     recipePath,
     timeoutMs,
     strictCyberChef,
-    showTrace
+    showTrace,
+    inputEncoding
   };
   const inputPath = positional[1];
   if (inputPath) out.inputPath = inputPath;
@@ -115,6 +130,12 @@ if (opts.strictCyberChef && parsedRecipe.source === "cyberchef" && parsedRecipe.
   );
 }
 const input = opts.inputPath ? fs.readFileSync(opts.inputPath, "utf-8") : fs.readFileSync(0, "utf-8");
+const inputValue: DataValue =
+  opts.inputEncoding === "hex"
+    ? { type: "bytes", value: hexToBytes(input.trim()) }
+    : opts.inputEncoding === "base64"
+      ? { type: "bytes", value: base64ToBytes(input.trim()) }
+      : { type: "string", value: input };
 
 const registry = new InMemoryRegistry();
 standardPlugin.register(registry);
@@ -126,7 +147,7 @@ const timeoutHandle = setTimeout(() => {
 const res = await runRecipe({
   registry,
   recipe: parsedRecipe.recipe,
-  input: { type: "string", value: input },
+  input: inputValue,
   signal: controller.signal
 }).finally(() => {
   clearTimeout(timeoutHandle);
