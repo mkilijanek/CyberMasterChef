@@ -4,6 +4,7 @@ import { jsonMinify } from "../src/ops/jsonMinify.js";
 import { jsonBeautify } from "../src/ops/jsonBeautify.js";
 import { jsonSortKeys } from "../src/ops/jsonSortKeys.js";
 import { jsonExtractKeys } from "../src/ops/jsonExtractKeys.js";
+import { jsonArrayLength } from "../src/ops/jsonArrayLength.js";
 
 describe("json format operations", () => {
   it("minifies JSON payload", async () => {
@@ -69,5 +70,20 @@ describe("json format operations", () => {
       type: "string",
       value: "a\na.b\na.b[0]\na.b[0].c"
     });
+  });
+
+  it("returns JSON array length for nested path", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(jsonArrayLength);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "format.jsonArrayLength", args: { path: "items" } }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: '{"items":[1,2,3]}' }
+    });
+    expect(out.output).toEqual({ type: "string", value: "3" });
   });
 });

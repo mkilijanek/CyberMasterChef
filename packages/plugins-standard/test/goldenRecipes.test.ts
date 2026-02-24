@@ -234,6 +234,15 @@ const goldenCases: GoldenCase[] = [
       "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjMifQ.dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"
   },
   {
+    name: "JSON array length by path",
+    input: "{\"items\":[\"a\",\"b\",\"c\"]}",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "format.jsonArrayLength", args: { path: "items" } }]
+    },
+    expected: "3"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {
