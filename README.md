@@ -66,6 +66,8 @@ Operations are grouped by package priority:
   - accepts native recipe JSON
   - falls back to CyberChef recipe import and prints warnings for unsupported steps
   - supports `--timeout-ms` for bounded execution and `--strict-cyberchef` for strict import mode
+- Quality baseline:
+  - golden recipe regression suite for core operation chains in `packages/plugins-standard/test/goldenRecipes.test.ts`
 
 ## Getting started
 
