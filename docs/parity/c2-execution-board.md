@@ -43,7 +43,7 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 ## Wave 6 backlog
 
 - [x] `date.unixToWindowsFiletime` operation.
-- [ ] `date.windowsFiletimeToUnix` operation.
+- [x] `date.windowsFiletimeToUnix` operation.
 
 ## Quality gates
 

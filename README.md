@@ -65,6 +65,7 @@ Operations are grouped by package priority:
 - Wave 5 safe-sharing step adds `network.defangUrls`.
 - Wave 5 reversal step adds `network.fangUrls`.
 - Wave 6 date-time expansion adds `date.unixToWindowsFiletime`.
+- Wave 6 date-time expansion adds `date.windowsFiletimeToUnix`.
 - C3 contracts: generated and published under `docs/parity/c3-operation-compatibility-contracts.md`.
 
 ## Current functionality
@@ -253,6 +254,7 @@ Operations are grouped by package priority:
   - `date.isoToUnix`
   - `date.unixToIso`
   - `date.unixToWindowsFiletime`
+  - `date.windowsFiletimeToUnix`
   - `format.jsonMinify`
   - `format.jsonBeautify`
   - `forensic.extractStrings`

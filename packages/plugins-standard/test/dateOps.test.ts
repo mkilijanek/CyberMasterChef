@@ -3,6 +3,7 @@ import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core"
 import { isoToUnix } from "../src/ops/isoToUnix.js";
 import { unixToIso } from "../src/ops/unixToIso.js";
 import { unixToWindowsFiletime } from "../src/ops/unixToWindowsFiletime.js";
+import { windowsFiletimeToUnix } from "../src/ops/windowsFiletimeToUnix.js";
 
 describe("date operations", () => {
   it("converts ISO to Unix milliseconds", async () => {
@@ -57,5 +58,20 @@ describe("date operations", () => {
       input: { type: "string", value: "0" }
     });
     expect(out.output).toEqual({ type: "string", value: "116444736000000000" });
+  });
+
+  it("converts Windows FILETIME to Unix milliseconds", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(windowsFiletimeToUnix);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "date.windowsFiletimeToUnix" }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "116444736000000000" }
+    });
+    expect(out.output).toEqual({ type: "string", value: "0" });
   });
 });

@@ -83,6 +83,18 @@ const goldenCases: GoldenCase[] = [
     expected: "116444736000000000"
   },
   {
+    name: "Unix FILETIME round-trip",
+    input: "1500",
+    recipe: {
+      version: 1,
+      steps: [
+        { opId: "date.unixToWindowsFiletime" },
+        { opId: "date.windowsFiletimeToUnix" }
+      ]
+    },
+    expected: "1500"
+  },
+  {
     name: "Base64 round-trip",
     input: "CyberMasterChef",
     recipe: {
