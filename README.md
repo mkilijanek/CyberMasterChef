@@ -138,6 +138,7 @@ Operations are grouped by package priority:
   - `text.includes`
   - `text.lowerFirst`
   - `text.upperFirst`
+  - `text.removePunctuation`
   - `hash.sha256`
   - `text.reverse`
 - CLI compatibility:

@@ -163,6 +163,7 @@ Example operation IDs in use:
 - `text.includes`
 - `text.lowerFirst`
 - `text.upperFirst`
+- `text.removePunctuation`
 - `hash.sha256`
 - `text.reverse`
 - conversion tests include invalid `string -> number` failure path.

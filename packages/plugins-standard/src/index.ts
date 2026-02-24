@@ -58,6 +58,7 @@ import { endsWith } from "./ops/endsWith.js";
 import { includesText } from "./ops/includesText.js";
 import { lowerFirst } from "./ops/lowerFirst.js";
 import { upperFirst } from "./ops/upperFirst.js";
+import { removePunctuation } from "./ops/removePunctuation.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -119,6 +120,7 @@ export const standardPlugin: Plugin = {
     registry.register(includesText);
     registry.register(lowerFirst);
     registry.register(upperFirst);
+    registry.register(removePunctuation);
     registry.register(sha256);
   }
 };
