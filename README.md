@@ -111,6 +111,7 @@ Operations are grouped by package priority:
   - supports `--list-ops-filter` to narrow operation listings in both list modes
   - supports `--input-encoding text|hex|base64` for binary-oriented CLI runs
   - supports `--bytes-output hex|base64|utf8` to choose stdout format for byte outputs
+  - supports `--json-indent` for JSON output formatting control
   - supports `--output-file` to write rendered output directly to a file
   - supports `--no-newline` for exact output framing in pipelines
   - supports `--max-output-chars` for bounded stdout in scripts/CI

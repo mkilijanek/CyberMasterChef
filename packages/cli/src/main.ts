@@ -45,6 +45,7 @@ const usageText =
   "  --list-ops-filter <query>        filter operation listings by id/name/description\n" +
   "  --input-encoding text|hex|base64 parse CLI input before execution\n" +
   "  --bytes-output hex|base64|utf8   bytes output rendering on stdout\n" +
+  "  --json-indent <n>                indentation for JSON output rendering\n" +
   "  --output-file <path>             write rendered output to file instead of stdout\n" +
   "  --no-newline                     do not append trailing newline to output\n" +
   "  --max-output-chars <n>           limit output length for string/json/bytes rendering\n" +
@@ -94,6 +95,7 @@ type CliOptions = {
   listOpsFilter?: string;
   inputEncoding: "text" | "hex" | "base64";
   bytesOutput: "hex" | "base64" | "utf8";
+  jsonIndent: number;
   outputFile?: string;
   noNewline: boolean;
   maxOutputChars?: number;
@@ -115,6 +117,7 @@ function parseArgs(args: string[]): CliOptions {
   let listOpsFilter: string | undefined;
   let inputEncoding: CliOptions["inputEncoding"] = "text";
   let bytesOutput: CliOptions["bytesOutput"] = "hex";
+  let jsonIndent = 2;
   let outputFile: string | undefined;
   let noNewline = false;
   let maxOutputChars: number | undefined;
@@ -207,6 +210,17 @@ function parseArgs(args: string[]): CliOptions {
       i++;
       continue;
     }
+    if (arg === "--json-indent") {
+      const raw = args[i + 1];
+      if (!raw) die("Missing value for --json-indent");
+      const parsed = Number(raw);
+      if (!Number.isFinite(parsed) || parsed < 0) {
+        die(`Invalid --json-indent value: ${raw}`);
+      }
+      jsonIndent = Math.floor(parsed);
+      i++;
+      continue;
+    }
     if (arg === "--max-output-chars") {
       const raw = args[i + 1];
       if (!raw) die("Missing value for --max-output-chars");
@@ -265,6 +279,7 @@ function parseArgs(args: string[]): CliOptions {
     listOpsJson,
     inputEncoding,
     bytesOutput,
+    jsonIndent,
     noNewline
   };
   if (traceLimit !== undefined) out.traceLimit = traceLimit;
@@ -377,7 +392,7 @@ if (res.output.type === "bytes") {
         ? bytesToUtf8(res.output.value)
         : [...res.output.value].map((b) => b.toString(16).padStart(2, "0")).join("");
 } else if (res.output.type === "json") {
-  rendered = JSON.stringify(res.output.value, null, 2);
+  rendered = JSON.stringify(res.output.value, null, opts.jsonIndent);
 } else {
   rendered = String(res.output.value);
 }
