@@ -5,7 +5,7 @@ export function ArgForm(props: {
   specs: ArgSpec[];
   value: Record<string, unknown>;
   onChange: (next: Record<string, unknown>) => void;
-}): JSX.Element {
+}): React.JSX.Element {
   if (props.specs.length === 0) {
     return <div className="muted">No args</div>;
   }
