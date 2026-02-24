@@ -26,3 +26,4 @@ Track incremental delivery steps for Task 21 (`forensic.basicPreTriage`).
 - [x] Stage 16: `hta_file_drop` - HTA payload reference
 - [x] Stage 17: `js_file_drop` - JavaScript payload reference
 - [x] Stage 18: `vbs_file_drop` - VBScript payload reference
+- [x] Stage 19: `ps1_file_drop` - PowerShell script reference
