@@ -8,7 +8,10 @@ export class SandboxClient {
   private readonly pending = new Map<
     string,
     {
-      resolve: (value: { output: DataValue; trace: Array<{ step: number; opId: string }> }) => void;
+      resolve: (value: {
+        output: DataValue;
+        trace: Array<{ step: number; opId: string; inputType: string; outputType: string }>;
+      }) => void;
       reject: (reason?: unknown) => void;
     }
   >();
@@ -52,7 +55,10 @@ export class SandboxClient {
     recipe: Recipe,
     input: DataValue,
     opts?: { timeoutMs?: number }
-  ): Promise<{ output: DataValue; trace: Array<{ step: number; opId: string }> }> {
+  ): Promise<{
+    output: DataValue;
+    trace: Array<{ step: number; opId: string; inputType: string; outputType: string }>;
+  }> {
     await this.init();
     const id = crypto.randomUUID();
     this.activeId = id;

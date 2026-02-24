@@ -23,6 +23,9 @@
   "moveUp": "W górę",
   "moveDown": "W dół",
   "args": "Argumenty",
+  "trace": "Ślad",
+  "traceEmpty": "Brak śladu wykonania",
+  "step": "Krok",
   "statusReady": "Gotowe",
   "statusWorking": "Przeliczanie…",
   "error": "Błąd"

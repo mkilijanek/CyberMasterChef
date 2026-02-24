@@ -23,6 +23,9 @@
   "moveUp": "Up",
   "moveDown": "Down",
   "args": "Arguments",
+  "trace": "Trace",
+  "traceEmpty": "No execution trace yet",
+  "step": "Step",
   "statusReady": "Ready",
   "statusWorking": "Working…",
   "error": "Error"

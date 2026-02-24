@@ -83,3 +83,15 @@ body { margin: 0; }
   background: #fff4f4;
   border-radius: 6px;
 }
+.traceBox {
+  margin-top: 10px;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+.traceList {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+.traceItem {
+  margin: 4px 0;
+}

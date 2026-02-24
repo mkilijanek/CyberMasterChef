@@ -11,6 +11,6 @@ export type WorkerResponse =
       type: "result";
       id: string;
       output: DataValue;
-      trace: Array<{ step: number; opId: string }>;
+      trace: Array<{ step: number; opId: string; inputType: string; outputType: string }>;
     }
   | { type: "error"; id: string; message: string };

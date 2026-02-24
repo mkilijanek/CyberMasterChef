@@ -19,6 +19,7 @@ import { IOPane } from "./components/IOPane";
 
 type Status = "ready" | "working" | "error";
 type SharedState = { recipe: Recipe; input: string };
+type TraceRow = { step: number; opId: string; inputType: string; outputType: string };
 
 const HASH_PREFIX = "#state=";
 const RUN_TIMEOUT_MS = 10_000;
@@ -83,6 +84,7 @@ export function App(): JSX.Element {
     return saved === null ? false : saved === "1";
   });
   const [output, setOutput] = React.useState<string>("");
+  const [trace, setTrace] = React.useState<TraceRow[]>([]);
   const [status, setStatus] = React.useState<Status>("ready");
   const [error, setError] = React.useState<string | null>(null);
   const sandboxRef = React.useRef<SandboxClient | null>(null);
@@ -101,11 +103,13 @@ export function App(): JSX.Element {
     sandboxRef.current?.cancelActive();
     setStatus("working");
     setError(null);
+    setTrace([]);
     try {
       const inVal: DataValue = { type: "string", value: input };
       const res = await sandboxRef.current!.bake(recipe, inVal, {
         timeoutMs: RUN_TIMEOUT_MS
       });
+      setTrace(res.trace);
       if (res.output.type === "bytes") {
         const hex = [...res.output.value]
           .map((b) => b.toString(16).padStart(2, "0"))
@@ -270,6 +274,26 @@ export function App(): JSX.Element {
               {t("error")}: {error}
             </div>
           ) : null}
+          <div className="traceBox">
+            <h3>{t("trace")}</h3>
+            {trace.length === 0 ? (
+              <div className="muted">{t("traceEmpty")}</div>
+            ) : (
+              <ol className="traceList">
+                {trace.map((row) => (
+                  <li key={`${row.step}-${row.opId}`} className="traceItem">
+                    <strong>
+                      {t("step")} {row.step + 1}
+                    </strong>{" "}
+                    <code>{row.opId}</code>{" "}
+                    <span className="muted">
+                      ({row.inputType} -&gt; {row.outputType})
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            )}
+          </div>
         </section>
         <section className="panel">
           <IOPane input={input} output={output} onInputChange={setInput} />

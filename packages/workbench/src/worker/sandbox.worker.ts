@@ -61,7 +61,7 @@ async function handle(msg: WorkerRequest): Promise<void> {
         type: "result",
         id: msg.id,
         output: res.output,
-        trace: res.trace.map((t) => ({ step: t.step, opId: t.opId }))
+        trace: res.trace
       };
       // Transfer bytes buffer to avoid copy
       if (res.output.type === "bytes") {
