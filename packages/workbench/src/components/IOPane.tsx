@@ -5,7 +5,7 @@ export function IOPane(props: {
   input: string;
   output: string;
   onInputChange: (v: string) => void;
-}): JSX.Element {
+}): React.JSX.Element {
   const { t } = useTranslation();
   return (
     <div className="io">

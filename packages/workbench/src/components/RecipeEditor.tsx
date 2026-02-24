@@ -9,7 +9,7 @@ const registry = createRegistryWithBuiltins();
 export function RecipeEditor(props: {
   recipe: Recipe;
   onChange: (r: Recipe) => void;
-}): JSX.Element {
+}): React.JSX.Element {
   const { t } = useTranslation();
   const [selected, setSelected] = React.useState<number | null>(null);
 

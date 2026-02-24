@@ -7,7 +7,7 @@ const registry = createRegistryWithBuiltins();
 export function OperationCatalog(props: {
   query: string;
   onAdd: (opId: string) => void;
-}): JSX.Element {
+}): React.JSX.Element {
   const { t } = useTranslation();
   const q = props.query.trim().toLowerCase();
   const ops = registry.list().filter((op) =>

@@ -73,7 +73,7 @@ function loadInitialState(): SharedState {
   return { recipe, input: inputSaved ?? "" };
 }
 
-export function App(): JSX.Element {
+export function App(): React.JSX.Element {
   const { t } = useTranslation();
   const initial = React.useMemo(() => loadInitialState(), []);
   const [catalogQuery, setCatalogQuery] = React.useState("");
