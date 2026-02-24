@@ -81,6 +81,7 @@ CLI behavior:
 - `--list-ops-filter <query>` filters both list outputs by ID/name/description.
 - `--input-encoding text|hex|base64` controls how CLI input is parsed before recipe execution.
 - `--bytes-output hex|base64|utf8` controls how bytes outputs are rendered on stdout.
+- `--hex-uppercase` renders hex byte output using uppercase letters.
 - `--json-indent <n>` controls indentation for JSON output rendering.
 - `--output-file <path>` writes rendered output to a file.
 - `--no-newline` disables automatic trailing newline in output.

@@ -45,6 +45,7 @@ const usageText =
   "  --list-ops-filter <query>        filter operation listings by id/name/description\n" +
   "  --input-encoding text|hex|base64 parse CLI input before execution\n" +
   "  --bytes-output hex|base64|utf8   bytes output rendering on stdout\n" +
+  "  --hex-uppercase                  render hex bytes output using uppercase letters\n" +
   "  --json-indent <n>                indentation for JSON output rendering\n" +
   "  --output-file <path>             write rendered output to file instead of stdout\n" +
   "  --no-newline                     do not append trailing newline to output\n" +
@@ -95,6 +96,7 @@ type CliOptions = {
   listOpsFilter?: string;
   inputEncoding: "text" | "hex" | "base64";
   bytesOutput: "hex" | "base64" | "utf8";
+  hexUppercase: boolean;
   jsonIndent: number;
   outputFile?: string;
   noNewline: boolean;
@@ -117,6 +119,7 @@ function parseArgs(args: string[]): CliOptions {
   let listOpsFilter: string | undefined;
   let inputEncoding: CliOptions["inputEncoding"] = "text";
   let bytesOutput: CliOptions["bytesOutput"] = "hex";
+  let hexUppercase = false;
   let jsonIndent = 2;
   let outputFile: string | undefined;
   let noNewline = false;
@@ -210,6 +213,10 @@ function parseArgs(args: string[]): CliOptions {
       i++;
       continue;
     }
+    if (arg === "--hex-uppercase") {
+      hexUppercase = true;
+      continue;
+    }
     if (arg === "--json-indent") {
       const raw = args[i + 1];
       if (!raw) die("Missing value for --json-indent");
@@ -279,6 +286,7 @@ function parseArgs(args: string[]): CliOptions {
     listOpsJson,
     inputEncoding,
     bytesOutput,
+    hexUppercase,
     jsonIndent,
     noNewline
   };
@@ -391,6 +399,9 @@ if (res.output.type === "bytes") {
       : opts.bytesOutput === "utf8"
         ? bytesToUtf8(res.output.value)
         : [...res.output.value].map((b) => b.toString(16).padStart(2, "0")).join("");
+  if (opts.bytesOutput === "hex" && opts.hexUppercase) {
+    rendered = rendered.toUpperCase();
+  }
 } else if (res.output.type === "json") {
   rendered = JSON.stringify(res.output.value, null, opts.jsonIndent);
 } else {
