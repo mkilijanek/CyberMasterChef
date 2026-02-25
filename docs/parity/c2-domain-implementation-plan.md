@@ -1,23 +1,23 @@
 # C2 Domain Implementation Plan
 
-Generated: 2026-02-25T09:42:27.215Z
-Implemented operations in repo: 233
+Generated: 2026-02-25T10:06:57.370Z
+Implemented operations in repo: 253
 
 ## Priority order
 
-- P1: crypto-hash-kdf (coverage 19.59%, missing ~78)
+- P1: crypto-hash-kdf (coverage 29.9%, missing ~68)
 - P2: forensic-malware-helper (coverage 31.25%, missing ~11)
-- P3: encodings-codecs (coverage 34.48%, missing ~38)
-- P4: network-protocol-parsers (coverage 36%, missing ~16)
+- P3: network-protocol-parsers (coverage 40%, missing ~15)
+- P4: encodings-codecs (coverage 41.38%, missing ~34)
 
 ## Domain summary
 
 ### encodings-codecs
 - Description: Encodings, binary/text codecs, canonical representation transforms.
 - CyberChef total: 58
-- Implemented total: 20
-- Estimated missing: 38
-- Coverage: 34.48%
+- Implemented total: 24
+- Estimated missing: 34
+- Coverage: 41.38%
 - Candidate operations (first 20):
   - Alphabet (FromBase58.mjs) [medium]
   - Alphabet (ToBase58.mjs) [medium]
@@ -33,9 +33,9 @@ Implemented operations in repo: 233
 ### crypto-hash-kdf
 - Description: Cryptographic transforms, digests, MAC/KDF and cipher operations.
 - CyberChef total: 97
-- Implemented total: 19
-- Estimated missing: 78
-- Coverage: 19.59%
+- Implemented total: 29
+- Estimated missing: 68
+- Coverage: 29.9%
 - Candidate operations (first 20):
   - a (AffineCipherDecode.mjs) [high]
   - a (AffineCipherEncode.mjs) [high]
@@ -66,9 +66,9 @@ Implemented operations in repo: 233
 ### date-time
 - Description: Date/time parsing, formatting, conversion and timestamp operations.
 - CyberChef total: 12
-- Implemented total: 9
-- Estimated missing: 3
-- Coverage: 75%
+- Implemented total: 12
+- Estimated missing: 0
+- Coverage: 100%
 - Candidate operations (first 20):
   - Built in formats (DateTimeDelta.mjs) [high]
   - Built in formats (ParseDateTime.mjs) [high]
@@ -120,9 +120,9 @@ Implemented operations in repo: 233
 ### network-protocol-parsers
 - Description: Protocol/header/parsing operations for network/web payloads.
 - CyberChef total: 25
-- Implemented total: 9
-- Estimated missing: 16
-- Coverage: 36%
+- Implemented total: 10
+- Estimated missing: 15
+- Coverage: 40%
 - Candidate operations (first 20):
   - CSS selector (CSSSelector.mjs) [high]
   - DechunkHTTPResponse (DechunkHTTPResponse.mjs) [high]
@@ -156,9 +156,9 @@ Implemented operations in repo: 233
 ### misc-uncategorized
 - Description: Operations that require manual triage or do not fit current taxonomy.
 - CyberChef total: 149
-- Implemented total: 85
-- Estimated missing: 64
-- Coverage: 57.05%
+- Implemented total: 87
+- Estimated missing: 62
+- Coverage: 58.39%
 - Candidate operations (first 20):
   - AlternatingCaps (AlternatingCaps.mjs) [low]
   - Amount (BitShiftLeft.mjs) [low]

@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-02-25T09:42:27.215Z",
+  "generatedAt": "2026-02-25T10:06:57.370Z",
   "source": {
     "c1MatrixPath": "/home/kili/Repo/CyberMasterChef/CyberMasterChef/docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 233
+    "implementedOpsCount": 253
   },
   "summary": [
     {
       "domain": "encodings-codecs",
       "description": "Encodings, binary/text codecs, canonical representation transforms.",
       "cyberChefTotal": 58,
-      "implementedTotal": 20,
-      "missingEstimated": 38,
-      "coveragePct": 34.48,
+      "implementedTotal": 24,
+      "missingEstimated": 34,
+      "coveragePct": 41.38,
       "implementationCandidates": [
         {
           "operationName": "Alphabet",
@@ -119,9 +119,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 97,
-      "implementedTotal": 19,
-      "missingEstimated": 78,
-      "coveragePct": 19.59,
+      "implementedTotal": 29,
+      "missingEstimated": 68,
+      "coveragePct": 29.9,
       "implementationCandidates": [
         {
           "operationName": "a",
@@ -274,9 +274,9 @@
       "domain": "date-time",
       "description": "Date/time parsing, formatting, conversion and timestamp operations.",
       "cyberChefTotal": 12,
-      "implementedTotal": 9,
-      "missingEstimated": 3,
-      "coveragePct": 75,
+      "implementedTotal": 12,
+      "missingEstimated": 0,
+      "coveragePct": 100,
       "implementationCandidates": [
         {
           "operationName": "Built in formats",
@@ -564,9 +564,9 @@
       "domain": "network-protocol-parsers",
       "description": "Protocol/header/parsing operations for network/web payloads.",
       "cyberChefTotal": 25,
-      "implementedTotal": 9,
-      "missingEstimated": 16,
-      "coveragePct": 36,
+      "implementedTotal": 10,
+      "missingEstimated": 15,
+      "coveragePct": 40,
       "implementationCandidates": [
         {
           "operationName": "CSS selector",
@@ -764,9 +764,9 @@
       "domain": "misc-uncategorized",
       "description": "Operations that require manual triage or do not fit current taxonomy.",
       "cyberChefTotal": 149,
-      "implementedTotal": 85,
-      "missingEstimated": 64,
-      "coveragePct": 57.05,
+      "implementedTotal": 87,
+      "missingEstimated": 62,
+      "coveragePct": 58.39,
       "implementationCandidates": [
         {
           "operationName": "AlternatingCaps",
@@ -875,8 +875,8 @@
     {
       "priority": 1,
       "domain": "crypto-hash-kdf",
-      "coveragePct": 19.59,
-      "missingEstimated": 78
+      "coveragePct": 29.9,
+      "missingEstimated": 68
     },
     {
       "priority": 2,
@@ -886,15 +886,15 @@
     },
     {
       "priority": 3,
-      "domain": "encodings-codecs",
-      "coveragePct": 34.48,
-      "missingEstimated": 38
+      "domain": "network-protocol-parsers",
+      "coveragePct": 40,
+      "missingEstimated": 15
     },
     {
       "priority": 4,
-      "domain": "network-protocol-parsers",
-      "coveragePct": 36,
-      "missingEstimated": 16
+      "domain": "encodings-codecs",
+      "coveragePct": 41.38,
+      "missingEstimated": 34
     }
   ]
 }

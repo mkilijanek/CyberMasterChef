@@ -10,6 +10,9 @@ import { extractIsoTimestamps } from "../src/ops/extractIsoTimestamps.js";
 import { isoToDateOnly } from "../src/ops/isoToDateOnly.js";
 import { isoWeekday } from "../src/ops/isoWeekday.js";
 import { parseUnixFilePermissions } from "../src/ops/parseUnixFilePermissions.js";
+import { parseDateTimeOp } from "../src/ops/parseDateTime.js";
+import { dateTimeDelta } from "../src/ops/dateTimeDelta.js";
+import { translateDateTimeFormat } from "../src/ops/translateDateTimeFormat.js";
 
 describe("date operations", () => {
   it("converts ISO to Unix milliseconds", async () => {
@@ -193,5 +196,62 @@ describe("date operations", () => {
       input: { type: "string", value: "4755" }
     });
     expect(out.output).toEqual({ type: "string", value: "rwsr-xr-x" });
+  });
+
+  it("parses datetime with custom format", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(parseDateTimeOp);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "date.parseDateTime", args: { format: "YYYY-MM-DD HH:mm:ss" } }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "2024-02-03 04:05:06" }
+    });
+    expect(out.output).toEqual({ type: "string", value: "2024-02-03T04:05:06.000Z" });
+  });
+
+  it("computes datetime delta in days", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(dateTimeDelta);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [
+        {
+          opId: "date.dateTimeDelta",
+          args: { base: "2024-02-01T00:00:00Z", format: "YYYY-MM-DDTHH:mm:ssZ" }
+        }
+      ]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "2024-02-03T00:00:00Z" }
+    });
+    expect(out.output.type).toBe("json");
+    if (out.output.type !== "json") return;
+    expect(out.output.value).toMatchObject({ days: 2 });
+  });
+
+  it("translates datetime format", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(translateDateTimeFormat);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [
+        {
+          opId: "date.translateDateTimeFormat",
+          args: { fromFormat: "YYYY/MM/DD HH:mm:ss", toFormat: "DD-MM-YYYY HH:mm" }
+        }
+      ]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "2024/02/03 04:05:06" }
+    });
+    expect(out.output).toEqual({ type: "string", value: "03-02-2024 04:05" });
   });
 });

@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
-Generated: 2026-02-25T09:42:31.746Z
-Total contracts: 233
+Generated: 2026-02-25T10:07:03.778Z
+Total contracts: 253
 
 ## Contract entries (compact)
 
@@ -47,6 +47,20 @@ Total contracts: 233
   - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.fromHexContent
+  - name: From Hex Content
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.fromOctal
+  - name: From Octal
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.toBase58
   - name: To Base58
   - domain: encodings-codecs
@@ -84,6 +98,20 @@ Total contracts: 233
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.toHex
   - name: To Hex
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toHexContent
+  - name: To Hex Content
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toOctal
+  - name: To Octal
   - domain: encodings-codecs
   - inputTypes: bytes, string
   - outputType: string
@@ -215,6 +243,41 @@ Total contracts: 233
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.hmacSha1
+  - name: HMAC
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.hmacSha256
+  - name: HMAC
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.hmacSha512
+  - name: HMAC
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.pbkdf2
+  - name: PBKDF2
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- date.dateTimeDelta
+  - name: Date Time Delta
+  - domain: date-time
+  - inputTypes: string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
 - date.extractIsoTimestamps
   - name: Extract ISO Timestamps
   - domain: date-time
@@ -250,6 +313,13 @@ Total contracts: 233
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- date.parseDateTime
+  - name: Parse Date Time
+  - domain: date-time
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - date.parseObjectIdTimestamp
   - name: Parse ObjectId Timestamp
   - domain: date-time
@@ -259,6 +329,13 @@ Total contracts: 233
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - date.parseUnixFilePermissions
   - name: Parse UNIX File Permissions
+  - domain: date-time
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- date.translateDateTimeFormat
+  - name: Translate Date Time Format
   - domain: date-time
   - inputTypes: string
   - outputType: string
@@ -523,8 +600,64 @@ Total contracts: 233
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.blake2b
+  - name: BLAKE2b
+  - domain: misc-uncategorized
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.blake2s
+  - name: BLAKE2s
+  - domain: misc-uncategorized
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.md5
+  - name: MD5
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.sha1
+  - name: SHA-1
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.sha256
   - name: SHA-256
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.sha3_256
+  - name: SHA3-256
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.sha3_512
+  - name: SHA3-512
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.sha384
+  - name: SHA-384
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.sha512
+  - name: SHA-512
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string
@@ -565,6 +698,13 @@ Total contracts: 233
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.dechunkHttpResponse
+  - name: Dechunk HTTP Response
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_ARGUMENT, INVALID_INPUT_TYPE
 - network.defangIPs
   - name: Defang IPs
   - domain: network-protocol-parsers

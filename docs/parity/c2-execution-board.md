@@ -136,6 +136,23 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 - [x] `image.contain` resize operation.
 - [x] `image.metadata` inspection operation.
 
+## Wave 21 backlog
+
+- [x] `hash.md5` operation.
+- [x] `hash.sha1` operation.
+- [x] `hash.sha384` operation.
+- [x] `hash.sha512` operation.
+- [x] `hash.sha3_256` and `hash.sha3_512` operations.
+- [x] `hash.blake2b` and `hash.blake2s` operations.
+- [x] `crypto.hmacSha1`, `crypto.hmacSha256`, `crypto.hmacSha512` operations.
+- [x] `crypto.pbkdf2` operation.
+- [x] `codec.toOctal` and `codec.fromOctal` operations.
+- [x] `codec.toHexContent` and `codec.fromHexContent` operations.
+- [x] `date.parseDateTime` operation.
+- [x] `date.dateTimeDelta` operation.
+- [x] `date.translateDateTimeFormat` operation.
+- [x] `network.dechunkHttpResponse` operation.
+
 ## Queue extension
 
 - [x] Queue tasks `1-20` completed on `dev`.

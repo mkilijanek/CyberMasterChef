@@ -144,6 +144,55 @@
     }
   },
   {
+    "operationId": "codec.fromHexContent",
+    "name": "From Hex Content",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input",
+        "Hex content length must be even after cleanup"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromHexContent.ts",
+      "description": "Decodes hex content into bytes, ignoring non-hex characters."
+    }
+  },
+  {
+    "operationId": "codec.fromOctal",
+    "name": "From Octal",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromOctal.ts",
+      "description": "Decodes octal byte values into bytes."
+    }
+  },
+  {
     "operationId": "codec.toBase58",
     "name": "To Base58",
     "domain": "encodings-codecs",
@@ -312,6 +361,56 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/toHex.ts",
       "description": "Encodes bytes or string to lowercase hexadecimal."
+    }
+  },
+  {
+    "operationId": "codec.toHexContent",
+    "name": "To Hex Content",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toHexContent.ts",
+      "description": "Encodes bytes or string into lowercase hex content (no separators)."
+    }
+  },
+  {
+    "operationId": "codec.toOctal",
+    "name": "To Octal",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toOctal.ts",
+      "description": "Encodes bytes or string into space-delimited octal byte values."
     }
   },
   {
@@ -823,6 +922,229 @@
     }
   },
   {
+    "operationId": "crypto.hmacSha1",
+    "name": "HMAC",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "key",
+        "type": "string",
+        "label": "Key",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "keyEncoding",
+        "type": "select",
+        "label": "Key Encoding",
+        "defaultValue": "\"utf8\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input",
+        "Key argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/hmacSha1.ts",
+      "description": "Computes HMAC-SHA1 for input data and a provided key."
+    }
+  },
+  {
+    "operationId": "crypto.hmacSha256",
+    "name": "HMAC",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "key",
+        "type": "string",
+        "label": "Key",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "keyEncoding",
+        "type": "select",
+        "label": "Key Encoding",
+        "defaultValue": "\"utf8\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input",
+        "Key argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/hmacSha256.ts",
+      "description": "Computes HMAC-SHA256 for input data and a provided key."
+    }
+  },
+  {
+    "operationId": "crypto.hmacSha512",
+    "name": "HMAC",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "key",
+        "type": "string",
+        "label": "Key",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "keyEncoding",
+        "type": "select",
+        "label": "Key Encoding",
+        "defaultValue": "\"utf8\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input",
+        "Key argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/hmacSha512.ts",
+      "description": "Computes HMAC-SHA512 for input data and a provided key."
+    }
+  },
+  {
+    "operationId": "crypto.pbkdf2",
+    "name": "PBKDF2",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "salt",
+        "type": "string",
+        "label": "Salt",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "saltEncoding",
+        "type": "select",
+        "label": "Salt Encoding",
+        "defaultValue": "\"utf8\""
+      },
+      {
+        "key": "iterations",
+        "type": "number",
+        "label": "Iterations",
+        "defaultValue": "10000"
+      },
+      {
+        "key": "length",
+        "type": "number",
+        "label": "Key Length (bytes)",
+        "defaultValue": "32"
+      },
+      {
+        "key": "hash",
+        "type": "select",
+        "label": "Hash",
+        "defaultValue": "\"SHA-256\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input",
+        "Salt argument is required",
+        "Iterations must be a positive number",
+        "Key length must be a positive number"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/pbkdf2.ts",
+      "description": "Derives key material using PBKDF2 (hex output)."
+    }
+  },
+  {
+    "operationId": "date.dateTimeDelta",
+    "name": "Date Time Delta",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [
+      {
+        "key": "base",
+        "type": "string",
+        "label": "Base DateTime",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "format",
+        "type": "string",
+        "label": "Format",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Base datetime argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/dateTimeDelta.ts",
+      "description": "Computes delta between input datetime and a base datetime."
+    }
+  },
+  {
     "operationId": "date.extractIsoTimestamps",
     "name": "Extract ISO Timestamps",
     "domain": "date-time",
@@ -959,6 +1281,37 @@
     }
   },
   {
+    "operationId": "date.parseDateTime",
+    "name": "Parse Date Time",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "format",
+        "type": "string",
+        "label": "Format",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseDateTime.ts",
+      "description": "Parses a datetime string and outputs ISO-8601 UTC."
+    }
+  },
+  {
     "operationId": "date.parseObjectIdTimestamp",
     "name": "Parse ObjectId Timestamp",
     "domain": "date-time",
@@ -1015,6 +1368,46 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/parseUnixFilePermissions.ts",
       "description": "Converts octal UNIX file mode into symbolic rwx notation."
+    }
+  },
+  {
+    "operationId": "date.translateDateTimeFormat",
+    "name": "Translate Date Time Format",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "fromFormat",
+        "type": "string",
+        "label": "From Format",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "toFormat",
+        "type": "string",
+        "label": "To Format",
+        "defaultValue": "\"YYYY-MM-DDTHH:mm:ss.SSSZ\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "From format argument is required",
+        "To format argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/translateDateTimeFormat.ts",
+      "description": "Parses a datetime string with one format and renders another."
     }
   },
   {
@@ -2049,6 +2442,107 @@
     }
   },
   {
+    "operationId": "hash.blake2b",
+    "name": "BLAKE2b",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/blake2b.ts",
+      "description": "Computes BLAKE2b digest (512-bit). Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.blake2s",
+    "name": "BLAKE2s",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/blake2s.ts",
+      "description": "Computes BLAKE2s digest (256-bit). Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.md5",
+    "name": "MD5",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/hashMd5.ts",
+      "description": "Computes MD5 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.sha1",
+    "name": "SHA-1",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sha1.ts",
+      "description": "Computes SHA-1 digest. Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.sha256",
     "name": "SHA-256",
     "domain": "crypto-hash-kdf",
@@ -2072,6 +2566,108 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/sha256.ts",
       "description": "Computes SHA-256 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.sha3_256",
+    "name": "SHA3-256",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sha3_256.ts",
+      "description": "Computes SHA3-256 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.sha3_512",
+    "name": "SHA3-512",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sha3_512.ts",
+      "description": "Computes SHA3-512 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.sha384",
+    "name": "SHA-384",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sha384.ts",
+      "description": "Computes SHA-384 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.sha512",
+    "name": "SHA-512",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sha512.ts",
+      "description": "Computes SHA-512 digest. Output is lowercase hex string."
     }
   },
   {
@@ -2252,6 +2848,35 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/imageMetadata.ts",
       "description": "Extracts width, height, and format metadata from image bytes."
+    }
+  },
+  {
+    "operationId": "network.dechunkHttpResponse",
+    "name": "Dechunk HTTP Response",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_ARGUMENT",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Invalid chunked encoding: missing CRLF",
+        "Invalid chunked encoding: chunk exceeds input size",
+        "Invalid chunked encoding: missing chunk CRLF",
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/dechunkHttpResponse.ts",
+      "description": "Decodes HTTP chunked transfer-encoded payload into raw bytes."
     }
   },
   {

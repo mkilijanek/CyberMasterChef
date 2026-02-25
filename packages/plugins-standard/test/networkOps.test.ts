@@ -8,6 +8,7 @@ import { extractIPv6 } from "../src/ops/extractIPv6.js";
 import { defangIPs } from "../src/ops/defangIPs.js";
 import { fangIPs } from "../src/ops/fangIPs.js";
 import { extractPorts } from "../src/ops/extractPorts.js";
+import { dechunkHttpResponse } from "../src/ops/dechunkHttpResponse.js";
 
 describe("network operations", () => {
   it("extracts unique valid IPv4 addresses", async () => {
@@ -142,5 +143,20 @@ describe("network operations", () => {
       input: { type: "string", value: "https://a:443 x port=8080 y port 70000 z :53" }
     });
     expect(out.output).toEqual({ type: "string", value: "53\n443\n8080" });
+  });
+
+  it("dechunks HTTP response payloads", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(dechunkHttpResponse);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.dechunkHttpResponse" }] };
+    const chunked = "4\r\nWiki\r\n5\r\npedia\r\n0\r\n\r\n";
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: chunked }
+    });
+    expect(out.output.type).toBe("bytes");
+    if (out.output.type !== "bytes") return;
+    expect(new TextDecoder().decode(out.output.value)).toBe("Wikipedia");
   });
 });

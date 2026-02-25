@@ -1,4 +1,4 @@
-/// <reference path="./third-party.d.ts" />
+import "./third-party.d.ts";
 import type { Plugin, OperationRegistry } from "@cybermasterchef/core";
 import { toBase64 } from "./ops/toBase64.js";
 import { fromBase64 } from "./ops/fromBase64.js";
@@ -13,6 +13,10 @@ import { toCharcode } from "./ops/toCharcode.js";
 import { fromCharcode } from "./ops/fromCharcode.js";
 import { toDecimal } from "./ops/toDecimal.js";
 import { fromDecimal } from "./ops/fromDecimal.js";
+import { toOctal } from "./ops/toOctal.js";
+import { fromOctal } from "./ops/fromOctal.js";
+import { toHexContent } from "./ops/toHexContent.js";
+import { fromHexContent } from "./ops/fromHexContent.js";
 import { urlEncode } from "./ops/urlEncode.js";
 import { urlDecode } from "./ops/urlDecode.js";
 import { reverse } from "./ops/reverse.js";
@@ -172,6 +176,9 @@ import { defangUrls } from "./ops/defangUrls.js";
 import { fangUrls } from "./ops/fangUrls.js";
 import { unixToWindowsFiletime } from "./ops/unixToWindowsFiletime.js";
 import { windowsFiletimeToUnix } from "./ops/windowsFiletimeToUnix.js";
+import { parseDateTimeOp } from "./ops/parseDateTime.js";
+import { dateTimeDelta } from "./ops/dateTimeDelta.js";
+import { translateDateTimeFormat } from "./ops/translateDateTimeFormat.js";
 import { parseObjectIdTimestamp } from "./ops/parseObjectIdTimestamp.js";
 import { parseUnixFilePermissions } from "./ops/parseUnixFilePermissions.js";
 import { extractEmails } from "./ops/extractEmails.js";
@@ -212,6 +219,7 @@ import { extractIPv6 } from "./ops/extractIPv6.js";
 import { defangIPs } from "./ops/defangIPs.js";
 import { fangIPs } from "./ops/fangIPs.js";
 import { extractPorts } from "./ops/extractPorts.js";
+import { dechunkHttpResponse } from "./ops/dechunkHttpResponse.js";
 import { gzip } from "./ops/gzip.js";
 import { gunzip } from "./ops/gunzip.js";
 import { bzip2Compress } from "./ops/bzip2Compress.js";
@@ -222,6 +230,8 @@ import { tar } from "./ops/tar.js";
 import { untar } from "./ops/untar.js";
 import { adler32Checksum } from "./ops/adler32.js";
 import { analyseHash } from "./ops/analyseHash.js";
+import { hashMd5 } from "./ops/hashMd5.js";
+import { sha1 } from "./ops/sha1.js";
 import { atbashCipher } from "./ops/atbashCipher.js";
 import { affineCipherEncode } from "./ops/affineCipherEncode.js";
 import { affineCipherDecode } from "./ops/affineCipherDecode.js";
@@ -234,6 +244,16 @@ import { addTextToImage } from "./ops/addTextToImage.js";
 import { blurImage } from "./ops/blurImage.js";
 import { containImage } from "./ops/containImage.js";
 import { imageMetadata } from "./ops/imageMetadata.js";
+import { sha384 } from "./ops/sha384.js";
+import { sha512 } from "./ops/sha512.js";
+import { sha3_256 } from "./ops/sha3_256.js";
+import { sha3_512 } from "./ops/sha3_512.js";
+import { blake2b } from "./ops/blake2b.js";
+import { blake2s } from "./ops/blake2s.js";
+import { hmacSha1 } from "./ops/hmacSha1.js";
+import { hmacSha256 } from "./ops/hmacSha256.js";
+import { hmacSha512 } from "./ops/hmacSha512.js";
+import { pbkdf2 } from "./ops/pbkdf2.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -250,6 +270,10 @@ export const standardPlugin: Plugin = {
     registry.register(fromCharcode);
     registry.register(toDecimal);
     registry.register(fromDecimal);
+    registry.register(toOctal);
+    registry.register(fromOctal);
+    registry.register(toHexContent);
+    registry.register(fromHexContent);
     registry.register(urlEncode);
     registry.register(urlDecode);
     registry.register(reverse);
@@ -401,6 +425,9 @@ export const standardPlugin: Plugin = {
     registry.register(unixToIso);
     registry.register(unixToWindowsFiletime);
     registry.register(windowsFiletimeToUnix);
+    registry.register(parseDateTimeOp);
+    registry.register(dateTimeDelta);
+    registry.register(translateDateTimeFormat);
     registry.register(parseObjectIdTimestamp);
     registry.register(parseUnixFilePermissions);
     registry.register(extractUnixTimestamps);
@@ -445,6 +472,7 @@ export const standardPlugin: Plugin = {
     registry.register(defangIPs);
     registry.register(fangIPs);
     registry.register(extractPorts);
+    registry.register(dechunkHttpResponse);
     registry.register(gzip);
     registry.register(gunzip);
     registry.register(bzip2Compress);
@@ -462,6 +490,8 @@ export const standardPlugin: Plugin = {
     registry.register(fangUrls);
     registry.register(adler32Checksum);
     registry.register(analyseHash);
+    registry.register(hashMd5);
+    registry.register(sha1);
     registry.register(atbashCipher);
     registry.register(affineCipherEncode);
     registry.register(affineCipherDecode);
@@ -470,6 +500,16 @@ export const standardPlugin: Plugin = {
     registry.register(baconCipherEncode);
     registry.register(baconCipherDecode);
     registry.register(bcryptParse);
+    registry.register(sha384);
+    registry.register(sha512);
+    registry.register(sha3_256);
+    registry.register(sha3_512);
+    registry.register(blake2b);
+    registry.register(blake2s);
+    registry.register(hmacSha1);
+    registry.register(hmacSha256);
+    registry.register(hmacSha512);
+    registry.register(pbkdf2);
     registry.register(sha256);
   }
 };

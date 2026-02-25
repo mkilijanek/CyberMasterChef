@@ -37,7 +37,7 @@ export const avroDecode: Operation = {
     const type = Type.forSchema(schema);
 
     try {
-      const value = type.fromBuffer(Buffer.from(input.value)) as unknown;
+      const value = type.fromBuffer(Buffer.from(input.value));
       return { type: "json", value };
     } catch (error) {
       const reason = error instanceof Error ? error.message : String(error);
