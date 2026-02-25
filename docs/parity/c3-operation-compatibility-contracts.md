@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
-Generated: 2026-02-25T07:39:57.751Z
-Total contracts: 213
+Generated: 2026-02-25T09:42:31.746Z
+Total contracts: 233
 
 ## Contract entries (compact)
 
@@ -103,6 +103,20 @@ Total contracts: 213
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- compression.bzip2
+  - name: Bzip2 Compress
+  - domain: compression-archive
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- compression.bzip2Decompress
+  - name: Bzip2 Decompress
+  - domain: compression-archive
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - compression.gunzip
   - name: Gunzip
   - domain: compression-archive
@@ -112,6 +126,34 @@ Total contracts: 213
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - compression.gzip
   - name: Gzip
+  - domain: compression-archive
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- compression.tar
+  - name: Tar
+  - domain: compression-archive
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- compression.untar
+  - name: Untar
+  - domain: misc-uncategorized
+  - inputTypes: bytes
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- compression.unzip
+  - name: Unzip
+  - domain: compression-archive
+  - inputTypes: bytes
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- compression.zip
+  - name: Zip
   - domain: compression-archive
   - inputTypes: bytes, string
   - outputType: bytes
@@ -348,6 +390,55 @@ Total contracts: 213
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.avroDecode
+  - name: Avro Decode
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- format.avroEncode
+  - name: Avro Encode
+  - domain: data-formats
+  - inputTypes: string, json
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_ARGUMENT, INVALID_INPUT_TYPE
+- format.bsonDecode
+  - name: BSON Decode
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.bsonEncode
+  - name: BSON Encode
+  - domain: data-formats
+  - inputTypes: string, json
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.cborDecode
+  - name: CBOR Decode
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.cborEncode
+  - name: CBOR Encode
+  - domain: data-formats
+  - inputTypes: string, json
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.csvToJson
+  - name: CSV To JSON
+  - domain: data-formats
+  - inputTypes: string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - format.jsonArrayLength
   - name: JSON Array Length
   - domain: data-formats
@@ -397,6 +488,27 @@ Total contracts: 213
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.jsonToCsv
+  - name: JSON To CSV
+  - domain: data-formats
+  - inputTypes: string, json
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.jsonToYaml
+  - name: JSON To YAML
+  - domain: data-formats
+  - inputTypes: string, json
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.yamlToJson
+  - name: YAML To JSON
+  - domain: data-formats
+  - inputTypes: string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.adler32
   - name: Adler-32
   - domain: misc-uncategorized
@@ -423,6 +535,34 @@ Total contracts: 213
   - domain: misc-uncategorized
   - inputTypes: bytes, string
   - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.addText
+  - name: Add Text To Image
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.blur
+  - name: Blur Image
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.contain
+  - name: Contain Image
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.metadata
+  - name: Image Metadata
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - network.defangIPs

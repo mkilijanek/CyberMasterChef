@@ -13,7 +13,16 @@
   },
   "dependencies": {
     "@cybermasterchef/core": "workspace:*",
-    "hash-wasm": "^4.12.0"
+    "avsc": "^5.7.9",
+    "bson": "^7.2.0",
+    "cbor": "^10.0.11",
+    "compressjs": "^1.0.3",
+    "hash-wasm": "^4.12.0",
+    "jszip": "^3.10.1",
+    "papaparse": "^5.5.3",
+    "sharp": "^0.34.5",
+    "tar-stream": "^3.1.7",
+    "yaml": "^2.8.2"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

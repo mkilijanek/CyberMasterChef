@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-02-25T07:39:52.290Z",
+  "generatedAt": "2026-02-25T09:42:27.215Z",
   "source": {
     "c1MatrixPath": "/home/kili/Repo/CyberMasterChef/CyberMasterChef/docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 213
+    "implementedOpsCount": 233
   },
   "summary": [
     {
@@ -229,9 +229,9 @@
       "domain": "compression-archive",
       "description": "Compression/decompression and archive container operations.",
       "cyberChefTotal": 7,
-      "implementedTotal": 2,
-      "missingEstimated": 5,
-      "coveragePct": 28.57,
+      "implementedTotal": 7,
+      "missingEstimated": 0,
+      "coveragePct": 100,
       "implementationCandidates": [
         {
           "operationName": "Bzip2Compress",
@@ -344,9 +344,9 @@
       "domain": "data-formats",
       "description": "Structured formats (JSON/XML/CSV/YAML/TOML/HTML and format conversion).",
       "cyberChefTotal": 50,
-      "implementedTotal": 10,
-      "missingEstimated": 40,
-      "coveragePct": 20,
+      "implementedTotal": 24,
+      "missingEstimated": 26,
+      "coveragePct": 48,
       "implementationCandidates": [
         {
           "operationName": "AddTextToImage",
@@ -764,9 +764,9 @@
       "domain": "misc-uncategorized",
       "description": "Operations that require manual triage or do not fit current taxonomy.",
       "cyberChefTotal": 149,
-      "implementedTotal": 84,
-      "missingEstimated": 65,
-      "coveragePct": 56.38,
+      "implementedTotal": 85,
+      "missingEstimated": 64,
+      "coveragePct": 57.05,
       "implementationCandidates": [
         {
           "operationName": "AlternatingCaps",
@@ -880,21 +880,21 @@
     },
     {
       "priority": 2,
-      "domain": "data-formats",
-      "coveragePct": 20,
-      "missingEstimated": 40
-    },
-    {
-      "priority": 3,
-      "domain": "compression-archive",
-      "coveragePct": 28.57,
-      "missingEstimated": 5
-    },
-    {
-      "priority": 4,
       "domain": "forensic-malware-helper",
       "coveragePct": 31.25,
       "missingEstimated": 11
+    },
+    {
+      "priority": 3,
+      "domain": "encodings-codecs",
+      "coveragePct": 34.48,
+      "missingEstimated": 38
+    },
+    {
+      "priority": 4,
+      "domain": "network-protocol-parsers",
+      "coveragePct": 36,
+      "missingEstimated": 16
     }
   ]
 }

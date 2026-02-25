@@ -1,14 +1,14 @@
 # C2 Domain Implementation Plan
 
-Generated: 2026-02-25T07:39:52.290Z
-Implemented operations in repo: 213
+Generated: 2026-02-25T09:42:27.215Z
+Implemented operations in repo: 233
 
 ## Priority order
 
 - P1: crypto-hash-kdf (coverage 19.59%, missing ~78)
-- P2: data-formats (coverage 20%, missing ~40)
-- P3: compression-archive (coverage 28.57%, missing ~5)
-- P4: forensic-malware-helper (coverage 31.25%, missing ~11)
+- P2: forensic-malware-helper (coverage 31.25%, missing ~11)
+- P3: encodings-codecs (coverage 34.48%, missing ~38)
+- P4: network-protocol-parsers (coverage 36%, missing ~16)
 
 ## Domain summary
 
@@ -51,9 +51,9 @@ Implemented operations in repo: 213
 ### compression-archive
 - Description: Compression/decompression and archive container operations.
 - CyberChef total: 7
-- Implemented total: 2
-- Estimated missing: 5
-- Coverage: 28.57%
+- Implemented total: 7
+- Estimated missing: 0
+- Coverage: 100%
 - Candidate operations (first 20):
   - Bzip2Compress (Bzip2Compress.mjs) [high]
   - Bzip2Decompress (Bzip2Decompress.mjs) [high]
@@ -84,9 +84,9 @@ Implemented operations in repo: 213
 ### data-formats
 - Description: Structured formats (JSON/XML/CSV/YAML/TOML/HTML and format conversion).
 - CyberChef total: 50
-- Implemented total: 10
-- Estimated missing: 40
-- Coverage: 20%
+- Implemented total: 24
+- Estimated missing: 26
+- Coverage: 48%
 - Candidate operations (first 20):
   - AddTextToImage (AddTextToImage.mjs) [high]
   - AMFDecode (AMFDecode.mjs) [high]
@@ -156,9 +156,9 @@ Implemented operations in repo: 213
 ### misc-uncategorized
 - Description: Operations that require manual triage or do not fit current taxonomy.
 - CyberChef total: 149
-- Implemented total: 84
-- Estimated missing: 65
-- Coverage: 56.38%
+- Implemented total: 85
+- Estimated missing: 64
+- Coverage: 57.05%
 - Candidate operations (first 20):
   - AlternatingCaps (AlternatingCaps.mjs) [low]
   - Amount (BitShiftLeft.mjs) [low]

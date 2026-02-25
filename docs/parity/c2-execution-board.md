@@ -121,6 +121,21 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 - [x] `forensic.detectFileType` magic bytes helper.
 - [x] `forensic.elfInfo` header inspection helper.
 
+## Wave 20 backlog
+
+- [x] `format.csvToJson` and `format.jsonToCsv` operations.
+- [x] `format.yamlToJson` and `format.jsonToYaml` operations.
+- [x] `format.cborEncode` and `format.cborDecode` operations.
+- [x] `format.bsonEncode` and `format.bsonDecode` operations.
+- [x] `format.avroEncode` and `format.avroDecode` operations.
+- [x] `compression.bzip2` and `compression.bzip2Decompress` operations.
+- [x] `compression.zip` and `compression.unzip` operations.
+- [x] `compression.tar` and `compression.untar` operations.
+- [x] `image.addText` overlay operation.
+- [x] `image.blur` filter operation.
+- [x] `image.contain` resize operation.
+- [x] `image.metadata` inspection operation.
+
 ## Queue extension
 
 - [x] Queue tasks `1-20` completed on `dev`.

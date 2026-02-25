@@ -198,6 +198,26 @@ Wave 1 implemented so far:
 - Wave 12 forensic hash: `forensic.extractSha512`
 - Wave 13 forensic token: `forensic.extractJwt`
 - Wave 13 forensic vuln IOC: `forensic.extractCves`
+- Wave 20 data formats: `format.csvToJson`
+- Wave 20 data formats: `format.jsonToCsv`
+- Wave 20 data formats: `format.yamlToJson`
+- Wave 20 data formats: `format.jsonToYaml`
+- Wave 20 data formats: `format.cborEncode`
+- Wave 20 data formats: `format.cborDecode`
+- Wave 20 data formats: `format.bsonEncode`
+- Wave 20 data formats: `format.bsonDecode`
+- Wave 20 data formats: `format.avroEncode`
+- Wave 20 data formats: `format.avroDecode`
+- Wave 20 compression: `compression.bzip2`
+- Wave 20 compression: `compression.bzip2Decompress`
+- Wave 20 compression: `compression.zip`
+- Wave 20 compression: `compression.unzip`
+- Wave 20 compression: `compression.tar`
+- Wave 20 compression: `compression.untar`
+- Wave 20 image: `image.addText`
+- Wave 20 image: `image.blur`
+- Wave 20 image: `image.contain`
+- Wave 20 image: `image.metadata`
 - Wave 14 data-format: `format.jsonArrayLength`
 - Wave 14 data-format: `format.jsonStringValues`
 - Wave 14 data-format: `format.jsonNumberValues`

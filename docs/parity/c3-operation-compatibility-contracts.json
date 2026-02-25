@@ -363,6 +363,55 @@
     }
   },
   {
+    "operationId": "compression.bzip2",
+    "name": "Bzip2 Compress",
+    "domain": "compression-archive",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bzip2Compress.ts",
+      "description": "Compresses input with Bzip2."
+    }
+  },
+  {
+    "operationId": "compression.bzip2Decompress",
+    "name": "Bzip2 Decompress",
+    "domain": "compression-archive",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bzip2Decompress.ts",
+      "description": "Decompresses Bzip2 data into raw bytes."
+    }
+  },
+  {
     "operationId": "compression.gunzip",
     "name": "Gunzip",
     "domain": "compression-archive",
@@ -409,6 +458,130 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/gzip.ts",
       "description": "Compresses input using GZIP and returns bytes."
+    }
+  },
+  {
+    "operationId": "compression.tar",
+    "name": "Tar",
+    "domain": "compression-archive",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "filename",
+        "type": "string",
+        "label": "Filename",
+        "defaultValue": "\"data.bin\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/tar.ts",
+      "description": "Creates a TAR archive containing a single file."
+    }
+  },
+  {
+    "operationId": "compression.untar",
+    "name": "Untar",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/untar.ts",
+      "description": "Extracts TAR archive entries into JSON (base64 payloads)."
+    }
+  },
+  {
+    "operationId": "compression.unzip",
+    "name": "Unzip",
+    "domain": "compression-archive",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/unzip.ts",
+      "description": "Extracts ZIP archive entries into JSON (base64 payloads)."
+    }
+  },
+  {
+    "operationId": "compression.zip",
+    "name": "Zip",
+    "domain": "compression-archive",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "filename",
+        "type": "string",
+        "label": "Filename",
+        "defaultValue": "\"data.bin\""
+      },
+      {
+        "key": "compression",
+        "type": "select",
+        "label": "Compression",
+        "defaultValue": "\"DEFLATE\""
+      },
+      {
+        "key": "level",
+        "type": "number",
+        "label": "Compression Level (0-9)",
+        "defaultValue": "6"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/zip.ts",
+      "description": "Creates a ZIP archive containing a single file."
     }
   },
   {
@@ -1343,6 +1516,214 @@
     }
   },
   {
+    "operationId": "format.avroDecode",
+    "name": "Avro Decode",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [
+      {
+        "key": "schema",
+        "type": "string",
+        "label": "Schema (JSON)",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected bytes input",
+        "Schema argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/avroDecode.ts",
+      "description": "Decodes Avro binary into JSON using a provided schema."
+    }
+  },
+  {
+    "operationId": "format.avroEncode",
+    "name": "Avro Encode",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "schema",
+        "type": "string",
+        "label": "Schema (JSON)",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_ARGUMENT",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Schema argument is required",
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/avroEncode.ts",
+      "description": "Encodes JSON into Avro binary using a provided schema."
+    }
+  },
+  {
+    "operationId": "format.bsonDecode",
+    "name": "BSON Decode",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bsonDecode.ts",
+      "description": "Decodes BSON bytes into JSON."
+    }
+  },
+  {
+    "operationId": "format.bsonEncode",
+    "name": "BSON Encode",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bsonEncode.ts",
+      "description": "Encodes JSON into BSON bytes."
+    }
+  },
+  {
+    "operationId": "format.cborDecode",
+    "name": "CBOR Decode",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/cborDecode.ts",
+      "description": "Decodes CBOR bytes into JSON."
+    }
+  },
+  {
+    "operationId": "format.cborEncode",
+    "name": "CBOR Encode",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/cborEncode.ts",
+      "description": "Encodes JSON into CBOR bytes."
+    }
+  },
+  {
+    "operationId": "format.csvToJson",
+    "name": "CSV To JSON",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\""
+      },
+      {
+        "key": "header",
+        "type": "boolean",
+        "label": "Header Row",
+        "defaultValue": "true"
+      },
+      {
+        "key": "skipEmptyLines",
+        "type": "boolean",
+        "label": "Skip Empty Lines",
+        "defaultValue": "true"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/csvToJson.ts",
+      "description": "Parses CSV input into JSON data with parse metadata."
+    }
+  },
+  {
     "operationId": "format.jsonArrayLength",
     "name": "JSON Array Length",
     "domain": "data-formats",
@@ -1532,6 +1913,93 @@
     }
   },
   {
+    "operationId": "format.jsonToCsv",
+    "name": "JSON To CSV",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\""
+      },
+      {
+        "key": "header",
+        "type": "boolean",
+        "label": "Header Row",
+        "defaultValue": "true"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonToCsv.ts",
+      "description": "Serializes JSON arrays/objects into CSV text."
+    }
+  },
+  {
+    "operationId": "format.jsonToYaml",
+    "name": "JSON To YAML",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonToYaml.ts",
+      "description": "Serializes JSON into YAML."
+    }
+  },
+  {
+    "operationId": "format.yamlToJson",
+    "name": "YAML To JSON",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/yamlToJson.ts",
+      "description": "Parses YAML input into JSON."
+    }
+  },
+  {
     "operationId": "hash.adler32",
     "name": "Adler-32",
     "domain": "misc-uncategorized",
@@ -1642,6 +2110,148 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/basicTriage.ts",
       "description": "Found CVE references in sample content."
+    }
+  },
+  {
+    "operationId": "image.addText",
+    "name": "Add Text To Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "text",
+        "type": "string",
+        "label": "Text",
+        "defaultValue": "\"CyberMasterChef\""
+      },
+      {
+        "key": "color",
+        "type": "string",
+        "label": "Color",
+        "defaultValue": "\"#ffffff\""
+      },
+      {
+        "key": "fontSize",
+        "type": "number",
+        "label": "Font Size",
+        "defaultValue": "24"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input",
+        "Unable to determine image dimensions"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/addTextToImage.ts",
+      "description": "Overlays text on an image using an SVG layer."
+    }
+  },
+  {
+    "operationId": "image.blur",
+    "name": "Blur Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "sigma",
+        "type": "number",
+        "label": "Blur Sigma",
+        "defaultValue": "2"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/blurImage.ts",
+      "description": "Applies a Gaussian blur to image bytes."
+    }
+  },
+  {
+    "operationId": "image.contain",
+    "name": "Contain Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "width",
+        "type": "number",
+        "label": "Width",
+        "defaultValue": "512"
+      },
+      {
+        "key": "height",
+        "type": "number",
+        "label": "Height",
+        "defaultValue": "512"
+      },
+      {
+        "key": "background",
+        "type": "string",
+        "label": "Background",
+        "defaultValue": "\"#00000000\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/containImage.ts",
+      "description": "Resizes an image to fit within a bounding box (contain)."
+    }
+  },
+  {
+    "operationId": "image.metadata",
+    "name": "Image Metadata",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/imageMetadata.ts",
+      "description": "Extracts width, height, and format metadata from image bytes."
     }
   },
   {

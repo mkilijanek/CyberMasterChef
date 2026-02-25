@@ -1,10 +1,14 @@
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
+import { resolve, relative } from "node:path";
 import { classifyOperation, DOMAIN_DESCRIPTIONS, DOMAIN_ORDER } from "./domain-taxonomy.mjs";
 import { parseCsv, toCsv } from "./csv-utils.mjs";
 
 const repoRoot = resolve(import.meta.dirname, "..", "..");
-const refDir = resolve(repoRoot, "..", "ref");
+const repoRefDir = resolve(repoRoot, "ref");
+const externalRefDir = resolve(repoRoot, "..", "ref");
+const refDir = existsSync(resolve(repoRefDir, "CyberChef_all_operations_list.csv"))
+  ? repoRefDir
+  : externalRefDir;
 const repoParityDir = resolve(repoRoot, "docs", "parity");
 const sourceCsvPath = resolve(refDir, "CyberChef_all_operations_list.csv");
 const outJsonPath = resolve(refDir, "c1-operation-domain-matrix.json");
@@ -13,6 +17,7 @@ const outMdPath = resolve(refDir, "c1-operation-domain-summary.md");
 const repoOutJsonPath = resolve(repoParityDir, "c1-operation-domain-matrix.json");
 const repoOutCsvPath = resolve(repoParityDir, "c1-operation-domain-matrix.csv");
 const repoOutMdPath = resolve(repoParityDir, "c1-operation-domain-summary.md");
+const toRel = (value) => relative(repoRoot, value);
 
 const csvText = readFileSync(sourceCsvPath, "utf-8");
 const records = parseCsv(csvText);
@@ -80,11 +85,15 @@ const uncategorizedPreview = mapped
   .map((x) => `- ${x.operationName} (${x.file})`)
   .join("\n");
 
+const generatedAt = process.env.SOURCE_DATE_EPOCH
+  ? new Date(Number(process.env.SOURCE_DATE_EPOCH) * 1000).toISOString()
+  : new Date(0).toISOString();
+
 const summaryLines = [
   "# C1 Domain Matrix Summary",
   "",
-  `Generated: ${new Date().toISOString()}`,
-  `Source: ${sourceCsvPath}`,
+  `Generated: ${generatedAt}`,
+  `Source: ${toRel(sourceCsvPath)}`,
   `Total operations: ${mapped.length}`,
   "",
   "## Domain counts",
@@ -105,12 +114,12 @@ summaryLines.push(uncategorizedPreview.length > 0 ? uncategorizedPreview : "- no
 summaryLines.push("");
 summaryLines.push("## Artifacts");
 summaryLines.push("");
-summaryLines.push(`- JSON: ${repoOutJsonPath}`);
-summaryLines.push(`- CSV: ${repoOutCsvPath}`);
-summaryLines.push(`- Summary: ${repoOutMdPath}`);
-summaryLines.push(`- Ref copy JSON: ${outJsonPath}`);
-summaryLines.push(`- Ref copy CSV: ${outCsvPath}`);
-summaryLines.push(`- Ref copy summary: ${outMdPath}`);
+summaryLines.push(`- JSON: ${toRel(repoOutJsonPath)}`);
+summaryLines.push(`- CSV: ${toRel(repoOutCsvPath)}`);
+summaryLines.push(`- Summary: ${toRel(repoOutMdPath)}`);
+summaryLines.push(`- Ref copy JSON: ${toRel(outJsonPath)}`);
+summaryLines.push(`- Ref copy CSV: ${toRel(outCsvPath)}`);
+summaryLines.push(`- Ref copy summary: ${toRel(outMdPath)}`);
 summaryLines.push("");
 
 writeFileSync(outMdPath, `${summaryLines.join("\n")}\n`, "utf-8");

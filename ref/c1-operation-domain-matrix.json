@@ -1,0 +1,4187 @@
+[
+  {
+    "index": 9,
+    "operationName": "Alphabet",
+    "file": "FromBase58.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 10,
+    "operationName": "Alphabet",
+    "file": "ToBase58.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 53,
+    "operationName": "Convert",
+    "file": "ToHexContent.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 73,
+    "operationName": "Delimiter",
+    "file": "FromBinary.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 74,
+    "operationName": "Delimiter",
+    "file": "FromCharcode.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 75,
+    "operationName": "Delimiter",
+    "file": "FromDecimal.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 76,
+    "operationName": "Delimiter",
+    "file": "FromOctal.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 88,
+    "operationName": "Delimiter",
+    "file": "ToBinary.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 89,
+    "operationName": "Delimiter",
+    "file": "ToCharcode.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 90,
+    "operationName": "Delimiter",
+    "file": "ToDecimal.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 91,
+    "operationName": "Delimiter",
+    "file": "ToOctal.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 98,
+    "operationName": "DropNthBytes",
+    "file": "DropNthBytes.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 105,
+    "operationName": "Encoding",
+    "file": "DecodeText.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 106,
+    "operationName": "Encoding",
+    "file": "EncodeText.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 107,
+    "operationName": "Encoding",
+    "file": "FromBech32.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 134,
+    "operationName": "Format options",
+    "file": "ToMorseCode.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 135,
+    "operationName": "FromBase32",
+    "file": "FromBase32.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 136,
+    "operationName": "FromBase45",
+    "file": "FromBase45.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 137,
+    "operationName": "FromBase62",
+    "file": "FromBase62.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 138,
+    "operationName": "FromBase64",
+    "file": "FromBase64.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 139,
+    "operationName": "FromBase85",
+    "file": "FromBase85.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 140,
+    "operationName": "FromBase92",
+    "file": "FromBase92.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 141,
+    "operationName": "FromBraille",
+    "file": "FromBraille.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 143,
+    "operationName": "FromHex",
+    "file": "FromHex.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 144,
+    "operationName": "FromHexContent",
+    "file": "FromHexContent.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 148,
+    "operationName": "FromModhex",
+    "file": "FromModhex.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 177,
+    "operationName": "HexDensityChart",
+    "file": "HexDensityChart.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 178,
+    "operationName": "HexToObjectIdentifier",
+    "file": "HexToObjectIdentifier.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 180,
+    "operationName": "Human-Readable Part (HRP)",
+    "file": "ToBech32.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 208,
+    "operationName": "Internationalised domain name",
+    "file": "FromPunycode.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 209,
+    "operationName": "Internationalised domain name",
+    "file": "ToPunycode.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 216,
+    "operationName": "JPathExpression",
+    "file": "JPathExpression.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 264,
+    "operationName": "Letter delimiter",
+    "file": "FromMorseCode.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 294,
+    "operationName": "Number of bytes",
+    "file": "PseudoRandomNumberGenerator.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 296,
+    "operationName": "ObjectIdentifierToHex",
+    "file": "ObjectIdentifierToHex.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 321,
+    "operationName": "PEMToHex",
+    "file": "PEMToHex.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 355,
+    "operationName": "RemoveNullBytes",
+    "file": "RemoveNullBytes.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 361,
+    "operationName": "ROT13",
+    "file": "ROT13.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 362,
+    "operationName": "ROT13BruteForce",
+    "file": "ROT13BruteForce.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 363,
+    "operationName": "ROT47",
+    "file": "ROT47.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 364,
+    "operationName": "ROT47BruteForce",
+    "file": "ROT47BruteForce.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 365,
+    "operationName": "ROT8000",
+    "file": "ROT8000.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 395,
+    "operationName": "ShowBase64Offsets",
+    "file": "ShowBase64Offsets.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 405,
+    "operationName": "Size (bytes)",
+    "file": "BLAKE3.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 415,
+    "operationName": "Start",
+    "file": "DropBytes.mjs",
+    "originalCategory": "compression",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 416,
+    "operationName": "Start",
+    "file": "TakeBytes.mjs",
+    "originalCategory": "compression",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 417,
+    "operationName": "Starting index",
+    "file": "ParseASN1HexString.mjs",
+    "originalCategory": "compression",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 425,
+    "operationName": "TakeNthBytes",
+    "file": "TakeNthBytes.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 430,
+    "operationName": "ToBase32",
+    "file": "ToBase32.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 431,
+    "operationName": "ToBase45",
+    "file": "ToBase45.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 432,
+    "operationName": "ToBase62",
+    "file": "ToBase62.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 433,
+    "operationName": "ToBase64",
+    "file": "ToBase64.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 434,
+    "operationName": "ToBase85",
+    "file": "ToBase85.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 435,
+    "operationName": "ToBase92",
+    "file": "ToBase92.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 436,
+    "operationName": "ToBraille",
+    "file": "ToBraille.mjs",
+    "originalCategory": "misc",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 438,
+    "operationName": "ToHex",
+    "file": "ToHex.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 441,
+    "operationName": "ToModhex",
+    "file": "ToModhex.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 460,
+    "operationName": "XPath",
+    "file": "XPathExpression.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "encodings-codecs",
+    "confidence": "medium",
+    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
+  },
+  {
+    "index": 1,
+    "operationName": "a",
+    "file": "AffineCipherDecode.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 2,
+    "operationName": "a",
+    "file": "AffineCipherEncode.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 3,
+    "operationName": "A1Z26CipherDecode",
+    "file": "A1Z26CipherDecode.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 4,
+    "operationName": "A1Z26CipherEncode",
+    "file": "A1Z26CipherEncode.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 6,
+    "operationName": "Adler32Checksum",
+    "file": "Adler32Checksum.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 7,
+    "operationName": "Alphabet",
+    "file": "BaconCipherDecode.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 8,
+    "operationName": "Alphabet",
+    "file": "BaconCipherEncode.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 16,
+    "operationName": "AnalyseHash",
+    "file": "AnalyseHash.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 18,
+    "operationName": "AtbashCipher",
+    "file": "AtbashCipher.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 23,
+    "operationName": "BcryptParse",
+    "file": "BcryptParse.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 27,
+    "operationName": "BSONDeserialise",
+    "file": "BSONDeserialise.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 36,
+    "operationName": "CaesarBoxCipher",
+    "file": "CaesarBoxCipher.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 43,
+    "operationName": "CetaceanCipherDecode",
+    "file": "CetaceanCipherDecode.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 44,
+    "operationName": "CetaceanCipherEncode",
+    "file": "CetaceanCipherEncode.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 46,
+    "operationName": "CipherSaber2Decrypt",
+    "file": "CipherSaber2Decrypt.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 47,
+    "operationName": "CipherSaber2Encrypt",
+    "file": "CipherSaber2Encrypt.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 59,
+    "operationName": "CRCChecksum",
+    "file": "CRCChecksum.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 68,
+    "operationName": "Delimiter",
+    "file": "CompareCTPHHashes.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 69,
+    "operationName": "Delimiter",
+    "file": "CompareSSDEEPHashes.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 99,
+    "operationName": "ECDSASign",
+    "file": "ECDSASign.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 100,
+    "operationName": "ECDSASignatureConversion",
+    "file": "ECDSASignatureConversion.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 101,
+    "operationName": "ECDSAVerify",
+    "file": "ECDSAVerify.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 104,
+    "operationName": "Encoded hash",
+    "file": "Argon2Compare.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 117,
+    "operationName": "ExtractHashes",
+    "file": "ExtractHashes.mjs",
+    "originalCategory": "text/transform",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 129,
+    "operationName": "Fletcher16Checksum",
+    "file": "Fletcher16Checksum.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 130,
+    "operationName": "Fletcher32Checksum",
+    "file": "Fletcher32Checksum.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 131,
+    "operationName": "Fletcher64Checksum",
+    "file": "Fletcher64Checksum.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 132,
+    "operationName": "Fletcher8Checksum",
+    "file": "Fletcher8Checksum.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 151,
+    "operationName": "GenerateAllChecksums",
+    "file": "GenerateAllChecksums.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 152,
+    "operationName": "GenerateAllHashes",
+    "file": "GenerateAllHashes.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 154,
+    "operationName": "GenerateECDSAKeyPair",
+    "file": "GenerateECDSAKeyPair.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 156,
+    "operationName": "GenerateRSAKeyPair",
+    "file": "GenerateRSAKeyPair.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 161,
+    "operationName": "GOSTDecrypt",
+    "file": "GOSTDecrypt.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 162,
+    "operationName": "GOSTEncrypt",
+    "file": "GOSTEncrypt.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 163,
+    "operationName": "GOSTHash",
+    "file": "GOSTHash.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 171,
+    "operationName": "Hash",
+    "file": "BcryptCompare.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 201,
+    "operationName": "Input Format",
+    "file": "SM2Decrypt.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 227,
+    "operationName": "Key",
+    "file": "AESDecrypt.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 228,
+    "operationName": "Key",
+    "file": "AESEncrypt.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 230,
+    "operationName": "Key",
+    "file": "BlowfishDecrypt.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 231,
+    "operationName": "Key",
+    "file": "BlowfishEncrypt.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 233,
+    "operationName": "Key",
+    "file": "ChaCha.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 234,
+    "operationName": "Key",
+    "file": "DESDecrypt.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 235,
+    "operationName": "Key",
+    "file": "DESEncrypt.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 236,
+    "operationName": "Key",
+    "file": "FernetDecrypt.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 237,
+    "operationName": "Key",
+    "file": "FernetEncrypt.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 238,
+    "operationName": "Key",
+    "file": "HMAC.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 240,
+    "operationName": "Key",
+    "file": "RC2Decrypt.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 241,
+    "operationName": "Key",
+    "file": "RC2Encrypt.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 243,
+    "operationName": "Key",
+    "file": "SM4Decrypt.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 244,
+    "operationName": "Key",
+    "file": "SM4Encrypt.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 247,
+    "operationName": "Key",
+    "file": "TripleDESDecrypt.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 248,
+    "operationName": "Key",
+    "file": "TripleDESEncrypt.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 253,
+    "operationName": "Key",
+    "file": "XXTEADecrypt.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 254,
+    "operationName": "Key",
+    "file": "XXTEAEncrypt.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 255,
+    "operationName": "Key (KEK)",
+    "file": "AESKeyUnwrap.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 256,
+    "operationName": "Key (KEK)",
+    "file": "AESKeyWrap.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 259,
+    "operationName": "Keyword",
+    "file": "BifidCipherDecode.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 260,
+    "operationName": "Keyword",
+    "file": "BifidCipherEncode.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 266,
+    "operationName": "LMHash",
+    "file": "LMHash.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 269,
+    "operationName": "LS47Decrypt",
+    "file": "LS47Decrypt.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 270,
+    "operationName": "LS47Encrypt",
+    "file": "LS47Encrypt.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 279,
+    "operationName": "MD2",
+    "file": "MD2.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 280,
+    "operationName": "MD4",
+    "file": "MD4.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 281,
+    "operationName": "MD5",
+    "file": "MD5.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 286,
+    "operationName": "MurmurHash3",
+    "file": "MurmurHash3.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 293,
+    "operationName": "NTHash",
+    "file": "NTHash.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 302,
+    "operationName": "Output Format",
+    "file": "SM2Encrypt.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 304,
+    "operationName": "Output valid JSON",
+    "file": "PHPDeserialize.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 318,
+    "operationName": "Passphrase",
+    "file": "DerivePBKDF2Key.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 319,
+    "operationName": "Passphrase",
+    "file": "RC4.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 320,
+    "operationName": "Passphrase",
+    "file": "RC4Drop.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 333,
+    "operationName": "Private key of recipient",
+    "file": "PGPDecrypt.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 334,
+    "operationName": "Private key of signer",
+    "file": "PGPEncryptAndSign.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 339,
+    "operationName": "Public key of recipient",
+    "file": "PGPEncrypt.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 340,
+    "operationName": "Public key of signer",
+    "file": "PGPDecryptAndVerify.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 343,
+    "operationName": "Radix",
+    "file": "LuhnChecksum.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 345,
+    "operationName": "RailFenceCipherDecode",
+    "file": "RailFenceCipherDecode.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 346,
+    "operationName": "RailFenceCipherEncode",
+    "file": "RailFenceCipherEncode.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 369,
+    "operationName": "Rounds",
+    "file": "Bcrypt.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 370,
+    "operationName": "RSADecrypt",
+    "file": "RSADecrypt.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 371,
+    "operationName": "RSAEncrypt",
+    "file": "RSAEncrypt.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 372,
+    "operationName": "RSASign",
+    "file": "RSASign.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 373,
+    "operationName": "RSAVerify",
+    "file": "RSAVerify.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 374,
+    "operationName": "Salt",
+    "file": "Argon2.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 375,
+    "operationName": "Salt",
+    "file": "DeriveHKDFKey.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 376,
+    "operationName": "Salt",
+    "file": "Scrypt.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 390,
+    "operationName": "SHA0",
+    "file": "SHA0.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 391,
+    "operationName": "SHA1",
+    "file": "SHA1.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 392,
+    "operationName": "SHA2",
+    "file": "SHA2.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 401,
+    "operationName": "Size",
+    "file": "Keccak.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 402,
+    "operationName": "Size",
+    "file": "MD6.mjs",
+    "originalCategory": "misc",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 403,
+    "operationName": "Size",
+    "file": "RIPEMD.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 404,
+    "operationName": "Size",
+    "file": "SHA3.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 426,
+    "operationName": "TCPIPChecksum",
+    "file": "TCPIPChecksum.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 456,
+    "operationName": "Whirlpool",
+    "file": "Whirlpool.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 459,
+    "operationName": "XORChecksum",
+    "file": "XORChecksum.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+  },
+  {
+    "index": 34,
+    "operationName": "Bzip2Compress",
+    "file": "Bzip2Compress.mjs",
+    "originalCategory": "compression",
+    "domain": "compression-archive",
+    "confidence": "high",
+    "matchedBy": "/\\bgzip\\b|\\bgunzip\\b|\\bdeflate\\b|\\binflate\\b|\\bzlib\\b|\\bbrotli\\b|\\blz4\\b|\\blzma\\b|\\bbzip2?|\\bxz\\b|\\bcompress(ion)?\\b|\\bdecompress(ion)?\\b|\\bunzip\\b|\\bzip\\b|\\btar\\b|\\barchive\\b/i"
+  },
+  {
+    "index": 35,
+    "operationName": "Bzip2Decompress",
+    "file": "Bzip2Decompress.mjs",
+    "originalCategory": "compression",
+    "domain": "compression-archive",
+    "confidence": "high",
+    "matchedBy": "/\\bgzip\\b|\\bgunzip\\b|\\bdeflate\\b|\\binflate\\b|\\bzlib\\b|\\bbrotli\\b|\\blz4\\b|\\blzma\\b|\\bbzip2?|\\bxz\\b|\\bcompress(ion)?\\b|\\bdecompress(ion)?\\b|\\bunzip\\b|\\bzip\\b|\\btar\\b|\\barchive\\b/i"
+  },
+  {
+    "index": 126,
+    "operationName": "Filename",
+    "file": "Tar.mjs",
+    "originalCategory": "compression",
+    "domain": "compression-archive",
+    "confidence": "high",
+    "matchedBy": "/\\bgzip\\b|\\bgunzip\\b|\\bdeflate\\b|\\binflate\\b|\\bzlib\\b|\\bbrotli\\b|\\blz4\\b|\\blzma\\b|\\bbzip2?|\\bxz\\b|\\bcompress(ion)?\\b|\\bdecompress(ion)?\\b|\\bunzip\\b|\\bzip\\b|\\btar\\b|\\barchive\\b/i"
+  },
+  {
+    "index": 168,
+    "operationName": "Gunzip",
+    "file": "Gunzip.mjs",
+    "originalCategory": "compression",
+    "domain": "compression-archive",
+    "confidence": "high",
+    "matchedBy": "/\\bgzip\\b|\\bgunzip\\b|\\bdeflate\\b|\\binflate\\b|\\bzlib\\b|\\bbrotli\\b|\\blz4\\b|\\blzma\\b|\\bbzip2?|\\bxz\\b|\\bcompress(ion)?\\b|\\bdecompress(ion)?\\b|\\bunzip\\b|\\bzip\\b|\\btar\\b|\\barchive\\b/i"
+  },
+  {
+    "index": 169,
+    "operationName": "Gzip",
+    "file": "Gzip.mjs",
+    "originalCategory": "compression",
+    "domain": "compression-archive",
+    "confidence": "high",
+    "matchedBy": "/\\bgzip\\b|\\bgunzip\\b|\\bdeflate\\b|\\binflate\\b|\\bzlib\\b|\\bbrotli\\b|\\blz4\\b|\\blzma\\b|\\bbzip2?|\\bxz\\b|\\bcompress(ion)?\\b|\\bdecompress(ion)?\\b|\\bunzip\\b|\\bzip\\b|\\btar\\b|\\barchive\\b/i"
+  },
+  {
+    "index": 451,
+    "operationName": "Unzip",
+    "file": "Unzip.mjs",
+    "originalCategory": "compression",
+    "domain": "compression-archive",
+    "confidence": "high",
+    "matchedBy": "/\\bgzip\\b|\\bgunzip\\b|\\bdeflate\\b|\\binflate\\b|\\bzlib\\b|\\bbrotli\\b|\\blz4\\b|\\blzma\\b|\\bbzip2?|\\bxz\\b|\\bcompress(ion)?\\b|\\bdecompress(ion)?\\b|\\bunzip\\b|\\bzip\\b|\\btar\\b|\\barchive\\b/i"
+  },
+  {
+    "index": 463,
+    "operationName": "Zip",
+    "file": "Zip.mjs",
+    "originalCategory": "compression",
+    "domain": "compression-archive",
+    "confidence": "high",
+    "matchedBy": "/\\bgzip\\b|\\bgunzip\\b|\\bdeflate\\b|\\binflate\\b|\\bzlib\\b|\\bbrotli\\b|\\blz4\\b|\\blzma\\b|\\bbzip2?|\\bxz\\b|\\bcompress(ion)?\\b|\\bdecompress(ion)?\\b|\\bunzip\\b|\\bzip\\b|\\btar\\b|\\barchive\\b/i"
+  },
+  {
+    "index": 29,
+    "operationName": "Built in formats",
+    "file": "DateTimeDelta.mjs",
+    "originalCategory": "misc",
+    "domain": "date-time",
+    "confidence": "high",
+    "matchedBy": "/date|time|timestamp|epoch|unix|iso\\s?8601|utc|timezone|fromnow|moment/i"
+  },
+  {
+    "index": 30,
+    "operationName": "Built in formats",
+    "file": "ParseDateTime.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "date-time",
+    "confidence": "high",
+    "matchedBy": "/date|time|timestamp|epoch|unix|iso\\s?8601|utc|timezone|fromnow|moment/i"
+  },
+  {
+    "index": 31,
+    "operationName": "Built in formats",
+    "file": "TranslateDateTimeFormat.mjs",
+    "originalCategory": "misc",
+    "domain": "date-time",
+    "confidence": "high",
+    "matchedBy": "/date|time|timestamp|epoch|unix|iso\\s?8601|utc|timezone|fromnow|moment/i"
+  },
+  {
+    "index": 95,
+    "operationName": "Display total",
+    "file": "ExtractDates.mjs",
+    "originalCategory": "text/transform",
+    "domain": "date-time",
+    "confidence": "high",
+    "matchedBy": "/date|time|timestamp|epoch|unix|iso\\s?8601|utc|timezone|fromnow|moment/i"
+  },
+  {
+    "index": 160,
+    "operationName": "GetTime",
+    "file": "GetTime.mjs",
+    "originalCategory": "misc",
+    "domain": "date-time",
+    "confidence": "high",
+    "matchedBy": "/date|time|timestamp|epoch|unix|iso\\s?8601|utc|timezone|fromnow|moment/i"
+  },
+  {
+    "index": 207,
+    "operationName": "Input units",
+    "file": "UNIXTimestampToWindowsFiletime.mjs",
+    "originalCategory": "misc",
+    "domain": "date-time",
+    "confidence": "high",
+    "matchedBy": "/date|time|timestamp|epoch|unix|iso\\s?8601|utc|timezone|fromnow|moment/i"
+  },
+  {
+    "index": 303,
+    "operationName": "Output units",
+    "file": "WindowsFiletimeToUNIXTimestamp.mjs",
+    "originalCategory": "misc",
+    "domain": "date-time",
+    "confidence": "high",
+    "matchedBy": "/date|time|timestamp|epoch|unix|iso\\s?8601|utc|timezone|fromnow|moment/i"
+  },
+  {
+    "index": 307,
+    "operationName": "ParseObjectIDTimestamp",
+    "file": "ParseObjectIDTimestamp.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "date-time",
+    "confidence": "high",
+    "matchedBy": "/date|time|timestamp|epoch|unix|iso\\s?8601|utc|timezone|fromnow|moment/i"
+  },
+  {
+    "index": 314,
+    "operationName": "ParseUNIXFilePermissions",
+    "file": "ParseUNIXFilePermissions.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "date-time",
+    "confidence": "high",
+    "matchedBy": "/date|time|timestamp|epoch|unix|iso\\s?8601|utc|timezone|fromnow|moment/i"
+  },
+  {
+    "index": 429,
+    "operationName": "Time (ms)",
+    "file": "Sleep.mjs",
+    "originalCategory": "misc",
+    "domain": "date-time",
+    "confidence": "high",
+    "matchedBy": "/date|time|timestamp|epoch|unix|iso\\s?8601|utc|timezone|fromnow|moment/i"
+  },
+  {
+    "index": 448,
+    "operationName": "Units",
+    "file": "FromUNIXTimestamp.mjs",
+    "originalCategory": "misc",
+    "domain": "date-time",
+    "confidence": "high",
+    "matchedBy": "/date|time|timestamp|epoch|unix|iso\\s?8601|utc|timezone|fromnow|moment/i"
+  },
+  {
+    "index": 449,
+    "operationName": "Units",
+    "file": "ToUNIXTimestamp.mjs",
+    "originalCategory": "misc",
+    "domain": "date-time",
+    "confidence": "high",
+    "matchedBy": "/date|time|timestamp|epoch|unix|iso\\s?8601|utc|timezone|fromnow|moment/i"
+  },
+  {
+    "index": 5,
+    "operationName": "AddTextToImage",
+    "file": "AddTextToImage.mjs",
+    "originalCategory": "media",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 12,
+    "operationName": "AMFDecode",
+    "file": "AMFDecode.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 13,
+    "operationName": "AMFEncode",
+    "file": "AMFEncode.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 22,
+    "operationName": "AvroToJSON",
+    "file": "AvroToJSON.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 25,
+    "operationName": "BlurImage",
+    "file": "BlurImage.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 28,
+    "operationName": "BSONSerialise",
+    "file": "BSONSerialise.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 40,
+    "operationName": "CBORDecode",
+    "file": "CBORDecode.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 41,
+    "operationName": "CBOREncode",
+    "file": "CBOREncode.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 42,
+    "operationName": "Cell delimiters",
+    "file": "ToTable.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 52,
+    "operationName": "ContainImage",
+    "file": "ContainImage.mjs",
+    "originalCategory": "media",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 54,
+    "operationName": "Convert all characters",
+    "file": "ToHTMLEntity.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 55,
+    "operationName": "ConvertImageFormat",
+    "file": "ConvertImageFormat.mjs",
+    "originalCategory": "media",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 58,
+    "operationName": "CoverImage",
+    "file": "CoverImage.mjs",
+    "originalCategory": "media",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 60,
+    "operationName": "CropImage",
+    "file": "CropImage.mjs",
+    "originalCategory": "media",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 62,
+    "operationName": "CSVToJSON",
+    "file": "CSVToJSON.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 96,
+    "operationName": "DitherImage",
+    "file": "DitherImage.mjs",
+    "originalCategory": "media",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 114,
+    "operationName": "ExtractEXIF",
+    "file": "ExtractEXIF.mjs",
+    "originalCategory": "text/transform",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 133,
+    "operationName": "FlipImage",
+    "file": "FlipImage.mjs",
+    "originalCategory": "media",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 145,
+    "operationName": "FromHexdump",
+    "file": "FromHexdump.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 146,
+    "operationName": "FromHTMLEntity",
+    "file": "FromHTMLEntity.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 147,
+    "operationName": "FromMessagePack",
+    "file": "FromMessagePack.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 149,
+    "operationName": "FromQuotedPrintable",
+    "file": "FromQuotedPrintable.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 155,
+    "operationName": "GenerateImage",
+    "file": "GenerateImage.mjs",
+    "originalCategory": "media",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 179,
+    "operationName": "HTMLToText",
+    "file": "HTMLToText.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 182,
+    "operationName": "Image Format",
+    "file": "GenerateQRCode.mjs",
+    "originalCategory": "media",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 183,
+    "operationName": "ImageBrightnessContrast",
+    "file": "ImageBrightnessContrast.mjs",
+    "originalCategory": "media",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 184,
+    "operationName": "ImageFilter",
+    "file": "ImageFilter.mjs",
+    "originalCategory": "media",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 185,
+    "operationName": "ImageHueSaturationLightness",
+    "file": "ImageHueSaturationLightness.mjs",
+    "originalCategory": "media",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 186,
+    "operationName": "ImageOpacity",
+    "file": "ImageOpacity.mjs",
+    "originalCategory": "media",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 191,
+    "operationName": "Indent string",
+    "file": "XMLBeautify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 200,
+    "operationName": "Input format",
+    "file": "RenderImage.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 210,
+    "operationName": "InvertImage",
+    "file": "InvertImage.mjs",
+    "originalCategory": "media",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 218,
+    "operationName": "JsonataQuery",
+    "file": "Jsonata.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 219,
+    "operationName": "JSONBeautify",
+    "file": "JSONBeautify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 220,
+    "operationName": "JSONMinify",
+    "file": "JSONMinify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 221,
+    "operationName": "JSONToCSV",
+    "file": "JSONToCSV.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 222,
+    "operationName": "JSONtoYAML",
+    "file": "JSONtoYAML.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 290,
+    "operationName": "NormaliseImage",
+    "file": "NormaliseImage.mjs",
+    "originalCategory": "media",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 332,
+    "operationName": "Preserve comments",
+    "file": "XMLMinify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 335,
+    "operationName": "ProtobufDecode",
+    "file": "ProtobufDecode.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 336,
+    "operationName": "ProtobufEncode",
+    "file": "ProtobufEncode.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 351,
+    "operationName": "Remove indentation",
+    "file": "StripHTMLTags.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 353,
+    "operationName": "RemoveEXIF",
+    "file": "RemoveEXIF.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 357,
+    "operationName": "ResizeImage",
+    "file": "ResizeImage.mjs",
+    "originalCategory": "media",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 366,
+    "operationName": "RotateImage",
+    "file": "RotateImage.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 393,
+    "operationName": "SharpenImage",
+    "file": "SharpenImage.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 440,
+    "operationName": "ToMessagePack",
+    "file": "ToMessagePack.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 442,
+    "operationName": "ToQuotedPrintable",
+    "file": "ToQuotedPrintable.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 457,
+    "operationName": "Width",
+    "file": "ToHexdump.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 461,
+    "operationName": "YAMLToJSON",
+    "file": "YAMLToJSON.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+  },
+  {
+    "index": 19,
+    "operationName": "Attempt to be context aware",
+    "file": "ToCamelCase.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 20,
+    "operationName": "Attempt to be context aware",
+    "file": "ToKebabCase.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 21,
+    "operationName": "Attempt to be context aware",
+    "file": "ToSnakeCase.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 32,
+    "operationName": "Built in regexes",
+    "file": "RegularExpression.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 33,
+    "operationName": "By",
+    "file": "Reverse.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 39,
+    "operationName": "CartesianProduct",
+    "file": "CartesianProduct.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 56,
+    "operationName": "ConvertLeetSpeak",
+    "file": "ConvertLeetSpeak.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 57,
+    "operationName": "ConvertToNATOAlphabet",
+    "file": "ConvertToNATOAlphabet.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 72,
+    "operationName": "Delimiter",
+    "file": "Filter.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 79,
+    "operationName": "Delimiter",
+    "file": "Head.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 80,
+    "operationName": "Delimiter",
+    "file": "Mean.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 81,
+    "operationName": "Delimiter",
+    "file": "Median.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 83,
+    "operationName": "Delimiter",
+    "file": "Sort.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 84,
+    "operationName": "Delimiter",
+    "file": "StandardDeviation.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 87,
+    "operationName": "Delimiter",
+    "file": "Tail.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 112,
+    "operationName": "ExtractDomains",
+    "file": "ExtractDomains.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 113,
+    "operationName": "ExtractEmailAddresses",
+    "file": "ExtractEmailAddresses.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 115,
+    "operationName": "ExtractFilePaths",
+    "file": "ExtractFilePaths.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 116,
+    "operationName": "ExtractFiles",
+    "file": "ExtractFiles.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 118,
+    "operationName": "ExtractID3",
+    "file": "ExtractID3.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 120,
+    "operationName": "ExtractLSB",
+    "file": "ExtractLSB.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 121,
+    "operationName": "ExtractMACAddresses",
+    "file": "ExtractMACAddresses.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 122,
+    "operationName": "Extractor",
+    "file": "Register.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 123,
+    "operationName": "ExtractRGBA",
+    "file": "ExtractRGBA.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 128,
+    "operationName": "Find",
+    "file": "FindReplace.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 142,
+    "operationName": "FromCaseInsensitiveRegex",
+    "file": "FromCaseInsensitiveRegex.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 150,
+    "operationName": "FuzzyMatch",
+    "file": "FuzzyMatch.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 158,
+    "operationName": "GenericCodeBeautify",
+    "file": "GenericCodeBeautify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 159,
+    "operationName": "GetAllCasings",
+    "file": "GetAllCasings.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 188,
+    "operationName": "Indent string",
+    "file": "CSSBeautify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 189,
+    "operationName": "Indent string",
+    "file": "JavaScriptBeautify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 190,
+    "operationName": "Indent string",
+    "file": "SQLBeautify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 278,
+    "operationName": "Match (regex)",
+    "file": "ConditionalJump.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 291,
+    "operationName": "NormaliseUnicode",
+    "file": "NormaliseUnicode.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 297,
+    "operationName": "Offset",
+    "file": "AddLineNumbers.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 301,
+    "operationName": "Output case",
+    "file": "FormatMACAddresses.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 327,
+    "operationName": "Position",
+    "file": "PadLines.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 329,
+    "operationName": "Prefix",
+    "file": "EscapeUnicodeCharacters.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 330,
+    "operationName": "Prefix",
+    "file": "UnescapeUnicodeCharacters.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 354,
+    "operationName": "RemoveLineNumbers",
+    "file": "RemoveLineNumbers.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 383,
+    "operationName": "Scope",
+    "file": "ToUpperCase.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 385,
+    "operationName": "Section (regex)",
+    "file": "Subsection.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 408,
+    "operationName": "Spaces",
+    "file": "RemoveWhitespace.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 409,
+    "operationName": "Split delimiter",
+    "file": "Fork.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 410,
+    "operationName": "Split delimiter",
+    "file": "Split.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 411,
+    "operationName": "SplitColourChannels",
+    "file": "SplitColourChannels.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 423,
+    "operationName": "SwapCase",
+    "file": "SwapCase.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 437,
+    "operationName": "ToCaseInsensitiveRegex",
+    "file": "ToCaseInsensitiveRegex.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 439,
+    "operationName": "ToLowerCase",
+    "file": "ToLowerCase.mjs",
+    "originalCategory": "misc",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 446,
+    "operationName": "UnicodeTextFormat",
+    "file": "UnicodeTextFormat.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 447,
+    "operationName": "Unique",
+    "file": "Unique.mjs",
+    "originalCategory": "text/transform",
+    "domain": "regex-text-advanced",
+    "confidence": "medium",
+    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
+  },
+  {
+    "index": 61,
+    "operationName": "CSS selector",
+    "file": "CSSSelector.mjs",
+    "originalCategory": "misc",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 65,
+    "operationName": "DechunkHTTPResponse",
+    "file": "DechunkHTTPResponse.mjs",
+    "originalCategory": "misc",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 66,
+    "operationName": "DefangIPAddresses",
+    "file": "DefangIPAddresses.mjs",
+    "originalCategory": "misc",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 67,
+    "operationName": "DefangURL",
+    "file": "DefangURL.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 77,
+    "operationName": "Delimiter",
+    "file": "GroupIPAddresses.mjs",
+    "originalCategory": "misc",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 97,
+    "operationName": "DNSOverHTTPS",
+    "file": "DNSOverHTTPS.mjs",
+    "originalCategory": "misc",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 103,
+    "operationName": "Encode all special chars",
+    "file": "URLEncode.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 119,
+    "operationName": "ExtractIPAddresses",
+    "file": "ExtractIPAddresses.mjs",
+    "originalCategory": "text/transform",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 124,
+    "operationName": "ExtractURLs",
+    "file": "ExtractURLs.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 125,
+    "operationName": "FangURL",
+    "file": "FangURL.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 175,
+    "operationName": "Header string",
+    "file": "HexToPEM.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 196,
+    "operationName": "Input format",
+    "file": "ParseIPv4Header.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 197,
+    "operationName": "Input format",
+    "file": "ParseX509CRL.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 198,
+    "operationName": "Input format",
+    "file": "ParseX509Certificate.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 223,
+    "operationName": "JWTDecode",
+    "file": "JWTDecode.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 224,
+    "operationName": "JWTSign",
+    "file": "JWTSign.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 225,
+    "operationName": "JWTVerify",
+    "file": "JWTVerify.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 283,
+    "operationName": "Method",
+    "file": "HTTPRequest.mjs",
+    "originalCategory": "misc",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 285,
+    "operationName": "MIMEDecoding",
+    "file": "MIMEDecoding.mjs",
+    "originalCategory": "misc",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 315,
+    "operationName": "ParseURI",
+    "file": "ParseURI.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 419,
+    "operationName": "StripHTTPHeaders",
+    "file": "StripHTTPHeaders.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 420,
+    "operationName": "StripIPv4Header",
+    "file": "StripIPv4Header.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 421,
+    "operationName": "StripTCPHeader",
+    "file": "StripTCPHeader.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 422,
+    "operationName": "StripUDPHeader",
+    "file": "StripUDPHeader.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 443,
+    "operationName": "Treat \\",
+    "file": "URLDecode.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 17,
+    "operationName": "AnalyseUUID",
+    "file": "AnalyseUUID.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+  },
+  {
+    "index": 24,
+    "operationName": "Bit mode",
+    "file": "DisassembleX86.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+  },
+  {
+    "index": 26,
+    "operationName": "Bombe",
+    "file": "Bombe.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+  },
+  {
+    "index": 45,
+    "operationName": "ChiSquare",
+    "file": "ChiSquare.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+  },
+  {
+    "index": 50,
+    "operationName": "Colossus",
+    "file": "Colossus.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+  },
+  {
+    "index": 63,
+    "operationName": "CTPH",
+    "file": "CTPH.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+  },
+  {
+    "index": 93,
+    "operationName": "DetectFileType",
+    "file": "DetectFileType.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+  },
+  {
+    "index": 102,
+    "operationName": "ELFInfo",
+    "file": "ELFInfo.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+  },
+  {
+    "index": 110,
+    "operationName": "Enigma",
+    "file": "Enigma.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+  },
+  {
+    "index": 127,
+    "operationName": "FileTree",
+    "file": "FileTree.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+  },
+  {
+    "index": 157,
+    "operationName": "GenerateUUID",
+    "file": "GenerateUUID.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+  },
+  {
+    "index": 268,
+    "operationName": "Lorenz",
+    "file": "Lorenz.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+  },
+  {
+    "index": 414,
+    "operationName": "Standard Enigmas",
+    "file": "MultipleBombe.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+  },
+  {
+    "index": 418,
+    "operationName": "Strings",
+    "file": "Strings.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+  },
+  {
+    "index": 455,
+    "operationName": "Visualisation",
+    "file": "Entropy.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+  },
+  {
+    "index": 462,
+    "operationName": "YARARules",
+    "file": "YARARules.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+  },
+  {
+    "index": 11,
+    "operationName": "AlternatingCaps",
+    "file": "AlternatingCaps.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 14,
+    "operationName": "Amount",
+    "file": "BitShiftLeft.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 15,
+    "operationName": "Amount",
+    "file": "BitShiftRight.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 37,
+    "operationName": "Capacity",
+    "file": "Shake.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 38,
+    "operationName": "CaretMdecode",
+    "file": "CaretMdecode.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 48,
+    "operationName": "CitrixCTX1Decode",
+    "file": "CitrixCTX1Decode.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 49,
+    "operationName": "CitrixCTX1Encode",
+    "file": "CitrixCTX1Encode.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 51,
+    "operationName": "Comment",
+    "file": "Comment.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 64,
+    "operationName": "Data format",
+    "file": "SwapEndianness.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 70,
+    "operationName": "Delimiter",
+    "file": "Divide.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 71,
+    "operationName": "Delimiter",
+    "file": "ExpandAlphabetRange.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 78,
+    "operationName": "Delimiter",
+    "file": "HammingDistance.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 82,
+    "operationName": "Delimiter",
+    "file": "Multiply.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 85,
+    "operationName": "Delimiter",
+    "file": "Subtract.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 86,
+    "operationName": "Delimiter",
+    "file": "Sum.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 92,
+    "operationName": "Depth",
+    "file": "Magic.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 94,
+    "operationName": "Digest length",
+    "file": "Streebog.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 108,
+    "operationName": "Endianness",
+    "file": "FromFloat.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 109,
+    "operationName": "Endianness",
+    "file": "ToFloat.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 111,
+    "operationName": "Escape level",
+    "file": "EscapeString.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 153,
+    "operationName": "GenerateDeBruijnSequence",
+    "file": "GenerateDeBruijnSequence.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 164,
+    "operationName": "GOSTKeyUnwrap",
+    "file": "GOSTKeyUnwrap.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 165,
+    "operationName": "GOSTKeyWrap",
+    "file": "GOSTKeyWrap.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 166,
+    "operationName": "GOSTSign",
+    "file": "GOSTSign.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 167,
+    "operationName": "GOSTVerify",
+    "file": "GOSTVerify.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 170,
+    "operationName": "HAS160",
+    "file": "HAS160.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 172,
+    "operationName": "HASSHClientFingerprint",
+    "file": "HASSHClientFingerprint.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 173,
+    "operationName": "HASSHServerFingerprint",
+    "file": "HASSHServerFingerprint.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 174,
+    "operationName": "HaversineDistance",
+    "file": "HaversineDistance.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 176,
+    "operationName": "HeatmapChart",
+    "file": "HeatmapChart.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 181,
+    "operationName": "Ignore ranges",
+    "file": "IPv6TransitionAddresses.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 187,
+    "operationName": "Include network info",
+    "file": "ParseIPRange.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 192,
+    "operationName": "IndexOfCoincidence",
+    "file": "IndexOfCoincidence.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 193,
+    "operationName": "Input format",
+    "file": "ChangeIPFormat.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 194,
+    "operationName": "Input Format",
+    "file": "ConvertCoordinateFormat.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 195,
+    "operationName": "Input format",
+    "file": "ParseCSR.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 199,
+    "operationName": "Input format",
+    "file": "PlayMedia.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 202,
+    "operationName": "Input units",
+    "file": "ConvertArea.mjs",
+    "originalCategory": "compression",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 203,
+    "operationName": "Input units",
+    "file": "ConvertDataUnits.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 204,
+    "operationName": "Input units",
+    "file": "ConvertDistance.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 205,
+    "operationName": "Input units",
+    "file": "ConvertMass.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 206,
+    "operationName": "Input units",
+    "file": "ConvertSpeed.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 211,
+    "operationName": "JA3Fingerprint",
+    "file": "JA3Fingerprint.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 212,
+    "operationName": "JA3SFingerprint",
+    "file": "JA3SFingerprint.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 213,
+    "operationName": "JA4Fingerprint",
+    "file": "JA4Fingerprint.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 214,
+    "operationName": "JA4ServerFingerprint",
+    "file": "JA4ServerFingerprint.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 215,
+    "operationName": "JavaScriptMinify",
+    "file": "JavaScriptMinify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 217,
+    "operationName": "Jq",
+    "file": "Jq.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 226,
+    "operationName": "Key",
+    "file": "ADD.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 229,
+    "operationName": "Key",
+    "file": "AND.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 232,
+    "operationName": "Key",
+    "file": "CMAC.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 239,
+    "operationName": "Key",
+    "file": "OR.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 242,
+    "operationName": "Key",
+    "file": "Rabbit.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 245,
+    "operationName": "Key",
+    "file": "SUB.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 246,
+    "operationName": "Key",
+    "file": "Salsa20.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 249,
+    "operationName": "Key",
+    "file": "VigenèreDecode.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 250,
+    "operationName": "Key",
+    "file": "VigenèreEncode.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 251,
+    "operationName": "Key",
+    "file": "XOR.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 252,
+    "operationName": "Key",
+    "file": "XSalsa20.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 257,
+    "operationName": "Key length",
+    "file": "XORBruteForce.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 258,
+    "operationName": "Key type",
+    "file": "GeneratePGPKeyPair.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 261,
+    "operationName": "Label name",
+    "file": "Jump.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 262,
+    "operationName": "Language",
+    "file": "SyntaxHighlighter.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 263,
+    "operationName": "Length",
+    "file": "GenerateLoremIpsum.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 265,
+    "operationName": "LevenshteinDistance",
+    "file": "LevenshteinDistance.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 267,
+    "operationName": "Location info",
+    "file": "JavaScriptParser.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 271,
+    "operationName": "LZ4Compress",
+    "file": "LZ4Compress.mjs",
+    "originalCategory": "compression",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 272,
+    "operationName": "LZ4Decompress",
+    "file": "LZ4Decompress.mjs",
+    "originalCategory": "compression",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 273,
+    "operationName": "LZMACompress",
+    "file": "LZMACompress.mjs",
+    "originalCategory": "compression",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 274,
+    "operationName": "LZMADecompress",
+    "file": "LZMADecompress.mjs",
+    "originalCategory": "compression",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 275,
+    "operationName": "LZNT1Decompress",
+    "file": "LZNT1Decompress.mjs",
+    "originalCategory": "compression",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 276,
+    "operationName": "LZStringCompress",
+    "file": "LZStringCompress.mjs",
+    "originalCategory": "compression",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 277,
+    "operationName": "LZStringDecompress",
+    "file": "LZStringDecompress.mjs",
+    "originalCategory": "compression",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 282,
+    "operationName": "Merge",
+    "file": "Merge.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 284,
+    "operationName": "MicrosoftScriptDecoder",
+    "file": "MicrosoftScriptDecoder.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 287,
+    "operationName": "Name",
+    "file": "GenerateHOTP.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 288,
+    "operationName": "Name",
+    "file": "GenerateTOTP.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 289,
+    "operationName": "Name",
+    "file": "Label.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 292,
+    "operationName": "NOT",
+    "file": "NOT.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 295,
+    "operationName": "Numberwang",
+    "file": "Numberwang.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 298,
+    "operationName": "Offset",
+    "file": "DecodeNetBIOSName.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 299,
+    "operationName": "Offset",
+    "file": "EncodeNetBIOSName.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 300,
+    "operationName": "OpticalCharacterRecognition",
+    "file": "OpticalCharacterRecognition.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 305,
+    "operationName": "ParseColourCode",
+    "file": "ParseColourCode.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 306,
+    "operationName": "ParseIPv6Address",
+    "file": "ParseIPv6Address.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 308,
+    "operationName": "ParseQRCode",
+    "file": "ParseQRCode.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 309,
+    "operationName": "ParseSSHHostKey",
+    "file": "ParseSSHHostKey.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 310,
+    "operationName": "ParseTCP",
+    "file": "ParseTCP.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 311,
+    "operationName": "ParseTLSRecord",
+    "file": "ParseTLSRecord.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 312,
+    "operationName": "ParseTLV",
+    "file": "ParseTLV.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 313,
+    "operationName": "ParseUDP",
+    "file": "ParseUDP.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 316,
+    "operationName": "ParseUserAgent",
+    "file": "ParseUserAgent.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 317,
+    "operationName": "Passphrase",
+    "file": "DeriveEVPKey.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 322,
+    "operationName": "PEMToJWK",
+    "file": "JWKToPem.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 323,
+    "operationName": "PEMToJWK",
+    "file": "PEMToJWK.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 324,
+    "operationName": "PHPSerialize",
+    "file": "PHPSerialize.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 325,
+    "operationName": "Plaintext",
+    "file": "Substitute.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 326,
+    "operationName": "PlistViewer",
+    "file": "PLISTViewer.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 328,
+    "operationName": "PowerSet",
+    "file": "PowerSet.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 331,
+    "operationName": "Preserve comments",
+    "file": "CSSMinify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 337,
+    "operationName": "PubKeyFromCert",
+    "file": "PubKeyFromCert.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 338,
+    "operationName": "PubKeyFromPrivKey",
+    "file": "PubKeyFromPrivKey.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 341,
+    "operationName": "Public key of signer",
+    "file": "PGPVerify.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 342,
+    "operationName": "Radix",
+    "file": "FromBase.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 344,
+    "operationName": "Radix",
+    "file": "ToBase.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 347,
+    "operationName": "RAKE",
+    "file": "RAKE.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 348,
+    "operationName": "RandomizeColourPalette",
+    "file": "RandomizeColourPalette.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 349,
+    "operationName": "RawDeflate",
+    "file": "RawDeflate.mjs",
+    "originalCategory": "compression",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 350,
+    "operationName": "RawInflate",
+    "file": "RawInflate.mjs",
+    "originalCategory": "compression",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 352,
+    "operationName": "RemoveDiacritics",
+    "file": "RemoveDiacritics.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 356,
+    "operationName": "RenderMarkdown",
+    "file": "RenderMarkdown.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 358,
+    "operationName": "Return",
+    "file": "Return.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 359,
+    "operationName": "RisonDecode",
+    "file": "RisonDecode.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 360,
+    "operationName": "RisonEncode",
+    "file": "RisonEncode.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 367,
+    "operationName": "RotateLeft",
+    "file": "RotateLeft.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 368,
+    "operationName": "RotateRight",
+    "file": "RotateRight.mjs",
+    "originalCategory": "encoding/cipher",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 377,
+    "operationName": "Sample delimiter",
+    "file": "Diff.mjs",
+    "originalCategory": "text/transform",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 378,
+    "operationName": "Sample delimiter",
+    "file": "OffsetChecker.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 379,
+    "operationName": "ScanForEmbeddedFiles",
+    "file": "ScanForEmbeddedFiles.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 380,
+    "operationName": "ScatterChart",
+    "file": "ScatterChart.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 381,
+    "operationName": "Scheme",
+    "file": "FromBCD.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 382,
+    "operationName": "Scheme",
+    "file": "ToBCD.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 384,
+    "operationName": "Search string",
+    "file": "CountOccurrences.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 386,
+    "operationName": "SeriesChart",
+    "file": "SeriesChart.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 387,
+    "operationName": "SetDifference",
+    "file": "SetDifference.mjs",
+    "originalCategory": "text/transform",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 388,
+    "operationName": "SetIntersection",
+    "file": "SetIntersection.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 389,
+    "operationName": "SetUnion",
+    "file": "SetUnion.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 394,
+    "operationName": "Show 0%s",
+    "file": "FrequencyDistribution.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 396,
+    "operationName": "ShowOnMap",
+    "file": "ShowOnMap.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 397,
+    "operationName": "Shuffle",
+    "file": "Shuffle.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 398,
+    "operationName": "Sigaba",
+    "file": "SIGABA.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 399,
+    "operationName": "Size",
+    "file": "BLAKE2b.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 400,
+    "operationName": "Size",
+    "file": "BLAKE2s.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 406,
+    "operationName": "SM3",
+    "file": "SM3.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 407,
+    "operationName": "Snefru",
+    "file": "Snefru.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 412,
+    "operationName": "SQLMinify",
+    "file": "SQLMinify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 413,
+    "operationName": "SSDEEP",
+    "file": "SSDEEP.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 424,
+    "operationName": "SymmetricDifference",
+    "file": "SymmetricDifference.mjs",
+    "originalCategory": "text/transform",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 427,
+    "operationName": "Template",
+    "file": "Template.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 428,
+    "operationName": "TextEncodingBruteForce",
+    "file": "TextEncodingBruteForce.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 444,
+    "operationName": "Typex",
+    "file": "Typex.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 445,
+    "operationName": "UnescapeString",
+    "file": "UnescapeString.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 450,
+    "operationName": "Untar",
+    "file": "Untar.mjs",
+    "originalCategory": "compression",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 452,
+    "operationName": "VarIntDecode",
+    "file": "VarIntDecode.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 453,
+    "operationName": "VarIntEncode",
+    "file": "VarIntEncode.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 454,
+    "operationName": "ViewBitPlane",
+    "file": "ViewBitPlane.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 458,
+    "operationName": "XKCDRandomNumber",
+    "file": "XKCDRandomNumber.mjs",
+    "originalCategory": "misc",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 464,
+    "operationName": "ZlibDeflate",
+    "file": "ZlibDeflate.mjs",
+    "originalCategory": "compression",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  },
+  {
+    "index": 465,
+    "operationName": "ZlibInflate",
+    "file": "ZlibInflate.mjs",
+    "originalCategory": "compression",
+    "domain": "misc-uncategorized",
+    "confidence": "low",
+    "matchedBy": "<no-rule-match>"
+  }
+]
