@@ -1,4 +1,13 @@
-import type { Operation } from "@cybermasterchef/core";
+import { OperationJsonParseError, type Operation } from "@cybermasterchef/core";
+
+function parseJson(opId: string, value: string): unknown {
+  try {
+    return JSON.parse(value) as unknown;
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : String(error);
+    throw new OperationJsonParseError(opId, "Invalid JSON input", reason);
+  }
+}
 
 export const jsonMinify: Operation = {
   id: "format.jsonMinify",
@@ -9,11 +18,7 @@ export const jsonMinify: Operation = {
   args: [],
   run: ({ input }) => {
     if (input.type !== "string") throw new Error("Expected string input");
-    try {
-      const parsed = JSON.parse(input.value) as unknown;
-      return { type: "string", value: JSON.stringify(parsed) };
-    } catch {
-      throw new Error("Invalid JSON input");
-    }
+    const parsed = parseJson("format.jsonMinify", input.value);
+    return { type: "string", value: JSON.stringify(parsed) };
   }
 };

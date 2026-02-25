@@ -1,6 +1,6 @@
 # C2 Execution Board
 
-Updated: 2026-02-24
+Updated: 2026-02-25
 
 ## Objective
 
@@ -23,14 +23,14 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 
 ## Wave 2 backlog
 
-- [ ] `compression.gzip` and `compression.gunzip` baseline.
-- [ ] Browser/Node compatibility strategy for compression APIs.
-- [ ] Unit + golden tests.
+- [x] `compression.gzip` and `compression.gunzip` baseline.
+- [x] Browser/Node compatibility strategy for compression APIs.
+- [x] Unit + golden tests.
 
 ## Wave 3 backlog
 
 - [x] `format.jsonMinify` and `format.jsonBeautify`.
-- [ ] Structured error taxonomy for invalid JSON payloads.
+- [x] Structured error taxonomy for invalid JSON payloads.
 - [x] Unit + golden tests.
 
 ## Wave 5 backlog
@@ -103,6 +103,23 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 
 - [x] `compression.gzip` compression baseline operation.
 - [x] `compression.gunzip` decompression baseline operation.
+
+## Wave 19 backlog
+
+- [x] `codec.toBase58` and `codec.fromBase58` operations.
+- [x] `codec.toCharcode` and `codec.fromCharcode` operations.
+- [x] `codec.toDecimal` and `codec.fromDecimal` operations.
+- [x] `hash.adler32` checksum operation.
+- [x] `hash.analyseHash` hash classification operation.
+- [x] `crypto.atbashCipher` substitution cipher operation.
+- [x] `crypto.affineCipherEncode` and `crypto.affineCipherDecode` operations.
+- [x] `crypto.a1z26CipherEncode` and `crypto.a1z26CipherDecode` operations.
+- [x] `crypto.baconCipherEncode` and `crypto.baconCipherDecode` operations.
+- [x] `crypto.bcryptParse` parsing operation.
+- [x] `forensic.analyseUuid` helper operation.
+- [x] `forensic.chiSquare` statistic operation.
+- [x] `forensic.detectFileType` magic bytes helper.
+- [x] `forensic.elfInfo` header inspection helper.
 
 ## Queue extension
 

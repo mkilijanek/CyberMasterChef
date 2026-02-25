@@ -26,7 +26,7 @@ type BatchRow = {
 };
 
 function runCli(args: string[]) {
-  return spawnSync("pnpm", ["exec", "tsx", sourceEntry, ...args], {
+  return spawnSync("node", ["--import", "tsx", sourceEntry, ...args], {
     cwd: packageRoot,
     encoding: "utf-8"
   });

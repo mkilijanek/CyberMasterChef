@@ -1,6 +1,6 @@
 # C Implementation Master Plan
 
-Updated: 2026-02-24
+Updated: 2026-02-25
 
 ## Sources
 
@@ -37,7 +37,7 @@ Deliver a complete, auditable, and operationally useful C-track:
   - domain summary report
   - generation scripts
 - Remaining only operational work:
-  - `[PLANNED]` CI drift detection for regenerated artifacts.
+  - `[DONE]` CI drift detection for regenerated artifacts.
 
 ### C2 Domain Implementation
 
@@ -51,8 +51,6 @@ Deliver a complete, auditable, and operationally useful C-track:
   - basic pre-triage baseline (`forensic.basicPreTriage`)
   - basic triage baseline (`forensic.basicTriage`)
 - Still missing for C2 baseline completeness:
-  - compression/archive baseline (`gzip`, `gunzip`, and compatibility strategy)
-  - structured error taxonomy standardization across new operations
   - higher-priority crypto/hash/kdf expansion beyond extractor helpers
   - CI gates for parity-plan drift.
 
@@ -101,7 +99,7 @@ Deliver a complete, auditable, and operationally useful C-track:
 1. `[DONE]` JSON minify/beautify
 2. `[DONE]` JSON key sorting and key-path extraction
 3. `[IN-PROGRESS]` additional JSON analysis/normalization operations
-4. `[PLANNED]` structured error classes and stable error taxonomy
+4. `[DONE]` structured error classes and stable error taxonomy
 
 ### Wave C: Compression/Archive Baseline
 
@@ -138,7 +136,7 @@ Deliver a complete, auditable, and operationally useful C-track:
 
 ## Milestones for 100% C-Track Readiness
 
-1. `M1`: C1 stable + CI drift gate enabled.
+1. `M1`: C1 stable + CI drift gate enabled. `[DONE]`
 2. `M2`: C2 baseline waves (IOC/date/data/compression-baseline) completed.
 3. `M3`: C3 contracts enforced in CI with generated regression suites.
 4. `M4`: Security/quality governance (worker/CSP/supply-chain gates) automated.
@@ -159,5 +157,6 @@ Deliver a complete, auditable, and operationally useful C-track:
   - `C3: ~70%`
 - Combined C-track completion snapshot: `~65%`
 - Active focus for next execution queue:
-  - complete compression baseline (`gzip`/`gunzip`) and structured error taxonomy
+  - expand crypto/hash/kdf operations beyond extractor helpers
   - evolve Forensic Triage from baseline to full malware-analysis module (`imphash`/TLSH/ssdeep + richer binary parsing)
+  - add CI gates for parity-plan drift

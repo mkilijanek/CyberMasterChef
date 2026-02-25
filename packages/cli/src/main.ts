@@ -784,62 +784,61 @@ if (opts.batchInputDir) {
   if (opts.batchReportFile) {
     writeFileSync(opts.batchReportFile, payload, "utf-8");
   }
-  process.stdout.write(payload);
-  process.exit(0);
-}
+  writeFileSync(1, payload, "utf-8");
+} else {
+  const input =
+    opts.inputPath && opts.inputPath !== "-"
+      ? readFileSync(opts.inputPath, "utf-8")
+      : readFileSync(0, "utf-8");
+  const run = await executeOne(input);
 
-const input =
-  opts.inputPath && opts.inputPath !== "-"
-    ? readFileSync(opts.inputPath, "utf-8")
-    : readFileSync(0, "utf-8");
-const run = await executeOne(input);
-
-if (opts.showSummary) {
-  process.stderr.write(
-    `[summary] outputType=${run.outputType} traceSteps=${run.trace.length} durationMs=${run.elapsed}\n`
-  );
-}
-if (opts.summaryJson) {
-  process.stderr.write(
-    `${JSON.stringify({ outputType: run.outputType, traceSteps: run.trace.length, durationMs: run.elapsed })}\n`
-  );
-}
-if (opts.showRepro) {
-  process.stderr.write(
-    `[repro] recipeHash=${run.reproBundle.recipeHash} inputHash=${run.reproBundle.inputHash} durationMs=${run.reproBundle.durationMs}\n`
-  );
-}
-if (opts.reproJson) {
-  process.stderr.write(`${JSON.stringify(run.reproBundle)}\n`);
-}
-if (opts.reproFile) {
-  writeFileSync(opts.reproFile, `${JSON.stringify(run.reproBundle, null, 2)}\n`, "utf-8");
-}
-if (opts.showTrace) {
-  const traceRows = opts.traceLimit !== undefined ? run.trace.slice(0, opts.traceLimit) : run.trace;
-  for (const t of traceRows) {
+  if (opts.showSummary) {
     process.stderr.write(
-      `[trace] step=${t.step + 1} op=${t.opId} ${t.inputType}->${t.outputType}\n`
+      `[summary] outputType=${run.outputType} traceSteps=${run.trace.length} durationMs=${run.elapsed}\n`
     );
   }
-}
-if (opts.traceJson) {
-  const traceRows = opts.traceLimit !== undefined ? run.trace.slice(0, opts.traceLimit) : run.trace;
-  process.stderr.write(`${JSON.stringify(traceRows)}\n`);
-}
-if (opts.showTraceSummary) {
-  process.stderr.write(
-    `[trace-summary] steps=${run.traceSummary.steps} totalMs=${run.traceSummary.totalDurationMs} avgMs=${run.traceSummary.averageDurationMs.toFixed(2)} slowest=${run.traceSummary.slowestStep ? `${run.traceSummary.slowestStep.step + 1}:${run.traceSummary.slowestStep.opId}:${run.traceSummary.slowestStep.durationMs}` : "none"}\n`
-  );
-}
-if (opts.traceSummaryJson) {
-  process.stderr.write(`${JSON.stringify(run.traceSummary)}\n`);
-}
-if (opts.failEmptyOutput && run.rendered.length === 0) {
-  die("Execution failed: output is empty.");
-}
-if (opts.outputFile) {
-  writeFileSync(opts.outputFile, opts.noNewline ? run.rendered : `${run.rendered}\n`, "utf-8");
-} else {
-  process.stdout.write(opts.noNewline ? run.rendered : run.rendered + "\n");
+  if (opts.summaryJson) {
+    process.stderr.write(
+      `${JSON.stringify({ outputType: run.outputType, traceSteps: run.trace.length, durationMs: run.elapsed })}\n`
+    );
+  }
+  if (opts.showRepro) {
+    process.stderr.write(
+      `[repro] recipeHash=${run.reproBundle.recipeHash} inputHash=${run.reproBundle.inputHash} durationMs=${run.reproBundle.durationMs}\n`
+    );
+  }
+  if (opts.reproJson) {
+    process.stderr.write(`${JSON.stringify(run.reproBundle)}\n`);
+  }
+  if (opts.reproFile) {
+    writeFileSync(opts.reproFile, `${JSON.stringify(run.reproBundle, null, 2)}\n`, "utf-8");
+  }
+  if (opts.showTrace) {
+    const traceRows = opts.traceLimit !== undefined ? run.trace.slice(0, opts.traceLimit) : run.trace;
+    for (const t of traceRows) {
+      process.stderr.write(
+        `[trace] step=${t.step + 1} op=${t.opId} ${t.inputType}->${t.outputType}\n`
+      );
+    }
+  }
+  if (opts.traceJson) {
+    const traceRows = opts.traceLimit !== undefined ? run.trace.slice(0, opts.traceLimit) : run.trace;
+    process.stderr.write(`${JSON.stringify(traceRows)}\n`);
+  }
+  if (opts.showTraceSummary) {
+    process.stderr.write(
+      `[trace-summary] steps=${run.traceSummary.steps} totalMs=${run.traceSummary.totalDurationMs} avgMs=${run.traceSummary.averageDurationMs.toFixed(2)} slowest=${run.traceSummary.slowestStep ? `${run.traceSummary.slowestStep.step + 1}:${run.traceSummary.slowestStep.opId}:${run.traceSummary.slowestStep.durationMs}` : "none"}\n`
+    );
+  }
+  if (opts.traceSummaryJson) {
+    process.stderr.write(`${JSON.stringify(run.traceSummary)}\n`);
+  }
+  if (opts.failEmptyOutput && run.rendered.length === 0) {
+    die("Execution failed: output is empty.");
+  }
+  if (opts.outputFile) {
+    writeFileSync(opts.outputFile, opts.noNewline ? run.rendered : `${run.rendered}\n`, "utf-8");
+  } else {
+    process.stdout.write(opts.noNewline ? run.rendered : run.rendered + "\n");
+  }
 }

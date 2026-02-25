@@ -1,5 +1,29 @@
 [
   {
+    "operationId": "codec.fromBase58",
+    "name": "From Base58",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromBase58.ts",
+      "description": "Decodes Base58 string (Bitcoin alphabet) into bytes."
+    }
+  },
+  {
     "operationId": "codec.fromBase64",
     "name": "From Base64",
     "domain": "encodings-codecs",
@@ -48,6 +72,54 @@
     }
   },
   {
+    "operationId": "codec.fromCharcode",
+    "name": "From Charcode",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromCharcode.ts",
+      "description": "Decodes character codes into bytes."
+    }
+  },
+  {
+    "operationId": "codec.fromDecimal",
+    "name": "From Decimal",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromDecimal.ts",
+      "description": "Decodes decimal byte values into bytes."
+    }
+  },
+  {
     "operationId": "codec.fromHex",
     "name": "From Hex",
     "domain": "encodings-codecs",
@@ -69,6 +141,31 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/fromHex.ts",
       "description": "Decodes hexadecimal string (spaces allowed) to bytes."
+    }
+  },
+  {
+    "operationId": "codec.toBase58",
+    "name": "To Base58",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toBase58.ts",
+      "description": "Encodes bytes or string to Base58 (Bitcoin alphabet)."
     }
   },
   {
@@ -126,6 +223,70 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/toBinary.ts",
       "description": "Encodes bytes or string to binary octets."
+    }
+  },
+  {
+    "operationId": "codec.toCharcode",
+    "name": "To Charcode",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toCharcode.ts",
+      "description": "Encodes bytes or string into character codes."
+    }
+  },
+  {
+    "operationId": "codec.toDecimal",
+    "name": "To Decimal",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toDecimal.ts",
+      "description": "Encodes bytes or string into decimal byte values."
     }
   },
   {
@@ -248,6 +409,244 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/gzip.ts",
       "description": "Compresses input using GZIP and returns bytes."
+    }
+  },
+  {
+    "operationId": "crypto.a1z26CipherDecode",
+    "name": "A1Z26 Cipher Decode",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/a1z26CipherDecode.ts",
+      "description": "Decodes numbers to letters (A=1..Z=26)."
+    }
+  },
+  {
+    "operationId": "crypto.a1z26CipherEncode",
+    "name": "A1Z26 Cipher Encode",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/a1z26CipherEncode.ts",
+      "description": "Encodes letters to numbers (A=1..Z=26)."
+    }
+  },
+  {
+    "operationId": "crypto.affineCipherDecode",
+    "name": "Affine Cipher Decode",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "a",
+        "type": "number",
+        "label": "a",
+        "defaultValue": "5"
+      },
+      {
+        "key": "b",
+        "type": "number",
+        "label": "b",
+        "defaultValue": "8"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Invalid affine key: 'a' must be coprime with 26",
+        "Invalid affine key: no modular inverse for 'a'"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/affineCipherDecode.ts",
+      "description": "Decodes ASCII letters using the affine cipher inverse."
+    }
+  },
+  {
+    "operationId": "crypto.affineCipherEncode",
+    "name": "Affine Cipher Encode",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "a",
+        "type": "number",
+        "label": "a",
+        "defaultValue": "5"
+      },
+      {
+        "key": "b",
+        "type": "number",
+        "label": "b",
+        "defaultValue": "8"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Invalid affine key: 'a' must be coprime with 26"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/affineCipherEncode.ts",
+      "description": "Encodes ASCII letters using the affine cipher (a*x+b mod 26)."
+    }
+  },
+  {
+    "operationId": "crypto.atbashCipher",
+    "name": "Atbash Cipher",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/atbashCipher.ts",
+      "description": "Applies the Atbash substitution cipher to ASCII letters."
+    }
+  },
+  {
+    "operationId": "crypto.baconCipherDecode",
+    "name": "Bacon Cipher Decode",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input",
+        "Bacon cipher input length must be multiple of 5"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/baconCipherDecode.ts",
+      "description": "Decodes Bacon's cipher (A/B) into letters."
+    }
+  },
+  {
+    "operationId": "crypto.baconCipherEncode",
+    "name": "Bacon Cipher Encode",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/baconCipherEncode.ts",
+      "description": "Encodes letters into Bacon's cipher (A/B)."
+    }
+  },
+  {
+    "operationId": "crypto.bcryptParse",
+    "name": "Bcrypt Parse",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bcryptParse.ts",
+      "description": "Parses bcrypt hash into version, cost, salt, and hash components."
     }
   },
   {
@@ -547,6 +946,30 @@
     }
   },
   {
+    "operationId": "forensic.analyseUuid",
+    "name": "Analyse UUID",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": false,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/analyseUuid.ts",
+      "description": "Inspects UUID format, version, and variant."
+    }
+  },
+  {
     "operationId": "forensic.basicPreTriage",
     "name": "Basic Pre-Triage",
     "domain": "misc-uncategorized",
@@ -594,6 +1017,81 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/basicPreTriage.ts",
       "description": "Generates a baseline forensic pre-triage report (IOCs, hashes, binary structure and entropy)."
+    }
+  },
+  {
+    "operationId": "forensic.chiSquare",
+    "name": "Chi Square",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/chiSquare.ts",
+      "description": "Computes chi-square statistic against uniform byte distribution."
+    }
+  },
+  {
+    "operationId": "forensic.detectFileType",
+    "name": "Detect File Type",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/detectFileType.ts",
+      "description": "Detects basic file type from magic bytes."
+    }
+  },
+  {
+    "operationId": "forensic.elfInfo",
+    "name": "ELF Info",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/elfInfo.ts",
+      "description": "Extracts basic ELF header metadata."
     }
   },
   {
@@ -869,7 +1367,6 @@
         "INVALID_ARGUMENT"
       ],
       "examples": [
-        "Invalid JSON input",
         "Expected string or json input",
         "Target is not an array"
       ]
@@ -899,12 +1396,10 @@
     "errorTaxonomy": {
       "categories": [
         "EXECUTION_ERROR",
-        "INVALID_INPUT_TYPE",
-        "INVALID_ARGUMENT"
+        "INVALID_INPUT_TYPE"
       ],
       "examples": [
-        "Expected string input",
-        "Invalid JSON input"
+        "Expected string input"
       ]
     },
     "notes": {
@@ -926,11 +1421,9 @@
     "errorTaxonomy": {
       "categories": [
         "EXECUTION_ERROR",
-        "INVALID_INPUT_TYPE",
-        "INVALID_ARGUMENT"
+        "INVALID_INPUT_TYPE"
       ],
       "examples": [
-        "Invalid JSON input",
         "Expected string or json input"
       ]
     },
@@ -952,12 +1445,10 @@
     "errorTaxonomy": {
       "categories": [
         "EXECUTION_ERROR",
-        "INVALID_INPUT_TYPE",
-        "INVALID_ARGUMENT"
+        "INVALID_INPUT_TYPE"
       ],
       "examples": [
-        "Expected string input",
-        "Invalid JSON input"
+        "Expected string input"
       ]
     },
     "notes": {
@@ -979,11 +1470,9 @@
     "errorTaxonomy": {
       "categories": [
         "EXECUTION_ERROR",
-        "INVALID_INPUT_TYPE",
-        "INVALID_ARGUMENT"
+        "INVALID_INPUT_TYPE"
       ],
       "examples": [
-        "Invalid JSON input",
         "Expected string or json input"
       ]
     },
@@ -1006,11 +1495,9 @@
     "errorTaxonomy": {
       "categories": [
         "EXECUTION_ERROR",
-        "INVALID_INPUT_TYPE",
-        "INVALID_ARGUMENT"
+        "INVALID_INPUT_TYPE"
       ],
       "examples": [
-        "Invalid JSON input",
         "Expected string or json input"
       ]
     },
@@ -1033,17 +1520,64 @@
     "errorTaxonomy": {
       "categories": [
         "EXECUTION_ERROR",
-        "INVALID_INPUT_TYPE",
-        "INVALID_ARGUMENT"
+        "INVALID_INPUT_TYPE"
       ],
       "examples": [
-        "Invalid JSON input",
         "Expected string or json input"
       ]
     },
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/jsonStringValues.ts",
       "description": "Extracts all string leaf values from JSON payload."
+    }
+  },
+  {
+    "operationId": "hash.adler32",
+    "name": "Adler-32",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/adler32.ts",
+      "description": "Computes Adler-32 checksum. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.analyseHash",
+    "name": "Analyse Hash",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/analyseHash.ts",
+      "description": "Guesses hash type based on input length and character set."
     }
   },
   {

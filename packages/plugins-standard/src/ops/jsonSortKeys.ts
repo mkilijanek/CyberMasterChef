@@ -1,4 +1,13 @@
-import type { DataValue, Operation } from "@cybermasterchef/core";
+import { OperationJsonParseError, type DataValue, type Operation } from "@cybermasterchef/core";
+
+function parseJson(opId: string, value: string): unknown {
+  try {
+    return JSON.parse(value) as unknown;
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : String(error);
+    throw new OperationJsonParseError(opId, "Invalid JSON input", reason);
+  }
+}
 
 function sortJsonValue(value: unknown): unknown {
   if (Array.isArray(value)) {
@@ -25,11 +34,7 @@ export const jsonSortKeys: Operation = {
   run: ({ input }) => {
     let parsed: unknown;
     if (input.type === "string") {
-      try {
-        parsed = JSON.parse(input.value) as unknown;
-      } catch {
-        throw new Error("Invalid JSON input");
-      }
+      parsed = parseJson("format.jsonSortKeys", input.value);
     } else if (input.type === "json") {
       parsed = input.value;
     } else {

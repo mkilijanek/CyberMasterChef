@@ -1,23 +1,23 @@
 # C2 Domain Implementation Plan
 
-Generated: 2026-02-24T23:59:10.327Z
-Implemented operations in repo: 193
+Generated: 2026-02-25T07:39:52.290Z
+Implemented operations in repo: 213
 
 ## Priority order
 
-- P1: forensic-malware-helper (coverage 6.25%, missing ~15)
-- P2: crypto-hash-kdf (coverage 10.31%, missing ~87)
-- P3: data-formats (coverage 20%, missing ~40)
-- P4: encodings-codecs (coverage 24.14%, missing ~44)
+- P1: crypto-hash-kdf (coverage 19.59%, missing ~78)
+- P2: data-formats (coverage 20%, missing ~40)
+- P3: compression-archive (coverage 28.57%, missing ~5)
+- P4: forensic-malware-helper (coverage 31.25%, missing ~11)
 
 ## Domain summary
 
 ### encodings-codecs
 - Description: Encodings, binary/text codecs, canonical representation transforms.
 - CyberChef total: 58
-- Implemented total: 14
-- Estimated missing: 44
-- Coverage: 24.14%
+- Implemented total: 20
+- Estimated missing: 38
+- Coverage: 34.48%
 - Candidate operations (first 20):
   - Alphabet (FromBase58.mjs) [medium]
   - Alphabet (ToBase58.mjs) [medium]
@@ -33,9 +33,9 @@ Implemented operations in repo: 193
 ### crypto-hash-kdf
 - Description: Cryptographic transforms, digests, MAC/KDF and cipher operations.
 - CyberChef total: 97
-- Implemented total: 10
-- Estimated missing: 87
-- Coverage: 10.31%
+- Implemented total: 19
+- Estimated missing: 78
+- Coverage: 19.59%
 - Candidate operations (first 20):
   - a (AffineCipherDecode.mjs) [high]
   - a (AffineCipherEncode.mjs) [high]
@@ -138,9 +138,9 @@ Implemented operations in repo: 193
 ### forensic-malware-helper
 - Description: IOC extraction, entropy/byte analysis and malware triage helpers.
 - CyberChef total: 16
-- Implemented total: 1
-- Estimated missing: 15
-- Coverage: 6.25%
+- Implemented total: 5
+- Estimated missing: 11
+- Coverage: 31.25%
 - Candidate operations (first 20):
   - AnalyseUUID (AnalyseUUID.mjs) [high]
   - Bit mode (DisassembleX86.mjs) [high]
@@ -156,9 +156,9 @@ Implemented operations in repo: 193
 ### misc-uncategorized
 - Description: Operations that require manual triage or do not fit current taxonomy.
 - CyberChef total: 149
-- Implemented total: 83
-- Estimated missing: 66
-- Coverage: 55.7%
+- Implemented total: 84
+- Estimated missing: 65
+- Coverage: 56.38%
 - Candidate operations (first 20):
   - AlternatingCaps (AlternatingCaps.mjs) [low]
   - Amount (BitShiftLeft.mjs) [low]

@@ -57,6 +57,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
 - `packages/plugins-standard/test/basicPreTriage.test.ts` (baseline forensic pre-triage report)
 - `packages/plugins-standard/test/basicTriage.test.ts` (risk score/verdict + mocked capability transparency)
 - `packages/plugins-standard/test/compressionOps.test.ts` (gzip/gunzip round-trip + deterministic bytes + invalid input path)
+- CLI integration tests run `src/main.ts` via `node --import tsx` to avoid IPC restrictions in sandboxed environments.
 - `packages/workbench/src/worker/runtime.test.ts` (worker protocol cancel/timeout/race)
 - `packages/workbench/src/worker/poolClient.test.ts` (pool queueing, worker assignment, priority)
 - E2E Playwright:
@@ -82,6 +83,12 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
   - worker protocol integration coverage for cancel/timeout/race,
   - Playwright critical flow coverage for import, run-to-step, share-link and timeout persistence.
 - Next focus shifts to Phase B (runtime scalability: worker pool + streaming/chunking).
+- Phase C (CSIRT/SOC triage pipeline) is planned:
+  - server/CLI-first ingest for password-protected ZIP evidence with safe unpacking limits,
+  - archive-first artifact inventory (EML/MIME, Office macros, scripts, PE/ELF),
+  - IOC extraction + provenance, YARA/YARA-X scanning, optional sandbox hook,
+  - export paths for STIX/MISP and reproducibility bundle capture.
+- C1 drift gate is enforced in CI via `pnpm c1:check` (regenerates matrix + fails on drift).
 - Acceptance checklist is tracked in `docs/phase-a-definition-of-done.md`.
 
 ## Recipe formats
@@ -202,6 +209,15 @@ Wave 1 implemented so far:
 - Wave 17 baseline triage: `forensic.basicTriage`
 - Wave 18 compression baseline: `compression.gzip`
 - Wave 18 compression baseline: `compression.gunzip`
+- Wave 19 encodings: `codec.toBase58`, `codec.fromBase58`
+- Wave 19 encodings: `codec.toCharcode`, `codec.fromCharcode`
+- Wave 19 encodings: `codec.toDecimal`, `codec.fromDecimal`
+- Wave 19 crypto: `hash.adler32`, `hash.analyseHash`
+- Wave 19 crypto: `crypto.atbashCipher`, `crypto.affineCipherEncode`, `crypto.affineCipherDecode`
+- Wave 19 crypto: `crypto.a1z26CipherEncode`, `crypto.a1z26CipherDecode`
+- Wave 19 crypto: `crypto.baconCipherEncode`, `crypto.baconCipherDecode`
+- Wave 19 crypto: `crypto.bcryptParse`
+- Wave 19 forensic helpers: `forensic.analyseUuid`, `forensic.chiSquare`, `forensic.detectFileType`, `forensic.elfInfo`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip
 
@@ -219,6 +235,17 @@ Wave 1 implemented so far:
   - `docs/parity/c3-operation-compatibility-contracts.json`
   - `docs/parity/c3-operation-compatibility-contracts.md`
   - `docs/parity/c3-contract-schema.md`
+
+## Error taxonomy (JSON ops)
+
+- For invalid JSON payloads, JSON-format operations should throw `OperationJsonParseError`.
+- `OperationJsonParseError` uses `code: JSON_PARSE_ERROR` and preserves the original parse message in `detail`.
+- The engine passes through `EngineError` instances without wrapping them, preserving error codes.
+
+## Compression compatibility
+
+- `compression.gzip` and `compression.gunzip` use `CompressionStream`/`DecompressionStream` when available.
+- Node fallback uses `node:zlib`; gzip is invoked with `mtime: 0` to keep deterministic output.
 
 ## Adding a new operation
 

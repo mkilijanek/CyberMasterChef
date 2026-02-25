@@ -1,10 +1,17 @@
 # C3 Operation Compatibility Contracts
 
-Generated: 2026-02-24T23:59:10.343Z
-Total contracts: 193
+Generated: 2026-02-25T07:39:57.751Z
+Total contracts: 213
 
 ## Contract entries (compact)
 
+- codec.fromBase58
+  - name: From Base58
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.fromBase64
   - name: From Base64
   - domain: encodings-codecs
@@ -19,11 +26,32 @@ Total contracts: 193
   - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.fromCharcode
+  - name: From Charcode
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.fromDecimal
+  - name: From Decimal
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.fromHex
   - name: From Hex
   - domain: encodings-codecs
   - inputTypes: string
   - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toBase58
+  - name: To Base58
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.toBase64
@@ -35,6 +63,20 @@ Total contracts: 193
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.toBinary
   - name: To Binary
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toCharcode
+  - name: To Charcode
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toDecimal
+  - name: To Decimal
   - domain: encodings-codecs
   - inputTypes: bytes, string
   - outputType: string
@@ -73,6 +115,62 @@ Total contracts: 193
   - domain: compression-archive
   - inputTypes: bytes, string
   - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.a1z26CipherDecode
+  - name: A1Z26 Cipher Decode
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.a1z26CipherEncode
+  - name: A1Z26 Cipher Encode
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.affineCipherDecode
+  - name: Affine Cipher Decode
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.affineCipherEncode
+  - name: Affine Cipher Encode
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.atbashCipher
+  - name: Atbash Cipher
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.baconCipherDecode
+  - name: Bacon Cipher Decode
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.baconCipherEncode
+  - name: Bacon Cipher Encode
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.bcryptParse
+  - name: Bcrypt Parse
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - date.extractIsoTimestamps
@@ -145,11 +243,39 @@ Total contracts: 193
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.analyseUuid
+  - name: Analyse UUID
+  - domain: forensic-malware-helper
+  - inputTypes: string
+  - outputType: json
+  - deterministic: false
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - forensic.basicPreTriage
   - name: Basic Pre-Triage
   - domain: misc-uncategorized
   - inputTypes: bytes, string
   - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.chiSquare
+  - name: Chi Square
+  - domain: forensic-malware-helper
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.detectFileType
+  - name: Detect File Type
+  - domain: forensic-malware-helper
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.elfInfo
+  - name: ELF Info
+  - domain: forensic-malware-helper
+  - inputTypes: bytes, string
+  - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - forensic.extractCves
@@ -235,42 +361,56 @@ Total contracts: 193
   - inputTypes: string
   - outputType: string
   - deterministic: true
-  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - format.jsonExtractKeys
   - name: JSON Extract Keys
   - domain: data-formats
   - inputTypes: string, json
   - outputType: string
   - deterministic: true
-  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - format.jsonMinify
   - name: JSON Minify
   - domain: data-formats
   - inputTypes: string
   - outputType: string
   - deterministic: true
-  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - format.jsonNumberValues
   - name: JSON Number Values
   - domain: data-formats
   - inputTypes: string, json
   - outputType: string
   - deterministic: true
-  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - format.jsonSortKeys
   - name: JSON Sort Keys
   - domain: data-formats
   - inputTypes: string, json
   - outputType: string
   - deterministic: true
-  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - format.jsonStringValues
   - name: JSON String Values
   - domain: data-formats
   - inputTypes: string, json
   - outputType: string
   - deterministic: true
-  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.adler32
+  - name: Adler-32
+  - domain: misc-uncategorized
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.analyseHash
+  - name: Analyse Hash
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.sha256
   - name: SHA-256
   - domain: crypto-hash-kdf

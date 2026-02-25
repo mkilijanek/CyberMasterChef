@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-02-24T23:59:10.327Z",
+  "generatedAt": "2026-02-25T07:39:52.290Z",
   "source": {
     "c1MatrixPath": "/home/kili/Repo/CyberMasterChef/CyberMasterChef/docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 193
+    "implementedOpsCount": 213
   },
   "summary": [
     {
       "domain": "encodings-codecs",
       "description": "Encodings, binary/text codecs, canonical representation transforms.",
       "cyberChefTotal": 58,
-      "implementedTotal": 14,
-      "missingEstimated": 44,
-      "coveragePct": 24.14,
+      "implementedTotal": 20,
+      "missingEstimated": 38,
+      "coveragePct": 34.48,
       "implementationCandidates": [
         {
           "operationName": "Alphabet",
@@ -119,9 +119,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 97,
-      "implementedTotal": 10,
-      "missingEstimated": 87,
-      "coveragePct": 10.31,
+      "implementedTotal": 19,
+      "missingEstimated": 78,
+      "coveragePct": 19.59,
       "implementationCandidates": [
         {
           "operationName": "a",
@@ -674,9 +674,9 @@
       "domain": "forensic-malware-helper",
       "description": "IOC extraction, entropy/byte analysis and malware triage helpers.",
       "cyberChefTotal": 16,
-      "implementedTotal": 1,
-      "missingEstimated": 15,
-      "coveragePct": 6.25,
+      "implementedTotal": 5,
+      "missingEstimated": 11,
+      "coveragePct": 31.25,
       "implementationCandidates": [
         {
           "operationName": "AnalyseUUID",
@@ -764,9 +764,9 @@
       "domain": "misc-uncategorized",
       "description": "Operations that require manual triage or do not fit current taxonomy.",
       "cyberChefTotal": 149,
-      "implementedTotal": 83,
-      "missingEstimated": 66,
-      "coveragePct": 55.7,
+      "implementedTotal": 84,
+      "missingEstimated": 65,
+      "coveragePct": 56.38,
       "implementationCandidates": [
         {
           "operationName": "AlternatingCaps",
@@ -874,27 +874,27 @@
   "topPriority": [
     {
       "priority": 1,
-      "domain": "forensic-malware-helper",
-      "coveragePct": 6.25,
-      "missingEstimated": 15
+      "domain": "crypto-hash-kdf",
+      "coveragePct": 19.59,
+      "missingEstimated": 78
     },
     {
       "priority": 2,
-      "domain": "crypto-hash-kdf",
-      "coveragePct": 10.31,
-      "missingEstimated": 87
-    },
-    {
-      "priority": 3,
       "domain": "data-formats",
       "coveragePct": 20,
       "missingEstimated": 40
     },
     {
+      "priority": 3,
+      "domain": "compression-archive",
+      "coveragePct": 28.57,
+      "missingEstimated": 5
+    },
+    {
       "priority": 4,
-      "domain": "encodings-codecs",
-      "coveragePct": 24.14,
-      "missingEstimated": 44
+      "domain": "forensic-malware-helper",
+      "coveragePct": 31.25,
+      "missingEstimated": 11
     }
   ]
 }

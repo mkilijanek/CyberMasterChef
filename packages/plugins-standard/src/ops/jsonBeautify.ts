@@ -1,4 +1,13 @@
-import type { Operation } from "@cybermasterchef/core";
+import { OperationJsonParseError, type Operation } from "@cybermasterchef/core";
+
+function parseJson(opId: string, value: string): unknown {
+  try {
+    return JSON.parse(value) as unknown;
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : String(error);
+    throw new OperationJsonParseError(opId, "Invalid JSON input", reason);
+  }
+}
 
 export const jsonBeautify: Operation = {
   id: "format.jsonBeautify",
@@ -18,11 +27,7 @@ export const jsonBeautify: Operation = {
     if (input.type !== "string") throw new Error("Expected string input");
     const indentArg = typeof args.indent === "number" ? args.indent : 2;
     const indent = Math.max(0, Math.min(8, Math.floor(indentArg)));
-    try {
-      const parsed = JSON.parse(input.value) as unknown;
-      return { type: "string", value: JSON.stringify(parsed, null, indent) };
-    } catch {
-      throw new Error("Invalid JSON input");
-    }
+    const parsed = parseJson("format.jsonBeautify", input.value);
+    return { type: "string", value: JSON.stringify(parsed, null, indent) };
   }
 };

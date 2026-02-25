@@ -2,12 +2,19 @@ import type { Operation } from "@cybermasterchef/core";
 
 async function gunzipBytes(input: Uint8Array): Promise<Uint8Array> {
   try {
-    const decompressor = new DecompressionStream("gzip");
-    const writer = decompressor.writable.getWriter();
-    const safeInput = Uint8Array.from(input);
-    await writer.write(safeInput);
-    await writer.close();
-    const output = await new Response(decompressor.readable).arrayBuffer();
+    if (typeof DecompressionStream !== "undefined") {
+      const decompressor = new DecompressionStream("gzip");
+      const writer = decompressor.writable.getWriter();
+      const safeInput = Uint8Array.from(input);
+      await writer.write(safeInput);
+      await writer.close();
+      const output = await new Response(decompressor.readable).arrayBuffer();
+      return new Uint8Array(output);
+    }
+    const { gunzip } = await import("node:zlib");
+    const { promisify } = await import("node:util");
+    const gunzipAsync = promisify(gunzip);
+    const output = await gunzipAsync(input);
     return new Uint8Array(output);
   } catch (error) {
     const reason = error instanceof Error ? error.message : String(error);
