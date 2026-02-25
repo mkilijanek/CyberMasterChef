@@ -1,0 +1,6654 @@
+[
+  {
+    "operationId": "codec.fromBase58",
+    "name": "From Base58",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromBase58.ts",
+      "description": "Decodes Base58 string (Bitcoin alphabet) into bytes."
+    }
+  },
+  {
+    "operationId": "codec.fromBase64",
+    "name": "From Base64",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromBase64.ts",
+      "description": "Decodes Base64 string to bytes."
+    }
+  },
+  {
+    "operationId": "codec.fromBinary",
+    "name": "From Binary",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromBinary.ts",
+      "description": "Decodes binary octets to bytes."
+    }
+  },
+  {
+    "operationId": "codec.fromCharcode",
+    "name": "From Charcode",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromCharcode.ts",
+      "description": "Decodes character codes into bytes."
+    }
+  },
+  {
+    "operationId": "codec.fromDecimal",
+    "name": "From Decimal",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromDecimal.ts",
+      "description": "Decodes decimal byte values into bytes."
+    }
+  },
+  {
+    "operationId": "codec.fromHex",
+    "name": "From Hex",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromHex.ts",
+      "description": "Decodes hexadecimal string (spaces allowed) to bytes."
+    }
+  },
+  {
+    "operationId": "codec.fromHexContent",
+    "name": "From Hex Content",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input",
+        "Hex content length must be even after cleanup"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromHexContent.ts",
+      "description": "Decodes hex content into bytes, ignoring non-hex characters."
+    }
+  },
+  {
+    "operationId": "codec.fromOctal",
+    "name": "From Octal",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromOctal.ts",
+      "description": "Decodes octal byte values into bytes."
+    }
+  },
+  {
+    "operationId": "codec.toBase58",
+    "name": "To Base58",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toBase58.ts",
+      "description": "Encodes bytes or string to Base58 (Bitcoin alphabet)."
+    }
+  },
+  {
+    "operationId": "codec.toBase64",
+    "name": "To Base64",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toBase64.ts",
+      "description": "Encodes bytes or string to Base64."
+    }
+  },
+  {
+    "operationId": "codec.toBinary",
+    "name": "To Binary",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toBinary.ts",
+      "description": "Encodes bytes or string to binary octets."
+    }
+  },
+  {
+    "operationId": "codec.toCharcode",
+    "name": "To Charcode",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toCharcode.ts",
+      "description": "Encodes bytes or string into character codes."
+    }
+  },
+  {
+    "operationId": "codec.toDecimal",
+    "name": "To Decimal",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toDecimal.ts",
+      "description": "Encodes bytes or string into decimal byte values."
+    }
+  },
+  {
+    "operationId": "codec.toHex",
+    "name": "To Hex",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toHex.ts",
+      "description": "Encodes bytes or string to lowercase hexadecimal."
+    }
+  },
+  {
+    "operationId": "codec.toHexContent",
+    "name": "To Hex Content",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toHexContent.ts",
+      "description": "Encodes bytes or string into lowercase hex content (no separators)."
+    }
+  },
+  {
+    "operationId": "codec.toOctal",
+    "name": "To Octal",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toOctal.ts",
+      "description": "Encodes bytes or string into space-delimited octal byte values."
+    }
+  },
+  {
+    "operationId": "codec.urlDecode",
+    "name": "URL Decode",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/urlDecode.ts",
+      "description": "Decodes percent-encoded URL text."
+    }
+  },
+  {
+    "operationId": "codec.urlEncode",
+    "name": "URL Encode",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/urlEncode.ts",
+      "description": "Percent-encodes text for URLs."
+    }
+  },
+  {
+    "operationId": "compression.bzip2",
+    "name": "Bzip2 Compress",
+    "domain": "compression-archive",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bzip2Compress.ts",
+      "description": "Compresses input with Bzip2."
+    }
+  },
+  {
+    "operationId": "compression.bzip2Decompress",
+    "name": "Bzip2 Decompress",
+    "domain": "compression-archive",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bzip2Decompress.ts",
+      "description": "Decompresses Bzip2 data into raw bytes."
+    }
+  },
+  {
+    "operationId": "compression.gunzip",
+    "name": "Gunzip",
+    "domain": "compression-archive",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/gunzip.ts",
+      "description": "Decompresses GZIP bytes and returns bytes."
+    }
+  },
+  {
+    "operationId": "compression.gzip",
+    "name": "Gzip",
+    "domain": "compression-archive",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/gzip.ts",
+      "description": "Compresses input using GZIP and returns bytes."
+    }
+  },
+  {
+    "operationId": "compression.tar",
+    "name": "Tar",
+    "domain": "compression-archive",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "filename",
+        "type": "string",
+        "label": "Filename",
+        "defaultValue": "\"data.bin\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/tar.ts",
+      "description": "Creates a TAR archive containing a single file."
+    }
+  },
+  {
+    "operationId": "compression.untar",
+    "name": "Untar",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/untar.ts",
+      "description": "Extracts TAR archive entries into JSON (base64 payloads)."
+    }
+  },
+  {
+    "operationId": "compression.unzip",
+    "name": "Unzip",
+    "domain": "compression-archive",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/unzip.ts",
+      "description": "Extracts ZIP archive entries into JSON (base64 payloads)."
+    }
+  },
+  {
+    "operationId": "compression.zip",
+    "name": "Zip",
+    "domain": "compression-archive",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "filename",
+        "type": "string",
+        "label": "Filename",
+        "defaultValue": "\"data.bin\""
+      },
+      {
+        "key": "compression",
+        "type": "select",
+        "label": "Compression",
+        "defaultValue": "\"DEFLATE\""
+      },
+      {
+        "key": "level",
+        "type": "number",
+        "label": "Compression Level (0-9)",
+        "defaultValue": "6"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/zip.ts",
+      "description": "Creates a ZIP archive containing a single file."
+    }
+  },
+  {
+    "operationId": "crypto.a1z26CipherDecode",
+    "name": "A1Z26 Cipher Decode",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/a1z26CipherDecode.ts",
+      "description": "Decodes numbers to letters (A=1..Z=26)."
+    }
+  },
+  {
+    "operationId": "crypto.a1z26CipherEncode",
+    "name": "A1Z26 Cipher Encode",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/a1z26CipherEncode.ts",
+      "description": "Encodes letters to numbers (A=1..Z=26)."
+    }
+  },
+  {
+    "operationId": "crypto.affineCipherDecode",
+    "name": "Affine Cipher Decode",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "a",
+        "type": "number",
+        "label": "a",
+        "defaultValue": "5"
+      },
+      {
+        "key": "b",
+        "type": "number",
+        "label": "b",
+        "defaultValue": "8"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Invalid affine key: 'a' must be coprime with 26",
+        "Invalid affine key: no modular inverse for 'a'"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/affineCipherDecode.ts",
+      "description": "Decodes ASCII letters using the affine cipher inverse."
+    }
+  },
+  {
+    "operationId": "crypto.affineCipherEncode",
+    "name": "Affine Cipher Encode",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "a",
+        "type": "number",
+        "label": "a",
+        "defaultValue": "5"
+      },
+      {
+        "key": "b",
+        "type": "number",
+        "label": "b",
+        "defaultValue": "8"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Invalid affine key: 'a' must be coprime with 26"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/affineCipherEncode.ts",
+      "description": "Encodes ASCII letters using the affine cipher (a*x+b mod 26)."
+    }
+  },
+  {
+    "operationId": "crypto.atbashCipher",
+    "name": "Atbash Cipher",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/atbashCipher.ts",
+      "description": "Applies the Atbash substitution cipher to ASCII letters."
+    }
+  },
+  {
+    "operationId": "crypto.baconCipherDecode",
+    "name": "Bacon Cipher Decode",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input",
+        "Bacon cipher input length must be multiple of 5"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/baconCipherDecode.ts",
+      "description": "Decodes Bacon's cipher (A/B) into letters."
+    }
+  },
+  {
+    "operationId": "crypto.baconCipherEncode",
+    "name": "Bacon Cipher Encode",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/baconCipherEncode.ts",
+      "description": "Encodes letters into Bacon's cipher (A/B)."
+    }
+  },
+  {
+    "operationId": "crypto.bcryptParse",
+    "name": "Bcrypt Parse",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bcryptParse.ts",
+      "description": "Parses bcrypt hash into version, cost, salt, and hash components."
+    }
+  },
+  {
+    "operationId": "crypto.hmacSha1",
+    "name": "HMAC",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "key",
+        "type": "string",
+        "label": "Key",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "keyEncoding",
+        "type": "select",
+        "label": "Key Encoding",
+        "defaultValue": "\"utf8\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input",
+        "Key argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/hmacSha1.ts",
+      "description": "Computes HMAC-SHA1 for input data and a provided key."
+    }
+  },
+  {
+    "operationId": "crypto.hmacSha256",
+    "name": "HMAC",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "key",
+        "type": "string",
+        "label": "Key",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "keyEncoding",
+        "type": "select",
+        "label": "Key Encoding",
+        "defaultValue": "\"utf8\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input",
+        "Key argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/hmacSha256.ts",
+      "description": "Computes HMAC-SHA256 for input data and a provided key."
+    }
+  },
+  {
+    "operationId": "crypto.hmacSha512",
+    "name": "HMAC",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "key",
+        "type": "string",
+        "label": "Key",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "keyEncoding",
+        "type": "select",
+        "label": "Key Encoding",
+        "defaultValue": "\"utf8\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input",
+        "Key argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/hmacSha512.ts",
+      "description": "Computes HMAC-SHA512 for input data and a provided key."
+    }
+  },
+  {
+    "operationId": "crypto.pbkdf2",
+    "name": "PBKDF2",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "salt",
+        "type": "string",
+        "label": "Salt",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "saltEncoding",
+        "type": "select",
+        "label": "Salt Encoding",
+        "defaultValue": "\"utf8\""
+      },
+      {
+        "key": "iterations",
+        "type": "number",
+        "label": "Iterations",
+        "defaultValue": "10000"
+      },
+      {
+        "key": "length",
+        "type": "number",
+        "label": "Key Length (bytes)",
+        "defaultValue": "32"
+      },
+      {
+        "key": "hash",
+        "type": "select",
+        "label": "Hash",
+        "defaultValue": "\"SHA-256\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input",
+        "Salt argument is required",
+        "Iterations must be a positive number",
+        "Key length must be a positive number"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/pbkdf2.ts",
+      "description": "Derives key material using PBKDF2 (hex output)."
+    }
+  },
+  {
+    "operationId": "date.dateTimeDelta",
+    "name": "Date Time Delta",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [
+      {
+        "key": "base",
+        "type": "string",
+        "label": "Base DateTime",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "format",
+        "type": "string",
+        "label": "Format",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Base datetime argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/dateTimeDelta.ts",
+      "description": "Computes delta between input datetime and a base datetime."
+    }
+  },
+  {
+    "operationId": "date.extractIsoTimestamps",
+    "name": "Extract ISO Timestamps",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": false,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractIsoTimestamps.ts",
+      "description": "Extracts unique ISO-8601 UTC timestamp strings from text input."
+    }
+  },
+  {
+    "operationId": "date.extractUnixTimestamps",
+    "name": "Extract Unix Timestamps",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": false,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractUnixTimestamps.ts",
+      "description": "Extracts unique 10 or 13 digit Unix timestamp candidates from text input."
+    }
+  },
+  {
+    "operationId": "date.isoToDateOnly",
+    "name": "ISO to Date Only",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Expected non-empty ISO timestamp",
+        "Invalid ISO timestamp"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/isoToDateOnly.ts",
+      "description": "Converts ISO-8601 timestamp to date-only format (YYYY-MM-DD)."
+    }
+  },
+  {
+    "operationId": "date.isoToUnix",
+    "name": "ISO to Unix",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Expected non-empty ISO timestamp",
+        "Invalid ISO timestamp"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/isoToUnix.ts",
+      "description": "Converts ISO-8601 timestamp to Unix epoch milliseconds."
+    }
+  },
+  {
+    "operationId": "date.isoWeekday",
+    "name": "ISO Weekday",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "numeric",
+        "type": "boolean",
+        "label": "Numeric (1-7)",
+        "defaultValue": "false"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Expected non-empty ISO timestamp",
+        "Invalid ISO timestamp"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/isoWeekday.ts",
+      "description": "Resolves weekday from ISO-8601 timestamp (UTC)."
+    }
+  },
+  {
+    "operationId": "date.parseDateTime",
+    "name": "Parse Date Time",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "format",
+        "type": "string",
+        "label": "Format",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseDateTime.ts",
+      "description": "Parses a datetime string and outputs ISO-8601 UTC."
+    }
+  },
+  {
+    "operationId": "date.parseObjectIdTimestamp",
+    "name": "Parse ObjectId Timestamp",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": false,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input",
+        "Expected 24-char hex ObjectId"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseObjectIdTimestamp.ts",
+      "description": "Extracts MongoDB ObjectId timestamp and renders it as ISO-8601 UTC."
+    }
+  },
+  {
+    "operationId": "date.parseUnixFilePermissions",
+    "name": "Parse UNIX File Permissions",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "includeNumeric",
+        "type": "boolean",
+        "label": "Include numeric mode",
+        "defaultValue": "true"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected octal UNIX permission mode (e.g. 755, 0644, 0o600)",
+        "Invalid UNIX permission mode",
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseUnixFilePermissions.ts",
+      "description": "Converts octal UNIX file mode into symbolic rwx notation."
+    }
+  },
+  {
+    "operationId": "date.translateDateTimeFormat",
+    "name": "Translate Date Time Format",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "fromFormat",
+        "type": "string",
+        "label": "From Format",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "toFormat",
+        "type": "string",
+        "label": "To Format",
+        "defaultValue": "\"YYYY-MM-DDTHH:mm:ss.SSSZ\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "From format argument is required",
+        "To format argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/translateDateTimeFormat.ts",
+      "description": "Parses a datetime string with one format and renders another."
+    }
+  },
+  {
+    "operationId": "date.unixToIso",
+    "name": "Unix to ISO",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "seconds",
+        "type": "boolean",
+        "label": "Unix in seconds",
+        "defaultValue": "false"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Expected integer Unix timestamp",
+        "Invalid Unix timestamp"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/unixToIso.ts",
+      "description": "Converts Unix timestamp to ISO-8601 UTC format."
+    }
+  },
+  {
+    "operationId": "date.unixToWindowsFiletime",
+    "name": "Unix to Windows FILETIME",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "seconds",
+        "type": "boolean",
+        "label": "Unix in seconds",
+        "defaultValue": "false"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Expected integer Unix timestamp",
+        "Invalid Unix timestamp"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/unixToWindowsFiletime.ts",
+      "description": "Converts Unix timestamp to Windows FILETIME (100ns ticks since 1601)."
+    }
+  },
+  {
+    "operationId": "date.windowsFiletimeToUnix",
+    "name": "Windows FILETIME to Unix",
+    "domain": "date-time",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "seconds",
+        "type": "boolean",
+        "label": "Output seconds",
+        "defaultValue": "false"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input",
+        "Expected integer FILETIME value",
+        "FILETIME value out of range"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/windowsFiletimeToUnix.ts",
+      "description": "Converts Windows FILETIME (100ns ticks since 1601) to Unix timestamp."
+    }
+  },
+  {
+    "operationId": "forensic.analyseUuid",
+    "name": "Analyse UUID",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": false,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/analyseUuid.ts",
+      "description": "Inspects UUID format, version, and variant."
+    }
+  },
+  {
+    "operationId": "forensic.basicPreTriage",
+    "name": "Basic Pre-Triage",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "maxMatches",
+        "type": "number",
+        "label": "Max matches per IOC type",
+        "defaultValue": "200"
+      },
+      {
+        "key": "segmentWindow",
+        "type": "number",
+        "label": "Entropy segment size (bytes)",
+        "defaultValue": "4096"
+      },
+      {
+        "key": "segmentLimit",
+        "type": "number",
+        "label": "Max entropy segments",
+        "defaultValue": "16"
+      },
+      {
+        "key": "maxHeuristicMatches",
+        "type": "number",
+        "label": "Max heuristic matches",
+        "defaultValue": "25"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/basicPreTriage.ts",
+      "description": "Generates a baseline forensic pre-triage report (IOCs, hashes, binary structure and entropy)."
+    }
+  },
+  {
+    "operationId": "forensic.chiSquare",
+    "name": "Chi Square",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/chiSquare.ts",
+      "description": "Computes chi-square statistic against uniform byte distribution."
+    }
+  },
+  {
+    "operationId": "forensic.detectFileType",
+    "name": "Detect File Type",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/detectFileType.ts",
+      "description": "Detects basic file type from magic bytes."
+    }
+  },
+  {
+    "operationId": "forensic.elfInfo",
+    "name": "ELF Info",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/elfInfo.ts",
+      "description": "Extracts basic ELF header metadata."
+    }
+  },
+  {
+    "operationId": "forensic.extractCves",
+    "name": "Extract CVEs",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractCves.ts",
+      "description": "Extracts unique CVE identifiers from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractDomains",
+    "name": "Extract Domains",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractDomains.ts",
+      "description": "Extracts unique domain names from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractEmails",
+    "name": "Extract Emails",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractEmails.ts",
+      "description": "Extracts unique email addresses from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractJwt",
+    "name": "Extract JWT",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractJwt.ts",
+      "description": "Extracts unique JWT token candidates from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractMd5",
+    "name": "Extract MD5",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractMd5.ts",
+      "description": "Extracts unique MD5 hashes from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractRegistryKeys",
+    "name": "Extract Registry Keys",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractRegistryKeys.ts",
+      "description": "Extracts unique Windows registry key paths from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractSha1",
+    "name": "Extract SHA-1",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractSha1.ts",
+      "description": "Extracts unique SHA-1 hashes from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractSha256",
+    "name": "Extract SHA-256",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractSha256.ts",
+      "description": "Extracts unique SHA-256 hashes from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractSha512",
+    "name": "Extract SHA-512",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractSha512.ts",
+      "description": "Extracts unique SHA-512 hashes from text input."
+    }
+  },
+  {
+    "operationId": "forensic.extractStrings",
+    "name": "Extract Strings",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "minLength",
+        "type": "number",
+        "label": "Min length",
+        "defaultValue": "4"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractStrings.ts",
+      "description": "Extracts printable ASCII strings from bytes/string payload."
+    }
+  },
+  {
+    "operationId": "format.avroDecode",
+    "name": "Avro Decode",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [
+      {
+        "key": "schema",
+        "type": "string",
+        "label": "Schema (JSON)",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected bytes input",
+        "Schema argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/avroDecode.ts",
+      "description": "Decodes Avro binary into JSON using a provided schema."
+    }
+  },
+  {
+    "operationId": "format.avroEncode",
+    "name": "Avro Encode",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "schema",
+        "type": "string",
+        "label": "Schema (JSON)",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_ARGUMENT",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Schema argument is required",
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/avroEncode.ts",
+      "description": "Encodes JSON into Avro binary using a provided schema."
+    }
+  },
+  {
+    "operationId": "format.bsonDecode",
+    "name": "BSON Decode",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bsonDecode.ts",
+      "description": "Decodes BSON bytes into JSON."
+    }
+  },
+  {
+    "operationId": "format.bsonEncode",
+    "name": "BSON Encode",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bsonEncode.ts",
+      "description": "Encodes JSON into BSON bytes."
+    }
+  },
+  {
+    "operationId": "format.cborDecode",
+    "name": "CBOR Decode",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/cborDecode.ts",
+      "description": "Decodes CBOR bytes into JSON."
+    }
+  },
+  {
+    "operationId": "format.cborEncode",
+    "name": "CBOR Encode",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/cborEncode.ts",
+      "description": "Encodes JSON into CBOR bytes."
+    }
+  },
+  {
+    "operationId": "format.csvToJson",
+    "name": "CSV To JSON",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\""
+      },
+      {
+        "key": "header",
+        "type": "boolean",
+        "label": "Header Row",
+        "defaultValue": "true"
+      },
+      {
+        "key": "skipEmptyLines",
+        "type": "boolean",
+        "label": "Skip Empty Lines",
+        "defaultValue": "true"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/csvToJson.ts",
+      "description": "Parses CSV input into JSON data with parse metadata."
+    }
+  },
+  {
+    "operationId": "format.jsonArrayLength",
+    "name": "JSON Array Length",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "path",
+        "type": "string",
+        "label": "Path",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string or json input",
+        "Target is not an array"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonArrayLength.ts",
+      "description": "Returns length of root or nested JSON array."
+    }
+  },
+  {
+    "operationId": "format.jsonBeautify",
+    "name": "JSON Beautify",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "indent",
+        "type": "number",
+        "label": "Indent",
+        "defaultValue": "2"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonBeautify.ts",
+      "description": "Pretty-prints valid JSON string payload."
+    }
+  },
+  {
+    "operationId": "format.jsonExtractKeys",
+    "name": "JSON Extract Keys",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonExtractKeys.ts",
+      "description": "Extracts recursively discovered key paths from JSON input."
+    }
+  },
+  {
+    "operationId": "format.jsonMinify",
+    "name": "JSON Minify",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonMinify.ts",
+      "description": "Minifies valid JSON string payload."
+    }
+  },
+  {
+    "operationId": "format.jsonNumberValues",
+    "name": "JSON Number Values",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonNumberValues.ts",
+      "description": "Extracts all numeric leaf values from JSON payload."
+    }
+  },
+  {
+    "operationId": "format.jsonSortKeys",
+    "name": "JSON Sort Keys",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonSortKeys.ts",
+      "description": "Parses JSON input and emits canonical JSON with recursively sorted object keys."
+    }
+  },
+  {
+    "operationId": "format.jsonStringValues",
+    "name": "JSON String Values",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonStringValues.ts",
+      "description": "Extracts all string leaf values from JSON payload."
+    }
+  },
+  {
+    "operationId": "format.jsonToCsv",
+    "name": "JSON To CSV",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\""
+      },
+      {
+        "key": "header",
+        "type": "boolean",
+        "label": "Header Row",
+        "defaultValue": "true"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonToCsv.ts",
+      "description": "Serializes JSON arrays/objects into CSV text."
+    }
+  },
+  {
+    "operationId": "format.jsonToYaml",
+    "name": "JSON To YAML",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonToYaml.ts",
+      "description": "Serializes JSON into YAML."
+    }
+  },
+  {
+    "operationId": "format.yamlToJson",
+    "name": "YAML To JSON",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/yamlToJson.ts",
+      "description": "Parses YAML input into JSON."
+    }
+  },
+  {
+    "operationId": "hash.adler32",
+    "name": "Adler-32",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/adler32.ts",
+      "description": "Computes Adler-32 checksum. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.analyseHash",
+    "name": "Analyse Hash",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/analyseHash.ts",
+      "description": "Guesses hash type based on input length and character set."
+    }
+  },
+  {
+    "operationId": "hash.blake2b",
+    "name": "BLAKE2b",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/blake2b.ts",
+      "description": "Computes BLAKE2b digest (512-bit). Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.blake2s",
+    "name": "BLAKE2s",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/blake2s.ts",
+      "description": "Computes BLAKE2s digest (256-bit). Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.md5",
+    "name": "MD5",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/hashMd5.ts",
+      "description": "Computes MD5 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.sha1",
+    "name": "SHA-1",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sha1.ts",
+      "description": "Computes SHA-1 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.sha256",
+    "name": "SHA-256",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sha256.ts",
+      "description": "Computes SHA-256 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.sha3_256",
+    "name": "SHA3-256",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sha3_256.ts",
+      "description": "Computes SHA3-256 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.sha3_512",
+    "name": "SHA3-512",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sha3_512.ts",
+      "description": "Computes SHA3-512 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.sha384",
+    "name": "SHA-384",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sha384.ts",
+      "description": "Computes SHA-384 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.sha512",
+    "name": "SHA-512",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sha512.ts",
+      "description": "Computes SHA-512 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "heuristic-matches",
+    "name": "Basic Triage",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "suspiciousThreshold",
+        "type": "number",
+        "label": "Suspicious threshold",
+        "defaultValue": "30"
+      },
+      {
+        "key": "maliciousThreshold",
+        "type": "number",
+        "label": "Malicious threshold",
+        "defaultValue": "60"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Unexpected pre-triage output type"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/basicTriage.ts",
+      "description": "Found CVE references in sample content."
+    }
+  },
+  {
+    "operationId": "image.addText",
+    "name": "Add Text To Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "text",
+        "type": "string",
+        "label": "Text",
+        "defaultValue": "\"CyberMasterChef\""
+      },
+      {
+        "key": "color",
+        "type": "string",
+        "label": "Color",
+        "defaultValue": "\"#ffffff\""
+      },
+      {
+        "key": "fontSize",
+        "type": "number",
+        "label": "Font Size",
+        "defaultValue": "24"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input",
+        "Unable to determine image dimensions"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/addTextToImage.ts",
+      "description": "Overlays text on an image using an SVG layer."
+    }
+  },
+  {
+    "operationId": "image.blur",
+    "name": "Blur Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "sigma",
+        "type": "number",
+        "label": "Blur Sigma",
+        "defaultValue": "2"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/blurImage.ts",
+      "description": "Applies a Gaussian blur to image bytes."
+    }
+  },
+  {
+    "operationId": "image.contain",
+    "name": "Contain Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "width",
+        "type": "number",
+        "label": "Width",
+        "defaultValue": "512"
+      },
+      {
+        "key": "height",
+        "type": "number",
+        "label": "Height",
+        "defaultValue": "512"
+      },
+      {
+        "key": "background",
+        "type": "string",
+        "label": "Background",
+        "defaultValue": "\"#00000000\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/containImage.ts",
+      "description": "Resizes an image to fit within a bounding box (contain)."
+    }
+  },
+  {
+    "operationId": "image.metadata",
+    "name": "Image Metadata",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/imageMetadata.ts",
+      "description": "Extracts width, height, and format metadata from image bytes."
+    }
+  },
+  {
+    "operationId": "network.dechunkHttpResponse",
+    "name": "Dechunk HTTP Response",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_ARGUMENT",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Invalid chunked encoding: missing CRLF",
+        "Invalid chunked encoding: chunk exceeds input size",
+        "Invalid chunked encoding: missing chunk CRLF",
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/dechunkHttpResponse.ts",
+      "description": "Decodes HTTP chunked transfer-encoded payload into raw bytes."
+    }
+  },
+  {
+    "operationId": "network.defangIPs",
+    "name": "Defang IPs",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/defangIPs.ts",
+      "description": "Defangs IPv4 addresses by replacing dots with [.] markers."
+    }
+  },
+  {
+    "operationId": "network.defangUrls",
+    "name": "Defang URLs",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/defangUrls.ts",
+      "description": "Defangs HTTP/HTTPS URLs by replacing protocol and host dots."
+    }
+  },
+  {
+    "operationId": "network.extractIPs",
+    "name": "Extract IPs",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractIPs.ts",
+      "description": "Extracts unique IPv4 addresses from text input."
+    }
+  },
+  {
+    "operationId": "network.extractIPv6",
+    "name": "Extract IPv6",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractIPv6.ts",
+      "description": "Extracts unique IPv6 address candidates from text input."
+    }
+  },
+  {
+    "operationId": "network.extractPorts",
+    "name": "Extract Ports",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractPorts.ts",
+      "description": "Extracts unique network port numbers (1-65535) from text input."
+    }
+  },
+  {
+    "operationId": "network.extractUrls",
+    "name": "Extract URLs",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractUrls.ts",
+      "description": "Extracts unique HTTP/HTTPS URLs from text input."
+    }
+  },
+  {
+    "operationId": "network.fangIPs",
+    "name": "Fang IPs",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fangIPs.ts",
+      "description": "Reverts defanged IPv4 markers [.] back to regular dots."
+    }
+  },
+  {
+    "operationId": "network.fangUrls",
+    "name": "Fang URLs",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fangUrls.ts",
+      "description": "Reverts common defanged URL markers back to standard URL form."
+    }
+  },
+  {
+    "operationId": "text.append",
+    "name": "Append",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "value",
+        "type": "string",
+        "label": "Value",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/append.ts",
+      "description": "Appends a suffix to text."
+    }
+  },
+  {
+    "operationId": "text.collapseDashes",
+    "name": "Collapse Dashes",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/collapseDashes.ts",
+      "description": "Collapses repeated dashes to one."
+    }
+  },
+  {
+    "operationId": "text.collapseMultipleNewlines",
+    "name": "Collapse Multiple Newlines",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/collapseMultipleNewlines.ts",
+      "description": "Collapses multiple blank lines to one newline."
+    }
+  },
+  {
+    "operationId": "text.collapseUnderscores",
+    "name": "Collapse Underscores",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/collapseUnderscores.ts",
+      "description": "Collapses repeated underscores to one."
+    }
+  },
+  {
+    "operationId": "text.compactLines",
+    "name": "Compact Lines",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/compactLines.ts",
+      "description": "Joins non-empty trimmed lines with spaces."
+    }
+  },
+  {
+    "operationId": "text.countAscii",
+    "name": "Count ASCII",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countAscii.ts",
+      "description": "Counts ASCII characters."
+    }
+  },
+  {
+    "operationId": "text.countBackslashes",
+    "name": "Count Backslashes",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countBackslashes.ts",
+      "description": "Counts backslashes."
+    }
+  },
+  {
+    "operationId": "text.countBrackets",
+    "name": "Count Brackets",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countBrackets.ts",
+      "description": "Counts square brackets."
+    }
+  },
+  {
+    "operationId": "text.countColons",
+    "name": "Count Colons",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countColons.ts",
+      "description": "Counts colon characters."
+    }
+  },
+  {
+    "operationId": "text.countCommas",
+    "name": "Count Commas",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countCommas.ts",
+      "description": "Counts commas."
+    }
+  },
+  {
+    "operationId": "text.countDashes",
+    "name": "Count Dashes",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countDashes.ts",
+      "description": "Counts hyphen characters."
+    }
+  },
+  {
+    "operationId": "text.countDots",
+    "name": "Count Dots",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countDots.ts",
+      "description": "Counts dot characters."
+    }
+  },
+  {
+    "operationId": "text.countExclamations",
+    "name": "Count Exclamations",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countExclamations.ts",
+      "description": "Counts exclamation marks."
+    }
+  },
+  {
+    "operationId": "text.countLowercase",
+    "name": "Count Lowercase",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countLowercase.ts",
+      "description": "Counts lowercase ASCII letters."
+    }
+  },
+  {
+    "operationId": "text.countNonAscii",
+    "name": "Count Non-ASCII",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countNonAscii.ts",
+      "description": "Counts non-ASCII characters."
+    }
+  },
+  {
+    "operationId": "text.countNonEmptyLines",
+    "name": "Count Non-empty Lines",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countNonEmptyLines.ts",
+      "description": "Counts non-empty lines."
+    }
+  },
+  {
+    "operationId": "text.countParentheses",
+    "name": "Count Parentheses",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countParentheses.ts",
+      "description": "Counts parentheses."
+    }
+  },
+  {
+    "operationId": "text.countPluses",
+    "name": "Count Pluses",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countPluses.ts",
+      "description": "Counts plus characters."
+    }
+  },
+  {
+    "operationId": "text.countQuestionMarks",
+    "name": "Count Question Marks",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countQuestionMarks.ts",
+      "description": "Counts question marks."
+    }
+  },
+  {
+    "operationId": "text.countQuotes",
+    "name": "Count Quotes",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countQuotes.ts",
+      "description": "Counts single and double quotes."
+    }
+  },
+  {
+    "operationId": "text.countSemicolons",
+    "name": "Count Semicolons",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countSemicolons.ts",
+      "description": "Counts semicolons."
+    }
+  },
+  {
+    "operationId": "text.countSlashes",
+    "name": "Count Slashes",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countSlashes.ts",
+      "description": "Counts forward slashes."
+    }
+  },
+  {
+    "operationId": "text.countSpaces",
+    "name": "Count Spaces",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countSpaces.ts",
+      "description": "Counts space characters."
+    }
+  },
+  {
+    "operationId": "text.countTabs",
+    "name": "Count Tabs",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countTabs.ts",
+      "description": "Counts tab characters."
+    }
+  },
+  {
+    "operationId": "text.countUnderscores",
+    "name": "Count Underscores",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countUnderscores.ts",
+      "description": "Counts underscore characters."
+    }
+  },
+  {
+    "operationId": "text.countUppercase",
+    "name": "Count Uppercase",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/countUppercase.ts",
+      "description": "Counts uppercase ASCII letters."
+    }
+  },
+  {
+    "operationId": "text.csvToLines",
+    "name": "CSV To Lines",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/csvToLines.ts",
+      "description": "Converts comma-separated values to lines."
+    }
+  },
+  {
+    "operationId": "text.endsWith",
+    "name": "Ends With",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [
+      {
+        "key": "value",
+        "type": "string",
+        "label": "Value",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/endsWith.ts",
+      "description": "Returns 1 if text ends with provided value, else 0."
+    }
+  },
+  {
+    "operationId": "text.firstLine",
+    "name": "First Line",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/firstLine.ts",
+      "description": "Returns the first line of text."
+    }
+  },
+  {
+    "operationId": "text.firstWord",
+    "name": "First Word",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/firstWord.ts",
+      "description": "Returns the first whitespace-separated word."
+    }
+  },
+  {
+    "operationId": "text.includes",
+    "name": "Includes",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [
+      {
+        "key": "value",
+        "type": "string",
+        "label": "Value",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/includesText.ts",
+      "description": "Returns 1 if text includes provided value, else 0."
+    }
+  },
+  {
+    "operationId": "text.keepAlnum",
+    "name": "Keep Alnum",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/keepAlnum.ts",
+      "description": "Keeps alphanumeric ASCII characters only."
+    }
+  },
+  {
+    "operationId": "text.keepDigits",
+    "name": "Keep Digits",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/keepDigits.ts",
+      "description": "Keeps digits only."
+    }
+  },
+  {
+    "operationId": "text.keepDigitsAndDots",
+    "name": "Keep Digits And Dots",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/keepDigitsAndDots.ts",
+      "description": "Keeps digits and dots only."
+    }
+  },
+  {
+    "operationId": "text.keepHexChars",
+    "name": "Keep Hex Chars",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/keepHexChars.ts",
+      "description": "Keeps hexadecimal characters only."
+    }
+  },
+  {
+    "operationId": "text.keepLetters",
+    "name": "Keep Letters",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/keepLetters.ts",
+      "description": "Keeps ASCII letters only."
+    }
+  },
+  {
+    "operationId": "text.keepNonAscii",
+    "name": "Keep Non-ASCII",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/keepNonAscii.ts",
+      "description": "Keeps non-ASCII characters only."
+    }
+  },
+  {
+    "operationId": "text.keepPunctuation",
+    "name": "Keep Punctuation",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/keepPunctuation.ts",
+      "description": "Keeps basic punctuation characters only."
+    }
+  },
+  {
+    "operationId": "text.keepVowels",
+    "name": "Keep Vowels",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/keepVowels.ts",
+      "description": "Keeps English vowels only."
+    }
+  },
+  {
+    "operationId": "text.keepWhitespace",
+    "name": "Keep Whitespace",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/keepWhitespace.ts",
+      "description": "Keeps whitespace characters only."
+    }
+  },
+  {
+    "operationId": "text.lastLine",
+    "name": "Last Line",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/lastLine.ts",
+      "description": "Returns the last line of text."
+    }
+  },
+  {
+    "operationId": "text.lastWord",
+    "name": "Last Word",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/lastWord.ts",
+      "description": "Returns the last whitespace-separated word."
+    }
+  },
+  {
+    "operationId": "text.length",
+    "name": "Length",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/length.ts",
+      "description": "Returns text length in characters."
+    }
+  },
+  {
+    "operationId": "text.lineCount",
+    "name": "Line Count",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/lineCount.ts",
+      "description": "Counts lines in text."
+    }
+  },
+  {
+    "operationId": "text.linesNumbered",
+    "name": "Lines Numbered",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/linesNumbered.ts",
+      "description": "Prefixes each line with a 1-based line number."
+    }
+  },
+  {
+    "operationId": "text.linesToCsv",
+    "name": "Lines To CSV",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/linesToCsv.ts",
+      "description": "Converts lines into comma-separated values."
+    }
+  },
+  {
+    "operationId": "text.linesToWords",
+    "name": "Lines To Words",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/linesToWords.ts",
+      "description": "Converts lines to space-separated words."
+    }
+  },
+  {
+    "operationId": "text.linesTrimLeft",
+    "name": "Lines Trim Left",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/linesTrimLeft.ts",
+      "description": "Trims left whitespace in each line."
+    }
+  },
+  {
+    "operationId": "text.linesTrimRight",
+    "name": "Lines Trim Right",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/linesTrimRight.ts",
+      "description": "Trims right whitespace in each line."
+    }
+  },
+  {
+    "operationId": "text.lowercase",
+    "name": "Lowercase",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/lowercase.ts",
+      "description": "Converts text to lowercase."
+    }
+  },
+  {
+    "operationId": "text.lowerFirst",
+    "name": "Lower First",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/lowerFirst.ts",
+      "description": "Lowercases first character."
+    }
+  },
+  {
+    "operationId": "text.maskDigits",
+    "name": "Mask Digits",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/maskDigits.ts",
+      "description": "Masks all digits with asterisks."
+    }
+  },
+  {
+    "operationId": "text.normalizeCommas",
+    "name": "Normalize Commas",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/normalizeCommas.ts",
+      "description": "Collapses multiple commas into one."
+    }
+  },
+  {
+    "operationId": "text.normalizeNewlines",
+    "name": "Normalize Newlines",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/normalizeNewlines.ts",
+      "description": "Normalizes CRLF to LF."
+    }
+  },
+  {
+    "operationId": "text.normalizeWhitespace",
+    "name": "Normalize Whitespace",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/normalizeWhitespace.ts",
+      "description": "Collapses whitespace runs and trims text."
+    }
+  },
+  {
+    "operationId": "text.onlyAlnumAndSpaces",
+    "name": "Only Alnum And Spaces",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/onlyAlnumAndSpaces.ts",
+      "description": "Keeps alphanumeric characters and spaces only."
+    }
+  },
+  {
+    "operationId": "text.onlyLettersAndSpaces",
+    "name": "Only Letters And Spaces",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/onlyLettersAndSpaces.ts",
+      "description": "Keeps letters and spaces only."
+    }
+  },
+  {
+    "operationId": "text.onlyPrintableAscii",
+    "name": "Only Printable ASCII",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/onlyPrintableAscii.ts",
+      "description": "Keeps printable ASCII characters."
+    }
+  },
+  {
+    "operationId": "text.padEnd",
+    "name": "Pad End",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "length",
+        "type": "number",
+        "label": "Length",
+        "defaultValue": "0"
+      },
+      {
+        "key": "fill",
+        "type": "string",
+        "label": "Fill",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/padEnd.ts",
+      "description": "Pads text at the end up to target length."
+    }
+  },
+  {
+    "operationId": "text.padStart",
+    "name": "Pad Start",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "length",
+        "type": "number",
+        "label": "Length",
+        "defaultValue": "0"
+      },
+      {
+        "key": "fill",
+        "type": "string",
+        "label": "Fill",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/padStart.ts",
+      "description": "Pads text at the start up to target length."
+    }
+  },
+  {
+    "operationId": "text.prepend",
+    "name": "Prepend",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "value",
+        "type": "string",
+        "label": "Value",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/prepend.ts",
+      "description": "Prepends a prefix to text."
+    }
+  },
+  {
+    "operationId": "text.removeAlnum",
+    "name": "Remove Alnum",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeAlnum.ts",
+      "description": "Removes alphanumeric ASCII characters."
+    }
+  },
+  {
+    "operationId": "text.removeAmpersands",
+    "name": "Remove Ampersands",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeAmpersands.ts",
+      "description": "Removes ampersands."
+    }
+  },
+  {
+    "operationId": "text.removeAngles",
+    "name": "Remove Angle Brackets",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeAngles.ts",
+      "description": "Removes angle brackets."
+    }
+  },
+  {
+    "operationId": "text.removeAsterisks",
+    "name": "Remove Asterisks",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeAsterisks.ts",
+      "description": "Removes asterisk characters."
+    }
+  },
+  {
+    "operationId": "text.removeAtSigns",
+    "name": "Remove At Signs",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeAtSigns.ts",
+      "description": "Removes at-sign characters."
+    }
+  },
+  {
+    "operationId": "text.removeBackslashes",
+    "name": "Remove Backslashes",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeBackslashes.ts",
+      "description": "Removes backslashes."
+    }
+  },
+  {
+    "operationId": "text.removeBackticks",
+    "name": "Remove Backticks",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeBackticks.ts",
+      "description": "Removes backticks."
+    }
+  },
+  {
+    "operationId": "text.removeBlankLines",
+    "name": "Remove Blank Lines",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeBlankLines.ts",
+      "description": "Removes empty or whitespace-only lines."
+    }
+  },
+  {
+    "operationId": "text.removeBraces",
+    "name": "Remove Braces",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeBraces.ts",
+      "description": "Removes curly braces."
+    }
+  },
+  {
+    "operationId": "text.removeBrackets",
+    "name": "Remove Brackets",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeBrackets.ts",
+      "description": "Removes square brackets."
+    }
+  },
+  {
+    "operationId": "text.removeCarets",
+    "name": "Remove Carets",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeCarets.ts",
+      "description": "Removes caret characters."
+    }
+  },
+  {
+    "operationId": "text.removeColons",
+    "name": "Remove Colons",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeColons.ts",
+      "description": "Removes colons."
+    }
+  },
+  {
+    "operationId": "text.removeCommas",
+    "name": "Remove Commas",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeCommas.ts",
+      "description": "Removes commas."
+    }
+  },
+  {
+    "operationId": "text.removeControlChars",
+    "name": "Remove Control Chars",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeControlChars.ts",
+      "description": "Removes control characters."
+    }
+  },
+  {
+    "operationId": "text.removeCurrencySymbols",
+    "name": "Remove Currency Symbols",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeCurrencySymbols.ts",
+      "description": "Removes common ASCII currency symbols."
+    }
+  },
+  {
+    "operationId": "text.removeDigits",
+    "name": "Remove Digits",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeDigits.ts",
+      "description": "Removes all digits."
+    }
+  },
+  {
+    "operationId": "text.removeDigitsAndSpaces",
+    "name": "Remove Digits And Spaces",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeDigitsAndSpaces.ts",
+      "description": "Removes digits and whitespace."
+    }
+  },
+  {
+    "operationId": "text.removeDollarSigns",
+    "name": "Remove Dollar Signs",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeDollarSigns.ts",
+      "description": "Removes dollar signs."
+    }
+  },
+  {
+    "operationId": "text.removeDots",
+    "name": "Remove Dots",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeDots.ts",
+      "description": "Removes dots."
+    }
+  },
+  {
+    "operationId": "text.removeDoubleQuotes",
+    "name": "Remove Double Quotes",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeDoubleQuotes.ts",
+      "description": "Removes double quote characters."
+    }
+  },
+  {
+    "operationId": "text.removeDoubleSpaces",
+    "name": "Remove Double Spaces",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeDoubleSpaces.ts",
+      "description": "Replaces runs of spaces with single space."
+    }
+  },
+  {
+    "operationId": "text.removeEmojis",
+    "name": "Remove Emojis",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeEmojis.ts",
+      "description": "Removes Unicode emoji presentation characters."
+    }
+  },
+  {
+    "operationId": "text.removeEquals",
+    "name": "Remove Equals",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeEquals.ts",
+      "description": "Removes equals signs."
+    }
+  },
+  {
+    "operationId": "text.removeExclamations",
+    "name": "Remove Exclamations",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeExclamations.ts",
+      "description": "Removes exclamation marks."
+    }
+  },
+  {
+    "operationId": "text.removeHashes",
+    "name": "Remove Hashes",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeHashes.ts",
+      "description": "Removes hash characters."
+    }
+  },
+  {
+    "operationId": "text.removeHexChars",
+    "name": "Remove Hex Chars",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeHexChars.ts",
+      "description": "Removes hexadecimal characters."
+    }
+  },
+  {
+    "operationId": "text.removeHyphens",
+    "name": "Remove Hyphens",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeHyphens.ts",
+      "description": "Removes hyphen characters."
+    }
+  },
+  {
+    "operationId": "text.removeLetters",
+    "name": "Remove Letters",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeLetters.ts",
+      "description": "Removes ASCII letters."
+    }
+  },
+  {
+    "operationId": "text.removeMathSymbols",
+    "name": "Remove Math Symbols",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeMathSymbols.ts",
+      "description": "Removes + - * / = symbols."
+    }
+  },
+  {
+    "operationId": "text.removeNonAscii",
+    "name": "Remove Non-ASCII",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeNonAscii.ts",
+      "description": "Removes non-ASCII characters."
+    }
+  },
+  {
+    "operationId": "text.removeParentheses",
+    "name": "Remove Parentheses",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeParentheses.ts",
+      "description": "Removes parentheses."
+    }
+  },
+  {
+    "operationId": "text.removePercents",
+    "name": "Remove Percents",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removePercents.ts",
+      "description": "Removes percent signs."
+    }
+  },
+  {
+    "operationId": "text.removePipes",
+    "name": "Remove Pipes",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removePipes.ts",
+      "description": "Removes vertical bars."
+    }
+  },
+  {
+    "operationId": "text.removePluses",
+    "name": "Remove Pluses",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removePluses.ts",
+      "description": "Removes plus signs."
+    }
+  },
+  {
+    "operationId": "text.removePunctuation",
+    "name": "Remove Punctuation",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removePunctuation.ts",
+      "description": "Removes basic punctuation characters."
+    }
+  },
+  {
+    "operationId": "text.removeQuestionMarks",
+    "name": "Remove Question Marks",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeQuestionMarks.ts",
+      "description": "Removes question marks."
+    }
+  },
+  {
+    "operationId": "text.removeSemicolons",
+    "name": "Remove Semicolons",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeSemicolons.ts",
+      "description": "Removes semicolons."
+    }
+  },
+  {
+    "operationId": "text.removeSingleQuotes",
+    "name": "Remove Single Quotes",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeSingleQuotes.ts",
+      "description": "Removes single quote characters."
+    }
+  },
+  {
+    "operationId": "text.removeSlashes",
+    "name": "Remove Slashes",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeSlashes.ts",
+      "description": "Removes forward slashes."
+    }
+  },
+  {
+    "operationId": "text.removeSpaces",
+    "name": "Remove Spaces",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeSpaces.ts",
+      "description": "Removes all whitespace characters."
+    }
+  },
+  {
+    "operationId": "text.removeSpacesAndTabs",
+    "name": "Remove Spaces And Tabs",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeSpacesAndTabs.ts",
+      "description": "Removes spaces and tabs."
+    }
+  },
+  {
+    "operationId": "text.removeTabs",
+    "name": "Remove Tabs",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeTabs.ts",
+      "description": "Removes tab characters."
+    }
+  },
+  {
+    "operationId": "text.removeTildes",
+    "name": "Remove Tildes",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeTildes.ts",
+      "description": "Removes tilde characters."
+    }
+  },
+  {
+    "operationId": "text.removeUnderscores",
+    "name": "Remove Underscores",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeUnderscores.ts",
+      "description": "Removes underscore characters."
+    }
+  },
+  {
+    "operationId": "text.removeVowels",
+    "name": "Remove Vowels",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeVowels.ts",
+      "description": "Removes English vowels."
+    }
+  },
+  {
+    "operationId": "text.repeat",
+    "name": "Repeat",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "count",
+        "type": "number",
+        "label": "Count",
+        "defaultValue": "1"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/repeat.ts",
+      "description": "Repeats text N times."
+    }
+  },
+  {
+    "operationId": "text.replace",
+    "name": "Replace",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "find",
+        "type": "string",
+        "label": "Find",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "replace",
+        "type": "string",
+        "label": "Replace",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "all",
+        "type": "boolean",
+        "label": "Replace all",
+        "defaultValue": "true"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/replace.ts",
+      "description": "Replaces text occurrences."
+    }
+  },
+  {
+    "operationId": "text.replaceNewlinesWithSpace",
+    "name": "Newlines To Space",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/replaceNewlinesWithSpace.ts",
+      "description": "Replaces line breaks with spaces."
+    }
+  },
+  {
+    "operationId": "text.replaceSpacesWithNewlines",
+    "name": "Spaces To Newlines",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/replaceSpacesWithNewlines.ts",
+      "description": "Replaces one or more spaces with newlines."
+    }
+  },
+  {
+    "operationId": "text.reverse",
+    "name": "Reverse",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/reverse.ts",
+      "description": "Reverses string characters."
+    }
+  },
+  {
+    "operationId": "text.reverseCharsInWords",
+    "name": "Reverse Chars In Words",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/reverseCharsInWords.ts",
+      "description": "Reverses characters in each whitespace-separated word."
+    }
+  },
+  {
+    "operationId": "text.reverseLines",
+    "name": "Reverse Lines",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/reverseLines.ts",
+      "description": "Reverses line order."
+    }
+  },
+  {
+    "operationId": "text.reverseWords",
+    "name": "Reverse Words",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/reverseWords.ts",
+      "description": "Reverses word order using whitespace splitting."
+    }
+  },
+  {
+    "operationId": "text.rot13",
+    "name": "ROT13",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/rot13.ts",
+      "description": "Applies ROT13 substitution for Latin letters."
+    }
+  },
+  {
+    "operationId": "text.slice",
+    "name": "Slice",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "start",
+        "type": "number",
+        "label": "Start",
+        "defaultValue": "0"
+      },
+      {
+        "key": "end",
+        "type": "number",
+        "label": "End",
+        "defaultValue": "undefined"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/slice.ts",
+      "description": "Slices text between start and end positions."
+    }
+  },
+  {
+    "operationId": "text.sortLines",
+    "name": "Sort Lines",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sortLines.ts",
+      "description": "Sorts lines lexicographically."
+    }
+  },
+  {
+    "operationId": "text.sortWords",
+    "name": "Sort Words",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sortWords.ts",
+      "description": "Sorts words lexicographically."
+    }
+  },
+  {
+    "operationId": "text.spacesToTabs",
+    "name": "Spaces To Tabs",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/spacesToTabs.ts",
+      "description": "Replaces double spaces with tabs."
+    }
+  },
+  {
+    "operationId": "text.startsWith",
+    "name": "Starts With",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [
+      {
+        "key": "value",
+        "type": "string",
+        "label": "Value",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/startsWith.ts",
+      "description": "Returns 1 if text starts with provided value, else 0."
+    }
+  },
+  {
+    "operationId": "text.stripAccents",
+    "name": "Strip Accents",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/stripAccents.ts",
+      "description": "Removes combining accent marks."
+    }
+  },
+  {
+    "operationId": "text.surroundBrackets",
+    "name": "Surround Brackets",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/surroundBrackets.ts",
+      "description": "Surrounds text with square brackets."
+    }
+  },
+  {
+    "operationId": "text.surroundQuotes",
+    "name": "Surround Quotes",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/surroundQuotes.ts",
+      "description": "Surrounds text with double quotes."
+    }
+  },
+  {
+    "operationId": "text.swapCase",
+    "name": "Swap Case",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/swapCase.ts",
+      "description": "Swaps letter casing in text."
+    }
+  },
+  {
+    "operationId": "text.tabsToSingleSpace",
+    "name": "Tabs To Single Space",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/tabsToSingleSpace.ts",
+      "description": "Replaces tabs with a single space."
+    }
+  },
+  {
+    "operationId": "text.tabsToSpaces",
+    "name": "Tabs To Spaces",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/tabsToSpaces.ts",
+      "description": "Replaces tabs with two spaces."
+    }
+  },
+  {
+    "operationId": "text.toCamelCase",
+    "name": "Camel Case",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toCamelCase.ts",
+      "description": "Converts text to camelCase."
+    }
+  },
+  {
+    "operationId": "text.toKebabCase",
+    "name": "Kebab Case",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toKebabCase.ts",
+      "description": "Converts text to kebab-case."
+    }
+  },
+  {
+    "operationId": "text.toPascalCase",
+    "name": "Pascal Case",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toPascalCase.ts",
+      "description": "Converts text to PascalCase."
+    }
+  },
+  {
+    "operationId": "text.toSnakeCase",
+    "name": "Snake Case",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toSnakeCase.ts",
+      "description": "Converts text to snake_case."
+    }
+  },
+  {
+    "operationId": "text.toTitleCase",
+    "name": "Title Case",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toTitleCase.ts",
+      "description": "Converts words to title case."
+    }
+  },
+  {
+    "operationId": "text.trim",
+    "name": "Trim",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/trim.ts",
+      "description": "Trims leading and trailing whitespace."
+    }
+  },
+  {
+    "operationId": "text.trimCommas",
+    "name": "Trim Commas",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/trimCommas.ts",
+      "description": "Trims commas from both ends."
+    }
+  },
+  {
+    "operationId": "text.trimEnd",
+    "name": "Trim End",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/trimEnd.ts",
+      "description": "Trims trailing whitespace."
+    }
+  },
+  {
+    "operationId": "text.trimLeadingDots",
+    "name": "Trim Leading Dots",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/trimLeadingDots.ts",
+      "description": "Trims leading dots."
+    }
+  },
+  {
+    "operationId": "text.trimLines",
+    "name": "Trim Lines",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/trimLines.ts",
+      "description": "Trims each line independently."
+    }
+  },
+  {
+    "operationId": "text.trimQuotes",
+    "name": "Trim Quotes",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/trimQuotes.ts",
+      "description": "Trims single and double quotes from both ends."
+    }
+  },
+  {
+    "operationId": "text.trimStart",
+    "name": "Trim Start",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/trimStart.ts",
+      "description": "Trims leading whitespace."
+    }
+  },
+  {
+    "operationId": "text.trimTrailingDots",
+    "name": "Trim Trailing Dots",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/trimTrailingDots.ts",
+      "description": "Trims trailing dots."
+    }
+  },
+  {
+    "operationId": "text.uniqueLines",
+    "name": "Unique Lines",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/uniqueLines.ts",
+      "description": "Deduplicates lines preserving first occurrence."
+    }
+  },
+  {
+    "operationId": "text.uniqueWords",
+    "name": "Unique Words",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/uniqueWords.ts",
+      "description": "Deduplicates words preserving first occurrence."
+    }
+  },
+  {
+    "operationId": "text.uppercase",
+    "name": "Uppercase",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/uppercase.ts",
+      "description": "Converts text to uppercase."
+    }
+  },
+  {
+    "operationId": "text.upperFirst",
+    "name": "Upper First",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/upperFirst.ts",
+      "description": "Uppercases first character."
+    }
+  },
+  {
+    "operationId": "text.wordCount",
+    "name": "Word Count",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "number",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/wordCount.ts",
+      "description": "Counts words separated by whitespace."
+    }
+  },
+  {
+    "operationId": "text.wordsToLines",
+    "name": "Words To Lines",
+    "domain": "regex-text-advanced",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/wordsToLines.ts",
+      "description": "Converts words to one-word-per-line text."
+    }
+  }
+]

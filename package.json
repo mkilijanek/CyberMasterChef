@@ -15,7 +15,11 @@
     "test:e2e": "playwright test",
     "format": "prettier -w .",
     "ci": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
-    "test:parity": "PARITY_THRESHOLD=0.90 node scripts/check-parity-coverage.mjs"
+    "test:parity": "PARITY_THRESHOLD=0.90 node scripts/check-parity-coverage.mjs",
+    "c1:domain-matrix": "node scripts/c1/generate-domain-matrix.mjs",
+    "c1:check": "pnpm c1:domain-matrix && git diff --exit-code -- docs/parity/c1-operation-domain-matrix.csv docs/parity/c1-operation-domain-matrix.json docs/parity/c1-operation-domain-summary.md",
+    "c2:plan": "node scripts/c2/generate-domain-implementation-plan.mjs",
+    "c3:contracts": "node scripts/c3/generate-compatibility-contracts.mjs"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -24,10 +28,12 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.54.2",
+    "@types/node": "^24.10.1",
     "@eslint/js": "^10.0.1",
     "@vitest/coverage-v8": "^4.0.18",
     "eslint": "^10.0.2",
     "prettier": "^3.3.3",
+    "tsx": "^4.20.6",
     "typescript": "^5.7.0",
     "typescript-eslint": "^8.0.0",
     "vitest": "^4.0.18"

@@ -1,0 +1,164 @@
+# Forensic Triage Progress (CSIRT/SOC)
+
+Updated: 2026-02-24
+
+## Objective
+
+Track incremental delivery steps for Forensic Triage modules (`forensic.basicPreTriage`, `forensic.basicTriage`).
+
+## Queue 1/3 (50 stages)
+
+- [x] Stage 01: `ps_encoded_command` - PowerShell encoded command usage
+- [x] Stage 02: `ps_execution_policy_bypass` - PowerShell execution policy bypass
+- [x] Stage 03: `cmd_from_powershell` - PowerShell launching cmd
+- [x] Stage 04: `mshta_invocation` - MSHTA execution chain
+- [x] Stage 05: `regsvr32_silent` - Regsvr32 silent registration
+- [x] Stage 06: `rundll32_launch` - Rundll32 execution chain
+- [x] Stage 07: `wmic_process_create` - WMIC process creation
+- [x] Stage 08: `bitsadmin_transfer` - BITSAdmin transfer pattern
+- [x] Stage 09: `certutil_decode` - Certutil decode or urlcache usage
+- [x] Stage 10: `schtasks_create` - Scheduled task persistence
+- [x] Stage 11: `at_job_create` - Legacy at job persistence
+- [x] Stage 12: `reg_run_key` - Registry Run key persistence
+- [x] Stage 13: `reg_runonce_key` - Registry RunOnce persistence
+- [x] Stage 14: `wscript_launch` - WSH script execution via wscript
+- [x] Stage 15: `cscript_launch` - WSH script execution via cscript
+- [x] Stage 16: `hta_file_drop` - HTA payload reference
+- [x] Stage 17: `js_file_drop` - JavaScript payload reference
+- [x] Stage 18: `vbs_file_drop` - VBScript payload reference
+- [x] Stage 19: `ps1_file_drop` - PowerShell script reference
+- [x] Stage 20: `dll_file_drop` - DLL payload reference
+- [x] Stage 21: `scr_file_drop` - Screensaver payload reference
+- [x] Stage 22: `bat_file_drop` - Batch payload reference
+- [x] Stage 23: `cmd_file_drop` - CMD payload reference
+- [x] Stage 24: `zip_archive_drop` - ZIP archive payload
+- [x] Stage 25: `iso_archive_drop` - ISO archive payload
+- [x] Stage 26: `img_archive_drop` - IMG disk image payload
+- [x] Stage 27: `rar_archive_drop` - RAR archive payload
+- [x] Stage 28: `7z_archive_drop` - 7z archive payload
+- [x] Stage 29: `powershell_downloadstring` - PowerShell DownloadString usage
+- [x] Stage 30: `powershell_invoke_expression` - PowerShell Invoke-Expression usage
+- [x] Stage 31: `frombase64string_usage` - Base64 decode in script
+- [x] Stage 32: `iex_alias_usage` - IEX alias usage
+- [x] Stage 33: `new_object_net_webclient` - WebClient download primitive
+- [x] Stage 34: `invoke_webrequest_usage` - Invoke-WebRequest usage
+- [x] Stage 35: `invoke_restmethod_usage` - Invoke-RestMethod usage
+- [x] Stage 36: `curl_usage` - Curl command usage
+- [x] Stage 37: `wget_usage` - Wget command usage
+- [x] Stage 38: `http_plain_download` - Plain HTTP URL present
+- [x] Stage 39: `pastebin_reference` - Pastebin indicator
+- [x] Stage 40: `github_raw_reference` - GitHub raw payload indicator
+- [x] Stage 41: `telegram_api_reference` - Telegram API indicator
+- [x] Stage 42: `discord_cdn_reference` - Discord CDN indicator
+- [x] Stage 43: `tor_onion_reference` - Onion service indicator
+- [x] Stage 44: `base64_blob_long` - Long base64-like blob
+- [x] Stage 45: `hex_blob_long` - Long hex-like blob
+- [x] Stage 46: `url_shortener_bitly` - URL shortener bitly indicator
+- [x] Stage 47: `url_shortener_tinyurl` - URL shortener tinyurl indicator
+- [x] Stage 48: `lolbin_makecab` - LOLBIN makecab usage
+- [x] Stage 49: `lolbin_expand` - LOLBIN expand usage
+- [x] Stage 50: `lolbin_msbuild` - LOLBIN msbuild usage
+
+## Queue 2/3 (50 stages)
+- [x] Stage 051: `suspicious_tld_ru` - Suspicious RU TLD reference
+- [x] Stage 052: `suspicious_tld_su` - Suspicious SU TLD reference
+- [x] Stage 053: `suspicious_tld_cn` - Suspicious CN TLD reference
+- [x] Stage 054: `suspicious_tld_top` - Suspicious TOP TLD reference
+- [x] Stage 055: `suspicious_tld_xyz` - Suspicious XYZ TLD reference
+- [x] Stage 056: `suspicious_tld_zip` - Suspicious ZIP TLD reference
+- [x] Stage 057: `suspicious_tld_click` - Suspicious CLICK TLD reference
+- [x] Stage 058: `suspicious_tld_cam` - Suspicious CAM TLD reference
+- [x] Stage 059: `suspicious_tld_gq` - Suspicious GQ TLD reference
+- [x] Stage 060: `suspicious_tld_ml` - Suspicious ML TLD reference
+- [x] Stage 061: `suspicious_tld_cf` - Suspicious CF TLD reference
+- [x] Stage 062: `suspicious_tld_tk` - Suspicious TK TLD reference
+- [x] Stage 063: `url_ip_literal` - URL with IP literal host
+- [x] Stage 064: `url_nonstandard_port` - URL with non-standard port
+- [x] Stage 065: `dns_txt_record_hint` - DNS TXT record manipulation hint
+- [x] Stage 066: `powershell_bypass_hidden` - PowerShell hidden window usage
+- [x] Stage 067: `powershell_noprofile` - PowerShell -NoProfile usage
+- [x] Stage 068: `powershell_noninteractive` - PowerShell -NonInteractive usage
+- [x] Stage 069: `powershell_noni_abbrev` - PowerShell -noni abbreviation
+- [x] Stage 070: `powershell_w_hidden` - PowerShell -w hidden usage
+- [x] Stage 071: `encoded_scriptblock` - Encoded scriptblock marker
+- [x] Stage 072: `download_to_temp` - Download path pointing to temp
+- [x] Stage 073: `appdata_execution` - Execution from AppData path
+- [x] Stage 074: `programdata_execution` - Execution from ProgramData path
+- [x] Stage 075: `public_user_execution` - Execution from Public user folder
+- [x] Stage 076: `startup_folder_persistence` - Startup folder persistence path
+- [x] Stage 077: `run_key_hkcu_short` - HKCU Run key short path
+- [x] Stage 078: `run_key_hklm_short` - HKLM Run key short path
+- [x] Stage 079: `taskcache_reference` - TaskCache persistence reference
+- [x] Stage 080: `service_create_sc` - Service creation via sc.exe
+- [x] Stage 081: `service_config_sc` - Service config via sc.exe
+- [x] Stage 082: `net_user_add` - User creation via net user
+- [x] Stage 083: `net_localgroup_admin` - Admin group assignment
+- [x] Stage 084: `whoami_priv` - Privilege discovery whoami
+- [x] Stage 085: `ipconfig_all` - Network discovery ipconfig /all
+- [x] Stage 086: `arp_scan` - ARP table query
+- [x] Stage 087: `netstat_scan` - Network sockets netstat
+- [x] Stage 088: `nslookup_usage` - DNS lookup usage
+- [x] Stage 089: `tracert_usage` - Route tracing usage
+- [x] Stage 090: `route_print_usage` - Route table dump
+- [x] Stage 091: `wevtutil_clearlog` - Event log clearing
+- [x] Stage 092: `vssadmin_delete` - Shadow copy deletion
+- [x] Stage 093: `wbadmin_delete` - Backup catalog deletion
+- [x] Stage 094: `bcdedit_recovery_off` - Recovery disable via bcdedit
+- [x] Stage 095: `bcdedit_bootstatus_ignore` - Bootstatus ignore failures
+- [x] Stage 096: `ransom_note_marker` - Common ransom note marker
+- [x] Stage 097: `crypto_wallet_btc` - Bitcoin wallet marker
+- [x] Stage 098: `crypto_wallet_xmr` - Monero wallet marker
+- [x] Stage 099: `credential_dump_mimikatz` - Mimikatz keyword indicator
+- [x] Stage 100: `lsass_dump_indicator` - LSASS dump indicator
+
+## Queue 3/3 (50 stages)
+- [x] Stage 101: `mail_attachment_lnk` - Email LNK attachment marker
+- [x] Stage 102: `mail_attachment_iso` - Email ISO attachment marker
+- [x] Stage 103: `mail_attachment_js` - Email JS attachment marker
+- [x] Stage 104: `mail_attachment_vbs` - Email VBS attachment marker
+- [x] Stage 105: `mail_attachment_docm` - Macro-enabled document marker
+- [x] Stage 106: `mail_attachment_xlsm` - Macro-enabled spreadsheet marker
+- [x] Stage 107: `macro_autoopen` - Macro AutoOpen marker
+- [x] Stage 108: `macro_document_open` - Macro Document_Open marker
+- [x] Stage 109: `macro_shell_call` - Macro Shell call marker
+- [x] Stage 110: `ole_object_marker` - OLE object marker
+- [x] Stage 111: `office_child_powershell` - Office spawning PowerShell
+- [x] Stage 112: `office_child_cmd` - Office spawning cmd
+- [x] Stage 113: `msiexec_remote_install` - Remote install via msiexec
+- [x] Stage 114: `rclone_usage` - Rclone tooling usage
+- [x] Stage 115: `mega_nz_reference` - MEGA hosting indicator
+- [x] Stage 116: `dropbox_reference` - Dropbox hosting indicator
+- [x] Stage 117: `google_drive_uc` - Google Drive direct-download indicator
+- [x] Stage 118: `onedrive_reference` - OneDrive hosting indicator
+- [x] Stage 119: `ftp_protocol_usage` - FTP protocol usage
+- [x] Stage 120: `smb_unc_path` - UNC network path usage
+- [x] Stage 121: `admin_share_access` - Admin share access marker
+- [x] Stage 122: `psexec_usage` - PsExec remote exec marker
+- [x] Stage 123: `winrm_usage` - WinRM command marker
+- [x] Stage 124: `wmi_exec_remote` - WMI remote process marker
+- [x] Stage 125: `rdp_registry_enable` - RDP registry enable marker
+- [x] Stage 126: `firewall_disable_cmd` - Firewall disable marker
+- [x] Stage 127: `defender_disable_cmd` - Defender disable marker
+- [x] Stage 128: `amsi_bypass_marker` - AMSI bypass marker
+- [x] Stage 129: `etw_bypass_marker` - ETW bypass marker
+- [x] Stage 130: `reflective_loader_marker` - Reflective loader marker
+- [x] Stage 131: `shellcode_marker` - Shellcode marker keyword
+- [x] Stage 132: `xor_decoder_loop` - XOR decoder loop marker
+- [x] Stage 133: `rc4_decoder_marker` - RC4 decoder marker
+- [x] Stage 134: `aes_decoder_marker` - AES decoder marker
+- [x] Stage 135: `chacha_decoder_marker` - ChaCha decoder marker
+- [x] Stage 136: `process_hollowing_marker` - Process hollowing marker
+- [x] Stage 137: `remote_thread_injection` - Remote thread injection marker
+- [x] Stage 138: `virtualalloc_exec` - Executable memory allocation marker
+- [x] Stage 139: `writeprocessmemory_call` - WriteProcessMemory marker
+- [x] Stage 140: `ntqueueapcthread_call` - NtQueueApcThread marker
+- [x] Stage 141: `syscall_stub_marker` - Direct syscall marker
+- [x] Stage 142: `uac_bypass_fodhelper` - UAC bypass fodhelper marker
+- [x] Stage 143: `uac_bypass_eventvwr` - UAC bypass eventvwr marker
+- [x] Stage 144: `com_hijack_marker` - COM hijack marker
+- [x] Stage 145: `dll_search_order_hijack` - DLL search order hijack marker
+- [x] Stage 146: `scheduled_task_hidden` - Hidden scheduled task marker
+- [x] Stage 147: `runas_admin_marker` - RunAs admin marker
+- [x] Stage 148: `wmic_shadowcopy` - WMIC shadowcopy marker
+- [x] Stage 149: `esentutl_copy_locked` - Esentutl copy locked file marker
+- [x] Stage 150: `credential_files_marker` - Credential file target marker

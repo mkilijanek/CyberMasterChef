@@ -1,0 +1,466 @@
+OperationName,File,Category,WASM_Priority,WASM_Rationale
+a,AffineCipherDecode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+a,AffineCipherEncode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+A1Z26CipherDecode,A1Z26CipherDecode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+A1Z26CipherEncode,A1Z26CipherEncode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+AddTextToImage,AddTextToImage.mjs,media,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Adler32Checksum,Adler32Checksum.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Alphabet,BaconCipherDecode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Alphabet,BaconCipherEncode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Alphabet,FromBase58.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Alphabet,ToBase58.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+AlternatingCaps,AlternatingCaps.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+AMFDecode,AMFDecode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+AMFEncode,AMFEncode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Amount,BitShiftLeft.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Amount,BitShiftRight.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+AnalyseHash,AnalyseHash.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+AnalyseUUID,AnalyseUUID.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+AtbashCipher,AtbashCipher.mjs,encoding/cipher,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Attempt to be context aware,ToCamelCase.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Attempt to be context aware,ToKebabCase.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Attempt to be context aware,ToSnakeCase.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+AvroToJSON,AvroToJSON.mjs,encoding/cipher,Low,Parsing tekstowy zwykle OK w JS; WASM tylko po profilowaniu i dla dużych payloadów.
+BcryptParse,BcryptParse.mjs,crypto/hash,High,KDF (argon2/scrypt/bcrypt/pbkdf) jest CPU‑intensywny; WASM daje stabilną wydajność i bezpieczeństwo implementacji.
+Bit mode,DisassembleX86.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+BlurImage,BlurImage.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Bombe,Bombe.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+BSONDeserialise,BSONDeserialise.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+BSONSerialise,BSONSerialise.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Built in formats,DateTimeDelta.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Built in formats,ParseDateTime.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Built in formats,TranslateDateTimeFormat.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Built in regexes,RegularExpression.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+By,Reverse.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Bzip2Compress,Bzip2Compress.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+Bzip2Decompress,Bzip2Decompress.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+CaesarBoxCipher,CaesarBoxCipher.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+Capacity,Shake.mjs,crypto/hash,Medium,Hash: WebCrypto gdy dostępne; WASM ma sens dla dużych danych lub brakujących algorytmów.
+CaretMdecode,CaretMdecode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+CartesianProduct,CartesianProduct.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+CBORDecode,CBORDecode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+CBOREncode,CBOREncode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Cell delimiters,ToTable.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+CetaceanCipherDecode,CetaceanCipherDecode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+CetaceanCipherEncode,CetaceanCipherEncode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+ChiSquare,ChiSquare.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+CipherSaber2Decrypt,CipherSaber2Decrypt.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+CipherSaber2Encrypt,CipherSaber2Encrypt.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+CitrixCTX1Decode,CitrixCTX1Decode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+CitrixCTX1Encode,CitrixCTX1Encode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Colossus,Colossus.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Comment,Comment.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ContainImage,ContainImage.mjs,media,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Convert,ToHexContent.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Convert all characters,ToHTMLEntity.mjs,parsing/format,Low,Parsing tekstowy zwykle OK w JS; WASM tylko po profilowaniu i dla dużych payloadów.
+ConvertImageFormat,ConvertImageFormat.mjs,media,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ConvertLeetSpeak,ConvertLeetSpeak.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ConvertToNATOAlphabet,ConvertToNATOAlphabet.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+CoverImage,CoverImage.mjs,media,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+CRCChecksum,CRCChecksum.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+CropImage,CropImage.mjs,media,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+CSS selector,CSSSelector.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+CSVToJSON,CSVToJSON.mjs,parsing/format,Low,Parsing tekstowy zwykle OK w JS; WASM tylko po profilowaniu i dla dużych payloadów.
+CTPH,CTPH.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Data format,SwapEndianness.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+DechunkHTTPResponse,DechunkHTTPResponse.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+DefangIPAddresses,DefangIPAddresses.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+DefangURL,DefangURL.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,CompareCTPHHashes.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,CompareSSDEEPHashes.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,Divide.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,ExpandAlphabetRange.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,Filter.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,FromBinary.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Delimiter,FromCharcode.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,FromDecimal.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,FromOctal.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,GroupIPAddresses.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,HammingDistance.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,Head.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,Mean.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,Median.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,Multiply.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,Sort.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,StandardDeviation.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,Subtract.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,Sum.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,Tail.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,ToBinary.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Delimiter,ToCharcode.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,ToDecimal.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Delimiter,ToOctal.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Depth,Magic.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+DetectFileType,DetectFileType.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Digest length,Streebog.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Display total,ExtractDates.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+DitherImage,DitherImage.mjs,media,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+DNSOverHTTPS,DNSOverHTTPS.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+DropNthBytes,DropNthBytes.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ECDSASign,ECDSASign.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+ECDSASignatureConversion,ECDSASignatureConversion.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+ECDSAVerify,ECDSAVerify.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+ELFInfo,ELFInfo.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Encode all special chars,URLEncode.mjs,parsing/format,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Encoded hash,Argon2Compare.mjs,crypto/hash,High,KDF (argon2/scrypt/bcrypt/pbkdf) jest CPU‑intensywny; WASM daje stabilną wydajność i bezpieczeństwo implementacji.
+Encoding,DecodeText.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Encoding,EncodeText.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Encoding,FromBech32.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Endianness,FromFloat.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Endianness,ToFloat.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Enigma,Enigma.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Escape level,EscapeString.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ExtractDomains,ExtractDomains.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ExtractEmailAddresses,ExtractEmailAddresses.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ExtractEXIF,ExtractEXIF.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ExtractFilePaths,ExtractFilePaths.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ExtractFiles,ExtractFiles.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ExtractHashes,ExtractHashes.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ExtractID3,ExtractID3.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ExtractIPAddresses,ExtractIPAddresses.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ExtractLSB,ExtractLSB.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ExtractMACAddresses,ExtractMACAddresses.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Extractor,Register.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ExtractRGBA,ExtractRGBA.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ExtractURLs,ExtractURLs.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+FangURL,FangURL.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Filename,Tar.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+FileTree,FileTree.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Find,FindReplace.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Fletcher16Checksum,Fletcher16Checksum.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Fletcher32Checksum,Fletcher32Checksum.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Fletcher64Checksum,Fletcher64Checksum.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Fletcher8Checksum,Fletcher8Checksum.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+FlipImage,FlipImage.mjs,media,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Format options,ToMorseCode.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+FromBase32,FromBase32.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+FromBase45,FromBase45.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+FromBase62,FromBase62.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+FromBase64,FromBase64.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+FromBase85,FromBase85.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+FromBase92,FromBase92.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+FromBraille,FromBraille.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+FromCaseInsensitiveRegex,FromCaseInsensitiveRegex.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+FromHex,FromHex.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+FromHexContent,FromHexContent.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+FromHexdump,FromHexdump.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+FromHTMLEntity,FromHTMLEntity.mjs,parsing/format,Low,Parsing tekstowy zwykle OK w JS; WASM tylko po profilowaniu i dla dużych payloadów.
+FromMessagePack,FromMessagePack.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+FromModhex,FromModhex.mjs,crypto/hash,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+FromQuotedPrintable,FromQuotedPrintable.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+FuzzyMatch,FuzzyMatch.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+GenerateAllChecksums,GenerateAllChecksums.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+GenerateAllHashes,GenerateAllHashes.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+GenerateDeBruijnSequence,GenerateDeBruijnSequence.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+GenerateECDSAKeyPair,GenerateECDSAKeyPair.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+GenerateImage,GenerateImage.mjs,media,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+GenerateRSAKeyPair,GenerateRSAKeyPair.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+GenerateUUID,GenerateUUID.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+GenericCodeBeautify,GenericCodeBeautify.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+GetAllCasings,GetAllCasings.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+GetTime,GetTime.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+GOSTDecrypt,GOSTDecrypt.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+GOSTEncrypt,GOSTEncrypt.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+GOSTHash,GOSTHash.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+GOSTKeyUnwrap,GOSTKeyUnwrap.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+GOSTKeyWrap,GOSTKeyWrap.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+GOSTSign,GOSTSign.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+GOSTVerify,GOSTVerify.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Gunzip,Gunzip.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+Gzip,Gzip.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+HAS160,HAS160.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Hash,BcryptCompare.mjs,crypto/hash,High,KDF (argon2/scrypt/bcrypt/pbkdf) jest CPU‑intensywny; WASM daje stabilną wydajność i bezpieczeństwo implementacji.
+HASSHClientFingerprint,HASSHClientFingerprint.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+HASSHServerFingerprint,HASSHServerFingerprint.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+HaversineDistance,HaversineDistance.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Header string,HexToPEM.mjs,encoding/cipher,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+HeatmapChart,HeatmapChart.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+HexDensityChart,HexDensityChart.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+HexToObjectIdentifier,HexToObjectIdentifier.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+HTMLToText,HTMLToText.mjs,parsing/format,Low,Parsing tekstowy zwykle OK w JS; WASM tylko po profilowaniu i dla dużych payloadów.
+Human-Readable Part (HRP),ToBech32.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Ignore ranges,IPv6TransitionAddresses.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Image Format,GenerateQRCode.mjs,media,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ImageBrightnessContrast,ImageBrightnessContrast.mjs,media,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ImageFilter,ImageFilter.mjs,media,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ImageHueSaturationLightness,ImageHueSaturationLightness.mjs,media,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ImageOpacity,ImageOpacity.mjs,media,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Include network info,ParseIPRange.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Indent string,CSSBeautify.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Indent string,JavaScriptBeautify.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Indent string,SQLBeautify.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Indent string,XMLBeautify.mjs,parsing/format,Low,Parsing tekstowy zwykle OK w JS; WASM tylko po profilowaniu i dla dużych payloadów.
+IndexOfCoincidence,IndexOfCoincidence.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Input format,ChangeIPFormat.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Input Format,ConvertCoordinateFormat.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Input format,ParseCSR.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Input format,ParseIPv4Header.mjs,parsing/format,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+Input format,ParseX509CRL.mjs,parsing/format,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+Input format,ParseX509Certificate.mjs,parsing/format,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+Input format,PlayMedia.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Input format,RenderImage.mjs,parsing/format,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+Input Format,SM2Decrypt.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Input units,ConvertArea.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+Input units,ConvertDataUnits.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Input units,ConvertDistance.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Input units,ConvertMass.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Input units,ConvertSpeed.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Input units,UNIXTimestampToWindowsFiletime.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Internationalised domain name,FromPunycode.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Internationalised domain name,ToPunycode.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+InvertImage,InvertImage.mjs,media,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+JA3Fingerprint,JA3Fingerprint.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+JA3SFingerprint,JA3SFingerprint.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+JA4Fingerprint,JA4Fingerprint.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+JA4ServerFingerprint,JA4ServerFingerprint.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+JavaScriptMinify,JavaScriptMinify.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+JPathExpression,JPathExpression.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Jq,Jq.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+JsonataQuery,Jsonata.mjs,parsing/format,Low,Parsing tekstowy zwykle OK w JS; WASM tylko po profilowaniu i dla dużych payloadów.
+JSONBeautify,JSONBeautify.mjs,parsing/format,Low,Parsing tekstowy zwykle OK w JS; WASM tylko po profilowaniu i dla dużych payloadów.
+JSONMinify,JSONMinify.mjs,parsing/format,Low,Parsing tekstowy zwykle OK w JS; WASM tylko po profilowaniu i dla dużych payloadów.
+JSONToCSV,JSONToCSV.mjs,parsing/format,Low,Parsing tekstowy zwykle OK w JS; WASM tylko po profilowaniu i dla dużych payloadów.
+JSONtoYAML,JSONtoYAML.mjs,parsing/format,Low,Parsing tekstowy zwykle OK w JS; WASM tylko po profilowaniu i dla dużych payloadów.
+JWTDecode,JWTDecode.mjs,crypto/hash,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+JWTSign,JWTSign.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+JWTVerify,JWTVerify.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,ADD.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,AESDecrypt.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+Key,AESEncrypt.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+Key,AND.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,BlowfishDecrypt.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,BlowfishEncrypt.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,CMAC.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,ChaCha.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+Key,DESDecrypt.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,DESEncrypt.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,FernetDecrypt.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,FernetEncrypt.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,HMAC.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,OR.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,RC2Decrypt.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,RC2Encrypt.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,Rabbit.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,SM4Decrypt.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,SM4Encrypt.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,SUB.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,Salsa20.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,TripleDESDecrypt.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,TripleDESEncrypt.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,VigenèreDecode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Key,VigenèreEncode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Key,XOR.mjs,encoding/cipher,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,XSalsa20.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,XXTEADecrypt.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key,XXTEAEncrypt.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key (KEK),AESKeyUnwrap.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+Key (KEK),AESKeyWrap.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+Key length,XORBruteForce.mjs,encoding/cipher,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Key type,GeneratePGPKeyPair.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Keyword,BifidCipherDecode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Keyword,BifidCipherEncode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Label name,Jump.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Language,SyntaxHighlighter.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Length,GenerateLoremIpsum.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Letter delimiter,FromMorseCode.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+LevenshteinDistance,LevenshteinDistance.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+LMHash,LMHash.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Location info,JavaScriptParser.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Lorenz,Lorenz.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+LS47Decrypt,LS47Decrypt.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+LS47Encrypt,LS47Encrypt.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+LZ4Compress,LZ4Compress.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+LZ4Decompress,LZ4Decompress.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+LZMACompress,LZMACompress.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+LZMADecompress,LZMADecompress.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+LZNT1Decompress,LZNT1Decompress.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+LZStringCompress,LZStringCompress.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+LZStringDecompress,LZStringDecompress.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+Match (regex),ConditionalJump.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+MD2,MD2.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+MD4,MD4.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+MD5,MD5.mjs,crypto/hash,Medium,Hash: WebCrypto gdy dostępne; WASM ma sens dla dużych danych lub brakujących algorytmów.
+Merge,Merge.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Method,HTTPRequest.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+MicrosoftScriptDecoder,MicrosoftScriptDecoder.mjs,parsing/format,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+MIMEDecoding,MIMEDecoding.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+MurmurHash3,MurmurHash3.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Name,GenerateHOTP.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Name,GenerateTOTP.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Name,Label.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+NormaliseImage,NormaliseImage.mjs,media,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+NormaliseUnicode,NormaliseUnicode.mjs,encoding/cipher,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+NOT,NOT.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+NTHash,NTHash.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Number of bytes,PseudoRandomNumberGenerator.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Numberwang,Numberwang.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ObjectIdentifierToHex,ObjectIdentifierToHex.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Offset,AddLineNumbers.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Offset,DecodeNetBIOSName.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Offset,EncodeNetBIOSName.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+OpticalCharacterRecognition,OpticalCharacterRecognition.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Output case,FormatMACAddresses.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Output Format,SM2Encrypt.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Output units,WindowsFiletimeToUNIXTimestamp.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Output valid JSON,PHPDeserialize.mjs,crypto/hash,Low,Parsing tekstowy zwykle OK w JS; WASM tylko po profilowaniu i dla dużych payloadów.
+ParseColourCode,ParseColourCode.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ParseIPv6Address,ParseIPv6Address.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ParseObjectIDTimestamp,ParseObjectIDTimestamp.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ParseQRCode,ParseQRCode.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ParseSSHHostKey,ParseSSHHostKey.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ParseTCP,ParseTCP.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ParseTLSRecord,ParseTLSRecord.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ParseTLV,ParseTLV.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ParseUDP,ParseUDP.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ParseUNIXFilePermissions,ParseUNIXFilePermissions.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ParseURI,ParseURI.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ParseUserAgent,ParseUserAgent.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Passphrase,DeriveEVPKey.mjs,parsing/format,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+Passphrase,DerivePBKDF2Key.mjs,crypto/hash,High,KDF (argon2/scrypt/bcrypt/pbkdf) jest CPU‑intensywny; WASM daje stabilną wydajność i bezpieczeństwo implementacji.
+Passphrase,RC4.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Passphrase,RC4Drop.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+PEMToHex,PEMToHex.mjs,encoding/cipher,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+PEMToJWK,JWKToPem.mjs,parsing/format,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+PEMToJWK,PEMToJWK.mjs,parsing/format,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+PHPSerialize,PHPSerialize.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Plaintext,Substitute.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+PlistViewer,PLISTViewer.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Position,PadLines.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+PowerSet,PowerSet.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Prefix,EscapeUnicodeCharacters.mjs,encoding/cipher,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Prefix,UnescapeUnicodeCharacters.mjs,encoding/cipher,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Preserve comments,CSSMinify.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Preserve comments,XMLMinify.mjs,parsing/format,Low,Parsing tekstowy zwykle OK w JS; WASM tylko po profilowaniu i dla dużych payloadów.
+Private key of recipient,PGPDecrypt.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Private key of signer,PGPEncryptAndSign.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ProtobufDecode,ProtobufDecode.mjs,encoding/cipher,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+ProtobufEncode,ProtobufEncode.mjs,encoding/cipher,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+PubKeyFromCert,PubKeyFromCert.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+PubKeyFromPrivKey,PubKeyFromPrivKey.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Public key of recipient,PGPEncrypt.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Public key of signer,PGPDecryptAndVerify.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Public key of signer,PGPVerify.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Radix,FromBase.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Radix,LuhnChecksum.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Radix,ToBase.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+RailFenceCipherDecode,RailFenceCipherDecode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+RailFenceCipherEncode,RailFenceCipherEncode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+RAKE,RAKE.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+RandomizeColourPalette,RandomizeColourPalette.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+RawDeflate,RawDeflate.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+RawInflate,RawInflate.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+Remove indentation,StripHTMLTags.mjs,parsing/format,Low,Parsing tekstowy zwykle OK w JS; WASM tylko po profilowaniu i dla dużych payloadów.
+RemoveDiacritics,RemoveDiacritics.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+RemoveEXIF,RemoveEXIF.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+RemoveLineNumbers,RemoveLineNumbers.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+RemoveNullBytes,RemoveNullBytes.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+RenderMarkdown,RenderMarkdown.mjs,parsing/format,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+ResizeImage,ResizeImage.mjs,media,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Return,Return.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+RisonDecode,RisonDecode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+RisonEncode,RisonEncode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+ROT13,ROT13.mjs,encoding/cipher,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ROT13BruteForce,ROT13BruteForce.mjs,encoding/cipher,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ROT47,ROT47.mjs,encoding/cipher,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ROT47BruteForce,ROT47BruteForce.mjs,encoding/cipher,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ROT8000,ROT8000.mjs,encoding/cipher,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+RotateImage,RotateImage.mjs,encoding/cipher,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+RotateLeft,RotateLeft.mjs,encoding/cipher,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+RotateRight,RotateRight.mjs,encoding/cipher,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Rounds,Bcrypt.mjs,crypto/hash,High,KDF (argon2/scrypt/bcrypt/pbkdf) jest CPU‑intensywny; WASM daje stabilną wydajność i bezpieczeństwo implementacji.
+RSADecrypt,RSADecrypt.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+RSAEncrypt,RSAEncrypt.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+RSASign,RSASign.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+RSAVerify,RSAVerify.mjs,crypto/hash,Medium,Crypto: preferuj WebCrypto; WASM przydatny dla algorytmów poza WebCrypto lub bulk/streaming.
+Salt,Argon2.mjs,crypto/hash,High,KDF (argon2/scrypt/bcrypt/pbkdf) jest CPU‑intensywny; WASM daje stabilną wydajność i bezpieczeństwo implementacji.
+Salt,DeriveHKDFKey.mjs,parsing/format,High,KDF (argon2/scrypt/bcrypt/pbkdf) jest CPU‑intensywny; WASM daje stabilną wydajność i bezpieczeństwo implementacji.
+Salt,Scrypt.mjs,crypto/hash,High,KDF (argon2/scrypt/bcrypt/pbkdf) jest CPU‑intensywny; WASM daje stabilną wydajność i bezpieczeństwo implementacji.
+Sample delimiter,Diff.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Sample delimiter,OffsetChecker.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ScanForEmbeddedFiles,ScanForEmbeddedFiles.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ScatterChart,ScatterChart.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Scheme,FromBCD.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Scheme,ToBCD.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Scope,ToUpperCase.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Search string,CountOccurrences.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Section (regex),Subsection.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+SeriesChart,SeriesChart.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+SetDifference,SetDifference.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+SetIntersection,SetIntersection.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+SetUnion,SetUnion.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+SHA0,SHA0.mjs,crypto/hash,Medium,Hash: WebCrypto gdy dostępne; WASM ma sens dla dużych danych lub brakujących algorytmów.
+SHA1,SHA1.mjs,crypto/hash,Medium,Hash: WebCrypto gdy dostępne; WASM ma sens dla dużych danych lub brakujących algorytmów.
+SHA2,SHA2.mjs,crypto/hash,Medium,Hash: WebCrypto gdy dostępne; WASM ma sens dla dużych danych lub brakujących algorytmów.
+SharpenImage,SharpenImage.mjs,crypto/hash,Medium,Hash: WebCrypto gdy dostępne; WASM ma sens dla dużych danych lub brakujących algorytmów.
+Show 0%s,FrequencyDistribution.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ShowBase64Offsets,ShowBase64Offsets.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+ShowOnMap,ShowOnMap.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Shuffle,Shuffle.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Sigaba,SIGABA.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Size,BLAKE2b.mjs,crypto/hash,Medium,Hash: WebCrypto gdy dostępne; WASM ma sens dla dużych danych lub brakujących algorytmów.
+Size,BLAKE2s.mjs,crypto/hash,Medium,Hash: WebCrypto gdy dostępne; WASM ma sens dla dużych danych lub brakujących algorytmów.
+Size,Keccak.mjs,crypto/hash,Medium,Hash: WebCrypto gdy dostępne; WASM ma sens dla dużych danych lub brakujących algorytmów.
+Size,MD6.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Size,RIPEMD.mjs,crypto/hash,Medium,Hash: WebCrypto gdy dostępne; WASM ma sens dla dużych danych lub brakujących algorytmów.
+Size,SHA3.mjs,crypto/hash,Medium,Hash: WebCrypto gdy dostępne; WASM ma sens dla dużych danych lub brakujących algorytmów.
+Size (bytes),BLAKE3.mjs,crypto/hash,Medium,Hash: WebCrypto gdy dostępne; WASM ma sens dla dużych danych lub brakujących algorytmów.
+SM3,SM3.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Snefru,Snefru.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Spaces,RemoveWhitespace.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Split delimiter,Fork.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Split delimiter,Split.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+SplitColourChannels,SplitColourChannels.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+SQLMinify,SQLMinify.mjs,parsing/format,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+SSDEEP,SSDEEP.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Standard Enigmas,MultipleBombe.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Start,DropBytes.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+Start,TakeBytes.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+Starting index,ParseASN1HexString.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+Strings,Strings.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+StripHTTPHeaders,StripHTTPHeaders.mjs,parsing/format,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+StripIPv4Header,StripIPv4Header.mjs,parsing/format,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+StripTCPHeader,StripTCPHeader.mjs,parsing/format,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+StripUDPHeader,StripUDPHeader.mjs,parsing/format,Medium,Parsery binarne (ASN.1/DER/X.509/PKCS) mogą zyskać na WASM przy dużych wejściach.
+SwapCase,SwapCase.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+SymmetricDifference,SymmetricDifference.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+TakeNthBytes,TakeNthBytes.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+TCPIPChecksum,TCPIPChecksum.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Template,Template.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+TextEncodingBruteForce,TextEncodingBruteForce.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Time (ms),Sleep.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ToBase32,ToBase32.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+ToBase45,ToBase45.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+ToBase62,ToBase62.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+ToBase64,ToBase64.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+ToBase85,ToBase85.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+ToBase92,ToBase92.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+ToBraille,ToBraille.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ToCaseInsensitiveRegex,ToCaseInsensitiveRegex.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ToHex,ToHex.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+ToLowerCase,ToLowerCase.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ToMessagePack,ToMessagePack.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+ToModhex,ToModhex.mjs,crypto/hash,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+ToQuotedPrintable,ToQuotedPrintable.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Treat \,URLDecode.mjs,parsing/format,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+Typex,Typex.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+UnescapeString,UnescapeString.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+UnicodeTextFormat,UnicodeTextFormat.mjs,encoding/cipher,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Unique,Unique.mjs,text/transform,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Units,FromUNIXTimestamp.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Units,ToUNIXTimestamp.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Untar,Untar.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+Unzip,Unzip.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+VarIntDecode,VarIntDecode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+VarIntEncode,VarIntEncode.mjs,misc,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+ViewBitPlane,ViewBitPlane.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Visualisation,Entropy.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Whirlpool,Whirlpool.mjs,crypto/hash,Medium,Hash: WebCrypto gdy dostępne; WASM ma sens dla dużych danych lub brakujących algorytmów.
+Width,ToHexdump.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+XKCDRandomNumber,XKCDRandomNumber.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+XORChecksum,XORChecksum.mjs,crypto/hash,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+XPath,XPathExpression.mjs,encoding/cipher,Low,Kodowania na TypedArray są szybkie w JS; WASM zwykle niekonieczny.
+YAMLToJSON,YAMLToJSON.mjs,parsing/format,Low,Parsing tekstowy zwykle OK w JS; WASM tylko po profilowaniu i dla dużych payloadów.
+YARARules,YARARules.mjs,misc,Low,Brak oczywistego profilu CPU‑heavy; rozważyć dopiero po profilowaniu.
+Zip,Zip.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+ZlibDeflate,ZlibDeflate.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).
+ZlibInflate,ZlibInflate.mjs,compression,High,Kompresja/dekompresja to typowy hot path CPU; duży zysk z WASM (Rust).

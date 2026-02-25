@@ -29,3 +29,14 @@ export class OperationRuntimeError extends EngineError {
     this.opId = opId;
   }
 }
+
+export class OperationJsonParseError extends EngineError {
+  public readonly opId: string;
+  public readonly detail?: string;
+  constructor(opId: string, message = "Invalid JSON input", detail?: string) {
+    super("JSON_PARSE_ERROR", message);
+    this.name = "OperationJsonParseError";
+    this.opId = opId;
+    if (detail !== undefined) this.detail = detail;
+  }
+}

@@ -1,0 +1,900 @@
+{
+  "generatedAt": "2026-02-25T10:06:57.370Z",
+  "source": {
+    "c1MatrixPath": "/home/kili/Repo/CyberMasterChef/CyberMasterChef/docs/parity/c1-operation-domain-matrix.json",
+    "implementedOpsCount": 253
+  },
+  "summary": [
+    {
+      "domain": "encodings-codecs",
+      "description": "Encodings, binary/text codecs, canonical representation transforms.",
+      "cyberChefTotal": 58,
+      "implementedTotal": 24,
+      "missingEstimated": 34,
+      "coveragePct": 41.38,
+      "implementationCandidates": [
+        {
+          "operationName": "Alphabet",
+          "file": "FromBase58.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Alphabet",
+          "file": "ToBase58.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Convert",
+          "file": "ToHexContent.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "FromBinary.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "FromCharcode.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "FromDecimal.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "FromOctal.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "ToBinary.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "ToCharcode.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "ToDecimal.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "ToOctal.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "DropNthBytes",
+          "file": "DropNthBytes.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Encoding",
+          "file": "DecodeText.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Encoding",
+          "file": "EncodeText.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Encoding",
+          "file": "FromBech32.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Format options",
+          "file": "ToMorseCode.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "FromBase32",
+          "file": "FromBase32.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "FromBase45",
+          "file": "FromBase45.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "FromBase62",
+          "file": "FromBase62.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "FromBase64",
+          "file": "FromBase64.mjs",
+          "confidence": "medium"
+        }
+      ]
+    },
+    {
+      "domain": "crypto-hash-kdf",
+      "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
+      "cyberChefTotal": 97,
+      "implementedTotal": 29,
+      "missingEstimated": 68,
+      "coveragePct": 29.9,
+      "implementationCandidates": [
+        {
+          "operationName": "a",
+          "file": "AffineCipherDecode.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "a",
+          "file": "AffineCipherEncode.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "A1Z26CipherDecode",
+          "file": "A1Z26CipherDecode.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "A1Z26CipherEncode",
+          "file": "A1Z26CipherEncode.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Adler32Checksum",
+          "file": "Adler32Checksum.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Alphabet",
+          "file": "BaconCipherDecode.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Alphabet",
+          "file": "BaconCipherEncode.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "AnalyseHash",
+          "file": "AnalyseHash.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "AtbashCipher",
+          "file": "AtbashCipher.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "BcryptParse",
+          "file": "BcryptParse.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "BSONDeserialise",
+          "file": "BSONDeserialise.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "CaesarBoxCipher",
+          "file": "CaesarBoxCipher.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "CetaceanCipherDecode",
+          "file": "CetaceanCipherDecode.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "CetaceanCipherEncode",
+          "file": "CetaceanCipherEncode.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "CipherSaber2Decrypt",
+          "file": "CipherSaber2Decrypt.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "CipherSaber2Encrypt",
+          "file": "CipherSaber2Encrypt.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "CRCChecksum",
+          "file": "CRCChecksum.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "CompareCTPHHashes.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "CompareSSDEEPHashes.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "ECDSASign",
+          "file": "ECDSASign.mjs",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "domain": "compression-archive",
+      "description": "Compression/decompression and archive container operations.",
+      "cyberChefTotal": 7,
+      "implementedTotal": 7,
+      "missingEstimated": 0,
+      "coveragePct": 100,
+      "implementationCandidates": [
+        {
+          "operationName": "Bzip2Compress",
+          "file": "Bzip2Compress.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Bzip2Decompress",
+          "file": "Bzip2Decompress.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Filename",
+          "file": "Tar.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Gunzip",
+          "file": "Gunzip.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Gzip",
+          "file": "Gzip.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Unzip",
+          "file": "Unzip.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Zip",
+          "file": "Zip.mjs",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "domain": "date-time",
+      "description": "Date/time parsing, formatting, conversion and timestamp operations.",
+      "cyberChefTotal": 12,
+      "implementedTotal": 12,
+      "missingEstimated": 0,
+      "coveragePct": 100,
+      "implementationCandidates": [
+        {
+          "operationName": "Built in formats",
+          "file": "DateTimeDelta.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Built in formats",
+          "file": "ParseDateTime.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Built in formats",
+          "file": "TranslateDateTimeFormat.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Display total",
+          "file": "ExtractDates.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "GetTime",
+          "file": "GetTime.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Input units",
+          "file": "UNIXTimestampToWindowsFiletime.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Output units",
+          "file": "WindowsFiletimeToUNIXTimestamp.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "ParseObjectIDTimestamp",
+          "file": "ParseObjectIDTimestamp.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "ParseUNIXFilePermissions",
+          "file": "ParseUNIXFilePermissions.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Time (ms)",
+          "file": "Sleep.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Units",
+          "file": "FromUNIXTimestamp.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Units",
+          "file": "ToUNIXTimestamp.mjs",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "domain": "data-formats",
+      "description": "Structured formats (JSON/XML/CSV/YAML/TOML/HTML and format conversion).",
+      "cyberChefTotal": 50,
+      "implementedTotal": 24,
+      "missingEstimated": 26,
+      "coveragePct": 48,
+      "implementationCandidates": [
+        {
+          "operationName": "AddTextToImage",
+          "file": "AddTextToImage.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "AMFDecode",
+          "file": "AMFDecode.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "AMFEncode",
+          "file": "AMFEncode.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "AvroToJSON",
+          "file": "AvroToJSON.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "BlurImage",
+          "file": "BlurImage.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "BSONSerialise",
+          "file": "BSONSerialise.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "CBORDecode",
+          "file": "CBORDecode.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "CBOREncode",
+          "file": "CBOREncode.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Cell delimiters",
+          "file": "ToTable.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "ContainImage",
+          "file": "ContainImage.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Convert all characters",
+          "file": "ToHTMLEntity.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "ConvertImageFormat",
+          "file": "ConvertImageFormat.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "CoverImage",
+          "file": "CoverImage.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "CropImage",
+          "file": "CropImage.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "CSVToJSON",
+          "file": "CSVToJSON.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "DitherImage",
+          "file": "DitherImage.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "ExtractEXIF",
+          "file": "ExtractEXIF.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "FlipImage",
+          "file": "FlipImage.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "FromHexdump",
+          "file": "FromHexdump.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "FromHTMLEntity",
+          "file": "FromHTMLEntity.mjs",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "domain": "regex-text-advanced",
+      "description": "Regex and advanced text analysis/normalization operations.",
+      "cyberChefTotal": 51,
+      "implementedTotal": 55,
+      "missingEstimated": 0,
+      "coveragePct": 107.84,
+      "implementationCandidates": [
+        {
+          "operationName": "Attempt to be context aware",
+          "file": "ToCamelCase.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Attempt to be context aware",
+          "file": "ToKebabCase.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Attempt to be context aware",
+          "file": "ToSnakeCase.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Built in regexes",
+          "file": "RegularExpression.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "By",
+          "file": "Reverse.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "CartesianProduct",
+          "file": "CartesianProduct.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "ConvertLeetSpeak",
+          "file": "ConvertLeetSpeak.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "ConvertToNATOAlphabet",
+          "file": "ConvertToNATOAlphabet.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "Filter.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "Head.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "Mean.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "Median.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "Sort.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "StandardDeviation.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "Tail.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "ExtractDomains",
+          "file": "ExtractDomains.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "ExtractEmailAddresses",
+          "file": "ExtractEmailAddresses.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "ExtractFilePaths",
+          "file": "ExtractFilePaths.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "ExtractFiles",
+          "file": "ExtractFiles.mjs",
+          "confidence": "medium"
+        },
+        {
+          "operationName": "ExtractID3",
+          "file": "ExtractID3.mjs",
+          "confidence": "medium"
+        }
+      ]
+    },
+    {
+      "domain": "network-protocol-parsers",
+      "description": "Protocol/header/parsing operations for network/web payloads.",
+      "cyberChefTotal": 25,
+      "implementedTotal": 10,
+      "missingEstimated": 15,
+      "coveragePct": 40,
+      "implementationCandidates": [
+        {
+          "operationName": "CSS selector",
+          "file": "CSSSelector.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "DechunkHTTPResponse",
+          "file": "DechunkHTTPResponse.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "DefangIPAddresses",
+          "file": "DefangIPAddresses.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "DefangURL",
+          "file": "DefangURL.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "GroupIPAddresses.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "DNSOverHTTPS",
+          "file": "DNSOverHTTPS.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Encode all special chars",
+          "file": "URLEncode.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "ExtractIPAddresses",
+          "file": "ExtractIPAddresses.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "ExtractURLs",
+          "file": "ExtractURLs.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "FangURL",
+          "file": "FangURL.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Header string",
+          "file": "HexToPEM.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Input format",
+          "file": "ParseIPv4Header.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Input format",
+          "file": "ParseX509CRL.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Input format",
+          "file": "ParseX509Certificate.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "JWTDecode",
+          "file": "JWTDecode.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "JWTSign",
+          "file": "JWTSign.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "JWTVerify",
+          "file": "JWTVerify.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Method",
+          "file": "HTTPRequest.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "MIMEDecoding",
+          "file": "MIMEDecoding.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "ParseURI",
+          "file": "ParseURI.mjs",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "domain": "forensic-malware-helper",
+      "description": "IOC extraction, entropy/byte analysis and malware triage helpers.",
+      "cyberChefTotal": 16,
+      "implementedTotal": 5,
+      "missingEstimated": 11,
+      "coveragePct": 31.25,
+      "implementationCandidates": [
+        {
+          "operationName": "AnalyseUUID",
+          "file": "AnalyseUUID.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Bit mode",
+          "file": "DisassembleX86.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Bombe",
+          "file": "Bombe.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "ChiSquare",
+          "file": "ChiSquare.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Colossus",
+          "file": "Colossus.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "CTPH",
+          "file": "CTPH.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "DetectFileType",
+          "file": "DetectFileType.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "ELFInfo",
+          "file": "ELFInfo.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Enigma",
+          "file": "Enigma.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "FileTree",
+          "file": "FileTree.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "GenerateUUID",
+          "file": "GenerateUUID.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Lorenz",
+          "file": "Lorenz.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Standard Enigmas",
+          "file": "MultipleBombe.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Strings",
+          "file": "Strings.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Visualisation",
+          "file": "Entropy.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "YARARules",
+          "file": "YARARules.mjs",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "domain": "misc-uncategorized",
+      "description": "Operations that require manual triage or do not fit current taxonomy.",
+      "cyberChefTotal": 149,
+      "implementedTotal": 87,
+      "missingEstimated": 62,
+      "coveragePct": 58.39,
+      "implementationCandidates": [
+        {
+          "operationName": "AlternatingCaps",
+          "file": "AlternatingCaps.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "Amount",
+          "file": "BitShiftLeft.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "Amount",
+          "file": "BitShiftRight.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "Capacity",
+          "file": "Shake.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "CaretMdecode",
+          "file": "CaretMdecode.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "CitrixCTX1Decode",
+          "file": "CitrixCTX1Decode.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "CitrixCTX1Encode",
+          "file": "CitrixCTX1Encode.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "Comment",
+          "file": "Comment.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "Data format",
+          "file": "SwapEndianness.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "Divide.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "ExpandAlphabetRange.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "HammingDistance.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "Multiply.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "Subtract.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "Delimiter",
+          "file": "Sum.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "Depth",
+          "file": "Magic.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "Digest length",
+          "file": "Streebog.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "Endianness",
+          "file": "FromFloat.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "Endianness",
+          "file": "ToFloat.mjs",
+          "confidence": "low"
+        },
+        {
+          "operationName": "Escape level",
+          "file": "EscapeString.mjs",
+          "confidence": "low"
+        }
+      ]
+    }
+  ],
+  "topPriority": [
+    {
+      "priority": 1,
+      "domain": "crypto-hash-kdf",
+      "coveragePct": 29.9,
+      "missingEstimated": 68
+    },
+    {
+      "priority": 2,
+      "domain": "forensic-malware-helper",
+      "coveragePct": 31.25,
+      "missingEstimated": 11
+    },
+    {
+      "priority": 3,
+      "domain": "network-protocol-parsers",
+      "coveragePct": 40,
+      "missingEstimated": 15
+    },
+    {
+      "priority": 4,
+      "domain": "encodings-codecs",
+      "coveragePct": 41.38,
+      "missingEstimated": 34
+    }
+  ]
+}

@@ -10,6 +10,7 @@ type QueueTask = {
   priority: "normal" | "high";
   enqueuedAt: number;
   queueDepthAtEnqueue: number;
+  attempt: number;
   resolve: (value: BakeResult) => void;
   reject: (reason?: unknown) => void;
 };
@@ -29,6 +30,8 @@ export class WorkerPoolClient implements ExecutionClient {
   private readonly slots: WorkerSlot[];
   private readonly queue: QueueTask[] = [];
   private readonly maxQueue: number;
+  private readonly maxAttempts: number;
+  private readonly shouldRetry: (error: unknown) => boolean;
   private maxQueueDepthObserved = 0;
   private queueOverflowCount = 0;
   private disposed = false;
@@ -36,10 +39,19 @@ export class WorkerPoolClient implements ExecutionClient {
   constructor(opts?: {
     size?: number;
     maxQueue?: number;
+    maxAttempts?: number;
+    shouldRetry?: (error: unknown) => boolean;
     clientFactory?: () => ExecutionClient;
   }) {
     const size = Math.max(1, Math.floor(opts?.size ?? 2));
     this.maxQueue = Math.max(1, Math.floor(opts?.maxQueue ?? 64));
+    this.maxAttempts = Math.max(1, Math.floor(opts?.maxAttempts ?? 1));
+    this.shouldRetry =
+      opts?.shouldRetry ??
+      ((error) => {
+        const msg = error instanceof Error ? error.message : String(error);
+        return !/aborted|cancel|disposed|queue limit/i.test(msg);
+      });
     const clientFactory = opts?.clientFactory ?? (() => new SandboxClient());
     this.slots = Array.from({ length: size }, (_, index) => ({
       id: index,
@@ -59,22 +71,32 @@ export class WorkerPoolClient implements ExecutionClient {
     input: DataValue,
     opts?: { timeoutMs?: number; priority?: "normal" | "high" }
   ): Promise<BakeResult> {
+    return (await this.enqueue(recipe, input, opts)).result;
+  }
+
+  async enqueue(
+    recipe: Recipe,
+    input: DataValue,
+    opts?: { timeoutMs?: number; priority?: "normal" | "high" }
+  ): Promise<{ taskId: string; result: Promise<BakeResult> }> {
     if (this.disposed) throw new Error("WorkerPoolClient is disposed");
     await this.init();
     const priority = opts?.priority ?? "normal";
-    return await new Promise<BakeResult>((resolve, reject) => {
+    const taskId = nextTaskId();
+    const result = new Promise<BakeResult>((resolve, reject) => {
       if (this.queue.length >= this.maxQueue) {
         this.queueOverflowCount++;
         reject(new Error(`Worker queue limit exceeded (${this.maxQueue})`));
         return;
       }
       const task: QueueTask = {
-        id: nextTaskId(),
+        id: taskId,
         recipe,
         input,
         priority,
         enqueuedAt: Date.now(),
         queueDepthAtEnqueue: this.queue.length + 1,
+        attempt: 1,
         resolve,
         reject
       };
@@ -87,6 +109,7 @@ export class WorkerPoolClient implements ExecutionClient {
       this.maxQueueDepthObserved = Math.max(this.maxQueueDepthObserved, this.queue.length);
       this.pumpQueue();
     });
+    return { taskId, result };
   }
 
   cancelActive(): void {
@@ -97,6 +120,30 @@ export class WorkerPoolClient implements ExecutionClient {
       const task = this.queue.shift();
       task?.reject(new Error("Cancelled while waiting in queue"));
     }
+  }
+
+  cancelQueued(taskId: string): boolean {
+    const idx = this.queue.findIndex((q) => q.id === taskId);
+    if (idx < 0) return false;
+    const [task] = this.queue.splice(idx, 1);
+    task?.reject(new Error(`Cancelled queued task: ${taskId}`));
+    return true;
+  }
+
+  getStats(): {
+    queueDepth: number;
+    inFlight: number;
+    maxQueue: number;
+    maxQueueDepthObserved: number;
+    queueOverflowCount: number;
+  } {
+    return {
+      queueDepth: this.queue.length,
+      inFlight: this.slots.filter((s) => s.busy).length,
+      maxQueue: this.maxQueue,
+      maxQueueDepthObserved: this.maxQueueDepthObserved,
+      queueOverflowCount: this.queueOverflowCount
+    };
   }
 
   dispose(): void {
@@ -137,7 +184,7 @@ export class WorkerPoolClient implements ExecutionClient {
             ...result.run,
             queuedMs: Math.max(0, startedAt - task.enqueuedAt),
             workerId: available.id,
-            attempt: 1,
+            attempt: task.attempt,
             queueDepthAtEnqueue: task.queueDepthAtEnqueue,
             queueDepthAtStart,
             maxQueueDepthObserved: this.maxQueueDepthObserved,
@@ -147,7 +194,16 @@ export class WorkerPoolClient implements ExecutionClient {
         });
       })
       .catch((error) => {
-        task.reject(error);
+        if (task.attempt < this.maxAttempts && this.shouldRetry(error)) {
+          const retryTask: QueueTask = {
+            ...task,
+            attempt: task.attempt + 1
+          };
+          this.queue.unshift(retryTask);
+          this.maxQueueDepthObserved = Math.max(this.maxQueueDepthObserved, this.queue.length);
+        } else {
+          task.reject(error);
+        }
       })
       .finally(() => {
         available.busy = false;

@@ -1,0 +1,21 @@
+[
+  {
+    "file": "0-empty.txt",
+    "ok": true,
+    "outputType": "string",
+    "outputPreview": "",
+    "error": "Skipped empty input file"
+  },
+  {
+    "file": "a.txt",
+    "ok": true,
+    "outputType": "string",
+    "outputPreview": "hello\n"
+  },
+  {
+    "file": "b.txt",
+    "ok": true,
+    "outputType": "string",
+    "outputPreview": "world\n"
+  }
+]

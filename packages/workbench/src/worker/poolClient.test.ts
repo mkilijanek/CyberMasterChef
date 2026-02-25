@@ -62,6 +62,20 @@ class ControlledClient implements ExecutionClient {
   dispose(): void {}
 }
 
+class FlakyClient implements ExecutionClient {
+  private calls = 0;
+  async init(): Promise<void> {}
+  bake(): Promise<BakeResult> {
+    this.calls++;
+    if (this.calls === 1) {
+      return Promise.reject(new Error("Transient failure"));
+    }
+    return Promise.resolve(makeResult("flaky-ok"));
+  }
+  cancelActive(): void {}
+  dispose(): void {}
+}
+
 describe("WorkerPoolClient", () => {
   it("assigns queued jobs across worker slots", async () => {
     let created = 0;
@@ -168,5 +182,37 @@ describe("WorkerPoolClient", () => {
     controlled.release();
     await expect(queued).rejects.toThrow("Cancelled while waiting in queue");
     await expect(running).resolves.toBeTruthy();
+  });
+
+  it("supports canceling a specific queued task by id", async () => {
+    const controlled = new ControlledClient();
+    const pool = new WorkerPoolClient({
+      size: 1,
+      clientFactory: () => controlled
+    });
+    const recipe: Recipe = { version: 1, steps: [] };
+
+    const running = await pool.enqueue(recipe, { type: "string", value: "running" });
+    const queued = await pool.enqueue(recipe, { type: "string", value: "queued" });
+    const cancelled = pool.cancelQueued(queued.taskId);
+
+    expect(cancelled).toBe(true);
+    controlled.release();
+    await expect(queued.result).rejects.toThrow(`Cancelled queued task: ${queued.taskId}`);
+    await expect(running.result).resolves.toBeTruthy();
+  });
+
+  it("retries transient failures when maxAttempts > 1", async () => {
+    const pool = new WorkerPoolClient({
+      size: 1,
+      maxAttempts: 2,
+      clientFactory: () => new FlakyClient(),
+      shouldRetry: () => true
+    });
+    const recipe: Recipe = { version: 1, steps: [] };
+    const out = await pool.bake(recipe, { type: "string", value: "x" });
+    expect(out.output.type).toBe("string");
+    expect(out.output.value).toBe("flaky-ok");
+    expect(out.run.attempt).toBe(2);
   });
 });

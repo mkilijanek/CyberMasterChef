@@ -1,5 +1,5 @@
 import type { DataValue, OperationRegistry, Recipe } from "./types.js";
-import { OperationNotFoundError, OperationRuntimeError } from "./errors.js";
+import { EngineError, OperationNotFoundError, OperationRuntimeError } from "./errors.js";
 import { coerce, coerceToAnyOf } from "./conversion.js";
 import { summarizeTrace } from "./traceSummary.js";
 
@@ -60,6 +60,7 @@ export async function runRecipe(opts: {
       });
       current = coercedOut;
     } catch (e) {
+      if (e instanceof EngineError) throw e;
       const msg = e instanceof Error ? e.message : String(e);
       throw new OperationRuntimeError(op.id, msg);
     }
