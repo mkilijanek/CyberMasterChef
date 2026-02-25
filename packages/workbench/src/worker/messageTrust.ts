@@ -22,7 +22,12 @@ function isWorkerRequest(value: unknown): value is WorkerRequest {
     if (bake.input.type !== "string" && bake.input.type !== "bytes" && bake.input.type !== "json") {
       return false;
     }
-    if (bake.timeoutMs !== undefined && typeof bake.timeoutMs !== "number") return false;
+    if (
+      bake.timeoutMs !== undefined &&
+      (typeof bake.timeoutMs !== "number" || !Number.isFinite(bake.timeoutMs))
+    ) {
+      return false;
+    }
     return true;
   }
   return false;

@@ -135,7 +135,10 @@ Recommended minimum pipeline:
 - `pnpm typecheck`
 - `pnpm test`
 - `pnpm build`
-- parity gate: `pnpm test:parity`
+- C1 parity gate: `pnpm c1:check`
+- C3 contract gate: `pnpm c3:check`
+- security gates: `pnpm security:csp-check` and `pnpm security:audit`
+- release readiness gate: `pnpm release:readiness`
 - e2e gate (for workbench changes): `pnpm test:e2e`
 
 ### Security baseline
@@ -157,7 +160,7 @@ Milestones:
 - [x] M2: C2 waves `1-20` completed on `dev`.
 - [x] M3: Forensic Triage baseline modules implemented (`forensic.basicPreTriage`, `forensic.basicTriage`).
 - [x] M4: Compression/archive baseline (`compression.gzip`, `compression.gunzip`) complete.
-- [ ] M5: C3 contract-driven tests and CI contract gate enabled.
+- [x] M5: C3 contract-driven tests and CI contract gate enabled.
 - [ ] M6: Security and integration hardening complete (YARA/STIX/MISP/dynamic sandbox non-mocked).
 
 Module groups checklist:

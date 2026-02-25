@@ -34,6 +34,11 @@ function extractStringLiteral(source, key) {
   return m ? m[1] : "";
 }
 
+function extractOperationLiteral(source) {
+  const m = source.match(/export\s+const\s+[A-Za-z0-9_]+\s*:\s*Operation\s*=\s*\{([\s\S]*?)\n\};/m);
+  return m ? m[1] : source;
+}
+
 function extractArgsSchema(source) {
   const argsBlock = source.match(/args\s*:\s*\[([\s\S]*?)\]\s*,\s*run\s*:/m);
   if (!argsBlock) return [];
@@ -72,12 +77,13 @@ export function loadImplementedOperations(repoRoot) {
     const fileStem = imports.get(symbol) ?? symbol;
     const filePath = resolve(opsDir, `${fileStem}.ts`);
     const source = readFileSync(filePath, "utf-8");
-    const id = extractStringLiteral(source, "id");
-    const name = extractStringLiteral(source, "name");
-    const description = extractStringLiteral(source, "description");
-    const input = extractArrayLiteral(source, "input");
-    const output = extractStringLiteral(source, "output");
-    const args = extractArgsSchema(source);
+    const opLiteral = extractOperationLiteral(source);
+    const id = extractStringLiteral(opLiteral, "id");
+    const name = extractStringLiteral(opLiteral, "name");
+    const description = extractStringLiteral(opLiteral, "description");
+    const input = extractArrayLiteral(opLiteral, "input");
+    const output = extractStringLiteral(opLiteral, "output");
+    const args = extractArgsSchema(opLiteral);
     return {
       index: idx + 1,
       symbol,

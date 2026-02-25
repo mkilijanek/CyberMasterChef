@@ -51,10 +51,14 @@ contracts.sort((a, b) => a.operationId.localeCompare(b.operationId));
 mkdirSync(parityDir, { recursive: true });
 writeFileSync(outJsonPath, `${JSON.stringify(contracts, null, 2)}\n`, "utf-8");
 
+const generatedAt = process.env.SOURCE_DATE_EPOCH
+  ? new Date(Number(process.env.SOURCE_DATE_EPOCH) * 1000).toISOString()
+  : new Date(0).toISOString();
+
 const md = [];
 md.push("# C3 Operation Compatibility Contracts");
 md.push("");
-md.push(`Generated: ${new Date().toISOString()}`);
+md.push(`Generated: ${generatedAt}`);
 md.push(`Total contracts: ${contracts.length}`);
 md.push("");
 md.push("## Contract entries (compact)");

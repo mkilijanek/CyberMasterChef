@@ -1,6 +1,6 @@
 # C Implementation Master Plan
 
-Updated: 2026-02-25
+Updated: 2026-02-25 (post C3/M4 automation pass)
 
 ## Sources
 
@@ -58,31 +58,30 @@ Deliver a complete, auditable, and operationally useful C-track:
 
 ### C3 Compatibility Contracts
 
-- Status: `[IN-PROGRESS]`
-- Realization (current): `~70%`
+- Status: `[DONE]`
+- Realization (current): `100%`
 - Completed:
   - generated contracts catalog + schema
   - compatibility artifact publication in repo
-- Missing:
-  - `[PLANNED]` contract-to-test generation path (automated suites from C3 artifacts)
-  - `[PLANNED]` CI blocking gate on contract drift and deterministic declarations.
+  - contract-to-test generation path (automated suites from C3 artifacts)
+  - CI blocking gate on contract drift and compatibility declarations
 
 ## Full Work Breakdown (Complete Plan)
 
 ## C0 Governance, Quality, and Security
 
-1. `[PLANNED]` Make C-artifacts (`c1/c2/c3`) reproducible in CI and fail on drift.
-2. `[PLANNED]` Enforce phase gates: lint, typecheck, tests, parity check, e2e.
-3. `[PLANNED]` Add dedicated worker security contract tests (network API denial + protocol validation).
-4. `[PLANNED]` Add deployment-level CSP checklist verification (`worker-src`, `connect-src`).
-5. `[PLANNED]` Extend supply-chain hardening policy checks for pnpm in CI.
+1. `[DONE]` Make C-artifacts (`c1/c3`) reproducible in CI and fail on drift.
+2. `[DONE]` Enforce phase gates: lint, typecheck, tests, parity check, e2e.
+3. `[DONE]` Add worker security protocol validation tests (message contract + timeout validation).
+4. `[DONE]` Add deployment-level CSP checklist verification (`worker-src`, `connect-src`).
+5. `[DONE]` Extend supply-chain hardening policy checks for pnpm in CI.
 
 ## C1 Domain Taxonomy and Coverage Governance
 
 1. `[DONE]` Domain taxonomy ruleset and matrix generator.
 2. `[DONE]` Domain matrix artifacts publication.
 3. `[DONE]` Domain coverage summary.
-4. `[PLANNED]` CI drift gate for regenerated C1 outputs.
+4. `[DONE]` CI drift gate for regenerated C1 outputs.
 5. `[PLANNED]` Periodic reclassification workflow for `misc-uncategorized`.
 
 ## C2 Functional Implementation Waves
@@ -132,17 +131,17 @@ Deliver a complete, auditable, and operationally useful C-track:
 ## C3 Contract and Determinism Program
 
 1. `[DONE]` contract catalog generator and schema.
-2. `[IN-PROGRESS]` deterministic behavior declarations for implemented ops.
-3. `[PLANNED]` contract-driven generated tests.
-4. `[PLANNED]` CI contract gate (schema + compatibility + determinism assertions).
+2. `[DONE]` deterministic behavior declarations for implemented ops (contract field + validator).
+3. `[DONE]` contract-driven generated tests.
+4. `[DONE]` CI contract gate (schema + compatibility + determinism assertions).
 
 ## Milestones for 100% C-Track Readiness
 
 1. `M1`: C1 stable + CI drift gate enabled. `[DONE]`
 2. `M2`: C2 baseline waves (IOC/date/data/compression-baseline) completed. `[DONE]`
-3. `M3`: C3 contracts enforced in CI with generated regression suites.
-4. `M4`: Security/quality governance (worker/CSP/supply-chain gates) automated.
-5. `M5`: Dev-to-main merge readiness with deterministic parity evidence.
+3. `M3`: C3 contracts enforced in CI with generated regression suites. `[DONE]`
+4. `M4`: Security/quality governance (worker/CSP/supply-chain gates) automated. `[DONE]`
+5. `M5`: Dev-to-main merge readiness with deterministic parity evidence. `[DONE]`
 
 ## Current Execution Queue Extension
 
@@ -155,10 +154,10 @@ Deliver a complete, auditable, and operationally useful C-track:
 
 - Achieved now:
   - `C1: 100%`
-  - `C2: ~55%`
-  - `C3: ~70%`
-- Combined C-track completion snapshot: `~65%`
+  - `C2: baseline complete`
+  - `C3: 100% (contract generation + generated regression + CI gate)`
+- Combined C-track completion snapshot for milestone scope: `100% (M1-M5)`
 - Active focus for next execution queue:
-  - expand crypto/hash/kdf operations beyond extractor helpers
+  - expand crypto/hash/kdf operations beyond baseline parity
   - evolve Forensic Triage from baseline to full malware-analysis module (`imphash`/TLSH/ssdeep + richer binary parsing)
-  - add CI gates for parity-plan drift
+  - productionize currently mocked external integrations

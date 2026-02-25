@@ -19,6 +19,12 @@ jobs:
         run: pnpm install
       - name: C1 Drift Gate
         run: pnpm c1:check
+      - name: C3 Contract Gate
+        run: pnpm c3:check
+      - name: CSP Checklist Gate
+        run: pnpm security:csp-check
+      - name: Supply Chain Audit Gate
+        run: pnpm security:audit
       - name: Lint
         run: pnpm lint
       - name: Typecheck
@@ -31,3 +37,5 @@ jobs:
         run: pnpm test:e2e
       - name: Build
         run: pnpm build
+      - name: Release Readiness Gate
+        run: pnpm release:readiness
