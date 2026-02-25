@@ -1,5 +1,4 @@
 import type { Operation } from "@cybermasterchef/core";
-import { Readable } from "node:stream";
 
 type TarHeader = {
   name: string;
@@ -16,6 +15,7 @@ type TarExtract = {
     event: "entry" | "finish" | "error",
     cb: (...args: unknown[]) => void
   ) => void;
+  end: (chunk?: Uint8Array) => void;
 };
 
 function bytesToBase64(bytes: Uint8Array): string {
@@ -27,6 +27,17 @@ function bytesToBase64(bytes: Uint8Array): string {
     binary += String.fromCharCode(value);
   });
   return btoa(binary);
+}
+
+function concatChunks(chunks: Uint8Array[]): Uint8Array {
+  const totalLength = chunks.reduce((sum, chunk) => sum + chunk.byteLength, 0);
+  const output = new Uint8Array(totalLength);
+  let offset = 0;
+  for (const chunk of chunks) {
+    output.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return output;
 }
 
 export const untar: Operation = {
@@ -56,10 +67,20 @@ export const untar: Operation = {
         const header = headerRaw as TarHeader;
         const stream = streamRaw as TarEntryStream;
         const next = nextRaw as () => void;
-        const chunks: Buffer[] = [];
-        stream.on("data", (chunk) => chunks.push(chunk as Buffer));
+        const chunks: Uint8Array[] = [];
+        stream.on("data", (chunk) => {
+          if (chunk instanceof Uint8Array) {
+            chunks.push(chunk);
+            return;
+          }
+          if (typeof chunk === "string") {
+            chunks.push(new TextEncoder().encode(chunk));
+            return;
+          }
+          throw new Error("Unsupported tar entry chunk type");
+        });
         stream.on("end", () => {
-          const content = Buffer.concat(chunks);
+          const content = concatChunks(chunks);
           const base64 = header.type === "file" ? bytesToBase64(content) : null;
           entries.push({
             name: header.name,
@@ -75,7 +96,7 @@ export const untar: Operation = {
       extractor.on("error", reject);
     });
 
-    Readable.from([Buffer.from(input.value)]).pipe(extractor);
+    extractor.end(input.value);
     await resultPromise;
 
     entries.sort((a, b) => a.name.localeCompare(b.name));
