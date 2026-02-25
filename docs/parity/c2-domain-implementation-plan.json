@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-02-25T10:06:57.370Z",
+  "generatedAt": "2026-02-25T10:40:37.049Z",
   "source": {
     "c1MatrixPath": "/home/kili/Repo/CyberMasterChef/CyberMasterChef/docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 253
+    "implementedOpsCount": 292
   },
   "summary": [
     {
@@ -344,9 +344,9 @@
       "domain": "data-formats",
       "description": "Structured formats (JSON/XML/CSV/YAML/TOML/HTML and format conversion).",
       "cyberChefTotal": 50,
-      "implementedTotal": 24,
-      "missingEstimated": 26,
-      "coveragePct": 48,
+      "implementedTotal": 62,
+      "missingEstimated": 0,
+      "coveragePct": 124,
       "implementationCandidates": [
         {
           "operationName": "AddTextToImage",
@@ -764,9 +764,9 @@
       "domain": "misc-uncategorized",
       "description": "Operations that require manual triage or do not fit current taxonomy.",
       "cyberChefTotal": 149,
-      "implementedTotal": 87,
-      "missingEstimated": 62,
-      "coveragePct": 58.39,
+      "implementedTotal": 88,
+      "missingEstimated": 61,
+      "coveragePct": 59.06,
       "implementationCandidates": [
         {
           "operationName": "AlternatingCaps",

@@ -1,7 +1,7 @@
 # C2 Domain Implementation Plan
 
-Generated: 2026-02-25T10:06:57.370Z
-Implemented operations in repo: 253
+Generated: 2026-02-25T10:40:37.049Z
+Implemented operations in repo: 292
 
 ## Priority order
 
@@ -84,9 +84,9 @@ Implemented operations in repo: 253
 ### data-formats
 - Description: Structured formats (JSON/XML/CSV/YAML/TOML/HTML and format conversion).
 - CyberChef total: 50
-- Implemented total: 24
-- Estimated missing: 26
-- Coverage: 48%
+- Implemented total: 62
+- Estimated missing: 0
+- Coverage: 124%
 - Candidate operations (first 20):
   - AddTextToImage (AddTextToImage.mjs) [high]
   - AMFDecode (AMFDecode.mjs) [high]
@@ -156,9 +156,9 @@ Implemented operations in repo: 253
 ### misc-uncategorized
 - Description: Operations that require manual triage or do not fit current taxonomy.
 - CyberChef total: 149
-- Implemented total: 87
-- Estimated missing: 62
-- Coverage: 58.39%
+- Implemented total: 88
+- Estimated missing: 61
+- Coverage: 59.06%
 - Candidate operations (first 20):
   - AlternatingCaps (AlternatingCaps.mjs) [low]
   - Amount (BitShiftLeft.mjs) [low]

@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
-Generated: 2026-02-25T10:07:03.778Z
-Total contracts: 253
+Generated: 2026-02-25T10:40:41.494Z
+Total contracts: 292
 
 ## Contract entries (compact)
 
@@ -467,6 +467,20 @@ Total contracts: 253
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.amfDecode
+  - name: AMF Decode
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.amfEncode
+  - name: AMF Encode
+  - domain: data-formats
+  - inputTypes: string, json
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - format.avroDecode
   - name: Avro Decode
   - domain: data-formats
@@ -481,6 +495,13 @@ Total contracts: 253
   - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_ARGUMENT, INVALID_INPUT_TYPE
+- format.avroToJson
+  - name: Avro To JSON
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
 - format.bsonDecode
   - name: BSON Decode
   - domain: data-formats
@@ -490,6 +511,13 @@ Total contracts: 253
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - format.bsonEncode
   - name: BSON Encode
+  - domain: data-formats
+  - inputTypes: string, json
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.bsonSerialise
+  - name: BSON Serialise
   - domain: data-formats
   - inputTypes: string, json
   - outputType: bytes
@@ -516,6 +544,41 @@ Total contracts: 253
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.fromHexdump
+  - name: From Hexdump
+  - domain: data-formats
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.fromHtmlEntity
+  - name: From HTML Entity
+  - domain: data-formats
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.fromMessagePack
+  - name: From MessagePack
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.fromQuotedPrintable
+  - name: From Quoted Printable
+  - domain: data-formats
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.htmlToText
+  - name: HTML To Text
+  - domain: data-formats
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - format.jsonArrayLength
   - name: JSON Array Length
   - domain: data-formats
@@ -523,6 +586,13 @@ Total contracts: 253
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- format.jsonataQuery
+  - name: Jsonata Query
+  - domain: data-formats
+  - inputTypes: string, json
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_ARGUMENT, INVALID_INPUT_TYPE
 - format.jsonBeautify
   - name: JSON Beautify
   - domain: data-formats
@@ -576,6 +646,76 @@ Total contracts: 253
   - name: JSON To YAML
   - domain: data-formats
   - inputTypes: string, json
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.protobufDecode
+  - name: Protobuf Decode
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- format.protobufEncode
+  - name: Protobuf Encode
+  - domain: data-formats
+  - inputTypes: string, json
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_ARGUMENT, INVALID_INPUT_TYPE
+- format.stripHtmlTags
+  - name: Strip HTML Tags
+  - domain: data-formats
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.toHexdump
+  - name: To Hexdump
+  - domain: data-formats
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.toHtmlEntity
+  - name: To HTML Entity
+  - domain: data-formats
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.toMessagePack
+  - name: To MessagePack
+  - domain: data-formats
+  - inputTypes: string, json
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.toQuotedPrintable
+  - name: To Quoted Printable
+  - domain: data-formats
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.toTable
+  - name: To Table
+  - domain: data-formats
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.xmlBeautify
+  - name: XML Beautify
+  - domain: data-formats
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- format.xmlMinify
+  - name: XML Minify
+  - domain: data-formats
+  - inputTypes: string
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
@@ -684,8 +824,92 @@ Total contracts: 253
   - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.brightnessContrast
+  - name: Image Brightness/Contrast
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - image.contain
   - name: Contain Image
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.convertFormat
+  - name: Convert Image Format
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.cover
+  - name: Cover Image
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.crop
+  - name: Crop Image
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.dither
+  - name: Dither Image
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.extractExif
+  - name: Extract EXIF
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.filter
+  - name: Image Filter
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.flip
+  - name: Flip Image
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.generate
+  - name: Generate Image
+  - domain: data-formats
+  - inputTypes: string, json, number
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
+- image.generateQrCode
+  - name: Generate QR Code
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.hsl
+  - name: Image Hue/Saturation/Lightness
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.invert
+  - name: Invert Image
   - domain: data-formats
   - inputTypes: bytes
   - outputType: bytes
@@ -696,6 +920,55 @@ Total contracts: 253
   - domain: data-formats
   - inputTypes: bytes
   - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.normalise
+  - name: Normalise Image
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.opacity
+  - name: Image Opacity
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.removeExif
+  - name: Remove EXIF
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.render
+  - name: Render Image
+  - domain: data-formats
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.resize
+  - name: Resize Image
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.rotate
+  - name: Rotate Image
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- image.sharpen
+  - name: Sharpen Image
+  - domain: data-formats
+  - inputTypes: bytes
+  - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - network.dechunkHttpResponse

@@ -153,6 +153,41 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 - [x] `date.translateDateTimeFormat` operation.
 - [x] `network.dechunkHttpResponse` operation.
 
+## Wave 22 backlog
+
+- [x] `format.amfEncode` and `format.amfDecode` operations.
+- [x] `format.avroToJson` operation.
+- [x] `format.bsonSerialise` operation.
+- [x] `format.toTable` operation.
+- [x] `format.toHtmlEntity` and `format.fromHtmlEntity` operations.
+- [x] `format.toMessagePack` and `format.fromMessagePack` operations.
+- [x] `format.toQuotedPrintable` and `format.fromQuotedPrintable` operations.
+- [x] `format.htmlToText` operation.
+- [x] `format.jsonataQuery` operation.
+- [x] `format.xmlBeautify` and `format.xmlMinify` operations.
+- [x] `format.protobufEncode` and `format.protobufDecode` operations.
+- [x] `format.stripHtmlTags` operation.
+- [x] `format.toHexdump` and `format.fromHexdump` operations.
+- [x] `image.convertFormat` operation.
+- [x] `image.cover` operation.
+- [x] `image.crop` operation.
+- [x] `image.dither` operation.
+- [x] `image.extractExif` operation.
+- [x] `image.flip` operation.
+- [x] `image.generate` operation.
+- [x] `image.generateQrCode` operation.
+- [x] `image.brightnessContrast` operation.
+- [x] `image.filter` operation.
+- [x] `image.hsl` operation.
+- [x] `image.opacity` operation.
+- [x] `image.invert` operation.
+- [x] `image.normalise` operation.
+- [x] `image.removeExif` operation.
+- [x] `image.render` operation.
+- [x] `image.resize` operation.
+- [x] `image.rotate` operation.
+- [x] `image.sharpen` operation.
+
 ## Queue extension
 
 - [x] Queue tasks `1-20` completed on `dev`.

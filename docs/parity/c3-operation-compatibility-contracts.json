@@ -1909,6 +1909,69 @@
     }
   },
   {
+    "operationId": "format.amfDecode",
+    "name": "AMF Decode",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [
+      {
+        "key": "version",
+        "type": "select",
+        "label": "Version",
+        "defaultValue": "\"AMF0\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/amfDecode.ts",
+      "description": "Decodes AMF0/AMF3 bytes into JSON."
+    }
+  },
+  {
+    "operationId": "format.amfEncode",
+    "name": "AMF Encode",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "version",
+        "type": "select",
+        "label": "Version",
+        "defaultValue": "\"AMF0\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/amfEncode.ts",
+      "description": "Encodes JSON data into AMF0/AMF3 bytes."
+    }
+  },
+  {
     "operationId": "format.avroDecode",
     "name": "Avro Decode",
     "domain": "data-formats",
@@ -1976,6 +2039,39 @@
     }
   },
   {
+    "operationId": "format.avroToJson",
+    "name": "Avro To JSON",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [
+      {
+        "key": "schema",
+        "type": "string",
+        "label": "Schema (JSON)",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected bytes input",
+        "Schema argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/avroToJson.ts",
+      "description": "Decodes Avro binary into JSON using a provided schema."
+    }
+  },
+  {
     "operationId": "format.bsonDecode",
     "name": "BSON Decode",
     "domain": "data-formats",
@@ -2021,6 +2117,31 @@
     },
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/bsonEncode.ts",
+      "description": "Encodes JSON into BSON bytes."
+    }
+  },
+  {
+    "operationId": "format.bsonSerialise",
+    "name": "BSON Serialise",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bsonSerialise.ts",
       "description": "Encodes JSON into BSON bytes."
     }
   },
@@ -2117,6 +2238,126 @@
     }
   },
   {
+    "operationId": "format.fromHexdump",
+    "name": "From Hexdump",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromHexdump.ts",
+      "description": "Decodes hex bytes from a hexdump string."
+    }
+  },
+  {
+    "operationId": "format.fromHtmlEntity",
+    "name": "From HTML Entity",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromHtmlEntity.ts",
+      "description": "Decodes HTML entities into text."
+    }
+  },
+  {
+    "operationId": "format.fromMessagePack",
+    "name": "From MessagePack",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromMessagePack.ts",
+      "description": "Decodes MessagePack bytes into JSON."
+    }
+  },
+  {
+    "operationId": "format.fromQuotedPrintable",
+    "name": "From Quoted Printable",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromQuotedPrintable.ts",
+      "description": "Decodes quoted-printable text into UTF-8."
+    }
+  },
+  {
+    "operationId": "format.htmlToText",
+    "name": "HTML To Text",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/htmlToText.ts",
+      "description": "Converts HTML markup to plain text."
+    }
+  },
+  {
     "operationId": "format.jsonArrayLength",
     "name": "JSON Array Length",
     "domain": "data-formats",
@@ -2148,6 +2389,40 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/jsonArrayLength.ts",
       "description": "Returns length of root or nested JSON array."
+    }
+  },
+  {
+    "operationId": "format.jsonataQuery",
+    "name": "Jsonata Query",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "json",
+    "argsSchema": [
+      {
+        "key": "expression",
+        "type": "string",
+        "label": "Expression",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_ARGUMENT",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expression argument is required",
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/jsonataQuery.ts",
+      "description": "Executes a Jsonata expression against JSON input."
     }
   },
   {
@@ -2366,6 +2641,322 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/jsonToYaml.ts",
       "description": "Serializes JSON into YAML."
+    }
+  },
+  {
+    "operationId": "format.protobufDecode",
+    "name": "Protobuf Decode",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [
+      {
+        "key": "schema",
+        "type": "string",
+        "label": "Schema (.proto)",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "messageType",
+        "type": "string",
+        "label": "Message Type",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected bytes input",
+        "Schema argument is required",
+        "Message type argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/protobufDecode.ts",
+      "description": "Decodes Protobuf bytes into JSON using a schema."
+    }
+  },
+  {
+    "operationId": "format.protobufEncode",
+    "name": "Protobuf Encode",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "schema",
+        "type": "string",
+        "label": "Schema (.proto)",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "messageType",
+        "type": "string",
+        "label": "Message Type",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_ARGUMENT",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Schema argument is required",
+        "Message type argument is required",
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/protobufEncode.ts",
+      "description": "Encodes JSON into Protobuf bytes using a schema."
+    }
+  },
+  {
+    "operationId": "format.stripHtmlTags",
+    "name": "Strip HTML Tags",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/stripHtmlTags.ts",
+      "description": "Removes HTML tags from text."
+    }
+  },
+  {
+    "operationId": "format.toHexdump",
+    "name": "To Hexdump",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "width",
+        "type": "number",
+        "label": "Width",
+        "defaultValue": "16"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toHexdump.ts",
+      "description": "Renders bytes into a classic hexdump format."
+    }
+  },
+  {
+    "operationId": "format.toHtmlEntity",
+    "name": "To HTML Entity",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "encodeEverything",
+        "type": "boolean",
+        "label": "Encode Everything",
+        "defaultValue": "false"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toHtmlEntity.ts",
+      "description": "Encodes text to HTML entities."
+    }
+  },
+  {
+    "operationId": "format.toMessagePack",
+    "name": "To MessagePack",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toMessagePack.ts",
+      "description": "Encodes JSON into MessagePack bytes."
+    }
+  },
+  {
+    "operationId": "format.toQuotedPrintable",
+    "name": "To Quoted Printable",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toQuotedPrintable.ts",
+      "description": "Encodes UTF-8 text into quoted-printable."
+    }
+  },
+  {
+    "operationId": "format.toTable",
+    "name": "To Table",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\""
+      },
+      {
+        "key": "header",
+        "type": "boolean",
+        "label": "Header Row",
+        "defaultValue": "true"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toTable.ts",
+      "description": "Formats CSV input into an aligned table."
+    }
+  },
+  {
+    "operationId": "format.xmlBeautify",
+    "name": "XML Beautify",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "indent",
+        "type": "number",
+        "label": "Indent",
+        "defaultValue": "2"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/xmlBeautify.ts",
+      "description": "Formats XML with indentation."
+    }
+  },
+  {
+    "operationId": "format.xmlMinify",
+    "name": "XML Minify",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "preserveComments",
+        "type": "boolean",
+        "label": "Preserve Comments",
+        "defaultValue": "true"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/xmlMinify.ts",
+      "description": "Minifies XML by removing whitespace between tags."
     }
   },
   {
@@ -2784,6 +3375,43 @@
     }
   },
   {
+    "operationId": "image.brightnessContrast",
+    "name": "Image Brightness/Contrast",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "brightness",
+        "type": "number",
+        "label": "Brightness (-1 to 1)",
+        "defaultValue": "0"
+      },
+      {
+        "key": "contrast",
+        "type": "number",
+        "label": "Contrast (-1 to 1)",
+        "defaultValue": "0"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/imageBrightnessContrast.ts",
+      "description": "Adjusts brightness and contrast of an image."
+    }
+  },
+  {
     "operationId": "image.contain",
     "name": "Contain Image",
     "domain": "data-formats",
@@ -2827,6 +3455,398 @@
     }
   },
   {
+    "operationId": "image.convertFormat",
+    "name": "Convert Image Format",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "format",
+        "type": "select",
+        "label": "Format",
+        "defaultValue": "\"png\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/convertImageFormat.ts",
+      "description": "Converts image bytes to a selected format."
+    }
+  },
+  {
+    "operationId": "image.cover",
+    "name": "Cover Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "width",
+        "type": "number",
+        "label": "Width",
+        "defaultValue": "512"
+      },
+      {
+        "key": "height",
+        "type": "number",
+        "label": "Height",
+        "defaultValue": "512"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/coverImage.ts",
+      "description": "Resizes an image to cover a bounding box."
+    }
+  },
+  {
+    "operationId": "image.crop",
+    "name": "Crop Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "left",
+        "type": "number",
+        "label": "Left",
+        "defaultValue": "0"
+      },
+      {
+        "key": "top",
+        "type": "number",
+        "label": "Top",
+        "defaultValue": "0"
+      },
+      {
+        "key": "width",
+        "type": "number",
+        "label": "Width",
+        "defaultValue": "100"
+      },
+      {
+        "key": "height",
+        "type": "number",
+        "label": "Height",
+        "defaultValue": "100"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/cropImage.ts",
+      "description": "Crops an image to the specified rectangle."
+    }
+  },
+  {
+    "operationId": "image.dither",
+    "name": "Dither Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "threshold",
+        "type": "number",
+        "label": "Threshold",
+        "defaultValue": "128"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/ditherImage.ts",
+      "description": "Applies a monochrome dithering-like threshold to the image."
+    }
+  },
+  {
+    "operationId": "image.extractExif",
+    "name": "Extract EXIF",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractExif.ts",
+      "description": "Extracts EXIF metadata from image bytes."
+    }
+  },
+  {
+    "operationId": "image.filter",
+    "name": "Image Filter",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "filter",
+        "type": "select",
+        "label": "Filter",
+        "defaultValue": "\"grayscale\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/imageFilter.ts",
+      "description": "Applies a simple filter to the image."
+    }
+  },
+  {
+    "operationId": "image.flip",
+    "name": "Flip Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "horizontal",
+        "type": "boolean",
+        "label": "Horizontal",
+        "defaultValue": "true"
+      },
+      {
+        "key": "vertical",
+        "type": "boolean",
+        "label": "Vertical",
+        "defaultValue": "false"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/flipImage.ts",
+      "description": "Flips an image horizontally and/or vertically."
+    }
+  },
+  {
+    "operationId": "image.generate",
+    "name": "Generate Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string",
+      "json",
+      "number"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "width",
+        "type": "number",
+        "label": "Width",
+        "defaultValue": "256"
+      },
+      {
+        "key": "height",
+        "type": "number",
+        "label": "Height",
+        "defaultValue": "256"
+      },
+      {
+        "key": "color",
+        "type": "string",
+        "label": "Color",
+        "defaultValue": "\"#000000\""
+      },
+      {
+        "key": "format",
+        "type": "select",
+        "label": "Format",
+        "defaultValue": "\"png\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/generateImage.ts",
+      "description": "Generates a solid color image."
+    }
+  },
+  {
+    "operationId": "image.generateQrCode",
+    "name": "Generate QR Code",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "scale",
+        "type": "number",
+        "label": "Scale",
+        "defaultValue": "4"
+      },
+      {
+        "key": "margin",
+        "type": "number",
+        "label": "Margin",
+        "defaultValue": "2"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/generateQrCode.ts",
+      "description": "Generates a QR code PNG from input text."
+    }
+  },
+  {
+    "operationId": "image.hsl",
+    "name": "Image Hue/Saturation/Lightness",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "hue",
+        "type": "number",
+        "label": "Hue (degrees)",
+        "defaultValue": "0"
+      },
+      {
+        "key": "saturation",
+        "type": "number",
+        "label": "Saturation (-1 to 1)",
+        "defaultValue": "0"
+      },
+      {
+        "key": "lightness",
+        "type": "number",
+        "label": "Lightness (-1 to 1)",
+        "defaultValue": "0"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/imageHueSaturationLightness.ts",
+      "description": "Adjusts hue, saturation, and lightness of an image."
+    }
+  },
+  {
+    "operationId": "image.invert",
+    "name": "Invert Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/invertImage.ts",
+      "description": "Inverts image colors."
+    }
+  },
+  {
     "operationId": "image.metadata",
     "name": "Image Metadata",
     "domain": "data-formats",
@@ -2848,6 +3868,215 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/imageMetadata.ts",
       "description": "Extracts width, height, and format metadata from image bytes."
+    }
+  },
+  {
+    "operationId": "image.normalise",
+    "name": "Normalise Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/normaliseImage.ts",
+      "description": "Normalises image contrast."
+    }
+  },
+  {
+    "operationId": "image.opacity",
+    "name": "Image Opacity",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "opacity",
+        "type": "number",
+        "label": "Opacity (0-1)",
+        "defaultValue": "1"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/imageOpacity.ts",
+      "description": "Adjusts image opacity (alpha)."
+    }
+  },
+  {
+    "operationId": "image.removeExif",
+    "name": "Remove EXIF",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeExif.ts",
+      "description": "Strips EXIF metadata by re-encoding the image."
+    }
+  },
+  {
+    "operationId": "image.render",
+    "name": "Render Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "format",
+        "type": "select",
+        "label": "Format",
+        "defaultValue": "\"png\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/renderImage.ts",
+      "description": "Renders an SVG string into image bytes."
+    }
+  },
+  {
+    "operationId": "image.resize",
+    "name": "Resize Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "width",
+        "type": "number",
+        "label": "Width",
+        "defaultValue": "256"
+      },
+      {
+        "key": "height",
+        "type": "number",
+        "label": "Height",
+        "defaultValue": "256"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/resizeImage.ts",
+      "description": "Resizes an image to the specified dimensions."
+    }
+  },
+  {
+    "operationId": "image.rotate",
+    "name": "Rotate Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "angle",
+        "type": "number",
+        "label": "Angle",
+        "defaultValue": "90"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/rotateImage.ts",
+      "description": "Rotates an image by a given angle."
+    }
+  },
+  {
+    "operationId": "image.sharpen",
+    "name": "Sharpen Image",
+    "domain": "data-formats",
+    "inputTypes": [
+      "bytes"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "sigma",
+        "type": "number",
+        "label": "Sigma",
+        "defaultValue": "1"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sharpenImage.ts",
+      "description": "Sharpens image details."
     }
   },
   {
