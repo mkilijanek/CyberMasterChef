@@ -1,13 +1,17 @@
 import type { Operation } from "@cybermasterchef/core";
-import { Readable } from "node:stream";
+const isNode = () => typeof process !== "undefined" && !!process.versions?.node;
 
 async function decodeAmf(data: Uint8Array, version: "AMF0" | "AMF3"): Promise<unknown> {
+  if (!isNode()) {
+    throw new Error("AMF decoding is only supported in Node.js environments");
+  }
   const amf = (await import("amfjs")) as {
     AMF0: unknown;
     AMF3: unknown;
     AMFDecoder: new (stream: NodeJS.ReadableStream) => { decode: (type: unknown) => unknown };
   };
 
+  const { Readable } = await import("node:stream");
   const stream = new Readable({ read() {} });
   stream.push(Buffer.from(data));
   stream.push(null);

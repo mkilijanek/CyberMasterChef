@@ -1,6 +1,6 @@
 import type { Operation } from "@cybermasterchef/core";
 import { OperationJsonParseError } from "@cybermasterchef/core";
-import { PassThrough } from "node:stream";
+const isNode = () => typeof process !== "undefined" && !!process.versions?.node;
 
 function parseJson(opId: string, value: string): unknown {
   try {
@@ -12,12 +12,16 @@ function parseJson(opId: string, value: string): unknown {
 }
 
 async function encodeAmf(value: unknown, version: "AMF0" | "AMF3"): Promise<Uint8Array> {
+  if (!isNode()) {
+    throw new Error("AMF encoding is only supported in Node.js environments");
+  }
   const amf = (await import("amfjs")) as {
     AMF0: unknown;
     AMF3: unknown;
     AMFEncoder: new (stream: NodeJS.WritableStream) => { writeObject: (val: unknown, type: unknown) => void };
   };
 
+  const { PassThrough } = await import("node:stream");
   const stream = new PassThrough();
   const chunks: Buffer[] = [];
   stream.on("data", (chunk) => chunks.push(chunk as Buffer));

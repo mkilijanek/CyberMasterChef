@@ -1,5 +1,4 @@
 import { OperationJsonParseError, type Operation } from "@cybermasterchef/core";
-import jsonata from "jsonata";
 
 function parseJson(opId: string, value: string): unknown {
   try {
@@ -38,10 +37,12 @@ export const jsonataQuery: Operation = {
     }
 
     try {
+      const { default: jsonata } = (await import("jsonata")) as {
+        default: (expr: string) => { evaluate: (input: unknown) => unknown };
+      };
       const expr = jsonata(expression);
-      const result = expr.evaluate(payload);
-      const resolved = result instanceof Promise ? await result : result;
-      return { type: "json", value: resolved };
+      const result = await (expr.evaluate(payload) as Promise<unknown>);
+      return { type: "json", value: result };
     } catch (error) {
       const reason = error instanceof Error ? error.message : String(error);
       throw new Error(`Jsonata evaluation failed: ${reason}`, { cause: error });
