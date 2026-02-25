@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { htmlToText } from "html-to-text";
 
 export const stripHtmlTags: Operation = {
   id: "format.stripHtmlTags",
@@ -9,7 +10,7 @@ export const stripHtmlTags: Operation = {
   args: [],
   run: ({ input }) => {
     if (input.type !== "string") throw new Error("Expected string input");
-    const value = input.value.replace(/<[^>]*>/g, "");
+    const value = htmlToText(input.value, { wordwrap: false });
     return { type: "string", value };
   }
 };

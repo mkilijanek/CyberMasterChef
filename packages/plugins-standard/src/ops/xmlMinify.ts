@@ -1,9 +1,19 @@
 import type { Operation } from "@cybermasterchef/core";
 
+function removeXmlComments(value: string): string {
+  let output = value;
+  let previous = "";
+  while (output !== previous) {
+    previous = output;
+    output = output.replace(/<!--([\s\S]*?)-->/g, "");
+  }
+  return output;
+}
+
 function minifyXml(value: string, preserveComments: boolean): string {
   let output = value.trim();
   if (!preserveComments) {
-    output = output.replace(/<!--([\s\S]*?)-->/g, "");
+    output = removeXmlComments(output);
   }
   output = output.replace(/>\s+</g, "><");
   output = output.replace(/>\s+([^<])/g, ">$1");
