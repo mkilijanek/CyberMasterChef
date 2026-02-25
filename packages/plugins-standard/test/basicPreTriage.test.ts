@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { createHash } from "node:crypto";
 import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core";
 import { basicPreTriage } from "../src/ops/basicPreTriage.js";
 
@@ -39,6 +40,57 @@ function makeMinimalPeSample(): Uint8Array {
   writeU32LE(data, sectionTable + 36, 0x60000020);
 
   for (let i = 0; i < 0x200; i++) data[0x200 + i] = (i * 31) & 0xff;
+  return data;
+}
+
+function writeAscii(data: Uint8Array, offset: number, value: string): void {
+  for (let i = 0; i < value.length; i++) {
+    data[offset + i] = value.charCodeAt(i);
+  }
+  data[offset + value.length] = 0x00;
+}
+
+function makeImportPeSample(): Uint8Array {
+  const data = new Uint8Array(0x800);
+  data[0] = 0x4d;
+  data[1] = 0x5a;
+  writeU32LE(data, 0x3c, 0x80);
+
+  const peOffset = 0x80;
+  data[peOffset] = 0x50;
+  data[peOffset + 1] = 0x45;
+  data[peOffset + 2] = 0x00;
+  data[peOffset + 3] = 0x00;
+  writeU16LE(data, peOffset + 4, 0x14c);
+  writeU16LE(data, peOffset + 6, 1);
+  writeU16LE(data, peOffset + 20, 0xe0);
+
+  const optionalHeader = peOffset + 24;
+  writeU16LE(data, optionalHeader, 0x10b);
+  writeU32LE(data, optionalHeader + 92, 16);
+  writeU32LE(data, optionalHeader + 96 + 8, 0x1100);
+  writeU32LE(data, optionalHeader + 96 + 12, 40);
+
+  const sectionTable = peOffset + 24 + 0xe0;
+  const name = ".rdata";
+  for (let i = 0; i < name.length; i++) data[sectionTable + i] = name.charCodeAt(i);
+  writeU32LE(data, sectionTable + 8, 0x300);
+  writeU32LE(data, sectionTable + 12, 0x1000);
+  writeU32LE(data, sectionTable + 16, 0x300);
+  writeU32LE(data, sectionTable + 20, 0x200);
+  writeU32LE(data, sectionTable + 36, 0x40000040);
+
+  const descriptor = 0x300;
+  writeU32LE(data, descriptor, 0x1140);
+  writeU32LE(data, descriptor + 12, 0x1120);
+  writeU32LE(data, descriptor + 16, 0x1140);
+
+  writeAscii(data, 0x320, "KERNEL32.dll");
+  writeU16LE(data, 0x330, 0);
+  writeAscii(data, 0x332, "LoadLibraryA");
+  writeU32LE(data, 0x340, 0x1130);
+  writeU32LE(data, 0x344, 0);
+
   return data;
 }
 
@@ -110,5 +162,26 @@ describe("forensic basic pre-triage", () => {
     expect(report.binaryAnalysis.sections[0]?.rawOffset).toBe(0x200);
     expect(report.binaryAnalysis.sections[0]?.rawSize).toBe(0x200);
     expect(report.binaryAnalysis.sections[0]?.entropy).toBeGreaterThan(0);
+  });
+
+  it("computes PE imphash when import table exists", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(basicPreTriage);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "forensic.basicPreTriage" }] };
+    const sample = makeImportPeSample();
+
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "bytes", value: sample }
+    });
+
+    expect(out.output.type).toBe("string");
+    if (out.output.type !== "string") return;
+    const report = JSON.parse(out.output.value) as {
+      hashes: { imphash: string | null };
+    };
+    const expected = createHash("md5").update("kernel32.loadlibrarya").digest("hex");
+    expect(report.hashes.imphash).toBe(expected);
   });
 });

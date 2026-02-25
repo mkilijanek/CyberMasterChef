@@ -31,7 +31,7 @@ type TriageReport = {
     sha256: string | null;
     sha512: string | null;
     md5: string | null;
-    imphash: null;
+    imphash: string | null;
     tlsh: null;
     ssdeep: null;
   };
@@ -97,6 +97,127 @@ function readU32LE(data: Uint8Array, offset: number): number {
     (data[offset + 2]! << 16) |
     (data[offset + 3]! << 24 >>> 0)
   ) >>> 0;
+}
+
+function readCStringAtOffset(data: Uint8Array, offset: number, maxBytes = 512): string | null {
+  if (offset < 0 || offset >= data.length) return null;
+  const bytes: number[] = [];
+  for (let i = 0; i < maxBytes && offset + i < data.length; i++) {
+    const b = data[offset + i]!;
+    if (b === 0x00) break;
+    bytes.push(b);
+  }
+  if (bytes.length === 0) return null;
+  return String.fromCharCode(...bytes);
+}
+
+function rvaToOffset(data: Uint8Array, sections: TriageSection[], rva: number): number | null {
+  for (const section of sections) {
+    const start = section.virtualAddress;
+    const size = Math.max(section.virtualSize, section.rawSize);
+    const end = start + size;
+    if (rva < start || rva >= end) continue;
+    const delta = rva - start;
+    if (delta >= section.rawSize) return null;
+    const offset = section.rawOffset + delta;
+    if (offset < 0 || offset >= data.length) return null;
+    return offset;
+  }
+  return null;
+}
+
+async function computeImphash(data: Uint8Array, sections: TriageSection[]): Promise<string | null> {
+  if (data.length < 0x100 || sections.length === 0) return null;
+  if (data[0] !== 0x4d || data[1] !== 0x5a) return null;
+
+  const peOffset = readU32LE(data, 0x3c);
+  if (peOffset <= 0 || peOffset + 24 >= data.length) return null;
+  if (
+    data[peOffset] !== 0x50 ||
+    data[peOffset + 1] !== 0x45 ||
+    data[peOffset + 2] !== 0x00 ||
+    data[peOffset + 3] !== 0x00
+  ) {
+    return null;
+  }
+
+  const optionalHeaderOffset = peOffset + 24;
+  const peMagic = readU16LE(data, optionalHeaderOffset);
+  const isPePlus = peMagic === 0x20b;
+  if (peMagic !== 0x10b && peMagic !== 0x20b) return null;
+
+  const dataDirectoryBase = optionalHeaderOffset + (isPePlus ? 112 : 96);
+  const importDirectoryOffset = dataDirectoryBase + 8;
+  if (importDirectoryOffset + 7 >= data.length) return null;
+
+  const importRva = readU32LE(data, importDirectoryOffset);
+  if (importRva === 0) return null;
+  const descriptorOffset = rvaToOffset(data, sections, importRva);
+  if (descriptorOffset === null) return null;
+
+  const tokens: string[] = [];
+  const descriptorSize = 20;
+  const maxDescriptors = 256;
+  const thunkSize = isPePlus ? 8 : 4;
+
+  for (let i = 0; i < maxDescriptors; i++) {
+    const base = descriptorOffset + i * descriptorSize;
+    if (base + descriptorSize > data.length) break;
+
+    const originalFirstThunk = readU32LE(data, base);
+    const nameRva = readU32LE(data, base + 12);
+    const firstThunk = readU32LE(data, base + 16);
+    if (originalFirstThunk === 0 && nameRva === 0 && firstThunk === 0) break;
+
+    const dllNameOffset = rvaToOffset(data, sections, nameRva);
+    if (dllNameOffset === null) continue;
+    const dllRaw = readCStringAtOffset(data, dllNameOffset);
+    if (!dllRaw) continue;
+    const dllName = dllRaw.toLowerCase().replace(/\.(dll|ocx|sys)$/i, "");
+
+    const thunkRva = originalFirstThunk !== 0 ? originalFirstThunk : firstThunk;
+    const thunkOffset = rvaToOffset(data, sections, thunkRva);
+    if (thunkOffset === null) continue;
+
+    for (let j = 0; j < 4096; j++) {
+      const entryOffset = thunkOffset + j * thunkSize;
+      if (entryOffset + thunkSize > data.length) break;
+
+      if (!isPePlus) {
+        const entry = readU32LE(data, entryOffset);
+        if (entry === 0) break;
+        const isOrdinal = (entry & 0x80000000) !== 0;
+        if (isOrdinal) {
+          const ordinal = entry & 0xffff;
+          tokens.push(`${dllName}.ord${ordinal}`);
+          continue;
+        }
+        const hintNameOffset = rvaToOffset(data, sections, entry);
+        if (hintNameOffset === null) continue;
+        const symbol = readCStringAtOffset(data, hintNameOffset + 2);
+        if (!symbol) continue;
+        tokens.push(`${dllName}.${symbol.toLowerCase()}`);
+      } else {
+        const low = readU32LE(data, entryOffset);
+        const high = readU32LE(data, entryOffset + 4);
+        if (low === 0 && high === 0) break;
+        const isOrdinal = (high & 0x80000000) !== 0;
+        if (isOrdinal) {
+          const ordinal = low & 0xffff;
+          tokens.push(`${dllName}.ord${ordinal}`);
+          continue;
+        }
+        const hintNameOffset = rvaToOffset(data, sections, low);
+        if (hintNameOffset === null) continue;
+        const symbol = readCStringAtOffset(data, hintNameOffset + 2);
+        if (!symbol) continue;
+        tokens.push(`${dllName}.${symbol.toLowerCase()}`);
+      }
+    }
+  }
+
+  if (tokens.length === 0) return null;
+  return md5(tokens.join(","));
 }
 
 function parsePeSections(data: Uint8Array): TriageSection[] {
@@ -268,7 +389,7 @@ export const basicPreTriage: Operation = {
     const sections = seemsBinary ? parsePeSections(data) : [];
     const format: "pe" | "unknown" | "text" = !seemsBinary ? "text" : sections.length > 0 ? "pe" : "unknown";
     const notes: string[] = [];
-    notes.push("imphash/TLSH/ssdeep are placeholders in this baseline and return null.");
+    notes.push("TLSH/ssdeep are placeholders in this baseline and return null.");
     if (seemsBinary && sections.length === 0) {
       notes.push("PE section table not detected; generic entropy segments provided.");
     }
@@ -285,7 +406,7 @@ export const basicPreTriage: Operation = {
         sha256: await digestHex(data, "SHA-256"),
         sha512: await digestHex(data, "SHA-512"),
         md5: await digestMd5Hex(data),
-        imphash: null,
+        imphash: await computeImphash(data, sections),
         tlsh: null,
         ssdeep: null
       },
