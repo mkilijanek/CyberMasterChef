@@ -37,6 +37,7 @@ describe("forensic basic triage", () => {
     expect(report.findings.length).toBeGreaterThan(0);
     expect(report.preTriage.iocs.cves).toEqual(["CVE-2024-12345"]);
     expect(report.mockedCapabilities).not.toContain("md5_digest_generation");
+    expect(report.mockedCapabilities).not.toContain("pe_imphash");
     expect(report.mockedCapabilities).not.toContain("stix_export");
     expect(report.mockedCapabilities).not.toContain("misp_export");
     expect(report.mockedCapabilities).toContain("dynamic_sandbox_integration_cuckoo");

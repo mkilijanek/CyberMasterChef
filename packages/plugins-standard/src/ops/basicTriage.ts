@@ -25,7 +25,7 @@ type PreTriageReport = {
     sha256: string | null;
     sha512: string | null;
     md5: string | null;
-    imphash: null;
+    imphash: string | null;
     tlsh: null;
     ssdeep: null;
   };
@@ -67,7 +67,6 @@ type TriageReport = {
 const MOCKED_CAPABILITIES = [
   "archive_password_handling_and_zip_unpacking",
   "zip_slip_and_zip_bomb_safe_unpack_guards",
-  "pe_imphash",
   "tlsh_fuzzy_hash",
   "ssdeep_fuzzy_hash",
   "yara_or_yara_x_rule_scanning",
@@ -215,11 +214,11 @@ function buildFindings(pre: PreTriageReport): { findings: TriageFinding[]; reaso
     });
   }
 
-  if (pre.hashes.imphash === null || pre.hashes.tlsh === null || pre.hashes.ssdeep === null) {
+  if (pre.hashes.tlsh === null || pre.hashes.ssdeep === null) {
     findings.push({
       id: "mocked-hash-capabilities",
       severity: "low",
-      description: "Some advanced hash/fuzzy-hash fields are placeholders in this build."
+      description: "Some fuzzy-hash fields are placeholders in this build."
     });
   }
 

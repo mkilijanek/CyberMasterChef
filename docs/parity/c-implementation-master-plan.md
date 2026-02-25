@@ -128,7 +128,9 @@ Deliver a complete, auditable, and operationally useful C-track:
 6. `[IN-PROGRESS]` production integrations:
    - `[DONE]` deterministic STIX/MISP export payloads in `forensic.basicTriage`
    - `[PLANNED]` ZIP password pipeline, YARA scanning, dynamic sandbox connector
-7. `[PLANNED]` advanced triage add-ons: full `imphash`, TLSH/ssdeep adapters, broader binary format support.
+7. `[IN-PROGRESS]` advanced triage add-ons:
+   - `[DONE]` baseline `imphash` computation for PE import tables
+   - `[PLANNED]` TLSH/ssdeep adapters and broader binary format support
 
 ## C3 Contract and Determinism Program
 
