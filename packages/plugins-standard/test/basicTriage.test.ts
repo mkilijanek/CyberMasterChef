@@ -24,6 +24,10 @@ describe("forensic basic triage", () => {
       score: { riskScoreNorm: number; verdict: string; reasons: string[] };
       findings: Array<{ id: string }>;
       mockedCapabilities: string[];
+      exports: {
+        stixBundle: { type: string; objects: Array<Record<string, unknown>> };
+        mispEvent: { Event: { Attribute: Array<{ type: string; value: string }> } };
+      };
       recommendations: string[];
       preTriage: { iocs: { cves: string[] } };
     };
@@ -33,7 +37,16 @@ describe("forensic basic triage", () => {
     expect(report.findings.length).toBeGreaterThan(0);
     expect(report.preTriage.iocs.cves).toEqual(["CVE-2024-12345"]);
     expect(report.mockedCapabilities).not.toContain("md5_digest_generation");
+    expect(report.mockedCapabilities).not.toContain("stix_export");
+    expect(report.mockedCapabilities).not.toContain("misp_export");
     expect(report.mockedCapabilities).toContain("dynamic_sandbox_integration_cuckoo");
+    expect(report.exports.stixBundle.type).toBe("bundle");
+    expect(report.exports.stixBundle.objects.length).toBeGreaterThan(0);
+    expect(
+      report.exports.mispEvent.Event.Attribute.some(
+        (attr) => attr.type === "vulnerability" && attr.value === "CVE-2024-12345"
+      )
+    ).toBe(true);
     expect(report.recommendations.length).toBeGreaterThan(0);
   });
 

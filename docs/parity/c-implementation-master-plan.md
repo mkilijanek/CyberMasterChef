@@ -125,7 +125,9 @@ Deliver a complete, auditable, and operationally useful C-track:
 3. `[DONE]` baseline triage verdict module with scored findings and recommendations.
 4. `[DONE]` safety constraints baseline (bounded IOC/segment extraction controls).
 5. `[IN-PROGRESS]` contract tests + golden fixtures for known malware-like samples.
-6. `[IN-PROGRESS]` production integrations currently mocked (ZIP password pipeline, YARA, STIX/MISP, dynamic sandbox connector).
+6. `[IN-PROGRESS]` production integrations:
+   - `[DONE]` deterministic STIX/MISP export payloads in `forensic.basicTriage`
+   - `[PLANNED]` ZIP password pipeline, YARA scanning, dynamic sandbox connector
 7. `[PLANNED]` advanced triage add-ons: full `imphash`, TLSH/ssdeep adapters, broader binary format support.
 
 ## C3 Contract and Determinism Program

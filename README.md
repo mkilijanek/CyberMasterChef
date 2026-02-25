@@ -178,7 +178,6 @@ Forensic Triage currently mocked capabilities:
 - [ ] imphash / TLSH / ssdeep generation.
 - [ ] YARA / YARA-X scanning integration.
 - [ ] Authenticode/X509 verification.
-- [ ] STIX/MISP export.
 - [ ] External dynamic sandbox connector (e.g. Cuckoo).
 
 ## Documentation Index
