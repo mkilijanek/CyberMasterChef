@@ -607,7 +607,8 @@
         "INVALID_INPUT_TYPE"
       ],
       "examples": [
-        "Expected bytes input"
+        "Expected bytes input",
+        "Unsupported tar entry chunk type"
       ]
     },
     "notes": {
@@ -923,7 +924,7 @@
   },
   {
     "operationId": "crypto.hmacSha1",
-    "name": "HMAC",
+    "name": "HMAC-SHA1",
     "domain": "crypto-hash-kdf",
     "inputTypes": [
       "bytes",
@@ -964,7 +965,7 @@
   },
   {
     "operationId": "crypto.hmacSha256",
-    "name": "HMAC",
+    "name": "HMAC-SHA256",
     "domain": "crypto-hash-kdf",
     "inputTypes": [
       "bytes",
@@ -1005,7 +1006,7 @@
   },
   {
     "operationId": "crypto.hmacSha512",
-    "name": "HMAC",
+    "name": "HMAC-SHA512",
     "domain": "crypto-hash-kdf",
     "inputTypes": [
       "bytes",
@@ -1586,6 +1587,44 @@
     }
   },
   {
+    "operationId": "forensic.basicTriage",
+    "name": "Basic Triage",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "suspiciousThreshold",
+        "type": "number",
+        "label": "Suspicious threshold",
+        "defaultValue": "30"
+      },
+      {
+        "key": "maliciousThreshold",
+        "type": "number",
+        "label": "Malicious threshold",
+        "defaultValue": "60"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Unexpected pre-triage output type"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/basicTriage.ts",
+      "description": "Builds triage verdict and risk score on top of forensic.basicPreTriage report."
+    }
+  },
+  {
     "operationId": "forensic.chiSquare",
     "name": "Chi Square",
     "domain": "forensic-malware-helper",
@@ -1931,6 +1970,7 @@
         "INVALID_INPUT_TYPE"
       ],
       "examples": [
+        "AMF decoding is only supported in Node.js environments",
         "Expected bytes input"
       ]
     },
@@ -1963,6 +2003,7 @@
         "INVALID_INPUT_TYPE"
       ],
       "examples": [
+        "AMF encoding is only supported in Node.js environments",
         "Expected string or json input"
       ]
     },
@@ -3259,44 +3300,6 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/sha512.ts",
       "description": "Computes SHA-512 digest. Output is lowercase hex string."
-    }
-  },
-  {
-    "operationId": "heuristic-matches",
-    "name": "Basic Triage",
-    "domain": "misc-uncategorized",
-    "inputTypes": [
-      "bytes",
-      "string"
-    ],
-    "outputType": "string",
-    "argsSchema": [
-      {
-        "key": "suspiciousThreshold",
-        "type": "number",
-        "label": "Suspicious threshold",
-        "defaultValue": "30"
-      },
-      {
-        "key": "maliciousThreshold",
-        "type": "number",
-        "label": "Malicious threshold",
-        "defaultValue": "60"
-      }
-    ],
-    "deterministic": true,
-    "errorTaxonomy": {
-      "categories": [
-        "EXECUTION_ERROR",
-        "INVALID_INPUT_TYPE"
-      ],
-      "examples": [
-        "Unexpected pre-triage output type"
-      ]
-    },
-    "notes": {
-      "sourceFile": "packages/plugins-standard/src/ops/basicTriage.ts",
-      "description": "Found CVE references in sample content."
     }
   },
   {

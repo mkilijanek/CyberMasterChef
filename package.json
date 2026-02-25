@@ -19,7 +19,13 @@
     "c1:domain-matrix": "node scripts/c1/generate-domain-matrix.mjs",
     "c1:check": "pnpm c1:domain-matrix && git diff --exit-code -- docs/parity/c1-operation-domain-matrix.csv docs/parity/c1-operation-domain-matrix.json docs/parity/c1-operation-domain-summary.md",
     "c2:plan": "node scripts/c2/generate-domain-implementation-plan.mjs",
-    "c3:contracts": "node scripts/c3/generate-compatibility-contracts.mjs"
+    "c3:contracts": "node scripts/c3/generate-compatibility-contracts.mjs",
+    "c3:testgen": "node scripts/c3/generate-contract-regression-tests.mjs",
+    "c3:validate": "node scripts/c3/check-contracts.mjs",
+    "c3:check": "pnpm c3:contracts && pnpm c3:testgen && pnpm c3:validate && git diff --exit-code -- docs/parity/c3-operation-compatibility-contracts.json docs/parity/c3-operation-compatibility-contracts.md docs/parity/c3-contract-schema.md packages/plugins-standard/test/generated/c3-contracts.generated.test.ts",
+    "security:csp-check": "node scripts/security/check-csp-checklist.mjs",
+    "security:audit": "pnpm audit --audit-level high",
+    "release:readiness": "node scripts/release/check-readiness.mjs"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

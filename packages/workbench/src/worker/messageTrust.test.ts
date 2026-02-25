@@ -25,4 +25,18 @@ describe("isTrustedWorkerMessage", () => {
     const ev = makeEvent({ type: "bake", id: "x" }, expectedOrigin);
     expect(isTrustedWorkerMessage(ev, expectedOrigin)).toBe(false);
   });
+
+  it("rejects bake requests with non-finite timeout", () => {
+    const ev = makeEvent(
+      {
+        type: "bake",
+        id: "x",
+        recipe: { version: 1, steps: [] },
+        input: { type: "string", value: "abc" },
+        timeoutMs: Number.POSITIVE_INFINITY
+      },
+      expectedOrigin
+    );
+    expect(isTrustedWorkerMessage(ev, expectedOrigin)).toBe(false);
+  });
 });

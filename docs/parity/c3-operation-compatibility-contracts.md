@@ -1,6 +1,6 @@
 # C3 Operation Compatibility Contracts
 
-Generated: 2026-02-25T10:40:41.494Z
+Generated: 1970-01-01T00:00:00.000Z
 Total contracts: 292
 
 ## Contract entries (compact)
@@ -244,21 +244,21 @@ Total contracts: 292
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - crypto.hmacSha1
-  - name: HMAC
+  - name: HMAC-SHA1
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
 - crypto.hmacSha256
-  - name: HMAC
+  - name: HMAC-SHA256
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
 - crypto.hmacSha512
-  - name: HMAC
+  - name: HMAC-SHA512
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string
@@ -371,6 +371,13 @@ Total contracts: 292
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - forensic.basicPreTriage
   - name: Basic Pre-Triage
+  - domain: misc-uncategorized
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.basicTriage
+  - name: Basic Triage
   - domain: misc-uncategorized
   - inputTypes: bytes, string
   - outputType: string
@@ -799,13 +806,6 @@ Total contracts: 292
 - hash.sha512
   - name: SHA-512
   - domain: crypto-hash-kdf
-  - inputTypes: bytes, string
-  - outputType: string
-  - deterministic: true
-  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
-- heuristic-matches
-  - name: Basic Triage
-  - domain: misc-uncategorized
   - inputTypes: bytes, string
   - outputType: string
   - deterministic: true
