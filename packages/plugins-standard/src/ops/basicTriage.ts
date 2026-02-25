@@ -46,6 +46,20 @@ type TriageReport = {
   };
   findings: TriageFinding[];
   mockedCapabilities: string[];
+  exports: {
+    stixBundle: {
+      type: "bundle";
+      id: string;
+      objects: Array<Record<string, unknown>>;
+    };
+    mispEvent: {
+      Event: {
+        info: string;
+        date: string;
+        Attribute: Array<{ type: string; category: string; value: string }>;
+      };
+    };
+  };
   recommendations: string[];
   preTriage: PreTriageReport;
 };
@@ -58,10 +72,64 @@ const MOCKED_CAPABILITIES = [
   "ssdeep_fuzzy_hash",
   "yara_or_yara_x_rule_scanning",
   "authenticode_or_x509_verification",
-  "stix_export",
-  "misp_export",
   "dynamic_sandbox_integration_cuckoo"
 ] as const;
+
+function stableId(prefix: string, value: string): string {
+  let hash = 2166136261;
+  const input = `${prefix}:${value}`;
+  for (let i = 0; i < input.length; i++) {
+    hash ^= input.charCodeAt(i);
+    hash = Math.imul(hash, 16777619) >>> 0;
+  }
+  return `${prefix}--${hash.toString(16).padStart(8, "0")}`;
+}
+
+function toStixIndicators(pre: PreTriageReport): Array<Record<string, unknown>> {
+  const objects: Array<Record<string, unknown>> = [];
+  const entries: Array<{ type: string; value: string; pattern: string }> = [];
+
+  for (const v of pre.iocs.urls) entries.push({ type: "url", value: v, pattern: `[url:value = '${v}']` });
+  for (const v of pre.iocs.domains) {
+    entries.push({ type: "domain-name", value: v, pattern: `[domain-name:value = '${v}']` });
+  }
+  for (const v of pre.iocs.ipv4) entries.push({ type: "ipv4-addr", value: v, pattern: `[ipv4-addr:value = '${v}']` });
+  for (const v of pre.iocs.ipv6) entries.push({ type: "ipv6-addr", value: v, pattern: `[ipv6-addr:value = '${v}']` });
+  for (const v of pre.iocs.emails) {
+    entries.push({ type: "email-addr", value: v, pattern: `[email-addr:value = '${v}']` });
+  }
+  for (const v of pre.iocs.cves) {
+    entries.push({ type: "vulnerability", value: v, pattern: `[vulnerability:name = '${v}']` });
+  }
+
+  const now = "1970-01-01T00:00:00.000Z";
+  for (const entry of entries) {
+    objects.push({
+      type: "indicator",
+      spec_version: "2.1",
+      id: stableId("indicator", `${entry.type}:${entry.value}`),
+      created: now,
+      modified: now,
+      name: `${entry.type}:${entry.value}`,
+      pattern_type: "stix",
+      pattern: entry.pattern,
+      valid_from: now,
+      labels: ["malicious-activity"]
+    });
+  }
+  return objects;
+}
+
+function toMispAttributes(pre: PreTriageReport): Array<{ type: string; category: string; value: string }> {
+  const attrs: Array<{ type: string; category: string; value: string }> = [];
+  for (const value of pre.iocs.urls) attrs.push({ type: "url", category: "Network activity", value });
+  for (const value of pre.iocs.domains) attrs.push({ type: "domain", category: "Network activity", value });
+  for (const value of pre.iocs.ipv4) attrs.push({ type: "ip-dst", category: "Network activity", value });
+  for (const value of pre.iocs.ipv6) attrs.push({ type: "ip-dst", category: "Network activity", value });
+  for (const value of pre.iocs.emails) attrs.push({ type: "email-src", category: "Payload delivery", value });
+  for (const value of pre.iocs.cves) attrs.push({ type: "vulnerability", category: "External analysis", value });
+  return attrs;
+}
 
 function clampScore(input: number): number {
   if (input < 0) return 0;
@@ -212,6 +280,9 @@ export const basicTriage: Operation = {
     }
     recommendations.push("Review mocked capabilities before relying on this report for production decisions.");
 
+    const stixObjects = toStixIndicators(pre);
+    const mispAttributes = toMispAttributes(pre);
+
     const report: TriageReport = {
       version: 1,
       score: {
@@ -221,6 +292,20 @@ export const basicTriage: Operation = {
       },
       findings,
       mockedCapabilities: Array.from(MOCKED_CAPABILITIES),
+      exports: {
+        stixBundle: {
+          type: "bundle",
+          id: stableId("bundle", pre.hashes.sha256 ?? "unknown"),
+          objects: stixObjects
+        },
+        mispEvent: {
+          Event: {
+            info: "CyberMasterChef Basic Triage Export",
+            date: "1970-01-01",
+            Attribute: mispAttributes
+          }
+        }
+      },
       recommendations,
       preTriage: pre
     };
