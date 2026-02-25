@@ -180,6 +180,27 @@ describe("data format extended operations", () => {
     expect(out.output.type).toBe("string");
   });
 
+  it("strips nested/reintroduced script tags safely", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(stripHtmlTags);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "format.stripHtmlTags" }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: {
+        type: "string",
+        value: "<scrip<script>is removed</script>t>alert(123)</script>"
+      }
+    });
+    expect(out.output.type).toBe("string");
+    if (out.output.type !== "string") return;
+    expect(out.output.value.toLowerCase()).not.toContain("<script");
+    expect(out.output.value).not.toContain("<");
+  });
+
   it("runs Jsonata queries", async () => {
     const registry = new InMemoryRegistry();
     registry.register(jsonataQuery);
@@ -212,6 +233,21 @@ describe("data format extended operations", () => {
       input: { type: "string", value: "<root><item>1</item></root>" }
     });
     expect(out.output).toEqual({ type: "string", value: "<root><item>1</item></root>" });
+  });
+
+  it("removes reintroduced XML comments when preserveComments=false", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(xmlMinify);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "format.xmlMinify", args: { preserveComments: false } }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "<!<!--- comment --->>" }
+    });
+    expect(out.output).toEqual({ type: "string", value: "<!>" });
   });
 
   it("encodes and decodes protobuf", async () => {
