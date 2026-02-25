@@ -42,16 +42,18 @@ Deliver a complete, auditable, and operationally useful C-track:
 ### C2 Domain Implementation
 
 - Status: `[IN-PROGRESS]`
-- Realization (current): `~55%` of planned baseline wave scope for priority domains.
+- Realization (current): `~65%` of planned baseline wave scope for priority domains.
 - Completed baseline waves:
   - date-time baseline and telemetry parsing helpers
-  - data-format baseline (JSON minify/beautify/sort/extract-keys)
+  - data-format baseline (JSON/CSV/YAML/XML/HTML + image/format conversions)
+  - compression/archive baseline
   - network IOC baseline (extract, defang/fang)
   - forensic IOC baseline (strings, emails, domains, hash/token/vuln extractors)
   - basic pre-triage baseline (`forensic.basicPreTriage`)
   - basic triage baseline (`forensic.basicTriage`)
 - Still missing for C2 baseline completeness:
   - higher-priority crypto/hash/kdf expansion beyond extractor helpers
+  - network protocol parsers beyond IOC baselines
   - CI gates for parity-plan drift.
 
 ### C3 Compatibility Contracts
@@ -137,7 +139,7 @@ Deliver a complete, auditable, and operationally useful C-track:
 ## Milestones for 100% C-Track Readiness
 
 1. `M1`: C1 stable + CI drift gate enabled. `[DONE]`
-2. `M2`: C2 baseline waves (IOC/date/data/compression-baseline) completed.
+2. `M2`: C2 baseline waves (IOC/date/data/compression-baseline) completed. `[DONE]`
 3. `M3`: C3 contracts enforced in CI with generated regression suites.
 4. `M4`: Security/quality governance (worker/CSP/supply-chain gates) automated.
 5. `M5`: Dev-to-main merge readiness with deterministic parity evidence.

@@ -238,6 +238,45 @@ Wave 1 implemented so far:
 - Wave 21 date: `date.dateTimeDelta`
 - Wave 21 date: `date.translateDateTimeFormat`
 - Wave 21 network: `network.dechunkHttpResponse`
+- Wave 22 data formats: `format.amfEncode`
+- Wave 22 data formats: `format.amfDecode`
+- Wave 22 data formats: `format.avroToJson`
+- Wave 22 data formats: `format.bsonSerialise`
+- Wave 22 data formats: `format.toTable`
+- Wave 22 data formats: `format.toHtmlEntity`
+- Wave 22 data formats: `format.fromHtmlEntity`
+- Wave 22 data formats: `format.toMessagePack`
+- Wave 22 data formats: `format.fromMessagePack`
+- Wave 22 data formats: `format.toQuotedPrintable`
+- Wave 22 data formats: `format.fromQuotedPrintable`
+- Wave 22 data formats: `format.htmlToText`
+- Wave 22 data formats: `format.jsonataQuery`
+- Wave 22 data formats: `format.xmlBeautify`
+- Wave 22 data formats: `format.xmlMinify`
+- Wave 22 data formats: `format.protobufEncode`
+- Wave 22 data formats: `format.protobufDecode`
+- Wave 22 data formats: `format.stripHtmlTags`
+- Wave 22 data formats: `format.toHexdump`
+- Wave 22 data formats: `format.fromHexdump`
+- Wave 22 image: `image.convertFormat`
+- Wave 22 image: `image.cover`
+- Wave 22 image: `image.crop`
+- Wave 22 image: `image.dither`
+- Wave 22 image: `image.extractExif`
+- Wave 22 image: `image.flip`
+- Wave 22 image: `image.generate`
+- Wave 22 image: `image.generateQrCode`
+- Wave 22 image: `image.brightnessContrast`
+- Wave 22 image: `image.filter`
+- Wave 22 image: `image.hsl`
+- Wave 22 image: `image.opacity`
+- Wave 22 image: `image.invert`
+- Wave 22 image: `image.normalise`
+- Wave 22 image: `image.removeExif`
+- Wave 22 image: `image.render`
+- Wave 22 image: `image.resize`
+- Wave 22 image: `image.rotate`
+- Wave 22 image: `image.sharpen`
 - Wave 14 data-format: `format.jsonArrayLength`
 - Wave 14 data-format: `format.jsonStringValues`
 - Wave 14 data-format: `format.jsonNumberValues`
