@@ -1569,6 +1569,30 @@
         "type": "number",
         "label": "Max heuristic matches",
         "defaultValue": "25"
+      },
+      {
+        "key": "enableImphash",
+        "type": "boolean",
+        "label": "Enable imphash",
+        "defaultValue": "true"
+      },
+      {
+        "key": "enableTlsh",
+        "type": "boolean",
+        "label": "Enable TLSH",
+        "defaultValue": "true"
+      },
+      {
+        "key": "enableSsdeep",
+        "type": "boolean",
+        "label": "Enable ssdeep",
+        "defaultValue": "true"
+      },
+      {
+        "key": "maxFuzzyInputBytes",
+        "type": "number",
+        "label": "Max bytes for fuzzy hashes",
+        "defaultValue": "1048576"
       }
     ],
     "deterministic": true,

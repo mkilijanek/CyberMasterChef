@@ -119,7 +119,7 @@ Deliver a complete, auditable, and operationally useful C-track:
 
 1. `[DONE]` Built-in baseline modules for binary/text sample input:
    - core IOC extraction (domains, URLs, IPs, emails, hashes)
-   - SHA-family hashes via WebCrypto + `md5`; placeholders for `imphash`, `TLSH`, `ssdeep`
+   - SHA-family hashes via WebCrypto + `md5`
    - binary metadata pre-triage (PE sections + VA/offset/size/entropy, plus entropy segments)
 2. `[DONE]` deterministic report schema for triage output.
 3. `[DONE]` baseline triage verdict module with scored findings and recommendations.
@@ -128,9 +128,10 @@ Deliver a complete, auditable, and operationally useful C-track:
 6. `[IN-PROGRESS]` production integrations:
    - `[DONE]` deterministic STIX/MISP export payloads in `forensic.basicTriage`
    - `[PLANNED]` ZIP password pipeline, YARA scanning, dynamic sandbox connector
-7. `[IN-PROGRESS]` advanced triage add-ons:
-   - `[DONE]` baseline `imphash` computation for PE import tables
-   - `[PLANNED]` TLSH/ssdeep adapters and broader binary format support
+7. `[DONE]` advanced triage add-ons baseline:
+   - `[DONE]` `imphash` computation for PE import tables
+   - `[DONE]` TLSH/ssdeep computation with runtime fallbacks/feature flags (`enableTlsh`, `enableSsdeep`, `maxFuzzyInputBytes`)
+   - `[DONE]` broader binary format baseline support (`ELF`/`Mach-O` detection)
 
 ## C3 Contract and Determinism Program
 

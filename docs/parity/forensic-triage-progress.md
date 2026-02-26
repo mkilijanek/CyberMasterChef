@@ -1,6 +1,6 @@
 # Forensic Triage Progress (CSIRT/SOC)
 
-Updated: 2026-02-24
+Updated: 2026-02-25
 
 ## Objective
 
@@ -162,3 +162,11 @@ Track incremental delivery steps for Forensic Triage modules (`forensic.basicPre
 - [x] Stage 148: `wmic_shadowcopy` - WMIC shadowcopy marker
 - [x] Stage 149: `esentutl_copy_locked` - Esentutl copy locked file marker
 - [x] Stage 150: `credential_files_marker` - Credential file target marker
+
+## M7 Completion Snapshot
+
+- [x] PE `imphash` implementation for import table fingerprints.
+- [x] TLSH and ssdeep fingerprinting with feature flags and bounded input-size guard.
+- [x] Fallback behavior for unsupported/invalid samples (returns `null`, no hard failure).
+- [x] Binary format baseline expansion (`PE`/`ELF`/`Mach-O`/`unknown`).
+- [x] Triage scoring now consumes fingerprint signals (`imphash`/TLSH/ssdeep) and removes corresponding mocked capabilities when present.

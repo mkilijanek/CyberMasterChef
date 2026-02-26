@@ -193,8 +193,7 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 - [x] Queue tasks `1-20` completed on `dev`.
 - [x] Forensic Triage (CSIRT/SOC): baseline modules.
   - implemented as built-in modules: `forensic.basicPreTriage` and `forensic.basicTriage`
-  - includes IOC extraction, SHA-family hashes (where WebCrypto supports), binary entropy segments and PE section metadata
-  - placeholders (`null`) kept for `imphash`, `TLSH`, `ssdeep` in this baseline
+  - includes IOC extraction, SHA-family hashes (where WebCrypto supports), PE `imphash`, TLSH/ssdeep (feature-flagged), and binary entropy + PE/ELF/Mach-O metadata
   - triage report includes explicit `mockedCapabilities` list for still-unimplemented production integrations
 
 ## Quality gates

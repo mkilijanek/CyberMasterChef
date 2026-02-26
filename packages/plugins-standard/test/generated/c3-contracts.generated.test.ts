@@ -501,7 +501,11 @@ const CONTRACTS = [
       "maxMatches",
       "segmentWindow",
       "segmentLimit",
-      "maxHeuristicMatches"
+      "maxHeuristicMatches",
+      "enableImphash",
+      "enableTlsh",
+      "enableSsdeep",
+      "maxFuzzyInputBytes"
     ]
   },
   {

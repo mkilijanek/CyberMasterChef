@@ -106,9 +106,15 @@ importers:
       sharp:
         specifier: ^0.34.5
         version: 0.34.5
+      ssdeep.js:
+        specifier: ^0.0.3
+        version: 0.0.3
       tar-stream:
         specifier: ^3.1.7
         version: 3.1.7
+      tlsh:
+        specifier: ^1.0.8
+        version: 1.0.8
       xml-formatter:
         specifier: ^3.6.7
         version: 3.6.7
@@ -1604,6 +1610,9 @@ packages:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
 
+  ssdeep.js@0.0.3:
+    resolution: {integrity: sha512-QXKADMuEsOmRYGlB9JvrulcF5NLAjAvYLg3qDHUrEEilUFLKoL4fUQDw1s7hF+mOL96jwcdyXpnmCqyNu7Wm3Q==}
+
   stackback@0.0.2:
     resolution: {integrity: sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw==}
 
@@ -1648,6 +1657,9 @@ packages:
   tinyrainbow@3.0.3:
     resolution: {integrity: sha512-PSkbLUoxOFRzJYjjxHJt9xro7D+iilgMX/C9lawzVuYiIdcihh9DXmVibBe8lmcFrRi/VzlPjBxbN7rH24q8/Q==}
     engines: {node: '>=14.0.0'}
+
+  tlsh@1.0.8:
+    resolution: {integrity: sha512-Ke+nJIOo1bG6TKDiTRmVBLHARad+p7bSPdNpErx6XhmQRa2M4ry1VDJbID6OeXQn2YnN7hWBmAFbdtUFywNMmQ==}
 
   ts-api-utils@2.4.0:
     resolution: {integrity: sha512-3TaVTaAv2gTiMB35i3FiGJaRfwb3Pyn/j3m/bfAvGe8FB7CF6u+LMYqYlDh7reQf7UNvoTvdfAqHGmPGOSsPmA==}
@@ -3181,6 +3193,8 @@ snapshots:
 
   source-map-js@1.2.1: {}
 
+  ssdeep.js@0.0.3: {}
+
   stackback@0.0.2: {}
 
   std-env@3.10.0: {}
@@ -3237,6 +3251,8 @@ snapshots:
       picomatch: 4.0.3
 
   tinyrainbow@3.0.3: {}
+
+  tlsh@1.0.8: {}
 
   ts-api-utils@2.4.0(typescript@5.9.3):
     dependencies:

@@ -7,6 +7,7 @@ import { describe, expect, it } from "vitest";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const packageRoot = dirname(here);
+const repoRoot = dirname(dirname(packageRoot));
 const sourceEntry = join(packageRoot, "src", "main.ts");
 const fixturesRoot = join(here, "fixtures");
 const recipePath = join(fixturesRoot, "recipe.identity.json");
@@ -27,8 +28,12 @@ type BatchRow = {
 
 function runCli(args: string[]) {
   return spawnSync("node", ["--import", "tsx", sourceEntry, ...args], {
-    cwd: packageRoot,
-    encoding: "utf-8"
+    cwd: repoRoot,
+    encoding: "utf-8",
+    env: {
+      ...process.env,
+      TSX_TSCONFIG_PATH: join(repoRoot, "tsconfig.base.json")
+    }
   });
 }
 

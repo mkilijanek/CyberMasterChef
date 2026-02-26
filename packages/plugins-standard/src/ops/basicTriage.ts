@@ -17,7 +17,7 @@ type PreTriageReport = {
     matches: string[];
   }>;
   binaryAnalysis: {
-    format: "pe" | "unknown" | "text";
+    format: "pe" | "elf" | "macho" | "unknown" | "text";
     sections: Array<{ entropy: number }>;
   };
   hashes: {
@@ -26,8 +26,8 @@ type PreTriageReport = {
     sha512: string | null;
     md5: string | null;
     imphash: string | null;
-    tlsh: null;
-    ssdeep: null;
+    tlsh: string | null;
+    ssdeep: string | null;
   };
 };
 
@@ -64,9 +64,10 @@ type TriageReport = {
   preTriage: PreTriageReport;
 };
 
-const MOCKED_CAPABILITIES = [
+const MOCKED_CAPABILITIES_BASE = [
   "archive_password_handling_and_zip_unpacking",
   "zip_slip_and_zip_bomb_safe_unpack_guards",
+  "pe_imphash",
   "tlsh_fuzzy_hash",
   "ssdeep_fuzzy_hash",
   "yara_or_yara_x_rule_scanning",
@@ -146,6 +147,15 @@ function toVerdict(
   return "benign";
 }
 
+function computeMockedCapabilities(pre: PreTriageReport): string[] {
+  return Array.from(MOCKED_CAPABILITIES_BASE).filter((capability) => {
+    if (capability === "pe_imphash") return pre.hashes.imphash === null;
+    if (capability === "tlsh_fuzzy_hash") return pre.hashes.tlsh === null;
+    if (capability === "ssdeep_fuzzy_hash") return pre.hashes.ssdeep === null;
+    return true;
+  });
+}
+
 function buildFindings(pre: PreTriageReport): { findings: TriageFinding[]; reasons: string[]; score: number } {
   const findings: TriageFinding[] = [];
   const reasons: string[] = [];
@@ -214,11 +224,23 @@ function buildFindings(pre: PreTriageReport): { findings: TriageFinding[]; reaso
     });
   }
 
-  if (pre.hashes.tlsh === null || pre.hashes.ssdeep === null) {
+  if (pre.hashes.imphash !== null) {
+    score += 6;
+    reasons.push("imphash_present");
     findings.push({
-      id: "mocked-hash-capabilities",
+      id: "imphash-available",
+      severity: "medium",
+      description: "Computed PE import hash (imphash) for this sample."
+    });
+  }
+
+  if (pre.hashes.tlsh !== null || pre.hashes.ssdeep !== null) {
+    score += 4;
+    reasons.push("fuzzy_hash_present");
+    findings.push({
+      id: "fuzzy-hash-available",
       severity: "low",
-      description: "Some fuzzy-hash fields are placeholders in this build."
+      description: "Computed fuzzy hash fingerprints (TLSH/ssdeep) for this sample."
     });
   }
 
@@ -290,7 +312,7 @@ export const basicTriage: Operation = {
         reasons
       },
       findings,
-      mockedCapabilities: Array.from(MOCKED_CAPABILITIES),
+      mockedCapabilities: computeMockedCapabilities(pre),
       exports: {
         stixBundle: {
           type: "bundle",
