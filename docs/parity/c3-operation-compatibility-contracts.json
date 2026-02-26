@@ -1813,6 +1813,42 @@
         "type": "number",
         "label": "Malicious threshold",
         "defaultValue": "60"
+      },
+      {
+        "key": "enableSandboxSubmit",
+        "type": "boolean",
+        "label": "Enable sandbox submit",
+        "defaultValue": "false"
+      },
+      {
+        "key": "sandboxRuntimeProfile",
+        "type": "select",
+        "label": "Sandbox runtime profile",
+        "defaultValue": "\"disabled\""
+      },
+      {
+        "key": "sandboxEndpoint",
+        "type": "string",
+        "label": "Sandbox endpoint URL",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "sandboxAllowHosts",
+        "type": "string",
+        "label": "Allowlisted sandbox hosts",
+        "defaultValue": "\"localhost"
+      },
+      {
+        "key": "sandboxTimeoutMs",
+        "type": "number",
+        "label": "Sandbox timeout ms",
+        "defaultValue": "5000"
+      },
+      {
+        "key": "sandboxRetries",
+        "type": "number",
+        "label": "Sandbox retries",
+        "defaultValue": "2"
       }
     ],
     "deterministic": true,
@@ -1822,6 +1858,8 @@
         "INVALID_INPUT_TYPE"
       ],
       "examples": [
+        "Sandbox endpoint must be a valid absolute URL",
+        "Sandbox endpoint must use https (http is only allowed for loopback)",
         "Unexpected pre-triage output type"
       ]
     },

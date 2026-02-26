@@ -130,7 +130,8 @@ Deliver a complete, auditable, and operationally useful C-track:
 5. `[IN-PROGRESS]` contract tests + golden fixtures for known malware-like samples.
 6. `[IN-PROGRESS]` production integrations:
    - `[DONE]` deterministic STIX/MISP export payloads in `forensic.basicTriage`
-   - `[PLANNED]` ZIP password pipeline, YARA scanning, dynamic sandbox connector
+   - `[DONE]` dynamic sandbox connector (optional CLI runtime profile, allowlist + timeout/retry controls)
+   - `[PLANNED]` ZIP password pipeline, YARA scanning
 7. `[DONE]` advanced triage add-ons baseline:
    - `[DONE]` `imphash` computation for PE import tables
    - `[DONE]` TLSH/ssdeep computation with runtime fallbacks/feature flags (`enableTlsh`, `enableSsdeep`, `maxFuzzyInputBytes`)

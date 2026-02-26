@@ -170,3 +170,9 @@ Track incremental delivery steps for Forensic Triage modules (`forensic.basicPre
 - [x] Fallback behavior for unsupported/invalid samples (returns `null`, no hard failure).
 - [x] Binary format baseline expansion (`PE`/`ELF`/`Mach-O`/`unknown`).
 - [x] Triage scoring now consumes fingerprint signals (`imphash`/TLSH/ssdeep) and removes corresponding mocked capabilities when present.
+
+## M6 Completion Snapshot
+
+- [x] Deterministic STIX 2.1 and MISP JSON exports in `forensic.basicTriage`.
+- [x] Dynamic sandbox adapter (CLI profile): endpoint allowlist validation, timeout, bounded retries.
+- [x] Security tests for endpoint validation and integration tests for successful submit flow.

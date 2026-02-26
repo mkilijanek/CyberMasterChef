@@ -39,5 +39,16 @@ jobs:
         run: pnpm build
       - name: Performance Budget Gate
         run: pnpm perf:check
+      - name: Upload Quality Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-artifacts
+          path: |
+            docs/perf/latest-benchmark-report.json
+            docs/perf/latest-benchmark-report.md
+            docs/parity/c1-operation-domain-summary.md
+            docs/parity/c2-domain-implementation-plan.md
+            docs/parity/c3-operation-compatibility-contracts.md
       - name: Release Readiness Gate
         run: pnpm release:readiness

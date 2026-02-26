@@ -562,7 +562,13 @@ const CONTRACTS = [
     "outputType": "string",
     "argKeys": [
       "suspiciousThreshold",
-      "maliciousThreshold"
+      "maliciousThreshold",
+      "enableSandboxSubmit",
+      "sandboxRuntimeProfile",
+      "sandboxEndpoint",
+      "sandboxAllowHosts",
+      "sandboxTimeoutMs",
+      "sandboxRetries"
     ]
   },
   {

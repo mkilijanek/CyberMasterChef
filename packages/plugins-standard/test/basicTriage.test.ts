@@ -81,6 +81,7 @@ describe("forensic basic triage", () => {
         mispEvent: { Event: { Attribute: Array<{ type: string; value: string }> } };
       };
       recommendations: string[];
+      integrations: { sandbox: { status: string } };
       preTriage: {
         iocs: { cves: string[] };
         hashes: { tlsh: string | null; ssdeep: string | null };
@@ -113,6 +114,7 @@ describe("forensic basic triage", () => {
         (attr) => attr.type === "vulnerability" && attr.value === "CVE-2024-12345"
       )
     ).toBe(true);
+    expect(report.integrations.sandbox.status).toBe("disabled");
     expect(report.recommendations.length).toBeGreaterThan(0);
   });
 
@@ -162,5 +164,82 @@ describe("forensic basic triage", () => {
     };
     expect(report.preTriage.hashes.imphash).not.toBeNull();
     expect(report.mockedCapabilities).not.toContain("pe_imphash");
+  });
+
+  it("submits sandbox payload for CLI profile and removes sandbox mock capability", async () => {
+    const prevFetch = globalThis.fetch;
+    globalThis.fetch = () =>
+      Promise.resolve(new Response(JSON.stringify({ submissionId: "sub-123" }), { status: 202 }));
+    try {
+      const registry = new InMemoryRegistry();
+      registry.register(basicTriage);
+      const recipe: Recipe = {
+        version: 1,
+        steps: [
+          {
+            opId: "forensic.basicTriage",
+            args: {
+              enableSandboxSubmit: true,
+              sandboxRuntimeProfile: "cli",
+              sandboxEndpoint: "https://sandbox.local/submit",
+              sandboxAllowHosts: "sandbox.local",
+              sandboxTimeoutMs: 1000,
+              sandboxRetries: 0
+            }
+          }
+        ]
+      };
+      const out = await runRecipe({
+        registry,
+        recipe,
+        input: { type: "string", value: "http://example.test ioc" }
+      });
+      expect(out.output.type).toBe("string");
+      if (out.output.type !== "string") return;
+      const report = JSON.parse(out.output.value) as {
+        mockedCapabilities: string[];
+        integrations: {
+          sandbox: {
+            status: string;
+            attempted: boolean;
+            submissionId: string | null;
+            responseCode: number | null;
+          };
+        };
+      };
+      expect(report.integrations.sandbox.status).toBe("submitted");
+      expect(report.integrations.sandbox.attempted).toBe(true);
+      expect(report.integrations.sandbox.submissionId).toBe("sub-123");
+      expect(report.integrations.sandbox.responseCode).toBe(202);
+      expect(report.mockedCapabilities).not.toContain("dynamic_sandbox_integration_cuckoo");
+    } finally {
+      globalThis.fetch = prevFetch;
+    }
+  });
+
+  it("rejects sandbox endpoint outside allowlist", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(basicTriage);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [
+        {
+          opId: "forensic.basicTriage",
+          args: {
+            enableSandboxSubmit: true,
+            sandboxRuntimeProfile: "cli",
+            sandboxEndpoint: "https://sandbox.local/submit",
+            sandboxAllowHosts: "allowed.example"
+          }
+        }
+      ]
+    };
+    await expect(
+      runRecipe({
+        registry,
+        recipe,
+        input: { type: "string", value: "sample" }
+      })
+    ).rejects.toThrow("Sandbox endpoint host not allowlisted");
   });
 });

@@ -61,8 +61,22 @@ type TriageReport = {
     };
   };
   recommendations: string[];
+  integrations: {
+    sandbox: {
+      enabled: boolean;
+      runtimeProfile: "disabled" | "cli";
+      attempted: boolean;
+      status: "disabled" | "skipped" | "submitted" | "failed";
+      endpoint: string | null;
+      responseCode: number | null;
+      submissionId: string | null;
+      error: string | null;
+    };
+  };
   preTriage: PreTriageReport;
 };
+
+type SandboxIntegration = TriageReport["integrations"]["sandbox"];
 
 const MOCKED_CAPABILITIES_BASE = [
   "archive_password_handling_and_zip_unpacking",
@@ -154,6 +168,102 @@ function computeMockedCapabilities(pre: PreTriageReport): string[] {
     if (capability === "ssdeep_fuzzy_hash") return pre.hashes.ssdeep === null;
     return true;
   });
+}
+
+function parseAllowedHosts(raw: unknown): string[] {
+  if (typeof raw !== "string") return [];
+  return raw
+    .split(",")
+    .map((v) => v.trim().toLowerCase())
+    .filter((v) => v.length > 0);
+}
+
+function validateSandboxEndpoint(endpoint: string, allowedHosts: string[]): URL {
+  let parsed: URL;
+  try {
+    parsed = new URL(endpoint);
+  } catch {
+    throw new Error("Sandbox endpoint must be a valid absolute URL");
+  }
+  const host = parsed.hostname.toLowerCase();
+  const isLoopback = host === "localhost" || host === "127.0.0.1" || host === "::1";
+  const isHttps = parsed.protocol === "https:";
+  if (!isHttps && !isLoopback) {
+    throw new Error("Sandbox endpoint must use https (http is only allowed for loopback)");
+  }
+  if (allowedHosts.length > 0 && !allowedHosts.includes(host)) {
+    throw new Error(`Sandbox endpoint host not allowlisted: ${host}`);
+  }
+  return parsed;
+}
+
+async function submitSandboxSample(args: {
+  endpoint: URL;
+  timeoutMs: number;
+  retries: number;
+  reportPayload: Record<string, unknown>;
+}): Promise<{
+  status: "submitted" | "failed";
+  responseCode: number | null;
+  submissionId: string | null;
+  error: string | null;
+}> {
+  const fetchFn = globalThis.fetch;
+  if (typeof fetchFn !== "function") {
+    return {
+      status: "failed",
+      responseCode: null,
+      submissionId: null,
+      error: "fetch is not available in this runtime"
+    };
+  }
+
+  let lastError: string | null = null;
+  let lastStatus: number | null = null;
+  for (let attempt = 0; attempt <= args.retries; attempt++) {
+    const abortCtrl = new AbortController();
+    const timer = setTimeout(() => abortCtrl.abort(), args.timeoutMs);
+    try {
+      const response = await fetchFn(args.endpoint.toString(), {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(args.reportPayload),
+        signal: abortCtrl.signal
+      });
+      clearTimeout(timer);
+      lastStatus = response.status;
+      if (!response.ok) {
+        lastError = `sandbox_http_${response.status}`;
+      } else {
+        let submissionId: string | null = null;
+        try {
+          const body = (await response.json()) as { submissionId?: unknown; id?: unknown };
+          const candidate = typeof body.submissionId === "string" ? body.submissionId : body.id;
+          submissionId = typeof candidate === "string" ? candidate : null;
+        } catch {
+          submissionId = null;
+        }
+        return {
+          status: "submitted",
+          responseCode: response.status,
+          submissionId,
+          error: null
+        };
+      }
+    } catch (error) {
+      clearTimeout(timer);
+      lastError = error instanceof Error ? error.message : String(error);
+    }
+    if (attempt < args.retries) {
+      await new Promise((resolve) => setTimeout(resolve, Math.min(1000, 150 * (attempt + 1))));
+    }
+  }
+  return {
+    status: "failed",
+    responseCode: lastStatus,
+    submissionId: null,
+    error: lastError
+  };
 }
 
 function buildFindings(pre: PreTriageReport): { findings: TriageFinding[]; reasons: string[]; score: number } {
@@ -266,6 +376,46 @@ export const basicTriage: Operation = {
       label: "Malicious threshold",
       type: "number",
       defaultValue: 60
+    },
+    {
+      key: "enableSandboxSubmit",
+      label: "Enable sandbox submit",
+      type: "boolean",
+      defaultValue: false
+    },
+    {
+      key: "sandboxRuntimeProfile",
+      label: "Sandbox runtime profile",
+      type: "select",
+      defaultValue: "disabled",
+      options: [
+        { label: "Disabled", value: "disabled" },
+        { label: "CLI", value: "cli" }
+      ]
+    },
+    {
+      key: "sandboxEndpoint",
+      label: "Sandbox endpoint URL",
+      type: "string",
+      defaultValue: ""
+    },
+    {
+      key: "sandboxAllowHosts",
+      label: "Allowlisted sandbox hosts",
+      type: "string",
+      defaultValue: "localhost,127.0.0.1"
+    },
+    {
+      key: "sandboxTimeoutMs",
+      label: "Sandbox timeout ms",
+      type: "number",
+      defaultValue: 5000
+    },
+    {
+      key: "sandboxRetries",
+      label: "Sandbox retries",
+      type: "number",
+      defaultValue: 2
     }
   ],
   run: async ({ input, args, signal }) => {
@@ -278,6 +428,21 @@ export const basicTriage: Operation = {
       suspiciousThreshold,
       Math.min(100, Math.floor(maliciousThresholdArg))
     );
+    const sandboxProfile =
+      args.sandboxRuntimeProfile === "cli" || args.sandboxRuntimeProfile === "disabled"
+        ? args.sandboxRuntimeProfile
+        : "disabled";
+    const sandboxEnabled = args.enableSandboxSubmit === true && sandboxProfile === "cli";
+    const sandboxEndpointRaw = typeof args.sandboxEndpoint === "string" ? args.sandboxEndpoint.trim() : "";
+    const sandboxTimeoutMs = Math.max(
+      100,
+      Math.min(60000, Math.floor(typeof args.sandboxTimeoutMs === "number" ? args.sandboxTimeoutMs : 5000))
+    );
+    const sandboxRetries = Math.max(
+      0,
+      Math.min(5, Math.floor(typeof args.sandboxRetries === "number" ? args.sandboxRetries : 2))
+    );
+    const sandboxAllowHosts = parseAllowedHosts(args.sandboxAllowHosts);
 
     const preCtx = signal === undefined ? { input, args: {} } : { input, args: {}, signal };
     const preOut = await basicPreTriage.run(preCtx);
@@ -303,6 +468,49 @@ export const basicTriage: Operation = {
 
     const stixObjects = toStixIndicators(pre);
     const mispAttributes = toMispAttributes(pre);
+    const sandbox: SandboxIntegration = {
+      enabled: sandboxEnabled,
+      runtimeProfile: sandboxProfile,
+      attempted: false,
+      status: sandboxEnabled ? "skipped" : "disabled",
+      endpoint: null,
+      responseCode: null,
+      submissionId: null,
+      error: null
+    };
+
+    if (sandboxEnabled) {
+      if (!sandboxEndpointRaw) {
+        sandbox.status = "failed";
+        sandbox.error = "sandboxEndpoint is required when sandbox submit is enabled";
+      } else {
+        const endpoint = validateSandboxEndpoint(sandboxEndpointRaw, sandboxAllowHosts);
+        sandbox.attempted = true;
+        sandbox.endpoint = endpoint.toString();
+        const sandboxResult = await submitSandboxSample({
+          endpoint,
+          timeoutMs: sandboxTimeoutMs,
+          retries: sandboxRetries,
+          reportPayload: {
+            sha256: pre.hashes.sha256,
+            verdict,
+            riskScoreNorm: score,
+            iocs: pre.iocs
+          }
+        });
+        sandbox.status = sandboxResult.status;
+        sandbox.responseCode = sandboxResult.responseCode;
+        sandbox.submissionId = sandboxResult.submissionId;
+        sandbox.error = sandboxResult.error;
+      }
+    }
+
+    let mockedCapabilities = computeMockedCapabilities(pre);
+    if (sandbox.status === "submitted") {
+      mockedCapabilities = mockedCapabilities.filter(
+        (capability) => capability !== "dynamic_sandbox_integration_cuckoo"
+      );
+    }
 
     const report: TriageReport = {
       version: 1,
@@ -312,7 +520,7 @@ export const basicTriage: Operation = {
         reasons
       },
       findings,
-      mockedCapabilities: computeMockedCapabilities(pre),
+      mockedCapabilities,
       exports: {
         stixBundle: {
           type: "bundle",
@@ -328,6 +536,9 @@ export const basicTriage: Operation = {
         }
       },
       recommendations,
+      integrations: {
+        sandbox
+      },
       preTriage: pre
     };
 
