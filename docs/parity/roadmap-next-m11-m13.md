@@ -1,10 +1,15 @@
 # Roadmap Next (M11-M13)
 
-Updated: 2026-02-26
+Updated: 2026-02-26 (M11 in progress)
 
 ## M11: C2 High-Priority Parity Closure
 
 Goal: close highest-value missing operations from `crypto-hash-kdf` and `network-protocol-parsers`.
+Status: `IN-PROGRESS`
+
+Progress snapshot:
+- implemented `hash.sha224`
+- implemented `network.groupIPAddresses`
 
 Stages:
 1. Finalize prioritized missing-op shortlist from `docs/parity/c2-domain-implementation-plan.md`.
@@ -15,6 +20,7 @@ Stages:
 ## M12: Workbench Runtime Slimming
 
 Goal: reduce worker bundle size and node-polyfill footprint without regressions.
+Status: `PLANNED`
 
 Stages:
 1. Identify largest chunks and polyfill-heavy dependencies in workbench build output.
@@ -25,6 +31,7 @@ Stages:
 ## M13: Forensic Production Integrations v2
 
 Goal: move remaining triage mocks to concrete integrations.
+Status: `PLANNED`
 
 Stages:
 1. Implement ZIP password pipeline with bounded safety controls.

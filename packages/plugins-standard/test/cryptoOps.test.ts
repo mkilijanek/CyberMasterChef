@@ -12,6 +12,7 @@ import { baconCipherDecode } from "../src/ops/baconCipherDecode.js";
 import { bcryptParse } from "../src/ops/bcryptParse.js";
 import { hashMd5 } from "../src/ops/hashMd5.js";
 import { sha1 } from "../src/ops/sha1.js";
+import { sha224 } from "../src/ops/sha224.js";
 import { sha384 } from "../src/ops/sha384.js";
 import { sha512 } from "../src/ops/sha512.js";
 import { sha3_256 } from "../src/ops/sha3_256.js";
@@ -141,6 +142,7 @@ describe("crypto operations", () => {
     const registry = new InMemoryRegistry();
     registry.register(hashMd5);
     registry.register(sha1);
+    registry.register(sha224);
     registry.register(sha384);
     registry.register(sha512);
     registry.register(sha3_256);
@@ -152,6 +154,10 @@ describe("crypto operations", () => {
     const ops = [
       { opId: "hash.md5", expected: "5d41402abc4b2a76b9719d911017c592" },
       { opId: "hash.sha1", expected: "aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d" },
+      {
+        opId: "hash.sha224",
+        expected: "ea09ae9cc6768c50fcee903ed054556e5bfc8347907f12598aa24193"
+      },
       {
         opId: "hash.sha384",
         expected:

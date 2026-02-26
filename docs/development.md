@@ -299,6 +299,8 @@ Wave 1 implemented so far:
 - Wave 23 crypto/kdf: `crypto.hmacSha384`
 - Wave 23 crypto/kdf: `crypto.hkdf`
 - Wave 23 crypto/kdf: `crypto.scrypt`
+- Wave 24 crypto: `hash.sha224`
+- Wave 24 network: `network.groupIPAddresses`
 - Wave 19 forensic helpers: `forensic.analyseUuid`, `forensic.chiSquare`, `forensic.detectFileType`, `forensic.elfInfo`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip

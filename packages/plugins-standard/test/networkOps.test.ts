@@ -9,6 +9,7 @@ import { defangIPs } from "../src/ops/defangIPs.js";
 import { fangIPs } from "../src/ops/fangIPs.js";
 import { extractPorts } from "../src/ops/extractPorts.js";
 import { dechunkHttpResponse } from "../src/ops/dechunkHttpResponse.js";
+import { groupIPAddresses } from "../src/ops/groupIPAddresses.js";
 
 describe("network operations", () => {
   it("extracts unique valid IPv4 addresses", async () => {
@@ -158,5 +159,26 @@ describe("network operations", () => {
     expect(out.output.type).toBe("bytes");
     if (out.output.type !== "bytes") return;
     expect(new TextDecoder().decode(out.output.value)).toBe("Wikipedia");
+  });
+
+  it("groups IPv4 addresses into CIDR buckets", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(groupIPAddresses);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "network.groupIPAddresses", args: { prefixLength: 24 } }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: {
+        type: "string",
+        value: "src=10.0.0.1 dst=10.0.0.2 src=10.0.1.9 dst=10.0.1.20"
+      }
+    });
+    expect(out.output).toEqual({
+      type: "string",
+      value: "10.0.0.0/24\t2\n10.0.1.0/24\t2"
+    });
   });
 });

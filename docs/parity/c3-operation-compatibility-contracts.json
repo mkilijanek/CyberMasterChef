@@ -3419,6 +3419,31 @@
     }
   },
   {
+    "operationId": "hash.sha224",
+    "name": "SHA-224",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sha224.ts",
+      "description": "Computes SHA-224 digest. Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.sha256",
     "name": "SHA-256",
     "domain": "crypto-hash-kdf",
@@ -4545,6 +4570,44 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/fangUrls.ts",
       "description": "Reverts common defanged URL markers back to standard URL form."
+    }
+  },
+  {
+    "operationId": "network.groupIPAddresses",
+    "name": "Group IP Addresses",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "prefixLength",
+        "type": "number",
+        "label": "Prefix Length",
+        "defaultValue": "24"
+      },
+      {
+        "key": "includeCounts",
+        "type": "boolean",
+        "label": "Include counts",
+        "defaultValue": "true"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/groupIPAddresses.ts",
+      "description": "Groups IPv4 addresses by CIDR prefix and outputs group counts."
     }
   },
   {

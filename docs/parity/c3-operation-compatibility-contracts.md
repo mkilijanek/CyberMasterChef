@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 295
+Total contracts: 297
 
 ## Contract entries (compact)
 
@@ -796,6 +796,13 @@ Total contracts: 295
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.sha224
+  - name: SHA-224
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.sha256
   - name: SHA-256
   - domain: crypto-hash-kdf
@@ -1052,6 +1059,13 @@ Total contracts: 295
   - name: Fang URLs
   - domain: network-protocol-parsers
   - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.groupIPAddresses
+  - name: Group IP Addresses
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE

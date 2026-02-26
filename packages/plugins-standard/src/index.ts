@@ -7,6 +7,7 @@ import { fromBase58 } from "./ops/fromBase58.js";
 import { toHex } from "./ops/toHex.js";
 import { fromHex } from "./ops/fromHex.js";
 import { sha256 } from "./ops/sha256.js";
+import { sha224 } from "./ops/sha224.js";
 import { toBinary } from "./ops/toBinary.js";
 import { fromBinary } from "./ops/fromBinary.js";
 import { toCharcode } from "./ops/toCharcode.js";
@@ -259,6 +260,7 @@ import { defangIPs } from "./ops/defangIPs.js";
 import { fangIPs } from "./ops/fangIPs.js";
 import { extractPorts } from "./ops/extractPorts.js";
 import { dechunkHttpResponse } from "./ops/dechunkHttpResponse.js";
+import { groupIPAddresses } from "./ops/groupIPAddresses.js";
 import { gzip } from "./ops/gzip.js";
 import { gunzip } from "./ops/gunzip.js";
 import { bzip2Compress } from "./ops/bzip2Compress.js";
@@ -535,6 +537,7 @@ export const standardPlugin: Plugin = {
     registry.register(fangIPs);
     registry.register(extractPorts);
     registry.register(dechunkHttpResponse);
+    registry.register(groupIPAddresses);
     registry.register(gzip);
     registry.register(gunzip);
     registry.register(bzip2Compress);
@@ -594,6 +597,7 @@ export const standardPlugin: Plugin = {
     registry.register(hkdf);
     registry.register(pbkdf2);
     registry.register(scrypt);
+    registry.register(sha224);
     registry.register(sha256);
   }
 };

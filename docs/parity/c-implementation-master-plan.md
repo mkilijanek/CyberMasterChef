@@ -1,6 +1,6 @@
 # C Implementation Master Plan
 
-Updated: 2026-02-26 (post M10 closure and roadmap refresh)
+Updated: 2026-02-26 (M11 execution wave in progress)
 
 ## Sources
 
@@ -183,3 +183,9 @@ Deliver a complete, auditable, and operationally useful C-track:
 3. `M13`: forensic production integrations v2 (ZIP password pipeline + YARA profile).
 
 Detailed stages: `docs/parity/roadmap-next-m11-m13.md`.
+
+### M11 Progress Snapshot
+
+- `[DONE]` `hash.sha224`
+- `[DONE]` `network.groupIPAddresses`
+- `[IN-PROGRESS]` next shortlist implementation wave + parity evidence refresh

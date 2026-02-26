@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-02-26T10:22:50.274Z",
+  "generatedAt": "2026-02-26T11:48:49.602Z",
   "source": {
     "c1MatrixPath": "/home/kili/Repo/CyberMasterChef/CyberMasterChef/docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 295
+    "implementedOpsCount": 297
   },
   "summary": [
     {
@@ -119,9 +119,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 97,
-      "implementedTotal": 32,
-      "missingEstimated": 65,
-      "coveragePct": 32.99,
+      "implementedTotal": 33,
+      "missingEstimated": 64,
+      "coveragePct": 34.02,
       "implementationCandidates": [
         {
           "operationName": "a",
@@ -564,9 +564,9 @@
       "domain": "network-protocol-parsers",
       "description": "Protocol/header/parsing operations for network/web payloads.",
       "cyberChefTotal": 25,
-      "implementedTotal": 10,
-      "missingEstimated": 15,
-      "coveragePct": 40,
+      "implementedTotal": 11,
+      "missingEstimated": 14,
+      "coveragePct": 44,
       "implementationCandidates": [
         {
           "operationName": "CSS selector",
@@ -881,20 +881,20 @@
     {
       "priority": 2,
       "domain": "crypto-hash-kdf",
-      "coveragePct": 32.99,
-      "missingEstimated": 65
+      "coveragePct": 34.02,
+      "missingEstimated": 64
     },
     {
       "priority": 3,
-      "domain": "network-protocol-parsers",
-      "coveragePct": 40,
-      "missingEstimated": 15
-    },
-    {
-      "priority": 4,
       "domain": "encodings-codecs",
       "coveragePct": 41.38,
       "missingEstimated": 34
+    },
+    {
+      "priority": 4,
+      "domain": "network-protocol-parsers",
+      "coveragePct": 44,
+      "missingEstimated": 14
     }
   ]
 }

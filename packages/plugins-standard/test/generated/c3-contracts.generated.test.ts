@@ -1087,6 +1087,15 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "hash.sha224",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "hash.sha256",
     "inputTypes": [
       "bytes",
@@ -1442,6 +1451,18 @@ const CONTRACTS = [
     ],
     "outputType": "string",
     "argKeys": []
+  },
+  {
+    "operationId": "network.groupIPAddresses",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "prefixLength",
+      "includeCounts"
+    ]
   },
   {
     "operationId": "text.append",
