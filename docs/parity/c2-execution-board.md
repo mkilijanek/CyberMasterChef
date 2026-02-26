@@ -1,6 +1,6 @@
 # C2 Execution Board
 
-Updated: 2026-02-25
+Updated: 2026-02-26
 
 ## Objective
 
@@ -205,6 +205,12 @@ Translate C2 domain plan into executable implementation waves with measurable ou
   - includes IOC extraction, SHA-family hashes (where WebCrypto supports), PE `imphash`, TLSH/ssdeep (feature-flagged), and binary entropy + PE/ELF/Mach-O metadata
   - includes optional CLI-first dynamic sandbox submit adapter (allowlist endpoint validation + timeout/retry policy)
   - triage report includes explicit `mockedCapabilities` list for still-unimplemented production integrations
+
+## Next queue (post M10)
+
+- [ ] M11: close high-priority gaps in `crypto-hash-kdf` + `network-protocol-parsers`.
+- [ ] M12: reduce workbench worker bundle size and externalized node-module footprint.
+- [ ] M13: implement remaining forensic production integrations (ZIP password flow + YARA profile).
 
 ## Quality gates
 

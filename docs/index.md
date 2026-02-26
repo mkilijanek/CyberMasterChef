@@ -13,6 +13,7 @@ A clean-slate, modular, and secure workbench for data operations — successor t
 - [C Implementation Master Plan](parity/c-implementation-master-plan.md)
 - [Forensic Triage Progress](parity/forensic-triage-progress.md)
 - [C3 Contracts](parity/c3-operation-compatibility-contracts.md)
+- [Roadmap Next (M11-M13)](parity/roadmap-next-m11-m13.md)
 - [M6 STIX/MISP Mapping](parity/m6-stix-misp-mapping.md)
 - [M5 Merge Readiness](parity/m5-merge-readiness.md)
 - [CSP Checklist](security/csp-checklist.md)

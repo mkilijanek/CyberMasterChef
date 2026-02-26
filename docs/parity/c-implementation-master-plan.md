@@ -1,6 +1,6 @@
 # C Implementation Master Plan
 
-Updated: 2026-02-25 (post C3/M4 automation pass)
+Updated: 2026-02-26 (post M10 closure and roadmap refresh)
 
 ## Sources
 
@@ -175,3 +175,11 @@ Deliver a complete, auditable, and operationally useful C-track:
   - close remaining high-priority operations from C2 domain plan
   - reduce workbench worker bundle size and node-polyfill footprint
   - productionize currently mocked external integrations in triage pipeline
+
+## Next Milestones Roadmap
+
+1. `M11`: C2 high-priority parity closure for `crypto-hash-kdf` and `network-protocol-parsers`.
+2. `M12`: workbench runtime slimming (worker bundle size + polyfill footprint reduction).
+3. `M13`: forensic production integrations v2 (ZIP password pipeline + YARA profile).
+
+Detailed stages: `docs/parity/roadmap-next-m11-m13.md`.
