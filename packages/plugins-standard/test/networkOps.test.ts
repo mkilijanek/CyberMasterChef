@@ -10,6 +10,7 @@ import { fangIPs } from "../src/ops/fangIPs.js";
 import { extractPorts } from "../src/ops/extractPorts.js";
 import { dechunkHttpResponse } from "../src/ops/dechunkHttpResponse.js";
 import { groupIPAddresses } from "../src/ops/groupIPAddresses.js";
+import { dnsOverHttps } from "../src/ops/dnsOverHttps.js";
 
 describe("network operations", () => {
   it("extracts unique valid IPv4 addresses", async () => {
@@ -180,5 +181,62 @@ describe("network operations", () => {
       type: "string",
       value: "10.0.0.0/24\t2\n10.0.1.0/24\t2"
     });
+  });
+
+  it("queries DNS-over-HTTPS for domains", async () => {
+    const prevFetch = globalThis.fetch;
+    globalThis.fetch = () =>
+      Promise.resolve(
+        new Response(JSON.stringify({ Answer: [{ data: "93.184.216.34" }] }), { status: 200 })
+      );
+    try {
+      const registry = new InMemoryRegistry();
+      registry.register(dnsOverHttps);
+      const recipe: Recipe = {
+        version: 1,
+        steps: [
+          {
+            opId: "network.dnsOverHttps",
+            args: {
+              recordType: "A",
+              resolverUrl: "https://dns.google/resolve",
+              allowHosts: "dns.google"
+            }
+          }
+        ]
+      };
+      const out = await runRecipe({
+        registry,
+        recipe,
+        input: { type: "string", value: "example.com" }
+      });
+      expect(out.output).toEqual({ type: "string", value: "example.com\t93.184.216.34" });
+    } finally {
+      globalThis.fetch = prevFetch;
+    }
+  });
+
+  it("rejects non-allowlisted DNS resolver", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(dnsOverHttps);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [
+        {
+          opId: "network.dnsOverHttps",
+          args: {
+            resolverUrl: "https://dns.google/resolve",
+            allowHosts: "resolver.example"
+          }
+        }
+      ]
+    };
+    await expect(
+      runRecipe({
+        registry,
+        recipe,
+        input: { type: "string", value: "example.com" }
+      })
+    ).rejects.toThrow("resolverUrl host not allowlisted");
   });
 });

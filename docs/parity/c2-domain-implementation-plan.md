@@ -1,14 +1,14 @@
 # C2 Domain Implementation Plan
 
-Generated: 2026-02-26T11:48:49.602Z
-Implemented operations in repo: 297
+Generated: 2026-02-26T12:08:50.861Z
+Implemented operations in repo: 298
 
 ## Priority order
 
 - P1: forensic-malware-helper (coverage 31.25%, missing ~11)
 - P2: crypto-hash-kdf (coverage 34.02%, missing ~64)
 - P3: encodings-codecs (coverage 41.38%, missing ~34)
-- P4: network-protocol-parsers (coverage 44%, missing ~14)
+- P4: network-protocol-parsers (coverage 48%, missing ~13)
 
 ## Domain summary
 
@@ -120,9 +120,9 @@ Implemented operations in repo: 297
 ### network-protocol-parsers
 - Description: Protocol/header/parsing operations for network/web payloads.
 - CyberChef total: 25
-- Implemented total: 11
-- Estimated missing: 14
-- Coverage: 44%
+- Implemented total: 12
+- Estimated missing: 13
+- Coverage: 48%
 - Candidate operations (first 20):
   - CSS selector (CSSSelector.mjs) [high]
   - DechunkHTTPResponse (DechunkHTTPResponse.mjs) [high]

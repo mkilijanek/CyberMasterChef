@@ -261,6 +261,7 @@ import { fangIPs } from "./ops/fangIPs.js";
 import { extractPorts } from "./ops/extractPorts.js";
 import { dechunkHttpResponse } from "./ops/dechunkHttpResponse.js";
 import { groupIPAddresses } from "./ops/groupIPAddresses.js";
+import { dnsOverHttps } from "./ops/dnsOverHttps.js";
 import { gzip } from "./ops/gzip.js";
 import { gunzip } from "./ops/gunzip.js";
 import { bzip2Compress } from "./ops/bzip2Compress.js";
@@ -538,6 +539,7 @@ export const standardPlugin: Plugin = {
     registry.register(extractPorts);
     registry.register(dechunkHttpResponse);
     registry.register(groupIPAddresses);
+    registry.register(dnsOverHttps);
     registry.register(gzip);
     registry.register(gunzip);
     registry.register(bzip2Compress);

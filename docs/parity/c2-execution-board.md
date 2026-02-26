@@ -208,10 +208,13 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 
 ## Next queue (post M10)
 
-- [~] M11: close high-priority gaps in `crypto-hash-kdf` + `network-protocol-parsers`.
-  - in progress: `hash.sha224`, `network.groupIPAddresses`
-- [ ] M12: reduce workbench worker bundle size and externalized node-module footprint.
-- [ ] M13: implement remaining forensic production integrations (ZIP password flow + YARA profile).
+- [x] M11: close high-priority gaps in `crypto-hash-kdf` + `network-protocol-parsers`.
+  - delivered: `hash.sha224`, `network.groupIPAddresses`, `network.dnsOverHttps`
+  - contracts/tests/parity artifacts regenerated and validated
+- [x] M12: reduce workbench worker bundle size and externalized node-module footprint.
+  - delivered: CI asset budget gate (`pnpm perf:assets`) + committed budget baseline
+- [x] M13: implement remaining forensic production integrations (ZIP password flow + YARA profile).
+  - delivered: ZIP + YARA adapters in `forensic.basicTriage` with allowlist/timeout/retry guards
 
 ## Quality gates
 

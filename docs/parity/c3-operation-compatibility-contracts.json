@@ -1849,6 +1849,96 @@
         "type": "number",
         "label": "Sandbox retries",
         "defaultValue": "2"
+      },
+      {
+        "key": "enableZipPasswordPipeline",
+        "type": "boolean",
+        "label": "Enable ZIP password pipeline",
+        "defaultValue": "false"
+      },
+      {
+        "key": "zipRuntimeProfile",
+        "type": "select",
+        "label": "ZIP runtime profile",
+        "defaultValue": "\"disabled\""
+      },
+      {
+        "key": "zipEndpoint",
+        "type": "string",
+        "label": "ZIP endpoint URL",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "zipAllowHosts",
+        "type": "string",
+        "label": "Allowlisted ZIP hosts",
+        "defaultValue": "\"localhost"
+      },
+      {
+        "key": "zipTimeoutMs",
+        "type": "number",
+        "label": "ZIP timeout ms",
+        "defaultValue": "5000"
+      },
+      {
+        "key": "zipRetries",
+        "type": "number",
+        "label": "ZIP retries",
+        "defaultValue": "2"
+      },
+      {
+        "key": "zipCandidatePasswords",
+        "type": "string",
+        "label": "ZIP candidate passwords",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "zipMaxInputBytes",
+        "type": "number",
+        "label": "ZIP max input bytes",
+        "defaultValue": "10485760"
+      },
+      {
+        "key": "enableYaraScan",
+        "type": "boolean",
+        "label": "Enable YARA scan",
+        "defaultValue": "false"
+      },
+      {
+        "key": "yaraRuntimeProfile",
+        "type": "select",
+        "label": "YARA runtime profile",
+        "defaultValue": "\"disabled\""
+      },
+      {
+        "key": "yaraEndpoint",
+        "type": "string",
+        "label": "YARA endpoint URL",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "yaraAllowHosts",
+        "type": "string",
+        "label": "Allowlisted YARA hosts",
+        "defaultValue": "\"localhost"
+      },
+      {
+        "key": "yaraTimeoutMs",
+        "type": "number",
+        "label": "YARA timeout ms",
+        "defaultValue": "5000"
+      },
+      {
+        "key": "yaraRetries",
+        "type": "number",
+        "label": "YARA retries",
+        "defaultValue": "2"
+      },
+      {
+        "key": "yaraProfile",
+        "type": "string",
+        "label": "YARA profile",
+        "defaultValue": "\"default\""
       }
     ],
     "deterministic": true,
@@ -1858,8 +1948,6 @@
         "INVALID_INPUT_TYPE"
       ],
       "examples": [
-        "Sandbox endpoint must be a valid absolute URL",
-        "Sandbox endpoint must use https (http is only allowed for loopback)",
         "Unexpected pre-triage output type"
       ]
     },
@@ -4426,6 +4514,59 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/defangUrls.ts",
       "description": "Defangs HTTP/HTTPS URLs by replacing protocol and host dots."
+    }
+  },
+  {
+    "operationId": "network.dnsOverHttps",
+    "name": "DNS over HTTPS",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "recordType",
+        "type": "select",
+        "label": "Record Type",
+        "defaultValue": "\"A\""
+      },
+      {
+        "key": "resolverUrl",
+        "type": "string",
+        "label": "Resolver URL",
+        "defaultValue": "\"https://dns.google/resolve\""
+      },
+      {
+        "key": "allowHosts",
+        "type": "string",
+        "label": "Allowlisted resolver hosts",
+        "defaultValue": "\"dns.google"
+      },
+      {
+        "key": "timeoutMs",
+        "type": "number",
+        "label": "Timeout ms",
+        "defaultValue": "5000"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "resolverUrl must be a valid absolute URL",
+        "resolverUrl must use https (http allowed only for loopback)",
+        "Expected bytes or string input",
+        "fetch is not available in this runtime"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/dnsOverHttps.ts",
+      "description": "Queries DNS records over HTTPS for domains from input."
     }
   },
   {

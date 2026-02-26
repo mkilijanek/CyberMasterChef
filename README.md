@@ -101,4 +101,5 @@ pnpm release:readiness
 
 ## License
 
-No license file is currently defined in this repository.
+This repository is licensed under the BSD 3-Clause License.
+See `LICENSE`.

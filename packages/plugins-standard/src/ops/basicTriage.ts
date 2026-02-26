@@ -72,11 +72,35 @@ type TriageReport = {
       submissionId: string | null;
       error: string | null;
     };
+    zipPasswordPipeline: {
+      enabled: boolean;
+      runtimeProfile: "disabled" | "cli";
+      attempted: boolean;
+      status: "disabled" | "skipped" | "submitted" | "failed";
+      endpoint: string | null;
+      responseCode: number | null;
+      candidateCount: number;
+      matchedPassword: string | null;
+      error: string | null;
+    };
+    yara: {
+      enabled: boolean;
+      runtimeProfile: "disabled" | "cli";
+      attempted: boolean;
+      status: "disabled" | "skipped" | "submitted" | "failed";
+      endpoint: string | null;
+      responseCode: number | null;
+      matchCount: number;
+      ruleMatches: string[];
+      error: string | null;
+    };
   };
   preTriage: PreTriageReport;
 };
 
 type SandboxIntegration = TriageReport["integrations"]["sandbox"];
+type ZipIntegration = TriageReport["integrations"]["zipPasswordPipeline"];
+type YaraIntegration = TriageReport["integrations"]["yara"];
 
 const MOCKED_CAPABILITIES_BASE = [
   "archive_password_handling_and_zip_unpacking",
@@ -178,34 +202,35 @@ function parseAllowedHosts(raw: unknown): string[] {
     .filter((v) => v.length > 0);
 }
 
-function validateSandboxEndpoint(endpoint: string, allowedHosts: string[]): URL {
+function validateEndpoint(label: string, endpoint: string, allowedHosts: string[]): URL {
   let parsed: URL;
   try {
     parsed = new URL(endpoint);
   } catch {
-    throw new Error("Sandbox endpoint must be a valid absolute URL");
+    throw new Error(`${label} endpoint must be a valid absolute URL`);
   }
   const host = parsed.hostname.toLowerCase();
   const isLoopback = host === "localhost" || host === "127.0.0.1" || host === "::1";
   const isHttps = parsed.protocol === "https:";
   if (!isHttps && !isLoopback) {
-    throw new Error("Sandbox endpoint must use https (http is only allowed for loopback)");
+    throw new Error(`${label} endpoint must use https (http is only allowed for loopback)`);
   }
   if (allowedHosts.length > 0 && !allowedHosts.includes(host)) {
-    throw new Error(`Sandbox endpoint host not allowlisted: ${host}`);
+    throw new Error(`${label} endpoint host not allowlisted: ${host}`);
   }
   return parsed;
 }
 
-async function submitSandboxSample(args: {
+async function submitJsonWithRetry(args: {
   endpoint: URL;
   timeoutMs: number;
   retries: number;
-  reportPayload: Record<string, unknown>;
+  payload: Record<string, unknown>;
+  errorPrefix: string;
 }): Promise<{
   status: "submitted" | "failed";
   responseCode: number | null;
-  submissionId: string | null;
+  body: Record<string, unknown> | null;
   error: string | null;
 }> {
   const fetchFn = globalThis.fetch;
@@ -213,7 +238,7 @@ async function submitSandboxSample(args: {
     return {
       status: "failed",
       responseCode: null,
-      submissionId: null,
+      body: null,
       error: "fetch is not available in this runtime"
     };
   }
@@ -227,26 +252,24 @@ async function submitSandboxSample(args: {
       const response = await fetchFn(args.endpoint.toString(), {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(args.reportPayload),
+        body: JSON.stringify(args.payload),
         signal: abortCtrl.signal
       });
       clearTimeout(timer);
       lastStatus = response.status;
       if (!response.ok) {
-        lastError = `sandbox_http_${response.status}`;
+        lastError = `${args.errorPrefix}_http_${response.status}`;
       } else {
-        let submissionId: string | null = null;
+        let body: Record<string, unknown> | null = null;
         try {
-          const body = (await response.json()) as { submissionId?: unknown; id?: unknown };
-          const candidate = typeof body.submissionId === "string" ? body.submissionId : body.id;
-          submissionId = typeof candidate === "string" ? candidate : null;
+          body = (await response.json()) as Record<string, unknown>;
         } catch {
-          submissionId = null;
+          body = null;
         }
         return {
           status: "submitted",
           responseCode: response.status,
-          submissionId,
+          body,
           error: null
         };
       }
@@ -261,7 +284,7 @@ async function submitSandboxSample(args: {
   return {
     status: "failed",
     responseCode: lastStatus,
-    submissionId: null,
+    body: null,
     error: lastError
   };
 }
@@ -416,6 +439,104 @@ export const basicTriage: Operation = {
       label: "Sandbox retries",
       type: "number",
       defaultValue: 2
+    },
+    {
+      key: "enableZipPasswordPipeline",
+      label: "Enable ZIP password pipeline",
+      type: "boolean",
+      defaultValue: false
+    },
+    {
+      key: "zipRuntimeProfile",
+      label: "ZIP runtime profile",
+      type: "select",
+      defaultValue: "disabled",
+      options: [
+        { label: "Disabled", value: "disabled" },
+        { label: "CLI", value: "cli" }
+      ]
+    },
+    {
+      key: "zipEndpoint",
+      label: "ZIP endpoint URL",
+      type: "string",
+      defaultValue: ""
+    },
+    {
+      key: "zipAllowHosts",
+      label: "Allowlisted ZIP hosts",
+      type: "string",
+      defaultValue: "localhost,127.0.0.1"
+    },
+    {
+      key: "zipTimeoutMs",
+      label: "ZIP timeout ms",
+      type: "number",
+      defaultValue: 5000
+    },
+    {
+      key: "zipRetries",
+      label: "ZIP retries",
+      type: "number",
+      defaultValue: 2
+    },
+    {
+      key: "zipCandidatePasswords",
+      label: "ZIP candidate passwords",
+      type: "string",
+      defaultValue: ""
+    },
+    {
+      key: "zipMaxInputBytes",
+      label: "ZIP max input bytes",
+      type: "number",
+      defaultValue: 10485760
+    },
+    {
+      key: "enableYaraScan",
+      label: "Enable YARA scan",
+      type: "boolean",
+      defaultValue: false
+    },
+    {
+      key: "yaraRuntimeProfile",
+      label: "YARA runtime profile",
+      type: "select",
+      defaultValue: "disabled",
+      options: [
+        { label: "Disabled", value: "disabled" },
+        { label: "CLI", value: "cli" }
+      ]
+    },
+    {
+      key: "yaraEndpoint",
+      label: "YARA endpoint URL",
+      type: "string",
+      defaultValue: ""
+    },
+    {
+      key: "yaraAllowHosts",
+      label: "Allowlisted YARA hosts",
+      type: "string",
+      defaultValue: "localhost,127.0.0.1"
+    },
+    {
+      key: "yaraTimeoutMs",
+      label: "YARA timeout ms",
+      type: "number",
+      defaultValue: 5000
+    },
+    {
+      key: "yaraRetries",
+      label: "YARA retries",
+      type: "number",
+      defaultValue: 2
+    },
+    {
+      key: "yaraProfile",
+      label: "YARA profile",
+      type: "string",
+      defaultValue: "default"
     }
   ],
   run: async ({ input, args, signal }) => {
@@ -443,6 +564,24 @@ export const basicTriage: Operation = {
       Math.min(5, Math.floor(typeof args.sandboxRetries === "number" ? args.sandboxRetries : 2))
     );
     const sandboxAllowHosts = parseAllowedHosts(args.sandboxAllowHosts);
+    const zipProfile = args.zipRuntimeProfile === "cli" || args.zipRuntimeProfile === "disabled" ? args.zipRuntimeProfile : "disabled";
+    const zipEnabled = args.enableZipPasswordPipeline === true && zipProfile === "cli";
+    const zipEndpointRaw = typeof args.zipEndpoint === "string" ? args.zipEndpoint.trim() : "";
+    const zipAllowHosts = parseAllowedHosts(args.zipAllowHosts);
+    const zipTimeoutMs = Math.max(100, Math.min(60000, Math.floor(typeof args.zipTimeoutMs === "number" ? args.zipTimeoutMs : 5000)));
+    const zipRetries = Math.max(0, Math.min(5, Math.floor(typeof args.zipRetries === "number" ? args.zipRetries : 2)));
+    const zipCandidates = typeof args.zipCandidatePasswords === "string"
+      ? args.zipCandidatePasswords.split(",").map((v) => v.trim()).filter((v) => v.length > 0).slice(0, 100)
+      : [];
+    const zipMaxInputBytes = Math.max(1024, Math.min(50 * 1024 * 1024, Math.floor(typeof args.zipMaxInputBytes === "number" ? args.zipMaxInputBytes : 10 * 1024 * 1024)));
+
+    const yaraProfile = args.yaraRuntimeProfile === "cli" || args.yaraRuntimeProfile === "disabled" ? args.yaraRuntimeProfile : "disabled";
+    const yaraEnabled = args.enableYaraScan === true && yaraProfile === "cli";
+    const yaraEndpointRaw = typeof args.yaraEndpoint === "string" ? args.yaraEndpoint.trim() : "";
+    const yaraAllowHosts = parseAllowedHosts(args.yaraAllowHosts);
+    const yaraTimeoutMs = Math.max(100, Math.min(60000, Math.floor(typeof args.yaraTimeoutMs === "number" ? args.yaraTimeoutMs : 5000)));
+    const yaraRetries = Math.max(0, Math.min(5, Math.floor(typeof args.yaraRetries === "number" ? args.yaraRetries : 2)));
+    const yaraProfileName = typeof args.yaraProfile === "string" && args.yaraProfile.trim() !== "" ? args.yaraProfile.trim() : "default";
 
     const preCtx = signal === undefined ? { input, args: {} } : { input, args: {}, signal };
     const preOut = await basicPreTriage.run(preCtx);
@@ -478,30 +617,119 @@ export const basicTriage: Operation = {
       submissionId: null,
       error: null
     };
+    const zipPasswordPipeline: ZipIntegration = {
+      enabled: zipEnabled,
+      runtimeProfile: zipProfile,
+      attempted: false,
+      status: zipEnabled ? "skipped" : "disabled",
+      endpoint: null,
+      responseCode: null,
+      candidateCount: zipCandidates.length,
+      matchedPassword: null,
+      error: null
+    };
+    const yara: YaraIntegration = {
+      enabled: yaraEnabled,
+      runtimeProfile: yaraProfile,
+      attempted: false,
+      status: yaraEnabled ? "skipped" : "disabled",
+      endpoint: null,
+      responseCode: null,
+      matchCount: 0,
+      ruleMatches: [],
+      error: null
+    };
 
     if (sandboxEnabled) {
       if (!sandboxEndpointRaw) {
         sandbox.status = "failed";
         sandbox.error = "sandboxEndpoint is required when sandbox submit is enabled";
       } else {
-        const endpoint = validateSandboxEndpoint(sandboxEndpointRaw, sandboxAllowHosts);
+        const endpoint = validateEndpoint("Sandbox", sandboxEndpointRaw, sandboxAllowHosts);
         sandbox.attempted = true;
         sandbox.endpoint = endpoint.toString();
-        const sandboxResult = await submitSandboxSample({
+        const sandboxResult = await submitJsonWithRetry({
           endpoint,
           timeoutMs: sandboxTimeoutMs,
           retries: sandboxRetries,
-          reportPayload: {
+          payload: {
             sha256: pre.hashes.sha256,
             verdict,
             riskScoreNorm: score,
             iocs: pre.iocs
-          }
+          },
+          errorPrefix: "sandbox"
         });
         sandbox.status = sandboxResult.status;
         sandbox.responseCode = sandboxResult.responseCode;
-        sandbox.submissionId = sandboxResult.submissionId;
+        const submissionCandidate = sandboxResult.body?.submissionId ?? sandboxResult.body?.id;
+        sandbox.submissionId = typeof submissionCandidate === "string" ? submissionCandidate : null;
         sandbox.error = sandboxResult.error;
+      }
+    }
+
+    const zipInputBytes = input.type === "bytes" ? input.value : undefined;
+    if (zipEnabled) {
+      if (!zipEndpointRaw) {
+        zipPasswordPipeline.status = "failed";
+        zipPasswordPipeline.error = "zipEndpoint is required when ZIP password pipeline is enabled";
+      } else if (!zipInputBytes || zipInputBytes.length < 4 || zipInputBytes[0] !== 0x50 || zipInputBytes[1] !== 0x4b) {
+        zipPasswordPipeline.status = "skipped";
+        zipPasswordPipeline.error = "Input is not a ZIP payload";
+      } else if (zipInputBytes.length > zipMaxInputBytes) {
+        zipPasswordPipeline.status = "failed";
+        zipPasswordPipeline.error = `ZIP input exceeds zipMaxInputBytes=${zipMaxInputBytes}`;
+      } else {
+        const endpoint = validateEndpoint("ZIP", zipEndpointRaw, zipAllowHosts);
+        zipPasswordPipeline.attempted = true;
+        zipPasswordPipeline.endpoint = endpoint.toString();
+        const zipResult = await submitJsonWithRetry({
+          endpoint,
+          timeoutMs: zipTimeoutMs,
+          retries: zipRetries,
+          payload: {
+            sha256: pre.hashes.sha256,
+            sizeBytes: zipInputBytes.length,
+            candidates: zipCandidates
+          },
+          errorPrefix: "zip"
+        });
+        zipPasswordPipeline.status = zipResult.status;
+        zipPasswordPipeline.responseCode = zipResult.responseCode;
+        const matched = zipResult.body?.matchedPassword ?? zipResult.body?.password;
+        zipPasswordPipeline.matchedPassword = typeof matched === "string" ? matched : null;
+        zipPasswordPipeline.error = zipResult.error;
+      }
+    }
+
+    if (yaraEnabled) {
+      if (!yaraEndpointRaw) {
+        yara.status = "failed";
+        yara.error = "yaraEndpoint is required when YARA scan is enabled";
+      } else {
+        const endpoint = validateEndpoint("YARA", yaraEndpointRaw, yaraAllowHosts);
+        yara.attempted = true;
+        yara.endpoint = endpoint.toString();
+        const yaraResult = await submitJsonWithRetry({
+          endpoint,
+          timeoutMs: yaraTimeoutMs,
+          retries: yaraRetries,
+          payload: {
+            sha256: pre.hashes.sha256,
+            profile: yaraProfileName,
+            iocs: pre.iocs,
+            heuristics: pre.heuristics.map((h) => h.id)
+          },
+          errorPrefix: "yara"
+        });
+        yara.status = yaraResult.status;
+        yara.responseCode = yaraResult.responseCode;
+        const matchesRaw = yaraResult.body?.ruleMatches;
+        if (Array.isArray(matchesRaw)) {
+          yara.ruleMatches = matchesRaw.filter((v): v is string => typeof v === "string");
+        }
+        yara.matchCount = yara.ruleMatches.length;
+        yara.error = yaraResult.error;
       }
     }
 
@@ -509,6 +737,18 @@ export const basicTriage: Operation = {
     if (sandbox.status === "submitted") {
       mockedCapabilities = mockedCapabilities.filter(
         (capability) => capability !== "dynamic_sandbox_integration_cuckoo"
+      );
+    }
+    if (zipPasswordPipeline.status === "submitted") {
+      mockedCapabilities = mockedCapabilities.filter(
+        (capability) =>
+          capability !== "archive_password_handling_and_zip_unpacking" &&
+          capability !== "zip_slip_and_zip_bomb_safe_unpack_guards"
+      );
+    }
+    if (yara.status === "submitted") {
+      mockedCapabilities = mockedCapabilities.filter(
+        (capability) => capability !== "yara_or_yara_x_rule_scanning"
       );
     }
 
@@ -537,7 +777,9 @@ export const basicTriage: Operation = {
       },
       recommendations,
       integrations: {
-        sandbox
+        sandbox,
+        zipPasswordPipeline,
+        yara
       },
       preTriage: pre
     };

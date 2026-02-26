@@ -568,7 +568,22 @@ const CONTRACTS = [
       "sandboxEndpoint",
       "sandboxAllowHosts",
       "sandboxTimeoutMs",
-      "sandboxRetries"
+      "sandboxRetries",
+      "enableZipPasswordPipeline",
+      "zipRuntimeProfile",
+      "zipEndpoint",
+      "zipAllowHosts",
+      "zipTimeoutMs",
+      "zipRetries",
+      "zipCandidatePasswords",
+      "zipMaxInputBytes",
+      "enableYaraScan",
+      "yaraRuntimeProfile",
+      "yaraEndpoint",
+      "yaraAllowHosts",
+      "yaraTimeoutMs",
+      "yaraRetries",
+      "yaraProfile"
     ]
   },
   {
@@ -1403,6 +1418,20 @@ const CONTRACTS = [
     ],
     "outputType": "string",
     "argKeys": []
+  },
+  {
+    "operationId": "network.dnsOverHttps",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "recordType",
+      "resolverUrl",
+      "allowHosts",
+      "timeoutMs"
+    ]
   },
   {
     "operationId": "network.extractIPs",

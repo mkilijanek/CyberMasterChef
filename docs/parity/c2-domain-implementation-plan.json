@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-02-26T11:48:49.602Z",
+  "generatedAt": "2026-02-26T12:08:50.861Z",
   "source": {
     "c1MatrixPath": "/home/kili/Repo/CyberMasterChef/CyberMasterChef/docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 297
+    "implementedOpsCount": 298
   },
   "summary": [
     {
@@ -564,9 +564,9 @@
       "domain": "network-protocol-parsers",
       "description": "Protocol/header/parsing operations for network/web payloads.",
       "cyberChefTotal": 25,
-      "implementedTotal": 11,
-      "missingEstimated": 14,
-      "coveragePct": 44,
+      "implementedTotal": 12,
+      "missingEstimated": 13,
+      "coveragePct": 48,
       "implementationCandidates": [
         {
           "operationName": "CSS selector",
@@ -893,8 +893,8 @@
     {
       "priority": 4,
       "domain": "network-protocol-parsers",
-      "coveragePct": 44,
-      "missingEstimated": 14
+      "coveragePct": 48,
+      "missingEstimated": 13
     }
   ]
 }

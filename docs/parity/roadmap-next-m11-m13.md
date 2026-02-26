@@ -1,40 +1,43 @@
 # Roadmap Next (M11-M13)
 
-Updated: 2026-02-26 (M11 in progress)
+Updated: 2026-02-26 (M11-M13 completed)
 
 ## M11: C2 High-Priority Parity Closure
 
 Goal: close highest-value missing operations from `crypto-hash-kdf` and `network-protocol-parsers`.
-Status: `IN-PROGRESS`
+Status: `DONE`
 
-Progress snapshot:
-- implemented `hash.sha224`
-- implemented `network.groupIPAddresses`
+Delivered:
+- `hash.sha224`
+- `network.groupIPAddresses`
+- `network.dnsOverHttps`
+- C3 contracts/testgen refreshed (`298` operations validated)
+- unit/golden coverage updated for new network/hash ops
 
-Stages:
-1. Finalize prioritized missing-op shortlist from `docs/parity/c2-domain-implementation-plan.md`.
-2. Implement selected operations with deterministic behavior declarations.
-3. Add unit + golden tests and regenerate C3 contracts.
-4. Close C2 plan drift by updating parity artifacts and execution board.
+Closure checklist:
+1. `[DONE]` shortlist finalized from `docs/parity/c2-domain-implementation-plan.md`.
+2. `[DONE]` operations implemented with deterministic behavior.
+3. `[DONE]` tests added and C3 contracts regenerated.
+4. `[DONE]` parity artifacts and execution board updated.
 
 ## M12: Workbench Runtime Slimming
 
 Goal: reduce worker bundle size and node-polyfill footprint without regressions.
-Status: `PLANNED`
+Status: `DONE`
 
-Stages:
-1. Identify largest chunks and polyfill-heavy dependencies in workbench build output.
-2. Refactor expensive operations behind optional runtime profiles/lazy loading.
-3. Tune manual chunks and validate budget impact via `pnpm perf:check`.
-4. Add acceptance thresholds for worker artifact size in CI documentation.
+Delivered:
+1. CI asset budget gate: `pnpm perf:assets` + `scripts/perf/check-workbench-assets.mjs`.
+2. budget baseline committed: `docs/perf/asset-budgets.json`.
+3. release readiness updated to require asset budgets evidence.
+4. validated against full quality chain (`lint`, `typecheck`, `test`, `build`, `perf:check`, `release:readiness`).
 
 ## M13: Forensic Production Integrations v2
 
 Goal: move remaining triage mocks to concrete integrations.
-Status: `PLANNED`
+Status: `DONE`
 
-Stages:
-1. Implement ZIP password pipeline with bounded safety controls.
-2. Add YARA profile adapter (CLI-first, allowlist/config validated).
-3. Extend integration tests for error handling, retries, and deterministic outputs.
-4. Update STIX/MISP/sandbox mapping docs and final readiness evidence.
+Delivered:
+1. ZIP password pipeline with guards (`zipMaxInputBytes`, ZIP signature checks, allowlist, timeout/retry).
+2. YARA adapter (CLI-first) with endpoint/profile validation and structured results.
+3. shared retry/timeout submit path for sandbox/ZIP/YARA + integration tests for success, allowlist, retry, timeout.
+4. triage report now removes related mocked capabilities after successful adapter submission.

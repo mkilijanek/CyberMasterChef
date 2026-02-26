@@ -26,6 +26,7 @@
     "security:csp-check": "node scripts/security/check-csp-checklist.mjs",
     "security:audit": "pnpm audit --audit-level high",
     "perf:check": "TSX_TSCONFIG_PATH=./tsconfig.base.json pnpm exec tsx scripts/perf/check-budgets.ts",
+    "perf:assets": "node scripts/perf/check-workbench-assets.mjs",
     "release:readiness": "node scripts/release/check-readiness.mjs"
   },
   "pnpm": {

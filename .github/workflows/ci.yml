@@ -37,6 +37,8 @@ jobs:
         run: pnpm test:e2e
       - name: Build
         run: pnpm build
+      - name: Workbench Asset Budget Gate
+        run: pnpm perf:assets
       - name: Performance Budget Gate
         run: pnpm perf:check
       - name: Upload Quality Artifacts

@@ -54,6 +54,15 @@ function makeImportPeSample(): Uint8Array {
   return data;
 }
 
+function makeMinimalZipSample(): Uint8Array {
+  const data = new Uint8Array(64);
+  data[0] = 0x50;
+  data[1] = 0x4b;
+  data[2] = 0x03;
+  data[3] = 0x04;
+  return data;
+}
+
 describe("forensic basic triage", () => {
   it("builds suspicious or malicious verdict with score and findings", async () => {
     const registry = new InMemoryRegistry();
@@ -241,5 +250,195 @@ describe("forensic basic triage", () => {
         input: { type: "string", value: "sample" }
       })
     ).rejects.toThrow("Sandbox endpoint host not allowlisted");
+  });
+
+  it("retries sandbox submission and succeeds on later attempt", async () => {
+    const prevFetch = globalThis.fetch;
+    let callCount = 0;
+    globalThis.fetch = (() => {
+      callCount += 1;
+      if (callCount === 1) {
+        return Promise.resolve(new Response("temporary failure", { status: 500 }));
+      }
+      return Promise.resolve(new Response(JSON.stringify({ submissionId: "sub-retry-1" }), { status: 202 }));
+    }) as typeof fetch;
+
+    try {
+      const registry = new InMemoryRegistry();
+      registry.register(basicTriage);
+      const recipe: Recipe = {
+        version: 1,
+        steps: [
+          {
+            opId: "forensic.basicTriage",
+            args: {
+              enableSandboxSubmit: true,
+              sandboxRuntimeProfile: "cli",
+              sandboxEndpoint: "https://sandbox.local/submit",
+              sandboxAllowHosts: "sandbox.local",
+              sandboxTimeoutMs: 300,
+              sandboxRetries: 1
+            }
+          }
+        ]
+      };
+      const out = await runRecipe({
+        registry,
+        recipe,
+        input: { type: "string", value: "retry-case" }
+      });
+      expect(out.output.type).toBe("string");
+      if (out.output.type !== "string") return;
+      const report = JSON.parse(out.output.value) as {
+        integrations: { sandbox: { status: string; submissionId: string | null; responseCode: number | null } };
+      };
+      expect(callCount).toBe(2);
+      expect(report.integrations.sandbox.status).toBe("submitted");
+      expect(report.integrations.sandbox.submissionId).toBe("sub-retry-1");
+      expect(report.integrations.sandbox.responseCode).toBe(202);
+    } finally {
+      globalThis.fetch = prevFetch;
+    }
+  });
+
+  it("marks sandbox integration as failed on timeout", async () => {
+    const prevFetch = globalThis.fetch;
+    globalThis.fetch = ((_url, init) => {
+      return new Promise((_resolve, reject) => {
+        const signal = init?.signal;
+        signal?.addEventListener(
+          "abort",
+          () => reject(new Error("sandbox-timeout")),
+          { once: true }
+        );
+      });
+    }) as typeof fetch;
+
+    try {
+      const registry = new InMemoryRegistry();
+      registry.register(basicTriage);
+      const recipe: Recipe = {
+        version: 1,
+        steps: [
+          {
+            opId: "forensic.basicTriage",
+            args: {
+              enableSandboxSubmit: true,
+              sandboxRuntimeProfile: "cli",
+              sandboxEndpoint: "https://sandbox.local/submit",
+              sandboxAllowHosts: "sandbox.local",
+              sandboxTimeoutMs: 100,
+              sandboxRetries: 0
+            }
+          }
+        ]
+      };
+      const out = await runRecipe({
+        registry,
+        recipe,
+        input: { type: "string", value: "timeout-case" }
+      });
+      expect(out.output.type).toBe("string");
+      if (out.output.type !== "string") return;
+      const report = JSON.parse(out.output.value) as {
+        integrations: { sandbox: { status: string; error: string | null } };
+      };
+      expect(report.integrations.sandbox.status).toBe("failed");
+      expect(report.integrations.sandbox.error).toContain("sandbox-timeout");
+    } finally {
+      globalThis.fetch = prevFetch;
+    }
+  });
+
+  it("submits ZIP and YARA adapters and removes corresponding mocks", async () => {
+    const prevFetch = globalThis.fetch;
+    globalThis.fetch = ((url: string) => {
+      if (url.includes("zip.local")) {
+        return Promise.resolve(
+          new Response(JSON.stringify({ matchedPassword: "infected" }), { status: 200 })
+        );
+      }
+      return Promise.resolve(
+        new Response(JSON.stringify({ ruleMatches: ["MAL_Generic_1", "MAL_Generic_2"] }), {
+          status: 200
+        })
+      );
+    }) as typeof fetch;
+
+    try {
+      const registry = new InMemoryRegistry();
+      registry.register(basicTriage);
+      const recipe: Recipe = {
+        version: 1,
+        steps: [
+          {
+            opId: "forensic.basicTriage",
+            args: {
+              enableZipPasswordPipeline: true,
+              zipRuntimeProfile: "cli",
+              zipEndpoint: "https://zip.local/submit",
+              zipAllowHosts: "zip.local",
+              zipCandidatePasswords: "infected,password,123456",
+              enableYaraScan: true,
+              yaraRuntimeProfile: "cli",
+              yaraEndpoint: "https://yara.local/scan",
+              yaraAllowHosts: "yara.local",
+              yaraProfile: "default-malware"
+            }
+          }
+        ]
+      };
+      const out = await runRecipe({
+        registry,
+        recipe,
+        input: { type: "bytes", value: makeMinimalZipSample() }
+      });
+      expect(out.output.type).toBe("string");
+      if (out.output.type !== "string") return;
+      const report = JSON.parse(out.output.value) as {
+        mockedCapabilities: string[];
+        integrations: {
+          zipPasswordPipeline: { status: string; matchedPassword: string | null };
+          yara: { status: string; matchCount: number; ruleMatches: string[] };
+        };
+      };
+      expect(report.integrations.zipPasswordPipeline.status).toBe("submitted");
+      expect(report.integrations.zipPasswordPipeline.matchedPassword).toBe("infected");
+      expect(report.integrations.yara.status).toBe("submitted");
+      expect(report.integrations.yara.matchCount).toBe(2);
+      expect(report.mockedCapabilities).not.toContain(
+        "archive_password_handling_and_zip_unpacking"
+      );
+      expect(report.mockedCapabilities).not.toContain("zip_slip_and_zip_bomb_safe_unpack_guards");
+      expect(report.mockedCapabilities).not.toContain("yara_or_yara_x_rule_scanning");
+    } finally {
+      globalThis.fetch = prevFetch;
+    }
+  });
+
+  it("rejects ZIP endpoint outside allowlist", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(basicTriage);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [
+        {
+          opId: "forensic.basicTriage",
+          args: {
+            enableZipPasswordPipeline: true,
+            zipRuntimeProfile: "cli",
+            zipEndpoint: "https://zip.local/submit",
+            zipAllowHosts: "allowed.example"
+          }
+        }
+      ]
+    };
+    await expect(
+      runRecipe({
+        registry,
+        recipe,
+        input: { type: "bytes", value: makeMinimalZipSample() }
+      })
+    ).rejects.toThrow("ZIP endpoint host not allowlisted");
   });
 });

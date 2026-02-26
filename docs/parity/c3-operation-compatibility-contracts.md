@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 297
+Total contracts: 298
 
 ## Contract entries (compact)
 
@@ -1017,6 +1017,13 @@ Total contracts: 297
   - name: Defang URLs
   - domain: network-protocol-parsers
   - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.dnsOverHttps
+  - name: DNS over HTTPS
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE

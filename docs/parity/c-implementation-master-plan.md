@@ -1,6 +1,6 @@
 # C Implementation Master Plan
 
-Updated: 2026-02-26 (M11 execution wave in progress)
+Updated: 2026-02-26 (M11-M13 execution wave completed)
 
 ## Sources
 
@@ -184,8 +184,8 @@ Deliver a complete, auditable, and operationally useful C-track:
 
 Detailed stages: `docs/parity/roadmap-next-m11-m13.md`.
 
-### M11 Progress Snapshot
+### M11-M13 Progress Snapshot
 
-- `[DONE]` `hash.sha224`
-- `[DONE]` `network.groupIPAddresses`
-- `[IN-PROGRESS]` next shortlist implementation wave + parity evidence refresh
+- `M11` `[DONE]`: `hash.sha224`, `network.groupIPAddresses`, `network.dnsOverHttps` + refreshed C3 contracts.
+- `M12` `[DONE]`: worker asset budget gate and readiness evidence wired into CI/release checks.
+- `M13` `[DONE]`: `forensic.basicTriage` integrations expanded with ZIP password pipeline + YARA adapter (allowlist, timeout, retry, structured result output).

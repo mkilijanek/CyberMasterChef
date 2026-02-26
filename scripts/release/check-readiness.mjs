@@ -12,6 +12,7 @@ const requiredFiles = [
   "docs/parity/m5-merge-readiness.md",
   "docs/security/csp-checklist.md",
   "docs/perf/budgets.json",
+  "docs/perf/asset-budgets.json",
   "docs/release/release-train.md",
   "docs/release/rollback-and-dry-run.md",
   "docs/release/m10-final-audit.md",
