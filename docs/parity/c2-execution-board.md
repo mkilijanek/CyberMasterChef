@@ -195,6 +195,11 @@ Translate C2 domain plan into executable implementation waves with measurable ou
   - added `crypto.hmacSha384`, `crypto.hkdf`, `crypto.scrypt`
   - aligned argument model for KDF (`salt`, encoding, length + bounded cost knobs)
   - added deterministic vector tests and invalid-parameter guards
+- [x] Performance/operations hardening:
+  - CI performance budget gate (`pnpm perf:check`)
+  - benchmark artifacts in `docs/perf/*`
+  - worker retry backoff + jitter controls in `WorkerPoolClient`
+  - release governance docs/runbooks + CODEOWNERS baseline
 - [x] Forensic Triage (CSIRT/SOC): baseline modules.
   - implemented as built-in modules: `forensic.basicPreTriage` and `forensic.basicTriage`
   - includes IOC extraction, SHA-family hashes (where WebCrypto supports), PE `imphash`, TLSH/ssdeep (feature-flagged), and binary entropy + PE/ELF/Mach-O metadata

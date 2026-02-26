@@ -11,6 +11,16 @@ const requiredFiles = [
   "docs/parity/c3-operation-compatibility-contracts.md",
   "docs/parity/m5-merge-readiness.md",
   "docs/security/csp-checklist.md",
+  "docs/perf/budgets.json",
+  "docs/release/release-train.md",
+  "docs/release/rollback-and-dry-run.md",
+  "docs/release/m10-final-audit.md",
+  "docs/runbooks/ci-incidents.md",
+  "docs/runbooks/security-incidents.md",
+  "docs/runbooks/runtime-incidents.md",
+  "docs/operations/observability-baseline.md",
+  "docs/operations/slo-sla.md",
+  ".github/CODEOWNERS",
   "SECURITY.md"
 ];
 

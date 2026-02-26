@@ -1,0 +1,21 @@
+# Global fallback
+* @mkilijanek
+
+# Core engine
+/packages/core/ @mkilijanek
+
+# Standard operations plugin
+/packages/plugins-standard/ @mkilijanek
+
+# CLI
+/packages/cli/ @mkilijanek
+
+# Workbench and worker runtime
+/packages/workbench/ @mkilijanek
+
+# CI and security policy
+/.github/workflows/ @mkilijanek
+/SECURITY.md @mkilijanek
+
+# Milestone and parity documentation
+/docs/ @mkilijanek

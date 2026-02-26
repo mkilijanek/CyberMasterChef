@@ -150,6 +150,11 @@ Deliver a complete, auditable, and operationally useful C-track:
 3. `M3`: C3 contracts enforced in CI with generated regression suites. `[DONE]`
 4. `M4`: Security/quality governance (worker/CSP/supply-chain gates) automated. `[DONE]`
 5. `M5`: Dev-to-main merge readiness with deterministic parity evidence. `[DONE]`
+6. `M6`: Deterministic STIX/MISP export integration baseline. `[DONE]`
+7. `M7`: Advanced malware fingerprinting (`imphash`/TLSH/ssdeep + PE/ELF/Mach-O baseline). `[DONE]`
+8. `M8`: Crypto/KDF parity expansion (`hmacSha384`/`hkdf`/`scrypt`). `[DONE]`
+9. `M9`: Performance & scale hardening (bench budgets + CI gate + worker retry backoff). `[DONE]`
+10. `M10`: Release & operations maturity (runbooks/SLO/CODEOWNERS/rollback workflow). `[DONE]`
 
 ## Current Execution Queue Extension
 
@@ -164,8 +169,8 @@ Deliver a complete, auditable, and operationally useful C-track:
   - `C1: 100%`
   - `C2: baseline complete`
   - `C3: 100% (contract generation + generated regression + CI gate)`
-- Combined C-track completion snapshot for milestone scope: `100% (M1-M5)`
+- Combined C-track completion snapshot for milestone scope: `100% (M1-M10)`
 - Active focus for next execution queue:
-  - expand crypto/hash/kdf operations beyond baseline parity
-  - evolve Forensic Triage from baseline to full malware-analysis module (`imphash`/TLSH/ssdeep + richer binary parsing)
-  - productionize currently mocked external integrations
+  - close remaining high-priority operations from C2 domain plan
+  - reduce workbench worker bundle size and node-polyfill footprint
+  - productionize currently mocked external integrations in triage pipeline

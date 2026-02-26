@@ -215,4 +215,25 @@ describe("WorkerPoolClient", () => {
     expect(out.output.value).toBe("flaky-ok");
     expect(out.run.attempt).toBe(2);
   });
+
+  it("schedules retry with backoff delay", async () => {
+    const delays: number[] = [];
+    const pool = new WorkerPoolClient({
+      size: 1,
+      maxAttempts: 2,
+      clientFactory: () => new FlakyClient(),
+      shouldRetry: () => true,
+      retryBaseDelayMs: 10,
+      retryMaxDelayMs: 10,
+      retryJitterRatio: 0,
+      scheduleRetry: (fn, delayMs) => {
+        delays.push(delayMs);
+        setTimeout(fn, 0);
+      }
+    });
+    const recipe: Recipe = { version: 1, steps: [] };
+    const out = await pool.bake(recipe, { type: "string", value: "x" });
+    expect(out.run.attempt).toBe(2);
+    expect(delays).toEqual([10]);
+  });
 });
