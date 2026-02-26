@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-02-25T10:40:37.049Z",
+  "generatedAt": "2026-02-26T07:37:08.826Z",
   "source": {
     "c1MatrixPath": "/home/kili/Repo/CyberMasterChef/CyberMasterChef/docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 292
+    "implementedOpsCount": 295
   },
   "summary": [
     {
@@ -119,9 +119,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 97,
-      "implementedTotal": 29,
-      "missingEstimated": 68,
-      "coveragePct": 29.9,
+      "implementedTotal": 32,
+      "missingEstimated": 65,
+      "coveragePct": 32.99,
       "implementationCandidates": [
         {
           "operationName": "a",
@@ -874,15 +874,15 @@
   "topPriority": [
     {
       "priority": 1,
-      "domain": "crypto-hash-kdf",
-      "coveragePct": 29.9,
-      "missingEstimated": 68
-    },
-    {
-      "priority": 2,
       "domain": "forensic-malware-helper",
       "coveragePct": 31.25,
       "missingEstimated": 11
+    },
+    {
+      "priority": 2,
+      "domain": "crypto-hash-kdf",
+      "coveragePct": 32.99,
+      "missingEstimated": 65
     },
     {
       "priority": 3,

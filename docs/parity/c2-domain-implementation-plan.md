@@ -1,12 +1,12 @@
 # C2 Domain Implementation Plan
 
-Generated: 2026-02-25T10:40:37.049Z
-Implemented operations in repo: 292
+Generated: 2026-02-26T07:37:08.826Z
+Implemented operations in repo: 295
 
 ## Priority order
 
-- P1: crypto-hash-kdf (coverage 29.9%, missing ~68)
-- P2: forensic-malware-helper (coverage 31.25%, missing ~11)
+- P1: forensic-malware-helper (coverage 31.25%, missing ~11)
+- P2: crypto-hash-kdf (coverage 32.99%, missing ~65)
 - P3: network-protocol-parsers (coverage 40%, missing ~15)
 - P4: encodings-codecs (coverage 41.38%, missing ~34)
 
@@ -33,9 +33,9 @@ Implemented operations in repo: 292
 ### crypto-hash-kdf
 - Description: Cryptographic transforms, digests, MAC/KDF and cipher operations.
 - CyberChef total: 97
-- Implemented total: 29
-- Estimated missing: 68
-- Coverage: 29.9%
+- Implemented total: 32
+- Estimated missing: 65
+- Coverage: 32.99%
 - Candidate operations (first 20):
   - a (AffineCipherDecode.mjs) [high]
   - a (AffineCipherEncode.mjs) [high]

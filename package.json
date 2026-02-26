@@ -25,6 +25,7 @@
     "c3:check": "pnpm c3:contracts && pnpm c3:testgen && pnpm c3:validate && git diff --exit-code -- docs/parity/c3-operation-compatibility-contracts.json docs/parity/c3-operation-compatibility-contracts.md docs/parity/c3-contract-schema.md packages/plugins-standard/test/generated/c3-contracts.generated.test.ts",
     "security:csp-check": "node scripts/security/check-csp-checklist.mjs",
     "security:audit": "pnpm audit --audit-level high",
+    "perf:check": "TSX_TSCONFIG_PATH=./tsconfig.base.json pnpm exec tsx scripts/perf/check-budgets.ts",
     "release:readiness": "node scripts/release/check-readiness.mjs"
   },
   "pnpm": {

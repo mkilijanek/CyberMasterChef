@@ -37,5 +37,7 @@ jobs:
         run: pnpm test:e2e
       - name: Build
         run: pnpm build
+      - name: Performance Budget Gate
+        run: pnpm perf:check
       - name: Release Readiness Gate
         run: pnpm release:readiness

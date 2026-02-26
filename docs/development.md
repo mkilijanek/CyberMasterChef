@@ -296,6 +296,9 @@ Wave 1 implemented so far:
 - Wave 19 crypto: `crypto.a1z26CipherEncode`, `crypto.a1z26CipherDecode`
 - Wave 19 crypto: `crypto.baconCipherEncode`, `crypto.baconCipherDecode`
 - Wave 19 crypto: `crypto.bcryptParse`
+- Wave 23 crypto/kdf: `crypto.hmacSha384`
+- Wave 23 crypto/kdf: `crypto.hkdf`
+- Wave 23 crypto/kdf: `crypto.scrypt`
 - Wave 19 forensic helpers: `forensic.analyseUuid`, `forensic.chiSquare`, `forensic.detectFileType`, `forensic.elfInfo`
 - golden parity case for date round-trip
 - golden parity case for JSON format round-trip
@@ -332,6 +335,18 @@ Wave 1 implemented so far:
 2. Export from `packages/plugins-standard/src/index.ts`
 3. Add unit tests
 4. Run `pnpm lint && pnpm typecheck && pnpm test`
+
+## Performance gate
+
+- Run `pnpm perf:check` to execute benchmark budget checks for:
+  - `ops.hash_sha256_1mib`
+  - `ops.scrypt_default`
+  - `cli.batch_report`
+- Results are written to:
+  - `docs/perf/latest-benchmark-report.md`
+  - `docs/perf/latest-benchmark-report.json`
+- Budgets are defined in:
+  - `docs/perf/budgets.json`
 
 Example operation IDs in use:
 - `codec.toBase64`, `codec.fromBase64`

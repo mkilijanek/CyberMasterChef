@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "benchmarks": [
+    {
+      "label": "ops.hash_sha256_1mib",
+      "maxMedianMs": 250
+    },
+    {
+      "label": "ops.scrypt_default",
+      "maxMedianMs": 400
+    },
+    {
+      "label": "cli.batch_report",
+      "maxMedianMs": 2500
+    }
+  ]
+}

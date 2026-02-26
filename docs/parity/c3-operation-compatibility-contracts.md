@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 292
+Total contracts: 295
 
 ## Contract entries (compact)
 
@@ -243,6 +243,13 @@ Total contracts: 292
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.hkdf
+  - name: HKDF
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
 - crypto.hmacSha1
   - name: HMAC-SHA1
   - domain: crypto-hash-kdf
@@ -257,6 +264,13 @@ Total contracts: 292
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.hmacSha384
+  - name: HMAC-SHA384
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
 - crypto.hmacSha512
   - name: HMAC-SHA512
   - domain: crypto-hash-kdf
@@ -266,6 +280,13 @@ Total contracts: 292
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
 - crypto.pbkdf2
   - name: PBKDF2
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.scrypt
+  - name: scrypt
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string

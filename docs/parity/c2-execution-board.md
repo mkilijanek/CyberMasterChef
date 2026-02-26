@@ -191,6 +191,10 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 ## Queue extension
 
 - [x] Queue tasks `1-20` completed on `dev`.
+- [x] Crypto/KDF parity extension:
+  - added `crypto.hmacSha384`, `crypto.hkdf`, `crypto.scrypt`
+  - aligned argument model for KDF (`salt`, encoding, length + bounded cost knobs)
+  - added deterministic vector tests and invalid-parameter guards
 - [x] Forensic Triage (CSIRT/SOC): baseline modules.
   - implemented as built-in modules: `forensic.basicPreTriage` and `forensic.basicTriage`
   - includes IOC extraction, SHA-family hashes (where WebCrypto supports), PE `imphash`, TLSH/ssdeep (feature-flagged), and binary entropy + PE/ELF/Mach-O metadata
@@ -203,3 +207,4 @@ Translate C2 domain plan into executable implementation waves with measurable ou
   - deterministic behavior declaration
   - test coverage (unit and/or golden)
 - `pnpm lint && pnpm typecheck && pnpm test` must pass before push.
+- Performance budget gate in CI: `pnpm perf:check` (bench + threshold validation).

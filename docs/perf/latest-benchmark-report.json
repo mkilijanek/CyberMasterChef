@@ -1,0 +1,48 @@
+{
+  "generatedAt": "2026-02-26T07:37:51.602Z",
+  "results": [
+    {
+      "label": "ops.hash_sha256_1mib",
+      "samplesMs": [
+        4.68,
+        4.856,
+        4.946,
+        4.511,
+        4.125,
+        4.133,
+        4.086
+      ],
+      "medianMs": 4.511,
+      "maxMs": 4.946,
+      "budgetMs": 250,
+      "ok": true
+    },
+    {
+      "label": "ops.scrypt_default",
+      "samplesMs": [
+        50.917,
+        40.698,
+        40.45
+      ],
+      "medianMs": 40.698,
+      "maxMs": 50.917,
+      "budgetMs": 400,
+      "ok": true
+    },
+    {
+      "label": "cli.batch_report",
+      "samplesMs": [
+        928.218,
+        932.375,
+        932.481,
+        925.502,
+        964.215
+      ],
+      "medianMs": 932.375,
+      "maxMs": 964.215,
+      "budgetMs": 2500,
+      "ok": true
+    }
+  ],
+  "failures": []
+}

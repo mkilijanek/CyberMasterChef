@@ -291,8 +291,11 @@ import { blake2b } from "./ops/blake2b.js";
 import { blake2s } from "./ops/blake2s.js";
 import { hmacSha1 } from "./ops/hmacSha1.js";
 import { hmacSha256 } from "./ops/hmacSha256.js";
+import { hmacSha384 } from "./ops/hmacSha384.js";
 import { hmacSha512 } from "./ops/hmacSha512.js";
+import { hkdf } from "./ops/hkdf.js";
 import { pbkdf2 } from "./ops/pbkdf2.js";
+import { scrypt } from "./ops/scrypt.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -586,8 +589,11 @@ export const standardPlugin: Plugin = {
     registry.register(blake2s);
     registry.register(hmacSha1);
     registry.register(hmacSha256);
+    registry.register(hmacSha384);
     registry.register(hmacSha512);
+    registry.register(hkdf);
     registry.register(pbkdf2);
+    registry.register(scrypt);
     registry.register(sha256);
   }
 };

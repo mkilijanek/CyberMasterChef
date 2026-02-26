@@ -111,9 +111,12 @@ Deliver a complete, auditable, and operationally useful C-track:
 
 ### Wave D: Crypto/Hash/KDF Expansion
 
-1. `[IN-PROGRESS]` hash-related forensic support (extractor level)
-2. `[PLANNED]` operation-level crypto parity expansion (digest/mac/kdf)
-3. `[DEFERRED]` high-cost wasm-heavy algorithms after baseline C2 closure
+1. `[DONE]` hash-related forensic support (extractor level)
+2. `[DONE]` operation-level crypto parity expansion (digest/mac/kdf) baseline:
+   - `[DONE]` `crypto.hmacSha384`
+   - `[DONE]` `crypto.hkdf`
+   - `[DONE]` `crypto.scrypt` with bounded cost/memory args
+3. `[IN-PROGRESS]` high-cost wasm-heavy algorithms and remaining long-tail parity
 
 ### Wave E: Forensic Triage (CSIRT/SOC)
 

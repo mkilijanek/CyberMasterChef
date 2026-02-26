@@ -310,6 +310,22 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "crypto.hkdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "salt",
+      "saltEncoding",
+      "info",
+      "infoEncoding",
+      "length",
+      "hash"
+    ]
+  },
+  {
     "operationId": "crypto.hmacSha1",
     "inputTypes": [
       "bytes",
@@ -323,6 +339,18 @@ const CONTRACTS = [
   },
   {
     "operationId": "crypto.hmacSha256",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "key",
+      "keyEncoding"
+    ]
+  },
+  {
+    "operationId": "crypto.hmacSha384",
     "inputTypes": [
       "bytes",
       "string"
@@ -358,6 +386,23 @@ const CONTRACTS = [
       "iterations",
       "length",
       "hash"
+    ]
+  },
+  {
+    "operationId": "crypto.scrypt",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "salt",
+      "saltEncoding",
+      "length",
+      "costN",
+      "blockSizeR",
+      "parallelizationP",
+      "maxmem"
     ]
   },
   {
