@@ -8,10 +8,17 @@ const budgetsPath = resolve(repoRoot, "docs", "perf", "asset-budgets.json");
 const budgets = JSON.parse(readFileSync(budgetsPath, "utf-8"));
 const files = readdirSync(distAssetsDir);
 
-function findAsset(prefix) {
-  const hit = files.find((file) => file.startsWith(prefix) && file.endsWith(".js"));
+function findAsset(label, matcher) {
+  const hits = files.filter((file) => matcher(file));
+  if (hits.length === 0) {
+    throw new Error(`[perf-assets] missing asset for '${label}'`);
+  }
+  if (hits.length > 1) {
+    throw new Error(`[perf-assets] multiple assets matched '${label}': ${hits.join(", ")}`);
+  }
+  const [hit] = hits;
   if (!hit) {
-    throw new Error(`[perf-assets] missing asset with prefix '${prefix}'`);
+    throw new Error(`[perf-assets] missing asset for '${label}'`);
   }
   return resolve(distAssetsDir, hit);
 }
@@ -19,12 +26,15 @@ function findAsset(prefix) {
 const targets = [
   {
     label: "sandbox.worker.js",
-    path: findAsset("sandbox.worker-"),
+    path: findAsset("sandbox.worker.js", (file) => /^sandbox\.worker-[^.]+\.js$/.test(file)),
     maxBytes: budgets.assets["sandbox.worker.js"]
   },
   {
     label: "vendor.js",
-    path: findAsset("vendor-"),
+    path: findAsset(
+      "vendor.js",
+      (file) => /^vendor-[^.]+\.js$/.test(file) && !file.slice("vendor-".length).includes("-")
+    ),
     maxBytes: budgets.assets["vendor.js"]
   }
 ];

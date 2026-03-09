@@ -1,4 +1,5 @@
-import type { Operation } from "@cybermasterchef/core";
+import { bytesToBase64 } from "@cybermasterchef/core";
+import type { DataValue, Operation } from "@cybermasterchef/core";
 import { basicPreTriage } from "./basicPreTriage.js";
 
 type PreTriageReport = {
@@ -227,6 +228,7 @@ async function submitJsonWithRetry(args: {
   retries: number;
   payload: Record<string, unknown>;
   errorPrefix: string;
+  validateBody?: (body: Record<string, unknown> | null) => string | null;
 }): Promise<{
   status: "submitted" | "failed";
   responseCode: number | null;
@@ -265,6 +267,11 @@ async function submitJsonWithRetry(args: {
           body = (await response.json()) as Record<string, unknown>;
         } catch {
           body = null;
+        }
+        const validationError = args.validateBody?.(body) ?? null;
+        if (validationError !== null) {
+          lastError = validationError;
+          continue;
         }
         return {
           status: "submitted",
@@ -378,6 +385,27 @@ function buildFindings(pre: PreTriageReport): { findings: TriageFinding[]; reaso
   }
 
   return { findings, reasons, score: clampScore(score) };
+}
+
+function toInputBytes(input: DataValue): Uint8Array {
+  if (input.type === "bytes") return input.value;
+  if (input.type === "string") return new TextEncoder().encode(input.value);
+  throw new Error(`Unsupported input type: ${input.type}`);
+}
+
+function hasSubmissionId(body: Record<string, unknown> | null): body is Record<string, unknown> {
+  if (body === null) return false;
+  return typeof body.submissionId === "string" || typeof body.id === "string";
+}
+
+function hasZipPipelineResult(body: Record<string, unknown> | null): body is Record<string, unknown> {
+  if (body === null) return false;
+  return typeof body.matchedPassword === "string" || typeof body.password === "string";
+}
+
+function hasYaraResult(body: Record<string, unknown> | null): body is Record<string, unknown> {
+  if (body === null) return false;
+  return Array.isArray(body.ruleMatches) && body.ruleMatches.every((value) => typeof value === "string");
 }
 
 export const basicTriage: Operation = {
@@ -540,6 +568,8 @@ export const basicTriage: Operation = {
     }
   ],
   run: async ({ input, args, signal }) => {
+    const inputBytes = toInputBytes(input);
+    const inputBase64 = bytesToBase64(inputBytes);
     const suspiciousThresholdArg =
       typeof args.suspiciousThreshold === "number" ? args.suspiciousThreshold : 30;
     const maliciousThresholdArg =
@@ -654,11 +684,16 @@ export const basicTriage: Operation = {
           retries: sandboxRetries,
           payload: {
             sha256: pre.hashes.sha256,
+            inputType: input.type,
+            sampleBase64: inputBase64,
+            sizeBytes: inputBytes.length,
             verdict,
             riskScoreNorm: score,
             iocs: pre.iocs
           },
-          errorPrefix: "sandbox"
+          errorPrefix: "sandbox",
+          validateBody: (body) =>
+            hasSubmissionId(body) ? null : "sandbox_invalid_response_body"
         });
         sandbox.status = sandboxResult.status;
         sandbox.responseCode = sandboxResult.responseCode;
@@ -689,10 +724,13 @@ export const basicTriage: Operation = {
           retries: zipRetries,
           payload: {
             sha256: pre.hashes.sha256,
+            archiveBase64: bytesToBase64(zipInputBytes),
             sizeBytes: zipInputBytes.length,
             candidates: zipCandidates
           },
-          errorPrefix: "zip"
+          errorPrefix: "zip",
+          validateBody: (body) =>
+            hasZipPipelineResult(body) ? null : "zip_invalid_response_body"
         });
         zipPasswordPipeline.status = zipResult.status;
         zipPasswordPipeline.responseCode = zipResult.responseCode;
@@ -716,11 +754,16 @@ export const basicTriage: Operation = {
           retries: yaraRetries,
           payload: {
             sha256: pre.hashes.sha256,
+            inputType: input.type,
+            sampleBase64: inputBase64,
+            sizeBytes: inputBytes.length,
             profile: yaraProfileName,
             iocs: pre.iocs,
             heuristics: pre.heuristics.map((h) => h.id)
           },
-          errorPrefix: "yara"
+          errorPrefix: "yara",
+          validateBody: (body) =>
+            hasYaraResult(body) ? null : "yara_invalid_response_body"
         });
         yara.status = yaraResult.status;
         yara.responseCode = yaraResult.responseCode;
@@ -741,9 +784,7 @@ export const basicTriage: Operation = {
     }
     if (zipPasswordPipeline.status === "submitted") {
       mockedCapabilities = mockedCapabilities.filter(
-        (capability) =>
-          capability !== "archive_password_handling_and_zip_unpacking" &&
-          capability !== "zip_slip_and_zip_bomb_safe_unpack_guards"
+        (capability) => capability !== "archive_password_handling_and_zip_unpacking"
       );
     }
     if (yara.status === "submitted") {

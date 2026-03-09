@@ -60,25 +60,25 @@ const DEFAULT_MAX_QUEUE = 64;
 const MIN_MAX_QUEUE = 1;
 const MAX_MAX_QUEUE = 256;
 
-function isRecipe(value: unknown): value is Recipe {
+export function isRecipe(value: unknown): value is Recipe {
   if (typeof value !== "object" || value === null) return false;
   const x = value as { version?: unknown; steps?: unknown };
   return x.version === 1 && Array.isArray(x.steps);
 }
 
-function toBase64Url(s: string): string {
+export function toBase64Url(s: string): string {
   const base64 = bytesToBase64(utf8ToBytes(s));
   return base64.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
 }
 
-function fromBase64Url(s: string): string {
+export function fromBase64Url(s: string): string {
   const padded = s.replace(/-/g, "+").replace(/_/g, "/");
   const remainder = padded.length % 4;
   const base64 = remainder === 0 ? padded : padded + "=".repeat(4 - remainder);
   return bytesToUtf8(base64ToBytes(base64));
 }
 
-function loadInitialState(): SharedState {
+export function loadInitialState(): SharedState {
   const hash = window.location.hash;
   if (hash.startsWith(HASH_PREFIX)) {
     try {

@@ -4,12 +4,16 @@ export default defineConfig({
   resolve: {
     alias: {
       "@cybermasterchef/core": new URL("../core/src/index.ts", import.meta.url)
-        .pathname
+        .pathname,
+      "@cybermasterchef/plugins-standard": new URL(
+        "../plugins-standard/src/index.ts",
+        import.meta.url
+      ).pathname
     }
   },
   test: {
     environment: "node",
-    include: ["src/**/*.test.ts"],
+    include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
     coverage: {
       provider: "v8",
       reporter: ["text", "json-summary", "lcov"],

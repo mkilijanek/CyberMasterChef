@@ -255,8 +255,11 @@ describe("forensic basic triage", () => {
   it("retries sandbox submission and succeeds on later attempt", async () => {
     const prevFetch = globalThis.fetch;
     let callCount = 0;
-    globalThis.fetch = (() => {
+    let requestBody: Record<string, unknown> | null = null;
+    globalThis.fetch = ((url, init) => {
       callCount += 1;
+      expect(url).toBe("https://sandbox.local/submit");
+      requestBody = JSON.parse(String(init?.body ?? "{}")) as Record<string, unknown>;
       if (callCount === 1) {
         return Promise.resolve(new Response("temporary failure", { status: 500 }));
       }
@@ -293,6 +296,13 @@ describe("forensic basic triage", () => {
         integrations: { sandbox: { status: string; submissionId: string | null; responseCode: number | null } };
       };
       expect(callCount).toBe(2);
+      expect(requestBody).toMatchObject({
+        inputType: "string",
+        sizeBytes: 10,
+        verdict: expect.any(String),
+        riskScoreNorm: expect.any(Number),
+        sampleBase64: "cmV0cnktY2FzZQ=="
+      });
       expect(report.integrations.sandbox.status).toBe("submitted");
       expect(report.integrations.sandbox.submissionId).toBe("sub-retry-1");
       expect(report.integrations.sandbox.responseCode).toBe(202);
@@ -352,7 +362,9 @@ describe("forensic basic triage", () => {
 
   it("submits ZIP and YARA adapters and removes corresponding mocks", async () => {
     const prevFetch = globalThis.fetch;
-    globalThis.fetch = ((url: string) => {
+    const requestBodies = new Map<string, Record<string, unknown>>();
+    globalThis.fetch = ((url: string, init?: RequestInit) => {
+      requestBodies.set(url, JSON.parse(String(init?.body ?? "{}")) as Record<string, unknown>);
       if (url.includes("zip.local")) {
         return Promise.resolve(
           new Response(JSON.stringify({ matchedPassword: "infected" }), { status: 200 })
@@ -406,11 +418,96 @@ describe("forensic basic triage", () => {
       expect(report.integrations.zipPasswordPipeline.matchedPassword).toBe("infected");
       expect(report.integrations.yara.status).toBe("submitted");
       expect(report.integrations.yara.matchCount).toBe(2);
+      expect(requestBodies.get("https://zip.local/submit")).toMatchObject({
+        sizeBytes: 64,
+        candidates: ["infected", "password", "123456"],
+        archiveBase64: expect.any(String)
+      });
+      expect(requestBodies.get("https://yara.local/scan")).toMatchObject({
+        inputType: "bytes",
+        sizeBytes: 64,
+        profile: "default-malware",
+        sampleBase64: expect.any(String),
+        heuristics: expect.any(Array)
+      });
       expect(report.mockedCapabilities).not.toContain(
         "archive_password_handling_and_zip_unpacking"
       );
-      expect(report.mockedCapabilities).not.toContain("zip_slip_and_zip_bomb_safe_unpack_guards");
+      expect(report.mockedCapabilities).toContain("zip_slip_and_zip_bomb_safe_unpack_guards");
       expect(report.mockedCapabilities).not.toContain("yara_or_yara_x_rule_scanning");
+    } finally {
+      globalThis.fetch = prevFetch;
+    }
+  });
+
+  it("fails integrations on invalid success bodies", async () => {
+    const prevFetch = globalThis.fetch;
+    globalThis.fetch = ((url: string) => {
+      if (url.includes("sandbox.local")) {
+        return Promise.resolve(new Response(JSON.stringify({ ok: true }), { status: 202 }));
+      }
+      if (url.includes("zip.local")) {
+        return Promise.resolve(new Response("", { status: 200 }));
+      }
+      return Promise.resolve(new Response(JSON.stringify({ ruleMatches: ["ok", 2] }), { status: 200 }));
+    }) as typeof fetch;
+
+    try {
+      const registry = new InMemoryRegistry();
+      registry.register(basicTriage);
+      const recipe: Recipe = {
+        version: 1,
+        steps: [
+          {
+            opId: "forensic.basicTriage",
+            args: {
+              enableSandboxSubmit: true,
+              sandboxRuntimeProfile: "cli",
+              sandboxEndpoint: "https://sandbox.local/submit",
+              sandboxAllowHosts: "sandbox.local",
+              enableZipPasswordPipeline: true,
+              zipRuntimeProfile: "cli",
+              zipEndpoint: "https://zip.local/submit",
+              zipAllowHosts: "zip.local",
+              enableYaraScan: true,
+              yaraRuntimeProfile: "cli",
+              yaraEndpoint: "https://yara.local/scan",
+              yaraAllowHosts: "yara.local"
+            }
+          }
+        ]
+      };
+      const out = await runRecipe({
+        registry,
+        recipe,
+        input: { type: "bytes", value: makeMinimalZipSample() }
+      });
+      expect(out.output.type).toBe("string");
+      if (out.output.type !== "string") return;
+      const report = JSON.parse(out.output.value) as {
+        mockedCapabilities: string[];
+        integrations: {
+          sandbox: { status: string; error: string | null };
+          zipPasswordPipeline: { status: string; error: string | null };
+          yara: { status: string; error: string | null };
+        };
+      };
+      expect(report.integrations.sandbox).toMatchObject({
+        status: "failed",
+        error: "sandbox_invalid_response_body"
+      });
+      expect(report.integrations.zipPasswordPipeline).toMatchObject({
+        status: "failed",
+        error: "zip_invalid_response_body"
+      });
+      expect(report.integrations.yara).toMatchObject({
+        status: "failed",
+        error: "yara_invalid_response_body"
+      });
+      expect(report.mockedCapabilities).toContain("dynamic_sandbox_integration_cuckoo");
+      expect(report.mockedCapabilities).toContain("archive_password_handling_and_zip_unpacking");
+      expect(report.mockedCapabilities).toContain("zip_slip_and_zip_bomb_safe_unpack_guards");
+      expect(report.mockedCapabilities).toContain("yara_or_yara_x_rule_scanning");
     } finally {
       globalThis.fetch = prevFetch;
     }
