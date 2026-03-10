@@ -50,6 +50,7 @@ const usageText =
   "  --show-repro                     print compact reproducibility metadata to stderr\n" +
   "  --repro-json                     print reproducibility bundle JSON to stderr\n" +
   "  --repro-file <path>              write reproducibility bundle JSON to file\n" +
+  "  --triage-bundle-file <path>      write triage evidence bundle JSON to file\n" +
   "  --list-ops                       print available operation ids and names\n" +
   "  --list-ops-json                  print available operations as JSON\n" +
   "  --list-ops-filter <query>        filter operation listings by id/name/description\n" +
@@ -120,6 +121,7 @@ export type CliOptions = {
   showRepro: boolean;
   reproJson: boolean;
   reproFile?: string;
+  triageBundleFile?: string;
   listOps: boolean;
   listOpsJson: boolean;
   listOpsFilter?: string;
@@ -161,6 +163,7 @@ export function parseArgs(args: string[]): CliOptions {
   let showRepro = false;
   let reproJson = false;
   let reproFile: string | undefined;
+  let triageBundleFile: string | undefined;
   let listOps = false;
   let listOpsJson = false;
   let listOpsFilter: string | undefined;
@@ -252,6 +255,13 @@ export function parseArgs(args: string[]): CliOptions {
       const raw = args[i + 1];
       if (!raw) die("Missing value for --repro-file");
       reproFile = raw;
+      i++;
+      continue;
+    }
+    if (arg === "--triage-bundle-file") {
+      const raw = args[i + 1];
+      if (!raw) die("Missing value for --triage-bundle-file");
+      triageBundleFile = raw;
       i++;
       continue;
     }
@@ -484,6 +494,7 @@ export function parseArgs(args: string[]): CliOptions {
   if (batchOutputDir !== undefined) out.batchOutputDir = batchOutputDir;
   if (batchMaxFiles !== undefined) out.batchMaxFiles = batchMaxFiles;
   if (reproFile !== undefined) out.reproFile = reproFile;
+  if (triageBundleFile !== undefined) out.triageBundleFile = triageBundleFile;
   const inputPath = positional[1];
   if (inputPath) out.inputPath = inputPath;
   if (maxOutputChars !== undefined) out.maxOutputChars = maxOutputChars;
@@ -519,6 +530,18 @@ export function renderOutput(
         ? JSON.stringify(output.value, null, opts.jsonIndent)
         : String(output.value);
   return opts.maxOutputChars !== undefined ? rendered.slice(0, opts.maxOutputChars) : rendered;
+}
+
+export function extractTriageEvidenceBundle(output: DataValue): Record<string, unknown> | null {
+  if (output.type !== "string") return null;
+  try {
+    const parsed = JSON.parse(output.value) as { evidenceBundle?: Record<string, unknown> };
+    return typeof parsed.evidenceBundle === "object" && parsed.evidenceBundle !== null
+      ? parsed.evidenceBundle
+      : null;
+  } catch {
+    return null;
+  }
 }
 
 export function fileLeaf(path: string): string {
@@ -602,6 +625,7 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
   }
 
 async function executeOne(rawInput: string): Promise<{
+  rawOutput: DataValue;
   rendered: string;
   elapsed: number;
   outputType: DataValue["type"];
@@ -653,6 +677,7 @@ async function executeOne(rawInput: string): Promise<{
     pluginSet: [{ pluginId: standardPlugin.pluginId, version: standardPlugin.version }]
   };
   return {
+    rawOutput: res.output,
     rendered: renderOutput(res.output, opts),
     elapsed,
     outputType: res.output.type,
@@ -821,6 +846,13 @@ if (opts.batchInputDir) {
   }
   if (opts.reproFile) {
     writeFileSync(opts.reproFile, `${JSON.stringify(run.reproBundle, null, 2)}\n`, "utf-8");
+  }
+  if (opts.triageBundleFile) {
+    const triageBundle = extractTriageEvidenceBundle(run.rawOutput);
+    if (triageBundle === null) {
+      die("Execution output does not contain a triage evidence bundle.");
+    }
+    writeFileSync(opts.triageBundleFile, `${JSON.stringify(triageBundle, null, 2)}\n`, "utf-8");
   }
   if (opts.showTrace) {
     const traceRows = opts.traceLimit !== undefined ? run.trace.slice(0, opts.traceLimit) : run.trace;

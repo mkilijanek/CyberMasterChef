@@ -18,6 +18,7 @@
 
 1. Re-run all mandatory gates on release PR.
 2. Validate generated artifacts (`docs/parity/*`, `docs/perf/*`).
-3. Confirm CODEOWNERS approvals for touched domains.
-4. Simulate rollback on a temporary branch (`revert` rehearsal).
-5. Record dry-run result in PR body.
+3. For triage/export changes, generate one sample `--triage-bundle-file` artifact and verify bundle/provenance fields.
+4. Confirm CODEOWNERS approvals for touched domains.
+5. Simulate rollback on a temporary branch (`revert` rehearsal).
+6. Record dry-run result in PR body.

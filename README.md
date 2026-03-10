@@ -13,8 +13,8 @@ The project targets deterministic behavior, parity tracking, and auditable CI/se
 
 ## Current Status
 
-- Milestones `M1-M13`: completed.
-- Next roadmap: `M14-M18` (see `docs/parity/roadmap-next-m14-m18.md`).
+- Milestones `M1-M18`: completed.
+- Latest closure report: `docs/parity/roadmap-next-m14-m18.md`.
 - C-track snapshot:
   - `C1`: complete domain matrix + drift gate
   - `C2`: baseline complete, including high-priority closure and runtime/perf gates
@@ -96,6 +96,7 @@ pnpm release:readiness
 - [Execution board](docs/parity/c2-execution-board.md)
 - [C3 contracts](docs/parity/c3-operation-compatibility-contracts.md)
 - [Triage corpus](docs/parity/triage-corpus.md)
+- [Triage evidence bundle](docs/parity/triage-evidence-bundle.md)
 - [C1 reclassification workflow](docs/parity/c1-misc-reclassification.md)
 - [Roadmap M14-M18](docs/parity/roadmap-next-m14-m18.md)
 - [Roadmap M11-M13](docs/parity/roadmap-next-m11-m13.md)

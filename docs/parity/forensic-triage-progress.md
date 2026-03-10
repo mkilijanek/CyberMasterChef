@@ -1,6 +1,6 @@
 # Forensic Triage Progress (CSIRT/SOC)
 
-Updated: 2026-02-25
+Updated: 2026-03-10
 
 ## Objective
 
@@ -176,3 +176,10 @@ Track incremental delivery steps for Forensic Triage modules (`forensic.basicPre
 - [x] Deterministic STIX 2.1 and MISP JSON exports in `forensic.basicTriage`.
 - [x] Dynamic sandbox adapter (CLI profile): endpoint allowlist validation, timeout, bounded retries.
 - [x] Security tests for endpoint validation and integration tests for successful submit flow.
+
+## M18 Completion Snapshot
+
+- [x] Deterministic `evidenceBundle` emitted by `forensic.basicTriage`.
+- [x] Provenance recorded for derived indicators exported to STIX/MISP.
+- [x] Provenance recorded for sandbox / ZIP / YARA adapter submissions.
+- [x] CLI export path added with `--triage-bundle-file`.

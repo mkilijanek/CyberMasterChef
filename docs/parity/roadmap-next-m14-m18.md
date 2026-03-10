@@ -97,7 +97,7 @@ GitHub issues:
 ## M18: Evidence Packaging and Provenance
 
 Goal: make triage/export outputs easier to hand off, replay, and audit.
-Status: `PLANNED`
+Status: `DONE`
 
 Scope:
 1. add reproducibility/evidence bundle export for triage runs,
@@ -105,9 +105,15 @@ Scope:
 3. add CLI-facing export path for bundle capture,
 4. document operational handoff and rollback/update procedures for the new bundle format.
 
-Backlog issues:
-- `triage-evidence-bundle`
-- `triage-provenance-export`
+Delivered:
+1. deterministic `evidenceBundle` added to `forensic.basicTriage`,
+2. explicit provenance added for derived indicators and adapter submissions,
+3. CLI export path added via `--triage-bundle-file`,
+4. operational format/flow documentation added in `docs/parity/triage-evidence-bundle.md`.
+
+GitHub issues:
+- `#36` `triage-evidence-bundle`
+- `#38` `triage-provenance-export`
 
 ## Delivery order
 
@@ -123,4 +129,4 @@ Backlog issues:
 - `M15` `[DONE]`: embedded certificate parsing and PE trust summary in pre-triage and triage.
 - `M16` `[DONE]`: deterministic triage corpus + contract/golden expansion.
 - `M17` `[DONE]`: `C1` reclassification workflow + `C2` plan drift gate.
-- `M18` `[PLANNED]`: evidence bundle and provenance export.
+- `M18` `[DONE]`: evidence bundle and provenance export.

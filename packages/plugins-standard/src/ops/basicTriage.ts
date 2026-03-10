@@ -50,6 +50,47 @@ type TriageFinding = {
   description: string;
 };
 
+type DerivedIndicator = {
+  kind: "url" | "domain-name" | "ipv4-addr" | "ipv6-addr" | "email-addr" | "vulnerability";
+  value: string;
+  sourcePath:
+    | "preTriage.iocs.urls"
+    | "preTriage.iocs.domains"
+    | "preTriage.iocs.ipv4"
+    | "preTriage.iocs.ipv6"
+    | "preTriage.iocs.emails"
+    | "preTriage.iocs.cves";
+  mispType: string;
+  mispCategory: string;
+  pattern: string;
+};
+
+type IndicatorProvenance = {
+  id: string;
+  kind: DerivedIndicator["kind"];
+  value: string;
+  sourcePath: DerivedIndicator["sourcePath"];
+  exports: {
+    stixIndicatorId: string;
+    mispAttribute: {
+      type: string;
+      category: string;
+      value: string;
+    };
+  };
+};
+
+type AdapterSubmissionProvenance = {
+  adapter: "sandbox" | "zipPasswordPipeline" | "yara";
+  attempted: boolean;
+  status: "disabled" | "skipped" | "submitted" | "failed";
+  endpoint: string | null;
+  responseCode: number | null;
+  error: string | null;
+  requestSummary: Record<string, unknown>;
+  responseSummary: Record<string, unknown>;
+};
+
 type TriageReport = {
   version: 1;
   score: {
@@ -74,6 +115,36 @@ type TriageReport = {
     };
   };
   recommendations: string[];
+  provenance: {
+    derivedIndicators: IndicatorProvenance[];
+    adapterSubmissions: AdapterSubmissionProvenance[];
+  };
+  evidenceBundle: {
+    schemaVersion: 1;
+    generatedAt: string;
+    bundleId: string;
+    sample: {
+      inputType: DataValue["type"];
+      sizeBytes: number;
+      sha256: string | null;
+      md5: string | null;
+    };
+    score: TriageReport["score"];
+    findingIds: string[];
+    recommendationCount: number;
+    exportSummary: {
+      stixObjectCount: number;
+      mispAttributeCount: number;
+    };
+    archiveSummary: {
+      format: "zip" | "none";
+      entryCount: number;
+      encryptedEntries: number;
+      safeToSubmit: boolean;
+      guardReasons: string[];
+    };
+    provenance: TriageReport["provenance"];
+  };
   integrations: {
     sandbox: {
       enabled: boolean;
@@ -154,6 +225,8 @@ const MOCKED_CAPABILITIES_BASE = [
   "dynamic_sandbox_integration_cuckoo"
 ] as const;
 
+const DETERMINISTIC_ISO_TIMESTAMP = "1970-01-01T00:00:00.000Z";
+
 function stableId(prefix: string, value: string): string {
   let hash = 2166136261;
   const input = `${prefix}:${value}`;
@@ -164,35 +237,84 @@ function stableId(prefix: string, value: string): string {
   return `${prefix}--${hash.toString(16).padStart(8, "0")}`;
 }
 
+function collectDerivedIndicators(pre: PreTriageReport): DerivedIndicator[] {
+  const indicators: DerivedIndicator[] = [];
+  for (const value of pre.iocs.urls) {
+    indicators.push({
+      kind: "url",
+      value,
+      sourcePath: "preTriage.iocs.urls",
+      mispType: "url",
+      mispCategory: "Network activity",
+      pattern: `[url:value = '${value}']`
+    });
+  }
+  for (const value of pre.iocs.domains) {
+    indicators.push({
+      kind: "domain-name",
+      value,
+      sourcePath: "preTriage.iocs.domains",
+      mispType: "domain",
+      mispCategory: "Network activity",
+      pattern: `[domain-name:value = '${value}']`
+    });
+  }
+  for (const value of pre.iocs.ipv4) {
+    indicators.push({
+      kind: "ipv4-addr",
+      value,
+      sourcePath: "preTriage.iocs.ipv4",
+      mispType: "ip-dst",
+      mispCategory: "Network activity",
+      pattern: `[ipv4-addr:value = '${value}']`
+    });
+  }
+  for (const value of pre.iocs.ipv6) {
+    indicators.push({
+      kind: "ipv6-addr",
+      value,
+      sourcePath: "preTriage.iocs.ipv6",
+      mispType: "ip-dst",
+      mispCategory: "Network activity",
+      pattern: `[ipv6-addr:value = '${value}']`
+    });
+  }
+  for (const value of pre.iocs.emails) {
+    indicators.push({
+      kind: "email-addr",
+      value,
+      sourcePath: "preTriage.iocs.emails",
+      mispType: "email-src",
+      mispCategory: "Payload delivery",
+      pattern: `[email-addr:value = '${value}']`
+    });
+  }
+  for (const value of pre.iocs.cves) {
+    indicators.push({
+      kind: "vulnerability",
+      value,
+      sourcePath: "preTriage.iocs.cves",
+      mispType: "vulnerability",
+      mispCategory: "External analysis",
+      pattern: `[vulnerability:name = '${value}']`
+    });
+  }
+  return indicators;
+}
+
 function toStixIndicators(pre: PreTriageReport): Array<Record<string, unknown>> {
   const objects: Array<Record<string, unknown>> = [];
-  const entries: Array<{ type: string; value: string; pattern: string }> = [];
-
-  for (const v of pre.iocs.urls) entries.push({ type: "url", value: v, pattern: `[url:value = '${v}']` });
-  for (const v of pre.iocs.domains) {
-    entries.push({ type: "domain-name", value: v, pattern: `[domain-name:value = '${v}']` });
-  }
-  for (const v of pre.iocs.ipv4) entries.push({ type: "ipv4-addr", value: v, pattern: `[ipv4-addr:value = '${v}']` });
-  for (const v of pre.iocs.ipv6) entries.push({ type: "ipv6-addr", value: v, pattern: `[ipv6-addr:value = '${v}']` });
-  for (const v of pre.iocs.emails) {
-    entries.push({ type: "email-addr", value: v, pattern: `[email-addr:value = '${v}']` });
-  }
-  for (const v of pre.iocs.cves) {
-    entries.push({ type: "vulnerability", value: v, pattern: `[vulnerability:name = '${v}']` });
-  }
-
-  const now = "1970-01-01T00:00:00.000Z";
-  for (const entry of entries) {
+  for (const entry of collectDerivedIndicators(pre)) {
     objects.push({
       type: "indicator",
       spec_version: "2.1",
-      id: stableId("indicator", `${entry.type}:${entry.value}`),
-      created: now,
-      modified: now,
-      name: `${entry.type}:${entry.value}`,
+      id: stableId("indicator", `${entry.kind}:${entry.value}`),
+      created: DETERMINISTIC_ISO_TIMESTAMP,
+      modified: DETERMINISTIC_ISO_TIMESTAMP,
+      name: `${entry.kind}:${entry.value}`,
       pattern_type: "stix",
       pattern: entry.pattern,
-      valid_from: now,
+      valid_from: DETERMINISTIC_ISO_TIMESTAMP,
       labels: ["malicious-activity"]
     });
   }
@@ -200,14 +322,11 @@ function toStixIndicators(pre: PreTriageReport): Array<Record<string, unknown>> 
 }
 
 function toMispAttributes(pre: PreTriageReport): Array<{ type: string; category: string; value: string }> {
-  const attrs: Array<{ type: string; category: string; value: string }> = [];
-  for (const value of pre.iocs.urls) attrs.push({ type: "url", category: "Network activity", value });
-  for (const value of pre.iocs.domains) attrs.push({ type: "domain", category: "Network activity", value });
-  for (const value of pre.iocs.ipv4) attrs.push({ type: "ip-dst", category: "Network activity", value });
-  for (const value of pre.iocs.ipv6) attrs.push({ type: "ip-dst", category: "Network activity", value });
-  for (const value of pre.iocs.emails) attrs.push({ type: "email-src", category: "Payload delivery", value });
-  for (const value of pre.iocs.cves) attrs.push({ type: "vulnerability", category: "External analysis", value });
-  return attrs;
+  return collectDerivedIndicators(pre).map((entry) => ({
+    type: entry.mispType,
+    category: entry.mispCategory,
+    value: entry.value
+  }));
 }
 
 function clampScore(input: number): number {
@@ -595,6 +714,23 @@ function inspectZipArchive(args: {
       reasons
     }
   };
+}
+
+function buildIndicatorProvenance(pre: PreTriageReport): IndicatorProvenance[] {
+  return collectDerivedIndicators(pre).map((entry) => ({
+    id: stableId("derived-indicator", `${entry.kind}:${entry.value}`),
+    kind: entry.kind,
+    value: entry.value,
+    sourcePath: entry.sourcePath,
+    exports: {
+      stixIndicatorId: stableId("indicator", `${entry.kind}:${entry.value}`),
+      mispAttribute: {
+        type: entry.mispType,
+        category: entry.mispCategory,
+        value: entry.value
+      }
+    }
+  }));
 }
 
 export const basicTriage: Operation = {
@@ -1026,6 +1162,77 @@ export const basicTriage: Operation = {
       }
     }
 
+    const provenance: TriageReport["provenance"] = {
+      derivedIndicators: buildIndicatorProvenance(pre),
+      adapterSubmissions: [
+        {
+          adapter: "sandbox",
+          attempted: sandbox.attempted,
+          status: sandbox.status,
+          endpoint: sandbox.endpoint,
+          responseCode: sandbox.responseCode,
+          error: sandbox.error,
+          requestSummary: {
+            sampleSha256: pre.hashes.sha256,
+            inputType: input.type,
+            sizeBytes: inputBytes.length,
+            riskScoreNorm: score,
+            verdict,
+            iocCount:
+              pre.iocs.urls.length +
+              pre.iocs.domains.length +
+              pre.iocs.emails.length +
+              pre.iocs.ipv4.length +
+              pre.iocs.ipv6.length +
+              pre.iocs.cves.length +
+              pre.iocs.jwt.length
+          },
+          responseSummary: {
+            submissionId: sandbox.submissionId
+          }
+        },
+        {
+          adapter: "zipPasswordPipeline",
+          attempted: zipPasswordPipeline.attempted,
+          status: zipPasswordPipeline.status,
+          endpoint: zipPasswordPipeline.endpoint,
+          responseCode: zipPasswordPipeline.responseCode,
+          error: zipPasswordPipeline.error,
+          requestSummary: {
+            sampleSha256: pre.hashes.sha256,
+            sizeBytes: zipInputBytes?.length ?? inputBytes.length,
+            candidateCount: zipCandidates.length,
+            archiveFormat: archiveAnalysis.format,
+            archiveEntryCount: archiveAnalysis.entryCount,
+            archiveEncryptedEntries: archiveAnalysis.encryptedEntries,
+            archiveSafeToSubmit: archiveAnalysis.guards.safeToSubmit
+          },
+          responseSummary: {
+            matchedPassword: zipPasswordPipeline.matchedPassword
+          }
+        },
+        {
+          adapter: "yara",
+          attempted: yara.attempted,
+          status: yara.status,
+          endpoint: yara.endpoint,
+          responseCode: yara.responseCode,
+          error: yara.error,
+          requestSummary: {
+            sampleSha256: pre.hashes.sha256,
+            inputType: input.type,
+            sizeBytes: inputBytes.length,
+            profile: yaraProfileName,
+            heuristicIds: pre.heuristics.map((heuristic) => heuristic.id)
+          },
+          responseSummary: {
+            matchCount: yara.matchCount,
+            ruleMatches: yara.ruleMatches
+          }
+        }
+      ]
+    };
+
     let mockedCapabilities = computeMockedCapabilities(pre);
     if (sandbox.status === "submitted") {
       mockedCapabilities = mockedCapabilities.filter(
@@ -1072,6 +1279,37 @@ export const basicTriage: Operation = {
         }
       },
       recommendations,
+      provenance,
+      evidenceBundle: {
+        schemaVersion: 1,
+        generatedAt: DETERMINISTIC_ISO_TIMESTAMP,
+        bundleId: stableId("triage-bundle", pre.hashes.sha256 ?? "unknown"),
+        sample: {
+          inputType: input.type,
+          sizeBytes: inputBytes.length,
+          sha256: pre.hashes.sha256,
+          md5: pre.hashes.md5
+        },
+        score: {
+          riskScoreNorm: score,
+          verdict,
+          reasons
+        },
+        findingIds: findings.map((finding) => finding.id),
+        recommendationCount: recommendations.length,
+        exportSummary: {
+          stixObjectCount: stixObjects.length,
+          mispAttributeCount: mispAttributes.length
+        },
+        archiveSummary: {
+          format: archiveAnalysis.format,
+          entryCount: archiveAnalysis.entryCount,
+          encryptedEntries: archiveAnalysis.encryptedEntries,
+          safeToSubmit: archiveAnalysis.guards.safeToSubmit,
+          guardReasons: archiveAnalysis.guards.reasons
+        },
+        provenance
+      },
       integrations: {
         sandbox,
         zipPasswordPipeline,

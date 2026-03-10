@@ -59,6 +59,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
 - `packages/plugins-standard/test/determinism.test.ts` (repeatability of outputs and traces)
 - `packages/plugins-standard/test/basicPreTriage.test.ts` (baseline forensic pre-triage report)
 - `packages/plugins-standard/test/basicTriage.test.ts` (risk score/verdict + mocked capability transparency)
+- `packages/plugins-standard/test/basicTriage.test.ts` also verifies evidence bundle/provenance sections and adapter submission recording
 - `packages/plugins-standard/test/compressionOps.test.ts` (gzip/gunzip round-trip + deterministic bytes + invalid input path)
 - CLI integration tests run `src/main.ts` via `node --import tsx` to avoid IPC restrictions in sandboxed environments.
 - `packages/workbench/src/worker/runtime.test.ts` (worker protocol cancel/timeout/race)
@@ -91,7 +92,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
   - server/CLI-first ingest for password-protected ZIP evidence with safe unpacking limits,
   - archive-first artifact inventory (EML/MIME, Office macros, scripts, PE/ELF),
   - IOC extraction + provenance, YARA/YARA-X scanning, optional sandbox hook,
-  - export paths for STIX/MISP and reproducibility bundle capture.
+  - export paths for STIX/MISP and deterministic triage evidence bundle capture.
 - C1 drift gate is enforced in CI via `pnpm c1:check` (regenerates matrix + fails on drift).
 - C1 misc reclassification workflow is enforced via `pnpm c1:reclassify-check`.
 - C2 execution-board drift is enforced via `pnpm c2:check`.
@@ -134,6 +135,7 @@ CLI behavior:
 - `--show-repro` prints compact reproducibility metadata on stderr.
 - `--repro-json` prints reproducibility bundle as JSON on stderr.
 - `--repro-file <path>` writes reproducibility bundle as JSON to file.
+- `--triage-bundle-file <path>` writes `forensic.basicTriage` evidence bundle JSON to file and fails if the final output is not a triage report.
 - `--batch-input-dir <path>` executes recipe for each file in directory and prints JSON report.
 - `--batch-ext <list>` filters batch inputs by extension list.
 - `--batch-summary-json` prints aggregate batch metrics JSON on stderr.
@@ -174,6 +176,15 @@ CLI behavior:
   - `docs/parity/c1-operation-domain-summary.md`
 
 ## C2 domain implementation plan
+
+## Triage evidence packaging
+
+- `forensic.basicTriage` now emits:
+  - `provenance.derivedIndicators` for IOC-to-export traceability
+  - `provenance.adapterSubmissions` for sandbox/ZIP/YARA attempt metadata
+  - `evidenceBundle` as a compact deterministic handoff artifact
+- Bundle format and operational guidance:
+  - `docs/parity/triage-evidence-bundle.md`
 
 Wave 1 implemented so far:
 - `date.isoToUnix`

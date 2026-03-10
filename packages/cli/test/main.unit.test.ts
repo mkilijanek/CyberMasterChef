@@ -1,5 +1,17 @@
 import { describe, expect, it } from "vitest";
-import { parseRecipeAny, parseArgs, parseInputValue, renderOutput, fileLeaf, renderBatchOutputFile } from "../src/main.js";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import {
+  parseRecipeAny,
+  parseArgs,
+  parseInputValue,
+  renderOutput,
+  fileLeaf,
+  renderBatchOutputFile,
+  extractTriageEvidenceBundle,
+  main
+} from "../src/main.js";
 
 describe("cli helpers", () => {
   it("parses native recipes and CLI options", () => {
@@ -10,6 +22,8 @@ describe("cli helpers", () => {
       "--timeout-ms",
       "2500",
       "--show-summary",
+      "--triage-bundle-file",
+      "triage-bundle.json",
       "--bytes-output",
       "utf8",
       "--json-indent",
@@ -24,6 +38,7 @@ describe("cli helpers", () => {
       inputPath: "-",
       timeoutMs: 2500,
       showSummary: true,
+      triageBundleFile: "triage-bundle.json",
       bytesOutput: "utf8",
       jsonIndent: 4,
       batchExt: [".txt", ".log"]
@@ -90,5 +105,50 @@ describe("cli helpers", () => {
     expect(renderBatchOutputFile("/tmp/demo.txt", run, { batchOutputFormat: "json" })).toContain(
       "\"traceSummary\""
     );
+  });
+
+  it("extracts triage evidence bundles from string outputs", () => {
+    expect(
+      extractTriageEvidenceBundle({
+        type: "string",
+        value: JSON.stringify({ evidenceBundle: { schemaVersion: 1, bundleId: "triage-bundle--1" } })
+      })
+    ).toEqual({ schemaVersion: 1, bundleId: "triage-bundle--1" });
+    expect(extractTriageEvidenceBundle({ type: "string", value: "not-json" })).toBeNull();
+    expect(extractTriageEvidenceBundle({ type: "json", value: { evidenceBundle: true } })).toBeNull();
+  });
+
+  it("writes triage evidence bundle files from CLI execution", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "cmc-cli-"));
+    try {
+      const recipePath = join(dir, "recipe.json");
+      const inputPath = join(dir, "input.txt");
+      const outputPath = join(dir, "output.json");
+      const bundlePath = join(dir, "triage-bundle.json");
+      writeFileSync(
+        recipePath,
+        JSON.stringify({ version: 1, steps: [{ opId: "forensic.basicTriage" }] }),
+        "utf-8"
+      );
+      writeFileSync(inputPath, "https://example.com CVE-2024-12345 admin@example.com", "utf-8");
+
+      await main([
+        recipePath,
+        inputPath,
+        "--output-file",
+        outputPath,
+        "--triage-bundle-file",
+        bundlePath
+      ]);
+
+      const bundle = JSON.parse(readFileSync(bundlePath, "utf-8")) as {
+        schemaVersion: number;
+        provenance: { derivedIndicators: Array<{ value: string }> };
+      };
+      expect(bundle.schemaVersion).toBe(1);
+      expect(bundle.provenance.derivedIndicators.some((indicator) => indicator.value === "https://example.com")).toBe(true);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
   });
 });

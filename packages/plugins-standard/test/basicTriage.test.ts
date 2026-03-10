@@ -167,6 +167,20 @@ describe("forensic basic triage", () => {
         mispEvent: { Event: { Attribute: Array<{ type: string; value: string }> } };
       };
       recommendations: string[];
+      provenance: {
+        derivedIndicators: Array<{
+          kind: string;
+          value: string;
+          sourcePath: string;
+          exports: { stixIndicatorId: string; mispAttribute: { type: string; value: string } };
+        }>;
+      };
+      evidenceBundle: {
+        schemaVersion: number;
+        generatedAt: string;
+        exportSummary: { stixObjectCount: number; mispAttributeCount: number };
+        provenance: { derivedIndicators: Array<{ value: string }> };
+      };
       integrations: { sandbox: { status: string } };
       preTriage: {
         iocs: { cves: string[] };
@@ -202,6 +216,25 @@ describe("forensic basic triage", () => {
     ).toBe(true);
     expect(report.integrations.sandbox.status).toBe("disabled");
     expect(report.recommendations.length).toBeGreaterThan(0);
+    expect(
+      report.provenance.derivedIndicators.some(
+        (indicator) =>
+          indicator.value === "https://example.com" &&
+          indicator.sourcePath === "preTriage.iocs.urls" &&
+          indicator.exports.mispAttribute.type === "url"
+      )
+    ).toBe(true);
+    expect(report.evidenceBundle.schemaVersion).toBe(1);
+    expect(report.evidenceBundle.generatedAt).toBe("1970-01-01T00:00:00.000Z");
+    expect(report.evidenceBundle.exportSummary.stixObjectCount).toBe(
+      report.exports.stixBundle.objects.length
+    );
+    expect(report.evidenceBundle.exportSummary.mispAttributeCount).toBe(
+      report.exports.mispEvent.Event.Attribute.length
+    );
+    expect(report.evidenceBundle.provenance.derivedIndicators).toHaveLength(
+      report.provenance.derivedIndicators.length
+    );
   });
 
   it("allows threshold tuning through args", async () => {
@@ -318,12 +351,24 @@ describe("forensic basic triage", () => {
             responseCode: number | null;
           };
         };
+        provenance: {
+          adapterSubmissions: Array<{
+            adapter: string;
+            requestSummary: { verdict?: string; inputType?: string };
+            responseSummary: { submissionId?: string | null };
+          }>;
+        };
       };
       expect(report.integrations.sandbox.status).toBe("submitted");
       expect(report.integrations.sandbox.attempted).toBe(true);
       expect(report.integrations.sandbox.submissionId).toBe("sub-123");
       expect(report.integrations.sandbox.responseCode).toBe(202);
       expect(report.mockedCapabilities).not.toContain("dynamic_sandbox_integration_cuckoo");
+      const sandboxSubmission = report.provenance.adapterSubmissions.find(
+        (submission) => submission.adapter === "sandbox"
+      );
+      expect(sandboxSubmission?.requestSummary.inputType).toBe("string");
+      expect(sandboxSubmission?.responseSummary.submissionId).toBe("sub-123");
     } finally {
       globalThis.fetch = prevFetch;
     }
@@ -524,6 +569,16 @@ describe("forensic basic triage", () => {
           zipPasswordPipeline: { status: string; matchedPassword: string | null };
           yara: { status: string; matchCount: number; ruleMatches: string[] };
         };
+        provenance: {
+          adapterSubmissions: Array<{
+            adapter: string;
+            requestSummary: { archiveSafeToSubmit?: boolean; profile?: string };
+            responseSummary: { matchedPassword?: string | null; matchCount?: number };
+          }>;
+        };
+        evidenceBundle: {
+          archiveSummary: { format: string; entryCount: number; safeToSubmit: boolean };
+        };
       };
       expect(report.integrations.zipPasswordPipeline.status).toBe("submitted");
       expect(report.integrations.zipPasswordPipeline.matchedPassword).toBe("infected");
@@ -557,6 +612,21 @@ describe("forensic basic triage", () => {
       );
       expect(report.mockedCapabilities).not.toContain("zip_slip_and_zip_bomb_safe_unpack_guards");
       expect(report.mockedCapabilities).not.toContain("yara_or_yara_x_rule_scanning");
+      const zipSubmission = report.provenance.adapterSubmissions.find(
+        (submission) => submission.adapter === "zipPasswordPipeline"
+      );
+      const yaraSubmission = report.provenance.adapterSubmissions.find(
+        (submission) => submission.adapter === "yara"
+      );
+      expect(zipSubmission?.requestSummary.archiveSafeToSubmit).toBe(true);
+      expect(zipSubmission?.responseSummary.matchedPassword).toBe("infected");
+      expect(yaraSubmission?.requestSummary.profile).toBe("default-malware");
+      expect(yaraSubmission?.responseSummary.matchCount).toBe(2);
+      expect(report.evidenceBundle.archiveSummary).toMatchObject({
+        format: "zip",
+        entryCount: 1,
+        safeToSubmit: true
+      });
     } finally {
       globalThis.fetch = prevFetch;
     }
