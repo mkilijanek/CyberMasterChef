@@ -49,8 +49,7 @@ describe("cli helpers", () => {
     const baseOpts = {
       bytesOutput: "hex" as const,
       hexUppercase: true,
-      jsonIndent: 2,
-      maxOutputChars: undefined
+      jsonIndent: 2
     };
 
     expect(renderOutput({ type: "bytes", value: new Uint8Array([0xab, 0xcd]) }, baseOpts)).toBe(

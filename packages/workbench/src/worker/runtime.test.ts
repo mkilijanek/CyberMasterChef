@@ -78,6 +78,7 @@ describe("worker runtime protocol integration", () => {
 
   it("times out run and posts error", async () => {
     const messages: WorkerResponse[] = [];
+    let timeoutHandler: (() => void) | null = null;
     const runRecipe = async (args: {
       registry: OperationRegistry;
       recipe: Recipe;
@@ -96,6 +97,10 @@ describe("worker runtime protocol integration", () => {
           slowestStep: { step: number; opId: string; durationMs: number } | null;
         };
       }>((resolve, reject) => {
+        if (args.signal?.aborted) {
+          reject(new Error("Aborted"));
+          return;
+        }
         args.signal?.addEventListener("abort", () => reject(new Error("Aborted")));
         void resolve;
       });
@@ -106,11 +111,19 @@ describe("worker runtime protocol integration", () => {
       postMessage: (msg) => {
         messages.push(msg);
       },
-      setTimeoutFn: (h, ms) => setTimeout(h, ms),
-      clearTimeoutFn: (id) => clearTimeout(id)
+      setTimeoutFn: (handler) => {
+        timeoutHandler = handler;
+        return 1;
+      },
+      clearTimeoutFn: () => {
+        timeoutHandler = null;
+      }
     });
 
-    await runtime.handle(makeBakeRequest("timeout-1", 5));
+    const pending = runtime.handle(makeBakeRequest("timeout-1", 5));
+    await Promise.resolve();
+    timeoutHandler?.();
+    await pending;
 
     expect(messages).toContainEqual({
       type: "error",

@@ -49,7 +49,7 @@ describe("operation coverage smoke", () => {
   beforeEach(() => {
     vi.stubGlobal(
       "fetch",
-      vi.fn(async () => new Response(JSON.stringify({ Answer: [{ data: "127.0.0.1" }] }), { status: 200 }))
+      vi.fn(() => new Response(JSON.stringify({ Answer: [{ data: "127.0.0.1" }] }), { status: 200 }))
     );
   });
 

@@ -63,6 +63,20 @@ function makeMinimalZipSample(): Uint8Array {
   return data;
 }
 
+function parseRequestBody(init?: RequestInit): Record<string, unknown> {
+  if (typeof init?.body !== "string") {
+    throw new Error("Expected JSON request body");
+  }
+  return JSON.parse(init.body) as Record<string, unknown>;
+}
+
+function expectRequestBody(body: Record<string, unknown> | null): Record<string, unknown> {
+  if (body === null) {
+    throw new Error("Expected request body");
+  }
+  return body;
+}
+
 describe("forensic basic triage", () => {
   it("builds suspicious or malicious verdict with score and findings", async () => {
     const registry = new InMemoryRegistry();
@@ -259,7 +273,7 @@ describe("forensic basic triage", () => {
     globalThis.fetch = ((url, init) => {
       callCount += 1;
       expect(url).toBe("https://sandbox.local/submit");
-      requestBody = JSON.parse(String(init?.body ?? "{}")) as Record<string, unknown>;
+      requestBody = parseRequestBody(init);
       if (callCount === 1) {
         return Promise.resolve(new Response("temporary failure", { status: 500 }));
       }
@@ -296,13 +310,12 @@ describe("forensic basic triage", () => {
         integrations: { sandbox: { status: string; submissionId: string | null; responseCode: number | null } };
       };
       expect(callCount).toBe(2);
-      expect(requestBody).toMatchObject({
-        inputType: "string",
-        sizeBytes: 10,
-        verdict: expect.any(String),
-        riskScoreNorm: expect.any(Number),
-        sampleBase64: "cmV0cnktY2FzZQ=="
-      });
+      const body = expectRequestBody(requestBody);
+      expect(body.inputType).toBe("string");
+      expect(body.sizeBytes).toBe(10);
+      expect(typeof body.verdict).toBe("string");
+      expect(typeof body.riskScoreNorm).toBe("number");
+      expect(body.sampleBase64).toBe("cmV0cnktY2FzZQ==");
       expect(report.integrations.sandbox.status).toBe("submitted");
       expect(report.integrations.sandbox.submissionId).toBe("sub-retry-1");
       expect(report.integrations.sandbox.responseCode).toBe(202);
@@ -364,7 +377,7 @@ describe("forensic basic triage", () => {
     const prevFetch = globalThis.fetch;
     const requestBodies = new Map<string, Record<string, unknown>>();
     globalThis.fetch = ((url: string, init?: RequestInit) => {
-      requestBodies.set(url, JSON.parse(String(init?.body ?? "{}")) as Record<string, unknown>);
+      requestBodies.set(url, parseRequestBody(init));
       if (url.includes("zip.local")) {
         return Promise.resolve(
           new Response(JSON.stringify({ matchedPassword: "infected" }), { status: 200 })
@@ -418,18 +431,18 @@ describe("forensic basic triage", () => {
       expect(report.integrations.zipPasswordPipeline.matchedPassword).toBe("infected");
       expect(report.integrations.yara.status).toBe("submitted");
       expect(report.integrations.yara.matchCount).toBe(2);
-      expect(requestBodies.get("https://zip.local/submit")).toMatchObject({
-        sizeBytes: 64,
-        candidates: ["infected", "password", "123456"],
-        archiveBase64: expect.any(String)
-      });
-      expect(requestBodies.get("https://yara.local/scan")).toMatchObject({
-        inputType: "bytes",
-        sizeBytes: 64,
-        profile: "default-malware",
-        sampleBase64: expect.any(String),
-        heuristics: expect.any(Array)
-      });
+      const zipRequest = requestBodies.get("https://zip.local/submit");
+      const yaraRequest = requestBodies.get("https://yara.local/scan");
+      expect(zipRequest).toBeDefined();
+      expect(zipRequest?.sizeBytes).toBe(64);
+      expect(zipRequest?.candidates).toEqual(["infected", "password", "123456"]);
+      expect(typeof zipRequest?.archiveBase64).toBe("string");
+      expect(yaraRequest).toBeDefined();
+      expect(yaraRequest?.inputType).toBe("bytes");
+      expect(yaraRequest?.sizeBytes).toBe(64);
+      expect(yaraRequest?.profile).toBe("default-malware");
+      expect(typeof yaraRequest?.sampleBase64).toBe("string");
+      expect(Array.isArray(yaraRequest?.heuristics)).toBe(true);
       expect(report.mockedCapabilities).not.toContain(
         "archive_password_handling_and_zip_unpacking"
       );

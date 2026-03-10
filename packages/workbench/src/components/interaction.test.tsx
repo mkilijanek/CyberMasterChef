@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
 import React from "react";
 import { describe, expect, it } from "vitest";
+import type { ReactTestInstance } from "react-test-renderer";
 import { act, create } from "react-test-renderer";
 import "../i18n";
 import { ArgForm } from "./ArgForm";
@@ -123,7 +125,8 @@ describe("component interactions", () => {
       root = create(<OperationCatalog query="hex" onAdd={(opId) => added.push(opId)} />);
     });
     const addButtons = root.root.findAll(
-      (node) => node.type === "button" && node.props.className === "buttonSmall"
+      (node: ReactTestInstance) =>
+        node.type === "button" && node.props.className === "buttonSmall"
     );
 
     expect(addButtons.length).toBeGreaterThan(0);

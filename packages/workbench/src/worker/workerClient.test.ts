@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { SandboxClient } from "./workerClient";
 import type { WorkerResponse } from "./protocol";
