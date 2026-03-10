@@ -1,14 +1,14 @@
 # C2 Domain Implementation Plan
 
-Generated: 2026-02-25T10:40:37.049Z
-Implemented operations in repo: 292
+Generated: 2026-02-26T12:08:50.861Z
+Implemented operations in repo: 298
 
 ## Priority order
 
-- P1: crypto-hash-kdf (coverage 29.9%, missing ~68)
-- P2: forensic-malware-helper (coverage 31.25%, missing ~11)
-- P3: network-protocol-parsers (coverage 40%, missing ~15)
-- P4: encodings-codecs (coverage 41.38%, missing ~34)
+- P1: forensic-malware-helper (coverage 31.25%, missing ~11)
+- P2: crypto-hash-kdf (coverage 34.02%, missing ~64)
+- P3: encodings-codecs (coverage 41.38%, missing ~34)
+- P4: network-protocol-parsers (coverage 48%, missing ~13)
 
 ## Domain summary
 
@@ -33,9 +33,9 @@ Implemented operations in repo: 292
 ### crypto-hash-kdf
 - Description: Cryptographic transforms, digests, MAC/KDF and cipher operations.
 - CyberChef total: 97
-- Implemented total: 29
-- Estimated missing: 68
-- Coverage: 29.9%
+- Implemented total: 33
+- Estimated missing: 64
+- Coverage: 34.02%
 - Candidate operations (first 20):
   - a (AffineCipherDecode.mjs) [high]
   - a (AffineCipherEncode.mjs) [high]
@@ -120,9 +120,9 @@ Implemented operations in repo: 292
 ### network-protocol-parsers
 - Description: Protocol/header/parsing operations for network/web payloads.
 - CyberChef total: 25
-- Implemented total: 10
-- Estimated missing: 15
-- Coverage: 40%
+- Implemented total: 12
+- Estimated missing: 13
+- Coverage: 48%
 - Candidate operations (first 20):
   - CSS selector (CSSSelector.mjs) [high]
   - DechunkHTTPResponse (DechunkHTTPResponse.mjs) [high]

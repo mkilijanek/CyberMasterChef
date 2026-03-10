@@ -923,6 +923,72 @@
     }
   },
   {
+    "operationId": "crypto.hkdf",
+    "name": "HKDF",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "salt",
+        "type": "string",
+        "label": "Salt",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "saltEncoding",
+        "type": "select",
+        "label": "Salt Encoding",
+        "defaultValue": "\"utf8\""
+      },
+      {
+        "key": "info",
+        "type": "string",
+        "label": "Info",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "infoEncoding",
+        "type": "select",
+        "label": "Info Encoding",
+        "defaultValue": "\"utf8\""
+      },
+      {
+        "key": "length",
+        "type": "number",
+        "label": "Key Length (bytes)",
+        "defaultValue": "32"
+      },
+      {
+        "key": "hash",
+        "type": "select",
+        "label": "Hash",
+        "defaultValue": "\"SHA-256\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input",
+        "Salt argument is required",
+        "Key length must be between 1 and 1024 bytes"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/hkdf.ts",
+      "description": "Derives key material using HKDF (hex output)."
+    }
+  },
+  {
     "operationId": "crypto.hmacSha1",
     "name": "HMAC-SHA1",
     "domain": "crypto-hash-kdf",
@@ -1002,6 +1068,47 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/hmacSha256.ts",
       "description": "Computes HMAC-SHA256 for input data and a provided key."
+    }
+  },
+  {
+    "operationId": "crypto.hmacSha384",
+    "name": "HMAC-SHA384",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "key",
+        "type": "string",
+        "label": "Key",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "keyEncoding",
+        "type": "select",
+        "label": "Key Encoding",
+        "defaultValue": "\"utf8\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "WebCrypto is not available in this environment",
+        "Expected bytes or string input",
+        "Key argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/hmacSha384.ts",
+      "description": "Computes HMAC-SHA384 for input data and a provided key."
     }
   },
   {
@@ -1104,6 +1211,81 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/pbkdf2.ts",
       "description": "Derives key material using PBKDF2 (hex output)."
+    }
+  },
+  {
+    "operationId": "crypto.scrypt",
+    "name": "scrypt",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "salt",
+        "type": "string",
+        "label": "Salt",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "saltEncoding",
+        "type": "select",
+        "label": "Salt Encoding",
+        "defaultValue": "\"utf8\""
+      },
+      {
+        "key": "length",
+        "type": "number",
+        "label": "Key Length (bytes)",
+        "defaultValue": "32"
+      },
+      {
+        "key": "costN",
+        "type": "number",
+        "label": "Cost (N)",
+        "defaultValue": "16384"
+      },
+      {
+        "key": "blockSizeR",
+        "type": "number",
+        "label": "Block Size (r)",
+        "defaultValue": "8"
+      },
+      {
+        "key": "parallelizationP",
+        "type": "number",
+        "label": "Parallelization (p)",
+        "defaultValue": "1"
+      },
+      {
+        "key": "maxmem",
+        "type": "number",
+        "label": "Max Memory (bytes)",
+        "defaultValue": "67108864"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected bytes or string input",
+        "Salt argument is required",
+        "Key length must be between 1 and 1024 bytes",
+        "costN must be a power of two between 2 and 1048576",
+        "blockSizeR must be between 1 and 32",
+        "parallelizationP must be between 1 and 16",
+        "maxmem must be between 16777216 and 1073741824"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/scrypt.ts",
+      "description": "Derives key material using scrypt (hex output)."
     }
   },
   {
@@ -1569,6 +1751,30 @@
         "type": "number",
         "label": "Max heuristic matches",
         "defaultValue": "25"
+      },
+      {
+        "key": "enableImphash",
+        "type": "boolean",
+        "label": "Enable imphash",
+        "defaultValue": "true"
+      },
+      {
+        "key": "enableTlsh",
+        "type": "boolean",
+        "label": "Enable TLSH",
+        "defaultValue": "true"
+      },
+      {
+        "key": "enableSsdeep",
+        "type": "boolean",
+        "label": "Enable ssdeep",
+        "defaultValue": "true"
+      },
+      {
+        "key": "maxFuzzyInputBytes",
+        "type": "number",
+        "label": "Max bytes for fuzzy hashes",
+        "defaultValue": "1048576"
       }
     ],
     "deterministic": true,
@@ -1607,6 +1813,132 @@
         "type": "number",
         "label": "Malicious threshold",
         "defaultValue": "60"
+      },
+      {
+        "key": "enableSandboxSubmit",
+        "type": "boolean",
+        "label": "Enable sandbox submit",
+        "defaultValue": "false"
+      },
+      {
+        "key": "sandboxRuntimeProfile",
+        "type": "select",
+        "label": "Sandbox runtime profile",
+        "defaultValue": "\"disabled\""
+      },
+      {
+        "key": "sandboxEndpoint",
+        "type": "string",
+        "label": "Sandbox endpoint URL",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "sandboxAllowHosts",
+        "type": "string",
+        "label": "Allowlisted sandbox hosts",
+        "defaultValue": "\"localhost"
+      },
+      {
+        "key": "sandboxTimeoutMs",
+        "type": "number",
+        "label": "Sandbox timeout ms",
+        "defaultValue": "5000"
+      },
+      {
+        "key": "sandboxRetries",
+        "type": "number",
+        "label": "Sandbox retries",
+        "defaultValue": "2"
+      },
+      {
+        "key": "enableZipPasswordPipeline",
+        "type": "boolean",
+        "label": "Enable ZIP password pipeline",
+        "defaultValue": "false"
+      },
+      {
+        "key": "zipRuntimeProfile",
+        "type": "select",
+        "label": "ZIP runtime profile",
+        "defaultValue": "\"disabled\""
+      },
+      {
+        "key": "zipEndpoint",
+        "type": "string",
+        "label": "ZIP endpoint URL",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "zipAllowHosts",
+        "type": "string",
+        "label": "Allowlisted ZIP hosts",
+        "defaultValue": "\"localhost"
+      },
+      {
+        "key": "zipTimeoutMs",
+        "type": "number",
+        "label": "ZIP timeout ms",
+        "defaultValue": "5000"
+      },
+      {
+        "key": "zipRetries",
+        "type": "number",
+        "label": "ZIP retries",
+        "defaultValue": "2"
+      },
+      {
+        "key": "zipCandidatePasswords",
+        "type": "string",
+        "label": "ZIP candidate passwords",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "zipMaxInputBytes",
+        "type": "number",
+        "label": "ZIP max input bytes",
+        "defaultValue": "10485760"
+      },
+      {
+        "key": "enableYaraScan",
+        "type": "boolean",
+        "label": "Enable YARA scan",
+        "defaultValue": "false"
+      },
+      {
+        "key": "yaraRuntimeProfile",
+        "type": "select",
+        "label": "YARA runtime profile",
+        "defaultValue": "\"disabled\""
+      },
+      {
+        "key": "yaraEndpoint",
+        "type": "string",
+        "label": "YARA endpoint URL",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "yaraAllowHosts",
+        "type": "string",
+        "label": "Allowlisted YARA hosts",
+        "defaultValue": "\"localhost"
+      },
+      {
+        "key": "yaraTimeoutMs",
+        "type": "number",
+        "label": "YARA timeout ms",
+        "defaultValue": "5000"
+      },
+      {
+        "key": "yaraRetries",
+        "type": "number",
+        "label": "YARA retries",
+        "defaultValue": "2"
+      },
+      {
+        "key": "yaraProfile",
+        "type": "string",
+        "label": "YARA profile",
+        "defaultValue": "\"default\""
       }
     ],
     "deterministic": true,
@@ -3175,6 +3507,31 @@
     }
   },
   {
+    "operationId": "hash.sha224",
+    "name": "SHA-224",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sha224.ts",
+      "description": "Computes SHA-224 digest. Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.sha256",
     "name": "SHA-256",
     "domain": "crypto-hash-kdf",
@@ -4160,6 +4517,59 @@
     }
   },
   {
+    "operationId": "network.dnsOverHttps",
+    "name": "DNS over HTTPS",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "recordType",
+        "type": "select",
+        "label": "Record Type",
+        "defaultValue": "\"A\""
+      },
+      {
+        "key": "resolverUrl",
+        "type": "string",
+        "label": "Resolver URL",
+        "defaultValue": "\"https://dns.google/resolve\""
+      },
+      {
+        "key": "allowHosts",
+        "type": "string",
+        "label": "Allowlisted resolver hosts",
+        "defaultValue": "\"dns.google"
+      },
+      {
+        "key": "timeoutMs",
+        "type": "number",
+        "label": "Timeout ms",
+        "defaultValue": "5000"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "resolverUrl must be a valid absolute URL",
+        "resolverUrl must use https (http allowed only for loopback)",
+        "Expected bytes or string input",
+        "fetch is not available in this runtime"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/dnsOverHttps.ts",
+      "description": "Queries DNS records over HTTPS for domains from input."
+    }
+  },
+  {
     "operationId": "network.extractIPs",
     "name": "Extract IPs",
     "domain": "network-protocol-parsers",
@@ -4301,6 +4711,44 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/fangUrls.ts",
       "description": "Reverts common defanged URL markers back to standard URL form."
+    }
+  },
+  {
+    "operationId": "network.groupIPAddresses",
+    "name": "Group IP Addresses",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "prefixLength",
+        "type": "number",
+        "label": "Prefix Length",
+        "defaultValue": "24"
+      },
+      {
+        "key": "includeCounts",
+        "type": "boolean",
+        "label": "Include counts",
+        "defaultValue": "true"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/groupIPAddresses.ts",
+      "description": "Groups IPv4 addresses by CIDR prefix and outputs group counts."
     }
   },
   {

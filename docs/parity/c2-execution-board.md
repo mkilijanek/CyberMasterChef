@@ -1,6 +1,6 @@
 # C2 Execution Board
 
-Updated: 2026-02-25
+Updated: 2026-02-26
 
 ## Objective
 
@@ -191,11 +191,30 @@ Translate C2 domain plan into executable implementation waves with measurable ou
 ## Queue extension
 
 - [x] Queue tasks `1-20` completed on `dev`.
+- [x] Crypto/KDF parity extension:
+  - added `crypto.hmacSha384`, `crypto.hkdf`, `crypto.scrypt`
+  - aligned argument model for KDF (`salt`, encoding, length + bounded cost knobs)
+  - added deterministic vector tests and invalid-parameter guards
+- [x] Performance/operations hardening:
+  - CI performance budget gate (`pnpm perf:check`)
+  - benchmark artifacts in `docs/perf/*`
+  - worker retry backoff + jitter controls in `WorkerPoolClient`
+  - release governance docs/runbooks + CODEOWNERS baseline
 - [x] Forensic Triage (CSIRT/SOC): baseline modules.
   - implemented as built-in modules: `forensic.basicPreTriage` and `forensic.basicTriage`
-  - includes IOC extraction, SHA-family hashes (where WebCrypto supports), binary entropy segments and PE section metadata
-  - placeholders (`null`) kept for `imphash`, `TLSH`, `ssdeep` in this baseline
+  - includes IOC extraction, SHA-family hashes (where WebCrypto supports), PE `imphash`, TLSH/ssdeep (feature-flagged), and binary entropy + PE/ELF/Mach-O metadata
+  - includes optional CLI-first dynamic sandbox submit adapter (allowlist endpoint validation + timeout/retry policy)
   - triage report includes explicit `mockedCapabilities` list for still-unimplemented production integrations
+
+## Next queue (post M10)
+
+- [x] M11: close high-priority gaps in `crypto-hash-kdf` + `network-protocol-parsers`.
+  - delivered: `hash.sha224`, `network.groupIPAddresses`, `network.dnsOverHttps`
+  - contracts/tests/parity artifacts regenerated and validated
+- [x] M12: reduce workbench worker bundle size and externalized node-module footprint.
+  - delivered: CI asset budget gate (`pnpm perf:assets`) + committed budget baseline
+- [x] M13: implement remaining forensic production integrations (ZIP password flow + YARA profile).
+  - delivered: ZIP + YARA adapters in `forensic.basicTriage` with allowlist/timeout/retry guards
 
 ## Quality gates
 
@@ -204,3 +223,4 @@ Translate C2 domain plan into executable implementation waves with measurable ou
   - deterministic behavior declaration
   - test coverage (unit and/or golden)
 - `pnpm lint && pnpm typecheck && pnpm test` must pass before push.
+- Performance budget gate in CI: `pnpm perf:check` (bench + threshold validation).

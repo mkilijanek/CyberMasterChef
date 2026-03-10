@@ -25,6 +25,8 @@
     "c3:check": "pnpm c3:contracts && pnpm c3:testgen && pnpm c3:validate && git diff --exit-code -- docs/parity/c3-operation-compatibility-contracts.json docs/parity/c3-operation-compatibility-contracts.md docs/parity/c3-contract-schema.md packages/plugins-standard/test/generated/c3-contracts.generated.test.ts",
     "security:csp-check": "node scripts/security/check-csp-checklist.mjs",
     "security:audit": "pnpm audit --audit-level high",
+    "perf:check": "TSX_TSCONFIG_PATH=./tsconfig.base.json pnpm exec tsx scripts/perf/check-budgets.ts",
+    "perf:assets": "node scripts/perf/check-workbench-assets.mjs",
     "release:readiness": "node scripts/release/check-readiness.mjs"
   },
   "pnpm": {
@@ -33,15 +35,15 @@
     ]
   },
   "devDependencies": {
-    "@playwright/test": "^1.54.2",
-    "@types/node": "^24.10.1",
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.54.2",
+    "@types/node": "^25.3.5",
     "@vitest/coverage-v8": "^4.0.18",
-    "eslint": "^10.0.2",
+    "eslint": "^10.0.3",
     "prettier": "^3.3.3",
     "tsx": "^4.20.6",
     "typescript": "^5.7.0",
-    "typescript-eslint": "^8.0.0",
+    "typescript-eslint": "^8.57.0",
     "vitest": "^4.0.18"
   }
 }

@@ -1,6 +1,8 @@
 import type { Operation } from "@cybermasterchef/core";
 import { bytesToHex } from "@cybermasterchef/core";
 import { md5 } from "hash-wasm";
+import tlsh from "tlsh";
+import ssdeep from "ssdeep.js";
 import { PRETRIAGE_HEURISTICS } from "./preTriageHeuristics.js";
 
 type TriageSection = {
@@ -32,8 +34,8 @@ type TriageReport = {
     sha512: string | null;
     md5: string | null;
     imphash: string | null;
-    tlsh: null;
-    ssdeep: null;
+    tlsh: string | null;
+    ssdeep: string | null;
   };
   iocs: {
     urls: string[];
@@ -50,7 +52,7 @@ type TriageReport = {
     matches: string[];
   }>;
   binaryAnalysis: {
-    format: "pe" | "unknown" | "text";
+    format: "pe" | "elf" | "macho" | "unknown" | "text";
     sections: TriageSection[];
     segments: TriageSegment[];
     notes: string[];
@@ -220,6 +222,51 @@ async function computeImphash(data: Uint8Array, sections: TriageSection[]): Prom
   return md5(tokens.join(","));
 }
 
+function detectBinaryFormat(data: Uint8Array, peSections: TriageSection[]): "pe" | "elf" | "macho" | "unknown" {
+  if (peSections.length > 0) return "pe";
+  if (data.length >= 4 && data[0] === 0x7f && data[1] === 0x45 && data[2] === 0x4c && data[3] === 0x46) {
+    return "elf";
+  }
+  if (data.length >= 4) {
+    const magic = `${data[0]!.toString(16).padStart(2, "0")}${data[1]!.toString(16).padStart(2, "0")}${data[2]!
+      .toString(16)
+      .padStart(2, "0")}${data[3]!.toString(16).padStart(2, "0")}`;
+    if (
+      magic === "feedface" ||
+      magic === "cefaedfe" ||
+      magic === "feedfacf" ||
+      magic === "cffaedfe" ||
+      magic === "cafebabe" ||
+      magic === "bebafeca"
+    ) {
+      return "macho";
+    }
+  }
+  return "unknown";
+}
+
+function buildBinarySections(
+  format: "pe" | "elf" | "macho" | "unknown" | "text",
+  data: Uint8Array,
+  peSections: TriageSection[]
+): TriageSection[] {
+  if (format === "pe") return peSections;
+  if (format === "elf" || format === "macho") {
+    return [
+      {
+        name: `${format}_image`,
+        virtualAddress: 0,
+        virtualSize: data.length,
+        rawOffset: 0,
+        rawSize: data.length,
+        entropy: shannonEntropy(data),
+        characteristics: 0
+      }
+    ];
+  }
+  return [];
+}
+
 function parsePeSections(data: Uint8Array): TriageSection[] {
   if (data.length < 0x100) return [];
   if (data[0] !== 0x4d || data[1] !== 0x5a) return [];
@@ -321,6 +368,24 @@ async function digestMd5Hex(data: Uint8Array): Promise<string | null> {
   }
 }
 
+function digestTlsh(data: Uint8Array): string | null {
+  try {
+    const out = tlsh(toAscii(data));
+    return typeof out === "string" ? out.toLowerCase() : null;
+  } catch {
+    return null;
+  }
+}
+
+function digestSsdeep(data: Uint8Array): string | null {
+  try {
+    const out = ssdeep.digest(toAscii(data));
+    return typeof out === "string" ? out : null;
+  } catch {
+    return null;
+  }
+}
+
 export const basicPreTriage: Operation = {
   id: "forensic.basicPreTriage",
   name: "Basic Pre-Triage",
@@ -352,6 +417,30 @@ export const basicPreTriage: Operation = {
       label: "Max heuristic matches",
       type: "number",
       defaultValue: 25
+    },
+    {
+      key: "enableImphash",
+      label: "Enable imphash",
+      type: "boolean",
+      defaultValue: true
+    },
+    {
+      key: "enableTlsh",
+      label: "Enable TLSH",
+      type: "boolean",
+      defaultValue: true
+    },
+    {
+      key: "enableSsdeep",
+      label: "Enable ssdeep",
+      type: "boolean",
+      defaultValue: true
+    },
+    {
+      key: "maxFuzzyInputBytes",
+      label: "Max bytes for fuzzy hashes",
+      type: "number",
+      defaultValue: 1048576
     }
   ],
   run: async ({ input, args }) => {
@@ -364,6 +453,15 @@ export const basicPreTriage: Operation = {
     const maxHeuristicMatchesArg =
       typeof args.maxHeuristicMatches === "number" ? args.maxHeuristicMatches : 25;
     const maxHeuristicMatches = Math.max(1, Math.min(500, Math.floor(maxHeuristicMatchesArg)));
+    const enableImphash = typeof args.enableImphash === "boolean" ? args.enableImphash : true;
+    const enableTlsh = typeof args.enableTlsh === "boolean" ? args.enableTlsh : true;
+    const enableSsdeep = typeof args.enableSsdeep === "boolean" ? args.enableSsdeep : true;
+    const maxFuzzyInputBytesArg =
+      typeof args.maxFuzzyInputBytes === "number" ? args.maxFuzzyInputBytes : 1048576;
+    const maxFuzzyInputBytes = Math.max(
+      1024,
+      Math.min(16 * 1024 * 1024, Math.floor(maxFuzzyInputBytesArg))
+    );
 
     if (input.type !== "bytes" && input.type !== "string") {
       throw new Error("Expected bytes or string input");
@@ -386,13 +484,26 @@ export const basicPreTriage: Operation = {
       matches: uniqueMatches(text, h.pattern, (v) => v, maxHeuristicMatches)
     })).filter((h) => h.matches.length > 0);
 
-    const sections = seemsBinary ? parsePeSections(data) : [];
-    const format: "pe" | "unknown" | "text" = !seemsBinary ? "text" : sections.length > 0 ? "pe" : "unknown";
+    const peSections = seemsBinary ? parsePeSections(data) : [];
+    const format: "pe" | "elf" | "macho" | "unknown" | "text" = !seemsBinary
+      ? "text"
+      : detectBinaryFormat(data, peSections);
+    const sections = !seemsBinary ? [] : buildBinarySections(format, data, peSections);
     const notes: string[] = [];
-    notes.push("TLSH/ssdeep are placeholders in this baseline and return null.");
-    if (seemsBinary && sections.length === 0) {
-      notes.push("PE section table not detected; generic entropy segments provided.");
+    if (!enableImphash) notes.push("imphash disabled by flag.");
+    if (!enableTlsh) notes.push("TLSH disabled by flag.");
+    if (!enableSsdeep) notes.push("ssdeep disabled by flag.");
+    if (data.length > maxFuzzyInputBytes) {
+      notes.push(`Skipped fuzzy hashes due to maxFuzzyInputBytes=${maxFuzzyInputBytes}.`);
     }
+    if (format === "unknown" && seemsBinary) {
+      notes.push("Binary format not recognized as PE/ELF/Mach-O; generic entropy segments provided.");
+    }
+
+    const shouldRunFuzzy = data.length <= maxFuzzyInputBytes;
+    const imphash = enableImphash && format === "pe" ? await computeImphash(data, peSections) : null;
+    const tlshHash = enableTlsh && shouldRunFuzzy ? digestTlsh(data) : null;
+    const ssdeepHash = enableSsdeep && shouldRunFuzzy ? digestSsdeep(data) : null;
 
     const report: TriageReport = {
       version: 1,
@@ -406,9 +517,9 @@ export const basicPreTriage: Operation = {
         sha256: await digestHex(data, "SHA-256"),
         sha512: await digestHex(data, "SHA-512"),
         md5: await digestMd5Hex(data),
-        imphash: await computeImphash(data, sections),
-        tlsh: null,
-        ssdeep: null
+        imphash,
+        tlsh: tlshHash,
+        ssdeep: ssdeepHash
       },
       iocs: {
         urls,

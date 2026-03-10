@@ -16,6 +16,7 @@ import {
 } from "@cybermasterchef/core";
 import { standardPlugin } from "@cybermasterchef/plugins-standard";
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import pkg from "../package.json";
 
 const DEFAULT_TIMEOUT_MS = 10_000;
@@ -75,7 +76,7 @@ const usageText =
   "  --version                        print CLI package version\n" +
   "  --help                           print this help text";
 
-function parseRecipeAny(json: string, quietWarnings: boolean): {
+export function parseRecipeAny(json: string, quietWarnings: boolean): {
   recipe: Recipe;
   source: "native" | "cyberchef";
   warningCount: number;
@@ -100,7 +101,7 @@ function parseRecipeAny(json: string, quietWarnings: boolean): {
   }
 }
 
-type CliOptions = {
+export type CliOptions = {
   recipePath: string;
   inputPath?: string;
   timeoutMs: number;
@@ -143,7 +144,7 @@ type CliOptions = {
   maxOutputChars?: number;
 };
 
-function parseArgs(args: string[]): CliOptions {
+export function parseArgs(args: string[]): CliOptions {
   let timeoutMs = DEFAULT_TIMEOUT_MS;
   let strictCyberChef = false;
   let dryRun = false;
@@ -489,65 +490,19 @@ function parseArgs(args: string[]): CliOptions {
   return out;
 }
 
-const opts = parseArgs(process.argv.slice(2));
-
-const registry = new InMemoryRegistry();
-standardPlugin.register(registry);
-
-if (opts.listOps) {
-  const filter = opts.listOpsFilter?.trim().toLowerCase();
-  const ops = registry.list().filter((op) =>
-    !filter
-      ? true
-      : op.id.toLowerCase().includes(filter) ||
-        op.name.toLowerCase().includes(filter) ||
-        op.description.toLowerCase().includes(filter)
-  );
-  for (const op of ops) {
-    process.stdout.write(`${op.id}\t${op.name}\n`);
-  }
-  process.exit(0);
-}
-if (opts.listOpsJson) {
-  const filter = opts.listOpsFilter?.trim().toLowerCase();
-  const ops = registry.list().filter((op) =>
-    !filter
-      ? true
-      : op.id.toLowerCase().includes(filter) ||
-        op.name.toLowerCase().includes(filter) ||
-        op.description.toLowerCase().includes(filter)
-  );
-  process.stdout.write(`${JSON.stringify(ops)}\n`);
-  process.exit(0);
-}
-
-const recipeJson = readFileSync(opts.recipePath, "utf-8");
-const parsedRecipe = parseRecipeAny(recipeJson, opts.quietWarnings);
-if (opts.printRecipeSource) {
-  process.stderr.write(`[info] recipe-source=${parsedRecipe.source}\n`);
-}
-if (opts.strictCyberChef && parsedRecipe.source === "cyberchef" && parsedRecipe.warningCount > 0) {
-  die(
-    `Strict CyberChef mode failed: ${parsedRecipe.warningCount} unsupported step(s) were skipped.`
-  );
-}
-if (opts.failOnWarning && parsedRecipe.warningCount > 0) {
-  die(`Execution failed due to warnings: ${parsedRecipe.warningCount}`);
-}
-if (opts.dryRun) {
-  process.stderr.write(
-    `[dry-run] steps=${parsedRecipe.recipe.steps.length} source=${parsedRecipe.source} warnings=${parsedRecipe.warningCount}\n`
-  );
-  process.exit(0);
-}
-
-function parseInputValue(raw: string): DataValue {
+export function parseInputValue(
+  raw: string,
+  opts: Pick<CliOptions, "inputEncoding">
+): DataValue {
   if (opts.inputEncoding === "hex") return { type: "bytes", value: hexToBytes(raw.trim()) };
   if (opts.inputEncoding === "base64") return { type: "bytes", value: base64ToBytes(raw.trim()) };
   return { type: "string", value: raw };
 }
 
-function renderOutput(output: DataValue): string {
+export function renderOutput(
+  output: DataValue,
+  opts: Pick<CliOptions, "bytesOutput" | "hexUppercase" | "jsonIndent" | "maxOutputChars">
+): string {
   const rendered =
     output.type === "bytes"
       ? (() => {
@@ -566,19 +521,20 @@ function renderOutput(output: DataValue): string {
   return opts.maxOutputChars !== undefined ? rendered.slice(0, opts.maxOutputChars) : rendered;
 }
 
-function fileLeaf(path: string): string {
+export function fileLeaf(path: string): string {
   const parts = path.split("/");
   return parts[parts.length - 1] ?? path;
 }
 
-function renderBatchOutputFile(
+export function renderBatchOutputFile(
   filePath: string,
   run: {
     rendered: string;
     outputType: DataValue["type"];
     elapsed: number;
     traceSummary: ReturnType<typeof summarizeTrace>;
-  }
+  },
+  opts: Pick<CliOptions, "batchOutputFormat">
 ): string {
   if (opts.batchOutputFormat === "text") return `${run.rendered}\n`;
   const payload = {
@@ -591,6 +547,59 @@ function renderBatchOutputFile(
   if (opts.batchOutputFormat === "jsonl") return `${JSON.stringify(payload)}\n`;
   return `${JSON.stringify(payload, null, 2)}\n`;
 }
+
+export async function main(argv = process.argv.slice(2)): Promise<void> {
+  const opts = parseArgs(argv);
+
+  const registry = new InMemoryRegistry();
+  standardPlugin.register(registry);
+
+  if (opts.listOps) {
+    const filter = opts.listOpsFilter?.trim().toLowerCase();
+    const ops = registry.list().filter((op) =>
+      !filter
+        ? true
+        : op.id.toLowerCase().includes(filter) ||
+          op.name.toLowerCase().includes(filter) ||
+          op.description.toLowerCase().includes(filter)
+    );
+    for (const op of ops) {
+      process.stdout.write(`${op.id}\t${op.name}\n`);
+    }
+    process.exit(0);
+  }
+  if (opts.listOpsJson) {
+    const filter = opts.listOpsFilter?.trim().toLowerCase();
+    const ops = registry.list().filter((op) =>
+      !filter
+        ? true
+        : op.id.toLowerCase().includes(filter) ||
+          op.name.toLowerCase().includes(filter) ||
+          op.description.toLowerCase().includes(filter)
+    );
+    process.stdout.write(`${JSON.stringify(ops)}\n`);
+    process.exit(0);
+  }
+
+  const recipeJson = readFileSync(opts.recipePath, "utf-8");
+  const parsedRecipe = parseRecipeAny(recipeJson, opts.quietWarnings);
+  if (opts.printRecipeSource) {
+    process.stderr.write(`[info] recipe-source=${parsedRecipe.source}\n`);
+  }
+  if (opts.strictCyberChef && parsedRecipe.source === "cyberchef" && parsedRecipe.warningCount > 0) {
+    die(
+      `Strict CyberChef mode failed: ${parsedRecipe.warningCount} unsupported step(s) were skipped.`
+    );
+  }
+  if (opts.failOnWarning && parsedRecipe.warningCount > 0) {
+    die(`Execution failed due to warnings: ${parsedRecipe.warningCount}`);
+  }
+  if (opts.dryRun) {
+    process.stderr.write(
+      `[dry-run] steps=${parsedRecipe.recipe.steps.length} source=${parsedRecipe.source} warnings=${parsedRecipe.warningCount}\n`
+    );
+    process.exit(0);
+  }
 
 async function executeOne(rawInput: string): Promise<{
   rendered: string;
@@ -612,7 +621,7 @@ async function executeOne(rawInput: string): Promise<{
     pluginSet: Array<{ pluginId: string; version: string }>;
   };
 }> {
-  const inputValue = parseInputValue(rawInput);
+  const inputValue = parseInputValue(rawInput, opts);
   const controller = new AbortController();
   const startedAt = Date.now();
   const timeoutHandle = setTimeout(() => {
@@ -644,7 +653,7 @@ async function executeOne(rawInput: string): Promise<{
     pluginSet: [{ pluginId: standardPlugin.pluginId, version: standardPlugin.version }]
   };
   return {
-    rendered: renderOutput(res.output),
+    rendered: renderOutput(res.output, opts),
     elapsed,
     outputType: res.output.type,
     trace: res.trace,
@@ -707,7 +716,7 @@ if (opts.batchInputDir) {
               ? "jsonl"
               : "json";
         const outPath = `${opts.batchOutputDir}/${fileLeaf(filePath)}.out.${ext}`;
-        writeFileSync(outPath, renderBatchOutputFile(filePath, run), "utf-8");
+        writeFileSync(outPath, renderBatchOutputFile(filePath, run, opts), "utf-8");
       }
       return {
         file: filePath,
@@ -841,4 +850,12 @@ if (opts.batchInputDir) {
   } else {
     process.stdout.write(opts.noNewline ? run.rendered : run.rendered + "\n");
   }
+}
+
+}
+
+const isMain = process.argv[1] !== undefined && fileURLToPath(import.meta.url) === process.argv[1];
+
+if (isMain) {
+  void main();
 }

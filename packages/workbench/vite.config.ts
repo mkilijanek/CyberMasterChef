@@ -13,6 +13,22 @@ export default defineConfig({
     }
   },
   plugins: [react()],
+  build: {
+    chunkSizeWarningLimit: 1200,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return undefined;
+          if (id.includes("jsonata")) return "vendor-jsonata";
+          if (id.includes("avsc")) return "vendor-avro";
+          if (id.includes("cbor")) return "vendor-cbor";
+          if (id.includes("sharp")) return "vendor-sharp";
+          if (id.includes("protobufjs")) return "vendor-protobuf";
+          return "vendor";
+        }
+      }
+    }
+  },
   worker: {
     format: "es"
   }

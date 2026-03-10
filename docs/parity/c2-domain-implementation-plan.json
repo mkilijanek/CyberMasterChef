@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-02-25T10:40:37.049Z",
+  "generatedAt": "2026-02-26T12:08:50.861Z",
   "source": {
     "c1MatrixPath": "/home/kili/Repo/CyberMasterChef/CyberMasterChef/docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 292
+    "implementedOpsCount": 298
   },
   "summary": [
     {
@@ -119,9 +119,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 97,
-      "implementedTotal": 29,
-      "missingEstimated": 68,
-      "coveragePct": 29.9,
+      "implementedTotal": 33,
+      "missingEstimated": 64,
+      "coveragePct": 34.02,
       "implementationCandidates": [
         {
           "operationName": "a",
@@ -564,9 +564,9 @@
       "domain": "network-protocol-parsers",
       "description": "Protocol/header/parsing operations for network/web payloads.",
       "cyberChefTotal": 25,
-      "implementedTotal": 10,
-      "missingEstimated": 15,
-      "coveragePct": 40,
+      "implementedTotal": 12,
+      "missingEstimated": 13,
+      "coveragePct": 48,
       "implementationCandidates": [
         {
           "operationName": "CSS selector",
@@ -874,27 +874,27 @@
   "topPriority": [
     {
       "priority": 1,
-      "domain": "crypto-hash-kdf",
-      "coveragePct": 29.9,
-      "missingEstimated": 68
-    },
-    {
-      "priority": 2,
       "domain": "forensic-malware-helper",
       "coveragePct": 31.25,
       "missingEstimated": 11
     },
     {
-      "priority": 3,
-      "domain": "network-protocol-parsers",
-      "coveragePct": 40,
-      "missingEstimated": 15
+      "priority": 2,
+      "domain": "crypto-hash-kdf",
+      "coveragePct": 34.02,
+      "missingEstimated": 64
     },
     {
-      "priority": 4,
+      "priority": 3,
       "domain": "encodings-codecs",
       "coveragePct": 41.38,
       "missingEstimated": 34
+    },
+    {
+      "priority": 4,
+      "domain": "network-protocol-parsers",
+      "coveragePct": 48,
+      "missingEstimated": 13
     }
   ]
 }

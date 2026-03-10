@@ -118,3 +118,15 @@ declare module "@msgpack/msgpack" {
   export function encode(input: unknown): Uint8Array;
   export function decode(input: Uint8Array): unknown;
 }
+
+declare module "tlsh" {
+  export default function tlsh(input: string): string;
+}
+
+declare module "ssdeep.js" {
+  const ssdeep: {
+    digest: (input: string) => string;
+    similarity: (left: string, right: string) => number;
+  };
+  export default ssdeep;
+}

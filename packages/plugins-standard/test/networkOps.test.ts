@@ -9,6 +9,8 @@ import { defangIPs } from "../src/ops/defangIPs.js";
 import { fangIPs } from "../src/ops/fangIPs.js";
 import { extractPorts } from "../src/ops/extractPorts.js";
 import { dechunkHttpResponse } from "../src/ops/dechunkHttpResponse.js";
+import { groupIPAddresses } from "../src/ops/groupIPAddresses.js";
+import { dnsOverHttps } from "../src/ops/dnsOverHttps.js";
 
 describe("network operations", () => {
   it("extracts unique valid IPv4 addresses", async () => {
@@ -158,5 +160,83 @@ describe("network operations", () => {
     expect(out.output.type).toBe("bytes");
     if (out.output.type !== "bytes") return;
     expect(new TextDecoder().decode(out.output.value)).toBe("Wikipedia");
+  });
+
+  it("groups IPv4 addresses into CIDR buckets", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(groupIPAddresses);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "network.groupIPAddresses", args: { prefixLength: 24 } }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: {
+        type: "string",
+        value: "src=10.0.0.1 dst=10.0.0.2 src=10.0.1.9 dst=10.0.1.20"
+      }
+    });
+    expect(out.output).toEqual({
+      type: "string",
+      value: "10.0.0.0/24\t2\n10.0.1.0/24\t2"
+    });
+  });
+
+  it("queries DNS-over-HTTPS for domains", async () => {
+    const prevFetch = globalThis.fetch;
+    globalThis.fetch = () =>
+      Promise.resolve(
+        new Response(JSON.stringify({ Answer: [{ data: "93.184.216.34" }] }), { status: 200 })
+      );
+    try {
+      const registry = new InMemoryRegistry();
+      registry.register(dnsOverHttps);
+      const recipe: Recipe = {
+        version: 1,
+        steps: [
+          {
+            opId: "network.dnsOverHttps",
+            args: {
+              recordType: "A",
+              resolverUrl: "https://dns.google/resolve",
+              allowHosts: "dns.google"
+            }
+          }
+        ]
+      };
+      const out = await runRecipe({
+        registry,
+        recipe,
+        input: { type: "string", value: "example.com" }
+      });
+      expect(out.output).toEqual({ type: "string", value: "example.com\t93.184.216.34" });
+    } finally {
+      globalThis.fetch = prevFetch;
+    }
+  });
+
+  it("rejects non-allowlisted DNS resolver", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(dnsOverHttps);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [
+        {
+          opId: "network.dnsOverHttps",
+          args: {
+            resolverUrl: "https://dns.google/resolve",
+            allowHosts: "resolver.example"
+          }
+        }
+      ]
+    };
+    await expect(
+      runRecipe({
+        registry,
+        recipe,
+        input: { type: "string", value: "example.com" }
+      })
+    ).rejects.toThrow("resolverUrl host not allowlisted");
   });
 });

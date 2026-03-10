@@ -94,6 +94,26 @@ function makeImportPeSample(): Uint8Array {
   return data;
 }
 
+function makeMinimalElfSample(): Uint8Array {
+  const data = new Uint8Array(256);
+  data[0] = 0x7f;
+  data[1] = 0x45;
+  data[2] = 0x4c;
+  data[3] = 0x46;
+  for (let i = 4; i < data.length; i++) data[i] = i & 0xff;
+  return data;
+}
+
+function makeMinimalMachOSample(): Uint8Array {
+  const data = new Uint8Array(256);
+  data[0] = 0xfe;
+  data[1] = 0xed;
+  data[2] = 0xfa;
+  data[3] = 0xcf;
+  for (let i = 4; i < data.length; i++) data[i] = (i * 3) & 0xff;
+  return data;
+}
+
 describe("forensic basic pre-triage", () => {
   it("builds IOC+hash report for text input", async () => {
     const registry = new InMemoryRegistry();
@@ -114,7 +134,7 @@ describe("forensic basic pre-triage", () => {
     if (out.output.type !== "string") return;
     const report = JSON.parse(out.output.value) as {
       input: { type: string; seemsBinary: boolean };
-      hashes: { sha256: string | null; md5: string | null };
+      hashes: { sha256: string | null; md5: string | null; tlsh: string | null; ssdeep: string | null };
       iocs: { urls: string[]; emails: string[]; cves: string[]; ipv4: string[] };
       heuristics: Array<{ id: string; matches: string[] }>;
       binaryAnalysis: { format: string };
@@ -127,6 +147,7 @@ describe("forensic basic pre-triage", () => {
     expect(report.iocs.emails).toEqual(["admin@example.com"]);
     expect(report.iocs.cves).toEqual(["CVE-2024-12345"]);
     expect(report.iocs.ipv4).toEqual(["10.0.0.1"]);
+    expect(report.hashes.ssdeep).not.toBeNull();
     expect(Array.isArray(report.heuristics)).toBe(true);
     expect(report.binaryAnalysis.format).toBe("text");
   });
@@ -183,5 +204,51 @@ describe("forensic basic pre-triage", () => {
     };
     const expected = createHash("md5").update("kernel32.loadlibrarya").digest("hex");
     expect(report.hashes.imphash).toBe(expected);
+  });
+
+  it("detects ELF and Mach-O formats", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(basicPreTriage);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "forensic.basicPreTriage" }] };
+
+    const elf = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "bytes", value: makeMinimalElfSample() }
+    });
+    expect(elf.output.type).toBe("string");
+    if (elf.output.type !== "string") return;
+    const elfReport = JSON.parse(elf.output.value) as { binaryAnalysis: { format: string } };
+    expect(elfReport.binaryAnalysis.format).toBe("elf");
+
+    const macho = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "bytes", value: makeMinimalMachOSample() }
+    });
+    expect(macho.output.type).toBe("string");
+    if (macho.output.type !== "string") return;
+    const machoReport = JSON.parse(macho.output.value) as { binaryAnalysis: { format: string } };
+    expect(machoReport.binaryAnalysis.format).toBe("macho");
+  });
+
+  it("handles truncated/corrupted binaries without throwing", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(basicPreTriage);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "forensic.basicPreTriage" }] };
+
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "bytes", value: new Uint8Array([0x4d, 0x5a, 0x00, 0x01, 0x02]) }
+    });
+    expect(out.output.type).toBe("string");
+    if (out.output.type !== "string") return;
+    const report = JSON.parse(out.output.value) as {
+      binaryAnalysis: { format: string };
+      hashes: { imphash: string | null };
+    };
+    expect(report.binaryAnalysis.format).toBe("unknown");
+    expect(report.hashes.imphash).toBeNull();
   });
 });

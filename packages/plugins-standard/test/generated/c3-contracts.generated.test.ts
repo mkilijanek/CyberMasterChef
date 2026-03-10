@@ -310,6 +310,22 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "crypto.hkdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "salt",
+      "saltEncoding",
+      "info",
+      "infoEncoding",
+      "length",
+      "hash"
+    ]
+  },
+  {
     "operationId": "crypto.hmacSha1",
     "inputTypes": [
       "bytes",
@@ -323,6 +339,18 @@ const CONTRACTS = [
   },
   {
     "operationId": "crypto.hmacSha256",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "key",
+      "keyEncoding"
+    ]
+  },
+  {
+    "operationId": "crypto.hmacSha384",
     "inputTypes": [
       "bytes",
       "string"
@@ -358,6 +386,23 @@ const CONTRACTS = [
       "iterations",
       "length",
       "hash"
+    ]
+  },
+  {
+    "operationId": "crypto.scrypt",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "salt",
+      "saltEncoding",
+      "length",
+      "costN",
+      "blockSizeR",
+      "parallelizationP",
+      "maxmem"
     ]
   },
   {
@@ -501,7 +546,11 @@ const CONTRACTS = [
       "maxMatches",
       "segmentWindow",
       "segmentLimit",
-      "maxHeuristicMatches"
+      "maxHeuristicMatches",
+      "enableImphash",
+      "enableTlsh",
+      "enableSsdeep",
+      "maxFuzzyInputBytes"
     ]
   },
   {
@@ -513,7 +562,28 @@ const CONTRACTS = [
     "outputType": "string",
     "argKeys": [
       "suspiciousThreshold",
-      "maliciousThreshold"
+      "maliciousThreshold",
+      "enableSandboxSubmit",
+      "sandboxRuntimeProfile",
+      "sandboxEndpoint",
+      "sandboxAllowHosts",
+      "sandboxTimeoutMs",
+      "sandboxRetries",
+      "enableZipPasswordPipeline",
+      "zipRuntimeProfile",
+      "zipEndpoint",
+      "zipAllowHosts",
+      "zipTimeoutMs",
+      "zipRetries",
+      "zipCandidatePasswords",
+      "zipMaxInputBytes",
+      "enableYaraScan",
+      "yaraRuntimeProfile",
+      "yaraEndpoint",
+      "yaraAllowHosts",
+      "yaraTimeoutMs",
+      "yaraRetries",
+      "yaraProfile"
     ]
   },
   {
@@ -1032,6 +1102,15 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "hash.sha224",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "hash.sha256",
     "inputTypes": [
       "bytes",
@@ -1341,6 +1420,20 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "network.dnsOverHttps",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "recordType",
+      "resolverUrl",
+      "allowHosts",
+      "timeoutMs"
+    ]
+  },
+  {
     "operationId": "network.extractIPs",
     "inputTypes": [
       "string"
@@ -1387,6 +1480,18 @@ const CONTRACTS = [
     ],
     "outputType": "string",
     "argKeys": []
+  },
+  {
+    "operationId": "network.groupIPAddresses",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "prefixLength",
+      "includeCounts"
+    ]
   },
   {
     "operationId": "text.append",

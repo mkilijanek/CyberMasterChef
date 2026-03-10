@@ -12,6 +12,7 @@ import { baconCipherDecode } from "../src/ops/baconCipherDecode.js";
 import { bcryptParse } from "../src/ops/bcryptParse.js";
 import { hashMd5 } from "../src/ops/hashMd5.js";
 import { sha1 } from "../src/ops/sha1.js";
+import { sha224 } from "../src/ops/sha224.js";
 import { sha384 } from "../src/ops/sha384.js";
 import { sha512 } from "../src/ops/sha512.js";
 import { sha3_256 } from "../src/ops/sha3_256.js";
@@ -20,8 +21,11 @@ import { blake2b } from "../src/ops/blake2b.js";
 import { blake2s } from "../src/ops/blake2s.js";
 import { hmacSha1 } from "../src/ops/hmacSha1.js";
 import { hmacSha256 } from "../src/ops/hmacSha256.js";
+import { hmacSha384 } from "../src/ops/hmacSha384.js";
 import { hmacSha512 } from "../src/ops/hmacSha512.js";
+import { hkdf } from "../src/ops/hkdf.js";
 import { pbkdf2 } from "../src/ops/pbkdf2.js";
+import { scrypt } from "../src/ops/scrypt.js";
 
 describe("crypto operations", () => {
   it("computes Adler-32 checksum", async () => {
@@ -138,6 +142,7 @@ describe("crypto operations", () => {
     const registry = new InMemoryRegistry();
     registry.register(hashMd5);
     registry.register(sha1);
+    registry.register(sha224);
     registry.register(sha384);
     registry.register(sha512);
     registry.register(sha3_256);
@@ -149,6 +154,10 @@ describe("crypto operations", () => {
     const ops = [
       { opId: "hash.md5", expected: "5d41402abc4b2a76b9719d911017c592" },
       { opId: "hash.sha1", expected: "aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d" },
+      {
+        opId: "hash.sha224",
+        expected: "ea09ae9cc6768c50fcee903ed054556e5bfc8347907f12598aa24193"
+      },
       {
         opId: "hash.sha384",
         expected:
@@ -190,6 +199,7 @@ describe("crypto operations", () => {
     const registry = new InMemoryRegistry();
     registry.register(hmacSha1);
     registry.register(hmacSha256);
+    registry.register(hmacSha384);
     registry.register(hmacSha512);
 
     const input = { type: "string", value: "hello" } as const;
@@ -201,6 +211,11 @@ describe("crypto operations", () => {
       {
         opId: "crypto.hmacSha256",
         expected: "9307b3b915efb5171ff14d8cb55fbcc798c6c0ef1456d66ded1a6aa723a58b7b"
+      },
+      {
+        opId: "crypto.hmacSha384",
+        expected:
+          "eacbad575c301fa68afb26dae48b25bf5cd42fd08ed28c08c274ce62df7928f01249976cd8aaf1ab0681d3accedc9543"
       },
       {
         opId: "crypto.hmacSha512",
@@ -240,5 +255,82 @@ describe("crypto operations", () => {
       type: "string",
       value: "632c2812e46d4604102ba7618e9d6d7d2f8128f6266b4a03264d2a0460b7dcb3"
     });
+  });
+
+  it("derives HKDF keys", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(hkdf);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [
+        {
+          opId: "crypto.hkdf",
+          args: {
+            salt: "salt",
+            saltEncoding: "utf8",
+            info: "context",
+            infoEncoding: "utf8",
+            length: 32,
+            hash: "SHA-256"
+          }
+        }
+      ]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "input key material" }
+    });
+    expect(out.output).toEqual({
+      type: "string",
+      value: "790773b8093544d7052c18034ec05ddbf2753a2b9a23783a868b95143f516357"
+    });
+  });
+
+  it("derives scrypt keys with bounded params", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(scrypt);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [
+        {
+          opId: "crypto.scrypt",
+          args: {
+            salt: "salt",
+            saltEncoding: "utf8",
+            length: 32,
+            costN: 16384,
+            blockSizeR: 8,
+            parallelizationP: 1,
+            maxmem: 67108864
+          }
+        }
+      ]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "password" }
+    });
+    expect(out.output).toEqual({
+      type: "string",
+      value: "745731af4484f323968969eda289aeee005b5903ac561e64a5aca121797bf773"
+    });
+  });
+
+  it("rejects invalid scrypt cost parameters", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(scrypt);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "crypto.scrypt", args: { salt: "salt", costN: 12345 } }]
+    };
+    await expect(
+      runRecipe({
+        registry,
+        recipe,
+        input: { type: "string", value: "password" }
+      })
+    ).rejects.toThrow("costN must be a power of two");
   });
 });

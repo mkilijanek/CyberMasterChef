@@ -32,6 +32,10 @@ export class WorkerPoolClient implements ExecutionClient {
   private readonly maxQueue: number;
   private readonly maxAttempts: number;
   private readonly shouldRetry: (error: unknown) => boolean;
+  private readonly retryBaseDelayMs: number;
+  private readonly retryMaxDelayMs: number;
+  private readonly retryJitterRatio: number;
+  private readonly scheduleRetry: (fn: () => void, delayMs: number) => void;
   private maxQueueDepthObserved = 0;
   private queueOverflowCount = 0;
   private disposed = false;
@@ -41,6 +45,10 @@ export class WorkerPoolClient implements ExecutionClient {
     maxQueue?: number;
     maxAttempts?: number;
     shouldRetry?: (error: unknown) => boolean;
+    retryBaseDelayMs?: number;
+    retryMaxDelayMs?: number;
+    retryJitterRatio?: number;
+    scheduleRetry?: (fn: () => void, delayMs: number) => void;
     clientFactory?: () => ExecutionClient;
   }) {
     const size = Math.max(1, Math.floor(opts?.size ?? 2));
@@ -52,6 +60,10 @@ export class WorkerPoolClient implements ExecutionClient {
         const msg = error instanceof Error ? error.message : String(error);
         return !/aborted|cancel|disposed|queue limit/i.test(msg);
       });
+    this.retryBaseDelayMs = Math.max(0, Math.floor(opts?.retryBaseDelayMs ?? 25));
+    this.retryMaxDelayMs = Math.max(this.retryBaseDelayMs, Math.floor(opts?.retryMaxDelayMs ?? 1000));
+    this.retryJitterRatio = Math.max(0, Math.min(0.5, opts?.retryJitterRatio ?? 0.2));
+    this.scheduleRetry = opts?.scheduleRetry ?? ((fn, delayMs) => void setTimeout(fn, delayMs));
     const clientFactory = opts?.clientFactory ?? (() => new SandboxClient());
     this.slots = Array.from({ length: size }, (_, index) => ({
       id: index,
@@ -199,8 +211,12 @@ export class WorkerPoolClient implements ExecutionClient {
             ...task,
             attempt: task.attempt + 1
           };
-          this.queue.unshift(retryTask);
-          this.maxQueueDepthObserved = Math.max(this.maxQueueDepthObserved, this.queue.length);
+          const retryDelayMs = this.nextRetryDelayMs(retryTask.attempt);
+          this.scheduleRetry(() => {
+            this.queue.unshift(retryTask);
+            this.maxQueueDepthObserved = Math.max(this.maxQueueDepthObserved, this.queue.length);
+            this.pumpQueue();
+          }, retryDelayMs);
         } else {
           task.reject(error);
         }
@@ -214,5 +230,13 @@ export class WorkerPoolClient implements ExecutionClient {
     if (this.queue.length > 0 && this.slots.some((s) => !s.busy)) {
       this.pumpQueue();
     }
+  }
+
+  private nextRetryDelayMs(attempt: number): number {
+    const exp = Math.max(0, attempt - 2);
+    const base = Math.min(this.retryMaxDelayMs, this.retryBaseDelayMs * 2 ** exp);
+    const jitterMax = base * this.retryJitterRatio;
+    const jitter = Math.random() * jitterMax;
+    return Math.floor(base + jitter);
   }
 }

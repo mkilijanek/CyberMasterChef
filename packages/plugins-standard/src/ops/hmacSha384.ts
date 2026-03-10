@@ -1,0 +1,58 @@
+import type { Operation } from "@cybermasterchef/core";
+import { bytesToHex } from "@cybermasterchef/core";
+import { decodeBytes, normalizeEncoding } from "./cryptoKeyUtils.js";
+
+async function signHmac(data: Uint8Array, key: Uint8Array): Promise<Uint8Array> {
+  const subtle = globalThis.crypto?.subtle;
+  if (!subtle) {
+    throw new Error("WebCrypto is not available in this environment");
+  }
+  const cryptoKey = await subtle.importKey(
+    "raw",
+    Uint8Array.from(key),
+    { name: "HMAC", hash: "SHA-384" },
+    false,
+    ["sign"]
+  );
+  const signature = await subtle.sign("HMAC", cryptoKey, Uint8Array.from(data));
+  return new Uint8Array(signature);
+}
+
+export const hmacSha384: Operation = {
+  id: "crypto.hmacSha384",
+  name: "HMAC-SHA384",
+  description: "Computes HMAC-SHA384 for input data and a provided key.",
+  input: ["bytes", "string"],
+  output: "string",
+  args: [
+    {
+      key: "key",
+      label: "Key",
+      type: "string",
+      defaultValue: ""
+    },
+    {
+      key: "keyEncoding",
+      label: "Key Encoding",
+      type: "select",
+      defaultValue: "utf8",
+      options: [
+        { label: "UTF-8", value: "utf8" },
+        { label: "Hex", value: "hex" },
+        { label: "Base64", value: "base64" }
+      ]
+    }
+  ],
+  run: async ({ input, args }) => {
+    if (input.type !== "bytes" && input.type !== "string") {
+      throw new Error("Expected bytes or string input");
+    }
+    const keyRaw = typeof args.key === "string" ? args.key : "";
+    if (!keyRaw) throw new Error("Key argument is required");
+
+    const keyBytes = decodeBytes(keyRaw, normalizeEncoding(args.keyEncoding, "utf8"));
+    const data = input.type === "bytes" ? input.value : new TextEncoder().encode(input.value);
+    const signature = await signHmac(data, keyBytes);
+    return { type: "string", value: bytesToHex(signature) };
+  }
+};
