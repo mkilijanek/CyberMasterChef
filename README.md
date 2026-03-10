@@ -63,7 +63,9 @@ pnpm run ci
 pnpm run ci:full
 pnpm test:e2e
 pnpm c1:check
+pnpm c1:reclassify-check
 pnpm c2:plan
+pnpm c2:check
 pnpm c3:check
 pnpm perf:check
 pnpm release:readiness
@@ -94,6 +96,7 @@ pnpm release:readiness
 - [Execution board](docs/parity/c2-execution-board.md)
 - [C3 contracts](docs/parity/c3-operation-compatibility-contracts.md)
 - [Triage corpus](docs/parity/triage-corpus.md)
+- [C1 reclassification workflow](docs/parity/c1-misc-reclassification.md)
 - [Roadmap M14-M18](docs/parity/roadmap-next-m14-m18.md)
 - [Roadmap M11-M13](docs/parity/roadmap-next-m11-m13.md)
 - [Development guide](docs/development.md)

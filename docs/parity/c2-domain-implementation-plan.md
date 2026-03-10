@@ -1,6 +1,6 @@
 # C2 Domain Implementation Plan
 
-Generated: 2026-02-26T12:08:50.861Z
+Generated: 1970-01-01T00:00:00.000Z
 Implemented operations in repo: 298
 
 ## Priority order
@@ -18,6 +18,28 @@ Implemented operations in repo: 298
 - Implemented total: 24
 - Estimated missing: 34
 - Coverage: 41.38%
+- Implemented ops in repo: 24
+- Implemented operation IDs:
+  - codec.toBase64 (toBase64.ts)
+  - codec.fromBase64 (fromBase64.ts)
+  - codec.toBase58 (toBase58.ts)
+  - codec.fromBase58 (fromBase58.ts)
+  - codec.toHex (toHex.ts)
+  - codec.fromHex (fromHex.ts)
+  - codec.toBinary (toBinary.ts)
+  - codec.fromBinary (fromBinary.ts)
+  - codec.toCharcode (toCharcode.ts)
+  - codec.fromCharcode (fromCharcode.ts)
+  - codec.toDecimal (toDecimal.ts)
+  - codec.fromDecimal (fromDecimal.ts)
+  - codec.toOctal (toOctal.ts)
+  - codec.fromOctal (fromOctal.ts)
+  - codec.toHexContent (toHexContent.ts)
+  - codec.fromHexContent (fromHexContent.ts)
+  - text.rot13 (rot13.ts)
+  - text.removeNonAscii (removeNonAscii.ts)
+  - text.keepNonAscii (keepNonAscii.ts)
+  - text.countAscii (countAscii.ts)
 - Candidate operations (first 20):
   - Alphabet (FromBase58.mjs) [medium]
   - Alphabet (ToBase58.mjs) [medium]
@@ -36,6 +58,28 @@ Implemented operations in repo: 298
 - Implemented total: 33
 - Estimated missing: 64
 - Coverage: 34.02%
+- Implemented ops in repo: 33
+- Implemented operation IDs:
+  - text.includes (includesText.ts)
+  - text.removeHashes (removeHashes.ts)
+  - text.removeAmpersands (removeAmpersands.ts)
+  - text.removeTildes (removeTildes.ts)
+  - text.onlyLettersAndSpaces (onlyLettersAndSpaces.ts)
+  - forensic.extractMd5 (extractMd5.ts)
+  - forensic.extractSha1 (extractSha1.ts)
+  - forensic.extractSha256 (extractSha256.ts)
+  - forensic.extractSha512 (extractSha512.ts)
+  - hash.analyseHash (analyseHash.ts)
+  - hash.md5 (hashMd5.ts)
+  - hash.sha1 (sha1.ts)
+  - crypto.atbashCipher (atbashCipher.ts)
+  - crypto.affineCipherEncode (affineCipherEncode.ts)
+  - crypto.affineCipherDecode (affineCipherDecode.ts)
+  - crypto.a1z26CipherEncode (a1z26CipherEncode.ts)
+  - crypto.a1z26CipherDecode (a1z26CipherDecode.ts)
+  - crypto.baconCipherEncode (baconCipherEncode.ts)
+  - crypto.baconCipherDecode (baconCipherDecode.ts)
+  - crypto.bcryptParse (bcryptParse.ts)
 - Candidate operations (first 20):
   - a (AffineCipherDecode.mjs) [high]
   - a (AffineCipherEncode.mjs) [high]
@@ -54,6 +98,15 @@ Implemented operations in repo: 298
 - Implemented total: 7
 - Estimated missing: 0
 - Coverage: 100%
+- Implemented ops in repo: 7
+- Implemented operation IDs:
+  - compression.gzip (gzip.ts)
+  - compression.gunzip (gunzip.ts)
+  - compression.bzip2 (bzip2Compress.ts)
+  - compression.bzip2Decompress (bzip2Decompress.ts)
+  - compression.zip (zip.ts)
+  - compression.unzip (unzip.ts)
+  - compression.tar (tar.ts)
 - Candidate operations (first 20):
   - Bzip2Compress (Bzip2Compress.mjs) [high]
   - Bzip2Decompress (Bzip2Decompress.mjs) [high]
@@ -69,6 +122,20 @@ Implemented operations in repo: 298
 - Implemented total: 12
 - Estimated missing: 0
 - Coverage: 100%
+- Implemented ops in repo: 12
+- Implemented operation IDs:
+  - date.isoToUnix (isoToUnix.ts)
+  - date.unixToIso (unixToIso.ts)
+  - date.unixToWindowsFiletime (unixToWindowsFiletime.ts)
+  - date.windowsFiletimeToUnix (windowsFiletimeToUnix.ts)
+  - date.parseDateTime (parseDateTime.ts)
+  - date.dateTimeDelta (dateTimeDelta.ts)
+  - date.translateDateTimeFormat (translateDateTimeFormat.ts)
+  - date.parseObjectIdTimestamp (parseObjectIdTimestamp.ts)
+  - date.parseUnixFilePermissions (parseUnixFilePermissions.ts)
+  - date.extractUnixTimestamps (extractUnixTimestamps.ts)
+  - date.extractIsoTimestamps (extractIsoTimestamps.ts)
+  - date.isoToDateOnly (isoToDateOnly.ts)
 - Candidate operations (first 20):
   - Built in formats (DateTimeDelta.mjs) [high]
   - Built in formats (ParseDateTime.mjs) [high]
@@ -87,6 +154,28 @@ Implemented operations in repo: 298
 - Implemented total: 62
 - Estimated missing: 0
 - Coverage: 124%
+- Implemented ops in repo: 62
+- Implemented operation IDs:
+  - text.linesToCsv (linesToCsv.ts)
+  - text.csvToLines (csvToLines.ts)
+  - text.onlyPrintableAscii (onlyPrintableAscii.ts)
+  - format.jsonMinify (jsonMinify.ts)
+  - format.jsonBeautify (jsonBeautify.ts)
+  - format.jsonSortKeys (jsonSortKeys.ts)
+  - format.jsonExtractKeys (jsonExtractKeys.ts)
+  - format.jsonArrayLength (jsonArrayLength.ts)
+  - format.jsonStringValues (jsonStringValues.ts)
+  - format.jsonNumberValues (jsonNumberValues.ts)
+  - format.amfEncode (amfEncode.ts)
+  - format.amfDecode (amfDecode.ts)
+  - format.avroToJson (avroToJson.ts)
+  - format.bsonSerialise (bsonSerialise.ts)
+  - format.toTable (toTable.ts)
+  - format.toHtmlEntity (toHtmlEntity.ts)
+  - format.fromHtmlEntity (fromHtmlEntity.ts)
+  - format.toMessagePack (toMessagePack.ts)
+  - format.fromMessagePack (fromMessagePack.ts)
+  - format.toQuotedPrintable (toQuotedPrintable.ts)
 - Candidate operations (first 20):
   - AddTextToImage (AddTextToImage.mjs) [high]
   - AMFDecode (AMFDecode.mjs) [high]
@@ -105,6 +194,28 @@ Implemented operations in repo: 298
 - Implemented total: 55
 - Estimated missing: 0
 - Coverage: 107.84%
+- Implemented ops in repo: 55
+- Implemented operation IDs:
+  - text.reverse (reverse.ts)
+  - text.lowercase (lowercase.ts)
+  - text.uppercase (uppercase.ts)
+  - text.trim (trim.ts)
+  - text.replace (replace.ts)
+  - text.trimStart (trimStart.ts)
+  - text.trimEnd (trimEnd.ts)
+  - text.wordCount (wordCount.ts)
+  - text.lineCount (lineCount.ts)
+  - text.firstLine (firstLine.ts)
+  - text.lastLine (lastLine.ts)
+  - text.normalizeWhitespace (normalizeWhitespace.ts)
+  - text.removeBlankLines (removeBlankLines.ts)
+  - text.swapCase (swapCase.ts)
+  - text.toTitleCase (toTitleCase.ts)
+  - text.reverseLines (reverseLines.ts)
+  - text.sortLines (sortLines.ts)
+  - text.uniqueLines (uniqueLines.ts)
+  - text.trimLines (trimLines.ts)
+  - text.toSnakeCase (toSnakeCase.ts)
 - Candidate operations (first 20):
   - Attempt to be context aware (ToCamelCase.mjs) [medium]
   - Attempt to be context aware (ToKebabCase.mjs) [medium]
@@ -123,6 +234,20 @@ Implemented operations in repo: 298
 - Implemented total: 12
 - Estimated missing: 13
 - Coverage: 48%
+- Implemented ops in repo: 12
+- Implemented operation IDs:
+  - codec.urlEncode (urlEncode.ts)
+  - codec.urlDecode (urlDecode.ts)
+  - forensic.extractJwt (extractJwt.ts)
+  - network.extractIPs (extractIPs.ts)
+  - network.extractIPv6 (extractIPv6.ts)
+  - network.defangIPs (defangIPs.ts)
+  - network.dechunkHttpResponse (dechunkHttpResponse.ts)
+  - network.groupIPAddresses (groupIPAddresses.ts)
+  - network.dnsOverHttps (dnsOverHttps.ts)
+  - network.extractUrls (extractUrls.ts)
+  - network.defangUrls (defangUrls.ts)
+  - network.fangUrls (fangUrls.ts)
 - Candidate operations (first 20):
   - CSS selector (CSSSelector.mjs) [high]
   - DechunkHTTPResponse (DechunkHTTPResponse.mjs) [high]
@@ -141,6 +266,13 @@ Implemented operations in repo: 298
 - Implemented total: 5
 - Estimated missing: 11
 - Coverage: 31.25%
+- Implemented ops in repo: 5
+- Implemented operation IDs:
+  - forensic.analyseUuid (analyseUuid.ts)
+  - forensic.chiSquare (chiSquare.ts)
+  - forensic.detectFileType (detectFileType.ts)
+  - forensic.elfInfo (elfInfo.ts)
+  - forensic.extractStrings (extractStrings.ts)
 - Candidate operations (first 20):
   - AnalyseUUID (AnalyseUUID.mjs) [high]
   - Bit mode (DisassembleX86.mjs) [high]
@@ -159,6 +291,28 @@ Implemented operations in repo: 298
 - Implemented total: 88
 - Estimated missing: 61
 - Coverage: 59.06%
+- Implemented ops in repo: 88
+- Implemented operation IDs:
+  - text.prepend (prepend.ts)
+  - text.append (append.ts)
+  - text.slice (slice.ts)
+  - text.repeat (repeat.ts)
+  - text.padStart (padStart.ts)
+  - text.padEnd (padEnd.ts)
+  - text.length (length.ts)
+  - text.startsWith (startsWith.ts)
+  - text.removeSpaces (removeSpaces.ts)
+  - text.keepDigits (keepDigits.ts)
+  - text.removeDigits (removeDigits.ts)
+  - text.keepLetters (keepLetters.ts)
+  - text.removeLetters (removeLetters.ts)
+  - text.keepAlnum (keepAlnum.ts)
+  - text.removeAlnum (removeAlnum.ts)
+  - text.removeVowels (removeVowels.ts)
+  - text.keepVowels (keepVowels.ts)
+  - text.endsWith (endsWith.ts)
+  - text.lowerFirst (lowerFirst.ts)
+  - text.upperFirst (upperFirst.ts)
 - Candidate operations (first 20):
   - AlternatingCaps (AlternatingCaps.mjs) [low]
   - Amount (BitShiftLeft.mjs) [low]

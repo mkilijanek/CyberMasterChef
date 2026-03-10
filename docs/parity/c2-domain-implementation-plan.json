@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-26T12:08:50.861Z",
+  "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "/home/kili/Repo/CyberMasterChef/CyberMasterChef/docs/parity/c1-operation-domain-matrix.json",
     "implementedOpsCount": 298
@@ -12,6 +12,128 @@
       "implementedTotal": 24,
       "missingEstimated": 34,
       "coveragePct": 41.38,
+      "implementedOps": [
+        {
+          "id": "codec.toBase64",
+          "name": "To Base64",
+          "file": "toBase64.ts"
+        },
+        {
+          "id": "codec.fromBase64",
+          "name": "From Base64",
+          "file": "fromBase64.ts"
+        },
+        {
+          "id": "codec.toBase58",
+          "name": "To Base58",
+          "file": "toBase58.ts"
+        },
+        {
+          "id": "codec.fromBase58",
+          "name": "From Base58",
+          "file": "fromBase58.ts"
+        },
+        {
+          "id": "codec.toHex",
+          "name": "To Hex",
+          "file": "toHex.ts"
+        },
+        {
+          "id": "codec.fromHex",
+          "name": "From Hex",
+          "file": "fromHex.ts"
+        },
+        {
+          "id": "codec.toBinary",
+          "name": "To Binary",
+          "file": "toBinary.ts"
+        },
+        {
+          "id": "codec.fromBinary",
+          "name": "From Binary",
+          "file": "fromBinary.ts"
+        },
+        {
+          "id": "codec.toCharcode",
+          "name": "To Charcode",
+          "file": "toCharcode.ts"
+        },
+        {
+          "id": "codec.fromCharcode",
+          "name": "From Charcode",
+          "file": "fromCharcode.ts"
+        },
+        {
+          "id": "codec.toDecimal",
+          "name": "To Decimal",
+          "file": "toDecimal.ts"
+        },
+        {
+          "id": "codec.fromDecimal",
+          "name": "From Decimal",
+          "file": "fromDecimal.ts"
+        },
+        {
+          "id": "codec.toOctal",
+          "name": "To Octal",
+          "file": "toOctal.ts"
+        },
+        {
+          "id": "codec.fromOctal",
+          "name": "From Octal",
+          "file": "fromOctal.ts"
+        },
+        {
+          "id": "codec.toHexContent",
+          "name": "To Hex Content",
+          "file": "toHexContent.ts"
+        },
+        {
+          "id": "codec.fromHexContent",
+          "name": "From Hex Content",
+          "file": "fromHexContent.ts"
+        },
+        {
+          "id": "text.rot13",
+          "name": "ROT13",
+          "file": "rot13.ts"
+        },
+        {
+          "id": "text.removeNonAscii",
+          "name": "Remove Non-ASCII",
+          "file": "removeNonAscii.ts"
+        },
+        {
+          "id": "text.keepNonAscii",
+          "name": "Keep Non-ASCII",
+          "file": "keepNonAscii.ts"
+        },
+        {
+          "id": "text.countAscii",
+          "name": "Count ASCII",
+          "file": "countAscii.ts"
+        },
+        {
+          "id": "text.countNonAscii",
+          "name": "Count Non-ASCII",
+          "file": "countNonAscii.ts"
+        },
+        {
+          "id": "text.keepHexChars",
+          "name": "Keep Hex Chars",
+          "file": "keepHexChars.ts"
+        },
+        {
+          "id": "text.removeHexChars",
+          "name": "Remove Hex Chars",
+          "file": "removeHexChars.ts"
+        },
+        {
+          "id": "text.removePercents",
+          "name": "Remove Percents",
+          "file": "removePercents.ts"
+        }
+      ],
       "implementationCandidates": [
         {
           "operationName": "Alphabet",
@@ -122,6 +244,173 @@
       "implementedTotal": 33,
       "missingEstimated": 64,
       "coveragePct": 34.02,
+      "implementedOps": [
+        {
+          "id": "text.includes",
+          "name": "Includes",
+          "file": "includesText.ts"
+        },
+        {
+          "id": "text.removeHashes",
+          "name": "Remove Hashes",
+          "file": "removeHashes.ts"
+        },
+        {
+          "id": "text.removeAmpersands",
+          "name": "Remove Ampersands",
+          "file": "removeAmpersands.ts"
+        },
+        {
+          "id": "text.removeTildes",
+          "name": "Remove Tildes",
+          "file": "removeTildes.ts"
+        },
+        {
+          "id": "text.onlyLettersAndSpaces",
+          "name": "Only Letters And Spaces",
+          "file": "onlyLettersAndSpaces.ts"
+        },
+        {
+          "id": "forensic.extractMd5",
+          "name": "Extract MD5",
+          "file": "extractMd5.ts"
+        },
+        {
+          "id": "forensic.extractSha1",
+          "name": "Extract SHA-1",
+          "file": "extractSha1.ts"
+        },
+        {
+          "id": "forensic.extractSha256",
+          "name": "Extract SHA-256",
+          "file": "extractSha256.ts"
+        },
+        {
+          "id": "forensic.extractSha512",
+          "name": "Extract SHA-512",
+          "file": "extractSha512.ts"
+        },
+        {
+          "id": "hash.analyseHash",
+          "name": "Analyse Hash",
+          "file": "analyseHash.ts"
+        },
+        {
+          "id": "hash.md5",
+          "name": "MD5",
+          "file": "hashMd5.ts"
+        },
+        {
+          "id": "hash.sha1",
+          "name": "SHA-1",
+          "file": "sha1.ts"
+        },
+        {
+          "id": "crypto.atbashCipher",
+          "name": "Atbash Cipher",
+          "file": "atbashCipher.ts"
+        },
+        {
+          "id": "crypto.affineCipherEncode",
+          "name": "Affine Cipher Encode",
+          "file": "affineCipherEncode.ts"
+        },
+        {
+          "id": "crypto.affineCipherDecode",
+          "name": "Affine Cipher Decode",
+          "file": "affineCipherDecode.ts"
+        },
+        {
+          "id": "crypto.a1z26CipherEncode",
+          "name": "A1Z26 Cipher Encode",
+          "file": "a1z26CipherEncode.ts"
+        },
+        {
+          "id": "crypto.a1z26CipherDecode",
+          "name": "A1Z26 Cipher Decode",
+          "file": "a1z26CipherDecode.ts"
+        },
+        {
+          "id": "crypto.baconCipherEncode",
+          "name": "Bacon Cipher Encode",
+          "file": "baconCipherEncode.ts"
+        },
+        {
+          "id": "crypto.baconCipherDecode",
+          "name": "Bacon Cipher Decode",
+          "file": "baconCipherDecode.ts"
+        },
+        {
+          "id": "crypto.bcryptParse",
+          "name": "Bcrypt Parse",
+          "file": "bcryptParse.ts"
+        },
+        {
+          "id": "hash.sha384",
+          "name": "SHA-384",
+          "file": "sha384.ts"
+        },
+        {
+          "id": "hash.sha512",
+          "name": "SHA-512",
+          "file": "sha512.ts"
+        },
+        {
+          "id": "hash.sha3_256",
+          "name": "SHA3-256",
+          "file": "sha3_256.ts"
+        },
+        {
+          "id": "hash.sha3_512",
+          "name": "SHA3-512",
+          "file": "sha3_512.ts"
+        },
+        {
+          "id": "crypto.hmacSha1",
+          "name": "HMAC-SHA1",
+          "file": "hmacSha1.ts"
+        },
+        {
+          "id": "crypto.hmacSha256",
+          "name": "HMAC-SHA256",
+          "file": "hmacSha256.ts"
+        },
+        {
+          "id": "crypto.hmacSha384",
+          "name": "HMAC-SHA384",
+          "file": "hmacSha384.ts"
+        },
+        {
+          "id": "crypto.hmacSha512",
+          "name": "HMAC-SHA512",
+          "file": "hmacSha512.ts"
+        },
+        {
+          "id": "crypto.hkdf",
+          "name": "HKDF",
+          "file": "hkdf.ts"
+        },
+        {
+          "id": "crypto.pbkdf2",
+          "name": "PBKDF2",
+          "file": "pbkdf2.ts"
+        },
+        {
+          "id": "crypto.scrypt",
+          "name": "scrypt",
+          "file": "scrypt.ts"
+        },
+        {
+          "id": "hash.sha224",
+          "name": "SHA-224",
+          "file": "sha224.ts"
+        },
+        {
+          "id": "hash.sha256",
+          "name": "SHA-256",
+          "file": "sha256.ts"
+        }
+      ],
       "implementationCandidates": [
         {
           "operationName": "a",
@@ -232,6 +521,43 @@
       "implementedTotal": 7,
       "missingEstimated": 0,
       "coveragePct": 100,
+      "implementedOps": [
+        {
+          "id": "compression.gzip",
+          "name": "Gzip",
+          "file": "gzip.ts"
+        },
+        {
+          "id": "compression.gunzip",
+          "name": "Gunzip",
+          "file": "gunzip.ts"
+        },
+        {
+          "id": "compression.bzip2",
+          "name": "Bzip2 Compress",
+          "file": "bzip2Compress.ts"
+        },
+        {
+          "id": "compression.bzip2Decompress",
+          "name": "Bzip2 Decompress",
+          "file": "bzip2Decompress.ts"
+        },
+        {
+          "id": "compression.zip",
+          "name": "Zip",
+          "file": "zip.ts"
+        },
+        {
+          "id": "compression.unzip",
+          "name": "Unzip",
+          "file": "unzip.ts"
+        },
+        {
+          "id": "compression.tar",
+          "name": "Tar",
+          "file": "tar.ts"
+        }
+      ],
       "implementationCandidates": [
         {
           "operationName": "Bzip2Compress",
@@ -277,6 +603,68 @@
       "implementedTotal": 12,
       "missingEstimated": 0,
       "coveragePct": 100,
+      "implementedOps": [
+        {
+          "id": "date.isoToUnix",
+          "name": "ISO to Unix",
+          "file": "isoToUnix.ts"
+        },
+        {
+          "id": "date.unixToIso",
+          "name": "Unix to ISO",
+          "file": "unixToIso.ts"
+        },
+        {
+          "id": "date.unixToWindowsFiletime",
+          "name": "Unix to Windows FILETIME",
+          "file": "unixToWindowsFiletime.ts"
+        },
+        {
+          "id": "date.windowsFiletimeToUnix",
+          "name": "Windows FILETIME to Unix",
+          "file": "windowsFiletimeToUnix.ts"
+        },
+        {
+          "id": "date.parseDateTime",
+          "name": "Parse Date Time",
+          "file": "parseDateTime.ts"
+        },
+        {
+          "id": "date.dateTimeDelta",
+          "name": "Date Time Delta",
+          "file": "dateTimeDelta.ts"
+        },
+        {
+          "id": "date.translateDateTimeFormat",
+          "name": "Translate Date Time Format",
+          "file": "translateDateTimeFormat.ts"
+        },
+        {
+          "id": "date.parseObjectIdTimestamp",
+          "name": "Parse ObjectId Timestamp",
+          "file": "parseObjectIdTimestamp.ts"
+        },
+        {
+          "id": "date.parseUnixFilePermissions",
+          "name": "Parse UNIX File Permissions",
+          "file": "parseUnixFilePermissions.ts"
+        },
+        {
+          "id": "date.extractUnixTimestamps",
+          "name": "Extract Unix Timestamps",
+          "file": "extractUnixTimestamps.ts"
+        },
+        {
+          "id": "date.extractIsoTimestamps",
+          "name": "Extract ISO Timestamps",
+          "file": "extractIsoTimestamps.ts"
+        },
+        {
+          "id": "date.isoToDateOnly",
+          "name": "ISO to Date Only",
+          "file": "isoToDateOnly.ts"
+        }
+      ],
       "implementationCandidates": [
         {
           "operationName": "Built in formats",
@@ -347,6 +735,318 @@
       "implementedTotal": 62,
       "missingEstimated": 0,
       "coveragePct": 124,
+      "implementedOps": [
+        {
+          "id": "text.linesToCsv",
+          "name": "Lines To CSV",
+          "file": "linesToCsv.ts"
+        },
+        {
+          "id": "text.csvToLines",
+          "name": "CSV To Lines",
+          "file": "csvToLines.ts"
+        },
+        {
+          "id": "text.onlyPrintableAscii",
+          "name": "Only Printable ASCII",
+          "file": "onlyPrintableAscii.ts"
+        },
+        {
+          "id": "format.jsonMinify",
+          "name": "JSON Minify",
+          "file": "jsonMinify.ts"
+        },
+        {
+          "id": "format.jsonBeautify",
+          "name": "JSON Beautify",
+          "file": "jsonBeautify.ts"
+        },
+        {
+          "id": "format.jsonSortKeys",
+          "name": "JSON Sort Keys",
+          "file": "jsonSortKeys.ts"
+        },
+        {
+          "id": "format.jsonExtractKeys",
+          "name": "JSON Extract Keys",
+          "file": "jsonExtractKeys.ts"
+        },
+        {
+          "id": "format.jsonArrayLength",
+          "name": "JSON Array Length",
+          "file": "jsonArrayLength.ts"
+        },
+        {
+          "id": "format.jsonStringValues",
+          "name": "JSON String Values",
+          "file": "jsonStringValues.ts"
+        },
+        {
+          "id": "format.jsonNumberValues",
+          "name": "JSON Number Values",
+          "file": "jsonNumberValues.ts"
+        },
+        {
+          "id": "format.amfEncode",
+          "name": "AMF Encode",
+          "file": "amfEncode.ts"
+        },
+        {
+          "id": "format.amfDecode",
+          "name": "AMF Decode",
+          "file": "amfDecode.ts"
+        },
+        {
+          "id": "format.avroToJson",
+          "name": "Avro To JSON",
+          "file": "avroToJson.ts"
+        },
+        {
+          "id": "format.bsonSerialise",
+          "name": "BSON Serialise",
+          "file": "bsonSerialise.ts"
+        },
+        {
+          "id": "format.toTable",
+          "name": "To Table",
+          "file": "toTable.ts"
+        },
+        {
+          "id": "format.toHtmlEntity",
+          "name": "To HTML Entity",
+          "file": "toHtmlEntity.ts"
+        },
+        {
+          "id": "format.fromHtmlEntity",
+          "name": "From HTML Entity",
+          "file": "fromHtmlEntity.ts"
+        },
+        {
+          "id": "format.toMessagePack",
+          "name": "To MessagePack",
+          "file": "toMessagePack.ts"
+        },
+        {
+          "id": "format.fromMessagePack",
+          "name": "From MessagePack",
+          "file": "fromMessagePack.ts"
+        },
+        {
+          "id": "format.toQuotedPrintable",
+          "name": "To Quoted Printable",
+          "file": "toQuotedPrintable.ts"
+        },
+        {
+          "id": "format.fromQuotedPrintable",
+          "name": "From Quoted Printable",
+          "file": "fromQuotedPrintable.ts"
+        },
+        {
+          "id": "format.xmlBeautify",
+          "name": "XML Beautify",
+          "file": "xmlBeautify.ts"
+        },
+        {
+          "id": "format.xmlMinify",
+          "name": "XML Minify",
+          "file": "xmlMinify.ts"
+        },
+        {
+          "id": "format.stripHtmlTags",
+          "name": "Strip HTML Tags",
+          "file": "stripHtmlTags.ts"
+        },
+        {
+          "id": "format.jsonataQuery",
+          "name": "Jsonata Query",
+          "file": "jsonataQuery.ts"
+        },
+        {
+          "id": "format.csvToJson",
+          "name": "CSV To JSON",
+          "file": "csvToJson.ts"
+        },
+        {
+          "id": "format.jsonToCsv",
+          "name": "JSON To CSV",
+          "file": "jsonToCsv.ts"
+        },
+        {
+          "id": "format.yamlToJson",
+          "name": "YAML To JSON",
+          "file": "yamlToJson.ts"
+        },
+        {
+          "id": "format.jsonToYaml",
+          "name": "JSON To YAML",
+          "file": "jsonToYaml.ts"
+        },
+        {
+          "id": "format.cborEncode",
+          "name": "CBOR Encode",
+          "file": "cborEncode.ts"
+        },
+        {
+          "id": "format.cborDecode",
+          "name": "CBOR Decode",
+          "file": "cborDecode.ts"
+        },
+        {
+          "id": "format.bsonEncode",
+          "name": "BSON Encode",
+          "file": "bsonEncode.ts"
+        },
+        {
+          "id": "format.bsonDecode",
+          "name": "BSON Decode",
+          "file": "bsonDecode.ts"
+        },
+        {
+          "id": "format.avroEncode",
+          "name": "Avro Encode",
+          "file": "avroEncode.ts"
+        },
+        {
+          "id": "format.avroDecode",
+          "name": "Avro Decode",
+          "file": "avroDecode.ts"
+        },
+        {
+          "id": "format.protobufEncode",
+          "name": "Protobuf Encode",
+          "file": "protobufEncode.ts"
+        },
+        {
+          "id": "format.protobufDecode",
+          "name": "Protobuf Decode",
+          "file": "protobufDecode.ts"
+        },
+        {
+          "id": "format.toHexdump",
+          "name": "To Hexdump",
+          "file": "toHexdump.ts"
+        },
+        {
+          "id": "format.fromHexdump",
+          "name": "From Hexdump",
+          "file": "fromHexdump.ts"
+        },
+        {
+          "id": "format.htmlToText",
+          "name": "HTML To Text",
+          "file": "htmlToText.ts"
+        },
+        {
+          "id": "image.addText",
+          "name": "Add Text To Image",
+          "file": "addTextToImage.ts"
+        },
+        {
+          "id": "image.blur",
+          "name": "Blur Image",
+          "file": "blurImage.ts"
+        },
+        {
+          "id": "image.contain",
+          "name": "Contain Image",
+          "file": "containImage.ts"
+        },
+        {
+          "id": "image.convertFormat",
+          "name": "Convert Image Format",
+          "file": "convertImageFormat.ts"
+        },
+        {
+          "id": "image.cover",
+          "name": "Cover Image",
+          "file": "coverImage.ts"
+        },
+        {
+          "id": "image.crop",
+          "name": "Crop Image",
+          "file": "cropImage.ts"
+        },
+        {
+          "id": "image.dither",
+          "name": "Dither Image",
+          "file": "ditherImage.ts"
+        },
+        {
+          "id": "image.extractExif",
+          "name": "Extract EXIF",
+          "file": "extractExif.ts"
+        },
+        {
+          "id": "image.flip",
+          "name": "Flip Image",
+          "file": "flipImage.ts"
+        },
+        {
+          "id": "image.generate",
+          "name": "Generate Image",
+          "file": "generateImage.ts"
+        },
+        {
+          "id": "image.brightnessContrast",
+          "name": "Image Brightness/Contrast",
+          "file": "imageBrightnessContrast.ts"
+        },
+        {
+          "id": "image.filter",
+          "name": "Image Filter",
+          "file": "imageFilter.ts"
+        },
+        {
+          "id": "image.hsl",
+          "name": "Image Hue/Saturation/Lightness",
+          "file": "imageHueSaturationLightness.ts"
+        },
+        {
+          "id": "image.opacity",
+          "name": "Image Opacity",
+          "file": "imageOpacity.ts"
+        },
+        {
+          "id": "image.metadata",
+          "name": "Image Metadata",
+          "file": "imageMetadata.ts"
+        },
+        {
+          "id": "image.invert",
+          "name": "Invert Image",
+          "file": "invertImage.ts"
+        },
+        {
+          "id": "image.normalise",
+          "name": "Normalise Image",
+          "file": "normaliseImage.ts"
+        },
+        {
+          "id": "image.removeExif",
+          "name": "Remove EXIF",
+          "file": "removeExif.ts"
+        },
+        {
+          "id": "image.render",
+          "name": "Render Image",
+          "file": "renderImage.ts"
+        },
+        {
+          "id": "image.resize",
+          "name": "Resize Image",
+          "file": "resizeImage.ts"
+        },
+        {
+          "id": "image.rotate",
+          "name": "Rotate Image",
+          "file": "rotateImage.ts"
+        },
+        {
+          "id": "image.sharpen",
+          "name": "Sharpen Image",
+          "file": "sharpenImage.ts"
+        }
+      ],
       "implementationCandidates": [
         {
           "operationName": "AddTextToImage",
@@ -457,6 +1157,283 @@
       "implementedTotal": 55,
       "missingEstimated": 0,
       "coveragePct": 107.84,
+      "implementedOps": [
+        {
+          "id": "text.reverse",
+          "name": "Reverse",
+          "file": "reverse.ts"
+        },
+        {
+          "id": "text.lowercase",
+          "name": "Lowercase",
+          "file": "lowercase.ts"
+        },
+        {
+          "id": "text.uppercase",
+          "name": "Uppercase",
+          "file": "uppercase.ts"
+        },
+        {
+          "id": "text.trim",
+          "name": "Trim",
+          "file": "trim.ts"
+        },
+        {
+          "id": "text.replace",
+          "name": "Replace",
+          "file": "replace.ts"
+        },
+        {
+          "id": "text.trimStart",
+          "name": "Trim Start",
+          "file": "trimStart.ts"
+        },
+        {
+          "id": "text.trimEnd",
+          "name": "Trim End",
+          "file": "trimEnd.ts"
+        },
+        {
+          "id": "text.wordCount",
+          "name": "Word Count",
+          "file": "wordCount.ts"
+        },
+        {
+          "id": "text.lineCount",
+          "name": "Line Count",
+          "file": "lineCount.ts"
+        },
+        {
+          "id": "text.firstLine",
+          "name": "First Line",
+          "file": "firstLine.ts"
+        },
+        {
+          "id": "text.lastLine",
+          "name": "Last Line",
+          "file": "lastLine.ts"
+        },
+        {
+          "id": "text.normalizeWhitespace",
+          "name": "Normalize Whitespace",
+          "file": "normalizeWhitespace.ts"
+        },
+        {
+          "id": "text.removeBlankLines",
+          "name": "Remove Blank Lines",
+          "file": "removeBlankLines.ts"
+        },
+        {
+          "id": "text.swapCase",
+          "name": "Swap Case",
+          "file": "swapCase.ts"
+        },
+        {
+          "id": "text.toTitleCase",
+          "name": "Title Case",
+          "file": "toTitleCase.ts"
+        },
+        {
+          "id": "text.reverseLines",
+          "name": "Reverse Lines",
+          "file": "reverseLines.ts"
+        },
+        {
+          "id": "text.sortLines",
+          "name": "Sort Lines",
+          "file": "sortLines.ts"
+        },
+        {
+          "id": "text.uniqueLines",
+          "name": "Unique Lines",
+          "file": "uniqueLines.ts"
+        },
+        {
+          "id": "text.trimLines",
+          "name": "Trim Lines",
+          "file": "trimLines.ts"
+        },
+        {
+          "id": "text.toSnakeCase",
+          "name": "Snake Case",
+          "file": "toSnakeCase.ts"
+        },
+        {
+          "id": "text.toKebabCase",
+          "name": "Kebab Case",
+          "file": "toKebabCase.ts"
+        },
+        {
+          "id": "text.toCamelCase",
+          "name": "Camel Case",
+          "file": "toCamelCase.ts"
+        },
+        {
+          "id": "text.toPascalCase",
+          "name": "Pascal Case",
+          "file": "toPascalCase.ts"
+        },
+        {
+          "id": "text.compactLines",
+          "name": "Compact Lines",
+          "file": "compactLines.ts"
+        },
+        {
+          "id": "text.reverseWords",
+          "name": "Reverse Words",
+          "file": "reverseWords.ts"
+        },
+        {
+          "id": "text.sortWords",
+          "name": "Sort Words",
+          "file": "sortWords.ts"
+        },
+        {
+          "id": "text.uniqueWords",
+          "name": "Unique Words",
+          "file": "uniqueWords.ts"
+        },
+        {
+          "id": "text.normalizeNewlines",
+          "name": "Normalize Newlines",
+          "file": "normalizeNewlines.ts"
+        },
+        {
+          "id": "text.removePunctuation",
+          "name": "Remove Punctuation",
+          "file": "removePunctuation.ts"
+        },
+        {
+          "id": "text.keepPunctuation",
+          "name": "Keep Punctuation",
+          "file": "keepPunctuation.ts"
+        },
+        {
+          "id": "text.trimCommas",
+          "name": "Trim Commas",
+          "file": "trimCommas.ts"
+        },
+        {
+          "id": "text.trimQuotes",
+          "name": "Trim Quotes",
+          "file": "trimQuotes.ts"
+        },
+        {
+          "id": "text.reverseCharsInWords",
+          "name": "Reverse Chars In Words",
+          "file": "reverseCharsInWords.ts"
+        },
+        {
+          "id": "text.wordsToLines",
+          "name": "Words To Lines",
+          "file": "wordsToLines.ts"
+        },
+        {
+          "id": "text.linesToWords",
+          "name": "Lines To Words",
+          "file": "linesToWords.ts"
+        },
+        {
+          "id": "text.replaceNewlinesWithSpace",
+          "name": "Newlines To Space",
+          "file": "replaceNewlinesWithSpace.ts"
+        },
+        {
+          "id": "text.replaceSpacesWithNewlines",
+          "name": "Spaces To Newlines",
+          "file": "replaceSpacesWithNewlines.ts"
+        },
+        {
+          "id": "text.countUppercase",
+          "name": "Count Uppercase",
+          "file": "countUppercase.ts"
+        },
+        {
+          "id": "text.countLowercase",
+          "name": "Count Lowercase",
+          "file": "countLowercase.ts"
+        },
+        {
+          "id": "text.countNonEmptyLines",
+          "name": "Count Non-empty Lines",
+          "file": "countNonEmptyLines.ts"
+        },
+        {
+          "id": "text.firstWord",
+          "name": "First Word",
+          "file": "firstWord.ts"
+        },
+        {
+          "id": "text.lastWord",
+          "name": "Last Word",
+          "file": "lastWord.ts"
+        },
+        {
+          "id": "text.collapseMultipleNewlines",
+          "name": "Collapse Multiple Newlines",
+          "file": "collapseMultipleNewlines.ts"
+        },
+        {
+          "id": "text.trimLeadingDots",
+          "name": "Trim Leading Dots",
+          "file": "trimLeadingDots.ts"
+        },
+        {
+          "id": "text.trimTrailingDots",
+          "name": "Trim Trailing Dots",
+          "file": "trimTrailingDots.ts"
+        },
+        {
+          "id": "text.linesNumbered",
+          "name": "Lines Numbered",
+          "file": "linesNumbered.ts"
+        },
+        {
+          "id": "text.linesTrimRight",
+          "name": "Lines Trim Right",
+          "file": "linesTrimRight.ts"
+        },
+        {
+          "id": "text.linesTrimLeft",
+          "name": "Lines Trim Left",
+          "file": "linesTrimLeft.ts"
+        },
+        {
+          "id": "text.keepWhitespace",
+          "name": "Keep Whitespace",
+          "file": "keepWhitespace.ts"
+        },
+        {
+          "id": "text.normalizeCommas",
+          "name": "Normalize Commas",
+          "file": "normalizeCommas.ts"
+        },
+        {
+          "id": "forensic.extractEmails",
+          "name": "Extract Emails",
+          "file": "extractEmails.ts"
+        },
+        {
+          "id": "forensic.extractDomains",
+          "name": "Extract Domains",
+          "file": "extractDomains.ts"
+        },
+        {
+          "id": "forensic.extractCves",
+          "name": "Extract CVEs",
+          "file": "extractCves.ts"
+        },
+        {
+          "id": "forensic.extractRegistryKeys",
+          "name": "Extract Registry Keys",
+          "file": "extractRegistryKeys.ts"
+        },
+        {
+          "id": "network.extractPorts",
+          "name": "Extract Ports",
+          "file": "extractPorts.ts"
+        }
+      ],
       "implementationCandidates": [
         {
           "operationName": "Attempt to be context aware",
@@ -567,6 +1544,68 @@
       "implementedTotal": 12,
       "missingEstimated": 13,
       "coveragePct": 48,
+      "implementedOps": [
+        {
+          "id": "codec.urlEncode",
+          "name": "URL Encode",
+          "file": "urlEncode.ts"
+        },
+        {
+          "id": "codec.urlDecode",
+          "name": "URL Decode",
+          "file": "urlDecode.ts"
+        },
+        {
+          "id": "forensic.extractJwt",
+          "name": "Extract JWT",
+          "file": "extractJwt.ts"
+        },
+        {
+          "id": "network.extractIPs",
+          "name": "Extract IPs",
+          "file": "extractIPs.ts"
+        },
+        {
+          "id": "network.extractIPv6",
+          "name": "Extract IPv6",
+          "file": "extractIPv6.ts"
+        },
+        {
+          "id": "network.defangIPs",
+          "name": "Defang IPs",
+          "file": "defangIPs.ts"
+        },
+        {
+          "id": "network.dechunkHttpResponse",
+          "name": "Dechunk HTTP Response",
+          "file": "dechunkHttpResponse.ts"
+        },
+        {
+          "id": "network.groupIPAddresses",
+          "name": "Group IP Addresses",
+          "file": "groupIPAddresses.ts"
+        },
+        {
+          "id": "network.dnsOverHttps",
+          "name": "DNS over HTTPS",
+          "file": "dnsOverHttps.ts"
+        },
+        {
+          "id": "network.extractUrls",
+          "name": "Extract URLs",
+          "file": "extractUrls.ts"
+        },
+        {
+          "id": "network.defangUrls",
+          "name": "Defang URLs",
+          "file": "defangUrls.ts"
+        },
+        {
+          "id": "network.fangUrls",
+          "name": "Fang URLs",
+          "file": "fangUrls.ts"
+        }
+      ],
       "implementationCandidates": [
         {
           "operationName": "CSS selector",
@@ -677,6 +1716,33 @@
       "implementedTotal": 5,
       "missingEstimated": 11,
       "coveragePct": 31.25,
+      "implementedOps": [
+        {
+          "id": "forensic.analyseUuid",
+          "name": "Analyse UUID",
+          "file": "analyseUuid.ts"
+        },
+        {
+          "id": "forensic.chiSquare",
+          "name": "Chi Square",
+          "file": "chiSquare.ts"
+        },
+        {
+          "id": "forensic.detectFileType",
+          "name": "Detect File Type",
+          "file": "detectFileType.ts"
+        },
+        {
+          "id": "forensic.elfInfo",
+          "name": "ELF Info",
+          "file": "elfInfo.ts"
+        },
+        {
+          "id": "forensic.extractStrings",
+          "name": "Extract Strings",
+          "file": "extractStrings.ts"
+        }
+      ],
       "implementationCandidates": [
         {
           "operationName": "AnalyseUUID",
@@ -767,6 +1833,448 @@
       "implementedTotal": 88,
       "missingEstimated": 61,
       "coveragePct": 59.06,
+      "implementedOps": [
+        {
+          "id": "text.prepend",
+          "name": "Prepend",
+          "file": "prepend.ts"
+        },
+        {
+          "id": "text.append",
+          "name": "Append",
+          "file": "append.ts"
+        },
+        {
+          "id": "text.slice",
+          "name": "Slice",
+          "file": "slice.ts"
+        },
+        {
+          "id": "text.repeat",
+          "name": "Repeat",
+          "file": "repeat.ts"
+        },
+        {
+          "id": "text.padStart",
+          "name": "Pad Start",
+          "file": "padStart.ts"
+        },
+        {
+          "id": "text.padEnd",
+          "name": "Pad End",
+          "file": "padEnd.ts"
+        },
+        {
+          "id": "text.length",
+          "name": "Length",
+          "file": "length.ts"
+        },
+        {
+          "id": "text.startsWith",
+          "name": "Starts With",
+          "file": "startsWith.ts"
+        },
+        {
+          "id": "text.removeSpaces",
+          "name": "Remove Spaces",
+          "file": "removeSpaces.ts"
+        },
+        {
+          "id": "text.keepDigits",
+          "name": "Keep Digits",
+          "file": "keepDigits.ts"
+        },
+        {
+          "id": "text.removeDigits",
+          "name": "Remove Digits",
+          "file": "removeDigits.ts"
+        },
+        {
+          "id": "text.keepLetters",
+          "name": "Keep Letters",
+          "file": "keepLetters.ts"
+        },
+        {
+          "id": "text.removeLetters",
+          "name": "Remove Letters",
+          "file": "removeLetters.ts"
+        },
+        {
+          "id": "text.keepAlnum",
+          "name": "Keep Alnum",
+          "file": "keepAlnum.ts"
+        },
+        {
+          "id": "text.removeAlnum",
+          "name": "Remove Alnum",
+          "file": "removeAlnum.ts"
+        },
+        {
+          "id": "text.removeVowels",
+          "name": "Remove Vowels",
+          "file": "removeVowels.ts"
+        },
+        {
+          "id": "text.keepVowels",
+          "name": "Keep Vowels",
+          "file": "keepVowels.ts"
+        },
+        {
+          "id": "text.endsWith",
+          "name": "Ends With",
+          "file": "endsWith.ts"
+        },
+        {
+          "id": "text.lowerFirst",
+          "name": "Lower First",
+          "file": "lowerFirst.ts"
+        },
+        {
+          "id": "text.upperFirst",
+          "name": "Upper First",
+          "file": "upperFirst.ts"
+        },
+        {
+          "id": "text.collapseDashes",
+          "name": "Collapse Dashes",
+          "file": "collapseDashes.ts"
+        },
+        {
+          "id": "text.collapseUnderscores",
+          "name": "Collapse Underscores",
+          "file": "collapseUnderscores.ts"
+        },
+        {
+          "id": "text.removeTabs",
+          "name": "Remove Tabs",
+          "file": "removeTabs.ts"
+        },
+        {
+          "id": "text.tabsToSpaces",
+          "name": "Tabs To Spaces",
+          "file": "tabsToSpaces.ts"
+        },
+        {
+          "id": "text.spacesToTabs",
+          "name": "Spaces To Tabs",
+          "file": "spacesToTabs.ts"
+        },
+        {
+          "id": "text.surroundBrackets",
+          "name": "Surround Brackets",
+          "file": "surroundBrackets.ts"
+        },
+        {
+          "id": "text.surroundQuotes",
+          "name": "Surround Quotes",
+          "file": "surroundQuotes.ts"
+        },
+        {
+          "id": "text.maskDigits",
+          "name": "Mask Digits",
+          "file": "maskDigits.ts"
+        },
+        {
+          "id": "text.stripAccents",
+          "name": "Strip Accents",
+          "file": "stripAccents.ts"
+        },
+        {
+          "id": "text.removeDoubleQuotes",
+          "name": "Remove Double Quotes",
+          "file": "removeDoubleQuotes.ts"
+        },
+        {
+          "id": "text.removeSingleQuotes",
+          "name": "Remove Single Quotes",
+          "file": "removeSingleQuotes.ts"
+        },
+        {
+          "id": "text.tabsToSingleSpace",
+          "name": "Tabs To Single Space",
+          "file": "tabsToSingleSpace.ts"
+        },
+        {
+          "id": "text.removeCommas",
+          "name": "Remove Commas",
+          "file": "removeCommas.ts"
+        },
+        {
+          "id": "text.removeDots",
+          "name": "Remove Dots",
+          "file": "removeDots.ts"
+        },
+        {
+          "id": "text.removeSemicolons",
+          "name": "Remove Semicolons",
+          "file": "removeSemicolons.ts"
+        },
+        {
+          "id": "text.removeControlChars",
+          "name": "Remove Control Chars",
+          "file": "removeControlChars.ts"
+        },
+        {
+          "id": "text.removeColons",
+          "name": "Remove Colons",
+          "file": "removeColons.ts"
+        },
+        {
+          "id": "text.removeSlashes",
+          "name": "Remove Slashes",
+          "file": "removeSlashes.ts"
+        },
+        {
+          "id": "text.removePipes",
+          "name": "Remove Pipes",
+          "file": "removePipes.ts"
+        },
+        {
+          "id": "text.removeBackslashes",
+          "name": "Remove Backslashes",
+          "file": "removeBackslashes.ts"
+        },
+        {
+          "id": "text.removeAsterisks",
+          "name": "Remove Asterisks",
+          "file": "removeAsterisks.ts"
+        },
+        {
+          "id": "text.removeAtSigns",
+          "name": "Remove At Signs",
+          "file": "removeAtSigns.ts"
+        },
+        {
+          "id": "text.removeDollarSigns",
+          "name": "Remove Dollar Signs",
+          "file": "removeDollarSigns.ts"
+        },
+        {
+          "id": "text.removePluses",
+          "name": "Remove Pluses",
+          "file": "removePluses.ts"
+        },
+        {
+          "id": "text.removeEquals",
+          "name": "Remove Equals",
+          "file": "removeEquals.ts"
+        },
+        {
+          "id": "text.removeCarets",
+          "name": "Remove Carets",
+          "file": "removeCarets.ts"
+        },
+        {
+          "id": "text.removeBackticks",
+          "name": "Remove Backticks",
+          "file": "removeBackticks.ts"
+        },
+        {
+          "id": "text.removeQuestionMarks",
+          "name": "Remove Question Marks",
+          "file": "removeQuestionMarks.ts"
+        },
+        {
+          "id": "text.removeExclamations",
+          "name": "Remove Exclamations",
+          "file": "removeExclamations.ts"
+        },
+        {
+          "id": "text.removeParentheses",
+          "name": "Remove Parentheses",
+          "file": "removeParentheses.ts"
+        },
+        {
+          "id": "text.removeBrackets",
+          "name": "Remove Brackets",
+          "file": "removeBrackets.ts"
+        },
+        {
+          "id": "text.removeBraces",
+          "name": "Remove Braces",
+          "file": "removeBraces.ts"
+        },
+        {
+          "id": "text.removeAngles",
+          "name": "Remove Angle Brackets",
+          "file": "removeAngles.ts"
+        },
+        {
+          "id": "text.removeDoubleSpaces",
+          "name": "Remove Double Spaces",
+          "file": "removeDoubleSpaces.ts"
+        },
+        {
+          "id": "text.removeDigitsAndSpaces",
+          "name": "Remove Digits And Spaces",
+          "file": "removeDigitsAndSpaces.ts"
+        },
+        {
+          "id": "text.keepDigitsAndDots",
+          "name": "Keep Digits And Dots",
+          "file": "keepDigitsAndDots.ts"
+        },
+        {
+          "id": "text.removeEmojis",
+          "name": "Remove Emojis",
+          "file": "removeEmojis.ts"
+        },
+        {
+          "id": "text.removeUnderscores",
+          "name": "Remove Underscores",
+          "file": "removeUnderscores.ts"
+        },
+        {
+          "id": "text.removeHyphens",
+          "name": "Remove Hyphens",
+          "file": "removeHyphens.ts"
+        },
+        {
+          "id": "text.removeSpacesAndTabs",
+          "name": "Remove Spaces And Tabs",
+          "file": "removeSpacesAndTabs.ts"
+        },
+        {
+          "id": "text.countTabs",
+          "name": "Count Tabs",
+          "file": "countTabs.ts"
+        },
+        {
+          "id": "text.countSpaces",
+          "name": "Count Spaces",
+          "file": "countSpaces.ts"
+        },
+        {
+          "id": "text.countCommas",
+          "name": "Count Commas",
+          "file": "countCommas.ts"
+        },
+        {
+          "id": "text.countDots",
+          "name": "Count Dots",
+          "file": "countDots.ts"
+        },
+        {
+          "id": "text.countColons",
+          "name": "Count Colons",
+          "file": "countColons.ts"
+        },
+        {
+          "id": "text.countSemicolons",
+          "name": "Count Semicolons",
+          "file": "countSemicolons.ts"
+        },
+        {
+          "id": "text.countSlashes",
+          "name": "Count Slashes",
+          "file": "countSlashes.ts"
+        },
+        {
+          "id": "text.countBackslashes",
+          "name": "Count Backslashes",
+          "file": "countBackslashes.ts"
+        },
+        {
+          "id": "text.countPluses",
+          "name": "Count Pluses",
+          "file": "countPluses.ts"
+        },
+        {
+          "id": "text.countDashes",
+          "name": "Count Dashes",
+          "file": "countDashes.ts"
+        },
+        {
+          "id": "text.countQuestionMarks",
+          "name": "Count Question Marks",
+          "file": "countQuestionMarks.ts"
+        },
+        {
+          "id": "text.countExclamations",
+          "name": "Count Exclamations",
+          "file": "countExclamations.ts"
+        },
+        {
+          "id": "text.countBrackets",
+          "name": "Count Brackets",
+          "file": "countBrackets.ts"
+        },
+        {
+          "id": "text.countParentheses",
+          "name": "Count Parentheses",
+          "file": "countParentheses.ts"
+        },
+        {
+          "id": "text.countQuotes",
+          "name": "Count Quotes",
+          "file": "countQuotes.ts"
+        },
+        {
+          "id": "text.countUnderscores",
+          "name": "Count Underscores",
+          "file": "countUnderscores.ts"
+        },
+        {
+          "id": "text.onlyAlnumAndSpaces",
+          "name": "Only Alnum And Spaces",
+          "file": "onlyAlnumAndSpaces.ts"
+        },
+        {
+          "id": "text.removeCurrencySymbols",
+          "name": "Remove Currency Symbols",
+          "file": "removeCurrencySymbols.ts"
+        },
+        {
+          "id": "text.removeMathSymbols",
+          "name": "Remove Math Symbols",
+          "file": "removeMathSymbols.ts"
+        },
+        {
+          "id": "date.isoWeekday",
+          "name": "ISO Weekday",
+          "file": "isoWeekday.ts"
+        },
+        {
+          "id": "forensic.basicPreTriage",
+          "name": "Basic Pre-Triage",
+          "file": "basicPreTriage.ts"
+        },
+        {
+          "id": "forensic.basicTriage",
+          "name": "Basic Triage",
+          "file": "basicTriage.ts"
+        },
+        {
+          "id": "network.fangIPs",
+          "name": "Fang IPs",
+          "file": "fangIPs.ts"
+        },
+        {
+          "id": "compression.untar",
+          "name": "Untar",
+          "file": "untar.ts"
+        },
+        {
+          "id": "image.generateQrCode",
+          "name": "Generate QR Code",
+          "file": "generateQrCode.ts"
+        },
+        {
+          "id": "hash.adler32",
+          "name": "Adler-32",
+          "file": "adler32.ts"
+        },
+        {
+          "id": "hash.blake2b",
+          "name": "BLAKE2b",
+          "file": "blake2b.ts"
+        },
+        {
+          "id": "hash.blake2s",
+          "name": "BLAKE2s",
+          "file": "blake2s.ts"
+        }
+      ],
       "implementationCandidates": [
         {
           "operationName": "AlternatingCaps",

@@ -82,7 +82,7 @@ Deliver a complete, auditable, and operationally useful C-track:
 2. `[DONE]` Domain matrix artifacts publication.
 3. `[DONE]` Domain coverage summary.
 4. `[DONE]` CI drift gate for regenerated C1 outputs.
-5. `[PLANNED]` Periodic reclassification workflow for `misc-uncategorized`.
+5. `[DONE]` Periodic reclassification workflow for `misc-uncategorized`.
 
 ## C2 Functional Implementation Waves
 
@@ -127,14 +127,15 @@ Deliver a complete, auditable, and operationally useful C-track:
 2. `[DONE]` deterministic report schema for triage output.
 3. `[DONE]` baseline triage verdict module with scored findings and recommendations.
 4. `[DONE]` safety constraints baseline (bounded IOC/segment extraction controls).
-5. `[IN-PROGRESS]` contract tests + golden fixtures for known malware-like samples.
+5. `[DONE]` contract tests + golden fixtures for known malware-like samples.
+   - `[DONE]` deterministic corpus fixtures for benign, suspicious, archive, and signed-PE samples
 6. `[IN-PROGRESS]` production integrations:
    - `[DONE]` deterministic STIX/MISP export payloads in `forensic.basicTriage`
    - `[DONE]` dynamic sandbox connector (optional CLI runtime profile, allowlist + timeout/retry controls)
    - `[DONE]` ZIP password pipeline
    - `[DONE]` YARA scanning adapter
-   - `[PLANNED]` archive safety guards (`zip-slip` / `zip-bomb`) with verifiable enforcement
-   - `[PLANNED]` Authenticode / X.509 trust verification
+   - `[DONE]` archive safety guards (`zip-slip` / `zip-bomb`) with verifiable enforcement
+   - `[DONE]` Authenticode / X.509 trust verification
 7. `[DONE]` advanced triage add-ons baseline:
    - `[DONE]` `imphash` computation for PE import tables
    - `[DONE]` TLSH/ssdeep computation with runtime fallbacks/feature flags (`enableTlsh`, `enableSsdeep`, `maxFuzzyInputBytes`)
@@ -200,5 +201,5 @@ Detailed stages: `docs/parity/roadmap-next-m14-m18.md`.
 - `M14` `[DONE]`: ZIP archive safety guards and deterministic inventory landed in `forensic.basicTriage`.
 - `M15` `[DONE]`: PE certificate table parsing and deterministic embedded X.509 trust summary.
 - `M16` `[DONE]`: deterministic triage corpus and regression-contract expansion.
-- `M17` `[PLANNED]`: `C1` reclassification workflow and `C2` drift automation.
+- `M17` `[DONE]`: `C1` reclassification workflow and `C2` drift automation.
 - `M18` `[PLANNED]`: evidence bundle and provenance export maturity.

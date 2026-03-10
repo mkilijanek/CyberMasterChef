@@ -21,6 +21,8 @@ pnpm test:e2e    # Playwright critical flows (workbench)
 pnpm build       # full build
 pnpm run ci      # baseline local gate: lint + typecheck + test + build
 pnpm run ci:full # full non-E2E local gate chain mirroring CI quality checks
+pnpm c1:reclassify-check # refresh and verify misc-uncategorized review backlog
+pnpm c2:check    # refresh C2 plan and fail on execution-board drift
 ```
 
 ## Supply chain (pnpm v10)
@@ -91,6 +93,8 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
   - IOC extraction + provenance, YARA/YARA-X scanning, optional sandbox hook,
   - export paths for STIX/MISP and reproducibility bundle capture.
 - C1 drift gate is enforced in CI via `pnpm c1:check` (regenerates matrix + fails on drift).
+- C1 misc reclassification workflow is enforced via `pnpm c1:reclassify-check`.
+- C2 execution-board drift is enforced via `pnpm c2:check`.
 - Acceptance checklist is tracked in `docs/phase-a-definition-of-done.md`.
 
 ## Recipe formats

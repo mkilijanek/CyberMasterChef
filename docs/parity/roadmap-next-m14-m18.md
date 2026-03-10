@@ -75,7 +75,7 @@ GitHub issues:
 ## M17: C1/C2 Governance Closure
 
 Goal: eliminate remaining plan/governance drift from the C-track.
-Status: `PLANNED`
+Status: `DONE`
 
 Scope:
 1. add periodic workflow and documentation for `misc-uncategorized` reclassification in `C1`,
@@ -83,9 +83,16 @@ Scope:
 3. refresh master-plan status fields so `C2` baseline/closure states reflect merged reality,
 4. add issue-to-roadmap traceability table for active milestones.
 
-Backlog issues:
-- `c1-reclassification-workflow`
-- `c2-plan-drift-gate`
+Delivered:
+1. generated `C1` misc-reclassification workflow/report with deterministic backlog output,
+2. `pnpm c1:reclassify-check` added as a drift gate,
+3. `C2` plan generator now exports implemented operation IDs by domain,
+4. `pnpm c2:check` validates execution-board references against implemented inventory and plan artifacts,
+5. CI now runs both new governance gates.
+
+GitHub issues:
+- `#39` `c1-reclassification-workflow`
+- `#37` `c2-plan-drift-gate`
 
 ## M18: Evidence Packaging and Provenance
 
@@ -115,5 +122,5 @@ Backlog issues:
 - `M14` `[DONE]`: archive safety guards + deterministic inventory landed in `forensic.basicTriage`.
 - `M15` `[DONE]`: embedded certificate parsing and PE trust summary in pre-triage and triage.
 - `M16` `[DONE]`: deterministic triage corpus + contract/golden expansion.
-- `M17` `[PLANNED]`: `C1` reclassification workflow + `C2` plan drift gate.
+- `M17` `[DONE]`: `C1` reclassification workflow + `C2` plan drift gate.
 - `M18` `[PLANNED]`: evidence bundle and provenance export.

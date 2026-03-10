@@ -8,6 +8,7 @@ A clean-slate, modular, and secure workbench for data operations — successor t
 - [Plugin API](plugin-api.md)
 - [Development](development.md)
 - [C1 Domain Matrix](parity/c1-operation-domain-summary.md)
+- [C1 Reclassification Workflow](parity/c1-misc-reclassification.md)
 - [C2 Domain Plan](parity/c2-domain-implementation-plan.md)
 - [C2 Execution Board](parity/c2-execution-board.md)
 - [C Implementation Master Plan](parity/c-implementation-master-plan.md)

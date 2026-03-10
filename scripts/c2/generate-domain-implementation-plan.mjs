@@ -38,6 +38,11 @@ const summary = DOMAIN_ORDER.map((domain) => {
     implementedTotal: impl.length,
     missingEstimated: Math.max(0, target.length - impl.length),
     coveragePct: Number(coverage.toFixed(2)),
+    implementedOps: impl.map((op) => ({
+      id: op.id,
+      name: op.name,
+      file: op.file
+    })),
     implementationCandidates: target.slice(0, 20).map((x) => ({
       operationName: x.operationName,
       file: x.file,
@@ -60,8 +65,12 @@ const topPriority = [...summary]
     missingEstimated: s.missingEstimated
   }));
 
+const generatedAt = process.env.SOURCE_DATE_EPOCH
+  ? new Date(Number(process.env.SOURCE_DATE_EPOCH) * 1000).toISOString()
+  : new Date(0).toISOString();
+
 const payload = {
-  generatedAt: new Date().toISOString(),
+  generatedAt,
   source: {
     c1MatrixPath,
     implementedOpsCount: implemented.length
@@ -94,6 +103,13 @@ for (const row of summary) {
   md.push(`- Implemented total: ${row.implementedTotal}`);
   md.push(`- Estimated missing: ${row.missingEstimated}`);
   md.push(`- Coverage: ${row.coveragePct}%`);
+  md.push(`- Implemented ops in repo: ${row.implementedOps.length}`);
+  if (row.implementedOps.length > 0) {
+    md.push("- Implemented operation IDs:");
+    for (const op of row.implementedOps.slice(0, 20)) {
+      md.push(`  - ${op.id} (${op.file})`);
+    }
+  }
   md.push("- Candidate operations (first 20):");
   for (const c of row.implementationCandidates.slice(0, 10)) {
     md.push(`  - ${c.operationName} (${c.file}) [${c.confidence}]`);
