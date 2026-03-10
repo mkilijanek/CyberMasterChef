@@ -57,6 +57,18 @@ type TriageReport = {
     segments: TriageSegment[];
     notes: string[];
   };
+  trustAnalysis: {
+    status: "not_applicable" | "unsigned" | "signed" | "invalid";
+    source: "none" | "raw_x509" | "pkcs7";
+    certificateCount: number;
+    subject: string | null;
+    issuer: string | null;
+    serialNumber: string | null;
+    validFrom: string | null;
+    validTo: string | null;
+    selfIssued: boolean | null;
+    notes: string[];
+  };
 };
 
 const URL_REGEX = /\bhttps?:\/\/[^\s"'<>]+/gi;
@@ -111,6 +123,271 @@ function readCStringAtOffset(data: Uint8Array, offset: number, maxBytes = 512): 
   }
   if (bytes.length === 0) return null;
   return String.fromCharCode(...bytes);
+}
+
+type Asn1Node = {
+  tag: number;
+  constructed: boolean;
+  start: number;
+  headerLength: number;
+  length: number;
+  contentStart: number;
+  contentEnd: number;
+};
+
+function parseAsn1Node(bytes: Uint8Array, offset: number): Asn1Node | null {
+  if (offset >= bytes.length) return null;
+  const tag = bytes[offset]!;
+  let cursor = offset + 1;
+  if (cursor >= bytes.length) return null;
+  const lengthByte = bytes[cursor]!;
+  cursor += 1;
+  let length = 0;
+  if ((lengthByte & 0x80) === 0) {
+    length = lengthByte;
+  } else {
+    const octets = lengthByte & 0x7f;
+    if (octets === 0 || octets > 4 || cursor + octets > bytes.length) return null;
+    for (let i = 0; i < octets; i++) {
+      length = (length << 8) | bytes[cursor + i]!;
+    }
+    cursor += octets;
+  }
+  const contentStart = cursor;
+  const contentEnd = contentStart + length;
+  if (contentEnd > bytes.length) return null;
+  return {
+    tag,
+    constructed: (tag & 0x20) !== 0,
+    start: offset,
+    headerLength: contentStart - offset,
+    length,
+    contentStart,
+    contentEnd
+  };
+}
+
+function parseAsn1Children(bytes: Uint8Array, node: Asn1Node): Asn1Node[] {
+  const children: Asn1Node[] = [];
+  let cursor = node.contentStart;
+  while (cursor < node.contentEnd) {
+    const child = parseAsn1Node(bytes, cursor);
+    if (child === null) return [];
+    children.push(child);
+    cursor = child.contentEnd;
+  }
+  return children;
+}
+
+function decodeOid(bytes: Uint8Array): string {
+  if (bytes.length === 0) return "";
+  const first = bytes[0]!;
+  const parts = [Math.floor(first / 40), first % 40];
+  let value = 0;
+  for (let i = 1; i < bytes.length; i++) {
+    value = (value << 7) | (bytes[i]! & 0x7f);
+    if ((bytes[i]! & 0x80) === 0) {
+      parts.push(value);
+      value = 0;
+    }
+  }
+  return parts.join(".");
+}
+
+function decodeAsn1String(bytes: Uint8Array, node: Asn1Node): string | null {
+  const value = bytes.slice(node.contentStart, node.contentEnd);
+  switch (node.tag) {
+    case 0x0c:
+    case 0x13:
+    case 0x14:
+    case 0x16:
+    case 0x1a:
+    case 0x17:
+    case 0x18:
+      return new TextDecoder().decode(value);
+    case 0x1e: {
+      if (value.length % 2 !== 0) return null;
+      let out = "";
+      for (let i = 0; i < value.length; i += 2) {
+        out += String.fromCharCode((value[i]! << 8) | value[i + 1]!);
+      }
+      return out;
+    }
+    default:
+      return null;
+  }
+}
+
+function decodeAsn1Time(bytes: Uint8Array, node: Asn1Node): string | null {
+  const raw = decodeAsn1String(bytes, node);
+  if (!raw) return null;
+  if (node.tag === 0x17) {
+    const match = raw.match(/^(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})Z$/);
+    if (!match) return null;
+    const year = Number(match[1]!);
+    const fullYear = year >= 50 ? 1900 + year : 2000 + year;
+    return `${String(fullYear).padStart(4, "0")}-${match[2]}-${match[3]}T${match[4]}:${match[5]}:${match[6]}Z`;
+  }
+  if (node.tag === 0x18) {
+    const match = raw.match(/^(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})Z$/);
+    if (!match) return null;
+    return `${match[1]}-${match[2]}-${match[3]}T${match[4]}:${match[5]}:${match[6]}Z`;
+  }
+  return null;
+}
+
+function decodeAsn1IntegerHex(bytes: Uint8Array, node: Asn1Node): string | null {
+  if (node.tag !== 0x02) return null;
+  const raw = bytes.slice(node.contentStart, node.contentEnd);
+  if (raw.length === 0) return null;
+  const normalized = raw[0] === 0x00 ? raw.slice(1) : raw;
+  return Array.from(normalized, (value) => value.toString(16).padStart(2, "0")).join("");
+}
+
+function parseX509Name(bytes: Uint8Array, node: Asn1Node): string | null {
+  const children = parseAsn1Children(bytes, node);
+  if (children.length === 0) return null;
+  const labels = new Map<string, string>([
+    ["2.5.4.3", "CN"],
+    ["2.5.4.6", "C"],
+    ["2.5.4.7", "L"],
+    ["2.5.4.8", "ST"],
+    ["2.5.4.10", "O"],
+    ["2.5.4.11", "OU"]
+  ]);
+  const attrs: string[] = [];
+  for (const rdn of children) {
+    const rdnChildren = parseAsn1Children(bytes, rdn);
+    for (const pair of rdnChildren) {
+      const pairChildren = parseAsn1Children(bytes, pair);
+      if (pairChildren.length < 2) continue;
+      const oidNode = pairChildren[0]!;
+      const valueNode = pairChildren[1]!;
+      if (oidNode.tag !== 0x06) continue;
+      const key = labels.get(decodeOid(bytes.slice(oidNode.contentStart, oidNode.contentEnd))) ?? "OID";
+      const value = decodeAsn1String(bytes, valueNode);
+      if (value) attrs.push(`${key}=${value}`);
+    }
+  }
+  return attrs.length > 0 ? attrs.join(", ") : null;
+}
+
+function tryParseX509Certificate(bytes: Uint8Array, node: Asn1Node): TriageReport["trustAnalysis"] | null {
+  if (node.tag !== 0x30) return null;
+  const certChildren = parseAsn1Children(bytes, node);
+  if (certChildren.length < 3) return null;
+  const tbs = certChildren[0]!;
+  const algorithm = certChildren[1]!;
+  const signatureValue = certChildren[2]!;
+  if (tbs.tag !== 0x30 || algorithm.tag !== 0x30 || signatureValue.tag !== 0x03) return null;
+
+  const tbsChildren = parseAsn1Children(bytes, tbs);
+  if (tbsChildren.length < 6) return null;
+  const baseIndex = tbsChildren[0]!.tag === 0xa0 ? 1 : 0;
+  const serialNode = tbsChildren[baseIndex];
+  const issuerNode = tbsChildren[baseIndex + 2];
+  const validityNode = tbsChildren[baseIndex + 3];
+  const subjectNode = tbsChildren[baseIndex + 4];
+  if (!serialNode || !issuerNode || !validityNode || !subjectNode) return null;
+
+  const validityChildren = parseAsn1Children(bytes, validityNode);
+  const subject = parseX509Name(bytes, subjectNode);
+  const issuer = parseX509Name(bytes, issuerNode);
+  const serialNumber = decodeAsn1IntegerHex(bytes, serialNode);
+  const validFrom = validityChildren[0] ? decodeAsn1Time(bytes, validityChildren[0]) : null;
+  const validTo = validityChildren[1] ? decodeAsn1Time(bytes, validityChildren[1]) : null;
+  if (subject === null && issuer === null && serialNumber === null) return null;
+
+  return {
+    status: "signed",
+    source: "raw_x509",
+    certificateCount: 1,
+    subject,
+    issuer,
+    serialNumber,
+    validFrom,
+    validTo,
+    selfIssued: subject !== null && issuer !== null ? subject === issuer : null,
+    notes: []
+  };
+}
+
+function findX509Certificate(bytes: Uint8Array, node: Asn1Node): TriageReport["trustAnalysis"] | null {
+  const direct = tryParseX509Certificate(bytes, node);
+  if (direct !== null) return direct;
+  if (!node.constructed) return null;
+  for (const child of parseAsn1Children(bytes, node)) {
+    const parsed = findX509Certificate(bytes, child);
+    if (parsed !== null) {
+      if (node.tag === 0x30) return parsed;
+      return { ...parsed, source: "pkcs7" };
+    }
+  }
+  return null;
+}
+
+function parsePeCertificateTable(data: Uint8Array): TriageReport["trustAnalysis"] {
+  const base: TriageReport["trustAnalysis"] = {
+    status: "not_applicable",
+    source: "none",
+    certificateCount: 0,
+    subject: null,
+    issuer: null,
+    serialNumber: null,
+    validFrom: null,
+    validTo: null,
+    selfIssued: null,
+    notes: []
+  };
+  const peSections = parsePeSections(data);
+  if (peSections.length === 0) return base;
+  base.status = "unsigned";
+
+  const peOffset = readU32LE(data, 0x3c);
+  const optionalHeaderOffset = peOffset + 24;
+  const peMagic = readU16LE(data, optionalHeaderOffset);
+  const isPePlus = peMagic === 0x20b;
+  if (peMagic !== 0x10b && peMagic !== 0x20b) {
+    return { ...base, notes: ["PE optional header magic invalid for certificate parsing."] };
+  }
+  const dataDirectoryBase = optionalHeaderOffset + (isPePlus ? 112 : 96);
+  const securityDirOffset = dataDirectoryBase + 4 * 8;
+  if (securityDirOffset + 7 >= data.length) {
+    return { ...base, notes: ["PE security directory unavailable."] };
+  }
+  const certificateOffset = readU32LE(data, securityDirOffset);
+  const certificateSize = readU32LE(data, securityDirOffset + 4);
+  if (certificateOffset === 0 || certificateSize < 8) return base;
+  if (certificateOffset + certificateSize > data.length) {
+    return { ...base, status: "invalid", notes: ["PE certificate table points outside file bounds."] };
+  }
+
+  const winCert = data.slice(certificateOffset, certificateOffset + certificateSize);
+  const declaredLength = readU32LE(winCert, 0);
+  const certificateType = readU16LE(winCert, 6);
+  if (declaredLength < 8 || declaredLength > winCert.length) {
+    return { ...base, status: "invalid", notes: ["WIN_CERTIFICATE length is invalid."] };
+  }
+  const certificateBlob = winCert.slice(8, declaredLength);
+  const root = parseAsn1Node(certificateBlob, 0);
+  if (root === null) {
+    return { ...base, status: "invalid", notes: ["Embedded certificate blob is not valid DER."] };
+  }
+  const parsed = findX509Certificate(certificateBlob, root);
+  if (parsed === null) {
+    return {
+      ...base,
+      status: "invalid",
+      notes: [`No X.509 certificate could be parsed from WIN_CERTIFICATE type ${certificateType}.`]
+    };
+  }
+  return {
+    ...parsed,
+    notes:
+      parsed.source === "pkcs7"
+        ? [`Parsed X.509 certificate from PKCS#7 / Authenticode blob (type ${certificateType}).`]
+        : [`Parsed embedded X.509 certificate blob (type ${certificateType}).`]
+  };
 }
 
 function rvaToOffset(data: Uint8Array, sections: TriageSection[], rva: number): number | null {
@@ -504,6 +781,20 @@ export const basicPreTriage: Operation = {
     const imphash = enableImphash && format === "pe" ? await computeImphash(data, peSections) : null;
     const tlshHash = enableTlsh && shouldRunFuzzy ? digestTlsh(data) : null;
     const ssdeepHash = enableSsdeep && shouldRunFuzzy ? digestSsdeep(data) : null;
+    const trustAnalysis = seemsBinary && format === "pe"
+      ? parsePeCertificateTable(data)
+      : {
+          status: "not_applicable" as const,
+          source: "none" as const,
+          certificateCount: 0,
+          subject: null,
+          issuer: null,
+          serialNumber: null,
+          validFrom: null,
+          validTo: null,
+          selfIssued: null,
+          notes: []
+        };
 
     const report: TriageReport = {
       version: 1,
@@ -536,7 +827,8 @@ export const basicPreTriage: Operation = {
         sections,
         segments: buildSegments(data, segmentWindow, segmentLimit),
         notes
-      }
+      },
+      trustAnalysis
     };
 
     return { type: "string", value: JSON.stringify(report, null, 2) };

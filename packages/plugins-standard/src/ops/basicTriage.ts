@@ -21,6 +21,18 @@ type PreTriageReport = {
     format: "pe" | "elf" | "macho" | "unknown" | "text";
     sections: Array<{ entropy: number }>;
   };
+  trustAnalysis: {
+    status: "not_applicable" | "unsigned" | "signed" | "invalid";
+    source: "none" | "raw_x509" | "pkcs7";
+    certificateCount: number;
+    subject: string | null;
+    issuer: string | null;
+    serialNumber: string | null;
+    validFrom: string | null;
+    validTo: string | null;
+    selfIssued: boolean | null;
+    notes: string[];
+  };
   hashes: {
     sha1: string | null;
     sha256: string | null;
@@ -219,6 +231,9 @@ function computeMockedCapabilities(pre: PreTriageReport): string[] {
     if (capability === "pe_imphash") return pre.hashes.imphash === null;
     if (capability === "tlsh_fuzzy_hash") return pre.hashes.tlsh === null;
     if (capability === "ssdeep_fuzzy_hash") return pre.hashes.ssdeep === null;
+    if (capability === "authenticode_or_x509_verification") {
+      return !(pre.binaryAnalysis.format === "pe" && pre.trustAnalysis.status !== "not_applicable");
+    }
     return true;
   });
 }
@@ -409,6 +424,25 @@ function buildFindings(pre: PreTriageReport): { findings: TriageFinding[]; reaso
       id: "fuzzy-hash-available",
       severity: "low",
       description: "Computed fuzzy hash fingerprints (TLSH/ssdeep) for this sample."
+    });
+  }
+
+  if (pre.binaryAnalysis.format === "pe" && pre.trustAnalysis.status === "unsigned") {
+    score += 4;
+    reasons.push("pe_unsigned");
+    findings.push({
+      id: "pe-unsigned",
+      severity: "medium",
+      description: "PE sample has no embedded Authenticode / X.509 certificate table."
+    });
+  }
+
+  if (pre.trustAnalysis.status === "signed") {
+    reasons.push("pe_signed");
+    findings.push({
+      id: "embedded-certificate",
+      severity: "low",
+      description: `Parsed embedded certificate for subject ${pre.trustAnalysis.subject ?? "unknown"}.`
     });
   }
 
@@ -808,6 +842,12 @@ export const basicTriage: Operation = {
       recommendations.push("Run additional IOC reputation checks and campaign correlation.");
     } else {
       recommendations.push("Keep sample archived and monitor for new matching telemetry.");
+    }
+    if (pre.binaryAnalysis.format === "pe" && pre.trustAnalysis.status === "unsigned") {
+      recommendations.push("Treat unsigned PE binaries as higher-risk until publisher trust is established.");
+    }
+    if (pre.trustAnalysis.status === "signed") {
+      recommendations.push("Review embedded certificate metadata before promoting the sample as trusted.");
     }
     recommendations.push("Review mocked capabilities before relying on this report for production decisions.");
 

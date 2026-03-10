@@ -34,7 +34,7 @@ GitHub issues:
 ## M15: Trust and Signature Verification
 
 Goal: add artifact trust signals before verdict/export layers consume binaries.
-Status: `PLANNED`
+Status: `DONE`
 
 Scope:
 1. implement Authenticode / X.509 verification baseline for PE-focused triage,
@@ -42,8 +42,14 @@ Scope:
 3. remove `authenticode_or_x509_verification` from `mockedCapabilities` only on verified support paths,
 4. add negative tests for malformed signatures, detached data, and unsupported formats.
 
-Backlog issues:
-- `authenticode-x509-verification`
+Delivered:
+1. PE `WIN_CERTIFICATE` table parsing in `forensic.basicPreTriage`,
+2. deterministic embedded X.509 trust summary (`subject`, `issuer`, `serialNumber`, validity window, self-issued flag),
+3. support for direct DER certificate blobs and X.509 certificates embedded inside PKCS#7 / Authenticode containers,
+4. `forensic.basicTriage` findings/recommendations now consume trust status and clear `authenticode_or_x509_verification` when the PE trust path is analyzed.
+
+GitHub issues:
+- `#41` `authenticode-x509-verification`
 
 ## M16: Deterministic Triage Corpus and Regression Contracts
 
@@ -101,7 +107,7 @@ Backlog issues:
 ## Progress Snapshot
 
 - `M14` `[DONE]`: archive safety guards + deterministic inventory landed in `forensic.basicTriage`.
-- `M15` `[PLANNED]`: Authenticode / X.509 verification.
+- `M15` `[DONE]`: embedded certificate parsing and PE trust summary in pre-triage and triage.
 - `M16` `[PLANNED]`: deterministic triage corpus + contract/golden expansion.
 - `M17` `[PLANNED]`: `C1` reclassification workflow + `C2` plan drift gate.
 - `M18` `[PLANNED]`: evidence bundle and provenance export.
