@@ -459,4 +459,104 @@ describe("App behavior", () => {
     expect(rendered).toContain("Last import source: CyberChef");
     expect(rendered).toContain("Unsupported Thing");
   });
+
+  it("handles execution errors, aborted runs, and missing trace artifacts", async () => {
+    bakeMock
+      .mockRejectedValueOnce(new Error("boom"))
+      .mockRejectedValueOnce(new Error("Aborted"))
+      .mockResolvedValueOnce(
+        makeBakeResult({
+          output: { type: "json", value: { ok: true, count: 2 } }
+        })
+      );
+
+    let root!: ReturnType<typeof create>;
+    await act(async () => {
+      root = create(<App />);
+      await flushPromises();
+    });
+
+    await act(() => {
+      findByTestId(root, "run-button").props.onClick();
+      return flushPromises();
+    });
+    expect(flattenText(root.toJSON())).toContain("Error: boom");
+
+    await act(() => {
+      findButton(root, "Copy trace summary").props.onClick();
+      findByTestId(root, "copy-repro-button").props.onClick();
+      return flushPromises();
+    });
+    expect(flattenText(root.toJSON())).toContain("Error: Run recipe first to generate reproducibility bundle");
+
+    await act(() => {
+      findByTestId(root, "run-button").props.onClick();
+      return flushPromises();
+    });
+    expect(flattenText(root.toJSON())).toContain("Error: Run cancelled");
+
+    await act(() => {
+      findByTestId(root, "run-button").props.onClick();
+      return flushPromises();
+    });
+    expect(findByTestId(root, "io-output").props.value).toContain('"ok": true');
+  });
+
+  it("ignores cancelled imports, rejected resets, and clamps numeric controls", async () => {
+    confirmMock.mockReturnValue(false);
+    promptMock.mockReturnValueOnce(null);
+
+    let root!: ReturnType<typeof create>;
+    await act(async () => {
+      root = create(<App />);
+      await flushPromises();
+    });
+
+    await act(() => {
+      findByTestId(root, "import-recipe-button").props.onClick();
+      return Promise.resolve();
+    });
+    expect(flattenText(root.toJSON())).not.toContain("Last import source:");
+
+    await act(() => {
+      findButton(root, "Reset").props.onClick();
+      return Promise.resolve();
+    });
+    expect(confirmMock).toHaveBeenCalled();
+
+    await act(() => {
+      findByTestId(root, "timeout-input").props.onChange({
+        target: { value: "NaN" }
+      } as React.ChangeEvent<HTMLInputElement>);
+      findByTestId(root, "timeout-input").props.onBlur();
+      findByTestId(root, "pool-size-input").props.onChange({
+        target: { value: "999" }
+      } as React.ChangeEvent<HTMLInputElement>);
+      findByTestId(root, "max-queue-input").props.onChange({
+        target: { value: "0" }
+      } as React.ChangeEvent<HTMLInputElement>);
+      return Promise.resolve();
+    });
+
+    expect(findByTestId(root, "timeout-input").props.value).toBe(10000);
+    expect(findByTestId(root, "pool-size-input").props.value).toBe(8);
+    expect(findByTestId(root, "max-queue-input").props.value).toBe(1);
+
+    await act(() => {
+      findByTestId(root, "pool-size-input").props.onBlur();
+      findByTestId(root, "max-queue-input").props.onBlur();
+      return Promise.resolve();
+    });
+    expect(findByTestId(root, "pool-size-input").props.value).toBe(8);
+    expect(findByTestId(root, "max-queue-input").props.value).toBe(1);
+
+    await act(() => {
+      const addButtons = root.root.findAll(
+        (node) => node.type === "button" && flattenText(node.props.children).trim() === "Add"
+      );
+      addButtons[0]?.props.onClick();
+      return Promise.resolve();
+    });
+    expect(flattenText(root.toJSON())).toContain("Recipe");
+  });
 });

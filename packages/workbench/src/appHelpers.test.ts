@@ -38,4 +38,16 @@ describe("App helpers", () => {
     localStorage.setItem("recipe.v1", "broken");
     expect(loadInitialState()).toEqual({ recipe: emptyRecipe(), input: "from-storage" });
   });
+
+  it("falls back to storage when hash payload is invalid or not a recipe", () => {
+    const storedRecipe = { version: 1 as const, steps: [{ opId: "text.reverse" }] };
+    localStorage.setItem("recipe.v1", JSON.stringify(storedRecipe));
+    localStorage.setItem("input.v1", "storage-input");
+
+    window.location.hash = "#state=%%%";
+    expect(loadInitialState()).toEqual({ recipe: storedRecipe, input: "storage-input" });
+
+    window.location.hash = `#state=${toBase64Url(JSON.stringify({ recipe: { version: 2 }, input: 7 }))}`;
+    expect(loadInitialState()).toEqual({ recipe: storedRecipe, input: "storage-input" });
+  });
 });

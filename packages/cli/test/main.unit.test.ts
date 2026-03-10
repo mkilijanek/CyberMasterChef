@@ -1,7 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { spawnSync } from "node:child_process";
 import {
   parseRecipeAny,
   parseArgs,
@@ -15,6 +17,10 @@ import {
 
 const stdoutWrite = vi.spyOn(process.stdout, "write");
 const stderrWrite = vi.spyOn(process.stderr, "write");
+const here = dirname(fileURLToPath(import.meta.url));
+const packageRoot = dirname(here);
+const repoRoot = dirname(dirname(packageRoot));
+const sourceEntry = join(packageRoot, "src", "main.ts");
 
 afterEach(() => {
   stdoutWrite.mockReset();
@@ -395,5 +401,116 @@ describe("cli helpers", () => {
     } finally {
       exitSpy.mockRestore();
     }
+  });
+
+  it("fails on empty rendered output when requested", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "cmc-cli-"));
+    try {
+      const recipePath = join(dir, "recipe.json");
+      const inputPath = join(dir, "input.txt");
+      writeFileSync(
+        recipePath,
+        JSON.stringify({ version: 1, steps: [{ opId: "text.removeLetters" }] }),
+        "utf-8"
+      );
+      writeFileSync(inputPath, "abc", "utf-8");
+
+      const exitSpy = vi
+        .spyOn(process, "exit")
+        .mockImplementation(((code?: string | number | null) => {
+          throw new Error(`exit:${String(code ?? 0)}`);
+        }) as typeof process.exit);
+      try {
+        await expect(main([recipePath, inputPath, "--fail-empty-output"])).rejects.toThrow("exit:1");
+      } finally {
+        exitSpy.mockRestore();
+      }
+
+      const stderr = stderrWrite.mock.calls.map((call) => String(call[0])).join("");
+      expect(stderr).toContain("Execution failed: output is empty.");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("writes batch summary/report artifacts with output files", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "cmc-cli-"));
+    try {
+      const batchDir = join(dir, "batch");
+      const reportPath = join(dir, "report.json");
+      const batchOutDir = join(dir, "out");
+      const recipePath = join(dir, "recipe.json");
+      mkdirSync(batchDir, { recursive: true });
+      mkdirSync(batchOutDir, { recursive: true });
+      writeFileSync(
+        recipePath,
+        JSON.stringify({ version: 1, steps: [{ opId: "codec.toHex" }] }),
+        "utf-8"
+      );
+      writeFileSync(join(batchDir, "a.txt"), "abc", "utf-8");
+      writeFileSync(join(batchDir, "b.txt"), "xyz", "utf-8");
+
+      await main([
+        recipePath,
+        "--batch-input-dir",
+        batchDir,
+        "--batch-report-file",
+        reportPath,
+        "--batch-summary-json",
+        "--batch-output-dir",
+        batchOutDir,
+        "--batch-output-format",
+        "json",
+        "--batch-ext",
+        ".txt"
+      ]);
+
+      const report = JSON.parse(readFileSync(reportPath, "utf-8")) as Array<{
+        file: string;
+        ok: boolean;
+        outputPreview?: string;
+        outputType: string;
+      }>;
+      expect(report).toHaveLength(2);
+      expect(report.every((row) => row.ok)).toBe(true);
+      expect(report.map((row) => row.file)).toEqual([
+        join(batchDir, "a.txt"),
+        join(batchDir, "b.txt")
+      ]);
+      expect(report.map((row) => row.outputPreview)).toEqual(["616263", "78797a"]);
+      expect(report.map((row) => row.outputType)).toEqual(["string", "string"]);
+
+      const batchA = JSON.parse(readFileSync(join(batchOutDir, "a.txt.out.json"), "utf-8")) as {
+        file: string;
+        output: string;
+      };
+      const batchB = JSON.parse(readFileSync(join(batchOutDir, "b.txt.out.json"), "utf-8")) as {
+        file: string;
+        output: string;
+      };
+      expect(batchA).toMatchObject({ file: join(batchDir, "a.txt"), output: "616263" });
+      expect(batchB).toMatchObject({ file: join(batchDir, "b.txt"), output: "78797a" });
+
+      const stderr = stderrWrite.mock.calls.map((call) => String(call[0])).join("");
+      expect(stderr).toContain("\"filesTotal\":2");
+      expect(stderr).toContain("\"filesOk\":2");
+      expect(stderr).toContain("\"filesFailed\":0");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("supports executable bootstrap with --version", () => {
+    const run = spawnSync("node", ["--import", "tsx", sourceEntry, "--version"], {
+      cwd: repoRoot,
+      encoding: "utf-8",
+      env: {
+        ...process.env,
+        TSX_TSCONFIG_PATH: join(repoRoot, "tsconfig.base.json")
+      }
+    });
+
+    expect(run.status).toBe(0);
+    expect(run.stdout.trim()).toMatch(/^0\.1\.0$/);
   });
 });

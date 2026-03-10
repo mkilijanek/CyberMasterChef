@@ -1,6 +1,6 @@
 # C Implementation Master Plan
 
-Updated: 2026-03-10 (M19-M23 quality roadmap added after M14-M18 completion)
+Updated: 2026-03-10 (M24-M28 quality roadmap added after the previous quality wave)
 
 ## Sources
 
@@ -176,19 +176,19 @@ Deliver a complete, auditable, and operationally useful C-track:
   - `C3: 100% (contract generation + generated regression + CI gate)`
 - Combined C-track completion snapshot for milestone scope: `100% (M1-M10)`
 - Active focus for next execution queue:
-  - close fresh code-scanning regressions quickly on `main`
-  - raise package-level unit coverage in `workbench` and `cli`
-  - publish auditable quality baselines and keep roadmap/master-plan traceable
+  - continue driving targeted unit coverage into remaining `cli` and `workbench` hotspots
+  - keep coverage baselines auditable after each wave
+  - keep roadmap/master-plan traceability synchronized with GitHub issue state
 
 ## Next Milestones Roadmap
 
-1. `M19`: code-scanning closure and regression hygiene.
-2. `M20`: workbench coverage uplift.
-3. `M21`: CLI coverage uplift.
-4. `M22`: quality coverage baseline publication.
-5. `M23`: roadmap/master-plan refresh with issue traceability.
+1. `M24`: `App.tsx` coverage expansion.
+2. `M25`: workbench helper/runtime tail closure.
+3. `M26`: CLI coverage expansion.
+4. `M27`: coverage baseline refresh.
+5. `M28`: roadmap/master-plan refresh with issue traceability.
 
-Detailed stages: `docs/parity/roadmap-next-m19-m23.md`.
+Detailed stages: `docs/parity/roadmap-next-m24-m28.md`.
 
 ### M11-M13 Progress Snapshot
 
@@ -211,3 +211,11 @@ Detailed stages: `docs/parity/roadmap-next-m19-m23.md`.
 - `M21` `[DONE]`: CLI parsing/reporting/output coverage expanded.
 - `M22` `[DONE]`: per-package quality coverage baseline documented.
 - `M23` `[DONE]`: roadmap and master-plan synchronized with issue traceability.
+
+### M24-M28 Progress Snapshot
+
+- `M24` `[DONE]`: `App.tsx` error, bootstrap, and control-state coverage expanded.
+- `M25` `[DONE]`: workbench package now clears its local coverage threshold.
+- `M26` `[DONE]`: CLI batch summary/report, empty-output, and bootstrap paths covered.
+- `M27` `[DONE]`: coverage baseline refreshed with updated post-wave metrics.
+- `M28` `[DONE]`: roadmap/master-plan synchronized for the M24-M28 quality wave.
