@@ -16,6 +16,8 @@ A clean-slate, modular, and secure workbench for data operations — successor t
 - [C3 Contracts](parity/c3-operation-compatibility-contracts.md)
 - [Triage Corpus](parity/triage-corpus.md)
 - [Triage Evidence Bundle](parity/triage-evidence-bundle.md)
+- [Quality Coverage Baseline](parity/quality-coverage-baseline.md)
+- [Roadmap Next (M19-M23)](parity/roadmap-next-m19-m23.md)
 - [Roadmap Next (M14-M18)](parity/roadmap-next-m14-m18.md)
 - [Roadmap M11-M13 Completion](parity/roadmap-next-m11-m13.md)
 - [M6 STIX/MISP Mapping](parity/m6-stix-misp-mapping.md)

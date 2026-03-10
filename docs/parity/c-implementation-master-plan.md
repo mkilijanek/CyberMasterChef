@@ -1,6 +1,6 @@
 # C Implementation Master Plan
 
-Updated: 2026-03-10 (M14-M18 roadmap defined after M11-M13 completion)
+Updated: 2026-03-10 (M19-M23 quality roadmap added after M14-M18 completion)
 
 ## Sources
 
@@ -176,19 +176,19 @@ Deliver a complete, auditable, and operationally useful C-track:
   - `C3: 100% (contract generation + generated regression + CI gate)`
 - Combined C-track completion snapshot for milestone scope: `100% (M1-M10)`
 - Active focus for next execution queue:
-  - harden Phase C evidence-handling and trust-verification paths
-  - close remaining governance drift in `C1` / `C2`
-  - expand deterministic triage fixture coverage and evidence packaging
+  - close fresh code-scanning regressions quickly on `main`
+  - raise package-level unit coverage in `workbench` and `cli`
+  - publish auditable quality baselines and keep roadmap/master-plan traceable
 
 ## Next Milestones Roadmap
 
-1. `M14`: archive evidence safety and inventory hardening.
-2. `M15`: trust and signature verification in forensic triage.
-3. `M16`: deterministic triage corpus and regression-contract expansion.
-4. `M17`: C1/C2 governance closure and drift automation.
-5. `M18`: evidence packaging, provenance, and operational export maturity.
+1. `M19`: code-scanning closure and regression hygiene.
+2. `M20`: workbench coverage uplift.
+3. `M21`: CLI coverage uplift.
+4. `M22`: quality coverage baseline publication.
+5. `M23`: roadmap/master-plan refresh with issue traceability.
 
-Detailed stages: `docs/parity/roadmap-next-m14-m18.md`.
+Detailed stages: `docs/parity/roadmap-next-m19-m23.md`.
 
 ### M11-M13 Progress Snapshot
 
@@ -203,3 +203,11 @@ Detailed stages: `docs/parity/roadmap-next-m14-m18.md`.
 - `M16` `[DONE]`: deterministic triage corpus and regression-contract expansion.
 - `M17` `[DONE]`: `C1` reclassification workflow and `C2` drift automation.
 - `M18` `[DONE]`: evidence bundle and provenance export maturity.
+
+### M19-M23 Progress Snapshot
+
+- `M19` `[DONE]`: CodeQL regression fixed in workbench test helpers and re-analysis triggered.
+- `M20` `[DONE]`: workbench interaction/editor/worker coverage expanded.
+- `M21` `[DONE]`: CLI parsing/reporting/output coverage expanded.
+- `M22` `[DONE]`: per-package quality coverage baseline documented.
+- `M23` `[DONE]`: roadmap and master-plan synchronized with issue traceability.
