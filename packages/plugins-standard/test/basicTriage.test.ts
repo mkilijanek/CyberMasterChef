@@ -19,6 +19,17 @@ function writeAscii(data: Uint8Array, offset: number, value: string): void {
   data[offset + value.length] = 0x00;
 }
 
+function concatBytes(parts: Uint8Array[]): Uint8Array {
+  const total = parts.reduce((sum, part) => sum + part.length, 0);
+  const out = new Uint8Array(total);
+  let offset = 0;
+  for (const part of parts) {
+    out.set(part, offset);
+    offset += part.length;
+  }
+  return out;
+}
+
 function makeImportPeSample(): Uint8Array {
   const data = new Uint8Array(0x800);
   data[0] = 0x4d;
@@ -54,13 +65,23 @@ function makeImportPeSample(): Uint8Array {
   return data;
 }
 
-function makeMinimalZipSample(): Uint8Array {
-  const data = new Uint8Array(64);
-  data[0] = 0x50;
-  data[1] = 0x4b;
-  data[2] = 0x03;
-  data[3] = 0x04;
-  return data;
+function makeZipSample(entries: Array<{ name: string; content: Uint8Array; encrypted?: boolean }>): Uint8Array {
+  const parts: Uint8Array[] = [];
+  for (const entry of entries) {
+    const nameBytes = new TextEncoder().encode(entry.name);
+    const header = new Uint8Array(30);
+    writeU32LE(header, 0, 0x04034b50);
+    writeU16LE(header, 4, 20);
+    writeU16LE(header, 6, entry.encrypted ? 1 : 0);
+    writeU16LE(header, 8, 0);
+    writeU32LE(header, 14, 0);
+    writeU32LE(header, 18, entry.content.length);
+    writeU32LE(header, 22, entry.content.length);
+    writeU16LE(header, 26, nameBytes.length);
+    writeU16LE(header, 28, 0);
+    parts.push(header, nameBytes, entry.content);
+  }
+  return concatBytes(parts);
 }
 
 function parseRequestBody(init?: RequestInit): Record<string, unknown> {
@@ -416,12 +437,21 @@ describe("forensic basic triage", () => {
       const out = await runRecipe({
         registry,
         recipe,
-        input: { type: "bytes", value: makeMinimalZipSample() }
+        input: {
+          type: "bytes",
+          value: makeZipSample([{ name: "docs/readme.txt", content: new TextEncoder().encode("safe") }])
+        }
       });
       expect(out.output.type).toBe("string");
       if (out.output.type !== "string") return;
       const report = JSON.parse(out.output.value) as {
         mockedCapabilities: string[];
+        archiveAnalysis: {
+          format: string;
+          entryCount: number;
+          suspiciousPaths: string[];
+          guards: { safeToSubmit: boolean; enforced: boolean };
+        };
         integrations: {
           zipPasswordPipeline: { status: string; matchedPassword: string | null };
           yara: { status: string; matchCount: number; ruleMatches: string[] };
@@ -434,19 +464,30 @@ describe("forensic basic triage", () => {
       const zipRequest = requestBodies.get("https://zip.local/submit");
       const yaraRequest = requestBodies.get("https://yara.local/scan");
       expect(zipRequest).toBeDefined();
-      expect(zipRequest?.sizeBytes).toBe(64);
+      expect(report.archiveAnalysis).toMatchObject({
+        format: "zip",
+        entryCount: 1,
+        suspiciousPaths: [],
+        guards: { safeToSubmit: true, enforced: true }
+      });
+      expect(zipRequest?.sizeBytes).toBe(49);
       expect(zipRequest?.candidates).toEqual(["infected", "password", "123456"]);
       expect(typeof zipRequest?.archiveBase64).toBe("string");
+      expect(zipRequest?.archiveAnalysis).toMatchObject({
+        entryCount: 1,
+        suspiciousPaths: [],
+        guards: { safeToSubmit: true }
+      });
       expect(yaraRequest).toBeDefined();
       expect(yaraRequest?.inputType).toBe("bytes");
-      expect(yaraRequest?.sizeBytes).toBe(64);
+      expect(yaraRequest?.sizeBytes).toBe(49);
       expect(yaraRequest?.profile).toBe("default-malware");
       expect(typeof yaraRequest?.sampleBase64).toBe("string");
       expect(Array.isArray(yaraRequest?.heuristics)).toBe(true);
       expect(report.mockedCapabilities).not.toContain(
         "archive_password_handling_and_zip_unpacking"
       );
-      expect(report.mockedCapabilities).toContain("zip_slip_and_zip_bomb_safe_unpack_guards");
+      expect(report.mockedCapabilities).not.toContain("zip_slip_and_zip_bomb_safe_unpack_guards");
       expect(report.mockedCapabilities).not.toContain("yara_or_yara_x_rule_scanning");
     } finally {
       globalThis.fetch = prevFetch;
@@ -493,7 +534,10 @@ describe("forensic basic triage", () => {
       const out = await runRecipe({
         registry,
         recipe,
-        input: { type: "bytes", value: makeMinimalZipSample() }
+        input: {
+          type: "bytes",
+          value: makeZipSample([{ name: "docs/readme.txt", content: new TextEncoder().encode("safe") }])
+        }
       });
       expect(out.output.type).toBe("string");
       if (out.output.type !== "string") return;
@@ -519,7 +563,7 @@ describe("forensic basic triage", () => {
       });
       expect(report.mockedCapabilities).toContain("dynamic_sandbox_integration_cuckoo");
       expect(report.mockedCapabilities).toContain("archive_password_handling_and_zip_unpacking");
-      expect(report.mockedCapabilities).toContain("zip_slip_and_zip_bomb_safe_unpack_guards");
+      expect(report.mockedCapabilities).not.toContain("zip_slip_and_zip_bomb_safe_unpack_guards");
       expect(report.mockedCapabilities).toContain("yara_or_yara_x_rule_scanning");
     } finally {
       globalThis.fetch = prevFetch;
@@ -547,8 +591,74 @@ describe("forensic basic triage", () => {
       runRecipe({
         registry,
         recipe,
-        input: { type: "bytes", value: makeMinimalZipSample() }
+        input: {
+          type: "bytes",
+          value: makeZipSample([{ name: "docs/readme.txt", content: new TextEncoder().encode("safe") }])
+        }
       })
     ).rejects.toThrow("ZIP endpoint host not allowlisted");
+  });
+
+  it("blocks ZIP pipeline when archive paths are unsafe", async () => {
+    const prevFetch = globalThis.fetch;
+    let called = false;
+    globalThis.fetch = (() => {
+      called = true;
+      return Promise.resolve(new Response(JSON.stringify({ matchedPassword: "infected" }), { status: 200 }));
+    }) as typeof fetch;
+
+    try {
+      const registry = new InMemoryRegistry();
+      registry.register(basicTriage);
+      const recipe: Recipe = {
+        version: 1,
+        steps: [
+          {
+            opId: "forensic.basicTriage",
+            args: {
+              enableZipPasswordPipeline: true,
+              zipRuntimeProfile: "cli",
+              zipEndpoint: "https://zip.local/submit",
+              zipAllowHosts: "zip.local"
+            }
+          }
+        ]
+      };
+      const out = await runRecipe({
+        registry,
+        recipe,
+        input: {
+          type: "bytes",
+          value: makeZipSample([{ name: "../evil.exe", content: new TextEncoder().encode("boom") }])
+        }
+      });
+      expect(out.output.type).toBe("string");
+      if (out.output.type !== "string") return;
+      const report = JSON.parse(out.output.value) as {
+        mockedCapabilities: string[];
+        archiveAnalysis: {
+          suspiciousPaths: string[];
+          guards: { pathTraversalSafe: boolean; safeToSubmit: boolean; reasons: string[] };
+        };
+        integrations: {
+          zipPasswordPipeline: { status: string; error: string | null };
+        };
+      };
+      expect(called).toBe(false);
+      expect(report.archiveAnalysis.suspiciousPaths).toEqual(["../evil.exe"]);
+      expect(report.archiveAnalysis.guards).toMatchObject({
+        pathTraversalSafe: false,
+        safeToSubmit: false
+      });
+      expect(report.archiveAnalysis.guards.reasons).toContain("zip_path_traversal_detected");
+      expect(report.integrations.zipPasswordPipeline).toMatchObject({
+        status: "failed",
+        error: "zip_path_traversal_detected"
+      });
+      expect(report.mockedCapabilities).toContain("zip_slip_and_zip_bomb_safe_unpack_guards");
+      expect(report.mockedCapabilities).toContain("archive_password_handling_and_zip_unpacking");
+    } finally {
+      globalThis.fetch = prevFetch;
+    }
   });
 });

@@ -19,7 +19,8 @@ pnpm test:coverage # Vitest coverage reports + thresholds
 pnpm test:parity # parity coverage gate vs reference corpus
 pnpm test:e2e    # Playwright critical flows (workbench)
 pnpm build       # full build
-pnpm ci          # lint + typecheck + test + build
+pnpm run ci      # baseline local gate: lint + typecheck + test + build
+pnpm run ci:full # full non-E2E local gate chain mirroring CI quality checks
 ```
 
 ## Supply chain (pnpm v10)
@@ -67,6 +68,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
   - `e2e/workbench-repro.spec.ts` (run metadata visibility: run id + recipe/input hash)
   - `e2e/workbench-pool-settings.spec.ts` (pool size and max queue persistence)
 - CI now enforces Playwright E2E (`pnpm test:e2e`) in `.github/workflows/ci.yml`.
+- For local release-grade validation, run `pnpm run ci:full` and then `pnpm test:e2e`.
 - `engine` tests include abort/cancel behavior coverage (`AbortSignal` path).
 - Golden recipes: regression tests against CyberChef-compatible recipe JSON (actively extended).
 - Reproducibility helpers in core:
@@ -78,12 +80,12 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
 
 ## Roadmap status
 
-- Phase A (parity + tests) is now complete in baseline scope:
+- Phase A (parity + tests) is complete:
   - expanded golden parity recipe chains in `plugins-standard`,
   - worker protocol integration coverage for cancel/timeout/race,
   - Playwright critical flow coverage for import, run-to-step, share-link and timeout persistence.
-- Next focus shifts to Phase B (runtime scalability: worker pool + streaming/chunking).
-- Phase C (CSIRT/SOC triage pipeline) is planned:
+- Phase B (runtime scalability + batch execution) is complete against `docs/phase-b-definition-of-done.md`.
+- Next focus shifts to Phase C (CSIRT/SOC triage pipeline hardening and productionization):
   - server/CLI-first ingest for password-protected ZIP evidence with safe unpacking limits,
   - archive-first artifact inventory (EML/MIME, Office macros, scripts, PE/ELF),
   - IOC extraction + provenance, YARA/YARA-X scanning, optional sandbox hook,

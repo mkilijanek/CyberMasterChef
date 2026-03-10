@@ -10,7 +10,7 @@
 
 1. Identify bad merge commit on `main`.
 2. Revert commit with non-interactive git revert.
-3. Run full CI (`pnpm ci`, `pnpm perf:check`, `pnpm release:readiness`).
+3. Run baseline gate (`pnpm run ci`), then full local quality chain (`pnpm run ci:full`), then `pnpm test:e2e`.
 4. Merge revert PR with code owner approval.
 5. Communicate rollback reason and impact.
 

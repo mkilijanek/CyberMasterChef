@@ -1899,6 +1899,24 @@
         "defaultValue": "10485760"
       },
       {
+        "key": "zipMaxExpandedBytes",
+        "type": "number",
+        "label": "ZIP max expanded bytes",
+        "defaultValue": "52428800"
+      },
+      {
+        "key": "zipMaxEntries",
+        "type": "number",
+        "label": "ZIP max entries",
+        "defaultValue": "1024"
+      },
+      {
+        "key": "zipMaxCompressionRatio",
+        "type": "number",
+        "label": "ZIP max compression ratio",
+        "defaultValue": "250"
+      },
+      {
         "key": "enableYaraScan",
         "type": "boolean",
         "label": "Enable YARA scan",

@@ -96,6 +96,34 @@ type TriageReport = {
       error: string | null;
     };
   };
+  archiveAnalysis: {
+    format: "zip" | "none";
+    entryCount: number;
+    totalCompressedBytes: number;
+    totalUncompressedBytes: number;
+    encryptedEntries: number;
+    maxCompressionRatio: number;
+    suspiciousPaths: string[];
+    entries: Array<{
+      name: string;
+      normalizedPath: string | null;
+      isDirectory: boolean;
+      compressedBytes: number;
+      uncompressedBytes: number;
+      encrypted: boolean;
+      crc32Hex: string;
+      suspiciousPath: boolean;
+    }>;
+    guards: {
+      pathTraversalSafe: boolean;
+      withinEntryLimit: boolean;
+      withinExpandedBytesLimit: boolean;
+      withinCompressionRatioLimit: boolean;
+      enforced: boolean;
+      safeToSubmit: boolean;
+      reasons: string[];
+    };
+  };
   preTriage: PreTriageReport;
 };
 
@@ -408,6 +436,133 @@ function hasYaraResult(body: Record<string, unknown> | null): body is Record<str
   return Array.isArray(body.ruleMatches) && body.ruleMatches.every((value) => typeof value === "string");
 }
 
+function readU16LE(bytes: Uint8Array, offset: number): number {
+  return bytes[offset]! | (bytes[offset + 1]! << 8);
+}
+
+function readU32LE(bytes: Uint8Array, offset: number): number {
+  return (
+    bytes[offset]! |
+    (bytes[offset + 1]! << 8) |
+    (bytes[offset + 2]! << 16) |
+    (bytes[offset + 3]! << 24)
+  ) >>> 0;
+}
+
+function normalizeZipEntryPath(name: string): string | null {
+  const unified = name.replaceAll("\\", "/");
+  if (
+    unified.startsWith("/") ||
+    /^[a-zA-Z]:/.test(unified) ||
+    unified.includes("\u0000") ||
+    unified.split("/").some((segment) => segment === "..")
+  ) {
+    return null;
+  }
+  const normalized = unified
+    .split("/")
+    .filter((segment) => segment.length > 0 && segment !== ".")
+    .join("/");
+  return normalized;
+}
+
+function inspectZipArchive(args: {
+  bytes: Uint8Array;
+  maxEntries: number;
+  maxExpandedBytes: number;
+  maxCompressionRatio: number;
+}): TriageReport["archiveAnalysis"] {
+  const entries: TriageReport["archiveAnalysis"]["entries"] = [];
+  let offset = 0;
+
+  while (offset + 4 <= args.bytes.length) {
+    const signature = readU32LE(args.bytes, offset);
+    if (signature === 0x04034b50) {
+      if (offset + 30 > args.bytes.length) break;
+      const flags = readU16LE(args.bytes, offset + 6);
+      const compressedBytes = readU32LE(args.bytes, offset + 18);
+      const uncompressedBytes = readU32LE(args.bytes, offset + 22);
+      const fileNameLength = readU16LE(args.bytes, offset + 26);
+      const extraLength = readU16LE(args.bytes, offset + 28);
+      const nameStart = offset + 30;
+      const nameEnd = nameStart + fileNameLength;
+      const dataStart = nameEnd + extraLength;
+      const dataEnd = dataStart + compressedBytes;
+      if (dataEnd > args.bytes.length) break;
+      const name = new TextDecoder().decode(args.bytes.slice(nameStart, nameEnd));
+      const normalizedPath = normalizeZipEntryPath(name);
+      const suspiciousPath = normalizedPath === null;
+      entries.push({
+        name,
+        normalizedPath,
+        isDirectory: name.endsWith("/"),
+        compressedBytes,
+        uncompressedBytes,
+        encrypted: (flags & 0x1) !== 0,
+        crc32Hex: readU32LE(args.bytes, offset + 14).toString(16).padStart(8, "0"),
+        suspiciousPath
+      });
+      offset = dataEnd;
+      continue;
+    }
+    if (signature === 0x02014b50 || signature === 0x06054b50) break;
+    break;
+  }
+
+  const suspiciousPaths = entries.filter((entry) => entry.suspiciousPath).map((entry) => entry.name);
+  const totalCompressedBytes = entries.reduce((acc, entry) => acc + entry.compressedBytes, 0);
+  const totalUncompressedBytes = entries.reduce((acc, entry) => acc + entry.uncompressedBytes, 0);
+  const maxCompressionRatio = entries.reduce((acc, entry) => {
+    const ratio =
+      entry.compressedBytes === 0
+        ? entry.uncompressedBytes > 0
+          ? Number.POSITIVE_INFINITY
+          : 1
+        : entry.uncompressedBytes / entry.compressedBytes;
+    return Math.max(acc, ratio);
+  }, 1);
+  const reasons: string[] = [];
+  const pathTraversalSafe = suspiciousPaths.length === 0;
+  if (!pathTraversalSafe) reasons.push("zip_path_traversal_detected");
+  const withinEntryLimit = entries.length <= args.maxEntries;
+  if (!withinEntryLimit) reasons.push(`zip_entry_limit_exceeded:${entries.length}`);
+  const withinExpandedBytesLimit = totalUncompressedBytes <= args.maxExpandedBytes;
+  if (!withinExpandedBytesLimit) {
+    reasons.push(`zip_expanded_bytes_limit_exceeded:${totalUncompressedBytes}`);
+  }
+  const withinCompressionRatioLimit = maxCompressionRatio <= args.maxCompressionRatio;
+  if (!withinCompressionRatioLimit) {
+    reasons.push(`zip_compression_ratio_limit_exceeded:${maxCompressionRatio.toFixed(2)}`);
+  }
+  if (entries.length === 0) reasons.push("zip_entries_unavailable");
+  const safeToSubmit =
+    entries.length > 0 &&
+    pathTraversalSafe &&
+    withinEntryLimit &&
+    withinExpandedBytesLimit &&
+    withinCompressionRatioLimit;
+
+  return {
+    format: entries.length > 0 ? "zip" : "none",
+    entryCount: entries.length,
+    totalCompressedBytes,
+    totalUncompressedBytes,
+    encryptedEntries: entries.filter((entry) => entry.encrypted).length,
+    maxCompressionRatio: Number(maxCompressionRatio.toFixed(3)),
+    suspiciousPaths,
+    entries,
+    guards: {
+      pathTraversalSafe,
+      withinEntryLimit,
+      withinExpandedBytesLimit,
+      withinCompressionRatioLimit,
+      enforced: entries.length > 0,
+      safeToSubmit,
+      reasons
+    }
+  };
+}
+
 export const basicTriage: Operation = {
   id: "forensic.basicTriage",
   name: "Basic Triage",
@@ -521,6 +676,24 @@ export const basicTriage: Operation = {
       defaultValue: 10485760
     },
     {
+      key: "zipMaxExpandedBytes",
+      label: "ZIP max expanded bytes",
+      type: "number",
+      defaultValue: 52428800
+    },
+    {
+      key: "zipMaxEntries",
+      label: "ZIP max entries",
+      type: "number",
+      defaultValue: 1024
+    },
+    {
+      key: "zipMaxCompressionRatio",
+      label: "ZIP max compression ratio",
+      type: "number",
+      defaultValue: 250
+    },
+    {
       key: "enableYaraScan",
       label: "Enable YARA scan",
       type: "boolean",
@@ -604,6 +777,9 @@ export const basicTriage: Operation = {
       ? args.zipCandidatePasswords.split(",").map((v) => v.trim()).filter((v) => v.length > 0).slice(0, 100)
       : [];
     const zipMaxInputBytes = Math.max(1024, Math.min(50 * 1024 * 1024, Math.floor(typeof args.zipMaxInputBytes === "number" ? args.zipMaxInputBytes : 10 * 1024 * 1024)));
+    const zipMaxExpandedBytes = Math.max(1024, Math.min(250 * 1024 * 1024, Math.floor(typeof args.zipMaxExpandedBytes === "number" ? args.zipMaxExpandedBytes : 50 * 1024 * 1024)));
+    const zipMaxEntries = Math.max(1, Math.min(10000, Math.floor(typeof args.zipMaxEntries === "number" ? args.zipMaxEntries : 1024)));
+    const zipMaxCompressionRatio = Math.max(1, Math.min(10000, typeof args.zipMaxCompressionRatio === "number" ? args.zipMaxCompressionRatio : 250));
 
     const yaraProfile = args.yaraRuntimeProfile === "cli" || args.yaraRuntimeProfile === "disabled" ? args.yaraRuntimeProfile : "disabled";
     const yaraEnabled = args.enableYaraScan === true && yaraProfile === "cli";
@@ -669,6 +845,25 @@ export const basicTriage: Operation = {
       ruleMatches: [],
       error: null
     };
+    let archiveAnalysis: TriageReport["archiveAnalysis"] = {
+      format: "none",
+      entryCount: 0,
+      totalCompressedBytes: 0,
+      totalUncompressedBytes: 0,
+      encryptedEntries: 0,
+      maxCompressionRatio: 1,
+      suspiciousPaths: [],
+      entries: [],
+      guards: {
+        pathTraversalSafe: true,
+        withinEntryLimit: true,
+        withinExpandedBytesLimit: true,
+        withinCompressionRatioLimit: true,
+        enforced: false,
+        safeToSubmit: false,
+        reasons: []
+      }
+    };
 
     if (sandboxEnabled) {
       if (!sandboxEndpointRaw) {
@@ -704,6 +899,14 @@ export const basicTriage: Operation = {
     }
 
     const zipInputBytes = input.type === "bytes" ? input.value : undefined;
+    if (zipInputBytes && zipInputBytes.length >= 4 && zipInputBytes[0] === 0x50 && zipInputBytes[1] === 0x4b) {
+      archiveAnalysis = inspectZipArchive({
+        bytes: zipInputBytes,
+        maxEntries: zipMaxEntries,
+        maxExpandedBytes: zipMaxExpandedBytes,
+        maxCompressionRatio: zipMaxCompressionRatio
+      });
+    }
     if (zipEnabled) {
       if (!zipEndpointRaw) {
         zipPasswordPipeline.status = "failed";
@@ -714,6 +917,12 @@ export const basicTriage: Operation = {
       } else if (zipInputBytes.length > zipMaxInputBytes) {
         zipPasswordPipeline.status = "failed";
         zipPasswordPipeline.error = `ZIP input exceeds zipMaxInputBytes=${zipMaxInputBytes}`;
+      } else if (archiveAnalysis.format !== "zip") {
+        zipPasswordPipeline.status = "failed";
+        zipPasswordPipeline.error = "ZIP archive headers could not be inspected safely";
+      } else if (!archiveAnalysis.guards.safeToSubmit) {
+        zipPasswordPipeline.status = "failed";
+        zipPasswordPipeline.error = archiveAnalysis.guards.reasons[0] ?? "zip_archive_failed_safety_checks";
       } else {
         const endpoint = validateEndpoint("ZIP", zipEndpointRaw, zipAllowHosts);
         zipPasswordPipeline.attempted = true;
@@ -726,7 +935,8 @@ export const basicTriage: Operation = {
             sha256: pre.hashes.sha256,
             archiveBase64: bytesToBase64(zipInputBytes),
             sizeBytes: zipInputBytes.length,
-            candidates: zipCandidates
+            candidates: zipCandidates,
+            archiveAnalysis
           },
           errorPrefix: "zip",
           validateBody: (body) =>
@@ -787,6 +997,11 @@ export const basicTriage: Operation = {
         (capability) => capability !== "archive_password_handling_and_zip_unpacking"
       );
     }
+    if (archiveAnalysis.guards.enforced && archiveAnalysis.guards.safeToSubmit) {
+      mockedCapabilities = mockedCapabilities.filter(
+        (capability) => capability !== "zip_slip_and_zip_bomb_safe_unpack_guards"
+      );
+    }
     if (yara.status === "submitted") {
       mockedCapabilities = mockedCapabilities.filter(
         (capability) => capability !== "yara_or_yara_x_rule_scanning"
@@ -822,6 +1037,7 @@ export const basicTriage: Operation = {
         zipPasswordPipeline,
         yara
       },
+      archiveAnalysis,
       preTriage: pre
     };
 

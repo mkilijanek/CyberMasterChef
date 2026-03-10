@@ -1,6 +1,6 @@
 # C Implementation Master Plan
 
-Updated: 2026-02-26 (M11-M13 execution wave completed)
+Updated: 2026-03-10 (M14-M18 roadmap defined after M11-M13 completion)
 
 ## Sources
 
@@ -131,7 +131,10 @@ Deliver a complete, auditable, and operationally useful C-track:
 6. `[IN-PROGRESS]` production integrations:
    - `[DONE]` deterministic STIX/MISP export payloads in `forensic.basicTriage`
    - `[DONE]` dynamic sandbox connector (optional CLI runtime profile, allowlist + timeout/retry controls)
-   - `[PLANNED]` ZIP password pipeline, YARA scanning
+   - `[DONE]` ZIP password pipeline
+   - `[DONE]` YARA scanning adapter
+   - `[PLANNED]` archive safety guards (`zip-slip` / `zip-bomb`) with verifiable enforcement
+   - `[PLANNED]` Authenticode / X.509 trust verification
 7. `[DONE]` advanced triage add-ons baseline:
    - `[DONE]` `imphash` computation for PE import tables
    - `[DONE]` TLSH/ssdeep computation with runtime fallbacks/feature flags (`enableTlsh`, `enableSsdeep`, `maxFuzzyInputBytes`)
@@ -172,20 +175,30 @@ Deliver a complete, auditable, and operationally useful C-track:
   - `C3: 100% (contract generation + generated regression + CI gate)`
 - Combined C-track completion snapshot for milestone scope: `100% (M1-M10)`
 - Active focus for next execution queue:
-  - close remaining high-priority operations from C2 domain plan
-  - reduce workbench worker bundle size and node-polyfill footprint
-  - productionize currently mocked external integrations in triage pipeline
+  - harden Phase C evidence-handling and trust-verification paths
+  - close remaining governance drift in `C1` / `C2`
+  - expand deterministic triage fixture coverage and evidence packaging
 
 ## Next Milestones Roadmap
 
-1. `M11`: C2 high-priority parity closure for `crypto-hash-kdf` and `network-protocol-parsers`.
-2. `M12`: workbench runtime slimming (worker bundle size + polyfill footprint reduction).
-3. `M13`: forensic production integrations v2 (ZIP password pipeline + YARA profile).
+1. `M14`: archive evidence safety and inventory hardening.
+2. `M15`: trust and signature verification in forensic triage.
+3. `M16`: deterministic triage corpus and regression-contract expansion.
+4. `M17`: C1/C2 governance closure and drift automation.
+5. `M18`: evidence packaging, provenance, and operational export maturity.
 
-Detailed stages: `docs/parity/roadmap-next-m11-m13.md`.
+Detailed stages: `docs/parity/roadmap-next-m14-m18.md`.
 
 ### M11-M13 Progress Snapshot
 
 - `M11` `[DONE]`: `hash.sha224`, `network.groupIPAddresses`, `network.dnsOverHttps` + refreshed C3 contracts.
 - `M12` `[DONE]`: worker asset budget gate and readiness evidence wired into CI/release checks.
 - `M13` `[DONE]`: `forensic.basicTriage` integrations expanded with ZIP password pipeline + YARA adapter (allowlist, timeout, retry, structured result output).
+
+### M14-M18 Progress Snapshot
+
+- `M14` `[DONE]`: ZIP archive safety guards and deterministic inventory landed in `forensic.basicTriage`.
+- `M15` `[PLANNED]`: Authenticode / X.509 verification.
+- `M16` `[PLANNED]`: deterministic triage corpus and regression-contract expansion.
+- `M17` `[PLANNED]`: `C1` reclassification workflow and `C2` drift automation.
+- `M18` `[PLANNED]`: evidence bundle and provenance export maturity.

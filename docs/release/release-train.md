@@ -13,9 +13,9 @@
 - Required green gates:
   - `pnpm c1:check`
   - `pnpm c3:check`
-  - `pnpm lint && pnpm typecheck && pnpm test`
-  - `pnpm perf:check`
-  - `pnpm release:readiness`
+  - `pnpm run ci`
+  - `pnpm run ci:full`
+  - `pnpm test:e2e`
 
 ## Approval workflow
 
@@ -26,5 +26,5 @@
 ## Hotfix path
 
 - Branch from `main` (`hotfix/*`), minimal scoped patch.
-- Run full CI and rollback checklist before merge.
+- Run `pnpm run ci:full`, `pnpm test:e2e`, and the rollback checklist before merge.
 - Back-merge hotfix to `dev` immediately after release.

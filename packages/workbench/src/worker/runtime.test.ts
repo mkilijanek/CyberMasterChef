@@ -122,7 +122,10 @@ describe("worker runtime protocol integration", () => {
 
     const pending = runtime.handle(makeBakeRequest("timeout-1", 5));
     await Promise.resolve();
-    timeoutHandler?.();
+    if (timeoutHandler === null) {
+      throw new Error("Expected timeout handler to be scheduled");
+    }
+    (timeoutHandler as () => void)();
     await pending;
 
     expect(messages).toContainEqual({
