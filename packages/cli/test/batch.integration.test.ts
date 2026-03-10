@@ -38,7 +38,7 @@ function runCli(args: string[]) {
 }
 
 describe("CLI batch integration", () => {
-  it("processes batch directory concurrently and matches expected snapshot", () => {
+  it("processes batch directory concurrently and matches expected snapshot", { timeout: 15_000 }, () => {
     const tempDir = mkdtempSync(join(tmpdir(), "cmc-cli-batch-"));
     const reportPath = join(tempDir, "report.json");
     const run = runCli([

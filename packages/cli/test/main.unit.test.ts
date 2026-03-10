@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -12,6 +12,14 @@ import {
   extractTriageEvidenceBundle,
   main
 } from "../src/main.js";
+
+const stdoutWrite = vi.spyOn(process.stdout, "write");
+const stderrWrite = vi.spyOn(process.stderr, "write");
+
+afterEach(() => {
+  stdoutWrite.mockReset();
+  stderrWrite.mockReset();
+});
 
 describe("cli helpers", () => {
   it("parses native recipes and CLI options", () => {
@@ -147,6 +155,80 @@ describe("cli helpers", () => {
       };
       expect(bundle.schemaVersion).toBe(1);
       expect(bundle.provenance.derivedIndicators.some((indicator) => indicator.value === "https://example.com")).toBe(true);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("lists operations and exits cleanly", async () => {
+    const exitSpy = vi
+      .spyOn(process, "exit")
+      .mockImplementation(((code?: string | number | null) => {
+        throw new Error(`exit:${String(code ?? 0)}`);
+      }) as typeof process.exit);
+    try {
+      await expect(main(["--list-ops", "--list-ops-filter", "toHex"])).rejects.toThrow("exit:0");
+      const stdout = stdoutWrite.mock.calls.map((call) => String(call[0])).join("");
+      expect(stdout).toContain("codec.toHex");
+      expect(stdout).not.toContain("forensic.basicTriage");
+    } finally {
+      exitSpy.mockRestore();
+    }
+  });
+
+  it("supports dry-run and recipe source reporting", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "cmc-cli-"));
+    try {
+      const recipePath = join(dir, "recipe.json");
+      const inputPath = join(dir, "input.txt");
+      writeFileSync(recipePath, JSON.stringify({ version: 1, steps: [{ opId: "codec.toHex" }] }), "utf-8");
+      writeFileSync(inputPath, "abc", "utf-8");
+
+      const exitSpy = vi
+        .spyOn(process, "exit")
+        .mockImplementation(((code?: string | number | null) => {
+          throw new Error(`exit:${String(code ?? 0)}`);
+        }) as typeof process.exit);
+      try {
+        await expect(
+          main([recipePath, inputPath, "--print-recipe-source", "--dry-run"])
+        ).rejects.toThrow("exit:0");
+      } finally {
+        exitSpy.mockRestore();
+      }
+
+      const stderr = stderrWrite.mock.calls.map((call) => String(call[0])).join("");
+      expect(stderr).toContain("[info] recipe-source=native");
+      expect(stderr).toContain("[dry-run] steps=1 source=native warnings=0");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("fails when triage bundle export is requested for non-triage output", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "cmc-cli-"));
+    try {
+      const recipePath = join(dir, "recipe.json");
+      const inputPath = join(dir, "input.txt");
+      const bundlePath = join(dir, "bundle.json");
+      writeFileSync(recipePath, JSON.stringify({ version: 1, steps: [{ opId: "codec.toHex" }] }), "utf-8");
+      writeFileSync(inputPath, "abc", "utf-8");
+
+      const exitSpy = vi
+        .spyOn(process, "exit")
+        .mockImplementation(((code?: string | number | null) => {
+          throw new Error(`exit:${String(code ?? 0)}`);
+        }) as typeof process.exit);
+      try {
+        await expect(main([recipePath, inputPath, "--triage-bundle-file", bundlePath])).rejects.toThrow(
+          "exit:1"
+        );
+      } finally {
+        exitSpy.mockRestore();
+      }
+
+      const stderr = stderrWrite.mock.calls.map((call) => String(call[0])).join("");
+      expect(stderr).toContain("Execution output does not contain a triage evidence bundle.");
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }
