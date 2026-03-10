@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync, statSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const repoRoot = resolve(import.meta.dirname, "..", "..");
@@ -40,7 +40,7 @@ const targets = [
 ];
 
 for (const target of targets) {
-  const sizeBytes = statSync(target.path).size ?? readFileSync(target.path).byteLength;
+  const sizeBytes = readFileSync(target.path).byteLength;
   if (sizeBytes > target.maxBytes) {
     throw new Error(
       `[perf-assets] ${target.label} exceeds budget: ${sizeBytes} > ${target.maxBytes}`
