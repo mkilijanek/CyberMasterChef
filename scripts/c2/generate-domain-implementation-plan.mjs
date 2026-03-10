@@ -5,7 +5,8 @@ import { loadImplementedOperations } from "./operation-inventory.mjs";
 
 const repoRoot = resolve(import.meta.dirname, "..", "..");
 const parityDir = resolve(repoRoot, "docs", "parity");
-const c1MatrixPath = resolve(parityDir, "c1-operation-domain-matrix.json");
+const c1MatrixRelativePath = "docs/parity/c1-operation-domain-matrix.json";
+const c1MatrixPath = resolve(repoRoot, c1MatrixRelativePath);
 const outJsonPath = resolve(parityDir, "c2-domain-implementation-plan.json");
 const outMdPath = resolve(parityDir, "c2-domain-implementation-plan.md");
 
@@ -72,7 +73,7 @@ const generatedAt = process.env.SOURCE_DATE_EPOCH
 const payload = {
   generatedAt,
   source: {
-    c1MatrixPath,
+    c1MatrixPath: c1MatrixRelativePath,
     implementedOpsCount: implemented.length
   },
   summary,
