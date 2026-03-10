@@ -93,6 +93,7 @@ pnpm release:readiness
 - [Master plan](docs/parity/c-implementation-master-plan.md)
 - [Execution board](docs/parity/c2-execution-board.md)
 - [C3 contracts](docs/parity/c3-operation-compatibility-contracts.md)
+- [Triage corpus](docs/parity/triage-corpus.md)
 - [Roadmap M14-M18](docs/parity/roadmap-next-m14-m18.md)
 - [Roadmap M11-M13](docs/parity/roadmap-next-m11-m13.md)
 - [Development guide](docs/development.md)

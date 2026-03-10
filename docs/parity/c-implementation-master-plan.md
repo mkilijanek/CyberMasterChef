@@ -199,6 +199,6 @@ Detailed stages: `docs/parity/roadmap-next-m14-m18.md`.
 
 - `M14` `[DONE]`: ZIP archive safety guards and deterministic inventory landed in `forensic.basicTriage`.
 - `M15` `[DONE]`: PE certificate table parsing and deterministic embedded X.509 trust summary.
-- `M16` `[PLANNED]`: deterministic triage corpus and regression-contract expansion.
+- `M16` `[DONE]`: deterministic triage corpus and regression-contract expansion.
 - `M17` `[PLANNED]`: `C1` reclassification workflow and `C2` drift automation.
 - `M18` `[PLANNED]`: evidence bundle and provenance export maturity.

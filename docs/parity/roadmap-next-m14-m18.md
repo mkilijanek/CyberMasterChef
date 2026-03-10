@@ -54,7 +54,7 @@ GitHub issues:
 ## M16: Deterministic Triage Corpus and Regression Contracts
 
 Goal: make triage regressions visible through stable sample corpora and expected reports.
-Status: `PLANNED`
+Status: `DONE`
 
 Scope:
 1. add known-good benign/suspicious/malicious fixture corpus with deterministic sanitization,
@@ -62,9 +62,15 @@ Scope:
 3. extend report-contract coverage for integrations, trust signals, archive inventory, and recommendations,
 4. document corpus provenance and redaction policy.
 
-Backlog issues:
-- `triage-golden-corpus`
-- `triage-contract-regression-expansion`
+Delivered:
+1. deterministic corpus fixture module for benign, suspicious, archive, and signed-PE samples,
+2. golden regression test covering both `forensic.basicPreTriage` and `forensic.basicTriage`,
+3. corpus provenance/redaction documentation in `docs/parity/triage-corpus.md`,
+4. trust and archive sections are now exercised by the regression corpus instead of only ad hoc unit tests.
+
+GitHub issues:
+- `#42` `triage-golden-corpus`
+- `#34` `triage-contract-regression-expansion`
 
 ## M17: C1/C2 Governance Closure
 
@@ -108,6 +114,6 @@ Backlog issues:
 
 - `M14` `[DONE]`: archive safety guards + deterministic inventory landed in `forensic.basicTriage`.
 - `M15` `[DONE]`: embedded certificate parsing and PE trust summary in pre-triage and triage.
-- `M16` `[PLANNED]`: deterministic triage corpus + contract/golden expansion.
+- `M16` `[DONE]`: deterministic triage corpus + contract/golden expansion.
 - `M17` `[PLANNED]`: `C1` reclassification workflow + `C2` plan drift gate.
 - `M18` `[PLANNED]`: evidence bundle and provenance export.
