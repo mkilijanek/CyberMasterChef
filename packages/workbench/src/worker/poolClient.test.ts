@@ -76,6 +76,15 @@ class FlakyClient implements ExecutionClient {
   dispose(): void {}
 }
 
+class RejectingClient implements ExecutionClient {
+  async init(): Promise<void> {}
+  bake(): Promise<BakeResult> {
+    return Promise.reject(new Error("Aborted"));
+  }
+  cancelActive(): void {}
+  dispose(): void {}
+}
+
 describe("WorkerPoolClient", () => {
   it("assigns queued jobs across worker slots", async () => {
     let created = 0;
@@ -235,5 +244,41 @@ describe("WorkerPoolClient", () => {
     const out = await pool.bake(recipe, { type: "string", value: "x" });
     expect(out.run.attempt).toBe(2);
     expect(delays).toEqual([10]);
+  });
+
+  it("reports stats, dispose rejects queued work, and init rejects after dispose", async () => {
+    const controlled = new ControlledClient();
+    const pool = new WorkerPoolClient({
+      size: 1,
+      clientFactory: () => controlled
+    });
+    const recipe: Recipe = { version: 1, steps: [] };
+
+    const running = await pool.enqueue(recipe, { type: "string", value: "running" });
+    const queued = await pool.enqueue(recipe, { type: "string", value: "queued" });
+
+    expect(pool.getStats()).toMatchObject({
+      queueDepth: 1,
+      inFlight: 1,
+      maxQueue: 64
+    });
+    expect(pool.cancelQueued("missing-task")).toBe(false);
+
+    pool.dispose();
+    controlled.release();
+
+    await expect(queued.result).rejects.toThrow("Worker pool disposed");
+    await expect(running.result).resolves.toBeTruthy();
+    await expect(pool.init()).rejects.toThrow("WorkerPoolClient is disposed");
+  });
+
+  it("does not retry aborted errors when retry policy rejects them", async () => {
+    const pool = new WorkerPoolClient({
+      size: 1,
+      maxAttempts: 2,
+      clientFactory: () => new RejectingClient()
+    });
+    const recipe: Recipe = { version: 1, steps: [] };
+    await expect(pool.bake(recipe, { type: "string", value: "x" })).rejects.toThrow("Aborted");
   });
 });

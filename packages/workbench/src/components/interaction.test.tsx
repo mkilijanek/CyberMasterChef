@@ -118,6 +118,45 @@ describe("component interactions", () => {
     expect(runToSteps).toContain(0);
   });
 
+  it("updates selected recipe args and ignores invalid move directions", () => {
+    const changes: Array<{ version: 1; steps: Array<{ opId: string; args?: Record<string, unknown> }> }> = [];
+    let root!: ReturnType<typeof create>;
+    act(() => {
+      root = create(
+        <RecipeEditor
+          recipe={{
+            version: 1,
+            steps: [{ opId: "text.replace", args: { find: "a", replace: "b", all: false } }]
+          }}
+          onChange={(recipe) => {
+            changes.push(recipe);
+          }}
+        />
+      );
+    });
+
+    const buttons = root.root.findAllByType("button");
+    act(() => {
+      buttons[0]?.props.onClick();
+    });
+
+    const inputs = root.root.findAllByType("input");
+    act(() => {
+      inputs[0]?.props.onChange({ target: { value: "needle" } });
+      inputs[1]?.props.onChange({ target: { value: "replacement" } });
+      inputs[2]?.props.onChange({ target: { checked: true } });
+    });
+
+    act(() => {
+      buttons[1]?.props.onClick();
+      buttons[2]?.props.onClick();
+    });
+
+    expect(changes.some((recipe) => recipe.steps[0]?.args?.find === "needle")).toBe(true);
+    expect(changes.some((recipe) => recipe.steps[0]?.args?.replace === "replacement")).toBe(true);
+    expect(changes.some((recipe) => recipe.steps[0]?.args?.all === true)).toBe(true);
+  });
+
   it("renders catalog matches and add handler", () => {
     const added: string[] = [];
     let root!: ReturnType<typeof create>;

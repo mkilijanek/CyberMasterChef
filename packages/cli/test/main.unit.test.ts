@@ -53,6 +53,81 @@ describe("cli helpers", () => {
     });
   });
 
+  it("parses extended trace, repro, batch, and output options", () => {
+    const opts = parseArgs([
+      "recipe.json",
+      "input.txt",
+      "--show-trace",
+      "--trace-json",
+      "--trace-limit",
+      "3",
+      "--show-trace-summary",
+      "--trace-summary-json",
+      "--show-repro",
+      "--repro-json",
+      "--repro-file",
+      "repro.json",
+      "--output-file",
+      "out.txt",
+      "--input-encoding",
+      "base64",
+      "--bytes-output",
+      "base64",
+      "--hex-uppercase",
+      "--max-output-chars",
+      "10",
+      "--batch-input-dir",
+      "batch",
+      "--batch-report-file",
+      "report.json",
+      "--batch-summary-json",
+      "--batch-output-dir",
+      "batch-out",
+      "--batch-output-format",
+      "jsonl",
+      "--batch-max-files",
+      "5",
+      "--batch-concurrency",
+      "4",
+      "--batch-skip-empty",
+      "--batch-fail-empty",
+      "--batch-fail-fast",
+      "--batch-continue-on-error",
+      "--fail-empty-output",
+      "--no-newline"
+    ]);
+
+    expect(opts).toMatchObject({
+      recipePath: "recipe.json",
+      inputPath: "input.txt",
+      showTrace: true,
+      traceJson: true,
+      traceLimit: 3,
+      showTraceSummary: true,
+      traceSummaryJson: true,
+      showRepro: true,
+      reproJson: true,
+      reproFile: "repro.json",
+      outputFile: "out.txt",
+      inputEncoding: "base64",
+      bytesOutput: "base64",
+      hexUppercase: true,
+      maxOutputChars: 10,
+      batchInputDir: "batch",
+      batchReportFile: "report.json",
+      batchSummaryJson: true,
+      batchOutputDir: "batch-out",
+      batchOutputFormat: "jsonl",
+      batchMaxFiles: 5,
+      batchConcurrency: 4,
+      batchSkipEmpty: true,
+      batchFailEmpty: true,
+      batchFailFast: false,
+      failEmptyOutput: true,
+      noNewline: true
+    });
+  });
+
   it("parses input values for text, hex, and base64", () => {
     expect(parseInputValue("hello", { inputEncoding: "text" })).toEqual({
       type: "string",
@@ -124,6 +199,30 @@ describe("cli helpers", () => {
     ).toEqual({ schemaVersion: 1, bundleId: "triage-bundle--1" });
     expect(extractTriageEvidenceBundle({ type: "string", value: "not-json" })).toBeNull();
     expect(extractTriageEvidenceBundle({ type: "json", value: { evidenceBundle: true } })).toBeNull();
+    expect(
+      extractTriageEvidenceBundle({ type: "string", value: JSON.stringify({ evidenceBundle: "bad" }) })
+    ).toBeNull();
+  });
+
+  it("fails on invalid CLI argument values and unknown options", () => {
+    const exitSpy = vi
+      .spyOn(process, "exit")
+      .mockImplementation(((code?: string | number | null) => {
+        throw new Error(`exit:${String(code ?? 0)}`);
+      }) as typeof process.exit);
+    try {
+      expect(() => parseArgs(["recipe.json", "--input-encoding", "weird"])).toThrow("exit:1");
+      expect(() => parseArgs(["recipe.json", "--batch-output-format", "yaml"])).toThrow("exit:1");
+      expect(() => parseArgs(["recipe.json", "--timeout-ms", "0"])).toThrow("exit:1");
+      expect(() => parseArgs(["recipe.json", "--unknown"])).toThrow("exit:1");
+      const stderr = stderrWrite.mock.calls.map((call) => String(call[0])).join("");
+      expect(stderr).toContain("Invalid --input-encoding value: weird");
+      expect(stderr).toContain("Invalid --batch-output-format value: yaml");
+      expect(stderr).toContain("Invalid --timeout-ms value: 0");
+      expect(stderr).toContain("Unknown option: --unknown");
+    } finally {
+      exitSpy.mockRestore();
+    }
   });
 
   it("writes triage evidence bundle files from CLI execution", async () => {
@@ -231,6 +330,70 @@ describe("cli helpers", () => {
       expect(stderr).toContain("Execution output does not contain a triage evidence bundle.");
     } finally {
       rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("writes summary, trace, repro, and output artifacts", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "cmc-cli-"));
+    try {
+      const recipePath = join(dir, "recipe.json");
+      const inputPath = join(dir, "input.txt");
+      const outputPath = join(dir, "output.txt");
+      const reproPath = join(dir, "repro.json");
+      writeFileSync(recipePath, JSON.stringify({ version: 1, steps: [{ opId: "codec.toHex" }] }), "utf-8");
+      writeFileSync(inputPath, "abc", "utf-8");
+
+      await main([
+        recipePath,
+        inputPath,
+        "--output-file",
+        outputPath,
+        "--repro-file",
+        reproPath,
+        "--show-summary",
+        "--summary-json",
+        "--show-trace",
+        "--trace-json",
+        "--trace-limit",
+        "1",
+        "--show-trace-summary",
+        "--trace-summary-json",
+        "--show-repro",
+        "--repro-json",
+        "--no-newline"
+      ]);
+
+      expect(readFileSync(outputPath, "utf-8")).toBe("616263");
+      const repro = JSON.parse(readFileSync(reproPath, "utf-8")) as { recipeSource: string; traceSteps: number };
+      expect(repro.recipeSource).toBe("native");
+      expect(repro.traceSteps).toBe(1);
+
+      const stderr = stderrWrite.mock.calls.map((call) => String(call[0])).join("");
+      expect(stderr).toContain("[summary] outputType=string traceSteps=1");
+      expect(stderr).toContain("\"outputType\":\"string\"");
+      expect(stderr).toContain("[trace] step=1 op=codec.toHex");
+      expect(stderr).toContain("\"opId\":\"codec.toHex\"");
+      expect(stderr).toContain("[trace-summary] steps=1");
+      expect(stderr).toContain("\"steps\":1");
+      expect(stderr).toContain("[repro] recipeHash=");
+      expect(stderr).toContain("\"recipeSource\":\"native\"");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("lists operations as JSON", async () => {
+    const exitSpy = vi
+      .spyOn(process, "exit")
+      .mockImplementation(((code?: string | number | null) => {
+        throw new Error(`exit:${String(code ?? 0)}`);
+      }) as typeof process.exit);
+    try {
+      await expect(main(["--list-ops-json", "--list-ops-filter", "toHex"])).rejects.toThrow("exit:0");
+      const stdout = stdoutWrite.mock.calls.map((call) => String(call[0])).join("");
+      expect(stdout).toContain("\"id\":\"codec.toHex\"");
+    } finally {
+      exitSpy.mockRestore();
     }
   });
 });

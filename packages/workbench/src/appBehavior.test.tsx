@@ -94,8 +94,11 @@ function flattenText(children: unknown): string {
   if (children === null || children === undefined || typeof children === "boolean") return "";
   if (typeof children === "string" || typeof children === "number") return String(children);
   if (Array.isArray(children)) return children.map((child) => flattenText(child)).join("");
-  if (typeof children === "object" && children !== null && "children" in children) {
-    return flattenText((children as { children?: unknown }).children);
+  if (typeof children === "object") {
+    const node = children as { children?: unknown };
+    if (Object.hasOwn(node, "children")) {
+      return flattenText(node.children);
+    }
   }
   return "";
 }
