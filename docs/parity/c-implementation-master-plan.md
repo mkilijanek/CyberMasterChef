@@ -1,6 +1,6 @@
 # C Implementation Master Plan
 
-Updated: 2026-03-10 (M24-M28 quality roadmap added after the previous quality wave)
+Updated: 2026-03-10 (M29-M33 quality roadmap added after the previous quality wave)
 
 ## Sources
 
@@ -182,13 +182,13 @@ Deliver a complete, auditable, and operationally useful C-track:
 
 ## Next Milestones Roadmap
 
-1. `M24`: `App.tsx` coverage expansion.
-2. `M25`: workbench helper/runtime tail closure.
-3. `M26`: CLI coverage expansion.
-4. `M27`: coverage baseline refresh.
-5. `M28`: roadmap/master-plan refresh with issue traceability.
+1. `M29`: CLI batch edge coverage.
+2. `M30`: CLI stdin/stdout tail coverage.
+3. `M31`: workbench `App.tsx` tail coverage.
+4. `M32`: coverage baseline refresh.
+5. `M33`: roadmap/master-plan refresh with issue traceability.
 
-Detailed stages: `docs/parity/roadmap-next-m24-m28.md`.
+Detailed stages: `docs/parity/roadmap-next-m29-m33.md`.
 
 ### M11-M13 Progress Snapshot
 
@@ -219,3 +219,11 @@ Detailed stages: `docs/parity/roadmap-next-m24-m28.md`.
 - `M26` `[DONE]`: CLI batch summary/report, empty-output, and bootstrap paths covered.
 - `M27` `[DONE]`: coverage baseline refreshed with updated post-wave metrics.
 - `M28` `[DONE]`: roadmap/master-plan synchronized for the M24-M28 quality wave.
+
+### M29-M33 Progress Snapshot
+
+- `M29` `[DONE]`: CLI batch skip-empty, read-error, and fail-fast tails covered.
+- `M30` `[DONE]`: CLI stdin/stdout executable-entry behavior covered.
+- `M31` `[DONE]`: workbench `App.tsx` cancel/control-state coverage expanded.
+- `M32` `[DONE]`: coverage baseline refreshed after the latest quality wave.
+- `M33` `[DONE]`: roadmap and master-plan synchronized for the M29-M33 wave.

@@ -4,53 +4,53 @@ Updated: 2026-03-10
 
 ## Objective
 
-Capture the current unit-coverage baseline after the M24-M28 quality wave so the repo tracks measurable improvement rather than qualitative claims.
+Capture the current unit-coverage baseline after the M29-M33 quality wave so further work can be targeted against the remaining hotspot files rather than broad package-level guesses.
 
 ## Package Coverage Snapshot
 
 | Package | Statements | Branches | Functions | Lines | Command |
 | --- | ---: | ---: | ---: | ---: | --- |
-| `@cybermasterchef/cli` | `86.27%` | `79.23%` | `83.33%` | `89.66%` | `pnpm --filter @cybermasterchef/cli test:coverage` |
-| `@cybermasterchef/workbench` | `89.95%` | `79.26%` | `96.71%` | `92.50%` | `pnpm --filter @cybermasterchef/workbench test:coverage` |
+| `@cybermasterchef/cli` | `89.97%` | `83.04%` | `94.44%` | `92.78%` | `pnpm --filter @cybermasterchef/cli test:coverage` |
+| `@cybermasterchef/workbench` | `90.28%` | `79.52%` | `97.36%` | `92.87%` | `pnpm --filter @cybermasterchef/workbench test:coverage` |
 
 ## Delta Since Previous Baseline
 
-- `@cybermasterchef/cli`: `+9.37` statements, `+7.31` branches, `+33.33` functions, `+9.38` lines.
-- `@cybermasterchef/workbench`: `+5.94` statements, `+3.15` branches, `+7.90` functions, `+5.30` lines.
+- `@cybermasterchef/cli`: `+3.70` statements, `+3.81` branches, `+11.11` functions, `+3.12` lines.
+- `@cybermasterchef/workbench`: `+0.33` statements, `+0.26` branches, `+0.65` functions, `+0.37` lines.
 
 ## Hotspots
 
 ### CLI
 
 - Primary hotspot: `packages/cli/src/main.ts`
-- Current state: most remaining uncovered logic is still concentrated in a single command-entry file.
+- Current state: the file is now close to a fully-defensible unit baseline, but a handful of low-level tails remain.
 - Highest-value remaining branches:
-  - batch error/fail-fast combinations around `runBatchWithConcurrency`,
-  - non-batch stdout/output-file tails,
-  - bootstrap and process-entry tails near `isMain`.
+  - help/version and process-entry tails around `isMain`,
+  - remaining file-output/stdout split edges,
+  - a few argument-validation and warning-path branches.
 
 ### Workbench
 
 - Primary hotspot: `packages/workbench/src/App.tsx`
-- Current state: the package now clears the local function threshold, but `App.tsx` still carries most remaining statement and branch debt.
+- Current state: `App.tsx` still dominates the package’s remaining statement and branch debt even though function coverage is comfortably above threshold.
 - Highest-value remaining branches:
-  - late render tails around recipe insertion and trace/result rendering,
-  - a few bootstrap and control-state branches,
-  - residual worker/runtime error display branches.
+  - a small set of UI-state transitions around render-only lines,
+  - recipe-editor composition tails,
+  - residual warning/error display permutations.
 
 ## Threshold State
 
-- `@cybermasterchef/workbench` now clears its local `test:coverage` function threshold with `96.71%` functions.
-- `@cybermasterchef/cli` still has no local coverage gate, but the package is now in a materially healthier state and no longer sits at a function-coverage floor.
+- `@cybermasterchef/workbench` continues to clear its local `test:coverage` function threshold with `97.36%` functions.
+- `@cybermasterchef/cli` still has no package-local threshold gate, but its coverage is now close enough to `workbench` that the next waves can stay narrow and hotspot-driven.
 
 ## Validation Used
 
 - `pnpm --filter @cybermasterchef/cli test -- main.unit`
 - `pnpm --filter @cybermasterchef/cli test:coverage`
-- `pnpm --filter @cybermasterchef/workbench test -- appBehavior appHelpers`
+- `pnpm --filter @cybermasterchef/workbench test -- appBehavior`
 - `pnpm --filter @cybermasterchef/workbench test:coverage`
 
 ## Interpretation
 
-- The quality wave materially reduced risk in both interactive and CLI entry surfaces.
-- Remaining coverage work should continue to focus on `packages/cli/src/main.ts` and `packages/workbench/src/App.tsx`, because repo-level percentages are still dominated by those two files.
+- This wave materially hardened both package entry surfaces without production-code churn.
+- The next coverage work should stay focused on a shrinking set of tails in `packages/cli/src/main.ts` and `packages/workbench/src/App.tsx`.

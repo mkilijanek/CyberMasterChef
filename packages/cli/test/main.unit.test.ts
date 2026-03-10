@@ -500,6 +500,117 @@ describe("cli helpers", () => {
     }
   });
 
+  it("covers batch skip-empty, read-error, and fail-fast branches", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "cmc-cli-"));
+    try {
+      const batchDir = join(dir, "batch");
+      const reportPath = join(dir, "report.json");
+      const recipePath = join(dir, "recipe.json");
+      mkdirSync(batchDir, { recursive: true });
+      mkdirSync(join(batchDir, "folder"), { recursive: true });
+      writeFileSync(
+        recipePath,
+        JSON.stringify({ version: 1, steps: [{ opId: "codec.toHex" }] }),
+        "utf-8"
+      );
+      writeFileSync(join(batchDir, "a.txt"), "", "utf-8");
+      writeFileSync(join(batchDir, "b.txt"), "abc", "utf-8");
+
+      await main([
+        recipePath,
+        "--batch-input-dir",
+        batchDir,
+        "--batch-report-file",
+        reportPath,
+        "--batch-summary-json",
+        "--batch-skip-empty",
+        "--batch-concurrency",
+        "2"
+      ]);
+
+      const report = JSON.parse(readFileSync(reportPath, "utf-8")) as Array<{
+        file: string;
+        ok: boolean;
+        error?: string;
+      }>;
+      expect(report).toHaveLength(3);
+      expect(report).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            file: join(batchDir, "a.txt"),
+            ok: true,
+            error: "Skipped empty input file"
+          }),
+          expect.objectContaining({
+            file: join(batchDir, "b.txt"),
+            ok: true
+          }),
+          expect.objectContaining({
+            file: join(batchDir, "folder"),
+            ok: false,
+            error: "Failed to read or process input file"
+          })
+        ])
+      );
+
+      writeFileSync(join(batchDir, "0-empty.txt"), "", "utf-8");
+      writeFileSync(join(batchDir, "1-ok.txt"), "abc", "utf-8");
+      await main([
+        recipePath,
+        "--batch-input-dir",
+        batchDir,
+        "--batch-report-file",
+        reportPath,
+        "--batch-fail-empty",
+        "--batch-fail-fast",
+        "--batch-ext",
+        ".txt"
+      ]);
+
+      const failFastReport = JSON.parse(readFileSync(reportPath, "utf-8")) as Array<{
+        file: string;
+        ok: boolean;
+        error?: string;
+      }>;
+      expect(failFastReport).toHaveLength(1);
+      expect(failFastReport[0]).toMatchObject({
+        file: join(batchDir, "0-empty.txt"),
+        ok: false,
+        error: "Empty input file"
+      });
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("supports stdin input and stdout output via executable entrypoint", () => {
+    const dir = mkdtempSync(join(tmpdir(), "cmc-cli-"));
+    try {
+      const recipePath = join(dir, "recipe.json");
+      writeFileSync(
+        recipePath,
+        JSON.stringify({ version: 1, steps: [{ opId: "codec.toHex" }] }),
+        "utf-8"
+      );
+
+      const run = spawnSync("node", ["--import", "tsx", sourceEntry, recipePath], {
+        cwd: repoRoot,
+        encoding: "utf-8",
+        input: "abc",
+        env: {
+          ...process.env,
+          TSX_TSCONFIG_PATH: join(repoRoot, "tsconfig.base.json")
+        }
+      });
+
+      expect(run.status).toBe(0);
+      expect(run.stdout).toBe("616263\n");
+      expect(run.stderr).toBe("");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it("supports executable bootstrap with --version", () => {
     const run = spawnSync("node", ["--import", "tsx", sourceEntry, "--version"], {
       cwd: repoRoot,

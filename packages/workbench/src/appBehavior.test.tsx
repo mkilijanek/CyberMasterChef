@@ -357,6 +357,14 @@ describe("App behavior", () => {
     expect(cancelActiveMock).toHaveBeenCalled();
 
     await act(() => {
+      const cancelButton = findButton(root, "Cancel");
+      expect(cancelButton.props.disabled).toBe(false);
+      cancelButton.props.onClick();
+      return flushPromises();
+    });
+    expect(cancelActiveMock).toHaveBeenCalledTimes(2);
+
+    await act(() => {
       resolveBake?.(makeBakeResult());
       return flushPromises();
     });
@@ -526,6 +534,9 @@ describe("App behavior", () => {
 
     await act(() => {
       findByTestId(root, "timeout-input").props.onChange({
+        target: { value: "999999" }
+      } as React.ChangeEvent<HTMLInputElement>);
+      findByTestId(root, "timeout-input").props.onChange({
         target: { value: "NaN" }
       } as React.ChangeEvent<HTMLInputElement>);
       findByTestId(root, "timeout-input").props.onBlur();
@@ -538,7 +549,7 @@ describe("App behavior", () => {
       return Promise.resolve();
     });
 
-    expect(findByTestId(root, "timeout-input").props.value).toBe(10000);
+    expect(findByTestId(root, "timeout-input").props.value).toBe(120000);
     expect(findByTestId(root, "pool-size-input").props.value).toBe(8);
     expect(findByTestId(root, "max-queue-input").props.value).toBe(1);
 
@@ -557,6 +568,6 @@ describe("App behavior", () => {
       addButtons[0]?.props.onClick();
       return Promise.resolve();
     });
-    expect(flattenText(root.toJSON())).toContain("Recipe");
+    expect(flattenText(root.toJSON())).toContain("text.reverse");
   });
 });

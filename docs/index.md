@@ -17,6 +17,7 @@ A clean-slate, modular, and secure workbench for data operations — successor t
 - [Triage Corpus](parity/triage-corpus.md)
 - [Triage Evidence Bundle](parity/triage-evidence-bundle.md)
 - [Quality Coverage Baseline](parity/quality-coverage-baseline.md)
+- [Roadmap Next (M29-M33)](parity/roadmap-next-m29-m33.md)
 - [Roadmap Next (M24-M28)](parity/roadmap-next-m24-m28.md)
 - [Roadmap Next (M19-M23)](parity/roadmap-next-m19-m23.md)
 - [Roadmap Next (M14-M18)](parity/roadmap-next-m14-m18.md)
