@@ -13,6 +13,19 @@ function run(command, args, options = {}) {
   return execFileSync(command, args, { stdio: "pipe", encoding: "utf8", ...options }).trim();
 }
 
+function fetchStatus(url) {
+  return run("curl", [
+    "--fail",
+    "--silent",
+    "--show-error",
+    "--output",
+    "/dev/null",
+    "--write-out",
+    "%{http_code}",
+    url
+  ]);
+}
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -54,12 +67,10 @@ async function main() {
     }
 
     for (const [, assetPath] of assetMatches) {
-      run("curl", [
-        "--fail",
-        "--silent",
-        "--show-error",
-        `http://127.0.0.1:18080${assetPath}`
-      ]);
+      const status = fetchStatus(`http://127.0.0.1:18080${assetPath}`);
+      if (status !== "200") {
+        throw new Error(`Asset fetch returned unexpected status ${status} for ${assetPath}`);
+      }
     }
   } finally {
     try {
