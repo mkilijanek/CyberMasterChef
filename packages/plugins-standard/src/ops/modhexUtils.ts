@@ -5,8 +5,8 @@ const MODHEX_MAP = new Map(MODHEX_ALPHABET.split("").map((char, index) => [char,
 
 export function encodeModhex(bytes: Uint8Array): string {
   return Array.from(bytes, (byte) => {
-    const high = MODHEX_ALPHABET[(byte >> 4) & 0x0f] ?? "";
-    const low = MODHEX_ALPHABET[byte & 0x0f] ?? "";
+    const high = MODHEX_ALPHABET[(byte >> 4) & 0x0f];
+    const low = MODHEX_ALPHABET[byte & 0x0f];
     return `${high}${low}`;
   }).join("");
 }
@@ -24,7 +24,7 @@ export function decodeModhex(input: string): Uint8Array {
     if (index === undefined) {
       throw new Error(`Invalid Modhex character: ${char}`);
     }
-    hex += HEX_ALPHABET[index] ?? "";
+    hex += HEX_ALPHABET[index];
   }
 
   const out = new Uint8Array(hex.length / 2);

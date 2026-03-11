@@ -40,6 +40,7 @@ describe("encoding helper coverage", () => {
     expect(base92Ord("#")).toBe(1);
     expect(base92Ord("a")).toBe(62);
     expect(() => base92Ord("~")).toThrow("Invalid Base92 character");
+    expect(encodeBase92(new Uint8Array())).toBe("");
     expect(encodeBase92(new Uint8Array([255]))).not.toBe("");
     expect(encodeBase92(new Uint8Array([65]))).toHaveLength(2);
     expect(encodeBase92(new Uint8Array([65, 66]))).toHaveLength(3);

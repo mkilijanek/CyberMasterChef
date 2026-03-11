@@ -8,7 +8,7 @@ export function encodeBraille(input: string): string {
     .split("")
     .map((char) => {
       const index = ASCII_LOOKUP.indexOf(char.toUpperCase());
-      return index < 0 ? char : (DOT6_LOOKUP[index] ?? char);
+      return index < 0 ? char : DOT6_LOOKUP[index];
     })
     .join("");
 }
@@ -18,7 +18,7 @@ export function decodeBraille(input: string): string {
     .split("")
     .map((char) => {
       const index = DOT6_LOOKUP.indexOf(char);
-      return index < 0 ? char : (ASCII_LOOKUP[index] ?? char);
+      return index < 0 ? char : ASCII_LOOKUP[index];
     })
     .join("");
 }
