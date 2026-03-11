@@ -45,7 +45,7 @@ flowchart TD
    - Issue: `#60`
    - deliver core IP/range parsing and normalization operations
 4. `M37`: network parser baseline wave 2
-   - Status: `IN-PROGRESS`
+   - Status: `DONE-IN-CODE`
    - Issue: `#61`
    - close remaining protocol/header parser gaps from the current priority board
 5. `M38`: encoding/codec parity wave 1
@@ -125,5 +125,5 @@ flowchart TD
 - `M34` `[DONE-IN-CODE]`: added `hash.crc32` and `hash.ripemd160`, regenerated C2 parity artifacts, and advanced the crypto/hash closure track.
 - `M35` `[DONE-IN-CODE]`: `hash.fletcher8`, `hash.fletcher16`, `hash.fletcher32`, and `hash.fletcher64` are implemented, tested, and correctly classified into the crypto parity domain.
 - `M36` `[DONE-IN-CODE]`: `network.parseIPv6Address`, `network.parseIPRange`, and `network.stripHttpHeaders` are implemented and tested; GitHub milestones `M34-M53` were published and linked to issues `#58-#77`.
-- `M37` `[IN-PROGRESS]`: `network.parseIPv4Header`, `network.stripIPv4Header`, `network.stripTcpHeader`, and `network.stripUdpHeader` are implemented and tested, lifting network parity to `19/27` tracked operations.
+- `M37` `[DONE-IN-CODE]`: `network.parseIPv4Header`, `network.parseTcpHeader`, `network.parseUdpHeader`, `network.parseUri`, `network.stripIPv4Header`, `network.stripTcpHeader`, and `network.stripUdpHeader` are implemented and tested, lifting network parity to `22/29` tracked operations.
 - `M38-M53` `[PLANNED]`: not started yet in code; scoped here as the release path to `1.0.0`.

@@ -1,12 +1,12 @@
 import type { Operation } from "@cybermasterchef/core";
 import { parseTcpHeader } from "./tcpHeaderUtils.js";
 
-export const stripTcpHeader: Operation = {
-  id: "network.stripTcpHeader",
-  name: "Strip TCP Header",
-  description: "Strips the TCP header and returns the segment payload bytes.",
+export const parseTcpHeaderOp: Operation = {
+  id: "network.parseTcpHeader",
+  name: "Parse TCP Header",
+  description: "Parses a TCP segment header and returns normalized metadata.",
   input: ["bytes", "string"],
-  output: "bytes",
+  output: "json",
   args: [],
   run: ({ input }) => {
     if (input.type !== "bytes" && input.type !== "string") {
@@ -14,7 +14,6 @@ export const stripTcpHeader: Operation = {
     }
     const bytes =
       input.type === "bytes" ? input.value : new TextEncoder().encode(input.value);
-    const header = parseTcpHeader(bytes);
-    return { type: "bytes", value: bytes.slice(header.headerLengthBytes) };
+    return { type: "json", value: parseTcpHeader(bytes) };
   }
 };

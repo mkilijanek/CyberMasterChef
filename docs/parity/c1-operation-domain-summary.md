@@ -18,11 +18,11 @@ Total operations: 465
   - Structured formats (JSON/XML/CSV/YAML/TOML/HTML and format conversion).
 - regex-text-advanced: 51 (10.97%)
   - Regex and advanced text analysis/normalization operations.
-- network-protocol-parsers: 27 (5.81%)
+- network-protocol-parsers: 29 (6.24%)
   - Protocol/header/parsing operations for network/web payloads.
 - forensic-malware-helper: 16 (3.44%)
   - IOC extraction, entropy/byte analysis and malware triage helpers.
-- misc-uncategorized: 147 (31.61%)
+- misc-uncategorized: 145 (31.18%)
   - Operations that require manual triage or do not fit current taxonomy.
 
 ## Misc/uncategorized preview (first 40)

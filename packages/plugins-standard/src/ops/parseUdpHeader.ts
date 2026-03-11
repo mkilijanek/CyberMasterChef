@@ -1,12 +1,12 @@
 import type { Operation } from "@cybermasterchef/core";
 import { parseUdpHeader } from "./udpHeaderUtils.js";
 
-export const stripUdpHeader: Operation = {
-  id: "network.stripUdpHeader",
-  name: "Strip UDP Header",
-  description: "Strips the UDP header and returns the datagram payload bytes.",
+export const parseUdpHeaderOp: Operation = {
+  id: "network.parseUdpHeader",
+  name: "Parse UDP Header",
+  description: "Parses a UDP datagram header and returns normalized metadata.",
   input: ["bytes", "string"],
-  output: "bytes",
+  output: "json",
   args: [],
   run: ({ input }) => {
     if (input.type !== "bytes" && input.type !== "string") {
@@ -14,8 +14,6 @@ export const stripUdpHeader: Operation = {
     }
     const bytes =
       input.type === "bytes" ? input.value : new TextEncoder().encode(input.value);
-    const header = parseUdpHeader(bytes);
-    const end = Math.min(header.length, bytes.length);
-    return { type: "bytes", value: bytes.slice(8, end) };
+    return { type: "json", value: parseUdpHeader(bytes) };
   }
 };

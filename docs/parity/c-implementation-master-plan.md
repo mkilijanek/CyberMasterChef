@@ -252,4 +252,4 @@ Detailed stages: `docs/parity/roadmap-next-m34-m53.md`.
 - `M50-M53`: harden performance, security, docs, and release governance for `1.0.0`.
 - `M52-M53` also include container delivery and GHCR publication readiness.
 - GitHub milestones `M34-M53` are published and linked to issues `#58-#77`.
-- Current checkpoint: `hash.crc32`, `hash.ripemd160`, `hash.fletcher8`, `hash.fletcher16`, `hash.fletcher32`, `hash.fletcher64`, `network.parseIPv6Address`, `network.parseIPRange`, `network.stripHttpHeaders`, `network.parseIPv4Header`, `network.stripIPv4Header`, `network.stripTcpHeader`, and `network.stripUdpHeader` are implemented, tested, and reflected in parity artifacts.
+- Current checkpoint: `hash.crc32`, `hash.ripemd160`, `hash.fletcher8`, `hash.fletcher16`, `hash.fletcher32`, `hash.fletcher64`, `network.parseIPv6Address`, `network.parseIPRange`, `network.stripHttpHeaders`, `network.parseIPv4Header`, `network.parseTcpHeader`, `network.parseUdpHeader`, `network.parseUri`, `network.stripIPv4Header`, `network.stripTcpHeader`, and `network.stripUdpHeader` are implemented, tested, and reflected in parity artifacts.

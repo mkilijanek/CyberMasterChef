@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 311
+Total contracts: 314
 
 ## Contract entries (compact)
 
@@ -1139,6 +1139,27 @@ Total contracts: 311
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.parseTcpHeader
+  - name: Parse TCP Header
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.parseUdpHeader
+  - name: Parse UDP Header
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.parseUri
+  - name: Parse URI
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
 - network.stripHttpHeaders
   - name: Strip HTTP Headers
   - domain: network-protocol-parsers
@@ -1159,14 +1180,14 @@ Total contracts: 311
   - inputTypes: bytes, string
   - outputType: bytes
   - deterministic: true
-  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - network.stripUdpHeader
   - name: Strip UDP Header
   - domain: network-protocol-parsers
   - inputTypes: bytes, string
   - outputType: bytes
   - deterministic: true
-  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.append
   - name: Append
   - domain: misc-uncategorized

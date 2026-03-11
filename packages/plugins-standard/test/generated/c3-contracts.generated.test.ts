@@ -1576,6 +1576,32 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "network.parseTcpHeader",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.parseUdpHeader",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.parseUri",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
     "operationId": "network.stripHttpHeaders",
     "inputTypes": [
       "bytes",

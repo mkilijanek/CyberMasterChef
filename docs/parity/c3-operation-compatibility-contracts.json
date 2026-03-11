@@ -4997,6 +4997,83 @@
     }
   },
   {
+    "operationId": "network.parseTcpHeader",
+    "name": "Parse TCP Header",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseTcpHeader.ts",
+      "description": "Parses a TCP segment header and returns normalized metadata."
+    }
+  },
+  {
+    "operationId": "network.parseUdpHeader",
+    "name": "Parse UDP Header",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseUdpHeader.ts",
+      "description": "Parses a UDP datagram header and returns normalized metadata."
+    }
+  },
+  {
+    "operationId": "network.parseUri",
+    "name": "Parse URI",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected string input",
+        "Expected URI input",
+        "Invalid absolute URI"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseUri.ts",
+      "description": "Parses an absolute URI into normalized components and query parameters."
+    }
+  },
+  {
     "operationId": "network.stripHttpHeaders",
     "name": "Strip HTTP Headers",
     "domain": "network-protocol-parsers",
@@ -5061,14 +5138,10 @@
     "errorTaxonomy": {
       "categories": [
         "EXECUTION_ERROR",
-        "INVALID_INPUT_TYPE",
-        "INVALID_ARGUMENT"
+        "INVALID_INPUT_TYPE"
       ],
       "examples": [
-        "Expected bytes or string input",
-        "TCP header requires at least 20 bytes",
-        "Invalid TCP header length",
-        "TCP segment shorter than declared header length"
+        "Expected bytes or string input"
       ]
     },
     "notes": {
@@ -5090,13 +5163,10 @@
     "errorTaxonomy": {
       "categories": [
         "EXECUTION_ERROR",
-        "INVALID_INPUT_TYPE",
-        "INVALID_ARGUMENT"
+        "INVALID_INPUT_TYPE"
       ],
       "examples": [
-        "Expected bytes or string input",
-        "UDP header requires at least 8 bytes",
-        "Invalid UDP length"
+        "Expected bytes or string input"
       ]
     },
     "notes": {

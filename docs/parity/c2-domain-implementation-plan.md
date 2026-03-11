@@ -1,14 +1,14 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 311
+Implemented operations in repo: 314
 
 ## Priority order
 
 - P1: forensic-malware-helper (coverage 31.25%, missing ~11)
 - P2: crypto-hash-kdf (coverage 40.21%, missing ~58)
 - P3: encodings-codecs (coverage 41.38%, missing ~34)
-- P4: misc-uncategorized (coverage 59.86%, missing ~59)
+- P4: misc-uncategorized (coverage 60.69%, missing ~57)
 
 ## Domain summary
 
@@ -230,11 +230,11 @@ Implemented operations in repo: 311
 
 ### network-protocol-parsers
 - Description: Protocol/header/parsing operations for network/web payloads.
-- CyberChef total: 27
-- Implemented total: 19
-- Estimated missing: 8
-- Coverage: 70.37%
-- Implemented ops in repo: 19
+- CyberChef total: 29
+- Implemented total: 22
+- Estimated missing: 7
+- Coverage: 75.86%
+- Implemented ops in repo: 22
 - Implemented operation IDs:
   - codec.urlEncode (urlEncode.ts)
   - codec.urlDecode (urlDecode.ts)
@@ -249,12 +249,13 @@ Implemented operations in repo: 311
   - network.parseIPRange (parseIPRange.ts)
   - network.stripHttpHeaders (stripHttpHeaders.ts)
   - network.parseIPv4Header (parseIPv4Header.ts)
+  - network.parseTcpHeader (parseTcpHeader.ts)
+  - network.parseUdpHeader (parseUdpHeader.ts)
+  - network.parseUri (parseUri.ts)
   - network.stripIPv4Header (stripIPv4Header.ts)
   - network.stripTcpHeader (stripTcpHeader.ts)
   - network.stripUdpHeader (stripUdpHeader.ts)
   - network.extractUrls (extractUrls.ts)
-  - network.defangUrls (defangUrls.ts)
-  - network.fangUrls (fangUrls.ts)
 - Candidate operations (first 20):
   - CSS selector (CSSSelector.mjs) [high]
   - DechunkHTTPResponse (DechunkHTTPResponse.mjs) [high]
@@ -294,10 +295,10 @@ Implemented operations in repo: 311
 
 ### misc-uncategorized
 - Description: Operations that require manual triage or do not fit current taxonomy.
-- CyberChef total: 147
+- CyberChef total: 145
 - Implemented total: 88
-- Estimated missing: 59
-- Coverage: 59.86%
+- Estimated missing: 57
+- Coverage: 60.69%
 - Implemented ops in repo: 88
 - Implemented operation IDs:
   - text.prepend (prepend.ts)

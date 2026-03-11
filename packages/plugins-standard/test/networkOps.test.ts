@@ -15,6 +15,9 @@ import { parseIPv6Address } from "../src/ops/parseIPv6Address.js";
 import { parseIPRange } from "../src/ops/parseIPRange.js";
 import { stripHttpHeaders } from "../src/ops/stripHttpHeaders.js";
 import { parseIPv4Header } from "../src/ops/parseIPv4Header.js";
+import { parseTcpHeaderOp } from "../src/ops/parseTcpHeader.js";
+import { parseUdpHeaderOp } from "../src/ops/parseUdpHeader.js";
+import { parseUri } from "../src/ops/parseUri.js";
 import { stripIPv4Header } from "../src/ops/stripIPv4Header.js";
 import { stripTcpHeader } from "../src/ops/stripTcpHeader.js";
 import { stripUdpHeader } from "../src/ops/stripUdpHeader.js";
@@ -373,6 +376,58 @@ describe("network operations", () => {
     expect(new TextDecoder().decode(out.output.value)).toBe("abc");
   });
 
+  it("parses TCP headers into normalized metadata", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(parseTcpHeaderOp);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.parseTcpHeader" }] };
+    const segment = new Uint8Array([
+      0x00, 0x50, 0x13, 0x88, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02,
+      0x50, 0x18, 0x20, 0x00, 0x12, 0x34, 0x00, 0x00, 0x68, 0x69
+    ]);
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "bytes", value: segment }
+    });
+    expect(out.output.type).toBe("json");
+    if (out.output.type !== "json") return;
+    expect(out.output.value).toMatchObject({
+      sourcePort: 80,
+      destinationPort: 5000,
+      sequenceNumber: 1,
+      acknowledgementNumber: 2,
+      headerLengthBytes: 20,
+      windowSize: 8192,
+      checksum: "1234"
+    });
+    expect(out.output.value).toMatchObject({
+      flags: { ack: true, psh: true, syn: false }
+    });
+  });
+
+  it("parses UDP headers into normalized metadata", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(parseUdpHeaderOp);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.parseUdpHeader" }] };
+    const datagram = new Uint8Array([
+      0x13, 0x89, 0x00, 0x35, 0x00, 0x0a, 0xab, 0xcd, 0x6f, 0x6b
+    ]);
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "bytes", value: datagram }
+    });
+    expect(out.output.type).toBe("json");
+    if (out.output.type !== "json") return;
+    expect(out.output.value).toEqual({
+      sourcePort: 5001,
+      destinationPort: 53,
+      length: 10,
+      checksum: "abcd",
+      payloadLength: 2
+    });
+  });
+
   it("strips TCP headers and returns payload bytes", async () => {
     const registry = new InMemoryRegistry();
     registry.register(stripTcpHeader);
@@ -406,5 +461,38 @@ describe("network operations", () => {
     expect(out.output.type).toBe("bytes");
     if (out.output.type !== "bytes") return;
     expect(new TextDecoder().decode(out.output.value)).toBe("ok");
+  });
+
+  it("parses absolute URIs into normalized components", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(parseUri);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.parseUri" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: {
+        type: "string",
+        value: "https://alice:secret@example.com:8443/a/b?x=1&x=2#frag"
+      }
+    });
+    expect(out.output.type).toBe("json");
+    if (out.output.type !== "json") return;
+    expect(out.output.value).toEqual({
+      href: "https://alice:secret@example.com:8443/a/b?x=1&x=2#frag",
+      scheme: "https",
+      username: "alice",
+      password: "secret",
+      origin: "https://example.com:8443",
+      host: "example.com:8443",
+      hostname: "example.com",
+      port: "8443",
+      path: "/a/b",
+      query: "x=1&x=2",
+      fragment: "frag",
+      queryParams: [
+        { key: "x", value: "1" },
+        { key: "x", value: "2" }
+      ]
+    });
   });
 });
