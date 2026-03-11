@@ -1756,6 +1756,46 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "math.divide",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "delimiter"
+    ]
+  },
+  {
+    "operationId": "math.multiply",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "delimiter"
+    ]
+  },
+  {
+    "operationId": "math.subtract",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "delimiter"
+    ]
+  },
+  {
+    "operationId": "math.sum",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "delimiter"
+    ]
+  },
+  {
     "operationId": "network.dechunkHttpResponse",
     "inputTypes": [
       "bytes",
@@ -1939,6 +1979,14 @@ const CONTRACTS = [
       "string"
     ],
     "outputType": "bytes",
+    "argKeys": []
+  },
+  {
+    "operationId": "text.alternatingCaps",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
     "argKeys": []
   },
   {

@@ -32,5 +32,5 @@
 ## Release 1.0.0 Track
 
 - Strategic plan: `docs/release/release-1.0.0-plan.md`
-- Parity roadmap feeding `1.0.0`: `docs/parity/roadmap-next-m34-m53.md`
+- Parity roadmap feeding `1.0.0`: `docs/parity/roadmap-next-m50-m59.md`
 - Container delivery: Docker image, smoke-test workflow, `docker-compose.yml`, and GHCR publication on release tags

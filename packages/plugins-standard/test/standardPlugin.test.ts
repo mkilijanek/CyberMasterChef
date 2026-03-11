@@ -21,6 +21,9 @@ describe("standardPlugin", () => {
         "forensic.entropy",
         "forensic.yaraRules",
         "hash.sha256",
+        "math.sum",
+        "math.divide",
+        "text.alternatingCaps",
         "text.reverse"
       ])
     );

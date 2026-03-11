@@ -8,7 +8,7 @@ Ship `CyberMasterChef 1.0.0` only after the tracked CyberChef functional surface
 
 ## Entry Criteria
 
-- `M34-M52` completed and documented
+- `M34-M58` completed and documented
 - `C1`, `C2`, `C3` artifacts regenerated and committed
 - no open blocking security, CI, or release issues
 - README/docs index/master plan aligned with shipped scope

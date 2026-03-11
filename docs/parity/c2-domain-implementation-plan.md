@@ -1,14 +1,14 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 344
+Implemented operations in repo: 349
 
 ## Priority order
 
 - P1: crypto-hash-kdf (coverage 40.21%, missing ~58)
 - P2: network-protocol-parsers (coverage 56.41%, missing ~17)
 - P3: forensic-malware-helper (coverage 58.82%, missing ~7)
-- P4: misc-uncategorized (coverage 73.11%, missing ~32)
+- P4: misc-uncategorized (coverage 77.31%, missing ~27)
 
 ## Domain summary
 
@@ -301,11 +301,12 @@ Implemented operations in repo: 344
 ### misc-uncategorized
 - Description: Operations that require manual triage or do not fit current taxonomy.
 - CyberChef total: 119
-- Implemented total: 87
-- Estimated missing: 32
-- Coverage: 73.11%
-- Implemented ops in repo: 87
+- Implemented total: 92
+- Estimated missing: 27
+- Coverage: 77.31%
+- Implemented ops in repo: 92
 - Implemented operation IDs:
+  - text.alternatingCaps (alternatingCaps.ts)
   - text.prepend (prepend.ts)
   - text.append (append.ts)
   - text.slice (slice.ts)
@@ -325,7 +326,6 @@ Implemented operations in repo: 344
   - text.keepVowels (keepVowels.ts)
   - text.endsWith (endsWith.ts)
   - text.lowerFirst (lowerFirst.ts)
-  - text.upperFirst (upperFirst.ts)
 - Candidate operations (first 20):
   - AlternatingCaps (AlternatingCaps.mjs) [low]
   - Amount (BitShiftLeft.mjs) [low]

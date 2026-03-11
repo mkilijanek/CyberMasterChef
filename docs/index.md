@@ -2,7 +2,7 @@
 
 A clean-slate, modular, and secure workbench for data operations — successor to CyberChef.
 
-Current parity checkpoint: `M49` is complete in code, `344` operations are implemented in repo, and the next wave is `M50`.
+Current parity checkpoint: `M53` is in progress in code, `349` operations are implemented in repo, and the active release-closing wave is `M50-M59`.
 
 - Current release includes: Binary/URL codecs, `text.reverse`, auto-bake, run-to-step execution, deep-link sharing, search by operation ID with match counters, `Ctrl/Cmd+K` catalog focus shortcut, `Ctrl/Cmd+Shift+K` trace-filter focus shortcut, quick recipe JSON copy in Workbench, recipe-step duplication in editor, trace step counters with trace filtering/clear action (including filter reset on clear), filtered-count visibility, filtered-trace copy, CyberChef recipe import/export (Workbench + CLI) with detailed import warnings and import-source indicator, timeout-controlled execution in both Workbench and CLI, structured CLI output metadata, workbench image preview with output metadata, and an expanded golden recipe regression baseline.
 
@@ -20,6 +20,7 @@ Current parity checkpoint: `M49` is complete in code, `344` operations are imple
 - [Triage Evidence Bundle](parity/triage-evidence-bundle.md)
 - [Quality Coverage Baseline](parity/quality-coverage-baseline.md)
 - [Roadmap Next (M34-M53)](parity/roadmap-next-m34-m53.md)
+- [Roadmap Next (M50-M59)](parity/roadmap-next-m50-m59.md)
 - [Roadmap Next (M29-M33)](parity/roadmap-next-m29-m33.md)
 - [Roadmap Next (M24-M28)](parity/roadmap-next-m24-m28.md)
 - [Roadmap Next (M19-M23)](parity/roadmap-next-m19-m23.md)

@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 344
+    "implementedOpsCount": 349
   },
   "summary": [
     {
@@ -2070,10 +2070,15 @@
       "domain": "misc-uncategorized",
       "description": "Operations that require manual triage or do not fit current taxonomy.",
       "cyberChefTotal": 119,
-      "implementedTotal": 87,
-      "missingEstimated": 32,
-      "coveragePct": 73.11,
+      "implementedTotal": 92,
+      "missingEstimated": 27,
+      "coveragePct": 77.31,
       "implementedOps": [
+        {
+          "id": "text.alternatingCaps",
+          "name": "Alternating Caps",
+          "file": "alternatingCaps.ts"
+        },
         {
           "id": "text.prepend",
           "name": "Prepend",
@@ -2460,6 +2465,26 @@
           "file": "onlyAlnumAndSpaces.ts"
         },
         {
+          "id": "math.sum",
+          "name": "Sum",
+          "file": "sum.ts"
+        },
+        {
+          "id": "math.subtract",
+          "name": "Subtract",
+          "file": "subtract.ts"
+        },
+        {
+          "id": "math.multiply",
+          "name": "Multiply",
+          "file": "multiply.ts"
+        },
+        {
+          "id": "math.divide",
+          "name": "Divide",
+          "file": "divide.ts"
+        },
+        {
           "id": "text.removeCurrencySymbols",
           "name": "Remove Currency Symbols",
           "file": "removeCurrencySymbols.ts"
@@ -2636,8 +2661,8 @@
     {
       "priority": 4,
       "domain": "misc-uncategorized",
-      "coveragePct": 73.11,
-      "missingEstimated": 32
+      "coveragePct": 77.31,
+      "missingEstimated": 27
     }
   ]
 }

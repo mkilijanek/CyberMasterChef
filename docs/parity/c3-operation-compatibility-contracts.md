@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 344
+Total contracts: 349
 
 ## Contract entries (compact)
 
@@ -1251,6 +1251,34 @@ Total contracts: 344
   - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- math.divide
+  - name: Divide
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- math.multiply
+  - name: Multiply
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- math.subtract
+  - name: Subtract
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- math.sum
+  - name: Sum
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - network.dechunkHttpResponse
   - name: Dechunk HTTP Response
   - domain: network-protocol-parsers
@@ -1396,6 +1424,13 @@ Total contracts: 344
   - domain: network-protocol-parsers
   - inputTypes: bytes, string
   - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.alternatingCaps
+  - name: Alternating Caps
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.append

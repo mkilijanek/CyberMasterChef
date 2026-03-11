@@ -5535,6 +5535,131 @@
     }
   },
   {
+    "operationId": "math.divide",
+    "name": "Divide",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input",
+        "Cannot divide by zero"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/divide.ts",
+      "description": "Divides delimiter-separated numeric values from left to right."
+    }
+  },
+  {
+    "operationId": "math.multiply",
+    "name": "Multiply",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/multiply.ts",
+      "description": "Multiplies delimiter-separated numeric values."
+    }
+  },
+  {
+    "operationId": "math.subtract",
+    "name": "Subtract",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/subtract.ts",
+      "description": "Subtracts delimiter-separated numeric values from left to right."
+    }
+  },
+  {
+    "operationId": "math.sum",
+    "name": "Sum",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sum.ts",
+      "description": "Sums delimiter-separated numeric values."
+    }
+  },
+  {
     "operationId": "network.dechunkHttpResponse",
     "name": "Dechunk HTTP Response",
     "domain": "network-protocol-parsers",
@@ -6099,6 +6224,30 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/stripUdpHeader.ts",
       "description": "Strips the UDP header and returns the datagram payload bytes."
+    }
+  },
+  {
+    "operationId": "text.alternatingCaps",
+    "name": "Alternating Caps",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/alternatingCaps.ts",
+      "description": "Alternates the case of letters while preserving non-letter characters."
     }
   },
   {

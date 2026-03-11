@@ -1,6 +1,6 @@
 # C Implementation Master Plan
 
-Updated: 2026-03-11 (M34-M53 roadmap, release 1.0.0 track, container delivery plan, and GitHub milestone tracking added)
+Updated: 2026-03-11 (M50-M59 roadmap, release sequencing correction, container delivery plan, and GitHub milestone tracking added)
 
 ## Sources
 
@@ -201,9 +201,15 @@ Deliver a complete, auditable, and operationally useful C-track:
 17. `M50`: performance and scale 1.0 gates.
 18. `M51`: security hardening final wave.
 19. `M52`: documentation and operational readiness.
-20. `M53`: release `1.0.0` candidate and cutover.
+20. `M53`: misc/utility parity wave 1. `[IN PROGRESS]`
+21. `M54`: misc/utility parity wave 2.
+22. `M55`: network/forensic parity wave 1.
+23. `M56`: network/forensic parity wave 2.
+24. `M57`: crypto parity wave 3.
+25. `M58`: crypto parity wave 4 and final gap closure.
+26. `M59`: release `1.0.0` candidate and cutover.
 
-Detailed stages: `docs/parity/roadmap-next-m34-m53.md`.
+Detailed stages: `docs/parity/roadmap-next-m50-m59.md`.
 
 ### M11-M13 Progress Snapshot
 
@@ -243,14 +249,12 @@ Detailed stages: `docs/parity/roadmap-next-m34-m53.md`.
 - `M32` `[DONE]`: coverage baseline refreshed after the latest quality wave.
 - `M33` `[DONE]`: roadmap and master-plan synchronized for the M29-M33 wave.
 
-### M34-M53 Planned Track
+### M50-M59 Planned Track
 
-- `M34-M35`: close high-value crypto/hash/checksum parity gaps.
-- `M36-M39`: close parser and encoding/codec gaps from the current C2 priority board.
-- `M40-M44`: structured-format, archive, and forensic closure wave completed in code.
-- `M45-M47`: image/media closure, misc reclassification, and parity corpus expansion are complete in code.
-- `M48-M49`: CLI/workbench output metadata and image preview parity are complete in code.
-- `M50-M53`: harden performance, security, docs, and release governance for `1.0.0`.
-- `M52-M53` also include container delivery and GHCR publication readiness.
-- GitHub milestones `M34-M53` are published and linked to issues `#58-#77`.
-- Current checkpoint: `hash.crc32`, `hash.ripemd160`, `hash.fletcher8`, `hash.fletcher16`, `hash.fletcher32`, `hash.fletcher64`, `network.parseIPv6Address`, `network.parseIPRange`, `network.stripHttpHeaders`, `network.parseIPv4Header`, `network.parseTcpHeader`, `network.parseUdpHeader`, `network.parseUri`, `network.stripIPv4Header`, `network.stripTcpHeader`, `network.stripUdpHeader`, `codec.toBase32`, `codec.fromBase32`, `codec.toBase45`, `codec.fromBase45`, `codec.toBase62`, `codec.fromBase62`, `codec.toBase85`, `codec.fromBase85`, `codec.toBech32`, `codec.fromBech32`, `codec.toMorseCode`, `codec.fromMorseCode`, `codec.toBase92`, `codec.fromBase92`, `codec.toBraille`, `codec.fromBraille`, `codec.toPunycode`, `codec.fromPunycode`, `codec.toModhex`, `codec.fromModhex`, `bytes.dropBytes`, `bytes.takeBytes`, `bytes.dropNthBytes`, `bytes.takeNthBytes`, `bytes.removeNullBytes`, `forensic.entropy`, `forensic.ctph`, `forensic.generateUuid`, `forensic.fileTree`, `forensic.yaraRules`, and extended `forensic.detectFileType` media detection are implemented, tested, and reflected in parity artifacts.
+- `M50-M52`: stabilize performance, security, docs, and operational evidence while parity continues to grow.
+- `M53-M54`: close low-risk `misc-uncategorized` and utility gaps with full regression coverage.
+- `M55-M56`: close remaining high-value network and forensic gaps needed for tracked parity.
+- `M57-M58`: push crypto/reference parity to the `100%+` target with deterministic evidence and contracts.
+- `M59`: execute release cutover only after parity, perf, security, docs, and container gates are all green.
+- GitHub milestones are being extended through `M59` with issues `#74-#83`.
+- Current checkpoint: `hash.crc32`, `hash.ripemd160`, `hash.fletcher8`, `hash.fletcher16`, `hash.fletcher32`, `hash.fletcher64`, `network.parseIPv6Address`, `network.parseIPRange`, `network.stripHttpHeaders`, `network.parseIPv4Header`, `network.parseTcpHeader`, `network.parseUdpHeader`, `network.parseUri`, `network.stripIPv4Header`, `network.stripTcpHeader`, `network.stripUdpHeader`, `codec.toBase32`, `codec.fromBase32`, `codec.toBase45`, `codec.fromBase45`, `codec.toBase62`, `codec.fromBase62`, `codec.toBase85`, `codec.fromBase85`, `codec.toBech32`, `codec.fromBech32`, `codec.toMorseCode`, `codec.fromMorseCode`, `codec.toBase92`, `codec.fromBase92`, `codec.toBraille`, `codec.fromBraille`, `codec.toPunycode`, `codec.fromPunycode`, `codec.toModhex`, `codec.fromModhex`, `bytes.dropBytes`, `bytes.takeBytes`, `bytes.dropNthBytes`, `bytes.takeNthBytes`, `bytes.removeNullBytes`, `forensic.entropy`, `forensic.ctph`, `forensic.generateUuid`, `forensic.fileTree`, `forensic.yaraRules`, extended `forensic.detectFileType` media detection, `text.alternatingCaps`, `math.sum`, `math.subtract`, `math.multiply`, and `math.divide` are implemented, tested, and reflected in parity artifacts.
