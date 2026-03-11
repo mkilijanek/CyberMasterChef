@@ -58,10 +58,10 @@ export function decodeBase92(input: string): Uint8Array {
 
   for (let index = 0; index < trimmed.length; index += 2) {
     if (index + 1 < trimmed.length) {
-      const value = base92Ord(trimmed[index]) * 91 + base92Ord(trimmed[index + 1]);
+      const value = base92Ord(trimmed[index]!) * 91 + base92Ord(trimmed[index + 1]!);
       bitString += value.toString(2).padStart(13, "0");
     } else {
-      bitString += base92Ord(trimmed[index]).toString(2).padStart(6, "0");
+      bitString += base92Ord(trimmed[index]!).toString(2).padStart(6, "0");
     }
 
     while (bitString.length >= 8) {

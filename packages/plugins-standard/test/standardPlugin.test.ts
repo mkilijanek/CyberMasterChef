@@ -18,6 +18,8 @@ describe("standardPlugin", () => {
         "codec.toHex",
         "codec.urlDecode",
         "codec.urlEncode",
+        "forensic.entropy",
+        "forensic.yaraRules",
         "hash.sha256",
         "text.reverse"
       ])

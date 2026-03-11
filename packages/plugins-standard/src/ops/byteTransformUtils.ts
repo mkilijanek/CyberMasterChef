@@ -85,7 +85,7 @@ export function dropNth(bytes: Uint8Array, every: number, startingAt: number): U
   const out: number[] = [];
   for (let i = 0; i < bytes.length; i++) {
     if (i < startingAt || (i - startingAt) % every !== 0) {
-      out.push(bytes[i]);
+      out.push(bytes[i]!);
     }
   }
   return Uint8Array.from(out);
@@ -101,7 +101,7 @@ export function takeNth(bytes: Uint8Array, every: number, startingAt: number): U
   const out: number[] = [];
   for (let i = 0; i < bytes.length; i++) {
     if (i >= startingAt && (i - startingAt) % every === 0) {
-      out.push(bytes[i]);
+      out.push(bytes[i]!);
     }
   }
   return Uint8Array.from(out);

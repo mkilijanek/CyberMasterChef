@@ -178,13 +178,15 @@ describe("forensic basic triage", () => {
       evidenceBundle: {
         schemaVersion: number;
         generatedAt: string;
+        hashSummary: { sha256: string | null; ssdeep: string | null };
+        iocSummary: { urls: number; cves: number };
         exportSummary: { stixObjectCount: number; mispAttributeCount: number };
         provenance: { derivedIndicators: Array<{ value: string }> };
       };
       integrations: { sandbox: { status: string } };
       preTriage: {
-        iocs: { cves: string[] };
-        hashes: { tlsh: string | null; ssdeep: string | null };
+        iocs: { urls: string[]; cves: string[] };
+        hashes: { sha256: string | null; tlsh: string | null; ssdeep: string | null };
       };
     };
 
@@ -226,6 +228,10 @@ describe("forensic basic triage", () => {
     ).toBe(true);
     expect(report.evidenceBundle.schemaVersion).toBe(1);
     expect(report.evidenceBundle.generatedAt).toBe("1970-01-01T00:00:00.000Z");
+    expect(report.evidenceBundle.hashSummary.sha256).toBe(report.preTriage.hashes.sha256);
+    expect(report.evidenceBundle.hashSummary.ssdeep).toBe(report.preTriage.hashes.ssdeep);
+    expect(report.evidenceBundle.iocSummary.urls).toBe(report.preTriage.iocs.urls.length);
+    expect(report.evidenceBundle.iocSummary.cves).toBe(report.preTriage.iocs.cves.length);
     expect(report.evidenceBundle.exportSummary.stixObjectCount).toBe(
       report.exports.stixBundle.objects.length
     );

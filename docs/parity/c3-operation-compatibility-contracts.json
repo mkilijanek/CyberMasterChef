@@ -2765,6 +2765,28 @@
     }
   },
   {
+    "operationId": "forensic.ctph",
+    "name": "CTPH",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/ctph.ts",
+      "description": "Computes a context-triggered piecewise hash (ssdeep-compatible digest)."
+    }
+  },
+  {
     "operationId": "forensic.detectFileType",
     "name": "Detect File Type",
     "domain": "forensic-malware-helper",
@@ -2812,6 +2834,35 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/elfInfo.ts",
       "description": "Extracts basic ELF header metadata."
+    }
+  },
+  {
+    "operationId": "forensic.entropy",
+    "name": "Entropy",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [
+      {
+        "key": "segmentSize",
+        "type": "number",
+        "label": "Segment size",
+        "defaultValue": "0"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/entropy.ts",
+      "description": "Computes Shannon entropy for the input and optional fixed-size segments."
     }
   },
   {
@@ -3060,6 +3111,117 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/extractStrings.ts",
       "description": "Extracts printable ASCII strings from bytes/string payload."
+    }
+  },
+  {
+    "operationId": "forensic.fileTree",
+    "name": "File Tree",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string or json input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fileTree.ts",
+      "description": "Builds a deterministic file tree from newline-delimited paths or archive entry JSON."
+    }
+  },
+  {
+    "operationId": "forensic.generateUuid",
+    "name": "Generate UUID",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "version",
+        "type": "string",
+        "label": "Version",
+        "defaultValue": "\"v4\""
+      },
+      {
+        "key": "namespace",
+        "type": "string",
+        "label": "Namespace UUID",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "name",
+        "type": "string",
+        "label": "Name override",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": false,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected RFC4122 UUID namespace",
+        "Expected string input",
+        "namespace is required for UUID v5 generation"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/generateUuid.ts",
+      "description": "Generates UUID values in nil, random v4, or deterministic v5 mode."
+    }
+  },
+  {
+    "operationId": "forensic.yaraRules",
+    "name": "YARA Rules",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "ruleName",
+        "type": "string",
+        "label": "Rule name",
+        "defaultValue": "\"generated_rule\""
+      },
+      {
+        "key": "maxStrings",
+        "type": "number",
+        "label": "Max strings",
+        "defaultValue": "8"
+      },
+      {
+        "key": "minStringLength",
+        "type": "number",
+        "label": "Min string length",
+        "defaultValue": "6"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/yaraRules.ts",
+      "description": "Generates a deterministic YARA rule scaffold from printable strings and hashes."
     }
   },
   {

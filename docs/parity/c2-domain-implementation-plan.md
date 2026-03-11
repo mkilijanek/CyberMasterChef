@@ -1,13 +1,13 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 339
+Implemented operations in repo: 344
 
 ## Priority order
 
-- P1: forensic-malware-helper (coverage 31.25%, missing ~11)
-- P2: crypto-hash-kdf (coverage 40.21%, missing ~58)
-- P3: misc-uncategorized (coverage 60.69%, missing ~57)
+- P1: crypto-hash-kdf (coverage 40.21%, missing ~58)
+- P2: misc-uncategorized (coverage 60.69%, missing ~57)
+- P3: forensic-malware-helper (coverage 62.5%, missing ~6)
 - P4: network-protocol-parsers (coverage 75.86%, missing ~7)
 
 ## Domain summary
@@ -271,12 +271,17 @@ Implemented operations in repo: 339
 ### forensic-malware-helper
 - Description: IOC extraction, entropy/byte analysis and malware triage helpers.
 - CyberChef total: 16
-- Implemented total: 5
-- Estimated missing: 11
-- Coverage: 31.25%
-- Implemented ops in repo: 5
+- Implemented total: 10
+- Estimated missing: 6
+- Coverage: 62.5%
+- Implemented ops in repo: 10
 - Implemented operation IDs:
   - forensic.analyseUuid (analyseUuid.ts)
+  - forensic.entropy (entropy.ts)
+  - forensic.ctph (ctph.ts)
+  - forensic.generateUuid (generateUuid.ts)
+  - forensic.fileTree (fileTree.ts)
+  - forensic.yaraRules (yaraRules.ts)
   - forensic.chiSquare (chiSquare.ts)
   - forensic.detectFileType (detectFileType.ts)
   - forensic.elfInfo (elfInfo.ts)

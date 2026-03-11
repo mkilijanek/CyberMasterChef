@@ -42,7 +42,7 @@ Deliver a complete, auditable, and operationally useful C-track:
 ### C2 Domain Implementation
 
 - Status: `[IN-PROGRESS]`
-- Realization (current): `~66%` of tracked CyberChef reference operation coverage by implemented operation count.
+- Realization (current): `~74%` of tracked CyberChef reference operation coverage by implemented operation count.
 - Completed baseline waves:
   - date-time baseline and telemetry parsing helpers
   - data-format baseline (JSON/CSV/YAML/XML/HTML + image/format conversions)
@@ -188,11 +188,11 @@ Deliver a complete, auditable, and operationally useful C-track:
 4. `M37`: network parser baseline wave 2.
 5. `M38`: encoding/codec parity wave 1.
 6. `M39`: encoding/codec parity wave 2.
-7. `M40`: JSON/data-format completion.
-8. `M41`: XML/HTML/structured-format completion.
-9. `M42`: archive/container parity completion.
-10. `M43`: forensic helper expansion.
-11. `M44`: malware triage enrichment.
+7. `M40`: JSON/data-format completion. `[DONE]`
+8. `M41`: XML/HTML/structured-format completion. `[DONE]`
+9. `M42`: archive/container parity completion. `[DONE]`
+10. `M43`: forensic helper expansion. `[DONE]`
+11. `M44`: malware triage enrichment. `[DONE]`
 12. `M45`: image/media safe-parity wave.
 13. `M46`: misc reclassification and gap closure.
 14. `M47`: contract corpus expansion.
@@ -247,9 +247,10 @@ Detailed stages: `docs/parity/roadmap-next-m34-m53.md`.
 
 - `M34-M35`: close high-value crypto/hash/checksum parity gaps.
 - `M36-M39`: close parser and encoding/codec gaps from the current C2 priority board.
-- `M40-M47`: finish structured-format, archive, forensic, misc, and contract parity closure.
+- `M40-M44`: structured-format, archive, and forensic closure wave completed in code.
+- `M45-M47`: finish image/media, misc, and contract parity closure.
 - `M48-M49`: align CLI/workbench behavior with the expanded parity surface.
 - `M50-M53`: harden performance, security, docs, and release governance for `1.0.0`.
 - `M52-M53` also include container delivery and GHCR publication readiness.
 - GitHub milestones `M34-M53` are published and linked to issues `#58-#77`.
-- Current checkpoint: `hash.crc32`, `hash.ripemd160`, `hash.fletcher8`, `hash.fletcher16`, `hash.fletcher32`, `hash.fletcher64`, `network.parseIPv6Address`, `network.parseIPRange`, `network.stripHttpHeaders`, `network.parseIPv4Header`, `network.parseTcpHeader`, `network.parseUdpHeader`, `network.parseUri`, `network.stripIPv4Header`, `network.stripTcpHeader`, `network.stripUdpHeader`, `codec.toBase32`, `codec.fromBase32`, `codec.toBase45`, `codec.fromBase45`, `codec.toBase62`, `codec.fromBase62`, `codec.toBase85`, `codec.fromBase85`, `codec.toBech32`, `codec.fromBech32`, `codec.toMorseCode`, `codec.fromMorseCode`, `codec.toBase92`, `codec.fromBase92`, `codec.toBraille`, `codec.fromBraille`, `codec.toPunycode`, `codec.fromPunycode`, `codec.toModhex`, `codec.fromModhex`, `bytes.dropBytes`, `bytes.takeBytes`, `bytes.dropNthBytes`, `bytes.takeNthBytes`, and `bytes.removeNullBytes` are implemented, tested, and reflected in parity artifacts.
+- Current checkpoint: `hash.crc32`, `hash.ripemd160`, `hash.fletcher8`, `hash.fletcher16`, `hash.fletcher32`, `hash.fletcher64`, `network.parseIPv6Address`, `network.parseIPRange`, `network.stripHttpHeaders`, `network.parseIPv4Header`, `network.parseTcpHeader`, `network.parseUdpHeader`, `network.parseUri`, `network.stripIPv4Header`, `network.stripTcpHeader`, `network.stripUdpHeader`, `codec.toBase32`, `codec.fromBase32`, `codec.toBase45`, `codec.fromBase45`, `codec.toBase62`, `codec.fromBase62`, `codec.toBase85`, `codec.fromBase85`, `codec.toBech32`, `codec.fromBech32`, `codec.toMorseCode`, `codec.fromMorseCode`, `codec.toBase92`, `codec.fromBase92`, `codec.toBraille`, `codec.fromBraille`, `codec.toPunycode`, `codec.fromPunycode`, `codec.toModhex`, `codec.fromModhex`, `bytes.dropBytes`, `bytes.takeBytes`, `bytes.dropNthBytes`, `bytes.takeNthBytes`, `bytes.removeNullBytes`, `forensic.entropy`, `forensic.ctph`, `forensic.generateUuid`, `forensic.fileTree`, and `forensic.yaraRules` are implemented, tested, and reflected in parity artifacts.

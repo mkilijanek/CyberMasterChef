@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 339
+Total contracts: 344
 
 ## Contract entries (compact)
 
@@ -586,6 +586,13 @@ Total contracts: 339
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.ctph
+  - name: CTPH
+  - domain: forensic-malware-helper
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - forensic.detectFileType
   - name: Detect File Type
   - domain: forensic-malware-helper
@@ -600,6 +607,13 @@ Total contracts: 339
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.entropy
+  - name: Entropy
+  - domain: forensic-malware-helper
+  - inputTypes: bytes, string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - forensic.extractCves
   - name: Extract CVEs
   - domain: regex-text-advanced
@@ -670,6 +684,27 @@ Total contracts: 339
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.fileTree
+  - name: File Tree
+  - domain: forensic-malware-helper
+  - inputTypes: string, json
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.generateUuid
+  - name: Generate UUID
+  - domain: forensic-malware-helper
+  - inputTypes: string
+  - outputType: string
+  - deterministic: false
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.yaraRules
+  - name: YARA Rules
+  - domain: forensic-malware-helper
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - format.amfDecode
   - name: AMF Decode
   - domain: data-formats

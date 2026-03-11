@@ -1,6 +1,6 @@
 # Forensic Triage Progress (CSIRT/SOC)
 
-Updated: 2026-03-10
+Updated: 2026-03-11
 
 ## Objective
 
@@ -183,3 +183,10 @@ Track incremental delivery steps for Forensic Triage modules (`forensic.basicPre
 - [x] Provenance recorded for derived indicators exported to STIX/MISP.
 - [x] Provenance recorded for sandbox / ZIP / YARA adapter submissions.
 - [x] CLI export path added with `--triage-bundle-file`.
+
+## M43-M44 Completion Snapshot
+
+- [x] Added deterministic forensic helper operations: `Entropy`, `CTPH`, `Generate UUID`, `File Tree`, and `YARA Rules`.
+- [x] Lifted `forensic-malware-helper` parity coverage from `5/16` to `10/16`.
+- [x] Extended `forensic.basicTriage` evidence bundle with deterministic `hashSummary` and `iocSummary`.
+- [x] Added regression coverage for archive-entry tree building and deterministic YARA scaffold generation.

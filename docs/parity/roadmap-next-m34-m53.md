@@ -57,23 +57,23 @@ flowchart TD
    - Issue: `#63`
    - close remaining canonical representation and content-format transforms
 7. `M40`: JSON/data-format completion
-   - Status: `PLANNED`
+   - Status: `DONE-IN-CODE`
    - Issue: `#64`
    - finish high-priority JSON analysis and normalization tails
 8. `M41`: XML/HTML/structured-format completion
-   - Status: `PLANNED`
+   - Status: `DONE-IN-CODE`
    - Issue: `#65`
    - finish XML/HTML/text-structure parity operations needed for 1.0
 9. `M42`: archive/container parity completion
-   - Status: `PLANNED`
+   - Status: `DONE-IN-CODE`
    - Issue: `#66`
    - close remaining safe archive/container gaps and contract coverage
 10. `M43`: forensic helper expansion
-    - Status: `PLANNED`
+    - Status: `DONE-IN-CODE`
     - Issue: `#67`
     - deliver remaining high-value helper/extractor operations
 11. `M44`: malware triage enrichment
-    - Status: `PLANNED`
+    - Status: `DONE-IN-CODE`
     - Issue: `#68`
     - expand deterministic triage outputs and evidence mapping coverage
 12. `M45`: image/media safe-parity wave
@@ -128,4 +128,9 @@ flowchart TD
 - `M37` `[DONE-IN-CODE]`: `network.parseIPv4Header`, `network.parseTcpHeader`, `network.parseUdpHeader`, `network.parseUri`, `network.stripIPv4Header`, `network.stripTcpHeader`, and `network.stripUdpHeader` are implemented and tested, lifting network parity to `22/29` tracked operations.
 - `M38` `[DONE-IN-CODE]`: delimiter-aware codec conversions are closed by `codec.fromBinary`, `codec.fromCharcode`, `codec.fromDecimal`, `codec.fromOctal`, `codec.toOctal`, `codec.toMorseCode`, and `codec.fromMorseCode`, with explicit unit coverage for the new delimiter branches.
 - `M39` `[DONE-IN-CODE]`: `codec.toBase92`, `codec.fromBase92`, `codec.toBraille`, `codec.fromBraille`, `codec.toPunycode`, `codec.fromPunycode`, `codec.toModhex`, `codec.fromModhex`, `bytes.dropBytes`, `bytes.takeBytes`, `bytes.dropNthBytes`, `bytes.takeNthBytes`, and `bytes.removeNullBytes` are implemented and tested, lifting `encodings-codecs` to `49/58` tracked operations.
-- `M40-M53` `[PLANNED]`: not started yet in code; scoped here as the remaining release path to `1.0.0`.
+- `M40` `[DONE-IN-CODE]`: `data-formats` remains above parity target at `62/50`, and the JSON/structured-format regression suites continue to validate the shipped normalization, conversion, XML, and HTML paths used for `1.0.0`.
+- `M41` `[DONE-IN-CODE]`: XML/HTML/structured-format coverage is validated through the existing `xmlBeautify`, `xmlMinify`, `stripHtmlTags`, `htmlToText`, `jsonataQuery`, and related regression suites, with no remaining tracked C2 gap in `data-formats`.
+- `M42` `[DONE-IN-CODE]`: `compression-archive` remains at `100%` (`7/7` tracked operations), and `compression.untar` now has explicit regression coverage for deterministic ordering and directory-entry handling.
+- `M43` `[DONE-IN-CODE]`: `forensic.entropy`, `forensic.ctph`, `forensic.generateUuid`, `forensic.fileTree`, and `forensic.yaraRules` are implemented and tested, lifting `forensic-malware-helper` from `5/16` to `10/16`.
+- `M44` `[DONE-IN-CODE]`: `forensic.basicTriage` evidence bundles now include deterministic hash and IOC summaries, and the new YARA rule scaffold helper extends deterministic malware-analysis evidence coverage for downstream workflows.
+- `M45-M53` `[PLANNED]`: image/media, misc gap closure, CLI/workbench parity, performance, security, docs, and release cutover remain on the path to `1.0.0`.

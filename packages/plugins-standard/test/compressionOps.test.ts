@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core";
+import { pack } from "tar-stream";
 import { gzip } from "../src/ops/gzip.js";
 import { gunzip } from "../src/ops/gunzip.js";
 import { bzip2Compress } from "../src/ops/bzip2Compress.js";
@@ -8,6 +9,12 @@ import { zip } from "../src/ops/zip.js";
 import { unzip } from "../src/ops/unzip.js";
 import { tar } from "../src/ops/tar.js";
 import { untar } from "../src/ops/untar.js";
+
+type TarPack = {
+  on: (event: "data" | "end" | "error", cb: (...args: unknown[]) => void) => void;
+  entry: (header: { name: string; type: "file" | "directory" }, body: string) => void;
+  finalize: () => void;
+};
 
 describe("compression operations", () => {
   it("round-trips UTF-8 content through gzip/gunzip", async () => {
@@ -132,5 +139,42 @@ describe("compression operations", () => {
     expect(first.name).toBe("note.txt");
     const decoded = Buffer.from(first.base64, "base64").toString("utf-8");
     expect(decoded).toBe("tar payload");
+  });
+
+  it("extracts directory entries and sorts untar output deterministically", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(untar);
+    const archive = await new Promise<Uint8Array>((resolve, reject) => {
+      const tarball = pack() as TarPack;
+      const chunks: Uint8Array[] = [];
+      tarball.on("data", (chunk) => chunks.push(chunk as Uint8Array));
+      tarball.on("error", reject);
+      tarball.on("end", () => {
+        const total = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
+        const output = new Uint8Array(total);
+        let offset = 0;
+        for (const chunk of chunks) {
+          output.set(chunk, offset);
+          offset += chunk.length;
+        }
+        resolve(output);
+      });
+      tarball.entry({ name: "zeta.txt", type: "file" }, "last");
+      tarball.entry({ name: "alpha/", type: "directory" }, "");
+      tarball.entry({ name: "alpha/note.txt", type: "file" }, "first");
+      tarball.finalize();
+    });
+    const out = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "compression.untar" }] },
+      input: { type: "bytes", value: archive }
+    });
+    expect(out.output.type).toBe("json");
+    if (out.output.type !== "json") return;
+    const entries = (out.output.value as {
+      entries: Array<{ name: string; type: string; base64: string | null }>;
+    }).entries;
+    expect(entries.map((entry) => entry.name)).toEqual(["alpha/", "alpha/note.txt", "zeta.txt"]);
+    expect(entries[0]?.base64).toBeNull();
   });
 });

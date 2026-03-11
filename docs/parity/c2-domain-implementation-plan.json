@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 339
+    "implementedOpsCount": 344
   },
   "summary": [
     {
@@ -1918,14 +1918,39 @@
       "domain": "forensic-malware-helper",
       "description": "IOC extraction, entropy/byte analysis and malware triage helpers.",
       "cyberChefTotal": 16,
-      "implementedTotal": 5,
-      "missingEstimated": 11,
-      "coveragePct": 31.25,
+      "implementedTotal": 10,
+      "missingEstimated": 6,
+      "coveragePct": 62.5,
       "implementedOps": [
         {
           "id": "forensic.analyseUuid",
           "name": "Analyse UUID",
           "file": "analyseUuid.ts"
+        },
+        {
+          "id": "forensic.entropy",
+          "name": "Entropy",
+          "file": "entropy.ts"
+        },
+        {
+          "id": "forensic.ctph",
+          "name": "CTPH",
+          "file": "ctph.ts"
+        },
+        {
+          "id": "forensic.generateUuid",
+          "name": "Generate UUID",
+          "file": "generateUuid.ts"
+        },
+        {
+          "id": "forensic.fileTree",
+          "name": "File Tree",
+          "file": "fileTree.ts"
+        },
+        {
+          "id": "forensic.yaraRules",
+          "name": "YARA Rules",
+          "file": "yaraRules.ts"
         },
         {
           "id": "forensic.chiSquare",
@@ -2587,21 +2612,21 @@
   "topPriority": [
     {
       "priority": 1,
-      "domain": "forensic-malware-helper",
-      "coveragePct": 31.25,
-      "missingEstimated": 11
-    },
-    {
-      "priority": 2,
       "domain": "crypto-hash-kdf",
       "coveragePct": 40.21,
       "missingEstimated": 58
     },
     {
-      "priority": 3,
+      "priority": 2,
       "domain": "misc-uncategorized",
       "coveragePct": 60.69,
       "missingEstimated": 57
+    },
+    {
+      "priority": 3,
+      "domain": "forensic-malware-helper",
+      "coveragePct": 62.5,
+      "missingEstimated": 6
     },
     {
       "priority": 4,

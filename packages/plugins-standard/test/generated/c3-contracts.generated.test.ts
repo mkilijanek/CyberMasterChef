@@ -849,6 +849,15 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "forensic.ctph",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "forensic.detectFileType",
     "inputTypes": [
       "bytes",
@@ -865,6 +874,17 @@ const CONTRACTS = [
     ],
     "outputType": "json",
     "argKeys": []
+  },
+  {
+    "operationId": "forensic.entropy",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": [
+      "segmentSize"
+    ]
   },
   {
     "operationId": "forensic.extractCves",
@@ -947,6 +967,40 @@ const CONTRACTS = [
     "outputType": "string",
     "argKeys": [
       "minLength"
+    ]
+  },
+  {
+    "operationId": "forensic.fileTree",
+    "inputTypes": [
+      "string",
+      "json"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
+    "operationId": "forensic.generateUuid",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "version",
+      "namespace",
+      "name"
+    ]
+  },
+  {
+    "operationId": "forensic.yaraRules",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "ruleName",
+      "maxStrings",
+      "minStringLength"
     ]
   },
   {

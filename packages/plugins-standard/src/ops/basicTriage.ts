@@ -129,6 +129,16 @@ type TriageReport = {
       sha256: string | null;
       md5: string | null;
     };
+    hashSummary: PreTriageReport["hashes"];
+    iocSummary: {
+      urls: number;
+      domains: number;
+      emails: number;
+      ipv4: number;
+      ipv6: number;
+      cves: number;
+      jwt: number;
+    };
     score: TriageReport["score"];
     findingIds: string[];
     recommendationCount: number;
@@ -1289,6 +1299,16 @@ export const basicTriage: Operation = {
           sizeBytes: inputBytes.length,
           sha256: pre.hashes.sha256,
           md5: pre.hashes.md5
+        },
+        hashSummary: pre.hashes,
+        iocSummary: {
+          urls: pre.iocs.urls.length,
+          domains: pre.iocs.domains.length,
+          emails: pre.iocs.emails.length,
+          ipv4: pre.iocs.ipv4.length,
+          ipv6: pre.iocs.ipv6.length,
+          cves: pre.iocs.cves.length,
+          jwt: pre.iocs.jwt.length
         },
         score: {
           riskScoreNorm: score,
