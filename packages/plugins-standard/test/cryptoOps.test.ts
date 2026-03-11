@@ -7,6 +7,9 @@ import { fletcher8Checksum } from "../src/ops/fletcher8.js";
 import { fletcher16Checksum } from "../src/ops/fletcher16.js";
 import { fletcher32Checksum } from "../src/ops/fletcher32.js";
 import { fletcher64Checksum } from "../src/ops/fletcher64.js";
+import { xorChecksumOp } from "../src/ops/xorChecksum.js";
+import { tcpIpChecksumOp } from "../src/ops/tcpIpChecksum.js";
+import { luhnChecksumOp } from "../src/ops/luhnChecksum.js";
 import { analyseHash } from "../src/ops/analyseHash.js";
 import { atbashCipher } from "../src/ops/atbashCipher.js";
 import { affineCipherEncode } from "../src/ops/affineCipherEncode.js";
@@ -105,6 +108,52 @@ describe("crypto operations", () => {
       const out = await runRecipe({ registry, recipe, input });
       expect(out.output).toEqual({ type: "string", value: expected });
     }
+  });
+
+  it("computes XOR and TCP/IP checksums", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(xorChecksumOp);
+    registry.register(tcpIpChecksumOp);
+
+    const xorOut = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.xorChecksum" }] },
+      input: { type: "string", value: "abc" }
+    });
+    expect(xorOut.output).toEqual({ type: "string", value: "60" });
+
+    const tcpOut = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.tcpIpChecksum" }] },
+      input: { type: "bytes", value: Uint8Array.from([0x61, 0x62, 0x63]) }
+    });
+    expect(tcpOut.output).toEqual({ type: "string", value: "3b9d" });
+
+    const tcpStringOut = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.tcpIpChecksum" }] },
+      input: { type: "string", value: "abc" }
+    });
+    expect(tcpStringOut.output).toEqual({ type: "string", value: "3b9d" });
+  });
+
+  it("computes Luhn checksum digits across radices", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(luhnChecksumOp);
+
+    const decimal = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.luhnChecksum" }] },
+      input: { type: "string", value: "7992739871" }
+    });
+    expect(decimal.output).toEqual({ type: "string", value: "3" });
+
+    const hexadecimal = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.luhnChecksum", args: { radix: 16 } }] },
+      input: { type: "string", value: "A1" }
+    });
+    expect(hexadecimal.output).toEqual({ type: "string", value: "4" });
   });
 
   it("analyses hash candidates", async () => {
@@ -345,6 +394,24 @@ describe("crypto operations", () => {
   });
 
   it("rejects invalid input types for new hash operations", async () => {
+    expect(() =>
+      xorChecksumOp.run({ input: { type: "json", value: {} } as never, args: {} })
+    ).toThrow("Expected bytes or string input");
+    expect(() =>
+      tcpIpChecksumOp.run({ input: { type: "json", value: {} } as never, args: {} })
+    ).toThrow("Expected bytes or string input");
+    expect(() =>
+      luhnChecksumOp.run({ input: { type: "bytes", value: new Uint8Array() } as never, args: {} })
+    ).toThrow("Expected string input");
+    expect(() =>
+      luhnChecksumOp.run({ input: { type: "string", value: "" }, args: {} })
+    ).toThrow("Expected a non-empty string input");
+    expect(() =>
+      luhnChecksumOp.run({ input: { type: "string", value: "A1" }, args: { radix: 1 } })
+    ).toThrow("radix must be an integer between 2 and 36");
+    expect(() =>
+      luhnChecksumOp.run({ input: { type: "string", value: "G" }, args: { radix: 16 } })
+    ).toThrow("Input contains characters outside radix 16");
     await expect(
       crc64Checksum.run({ input: { type: "json", value: {} } as never, args: {} })
     ).rejects.toThrow("Expected bytes or string input");

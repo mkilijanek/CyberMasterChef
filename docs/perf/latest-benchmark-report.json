@@ -1,45 +1,45 @@
 {
-  "generatedAt": "2026-03-11T22:06:43.331Z",
+  "generatedAt": "2026-03-11T22:16:57.963Z",
   "results": [
     {
       "label": "ops.hash_sha256_1mib",
       "samplesMs": [
-        5.016,
-        4.979,
-        5.111,
-        4.793,
-        4.6,
-        4.267,
-        4.633
+        5.137,
+        5.162,
+        5.314,
+        4.263,
+        3.999,
+        3.943,
+        3.97
       ],
-      "medianMs": 4.793,
-      "maxMs": 5.111,
+      "medianMs": 4.263,
+      "maxMs": 5.314,
       "budgetMs": 250,
       "ok": true
     },
     {
       "label": "ops.scrypt_default",
       "samplesMs": [
-        55.632,
-        43.824,
-        44.651
+        54.164,
+        44.145,
+        42.428
       ],
-      "medianMs": 44.651,
-      "maxMs": 55.632,
+      "medianMs": 44.145,
+      "maxMs": 54.164,
       "budgetMs": 400,
       "ok": true
     },
     {
       "label": "cli.batch_report",
       "samplesMs": [
-        1240.259,
-        1403.626,
-        1477.399,
-        1369.009,
-        1233.856
+        1182.014,
+        1267.155,
+        1215.67,
+        1257.229,
+        1257.587
       ],
-      "medianMs": 1369.009,
-      "maxMs": 1477.399,
+      "medianMs": 1257.229,
+      "maxMs": 1267.155,
       "budgetMs": 2500,
       "ok": true
     }

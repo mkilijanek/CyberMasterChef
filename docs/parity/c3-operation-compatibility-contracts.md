@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 381
+Total contracts: 384
 
 ## Contract entries (compact)
 
@@ -1139,6 +1139,13 @@ Total contracts: 381
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.luhnChecksum
+  - name: Luhn Checksum
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.md4
   - name: MD4
   - domain: crypto-hash-kdf
@@ -1216,8 +1223,22 @@ Total contracts: 381
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.tcpIpChecksum
+  - name: TCP/IP Checksum
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.whirlpool
   - name: Whirlpool
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.xorChecksum
+  - name: XOR Checksum
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string

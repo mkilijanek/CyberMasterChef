@@ -5173,6 +5173,39 @@
     }
   },
   {
+    "operationId": "hash.luhnChecksum",
+    "name": "Luhn Checksum",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "radix",
+        "type": "number",
+        "label": "Radix",
+        "defaultValue": "10"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "radix must be an integer between 2 and 36",
+        "Expected a non-empty string input",
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/luhnChecksum.ts",
+      "description": "Computes the Luhn check digit for the given input string."
+    }
+  },
+  {
     "operationId": "hash.md4",
     "name": "MD4",
     "domain": "crypto-hash-kdf",
@@ -5452,6 +5485,31 @@
     }
   },
   {
+    "operationId": "hash.tcpIpChecksum",
+    "name": "TCP/IP Checksum",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/tcpIpChecksum.ts",
+      "description": "Computes the Internet checksum (RFC 1071). Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.whirlpool",
     "name": "Whirlpool",
     "domain": "crypto-hash-kdf",
@@ -5474,6 +5532,31 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/whirlpool.ts",
       "description": "Computes Whirlpool digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.xorChecksum",
+    "name": "XOR Checksum",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/xorChecksum.ts",
+      "description": "Computes an XOR checksum over the input bytes. Output is lowercase hex string."
     }
   },
   {

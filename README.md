@@ -23,7 +23,7 @@ The project targets deterministic behavior, parity tracking, and auditable CI/se
 - `M50` performance gates are enforced through tested helper libraries behind `pnpm perf:assets`, `pnpm perf:check`, and `pnpm test:scripts`.
 - C-track snapshot:
   - `C1`: complete domain matrix + drift gate
-  - `C2`: `381` tracked operations implemented, with `crypto-hash-kdf` raised to `59/100` (`59%`) and `network-protocol-parsers` held at `28/39` (`71.79%`)
+  - `C2`: `384` tracked operations implemented, with `crypto-hash-kdf` raised to `62/100` (`62%`) and `network-protocol-parsers` held at `28/39` (`71.79%`)
   - `C3`: contract catalog + generated regression tests + CI gate
 
 ## Repository Layout
@@ -103,6 +103,7 @@ pnpm docker:test
 - CLI/workbench reporting wave: structured output metadata in CLI artifacts and image preview + output metadata in Workbench
 - Optional CLI-first sandbox submit adapter with allowlist + timeout/retry controls
 - Crypto/KDF expansion: `hmacSha384`, `hkdf`, `scrypt`, `sha224`
+- Crypto checksum wave: `hash.xorChecksum`, `hash.tcpIpChecksum`, `hash.luhnChecksum`
 - Network expansion: `groupIPAddresses`
 - Network parity wave: `changeIpFormat`, `extractMacAddresses`, `parseUserAgent`
 
