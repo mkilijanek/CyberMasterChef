@@ -30,6 +30,7 @@ Ship `CyberMasterChef 1.0.0` only after the tracked CyberChef functional surface
 - `pnpm release:readiness`
 - `pnpm docker:build`
 - `pnpm docker:test`
+- GitHub Actions `CI`, `Container`, and `CodeQL` workflows must run on `Node 24` and finish without asset-budget regressions
 
 ## Container Delivery
 
