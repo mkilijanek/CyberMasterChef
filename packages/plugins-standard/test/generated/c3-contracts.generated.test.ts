@@ -4,6 +4,14 @@ import { standardPlugin } from "../../src/index.js";
 
 const CONTRACTS = [
   {
+    "operationId": "codec.fromBase32",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": []
+  },
+  {
     "operationId": "codec.fromBase58",
     "inputTypes": [
       "string"
@@ -65,6 +73,15 @@ const CONTRACTS = [
       "string"
     ],
     "outputType": "bytes",
+    "argKeys": []
+  },
+  {
+    "operationId": "codec.toBase32",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
     "argKeys": []
   },
   {

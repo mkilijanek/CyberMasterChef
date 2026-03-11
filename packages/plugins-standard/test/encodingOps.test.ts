@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core";
+import { toBase32 } from "../src/ops/toBase32.js";
+import { fromBase32 } from "../src/ops/fromBase32.js";
 import { toBase58 } from "../src/ops/toBase58.js";
 import { fromBase58 } from "../src/ops/fromBase58.js";
 import { toCharcode } from "../src/ops/toCharcode.js";
@@ -12,6 +14,24 @@ import { toHexContent } from "../src/ops/toHexContent.js";
 import { fromHexContent } from "../src/ops/fromHexContent.js";
 
 describe("encoding operations", () => {
+  it("round-trips Base32 encoding", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(toBase32);
+    registry.register(fromBase32);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "codec.toBase32" }, { opId: "codec.fromBase32" }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "hello" }
+    });
+    expect(out.output.type).toBe("bytes");
+    if (out.output.type !== "bytes") return;
+    expect(out.output.value).toEqual(new TextEncoder().encode("hello"));
+  });
+
   it("round-trips Base58 encoding", async () => {
     const registry = new InMemoryRegistry();
     registry.register(toBase58);

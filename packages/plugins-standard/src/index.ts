@@ -2,6 +2,8 @@ import "./third-party.d.ts";
 import type { Plugin, OperationRegistry } from "@cybermasterchef/core";
 import { toBase64 } from "./ops/toBase64.js";
 import { fromBase64 } from "./ops/fromBase64.js";
+import { toBase32 } from "./ops/toBase32.js";
+import { fromBase32 } from "./ops/fromBase32.js";
 import { toBase58 } from "./ops/toBase58.js";
 import { fromBase58 } from "./ops/fromBase58.js";
 import { toHex } from "./ops/toHex.js";
@@ -321,6 +323,8 @@ export const standardPlugin: Plugin = {
   register(registry: OperationRegistry): void {
     registry.register(toBase64);
     registry.register(fromBase64);
+    registry.register(toBase32);
+    registry.register(fromBase32);
     registry.register(toBase58);
     registry.register(fromBase58);
     registry.register(toHex);

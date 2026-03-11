@@ -1,5 +1,32 @@
 [
   {
+    "operationId": "codec.fromBase32",
+    "name": "From Base32",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Invalid Base32 input",
+        "Invalid Base32 padding",
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromBase32.ts",
+      "description": "Decodes RFC 4648 Base32 string into bytes."
+    }
+  },
+  {
     "operationId": "codec.fromBase58",
     "name": "From Base58",
     "domain": "encodings-codecs",
@@ -190,6 +217,31 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/fromOctal.ts",
       "description": "Decodes octal byte values into bytes."
+    }
+  },
+  {
+    "operationId": "codec.toBase32",
+    "name": "To Base32",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toBase32.ts",
+      "description": "Encodes bytes or string to RFC 4648 Base32."
     }
   },
   {

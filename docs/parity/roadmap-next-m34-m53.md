@@ -49,7 +49,7 @@ flowchart TD
    - Issue: `#61`
    - close remaining protocol/header parser gaps from the current priority board
 5. `M38`: encoding/codec parity wave 1
-   - Status: `PLANNED`
+   - Status: `IN-PROGRESS`
    - Issue: `#62`
    - close delimiter-aware codec conversion gaps
 6. `M39`: encoding/codec parity wave 2
@@ -126,4 +126,5 @@ flowchart TD
 - `M35` `[DONE-IN-CODE]`: `hash.fletcher8`, `hash.fletcher16`, `hash.fletcher32`, and `hash.fletcher64` are implemented, tested, and correctly classified into the crypto parity domain.
 - `M36` `[DONE-IN-CODE]`: `network.parseIPv6Address`, `network.parseIPRange`, and `network.stripHttpHeaders` are implemented and tested; GitHub milestones `M34-M53` were published and linked to issues `#58-#77`.
 - `M37` `[DONE-IN-CODE]`: `network.parseIPv4Header`, `network.parseTcpHeader`, `network.parseUdpHeader`, `network.parseUri`, `network.stripIPv4Header`, `network.stripTcpHeader`, and `network.stripUdpHeader` are implemented and tested, lifting network parity to `22/29` tracked operations.
-- `M38-M53` `[PLANNED]`: not started yet in code; scoped here as the release path to `1.0.0`.
+- `M38` `[IN-PROGRESS]`: `codec.toBase32` and `codec.fromBase32` are implemented and tested, lifting `encodings-codecs` to `26/58` tracked operations.
+- `M39-M53` `[PLANNED]`: not started yet in code; scoped here as the release path to `1.0.0`.
