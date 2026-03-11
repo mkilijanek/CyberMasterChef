@@ -79,6 +79,30 @@
     }
   },
   {
+    "operationId": "codec.fromBase62",
+    "name": "From Base62",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromBase62.ts",
+      "description": "Decodes Base62 string into bytes."
+    }
+  },
+  {
     "operationId": "codec.fromBase64",
     "name": "From Base64",
     "domain": "encodings-codecs",
@@ -344,6 +368,31 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/toBase58.ts",
       "description": "Encodes bytes or string to Base58 (Bitcoin alphabet)."
+    }
+  },
+  {
+    "operationId": "codec.toBase62",
+    "name": "To Base62",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toBase62.ts",
+      "description": "Encodes bytes or string to Base62."
     }
   },
   {

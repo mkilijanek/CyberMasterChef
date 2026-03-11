@@ -4,6 +4,8 @@ import { toBase32 } from "../src/ops/toBase32.js";
 import { fromBase32 } from "../src/ops/fromBase32.js";
 import { toBase45 } from "../src/ops/toBase45.js";
 import { fromBase45 } from "../src/ops/fromBase45.js";
+import { toBase62 } from "../src/ops/toBase62.js";
+import { fromBase62 } from "../src/ops/fromBase62.js";
 import { toBase58 } from "../src/ops/toBase58.js";
 import { fromBase58 } from "../src/ops/fromBase58.js";
 import { toMorseCode } from "../src/ops/toMorseCode.js";
@@ -86,6 +88,24 @@ describe("encoding operations", () => {
       input: { type: "string", value: "SOS TEST" }
     });
     expect(out.output).toEqual({ type: "string", value: "SOS TEST" });
+  });
+
+  it("round-trips Base62 encoding", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(toBase62);
+    registry.register(fromBase62);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "codec.toBase62" }, { opId: "codec.fromBase62" }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "hello" }
+    });
+    expect(out.output.type).toBe("bytes");
+    if (out.output.type !== "bytes") return;
+    expect(out.output.value).toEqual(new TextEncoder().encode("hello"));
   });
 
   it("encodes to charcodes", async () => {

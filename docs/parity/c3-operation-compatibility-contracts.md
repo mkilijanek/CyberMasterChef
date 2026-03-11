@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 320
+Total contracts: 322
 
 ## Contract entries (compact)
 
@@ -21,6 +21,13 @@ Total contracts: 320
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
 - codec.fromBase58
   - name: From Base58
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.fromBase62
+  - name: From Base62
   - domain: encodings-codecs
   - inputTypes: string
   - outputType: bytes
@@ -98,6 +105,13 @@ Total contracts: 320
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.toBase58
   - name: To Base58
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toBase62
+  - name: To Base62
   - domain: encodings-codecs
   - inputTypes: bytes, string
   - outputType: string
