@@ -22,5 +22,11 @@
   "compact lines after trim",
   "rot13 twice restores input",
   "normalize commas and split lines",
-  "bracket surround then trim quotes"
+  "bracket surround then trim quotes",
+  "Generate PNG image and detect type",
+  "Generate WEBP image and detect type",
+  "Generate QR image and detect type",
+  "Detect SVG text payload",
+  "Generate deterministic UUID v5",
+  "Generate YARA rule from printable input"
 ]

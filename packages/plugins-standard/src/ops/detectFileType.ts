@@ -11,6 +11,12 @@ function looksLikeText(bytes: Uint8Array): boolean {
   return printable / bytes.length >= 0.9;
 }
 
+function looksLikeSvg(bytes: Uint8Array): boolean {
+  if (!looksLikeText(bytes)) return false;
+  const value = new TextDecoder().decode(bytes.slice(0, Math.min(bytes.length, 512))).trimStart();
+  return value.startsWith("<svg") || (value.startsWith("<?xml") && value.includes("<svg"));
+}
+
 function detect(bytes: Uint8Array): string {
   if (bytes.length >= 2 && bytes[0] === 0x4d && bytes[1] === 0x5a) return "pe";
   if (
@@ -60,6 +66,45 @@ function detect(bytes: Uint8Array): string {
   if (bytes.length >= 4 && bytes[0] === 0x47 && bytes[1] === 0x49 && bytes[2] === 0x46 && bytes[3] === 0x38) {
     return "gif";
   }
+  if (bytes.length >= 2 && bytes[0] === 0x42 && bytes[1] === 0x4d) {
+    return "bmp";
+  }
+  if (
+    bytes.length >= 12 &&
+    bytes[0] === 0x52 &&
+    bytes[1] === 0x49 &&
+    bytes[2] === 0x46 &&
+    bytes[3] === 0x46 &&
+    bytes[8] === 0x57 &&
+    bytes[9] === 0x45 &&
+    bytes[10] === 0x42 &&
+    bytes[11] === 0x50
+  ) {
+    return "webp";
+  }
+  if (
+    bytes.length >= 12 &&
+    bytes[4] === 0x66 &&
+    bytes[5] === 0x74 &&
+    bytes[6] === 0x79 &&
+    bytes[7] === 0x70 &&
+    (
+      (bytes[8] === 0x61 && bytes[9] === 0x76 && bytes[10] === 0x69 && bytes[11] === 0x66) ||
+      (bytes[8] === 0x61 && bytes[9] === 0x76 && bytes[10] === 0x69 && bytes[11] === 0x73)
+    )
+  ) {
+    return "avif";
+  }
+  if (
+    bytes.length >= 4 &&
+    (
+      (bytes[0] === 0x49 && bytes[1] === 0x49 && bytes[2] === 0x2a && bytes[3] === 0x00) ||
+      (bytes[0] === 0x4d && bytes[1] === 0x4d && bytes[2] === 0x00 && bytes[3] === 0x2a)
+    )
+  ) {
+    return "tiff";
+  }
+  if (looksLikeSvg(bytes)) return "svg";
   if (looksLikeText(bytes)) return "text";
   return "unknown";
 }

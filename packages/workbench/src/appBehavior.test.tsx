@@ -250,6 +250,34 @@ describe("App behavior", () => {
     expect(flattenText(root.toJSON())).toContain("No execution trace yet");
   });
 
+  it("renders output preview metadata for image bytes", async () => {
+    bakeMock.mockResolvedValueOnce(
+      makeBakeResult({
+        output: {
+          type: "bytes",
+          value: new Uint8Array([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])
+        }
+      })
+    );
+
+    let root!: ReturnType<typeof create>;
+    await act(async () => {
+      root = create(<App />);
+      await flushPromises();
+    });
+
+    await act(() => {
+      findByTestId(root, "run-button").props.onClick();
+      return flushPromises();
+    });
+
+    expect(findByTestId(root, "io-output").props.value).toBe("89504e470d0a1a0a");
+    expect(flattenText(findByTestId(root, "io-output-meta").props.children)).toContain("image/png");
+    expect(findByTestId(root, "io-output-preview").props.src).toBe(
+      "data:image/png;base64,iVBORw0KGgo="
+    );
+  });
+
   it("handles share/import/export/reset error flows", async () => {
     bakeMock.mockResolvedValue(makeBakeResult());
     clipboardWriteText.mockRejectedValueOnce(new Error("copy-failed"));

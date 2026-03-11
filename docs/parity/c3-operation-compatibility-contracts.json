@@ -5200,7 +5200,7 @@
   {
     "operationId": "image.generateQrCode",
     "name": "Generate QR Code",
-    "domain": "misc-uncategorized",
+    "domain": "data-formats",
     "inputTypes": [
       "string"
     ],

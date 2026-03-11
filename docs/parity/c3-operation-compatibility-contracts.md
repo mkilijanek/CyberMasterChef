@@ -1176,7 +1176,7 @@ Total contracts: 344
   - error categories: EXECUTION_ERROR
 - image.generateQrCode
   - name: Generate QR Code
-  - domain: misc-uncategorized
+  - domain: data-formats
   - inputTypes: string
   - outputType: bytes
   - deterministic: true

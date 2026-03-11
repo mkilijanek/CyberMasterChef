@@ -14,15 +14,15 @@ Total operations: 465
   - Compression/decompression and archive container operations.
 - date-time: 12 (2.58%)
   - Date/time parsing, formatting, conversion and timestamp operations.
-- data-formats: 50 (10.75%)
+- data-formats: 70 (15.05%)
   - Structured formats (JSON/XML/CSV/YAML/TOML/HTML and format conversion).
-- regex-text-advanced: 51 (10.97%)
+- regex-text-advanced: 46 (9.89%)
   - Regex and advanced text analysis/normalization operations.
-- network-protocol-parsers: 29 (6.24%)
+- network-protocol-parsers: 39 (8.39%)
   - Protocol/header/parsing operations for network/web payloads.
-- forensic-malware-helper: 16 (3.44%)
+- forensic-malware-helper: 17 (3.66%)
   - IOC extraction, entropy/byte analysis and malware triage helpers.
-- misc-uncategorized: 145 (31.18%)
+- misc-uncategorized: 119 (25.59%)
   - Operations that require manual triage or do not fit current taxonomy.
 
 ## Misc/uncategorized preview (first 40)
@@ -53,20 +53,20 @@ Total operations: 465
 - GOSTSign (GOSTSign.mjs)
 - GOSTVerify (GOSTVerify.mjs)
 - HAS160 (HAS160.mjs)
-- HASSHClientFingerprint (HASSHClientFingerprint.mjs)
-- HASSHServerFingerprint (HASSHServerFingerprint.mjs)
 - HaversineDistance (HaversineDistance.mjs)
 - HeatmapChart (HeatmapChart.mjs)
-- Ignore ranges (IPv6TransitionAddresses.mjs)
 - IndexOfCoincidence (IndexOfCoincidence.mjs)
-- Input format (ChangeIPFormat.mjs)
 - Input Format (ConvertCoordinateFormat.mjs)
 - Input format (ParseCSR.mjs)
-- Input format (PlayMedia.mjs)
 - Input units (ConvertArea.mjs)
 - Input units (ConvertDataUnits.mjs)
 - Input units (ConvertDistance.mjs)
 - Input units (ConvertMass.mjs)
+- Input units (ConvertSpeed.mjs)
+- Key (ADD.mjs)
+- Key (AND.mjs)
+- Key (CMAC.mjs)
+- Key (OR.mjs)
 
 ## Artifacts
 

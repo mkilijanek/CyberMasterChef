@@ -886,10 +886,10 @@
     {
       "domain": "data-formats",
       "description": "Structured formats (JSON/XML/CSV/YAML/TOML/HTML and format conversion).",
-      "cyberChefTotal": 50,
-      "implementedTotal": 62,
-      "missingEstimated": 0,
-      "coveragePct": 124,
+      "cyberChefTotal": 70,
+      "implementedTotal": 63,
+      "missingEstimated": 7,
+      "coveragePct": 90,
       "implementedOps": [
         {
           "id": "text.linesToCsv",
@@ -1142,6 +1142,11 @@
           "file": "generateImage.ts"
         },
         {
+          "id": "image.generateQrCode",
+          "name": "Generate QR Code",
+          "file": "generateQrCode.ts"
+        },
+        {
           "id": "image.brightnessContrast",
           "name": "Image Brightness/Contrast",
           "file": "imageBrightnessContrast.ts"
@@ -1274,6 +1279,11 @@
           "confidence": "high"
         },
         {
+          "operationName": "CSS selector",
+          "file": "CSSSelector.mjs",
+          "confidence": "high"
+        },
+        {
           "operationName": "CSVToJSON",
           "file": "CSVToJSON.mjs",
           "confidence": "high"
@@ -1297,21 +1307,16 @@
           "operationName": "FromHexdump",
           "file": "FromHexdump.mjs",
           "confidence": "high"
-        },
-        {
-          "operationName": "FromHTMLEntity",
-          "file": "FromHTMLEntity.mjs",
-          "confidence": "high"
         }
       ]
     },
     {
       "domain": "regex-text-advanced",
       "description": "Regex and advanced text analysis/normalization operations.",
-      "cyberChefTotal": 51,
+      "cyberChefTotal": 46,
       "implementedTotal": 55,
       "missingEstimated": 0,
-      "coveragePct": 107.84,
+      "coveragePct": 119.57,
       "implementedOps": [
         {
           "id": "text.reverse",
@@ -1695,10 +1700,10 @@
     {
       "domain": "network-protocol-parsers",
       "description": "Protocol/header/parsing operations for network/web payloads.",
-      "cyberChefTotal": 29,
+      "cyberChefTotal": 39,
       "implementedTotal": 22,
-      "missingEstimated": 7,
-      "coveragePct": 75.86,
+      "missingEstimated": 17,
+      "coveragePct": 56.41,
       "implementedOps": [
         {
           "id": "codec.urlEncode",
@@ -1813,11 +1818,6 @@
       ],
       "implementationCandidates": [
         {
-          "operationName": "CSS selector",
-          "file": "CSSSelector.mjs",
-          "confidence": "high"
-        },
-        {
           "operationName": "DechunkHTTPResponse",
           "file": "DechunkHTTPResponse.mjs",
           "confidence": "high"
@@ -1853,6 +1853,11 @@
           "confidence": "high"
         },
         {
+          "operationName": "ExtractLSB",
+          "file": "ExtractLSB.mjs",
+          "confidence": "high"
+        },
+        {
           "operationName": "ExtractURLs",
           "file": "ExtractURLs.mjs",
           "confidence": "high"
@@ -1863,13 +1868,33 @@
           "confidence": "high"
         },
         {
+          "operationName": "HASSHClientFingerprint",
+          "file": "HASSHClientFingerprint.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "HASSHServerFingerprint",
+          "file": "HASSHServerFingerprint.mjs",
+          "confidence": "high"
+        },
+        {
           "operationName": "Header string",
           "file": "HexToPEM.mjs",
           "confidence": "high"
         },
         {
+          "operationName": "Ignore ranges",
+          "file": "IPv6TransitionAddresses.mjs",
+          "confidence": "high"
+        },
+        {
           "operationName": "Include network info",
           "file": "ParseIPRange.mjs",
+          "confidence": "high"
+        },
+        {
+          "operationName": "Input format",
+          "file": "ChangeIPFormat.mjs",
           "confidence": "high"
         },
         {
@@ -1888,28 +1913,8 @@
           "confidence": "high"
         },
         {
-          "operationName": "JWTDecode",
-          "file": "JWTDecode.mjs",
-          "confidence": "high"
-        },
-        {
-          "operationName": "JWTSign",
-          "file": "JWTSign.mjs",
-          "confidence": "high"
-        },
-        {
-          "operationName": "JWTVerify",
-          "file": "JWTVerify.mjs",
-          "confidence": "high"
-        },
-        {
-          "operationName": "Method",
-          "file": "HTTPRequest.mjs",
-          "confidence": "high"
-        },
-        {
-          "operationName": "MIMEDecoding",
-          "file": "MIMEDecoding.mjs",
+          "operationName": "JA3Fingerprint",
+          "file": "JA3Fingerprint.mjs",
           "confidence": "high"
         }
       ]
@@ -1917,10 +1922,10 @@
     {
       "domain": "forensic-malware-helper",
       "description": "IOC extraction, entropy/byte analysis and malware triage helpers.",
-      "cyberChefTotal": 16,
+      "cyberChefTotal": 17,
       "implementedTotal": 10,
-      "missingEstimated": 6,
-      "coveragePct": 62.5,
+      "missingEstimated": 7,
+      "coveragePct": 58.82,
       "implementedOps": [
         {
           "id": "forensic.analyseUuid",
@@ -2035,6 +2040,11 @@
           "confidence": "high"
         },
         {
+          "operationName": "SSDEEP",
+          "file": "SSDEEP.mjs",
+          "confidence": "high"
+        },
+        {
           "operationName": "Standard Enigmas",
           "file": "MultipleBombe.mjs",
           "confidence": "high"
@@ -2059,10 +2069,10 @@
     {
       "domain": "misc-uncategorized",
       "description": "Operations that require manual triage or do not fit current taxonomy.",
-      "cyberChefTotal": 145,
-      "implementedTotal": 88,
-      "missingEstimated": 57,
-      "coveragePct": 60.69,
+      "cyberChefTotal": 119,
+      "implementedTotal": 87,
+      "missingEstimated": 32,
+      "coveragePct": 73.11,
       "implementedOps": [
         {
           "id": "text.prepend",
@@ -2485,11 +2495,6 @@
           "file": "untar.ts"
         },
         {
-          "id": "image.generateQrCode",
-          "name": "Generate QR Code",
-          "file": "generateQrCode.ts"
-        },
-        {
           "id": "hash.adler32",
           "name": "Adler-32",
           "file": "adler32.ts"
@@ -2618,21 +2623,21 @@
     },
     {
       "priority": 2,
-      "domain": "misc-uncategorized",
-      "coveragePct": 60.69,
-      "missingEstimated": 57
+      "domain": "network-protocol-parsers",
+      "coveragePct": 56.41,
+      "missingEstimated": 17
     },
     {
       "priority": 3,
       "domain": "forensic-malware-helper",
-      "coveragePct": 62.5,
-      "missingEstimated": 6
+      "coveragePct": 58.82,
+      "missingEstimated": 7
     },
     {
       "priority": 4,
-      "domain": "network-protocol-parsers",
-      "coveragePct": 75.86,
-      "missingEstimated": 7
+      "domain": "misc-uncategorized",
+      "coveragePct": 73.11,
+      "missingEstimated": 32
     }
   ]
 }

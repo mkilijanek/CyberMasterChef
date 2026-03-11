@@ -1572,7 +1572,7 @@
     "originalCategory": "media",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 12,
@@ -1581,7 +1581,7 @@
     "originalCategory": "misc",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 13,
@@ -1590,7 +1590,7 @@
     "originalCategory": "misc",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 22,
@@ -1599,7 +1599,7 @@
     "originalCategory": "encoding/cipher",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 25,
@@ -1608,7 +1608,7 @@
     "originalCategory": "parsing/format",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 28,
@@ -1617,7 +1617,7 @@
     "originalCategory": "misc",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 40,
@@ -1626,7 +1626,7 @@
     "originalCategory": "misc",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 41,
@@ -1635,7 +1635,7 @@
     "originalCategory": "misc",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 42,
@@ -1644,7 +1644,7 @@
     "originalCategory": "misc",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 52,
@@ -1653,7 +1653,7 @@
     "originalCategory": "media",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 54,
@@ -1662,7 +1662,7 @@
     "originalCategory": "parsing/format",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 55,
@@ -1671,7 +1671,7 @@
     "originalCategory": "media",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 58,
@@ -1680,7 +1680,7 @@
     "originalCategory": "media",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 60,
@@ -1689,7 +1689,16 @@
     "originalCategory": "media",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 61,
+    "operationName": "CSS selector",
+    "file": "CSSSelector.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 62,
@@ -1698,7 +1707,7 @@
     "originalCategory": "parsing/format",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 96,
@@ -1707,7 +1716,7 @@
     "originalCategory": "media",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 114,
@@ -1716,7 +1725,7 @@
     "originalCategory": "text/transform",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 133,
@@ -1725,7 +1734,7 @@
     "originalCategory": "media",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 145,
@@ -1734,7 +1743,7 @@
     "originalCategory": "encoding/cipher",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 146,
@@ -1743,7 +1752,7 @@
     "originalCategory": "parsing/format",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 147,
@@ -1752,7 +1761,7 @@
     "originalCategory": "misc",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 149,
@@ -1761,7 +1770,7 @@
     "originalCategory": "misc",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 155,
@@ -1770,7 +1779,7 @@
     "originalCategory": "media",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 179,
@@ -1779,7 +1788,7 @@
     "originalCategory": "parsing/format",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 182,
@@ -1788,7 +1797,7 @@
     "originalCategory": "media",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 183,
@@ -1797,7 +1806,7 @@
     "originalCategory": "media",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 184,
@@ -1806,7 +1815,7 @@
     "originalCategory": "media",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 185,
@@ -1815,7 +1824,7 @@
     "originalCategory": "media",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 186,
@@ -1824,7 +1833,34 @@
     "originalCategory": "media",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 188,
+    "operationName": "Indent string",
+    "file": "CSSBeautify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 189,
+    "operationName": "Indent string",
+    "file": "JavaScriptBeautify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 190,
+    "operationName": "Indent string",
+    "file": "SQLBeautify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 191,
@@ -1833,7 +1869,16 @@
     "originalCategory": "parsing/format",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 199,
+    "operationName": "Input format",
+    "file": "PlayMedia.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 200,
@@ -1842,7 +1887,7 @@
     "originalCategory": "parsing/format",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 210,
@@ -1851,7 +1896,25 @@
     "originalCategory": "media",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 215,
+    "operationName": "JavaScriptMinify",
+    "file": "JavaScriptMinify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 217,
+    "operationName": "Jq",
+    "file": "Jq.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 218,
@@ -1860,7 +1923,7 @@
     "originalCategory": "parsing/format",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 219,
@@ -1869,7 +1932,7 @@
     "originalCategory": "parsing/format",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 220,
@@ -1878,7 +1941,7 @@
     "originalCategory": "parsing/format",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 221,
@@ -1887,7 +1950,7 @@
     "originalCategory": "parsing/format",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 222,
@@ -1896,7 +1959,16 @@
     "originalCategory": "parsing/format",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 267,
+    "operationName": "Location info",
+    "file": "JavaScriptParser.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 290,
@@ -1905,7 +1977,61 @@
     "originalCategory": "media",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 300,
+    "operationName": "OpticalCharacterRecognition",
+    "file": "OpticalCharacterRecognition.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 305,
+    "operationName": "ParseColourCode",
+    "file": "ParseColourCode.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 308,
+    "operationName": "ParseQRCode",
+    "file": "ParseQRCode.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 324,
+    "operationName": "PHPSerialize",
+    "file": "PHPSerialize.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 326,
+    "operationName": "PlistViewer",
+    "file": "PLISTViewer.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 331,
+    "operationName": "Preserve comments",
+    "file": "CSSMinify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 332,
@@ -1914,7 +2040,7 @@
     "originalCategory": "parsing/format",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 335,
@@ -1923,7 +2049,7 @@
     "originalCategory": "encoding/cipher",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 336,
@@ -1932,7 +2058,16 @@
     "originalCategory": "encoding/cipher",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 348,
+    "operationName": "RandomizeColourPalette",
+    "file": "RandomizeColourPalette.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 351,
@@ -1941,7 +2076,7 @@
     "originalCategory": "parsing/format",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 353,
@@ -1950,7 +2085,16 @@
     "originalCategory": "misc",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 356,
+    "operationName": "RenderMarkdown",
+    "file": "RenderMarkdown.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 357,
@@ -1959,7 +2103,25 @@
     "originalCategory": "media",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 359,
+    "operationName": "RisonDecode",
+    "file": "RisonDecode.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 360,
+    "operationName": "RisonEncode",
+    "file": "RisonEncode.mjs",
+    "originalCategory": "misc",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 366,
@@ -1968,7 +2130,7 @@
     "originalCategory": "encoding/cipher",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 393,
@@ -1977,7 +2139,25 @@
     "originalCategory": "crypto/hash",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 411,
+    "operationName": "SplitColourChannels",
+    "file": "SplitColourChannels.mjs",
+    "originalCategory": "text/transform",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
+  },
+  {
+    "index": 412,
+    "operationName": "SQLMinify",
+    "file": "SQLMinify.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "data-formats",
+    "confidence": "high",
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 440,
@@ -1986,7 +2166,7 @@
     "originalCategory": "misc",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 442,
@@ -1995,7 +2175,7 @@
     "originalCategory": "misc",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 457,
@@ -2004,7 +2184,7 @@
     "originalCategory": "encoding/cipher",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 461,
@@ -2013,7 +2193,7 @@
     "originalCategory": "parsing/format",
     "domain": "data-formats",
     "confidence": "high",
-    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif/i"
+    "matchedBy": "/json|xml|csv|yaml|yml|toml|html|urlencoded|querystring|base\\s?64\\s?json|protobuf|msgpack|messagepack|bson|cbor|amf|avro|hexdump|table|image|png|jpe?g|gif|bmp|webp|svg|exif|markdown|javascript|minify|css|minify|sql|minify|jq|plist|rison|phpserialize|colour|color|qr\\s?code|qrcode|ocr|opticalcharacterrecognition|playmedia/i"
   },
   {
     "index": 19,
@@ -2196,15 +2376,6 @@
     "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
   },
   {
-    "index": 120,
-    "operationName": "ExtractLSB",
-    "file": "ExtractLSB.mjs",
-    "originalCategory": "text/transform",
-    "domain": "regex-text-advanced",
-    "confidence": "medium",
-    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
-  },
-  {
     "index": 121,
     "operationName": "ExtractMACAddresses",
     "file": "ExtractMACAddresses.mjs",
@@ -2272,33 +2443,6 @@
     "operationName": "GetAllCasings",
     "file": "GetAllCasings.mjs",
     "originalCategory": "misc",
-    "domain": "regex-text-advanced",
-    "confidence": "medium",
-    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
-  },
-  {
-    "index": 188,
-    "operationName": "Indent string",
-    "file": "CSSBeautify.mjs",
-    "originalCategory": "parsing/format",
-    "domain": "regex-text-advanced",
-    "confidence": "medium",
-    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
-  },
-  {
-    "index": 189,
-    "operationName": "Indent string",
-    "file": "JavaScriptBeautify.mjs",
-    "originalCategory": "parsing/format",
-    "domain": "regex-text-advanced",
-    "confidence": "medium",
-    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
-  },
-  {
-    "index": 190,
-    "operationName": "Indent string",
-    "file": "SQLBeautify.mjs",
-    "originalCategory": "parsing/format",
     "domain": "regex-text-advanced",
     "confidence": "medium",
     "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
@@ -2421,15 +2565,6 @@
     "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
   },
   {
-    "index": 411,
-    "operationName": "SplitColourChannels",
-    "file": "SplitColourChannels.mjs",
-    "originalCategory": "text/transform",
-    "domain": "regex-text-advanced",
-    "confidence": "medium",
-    "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
-  },
-  {
     "index": 423,
     "operationName": "SwapCase",
     "file": "SwapCase.mjs",
@@ -2475,22 +2610,13 @@
     "matchedBy": "/regex|replace|extract|match|split|join|token|normalize|unicode|whitespace|case|camel|snake|kebab|reverse|sort|unique|trim|word|line|punctuation|nato|leet|cartesian|head|tail|mean|median|standard\\s?deviation|filter|beautify|casing/i"
   },
   {
-    "index": 61,
-    "operationName": "CSS selector",
-    "file": "CSSSelector.mjs",
-    "originalCategory": "misc",
-    "domain": "network-protocol-parsers",
-    "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
-  },
-  {
     "index": 65,
     "operationName": "DechunkHTTPResponse",
     "file": "DechunkHTTPResponse.mjs",
     "originalCategory": "misc",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 66,
@@ -2499,7 +2625,7 @@
     "originalCategory": "misc",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 67,
@@ -2508,7 +2634,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 77,
@@ -2517,7 +2643,7 @@
     "originalCategory": "misc",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 97,
@@ -2526,7 +2652,7 @@
     "originalCategory": "misc",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 103,
@@ -2535,7 +2661,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 119,
@@ -2544,7 +2670,16 @@
     "originalCategory": "text/transform",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
+  },
+  {
+    "index": 120,
+    "operationName": "ExtractLSB",
+    "file": "ExtractLSB.mjs",
+    "originalCategory": "text/transform",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 124,
@@ -2553,7 +2688,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 125,
@@ -2562,7 +2697,25 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
+  },
+  {
+    "index": 172,
+    "operationName": "HASSHClientFingerprint",
+    "file": "HASSHClientFingerprint.mjs",
+    "originalCategory": "misc",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
+  },
+  {
+    "index": 173,
+    "operationName": "HASSHServerFingerprint",
+    "file": "HASSHServerFingerprint.mjs",
+    "originalCategory": "misc",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 175,
@@ -2571,7 +2724,16 @@
     "originalCategory": "encoding/cipher",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
+  },
+  {
+    "index": 181,
+    "operationName": "Ignore ranges",
+    "file": "IPv6TransitionAddresses.mjs",
+    "originalCategory": "misc",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 187,
@@ -2580,7 +2742,16 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
+  },
+  {
+    "index": 193,
+    "operationName": "Input format",
+    "file": "ChangeIPFormat.mjs",
+    "originalCategory": "misc",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 196,
@@ -2589,7 +2760,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 197,
@@ -2598,7 +2769,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 198,
@@ -2607,7 +2778,43 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
+  },
+  {
+    "index": 211,
+    "operationName": "JA3Fingerprint",
+    "file": "JA3Fingerprint.mjs",
+    "originalCategory": "misc",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
+  },
+  {
+    "index": 212,
+    "operationName": "JA3SFingerprint",
+    "file": "JA3SFingerprint.mjs",
+    "originalCategory": "misc",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
+  },
+  {
+    "index": 213,
+    "operationName": "JA4Fingerprint",
+    "file": "JA4Fingerprint.mjs",
+    "originalCategory": "misc",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
+  },
+  {
+    "index": 214,
+    "operationName": "JA4ServerFingerprint",
+    "file": "JA4ServerFingerprint.mjs",
+    "originalCategory": "misc",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 223,
@@ -2616,7 +2823,7 @@
     "originalCategory": "crypto/hash",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 224,
@@ -2625,7 +2832,7 @@
     "originalCategory": "crypto/hash",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 225,
@@ -2634,7 +2841,7 @@
     "originalCategory": "crypto/hash",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 283,
@@ -2643,7 +2850,7 @@
     "originalCategory": "misc",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 285,
@@ -2652,7 +2859,7 @@
     "originalCategory": "misc",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 306,
@@ -2661,7 +2868,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 310,
@@ -2670,7 +2877,16 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
+  },
+  {
+    "index": 311,
+    "operationName": "ParseTLSRecord",
+    "file": "ParseTLSRecord.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 313,
@@ -2679,7 +2895,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 315,
@@ -2688,7 +2904,16 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
+  },
+  {
+    "index": 316,
+    "operationName": "ParseUserAgent",
+    "file": "ParseUserAgent.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 419,
@@ -2697,7 +2922,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 420,
@@ -2706,7 +2931,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 421,
@@ -2715,7 +2940,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 422,
@@ -2724,7 +2949,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 443,
@@ -2733,7 +2958,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|parsetcp|parseudp|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector|ja3|ja4|hassh|tls|useragent|changeipformat|transition/i"
   },
   {
     "index": 17,
@@ -2742,7 +2967,7 @@
     "originalCategory": "misc",
     "domain": "forensic-malware-helper",
     "confidence": "high",
-    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
   },
   {
     "index": 24,
@@ -2751,7 +2976,7 @@
     "originalCategory": "misc",
     "domain": "forensic-malware-helper",
     "confidence": "high",
-    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
   },
   {
     "index": 26,
@@ -2760,7 +2985,7 @@
     "originalCategory": "misc",
     "domain": "forensic-malware-helper",
     "confidence": "high",
-    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
   },
   {
     "index": 45,
@@ -2769,7 +2994,7 @@
     "originalCategory": "misc",
     "domain": "forensic-malware-helper",
     "confidence": "high",
-    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
   },
   {
     "index": 50,
@@ -2778,7 +3003,7 @@
     "originalCategory": "misc",
     "domain": "forensic-malware-helper",
     "confidence": "high",
-    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
   },
   {
     "index": 63,
@@ -2787,7 +3012,7 @@
     "originalCategory": "misc",
     "domain": "forensic-malware-helper",
     "confidence": "high",
-    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
   },
   {
     "index": 93,
@@ -2796,7 +3021,7 @@
     "originalCategory": "misc",
     "domain": "forensic-malware-helper",
     "confidence": "high",
-    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
   },
   {
     "index": 102,
@@ -2805,7 +3030,7 @@
     "originalCategory": "misc",
     "domain": "forensic-malware-helper",
     "confidence": "high",
-    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
   },
   {
     "index": 110,
@@ -2814,7 +3039,7 @@
     "originalCategory": "misc",
     "domain": "forensic-malware-helper",
     "confidence": "high",
-    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
   },
   {
     "index": 127,
@@ -2823,7 +3048,7 @@
     "originalCategory": "misc",
     "domain": "forensic-malware-helper",
     "confidence": "high",
-    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
   },
   {
     "index": 157,
@@ -2832,7 +3057,7 @@
     "originalCategory": "misc",
     "domain": "forensic-malware-helper",
     "confidence": "high",
-    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
   },
   {
     "index": 268,
@@ -2841,7 +3066,16 @@
     "originalCategory": "misc",
     "domain": "forensic-malware-helper",
     "confidence": "high",
-    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
+  },
+  {
+    "index": 413,
+    "operationName": "SSDEEP",
+    "file": "SSDEEP.mjs",
+    "originalCategory": "misc",
+    "domain": "forensic-malware-helper",
+    "confidence": "high",
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
   },
   {
     "index": 414,
@@ -2850,7 +3084,7 @@
     "originalCategory": "misc",
     "domain": "forensic-malware-helper",
     "confidence": "high",
-    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
   },
   {
     "index": 418,
@@ -2859,7 +3093,7 @@
     "originalCategory": "misc",
     "domain": "forensic-malware-helper",
     "confidence": "high",
-    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
   },
   {
     "index": 455,
@@ -2868,7 +3102,7 @@
     "originalCategory": "misc",
     "domain": "forensic-malware-helper",
     "confidence": "high",
-    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
   },
   {
     "index": 462,
@@ -2877,7 +3111,7 @@
     "originalCategory": "misc",
     "domain": "forensic-malware-helper",
     "confidence": "high",
-    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree/i"
+    "matchedBy": "/ioc|indicator|entropy|yara|pe\\s?header|elf|shellcode|strings|hex\\s?dump|byte\\s?histogram|malware|forensic|disassemble|x86|ctph|uuid|bomb|colossus|enigma|lorenz|chi\\s?square|detectfiletype|filetree|ssdeep/i"
   },
   {
     "index": 11,
@@ -3114,24 +3348,6 @@
     "matchedBy": "<no-rule-match>"
   },
   {
-    "index": 172,
-    "operationName": "HASSHClientFingerprint",
-    "file": "HASSHClientFingerprint.mjs",
-    "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 173,
-    "operationName": "HASSHServerFingerprint",
-    "file": "HASSHServerFingerprint.mjs",
-    "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
     "index": 174,
     "operationName": "HaversineDistance",
     "file": "HaversineDistance.mjs",
@@ -3150,27 +3366,9 @@
     "matchedBy": "<no-rule-match>"
   },
   {
-    "index": 181,
-    "operationName": "Ignore ranges",
-    "file": "IPv6TransitionAddresses.mjs",
-    "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
     "index": 192,
     "operationName": "IndexOfCoincidence",
     "file": "IndexOfCoincidence.mjs",
-    "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 193,
-    "operationName": "Input format",
-    "file": "ChangeIPFormat.mjs",
     "originalCategory": "misc",
     "domain": "misc-uncategorized",
     "confidence": "low",
@@ -3190,15 +3388,6 @@
     "operationName": "Input format",
     "file": "ParseCSR.mjs",
     "originalCategory": "parsing/format",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 199,
-    "operationName": "Input format",
-    "file": "PlayMedia.mjs",
-    "originalCategory": "misc",
     "domain": "misc-uncategorized",
     "confidence": "low",
     "matchedBy": "<no-rule-match>"
@@ -3243,60 +3432,6 @@
     "index": 206,
     "operationName": "Input units",
     "file": "ConvertSpeed.mjs",
-    "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 211,
-    "operationName": "JA3Fingerprint",
-    "file": "JA3Fingerprint.mjs",
-    "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 212,
-    "operationName": "JA3SFingerprint",
-    "file": "JA3SFingerprint.mjs",
-    "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 213,
-    "operationName": "JA4Fingerprint",
-    "file": "JA4Fingerprint.mjs",
-    "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 214,
-    "operationName": "JA4ServerFingerprint",
-    "file": "JA4ServerFingerprint.mjs",
-    "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 215,
-    "operationName": "JavaScriptMinify",
-    "file": "JavaScriptMinify.mjs",
-    "originalCategory": "parsing/format",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 217,
-    "operationName": "Jq",
-    "file": "Jq.mjs",
     "originalCategory": "misc",
     "domain": "misc-uncategorized",
     "confidence": "low",
@@ -3456,15 +3591,6 @@
     "matchedBy": "<no-rule-match>"
   },
   {
-    "index": 267,
-    "operationName": "Location info",
-    "file": "JavaScriptParser.mjs",
-    "originalCategory": "parsing/format",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
     "index": 271,
     "operationName": "LZ4Compress",
     "file": "LZ4Compress.mjs",
@@ -3609,33 +3735,6 @@
     "matchedBy": "<no-rule-match>"
   },
   {
-    "index": 300,
-    "operationName": "OpticalCharacterRecognition",
-    "file": "OpticalCharacterRecognition.mjs",
-    "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 305,
-    "operationName": "ParseColourCode",
-    "file": "ParseColourCode.mjs",
-    "originalCategory": "parsing/format",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 308,
-    "operationName": "ParseQRCode",
-    "file": "ParseQRCode.mjs",
-    "originalCategory": "parsing/format",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
     "index": 309,
     "operationName": "ParseSSHHostKey",
     "file": "ParseSSHHostKey.mjs",
@@ -3645,27 +3744,9 @@
     "matchedBy": "<no-rule-match>"
   },
   {
-    "index": 311,
-    "operationName": "ParseTLSRecord",
-    "file": "ParseTLSRecord.mjs",
-    "originalCategory": "parsing/format",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
     "index": 312,
     "operationName": "ParseTLV",
     "file": "ParseTLV.mjs",
-    "originalCategory": "parsing/format",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 316,
-    "operationName": "ParseUserAgent",
-    "file": "ParseUserAgent.mjs",
     "originalCategory": "parsing/format",
     "domain": "misc-uncategorized",
     "confidence": "low",
@@ -3699,27 +3780,9 @@
     "matchedBy": "<no-rule-match>"
   },
   {
-    "index": 324,
-    "operationName": "PHPSerialize",
-    "file": "PHPSerialize.mjs",
-    "originalCategory": "parsing/format",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
     "index": 325,
     "operationName": "Plaintext",
     "file": "Substitute.mjs",
-    "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 326,
-    "operationName": "PlistViewer",
-    "file": "PLISTViewer.mjs",
     "originalCategory": "misc",
     "domain": "misc-uncategorized",
     "confidence": "low",
@@ -3730,15 +3793,6 @@
     "operationName": "PowerSet",
     "file": "PowerSet.mjs",
     "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 331,
-    "operationName": "Preserve comments",
-    "file": "CSSMinify.mjs",
-    "originalCategory": "parsing/format",
     "domain": "misc-uncategorized",
     "confidence": "low",
     "matchedBy": "<no-rule-match>"
@@ -3798,15 +3852,6 @@
     "matchedBy": "<no-rule-match>"
   },
   {
-    "index": 348,
-    "operationName": "RandomizeColourPalette",
-    "file": "RandomizeColourPalette.mjs",
-    "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
     "index": 349,
     "operationName": "RawDeflate",
     "file": "RawDeflate.mjs",
@@ -3834,36 +3879,9 @@
     "matchedBy": "<no-rule-match>"
   },
   {
-    "index": 356,
-    "operationName": "RenderMarkdown",
-    "file": "RenderMarkdown.mjs",
-    "originalCategory": "parsing/format",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
     "index": 358,
     "operationName": "Return",
     "file": "Return.mjs",
-    "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 359,
-    "operationName": "RisonDecode",
-    "file": "RisonDecode.mjs",
-    "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 360,
-    "operationName": "RisonEncode",
-    "file": "RisonEncode.mjs",
     "originalCategory": "misc",
     "domain": "misc-uncategorized",
     "confidence": "low",
@@ -4053,24 +4071,6 @@
     "index": 407,
     "operationName": "Snefru",
     "file": "Snefru.mjs",
-    "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 412,
-    "operationName": "SQLMinify",
-    "file": "SQLMinify.mjs",
-    "originalCategory": "parsing/format",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 413,
-    "operationName": "SSDEEP",
-    "file": "SSDEEP.mjs",
     "originalCategory": "misc",
     "domain": "misc-uncategorized",
     "confidence": "low",

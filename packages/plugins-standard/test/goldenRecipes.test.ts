@@ -38,6 +38,77 @@ const goldenCases: GoldenCase[] = [
     expected: "HELLO\nBYE!"
   },
   {
+    name: "Generate PNG image and detect type",
+    input: "ignored",
+    recipe: {
+      version: 1,
+      steps: [
+        { opId: "image.generate", args: { width: 4, height: 4, color: "#00ff00", format: "png" } },
+        { opId: "forensic.detectFileType" }
+      ]
+    },
+    expected: "png"
+  },
+  {
+    name: "Generate WEBP image and detect type",
+    input: "ignored",
+    recipe: {
+      version: 1,
+      steps: [
+        { opId: "image.generate", args: { width: 4, height: 4, color: "#112233", format: "webp" } },
+        { opId: "forensic.detectFileType" }
+      ]
+    },
+    expected: "webp"
+  },
+  {
+    name: "Generate QR image and detect type",
+    input: "https://example.com",
+    recipe: {
+      version: 1,
+      steps: [{ opId: "image.generateQrCode" }, { opId: "forensic.detectFileType" }]
+    },
+    expected: "png"
+  },
+  {
+    name: "Detect SVG text payload",
+    input: '<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"></svg>',
+    recipe: {
+      version: 1,
+      steps: [{ opId: "forensic.detectFileType" }]
+    },
+    expected: "svg"
+  },
+  {
+    name: "Generate deterministic UUID v5",
+    input: "cybermasterchef",
+    recipe: {
+      version: 1,
+      steps: [
+        {
+          opId: "forensic.generateUuid",
+          args: { version: "v5", namespace: "6ba7b810-9dad-11d1-80b4-00c04fd430c8" }
+        }
+      ]
+    },
+    expected: "a832219a-4f25-54a8-98a3-eb66bdaea1c4"
+  },
+  {
+    name: "Generate YARA rule from printable input",
+    input: "powershell -enc AAAA https://evil.example",
+    recipe: {
+      version: 1,
+      steps: [
+        {
+          opId: "forensic.yaraRules",
+          args: { ruleName: "Golden Rule", maxStrings: 2, minStringLength: 5 }
+        }
+      ]
+    },
+    expected:
+      "rule Golden_Rule {\n  meta:\n    generator = \"CyberMasterChef\"\n    sha256 = \"9e7b30951fd55ee34834344d0ec2ba7f7329e779e0082eb52f9cb9215680920d\"\n  strings:\n    $s1 = \"powershell -enc AAAA https://evil.example\" ascii wide\n  condition:\n    all of them\n}"
+  },
+  {
     name: "Extract unique IPv4 addresses",
     input: "src=10.0.0.1 dst=172.16.0.2 invalid=999.1.1.1 src=10.0.0.1",
     recipe: {

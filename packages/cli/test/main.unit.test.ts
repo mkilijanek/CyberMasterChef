@@ -175,6 +175,14 @@ describe("cli helpers", () => {
     const run = {
       rendered: "output",
       outputType: "string" as const,
+      outputMeta: {
+        outputType: "string" as const,
+        charLength: 6,
+        byteLength: null,
+        mediaType: null,
+        detectedFileType: null,
+        previewKind: "text" as const
+      },
       elapsed: 12,
       traceSummary: {
         steps: 1,
@@ -383,6 +391,67 @@ describe("cli helpers", () => {
       expect(stderr).toContain("\"steps\":1");
       expect(stderr).toContain("[repro] recipeHash=");
       expect(stderr).toContain("\"recipeSource\":\"native\"");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("includes output metadata in CLI summaries, repro, and batch reports", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "cmc-cli-"));
+    try {
+      const recipePath = join(dir, "recipe.json");
+      const inputPath = join(dir, "input.txt");
+      const reproPath = join(dir, "repro.json");
+      const batchDir = join(dir, "batch");
+      const reportPath = join(dir, "report.json");
+      mkdirSync(batchDir, { recursive: true });
+      writeFileSync(
+        recipePath,
+        JSON.stringify({
+          version: 1,
+          steps: [{ opId: "image.generate", args: { width: 2, height: 2, color: "#00ff00" } }]
+        }),
+        "utf-8"
+      );
+      writeFileSync(inputPath, "ignored", "utf-8");
+      writeFileSync(join(batchDir, "a.txt"), "ignored", "utf-8");
+
+      await main([
+        recipePath,
+        inputPath,
+        "--show-summary",
+        "--summary-json",
+        "--repro-file",
+        reproPath
+      ]);
+
+      const repro = JSON.parse(readFileSync(reproPath, "utf-8")) as {
+        outputMeta: { previewKind: string; mediaType: string; byteLength: number };
+      };
+      expect(repro.outputMeta.previewKind).toBe("image");
+      expect(repro.outputMeta.mediaType).toBe("image/png");
+      expect(repro.outputMeta.byteLength).toBeGreaterThan(0);
+
+      const stderrSingle = stderrWrite.mock.calls.map((call) => String(call[0])).join("");
+      expect(stderrSingle).toContain("[output-meta] preview=image");
+      expect(stderrSingle).toContain('"mediaType":"image/png"');
+
+      stdoutWrite.mockReset();
+      stderrWrite.mockReset();
+      await main([
+        recipePath,
+        "--batch-input-dir",
+        batchDir,
+        "--batch-report-file",
+        reportPath
+      ]);
+
+      const report = JSON.parse(readFileSync(reportPath, "utf-8")) as Array<{
+        outputMeta: { previewKind: string; mediaType: string; byteLength: number };
+      }>;
+      expect(report[0]?.outputMeta.previewKind).toBe("image");
+      expect(report[0]?.outputMeta.mediaType).toBe("image/png");
+      expect(report[0]?.outputMeta.byteLength).toBeGreaterThan(0);
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }

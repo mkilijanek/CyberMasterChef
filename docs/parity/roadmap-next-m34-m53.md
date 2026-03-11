@@ -77,23 +77,23 @@ flowchart TD
     - Issue: `#68`
     - expand deterministic triage outputs and evidence mapping coverage
 12. `M45`: image/media safe-parity wave
-    - Status: `PLANNED`
+    - Status: `DONE-IN-CODE`
     - Issue: `#69`
     - finish safe browser-compatible image/media operations selected for 1.0
 13. `M46`: misc reclassification and gap closure
-    - Status: `PLANNED`
+    - Status: `DONE-IN-CODE`
     - Issue: `#70`
     - shrink `misc-uncategorized` by classification or implementation
 14. `M47`: contract corpus expansion
-    - Status: `PLANNED`
+    - Status: `DONE-IN-CODE`
     - Issue: `#71`
     - extend C3 generated contracts and corpus to all newly added ops
 15. `M48`: CLI full-parity UX and reporting
-    - Status: `PLANNED`
+    - Status: `DONE-IN-CODE`
     - Issue: `#72`
     - close remaining CLI parity/reporting/documentation tails
 16. `M49`: workbench full-parity UX wave
-    - Status: `PLANNED`
+    - Status: `DONE-IN-CODE`
     - Issue: `#73`
     - close remaining workbench parity gaps for discoverability, editing, and reporting
 17. `M50`: performance and scale 1.0 gates
@@ -133,4 +133,9 @@ flowchart TD
 - `M42` `[DONE-IN-CODE]`: `compression-archive` remains at `100%` (`7/7` tracked operations), and `compression.untar` now has explicit regression coverage for deterministic ordering and directory-entry handling.
 - `M43` `[DONE-IN-CODE]`: `forensic.entropy`, `forensic.ctph`, `forensic.generateUuid`, `forensic.fileTree`, and `forensic.yaraRules` are implemented and tested, lifting `forensic-malware-helper` from `5/16` to `10/16`.
 - `M44` `[DONE-IN-CODE]`: `forensic.basicTriage` evidence bundles now include deterministic hash and IOC summaries, and the new YARA rule scaffold helper extends deterministic malware-analysis evidence coverage for downstream workflows.
-- `M45-M53` `[PLANNED]`: image/media, misc gap closure, CLI/workbench parity, performance, security, docs, and release cutover remain on the path to `1.0.0`.
+- `M45` `[DONE-IN-CODE]`: `forensic.detectFileType` now recognizes additional safe image/media formats (`bmp`, `webp`, `avif`, `tiff`, `svg`) and the golden parity corpus includes deterministic image/media detection recipes.
+- `M46` `[DONE-IN-CODE]`: `C1` taxonomy rules now reclassify QR/media, structured-format, JA3/JA4/HASSH/TLS, and `ssdeep` references out of `misc-uncategorized`, shrinking the uncategorized backlog to `119`.
+- `M47` `[DONE-IN-CODE]`: the parity corpus expanded to `30` tracked recipes and `pnpm test:parity` now verifies full corpus coverage (`30/30`) against the golden suite.
+- `M48` `[DONE-IN-CODE]`: CLI single-run, repro, and batch artifacts now carry structured `outputMeta` for byte size, preview kind, detected file type, and media type.
+- `M49` `[DONE-IN-CODE]`: Workbench output pane now exposes deterministic output metadata and renders safe image previews for supported byte outputs.
+- `M50-M53` `[PLANNED]`: performance, security, docs, and release cutover remain on the path to `1.0.0`.

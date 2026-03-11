@@ -18,6 +18,7 @@ import { WorkerPoolClient } from "./worker/poolClient";
 import { OperationCatalog } from "./components/OperationCatalog";
 import { RecipeEditor } from "./components/RecipeEditor";
 import { IOPane } from "./components/IOPane";
+import { describeOutputPresentation } from "./outputPresentation";
 
 type Status = "ready" | "working" | "error";
 type SharedState = { recipe: Recipe; input: string };
@@ -144,6 +145,13 @@ export function App(): React.JSX.Element {
     return Math.min(MAX_MAX_QUEUE, Math.max(MIN_MAX_QUEUE, Math.floor(parsed)));
   });
   const [output, setOutput] = React.useState<string>("");
+  const [outputMeta, setOutputMeta] = React.useState<{
+    outputType: string;
+    charLength: number;
+    byteLength: number | null;
+    mediaType: string | null;
+  } | null>(null);
+  const [outputPreviewSrc, setOutputPreviewSrc] = React.useState<string | null>(null);
   const [trace, setTrace] = React.useState<TraceRow[]>([]);
   const [lastRunMs, setLastRunMs] = React.useState<number | null>(null);
   const [lastRunInfo, setLastRunInfo] = React.useState<RunInfo | null>(null);
@@ -229,6 +237,8 @@ export function App(): React.JSX.Element {
     setImportWarnings([]);
     setLastImportSource(null);
     setTrace([]);
+    setOutputMeta(null);
+    setOutputPreviewSrc(null);
     setLastRunMs(null);
     setLastRunInfo(null);
     const startedAt = performance.now();
@@ -241,16 +251,15 @@ export function App(): React.JSX.Element {
       setTrace(res.trace);
       setLastRunMs(Math.round(performance.now() - startedAt));
       setLastRunInfo(res.run);
-      if (res.output.type === "bytes") {
-        const hex = [...res.output.value]
-          .map((b) => b.toString(16).padStart(2, "0"))
-          .join("");
-        setOutput(hex);
-      } else if (res.output.type === "json") {
-        setOutput(JSON.stringify(res.output.value, null, 2));
-      } else {
-        setOutput(String(res.output.value));
-      }
+      const presentation = describeOutputPresentation(res.output);
+      setOutput(presentation.text);
+      setOutputMeta({
+        outputType: presentation.outputType,
+        charLength: presentation.charLength,
+        byteLength: presentation.byteLength,
+        mediaType: presentation.mediaType
+      });
+      setOutputPreviewSrc(presentation.previewSrc);
       setStatus("ready");
     } catch (e) {
       const msg = e instanceof Error ? e.message : String(e);
@@ -417,6 +426,8 @@ export function App(): React.JSX.Element {
     setRecipe(emptyRecipe());
     setInput("");
     setOutput("");
+    setOutputMeta(null);
+    setOutputPreviewSrc(null);
     setTrace([]);
     setImportWarnings([]);
     setError(null);
@@ -782,7 +793,13 @@ export function App(): React.JSX.Element {
           </div>
         </section>
         <section className="panel">
-          <IOPane input={input} output={output} onInputChange={setInput} />
+          <IOPane
+            input={input}
+            output={output}
+            outputMeta={outputMeta}
+            outputPreviewSrc={outputPreviewSrc}
+            onInputChange={setInput}
+          />
         </section>
       </main>
     </div>

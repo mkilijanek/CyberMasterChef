@@ -16,7 +16,7 @@ The project targets deterministic behavior, parity tracking, and auditable CI/se
 - Milestones `M1-M33`: completed.
 - Latest closure report: `docs/parity/roadmap-next-m29-m33.md`.
 - Next release objective: `1.0.0` with minimum `100%` functional coverage of the CyberChef reference set tracked in `docs/parity/*`.
-- Current execution wave: `M34-M53`, with `M44` completed in code and `M45` next on deck.
+- Current execution wave: `M34-M53`, with `M49` completed in code and `M50` next on deck.
 - Release track also includes container delivery: Docker image, smoke-tested `docker-compose.yml`, and GHCR publication on release tags.
 - GitHub milestones `M34-M53` are published and linked to issues `#58-#77`.
 - C-track snapshot:
@@ -94,6 +94,9 @@ pnpm docker:test
 - Forensic triage modules with deterministic STIX/MISP export
 - Advanced fingerprinting: `imphash`, TLSH, ssdeep, PE/ELF/Mach-O baseline detection
 - Forensic helper expansion: `Entropy`, `CTPH`, `Generate UUID`, `File Tree`, and deterministic `YARA Rules`
+- Extended media/file detection: `forensic.detectFileType` now recognizes `png`, `jpeg`, `gif`, `bmp`, `webp`, `avif`, `tiff`, and `svg`
+- Parity corpus expansion: golden corpus now covers image/media and deterministic forensic helper recipes at `30/30`
+- CLI/workbench reporting wave: structured output metadata in CLI artifacts and image preview + output metadata in Workbench
 - Optional CLI-first sandbox submit adapter with allowlist + timeout/retry controls
 - Crypto/KDF expansion: `hmacSha384`, `hkdf`, `scrypt`, `sha224`
 - Network expansion: `groupIPAddresses`

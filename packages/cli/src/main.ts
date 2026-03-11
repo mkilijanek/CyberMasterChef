@@ -18,6 +18,7 @@ import { standardPlugin } from "@cybermasterchef/plugins-standard";
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import pkg from "../package.json";
+import { describeOutput, type OutputMetadata } from "./outputMeta.js";
 
 const DEFAULT_TIMEOUT_MS = 10_000;
 
@@ -554,6 +555,7 @@ export function renderBatchOutputFile(
   run: {
     rendered: string;
     outputType: DataValue["type"];
+    outputMeta: OutputMetadata;
     elapsed: number;
     traceSummary: ReturnType<typeof summarizeTrace>;
   },
@@ -564,6 +566,7 @@ export function renderBatchOutputFile(
     file: filePath,
     output: run.rendered,
     outputType: run.outputType,
+    outputMeta: run.outputMeta,
     durationMs: run.elapsed,
     traceSummary: run.traceSummary
   };
@@ -631,6 +634,7 @@ async function executeOne(rawInput: string): Promise<{
   outputType: DataValue["type"];
   trace: Awaited<ReturnType<typeof runRecipe>>["trace"];
   traceSummary: ReturnType<typeof summarizeTrace>;
+  outputMeta: OutputMetadata;
   reproBundle: {
     runId: string;
     startedAt: number;
@@ -642,6 +646,7 @@ async function executeOne(rawInput: string): Promise<{
     warningCount: number;
     traceSteps: number;
     outputType: DataValue["type"];
+    outputMeta: OutputMetadata;
     pluginSet: Array<{ pluginId: string; version: string }>;
   };
 }> {
@@ -663,6 +668,8 @@ async function executeOne(rawInput: string): Promise<{
   const inputHash = await hashDataValue(inputValue);
   const elapsed = Date.now() - startedAt;
   const traceSummary = summarizeTrace(res.trace);
+  const rendered = renderOutput(res.output, opts);
+  const outputMeta = describeOutput(res.output, rendered);
   const reproBundle = {
     runId: crypto.randomUUID(),
     startedAt,
@@ -674,15 +681,17 @@ async function executeOne(rawInput: string): Promise<{
     warningCount: parsedRecipe.warningCount,
     traceSteps: res.trace.length,
     outputType: res.output.type,
+    outputMeta,
     pluginSet: [{ pluginId: standardPlugin.pluginId, version: standardPlugin.version }]
   };
   return {
     rawOutput: res.output,
-    rendered: renderOutput(res.output, opts),
+    rendered,
     elapsed,
     outputType: res.output.type,
     trace: res.trace,
     traceSummary,
+    outputMeta,
     reproBundle
   };
 }
@@ -704,6 +713,7 @@ if (opts.batchInputDir) {
     ok: boolean;
     durationMs: number;
     outputType: DataValue["type"];
+    outputMeta?: OutputMetadata;
     outputPreview?: string;
     traceSummary?: ReturnType<typeof summarizeTrace>;
     recipeHash?: string;
@@ -748,6 +758,7 @@ if (opts.batchInputDir) {
         ok: true,
         durationMs: run.elapsed,
         outputType: run.outputType,
+        outputMeta: run.outputMeta,
         outputPreview: run.rendered,
         traceSummary: run.traceSummary,
         recipeHash: run.reproBundle.recipeHash,
@@ -830,10 +841,20 @@ if (opts.batchInputDir) {
     process.stderr.write(
       `[summary] outputType=${run.outputType} traceSteps=${run.trace.length} durationMs=${run.elapsed}\n`
     );
+    if (run.outputMeta.byteLength !== null || run.outputMeta.mediaType !== null) {
+      process.stderr.write(
+        `[output-meta] preview=${run.outputMeta.previewKind} bytes=${run.outputMeta.byteLength ?? 0} media=${run.outputMeta.mediaType ?? "n/a"} detected=${run.outputMeta.detectedFileType ?? "n/a"}\n`
+      );
+    }
   }
   if (opts.summaryJson) {
     process.stderr.write(
-      `${JSON.stringify({ outputType: run.outputType, traceSteps: run.trace.length, durationMs: run.elapsed })}\n`
+      `${JSON.stringify({
+        outputType: run.outputType,
+        traceSteps: run.trace.length,
+        durationMs: run.elapsed,
+        outputMeta: run.outputMeta
+      })}\n`
     );
   }
   if (opts.showRepro) {

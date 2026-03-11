@@ -216,6 +216,49 @@ describe("forensic helper operations", () => {
     expect(out.output).toEqual({ type: "string", value: "png" });
   });
 
+  it("detects extended image and media types", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(detectFileType);
+
+    const webp = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "forensic.detectFileType" }] },
+      input: {
+        type: "bytes",
+        value: new Uint8Array([0x52, 0x49, 0x46, 0x46, 0, 0, 0, 0, 0x57, 0x45, 0x42, 0x50])
+      }
+    });
+    const avif = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "forensic.detectFileType" }] },
+      input: {
+        type: "bytes",
+        value: new Uint8Array([0, 0, 0, 0, 0x66, 0x74, 0x79, 0x70, 0x61, 0x76, 0x69, 0x66])
+      }
+    });
+    const tiff = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "forensic.detectFileType" }] },
+      input: { type: "bytes", value: new Uint8Array([0x49, 0x49, 0x2a, 0x00]) }
+    });
+    const bmp = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "forensic.detectFileType" }] },
+      input: { type: "bytes", value: new Uint8Array([0x42, 0x4d, 0, 0]) }
+    });
+    const svg = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "forensic.detectFileType" }] },
+      input: { type: "string", value: '<svg xmlns="http://www.w3.org/2000/svg"></svg>' }
+    });
+
+    expect(webp.output).toEqual({ type: "string", value: "webp" });
+    expect(avif.output).toEqual({ type: "string", value: "avif" });
+    expect(tiff.output).toEqual({ type: "string", value: "tiff" });
+    expect(bmp.output).toEqual({ type: "string", value: "bmp" });
+    expect(svg.output).toEqual({ type: "string", value: "svg" });
+  });
+
   it("extracts basic ELF metadata", async () => {
     const registry = new InMemoryRegistry();
     registry.register(elfInfo);

@@ -80,6 +80,19 @@ body { margin: 0; }
 .io { display: flex; flex-direction: column; gap: 10px; }
 .ioBlock { display: flex; flex-direction: column; gap: 6px; }
 .ioTitle { font-weight: 600; }
+.ioPreview {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ioPreviewImage {
+  max-width: 100%;
+  max-height: 240px;
+  object-fit: contain;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fafafa;
+}
 .argsBox {
   border: 1px dashed #ccc;
   padding: 8px;

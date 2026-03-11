@@ -6,9 +6,9 @@ Implemented operations in repo: 344
 ## Priority order
 
 - P1: crypto-hash-kdf (coverage 40.21%, missing ~58)
-- P2: misc-uncategorized (coverage 60.69%, missing ~57)
-- P3: forensic-malware-helper (coverage 62.5%, missing ~6)
-- P4: network-protocol-parsers (coverage 75.86%, missing ~7)
+- P2: network-protocol-parsers (coverage 56.41%, missing ~17)
+- P3: forensic-malware-helper (coverage 58.82%, missing ~7)
+- P4: misc-uncategorized (coverage 73.11%, missing ~32)
 
 ## Domain summary
 
@@ -150,11 +150,11 @@ Implemented operations in repo: 344
 
 ### data-formats
 - Description: Structured formats (JSON/XML/CSV/YAML/TOML/HTML and format conversion).
-- CyberChef total: 50
-- Implemented total: 62
-- Estimated missing: 0
-- Coverage: 124%
-- Implemented ops in repo: 62
+- CyberChef total: 70
+- Implemented total: 63
+- Estimated missing: 7
+- Coverage: 90%
+- Implemented ops in repo: 63
 - Implemented operation IDs:
   - text.linesToCsv (linesToCsv.ts)
   - text.csvToLines (csvToLines.ts)
@@ -190,10 +190,10 @@ Implemented operations in repo: 344
 
 ### regex-text-advanced
 - Description: Regex and advanced text analysis/normalization operations.
-- CyberChef total: 51
+- CyberChef total: 46
 - Implemented total: 55
 - Estimated missing: 0
-- Coverage: 107.84%
+- Coverage: 119.57%
 - Implemented ops in repo: 55
 - Implemented operation IDs:
   - text.reverse (reverse.ts)
@@ -230,10 +230,10 @@ Implemented operations in repo: 344
 
 ### network-protocol-parsers
 - Description: Protocol/header/parsing operations for network/web payloads.
-- CyberChef total: 29
+- CyberChef total: 39
 - Implemented total: 22
-- Estimated missing: 7
-- Coverage: 75.86%
+- Estimated missing: 17
+- Coverage: 56.41%
 - Implemented ops in repo: 22
 - Implemented operation IDs:
   - codec.urlEncode (urlEncode.ts)
@@ -257,7 +257,6 @@ Implemented operations in repo: 344
   - network.stripUdpHeader (stripUdpHeader.ts)
   - network.extractUrls (extractUrls.ts)
 - Candidate operations (first 20):
-  - CSS selector (CSSSelector.mjs) [high]
   - DechunkHTTPResponse (DechunkHTTPResponse.mjs) [high]
   - DefangIPAddresses (DefangIPAddresses.mjs) [high]
   - DefangURL (DefangURL.mjs) [high]
@@ -265,15 +264,16 @@ Implemented operations in repo: 344
   - DNSOverHTTPS (DNSOverHTTPS.mjs) [high]
   - Encode all special chars (URLEncode.mjs) [high]
   - ExtractIPAddresses (ExtractIPAddresses.mjs) [high]
+  - ExtractLSB (ExtractLSB.mjs) [high]
   - ExtractURLs (ExtractURLs.mjs) [high]
   - FangURL (FangURL.mjs) [high]
 
 ### forensic-malware-helper
 - Description: IOC extraction, entropy/byte analysis and malware triage helpers.
-- CyberChef total: 16
+- CyberChef total: 17
 - Implemented total: 10
-- Estimated missing: 6
-- Coverage: 62.5%
+- Estimated missing: 7
+- Coverage: 58.82%
 - Implemented ops in repo: 10
 - Implemented operation IDs:
   - forensic.analyseUuid (analyseUuid.ts)
@@ -300,11 +300,11 @@ Implemented operations in repo: 344
 
 ### misc-uncategorized
 - Description: Operations that require manual triage or do not fit current taxonomy.
-- CyberChef total: 145
-- Implemented total: 88
-- Estimated missing: 57
-- Coverage: 60.69%
-- Implemented ops in repo: 88
+- CyberChef total: 119
+- Implemented total: 87
+- Estimated missing: 32
+- Coverage: 73.11%
+- Implemented ops in repo: 87
 - Implemented operation IDs:
   - text.prepend (prepend.ts)
   - text.append (append.ts)
