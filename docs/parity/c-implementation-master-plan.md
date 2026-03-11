@@ -1,6 +1,6 @@
 # C Implementation Master Plan
 
-Updated: 2026-03-11 (M34-M53 roadmap, release 1.0.0 track, and container delivery plan added)
+Updated: 2026-03-11 (M34-M53 roadmap, release 1.0.0 track, container delivery plan, and GitHub milestone tracking added)
 
 ## Sources
 
@@ -42,7 +42,7 @@ Deliver a complete, auditable, and operationally useful C-track:
 ### C2 Domain Implementation
 
 - Status: `[IN-PROGRESS]`
-- Realization (current): `~65%` of tracked CyberChef reference operation coverage by implemented operation count.
+- Realization (current): `~66%` of tracked CyberChef reference operation coverage by implemented operation count.
 - Completed baseline waves:
   - date-time baseline and telemetry parsing helpers
   - data-format baseline (JSON/CSV/YAML/XML/HTML + image/format conversions)
@@ -251,4 +251,5 @@ Detailed stages: `docs/parity/roadmap-next-m34-m53.md`.
 - `M48-M49`: align CLI/workbench behavior with the expanded parity surface.
 - `M50-M53`: harden performance, security, docs, and release governance for `1.0.0`.
 - `M52-M53` also include container delivery and GHCR publication readiness.
-- Current checkpoint: `hash.crc32`, `hash.ripemd160`, `hash.fletcher8`, `hash.fletcher16`, `hash.fletcher32`, and `hash.fletcher64` are implemented, tested, and reflected in `C2`.
+- GitHub milestones `M34-M53` are published and linked to issues `#58-#77`.
+- Current checkpoint: `hash.crc32`, `hash.ripemd160`, `hash.fletcher8`, `hash.fletcher16`, `hash.fletcher32`, `hash.fletcher64`, `network.parseIPv6Address`, `network.parseIPRange`, and `network.stripHttpHeaders` are implemented, tested, and reflected in parity artifacts.

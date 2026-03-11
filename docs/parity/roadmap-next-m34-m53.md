@@ -118,9 +118,11 @@ flowchart TD
 - Functional target: minimum `100%` coverage against the tracked CyberChef reference operation set.
 - Quality target: all parity/security/perf/release gates green on the release candidate.
 - Documentation target: README, docs index, roadmap, runbooks, release plan, container docs, and parity artifacts all aligned with the shipped behavior.
+- Tracking target: GitHub milestones `M34-M53` published and linked to issues `#58-#77`.
 
 ## Current Progress Snapshot
 
 - `M34` `[DONE-IN-CODE]`: added `hash.crc32` and `hash.ripemd160`, regenerated C2 parity artifacts, and advanced the crypto/hash closure track.
-- `M35` `[IN-PROGRESS]`: `hash.fletcher8`, `hash.fletcher16`, `hash.fletcher32`, and `hash.fletcher64` are implemented and tested; container delivery scaffolding is validated locally.
-- `M36-M53` `[PLANNED]`: not started yet in code; scoped here as the release path to `1.0.0`.
+- `M35` `[DONE-IN-CODE]`: `hash.fletcher8`, `hash.fletcher16`, `hash.fletcher32`, and `hash.fletcher64` are implemented, tested, and correctly classified into the crypto parity domain.
+- `M36` `[IN-PROGRESS]`: `network.parseIPv6Address`, `network.parseIPRange`, and `network.stripHttpHeaders` are implemented and tested; GitHub milestones `M34-M53` were published and linked to issues `#58-#77`.
+- `M37-M53` `[PLANNED]`: not started yet in code; scoped here as the release path to `1.0.0`.

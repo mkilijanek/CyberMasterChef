@@ -16,7 +16,7 @@ Track operations still classified as `misc-uncategorized` and review them on a r
 
 ## Current backlog
 
-- Total uncategorized operations: 149
+- Total uncategorized operations: 147
 
 - AlternatingCaps (AlternatingCaps.mjs) [low]
 - Amount (BitShiftLeft.mjs) [low]
@@ -49,7 +49,6 @@ Track operations still classified as `misc-uncategorized` and review them on a r
 - HaversineDistance (HaversineDistance.mjs) [low]
 - HeatmapChart (HeatmapChart.mjs) [low]
 - Ignore ranges (IPv6TransitionAddresses.mjs) [low]
-- Include network info (ParseIPRange.mjs) [low]
 - IndexOfCoincidence (IndexOfCoincidence.mjs) [low]
 - Input format (ChangeIPFormat.mjs) [low]
 - Input Format (ConvertCoordinateFormat.mjs) [low]
@@ -102,7 +101,6 @@ Track operations still classified as `misc-uncategorized` and review them on a r
 - Offset (EncodeNetBIOSName.mjs) [low]
 - OpticalCharacterRecognition (OpticalCharacterRecognition.mjs) [low]
 - ParseColourCode (ParseColourCode.mjs) [low]
-- ParseIPv6Address (ParseIPv6Address.mjs) [low]
 - ParseQRCode (ParseQRCode.mjs) [low]
 - ParseSSHHostKey (ParseSSHHostKey.mjs) [low]
 - ParseTCP (ParseTCP.mjs) [low]

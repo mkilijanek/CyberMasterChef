@@ -16,8 +16,9 @@ The project targets deterministic behavior, parity tracking, and auditable CI/se
 - Milestones `M1-M33`: completed.
 - Latest closure report: `docs/parity/roadmap-next-m29-m33.md`.
 - Next release objective: `1.0.0` with minimum `100%` functional coverage of the CyberChef reference set tracked in `docs/parity/*`.
-- Current execution wave: `M34-M53`, with `M34` completed in code and `M35` in progress.
+- Current execution wave: `M34-M53`, with `M35` completed in code and `M36` in progress.
 - Release track also includes container delivery: Docker image, smoke-tested `docker-compose.yml`, and GHCR publication on release tags.
+- GitHub milestones `M34-M53` are published and linked to issues `#58-#77`.
 - C-track snapshot:
   - `C1`: complete domain matrix + drift gate
   - `C2`: in active parity expansion toward full CyberChef functional coverage

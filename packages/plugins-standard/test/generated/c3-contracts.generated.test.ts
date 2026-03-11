@@ -1087,7 +1087,61 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "hash.crc32",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "hash.fletcher16",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "hash.fletcher32",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "hash.fletcher64",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "hash.fletcher8",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "hash.md5",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "hash.ripemd160",
     "inputTypes": [
       "bytes",
       "string"
@@ -1495,6 +1549,31 @@ const CONTRACTS = [
       "prefixLength",
       "includeCounts"
     ]
+  },
+  {
+    "operationId": "network.parseIPRange",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.parseIPv6Address",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.stripHttpHeaders",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": []
   },
   {
     "operationId": "text.append",

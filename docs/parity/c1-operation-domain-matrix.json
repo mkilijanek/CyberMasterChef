@@ -2481,7 +2481,7 @@
     "originalCategory": "misc",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 65,
@@ -2490,7 +2490,7 @@
     "originalCategory": "misc",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 66,
@@ -2499,7 +2499,7 @@
     "originalCategory": "misc",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 67,
@@ -2508,7 +2508,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 77,
@@ -2517,7 +2517,7 @@
     "originalCategory": "misc",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 97,
@@ -2526,7 +2526,7 @@
     "originalCategory": "misc",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 103,
@@ -2535,7 +2535,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 119,
@@ -2544,7 +2544,7 @@
     "originalCategory": "text/transform",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 124,
@@ -2553,7 +2553,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 125,
@@ -2562,7 +2562,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 175,
@@ -2571,7 +2571,16 @@
     "originalCategory": "encoding/cipher",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 187,
+    "operationName": "Include network info",
+    "file": "ParseIPRange.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 196,
@@ -2580,7 +2589,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 197,
@@ -2589,7 +2598,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 198,
@@ -2598,7 +2607,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 223,
@@ -2607,7 +2616,7 @@
     "originalCategory": "crypto/hash",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 224,
@@ -2616,7 +2625,7 @@
     "originalCategory": "crypto/hash",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 225,
@@ -2625,7 +2634,7 @@
     "originalCategory": "crypto/hash",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 283,
@@ -2634,7 +2643,7 @@
     "originalCategory": "misc",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 285,
@@ -2643,7 +2652,16 @@
     "originalCategory": "misc",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+  },
+  {
+    "index": 306,
+    "operationName": "ParseIPv6Address",
+    "file": "ParseIPv6Address.mjs",
+    "originalCategory": "parsing/format",
+    "domain": "network-protocol-parsers",
+    "confidence": "high",
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 315,
@@ -2652,7 +2670,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 419,
@@ -2661,7 +2679,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 420,
@@ -2670,7 +2688,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 421,
@@ -2679,7 +2697,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 422,
@@ -2688,7 +2706,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 443,
@@ -2697,7 +2715,7 @@
     "originalCategory": "parsing/format",
     "domain": "network-protocol-parsers",
     "confidence": "high",
-    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bmac\\s*address\\b|groupip|extractip|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
+    "matchedBy": "/url|uri|jwt|http|https|dns|defang|refang|cidr|\\bipv?4\\b|\\bipv?6\\b|\\bip\\s*address\\b|\\bip\\s*range\\b|\\bmac\\s*address\\b|groupip|extractip|parseip|parseipv6|asn\\.1|\\bber\\b|\\bder\\b|x509|certificate|mime|header|cookie|query|css\\s*selector/i"
   },
   {
     "index": 17,
@@ -3118,15 +3136,6 @@
     "operationName": "Ignore ranges",
     "file": "IPv6TransitionAddresses.mjs",
     "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 187,
-    "operationName": "Include network info",
-    "file": "ParseIPRange.mjs",
-    "originalCategory": "parsing/format",
     "domain": "misc-uncategorized",
     "confidence": "low",
     "matchedBy": "<no-rule-match>"
@@ -3594,15 +3603,6 @@
     "index": 305,
     "operationName": "ParseColourCode",
     "file": "ParseColourCode.mjs",
-    "originalCategory": "parsing/format",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 306,
-    "operationName": "ParseIPv6Address",
-    "file": "ParseIPv6Address.mjs",
     "originalCategory": "parsing/format",
     "domain": "misc-uncategorized",
     "confidence": "low",

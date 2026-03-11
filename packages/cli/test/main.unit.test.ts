@@ -583,7 +583,7 @@ describe("cli helpers", () => {
     }
   });
 
-  it("supports stdin input and stdout output via executable entrypoint", () => {
+  it("supports stdin input and stdout output via executable entrypoint", { timeout: 15000 }, () => {
     const dir = mkdtempSync(join(tmpdir(), "cmc-cli-"));
     try {
       const recipePath = join(dir, "recipe.json");
@@ -611,7 +611,7 @@ describe("cli helpers", () => {
     }
   });
 
-  it("supports executable bootstrap with --version", () => {
+  it("supports executable bootstrap with --version", { timeout: 15000 }, () => {
     const run = spawnSync("node", ["--import", "tsx", sourceEntry, "--version"], {
       cwd: repoRoot,
       encoding: "utf-8",

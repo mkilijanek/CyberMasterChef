@@ -1,14 +1,14 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 304
+Implemented operations in repo: 307
 
 ## Priority order
 
 - P1: forensic-malware-helper (coverage 31.25%, missing ~11)
-- P2: crypto-hash-kdf (coverage 36.08%, missing ~62)
+- P2: crypto-hash-kdf (coverage 40.21%, missing ~58)
 - P3: encodings-codecs (coverage 41.38%, missing ~34)
-- P4: network-protocol-parsers (coverage 48%, missing ~13)
+- P4: network-protocol-parsers (coverage 55.56%, missing ~12)
 
 ## Domain summary
 
@@ -55,10 +55,10 @@ Implemented operations in repo: 304
 ### crypto-hash-kdf
 - Description: Cryptographic transforms, digests, MAC/KDF and cipher operations.
 - CyberChef total: 97
-- Implemented total: 35
-- Estimated missing: 62
-- Coverage: 36.08%
-- Implemented ops in repo: 35
+- Implemented total: 39
+- Estimated missing: 58
+- Coverage: 40.21%
+- Implemented ops in repo: 39
 - Implemented operation IDs:
   - text.includes (includesText.ts)
   - text.removeHashes (removeHashes.ts)
@@ -70,16 +70,16 @@ Implemented operations in repo: 304
   - forensic.extractSha256 (extractSha256.ts)
   - forensic.extractSha512 (extractSha512.ts)
   - hash.crc32 (crc32.ts)
+  - hash.fletcher8 (fletcher8.ts)
+  - hash.fletcher16 (fletcher16.ts)
+  - hash.fletcher32 (fletcher32.ts)
+  - hash.fletcher64 (fletcher64.ts)
   - hash.analyseHash (analyseHash.ts)
   - hash.md5 (hashMd5.ts)
   - hash.ripemd160 (ripemd160.ts)
   - hash.sha1 (sha1.ts)
   - crypto.atbashCipher (atbashCipher.ts)
   - crypto.affineCipherEncode (affineCipherEncode.ts)
-  - crypto.affineCipherDecode (affineCipherDecode.ts)
-  - crypto.a1z26CipherEncode (a1z26CipherEncode.ts)
-  - crypto.a1z26CipherDecode (a1z26CipherDecode.ts)
-  - crypto.baconCipherEncode (baconCipherEncode.ts)
 - Candidate operations (first 20):
   - a (AffineCipherDecode.mjs) [high]
   - a (AffineCipherEncode.mjs) [high]
@@ -230,11 +230,11 @@ Implemented operations in repo: 304
 
 ### network-protocol-parsers
 - Description: Protocol/header/parsing operations for network/web payloads.
-- CyberChef total: 25
-- Implemented total: 12
-- Estimated missing: 13
-- Coverage: 48%
-- Implemented ops in repo: 12
+- CyberChef total: 27
+- Implemented total: 15
+- Estimated missing: 12
+- Coverage: 55.56%
+- Implemented ops in repo: 15
 - Implemented operation IDs:
   - codec.urlEncode (urlEncode.ts)
   - codec.urlDecode (urlDecode.ts)
@@ -245,6 +245,9 @@ Implemented operations in repo: 304
   - network.dechunkHttpResponse (dechunkHttpResponse.ts)
   - network.groupIPAddresses (groupIPAddresses.ts)
   - network.dnsOverHttps (dnsOverHttps.ts)
+  - network.parseIPv6Address (parseIPv6Address.ts)
+  - network.parseIPRange (parseIPRange.ts)
+  - network.stripHttpHeaders (stripHttpHeaders.ts)
   - network.extractUrls (extractUrls.ts)
   - network.defangUrls (defangUrls.ts)
   - network.fangUrls (fangUrls.ts)
@@ -287,11 +290,11 @@ Implemented operations in repo: 304
 
 ### misc-uncategorized
 - Description: Operations that require manual triage or do not fit current taxonomy.
-- CyberChef total: 149
-- Implemented total: 92
-- Estimated missing: 57
-- Coverage: 61.74%
-- Implemented ops in repo: 92
+- CyberChef total: 147
+- Implemented total: 88
+- Estimated missing: 59
+- Coverage: 59.86%
+- Implemented ops in repo: 88
 - Implemented operation IDs:
   - text.prepend (prepend.ts)
   - text.append (append.ts)

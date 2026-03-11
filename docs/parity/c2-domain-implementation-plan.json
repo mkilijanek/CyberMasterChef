@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 304
+    "implementedOpsCount": 307
   },
   "summary": [
     {
@@ -241,9 +241,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 97,
-      "implementedTotal": 35,
-      "missingEstimated": 62,
-      "coveragePct": 36.08,
+      "implementedTotal": 39,
+      "missingEstimated": 58,
+      "coveragePct": 40.21,
       "implementedOps": [
         {
           "id": "text.includes",
@@ -294,6 +294,26 @@
           "id": "hash.crc32",
           "name": "CRC-32",
           "file": "crc32.ts"
+        },
+        {
+          "id": "hash.fletcher8",
+          "name": "Fletcher-8",
+          "file": "fletcher8.ts"
+        },
+        {
+          "id": "hash.fletcher16",
+          "name": "Fletcher-16",
+          "file": "fletcher16.ts"
+        },
+        {
+          "id": "hash.fletcher32",
+          "name": "Fletcher-32",
+          "file": "fletcher32.ts"
+        },
+        {
+          "id": "hash.fletcher64",
+          "name": "Fletcher-64",
+          "file": "fletcher64.ts"
         },
         {
           "id": "hash.analyseHash",
@@ -1550,10 +1570,10 @@
     {
       "domain": "network-protocol-parsers",
       "description": "Protocol/header/parsing operations for network/web payloads.",
-      "cyberChefTotal": 25,
-      "implementedTotal": 12,
-      "missingEstimated": 13,
-      "coveragePct": 48,
+      "cyberChefTotal": 27,
+      "implementedTotal": 15,
+      "missingEstimated": 12,
+      "coveragePct": 55.56,
       "implementedOps": [
         {
           "id": "codec.urlEncode",
@@ -1599,6 +1619,21 @@
           "id": "network.dnsOverHttps",
           "name": "DNS over HTTPS",
           "file": "dnsOverHttps.ts"
+        },
+        {
+          "id": "network.parseIPv6Address",
+          "name": "Parse IPv6 Address",
+          "file": "parseIPv6Address.ts"
+        },
+        {
+          "id": "network.parseIPRange",
+          "name": "Parse IP Range",
+          "file": "parseIPRange.ts"
+        },
+        {
+          "id": "network.stripHttpHeaders",
+          "name": "Strip HTTP Headers",
+          "file": "stripHttpHeaders.ts"
         },
         {
           "id": "network.extractUrls",
@@ -1673,6 +1708,11 @@
           "confidence": "high"
         },
         {
+          "operationName": "Include network info",
+          "file": "ParseIPRange.mjs",
+          "confidence": "high"
+        },
+        {
           "operationName": "Input format",
           "file": "ParseIPv4Header.mjs",
           "confidence": "high"
@@ -1710,11 +1750,6 @@
         {
           "operationName": "MIMEDecoding",
           "file": "MIMEDecoding.mjs",
-          "confidence": "high"
-        },
-        {
-          "operationName": "ParseURI",
-          "file": "ParseURI.mjs",
           "confidence": "high"
         }
       ]
@@ -1839,10 +1874,10 @@
     {
       "domain": "misc-uncategorized",
       "description": "Operations that require manual triage or do not fit current taxonomy.",
-      "cyberChefTotal": 149,
-      "implementedTotal": 92,
-      "missingEstimated": 57,
-      "coveragePct": 61.74,
+      "cyberChefTotal": 147,
+      "implementedTotal": 88,
+      "missingEstimated": 59,
+      "coveragePct": 59.86,
       "implementedOps": [
         {
           "id": "text.prepend",
@@ -2275,26 +2310,6 @@
           "file": "adler32.ts"
         },
         {
-          "id": "hash.fletcher8",
-          "name": "Fletcher-8",
-          "file": "fletcher8.ts"
-        },
-        {
-          "id": "hash.fletcher16",
-          "name": "Fletcher-16",
-          "file": "fletcher16.ts"
-        },
-        {
-          "id": "hash.fletcher32",
-          "name": "Fletcher-32",
-          "file": "fletcher32.ts"
-        },
-        {
-          "id": "hash.fletcher64",
-          "name": "Fletcher-64",
-          "file": "fletcher64.ts"
-        },
-        {
           "id": "hash.blake2b",
           "name": "BLAKE2b",
           "file": "blake2b.ts"
@@ -2419,8 +2434,8 @@
     {
       "priority": 2,
       "domain": "crypto-hash-kdf",
-      "coveragePct": 36.08,
-      "missingEstimated": 62
+      "coveragePct": 40.21,
+      "missingEstimated": 58
     },
     {
       "priority": 3,
@@ -2431,8 +2446,8 @@
     {
       "priority": 4,
       "domain": "network-protocol-parsers",
-      "coveragePct": 48,
-      "missingEstimated": 13
+      "coveragePct": 55.56,
+      "missingEstimated": 12
     }
   ]
 }

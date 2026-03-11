@@ -27,7 +27,8 @@ const rules = [
     domain: "crypto-hash-kdf",
     confidence: "high",
     patterns: [
-      /aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i
+      /aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i,
+      /fletcher/i
     ]
   },
   {
@@ -53,7 +54,7 @@ const rules = [
     domain: "network-protocol-parsers",
     confidence: "high",
     patterns: [
-      /url|uri|jwt|http|https|dns|defang|refang|cidr|\bipv?4\b|\bipv?6\b|\bip\s*address\b|\bmac\s*address\b|groupip|extractip|asn\.1|\bber\b|\bder\b|x509|certificate|mime|header|cookie|query|css\s*selector/i
+      /url|uri|jwt|http|https|dns|defang|refang|cidr|\bipv?4\b|\bipv?6\b|\bip\s*address\b|\bip\s*range\b|\bmac\s*address\b|groupip|extractip|parseip|parseipv6|asn\.1|\bber\b|\bder\b|x509|certificate|mime|header|cookie|query|css\s*selector/i
     ]
   },
   {

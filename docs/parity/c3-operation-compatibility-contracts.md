@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 298
+Total contracts: 307
 
 ## Contract entries (compact)
 
@@ -782,8 +782,50 @@ Total contracts: 298
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.crc32
+  - name: CRC-32
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.fletcher16
+  - name: Fletcher-16
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.fletcher32
+  - name: Fletcher-32
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.fletcher64
+  - name: Fletcher-64
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.fletcher8
+  - name: Fletcher-8
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.md5
   - name: MD5
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.ripemd160
+  - name: RIPEMD-160
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string
@@ -1074,6 +1116,27 @@ Total contracts: 298
   - domain: network-protocol-parsers
   - inputTypes: bytes, string
   - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.parseIPRange
+  - name: Parse IP Range
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.parseIPv6Address
+  - name: Parse IPv6 Address
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.stripHttpHeaders
+  - name: Strip HTTP Headers
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
+  - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.append

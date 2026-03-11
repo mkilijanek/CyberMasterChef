@@ -3474,6 +3474,131 @@
     }
   },
   {
+    "operationId": "hash.crc32",
+    "name": "CRC-32",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/crc32.ts",
+      "description": "Computes CRC-32 checksum. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.fletcher16",
+    "name": "Fletcher-16",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fletcher16.ts",
+      "description": "Computes Fletcher-16 checksum. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.fletcher32",
+    "name": "Fletcher-32",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fletcher32.ts",
+      "description": "Computes Fletcher-32 checksum. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.fletcher64",
+    "name": "Fletcher-64",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fletcher64.ts",
+      "description": "Computes Fletcher-64 checksum. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.fletcher8",
+    "name": "Fletcher-8",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fletcher8.ts",
+      "description": "Computes Fletcher-8 checksum. Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.md5",
     "name": "MD5",
     "domain": "crypto-hash-kdf",
@@ -3496,6 +3621,31 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/hashMd5.ts",
       "description": "Computes MD5 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.ripemd160",
+    "name": "RIPEMD-160",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/ripemd160.ts",
+      "description": "Computes RIPEMD-160 digest. Output is lowercase hex string."
     }
   },
   {
@@ -4767,6 +4917,84 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/groupIPAddresses.ts",
       "description": "Groups IPv4 addresses by CIDR prefix and outputs group counts."
+    }
+  },
+  {
+    "operationId": "network.parseIPRange",
+    "name": "Parse IP Range",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input",
+        "Expected IP range input",
+        "Expected CIDR input in the form address/prefix",
+        "Expected explicit IP range in the form start-end",
+        "IP range start must not exceed end"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseIPRange.ts",
+      "description": "Parses IPv4/IPv6 CIDR blocks or explicit ranges and reports normalized bounds."
+    }
+  },
+  {
+    "operationId": "network.parseIPv6Address",
+    "name": "Parse IPv6 Address",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseIPv6Address.ts",
+      "description": "Parses and normalizes an IPv6 address into compressed and expanded forms."
+    }
+  },
+  {
+    "operationId": "network.stripHttpHeaders",
+    "name": "Strip HTTP Headers",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input",
+        "HTTP header terminator not found"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/stripHttpHeaders.ts",
+      "description": "Strips HTTP headers and returns the payload body only."
     }
   },
   {

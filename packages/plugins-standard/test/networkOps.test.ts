@@ -11,6 +11,9 @@ import { extractPorts } from "../src/ops/extractPorts.js";
 import { dechunkHttpResponse } from "../src/ops/dechunkHttpResponse.js";
 import { groupIPAddresses } from "../src/ops/groupIPAddresses.js";
 import { dnsOverHttps } from "../src/ops/dnsOverHttps.js";
+import { parseIPv6Address } from "../src/ops/parseIPv6Address.js";
+import { parseIPRange } from "../src/ops/parseIPRange.js";
+import { stripHttpHeaders } from "../src/ops/stripHttpHeaders.js";
 
 describe("network operations", () => {
   it("extracts unique valid IPv4 addresses", async () => {
@@ -238,5 +241,86 @@ describe("network operations", () => {
         input: { type: "string", value: "example.com" }
       })
     ).rejects.toThrow("resolverUrl host not allowlisted");
+  });
+
+  it("parses and normalizes IPv6 addresses", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(parseIPv6Address);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.parseIPv6Address" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: {
+        type: "string",
+        value: "2001:0db8:0000:0000:0000:ff00:0042:8329"
+      }
+    });
+    expect(out.output.type).toBe("json");
+    if (out.output.type !== "json") return;
+    expect(out.output.value).toMatchObject({
+      version: 6,
+      compressed: "2001:db8::ff00:42:8329",
+      expanded: "2001:0db8:0000:0000:0000:ff00:0042:8329",
+      kind: "documentation"
+    });
+  });
+
+  it("parses IPv4 CIDR ranges with network metadata", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(parseIPRange);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.parseIPRange" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "192.168.1.10/24" }
+    });
+    expect(out.output.type).toBe("json");
+    if (out.output.type !== "json") return;
+    expect(out.output.value).toMatchObject({
+      kind: "cidr",
+      version: 4,
+      network: "192.168.1.0",
+      broadcast: "192.168.1.255",
+      firstHost: "192.168.1.1",
+      lastHost: "192.168.1.254",
+      count: "256"
+    });
+  });
+
+  it("parses explicit IPv6 ranges", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(parseIPRange);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.parseIPRange" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "2001:db8::1-2001:db8::3" }
+    });
+    expect(out.output.type).toBe("json");
+    if (out.output.type !== "json") return;
+    expect(out.output.value).toMatchObject({
+      kind: "range",
+      version: 6,
+      start: "2001:db8::1",
+      end: "2001:db8::3",
+      count: "3"
+    });
+  });
+
+  it("strips HTTP headers and returns the body bytes", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(stripHttpHeaders);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.stripHttpHeaders" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: {
+        type: "string",
+        value: "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\nhello"
+      }
+    });
+    expect(out.output.type).toBe("bytes");
+    if (out.output.type !== "bytes") return;
+    expect(new TextDecoder().decode(out.output.value)).toBe("hello");
   });
 });
