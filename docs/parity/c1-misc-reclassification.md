@@ -16,7 +16,7 @@ Track operations still classified as `misc-uncategorized` and review them on a r
 
 ## Current backlog
 
-- Total uncategorized operations: 119
+- Total uncategorized operations: 117
 
 - AlternatingCaps (AlternatingCaps.mjs) [low]
 - Amount (BitShiftLeft.mjs) [low]
@@ -121,8 +121,6 @@ Track operations still classified as `misc-uncategorized` and review them on a r
 - ShowOnMap (ShowOnMap.mjs) [low]
 - Shuffle (Shuffle.mjs) [low]
 - Sigaba (SIGABA.mjs) [low]
-- Size (BLAKE2b.mjs) [low]
-- Size (BLAKE2s.mjs) [low]
 - SM3 (SM3.mjs) [low]
 - Snefru (Snefru.mjs) [low]
 - SymmetricDifference (SymmetricDifference.mjs) [low]
