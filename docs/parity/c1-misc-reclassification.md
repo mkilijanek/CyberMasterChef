@@ -16,7 +16,7 @@ Track operations still classified as `misc-uncategorized` and review them on a r
 
 ## Current backlog
 
-- Total uncategorized operations: 147
+- Total uncategorized operations: 145
 
 - AlternatingCaps (AlternatingCaps.mjs) [low]
 - Amount (BitShiftLeft.mjs) [low]
@@ -103,10 +103,8 @@ Track operations still classified as `misc-uncategorized` and review them on a r
 - ParseColourCode (ParseColourCode.mjs) [low]
 - ParseQRCode (ParseQRCode.mjs) [low]
 - ParseSSHHostKey (ParseSSHHostKey.mjs) [low]
-- ParseTCP (ParseTCP.mjs) [low]
 - ParseTLSRecord (ParseTLSRecord.mjs) [low]
 - ParseTLV (ParseTLV.mjs) [low]
-- ParseUDP (ParseUDP.mjs) [low]
 - ParseUserAgent (ParseUserAgent.mjs) [low]
 - Passphrase (DeriveEVPKey.mjs) [low]
 - PEMToJWK (JWKToPem.mjs) [low]
