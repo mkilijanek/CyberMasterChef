@@ -14,6 +14,7 @@ Ship `CyberMasterChef 1.0.0` only after the tracked CyberChef functional surface
 - README/docs index/master plan aligned with shipped scope
 - container image, compose setup, and GHCR release pipeline validated on `main`
 - runtime header policy and CSP checklist aligned with the shipped nginx config
+- release evidence checklist and container operator runbook committed and current
 
 ## Required Validation
 
@@ -49,7 +50,7 @@ Ship `CyberMasterChef 1.0.0` only after the tracked CyberChef functional surface
 2. Regenerate parity and release artifacts.
 3. Verify the CyberChef parity target and attach evidence in the release PR.
 4. Update changelog/release notes and rollback notes.
-5. Build and smoke-test the Docker image and validate `docker-compose.yml`.
+5. Build and smoke-test the Docker image, validate `docker-compose.yml`, and complete `docs/release/release-evidence-checklist.md`.
 6. Merge `dev -> main`.
 7. Tag and publish `1.0.0`, including GHCR images.
 8. Verify post-release CI, container publication, and operational dashboards.

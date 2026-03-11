@@ -9,6 +9,7 @@
 1. Inspect worker stats (`queueDepth`, `inFlight`, `queueOverflowCount`).
 2. Validate timeout configuration for affected flow.
 3. Verify recent changes in heavy operations (forensic/image/crypto).
+4. If the incident is container-specific, pivot to `docs/runbooks/container-operations.md`.
 
 ## Mitigation
 

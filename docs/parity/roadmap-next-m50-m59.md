@@ -30,9 +30,9 @@ flowchart TD
    - Issue: `#75`
    - completed runtime/container/security-policy hardening with enforced nginx security headers, cache/method restrictions, smoke-test header validation, and aligned CSP/runtime evidence
 3. `M52`: documentation and operational readiness
-   - Status: `PLANNED`
+   - Status: `DONE-IN-CODE`
    - Issue: `#76`
-   - align README, release docs, runbooks, diagrams, container/operator docs, and release evidence
+   - aligned README, release docs, runbooks, container/operator docs, release evidence checklist, and release-readiness gating with the shipped runtime/container model
 4. `M53`: misc/utility parity wave 1
    - Status: `DONE-IN-CODE`
    - Issue: `#78`

@@ -42,7 +42,7 @@ docs/
   parity/             plans, contracts, execution board
   perf/               budgets and latest benchmark reports
   release/            release train, rollback, final audit
-  runbooks/           CI/security/runtime incident procedures
+  runbooks/           CI/security/runtime/container procedures
   operations/         observability baseline + SLO/SLA
 ```
 
@@ -112,8 +112,10 @@ pnpm docker:test
 - [Roadmap M34-M53](docs/parity/roadmap-next-m34-m53.md)
 - [Roadmap M50-M59](docs/parity/roadmap-next-m50-m59.md)
 - [Release 1.0.0 Plan](docs/release/release-1.0.0-plan.md)
+- [Release Evidence Checklist](docs/release/release-evidence-checklist.md)
 - [Container Delivery](docs/release/release-1.0.0-plan.md#container-delivery)
 - [Runtime Hardening](docs/security/runtime-hardening.md)
+- [Container Operations Runbook](docs/runbooks/container-operations.md)
 - [Execution board](docs/parity/c2-execution-board.md)
 - [C3 contracts](docs/parity/c3-operation-compatibility-contracts.md)
 - [Triage corpus](docs/parity/triage-corpus.md)

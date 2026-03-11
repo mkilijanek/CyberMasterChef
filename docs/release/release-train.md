@@ -35,3 +35,4 @@
 - Parity roadmap feeding `1.0.0`: `docs/parity/roadmap-next-m50-m59.md`
 - Container delivery: Docker image, smoke-test workflow, `docker-compose.yml`, and GHCR publication on release tags
 - Runtime hardening evidence: CSP checklist, nginx response headers, and container smoke validation must remain aligned on the release commit
+- Release evidence: `docs/release/release-evidence-checklist.md` and `docs/runbooks/container-operations.md` must be current before cutover
