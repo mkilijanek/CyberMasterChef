@@ -52,6 +52,14 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "codec.fromBech32",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": []
+  },
+  {
     "operationId": "codec.fromBinary",
     "inputTypes": [
       "string"
@@ -160,6 +168,17 @@ const CONTRACTS = [
     ],
     "outputType": "string",
     "argKeys": []
+  },
+  {
+    "operationId": "codec.toBech32",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "hrp"
+    ]
   },
   {
     "operationId": "codec.toBinary",

@@ -10,6 +10,8 @@ import { toBase62 } from "./ops/toBase62.js";
 import { fromBase62 } from "./ops/fromBase62.js";
 import { toBase85 } from "./ops/toBase85.js";
 import { fromBase85 } from "./ops/fromBase85.js";
+import { toBech32 } from "./ops/toBech32.js";
+import { fromBech32 } from "./ops/fromBech32.js";
 import { toBase58 } from "./ops/toBase58.js";
 import { fromBase58 } from "./ops/fromBase58.js";
 import { toMorseCode } from "./ops/toMorseCode.js";
@@ -339,6 +341,8 @@ export const standardPlugin: Plugin = {
     registry.register(fromBase62);
     registry.register(toBase85);
     registry.register(fromBase85);
+    registry.register(toBech32);
+    registry.register(fromBech32);
     registry.register(toBase58);
     registry.register(fromBase58);
     registry.register(toMorseCode);

@@ -2,16 +2,16 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 324
+    "implementedOpsCount": 326
   },
   "summary": [
     {
       "domain": "encodings-codecs",
       "description": "Encodings, binary/text codecs, canonical representation transforms.",
       "cyberChefTotal": 58,
-      "implementedTotal": 34,
-      "missingEstimated": 24,
-      "coveragePct": 58.62,
+      "implementedTotal": 36,
+      "missingEstimated": 22,
+      "coveragePct": 62.07,
       "implementedOps": [
         {
           "id": "codec.toBase64",
@@ -62,6 +62,16 @@
           "id": "codec.fromBase85",
           "name": "From Base85",
           "file": "fromBase85.ts"
+        },
+        {
+          "id": "codec.toBech32",
+          "name": "To Bech32",
+          "file": "toBech32.ts"
+        },
+        {
+          "id": "codec.fromBech32",
+          "name": "From Bech32",
+          "file": "fromBech32.ts"
         },
         {
           "id": "codec.toBase58",
@@ -2524,15 +2534,15 @@
     },
     {
       "priority": 3,
-      "domain": "encodings-codecs",
-      "coveragePct": 58.62,
-      "missingEstimated": 24
-    },
-    {
-      "priority": 4,
       "domain": "misc-uncategorized",
       "coveragePct": 60.69,
       "missingEstimated": 57
+    },
+    {
+      "priority": 4,
+      "domain": "encodings-codecs",
+      "coveragePct": 62.07,
+      "missingEstimated": 22
     }
   ]
 }

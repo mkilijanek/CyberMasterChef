@@ -154,6 +154,30 @@
     }
   },
   {
+    "operationId": "codec.fromBech32",
+    "name": "From Bech32",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromBech32.ts",
+      "description": "Decodes Bech32 string into bytes."
+    }
+  },
+  {
     "operationId": "codec.fromBinary",
     "name": "From Binary",
     "domain": "encodings-codecs",
@@ -470,6 +494,38 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/toBase85.ts",
       "description": "Encodes bytes or string to ASCII85/Base85."
+    }
+  },
+  {
+    "operationId": "codec.toBech32",
+    "name": "To Bech32",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "hrp",
+        "type": "string",
+        "label": "Human-Readable Part",
+        "defaultValue": "\"cmc\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toBech32.ts",
+      "description": "Encodes bytes or string to Bech32 with a configurable HRP."
     }
   },
   {
