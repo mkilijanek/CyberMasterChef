@@ -16,10 +16,11 @@ The project targets deterministic behavior, parity tracking, and auditable CI/se
 - Milestones `M1-M33`: completed.
 - Latest closure report: `docs/parity/roadmap-next-m29-m33.md`.
 - Next release objective: `1.0.0` with minimum `100%` functional coverage of the CyberChef reference set tracked in `docs/parity/*`.
-- Current execution wave: `M50-M59`, with `M53-M57` completed in code, `M58` in progress, and `M59` reserved for the `1.0.0` release cutover.
+- Current execution wave: `M50-M59`, with `M50-M57` completed in code, `M58` in progress, and `M59` reserved for the `1.0.0` release cutover.
 - Release track also includes container delivery: Docker image, smoke-tested `docker-compose.yml`, and GHCR publication on release tags.
 - `M51` runtime hardening is enforced in the shipped nginx config and verified during `pnpm docker:test`.
 - GitHub milestones are being extended through `M59` so release cutover stays behind the remaining parity closure work.
+- `M50` performance gates are enforced through tested helper libraries behind `pnpm perf:assets`, `pnpm perf:check`, and `pnpm test:scripts`.
 - C-track snapshot:
   - `C1`: complete domain matrix + drift gate
   - `C2`: `381` tracked operations implemented, with `crypto-hash-kdf` raised to `59/100` (`59%`) and `network-protocol-parsers` held at `28/39` (`71.79%`)

@@ -15,6 +15,7 @@ pnpm dev         # starts workbench at http://localhost:5173
 pnpm typecheck   # TypeScript check (Vite is transpile-only!)
 pnpm lint        # ESLint across all packages
 pnpm test        # Vitest
+pnpm test:scripts # node:test coverage for docker/security/release/perf helper scripts
 pnpm test:coverage # Vitest coverage reports + thresholds
 pnpm test:parity # parity coverage gate vs reference corpus
 pnpm test:e2e    # Playwright critical flows (workbench)
@@ -72,6 +73,7 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
   - `e2e/workbench-pool-settings.spec.ts` (pool size and max queue persistence)
 - CI now enforces Playwright E2E (`pnpm test:e2e`) in `.github/workflows/ci.yml`.
 - For local release-grade validation, run `pnpm run ci:full` and then `pnpm test:e2e`.
+- Script-level governance helpers under `scripts/docker`, `scripts/security`, `scripts/release`, and `scripts/perf` are covered by `pnpm test:scripts`.
 - `engine` tests include abort/cancel behavior coverage (`AbortSignal` path).
 - Golden recipes: regression tests against CyberChef-compatible recipe JSON (actively extended).
 - Reproducibility helpers in core:

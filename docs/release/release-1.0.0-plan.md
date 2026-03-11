@@ -8,7 +8,7 @@ Ship `CyberMasterChef 1.0.0` only after the tracked CyberChef functional surface
 
 ## Entry Criteria
 
-- `M34-M57` completed and documented; `M58` is in progress with the latest hash, Argon2, bcrypt verify, and HMAC parity wave landed in code
+- `M34-M57` completed and documented; `M50-M52` release-governance gates are in code and `M58` is in progress with the latest hash, Argon2, bcrypt verify, and HMAC parity wave landed in code
 - `C1`, `C2`, `C3` artifacts regenerated and committed
 - no open blocking security, CI, or release issues
 - README/docs index/master plan aligned with shipped scope
@@ -34,6 +34,7 @@ Ship `CyberMasterChef 1.0.0` only after the tracked CyberChef functional surface
 - `pnpm docker:build`
 - `pnpm docker:test`
 - GitHub Actions `CI`, `Container`, and `CodeQL` workflows must run on `Node 24` and finish without asset-budget regressions
+- tested perf helper libraries must remain green via `pnpm test:scripts` and keep changed-file coverage at `100%` for budget/reporting logic
 
 ## Container Delivery
 

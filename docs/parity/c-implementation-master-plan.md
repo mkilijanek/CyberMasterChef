@@ -1,6 +1,6 @@
 # C Implementation Master Plan
 
-Updated: 2026-03-11 (M50-M59 roadmap, release sequencing correction, container delivery plan, and GitHub milestone tracking added)
+Updated: 2026-03-11 (M50 performance gate closure, M50-M59 roadmap, release sequencing correction, container delivery plan, and GitHub milestone tracking added)
 
 ## Sources
 
@@ -198,9 +198,9 @@ Deliver a complete, auditable, and operationally useful C-track:
 14. `M47`: contract corpus expansion. `[DONE]`
 15. `M48`: CLI full-parity UX and reporting. `[DONE]`
 16. `M49`: workbench full-parity UX wave. `[DONE]`
-17. `M50`: performance and scale 1.0 gates.
-18. `M51`: security hardening final wave.
-19. `M52`: documentation and operational readiness.
+17. `M50`: performance and scale 1.0 gates. `[DONE-IN-CODE]`
+18. `M51`: security hardening final wave. `[DONE-IN-CODE]`
+19. `M52`: documentation and operational readiness. `[DONE-IN-CODE]`
 20. `M53`: misc/utility parity wave 1. `[DONE-IN-CODE]`
 21. `M54`: misc/utility parity wave 2. `[DONE-IN-CODE]`
 22. `M55`: network/forensic parity wave 1. `[DONE-IN-CODE]`
@@ -251,7 +251,7 @@ Detailed stages: `docs/parity/roadmap-next-m50-m59.md`.
 
 ### M50-M59 Planned Track
 
-- `M50-M52`: stabilize performance, security, docs, and operational evidence while parity continues to grow.
+- `M50-M52`: performance, security, and operational-readiness gates are in code; keep evidence current while parity continues to grow.
 - `M53-M54`: close low-risk `misc-uncategorized` and utility gaps with full regression coverage.
 - `M55-M56`: close remaining high-value network and forensic gaps needed for tracked parity.
 - `M57-M58`: push crypto/reference parity upward with deterministic evidence and contracts; after the current `M58` sub-wave, final closure still requires follow-on parity work before `1.0.0`.

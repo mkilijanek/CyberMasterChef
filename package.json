@@ -12,7 +12,7 @@
     "lint": "pnpm -r lint",
     "test": "pnpm -r test && pnpm test:scripts",
     "test:coverage": "pnpm -r test:coverage",
-    "test:scripts": "node --test scripts/docker/*.test.mjs scripts/security/*.test.mjs scripts/release/*.test.mjs",
+    "test:scripts": "node --test scripts/docker/*.test.mjs scripts/security/*.test.mjs scripts/release/*.test.mjs scripts/perf/*.test.mjs",
     "test:e2e": "playwright test",
     "format": "prettier -w .",
     "ci": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
