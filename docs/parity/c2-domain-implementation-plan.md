@@ -1,13 +1,13 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 358
+Implemented operations in repo: 362
 
 ## Priority order
 
 - P1: crypto-hash-kdf (coverage 40.21%, missing ~58)
 - P2: forensic-malware-helper (coverage 58.82%, missing ~7)
-- P3: network-protocol-parsers (coverage 61.54%, missing ~15)
+- P3: network-protocol-parsers (coverage 71.79%, missing ~11)
 - P4: misc-uncategorized (coverage 82.35%, missing ~21)
 
 ## Domain summary
@@ -231,15 +231,17 @@ Implemented operations in repo: 358
 ### network-protocol-parsers
 - Description: Protocol/header/parsing operations for network/web payloads.
 - CyberChef total: 39
-- Implemented total: 24
-- Estimated missing: 15
-- Coverage: 61.54%
-- Implemented ops in repo: 24
+- Implemented total: 28
+- Estimated missing: 11
+- Coverage: 71.79%
+- Implemented ops in repo: 28
 - Implemented operation IDs:
   - codec.urlEncode (urlEncode.ts)
   - codec.urlDecode (urlDecode.ts)
   - network.changeIpFormat (changeIpFormat.ts)
   - network.parseUserAgent (parseUserAgent.ts)
+  - network.parseX509Certificate (parseX509Certificate.ts)
+  - network.parseX509Crl (parseX509Crl.ts)
   - forensic.extractJwt (extractJwt.ts)
   - network.extractIPs (extractIPs.ts)
   - network.extractIPv6 (extractIPv6.ts)
@@ -248,14 +250,12 @@ Implemented operations in repo: 358
   - network.groupIPAddresses (groupIPAddresses.ts)
   - network.dnsOverHttps (dnsOverHttps.ts)
   - network.parseIPv6Address (parseIPv6Address.ts)
+  - network.ipv6TransitionAddresses (ipv6TransitionAddresses.ts)
   - network.parseIPRange (parseIPRange.ts)
   - network.stripHttpHeaders (stripHttpHeaders.ts)
   - network.parseIPv4Header (parseIPv4Header.ts)
   - network.parseTcpHeader (parseTcpHeader.ts)
-  - network.parseUdpHeader (parseUdpHeader.ts)
-  - network.parseUri (parseUri.ts)
-  - network.stripIPv4Header (stripIPv4Header.ts)
-  - network.stripTcpHeader (stripTcpHeader.ts)
+  - network.parseTlsRecord (parseTlsRecord.ts)
 - Candidate operations (first 20):
   - DechunkHTTPResponse (DechunkHTTPResponse.mjs) [high]
   - DefangIPAddresses (DefangIPAddresses.mjs) [high]

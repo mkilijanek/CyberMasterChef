@@ -6180,6 +6180,30 @@
     }
   },
   {
+    "operationId": "network.ipv6TransitionAddresses",
+    "name": "IPv6 Transition Addresses",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/ipv6TransitionAddresses.ts",
+      "description": "Detects 6to4, Teredo, ISATAP, and IPv4-mapped transition details in IPv6 addresses."
+    }
+  },
+  {
     "operationId": "network.parseIPRange",
     "name": "Parse IP Range",
     "domain": "network-protocol-parsers",
@@ -6282,6 +6306,33 @@
     }
   },
   {
+    "operationId": "network.parseTlsRecord",
+    "name": "Parse TLS Record",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input",
+        "TLS record length exceeds input size",
+        "Expected at least one TLS record"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseTlsRecord.ts",
+      "description": "Parses TLS record headers and identifies handshake payload types."
+    }
+  },
+  {
     "operationId": "network.parseUdpHeader",
     "name": "Parse UDP Header",
     "domain": "network-protocol-parsers",
@@ -6356,6 +6407,56 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/parseUserAgent.ts",
       "description": "Parses a user-agent string into browser, OS, engine, and device metadata."
+    }
+  },
+  {
+    "operationId": "network.parseX509Certificate",
+    "name": "Parse X.509 Certificate",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseX509Certificate.ts",
+      "description": "Parses a DER or PEM X.509 certificate into normalized metadata."
+    }
+  },
+  {
+    "operationId": "network.parseX509Crl",
+    "name": "Parse X.509 CRL",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseX509Crl.ts",
+      "description": "Parses a DER or PEM X.509 certificate revocation list into normalized metadata."
     }
   },
   {

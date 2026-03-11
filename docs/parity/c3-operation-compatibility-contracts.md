@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 358
+Total contracts: 362
 
 ## Contract entries (compact)
 
@@ -1398,6 +1398,13 @@ Total contracts: 358
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.ipv6TransitionAddresses
+  - name: IPv6 Transition Addresses
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - network.parseIPRange
   - name: Parse IP Range
   - domain: network-protocol-parsers
@@ -1426,6 +1433,13 @@ Total contracts: 358
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.parseTlsRecord
+  - name: Parse TLS Record
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - network.parseUdpHeader
   - name: Parse UDP Header
   - domain: network-protocol-parsers
@@ -1444,6 +1458,20 @@ Total contracts: 358
   - name: Parse User Agent
   - domain: network-protocol-parsers
   - inputTypes: string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.parseX509Certificate
+  - name: Parse X.509 Certificate
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.parseX509Crl
+  - name: Parse X.509 CRL
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE

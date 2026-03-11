@@ -12,15 +12,53 @@ import { dechunkHttpResponse } from "../src/ops/dechunkHttpResponse.js";
 import { groupIPAddresses } from "../src/ops/groupIPAddresses.js";
 import { dnsOverHttps } from "../src/ops/dnsOverHttps.js";
 import { parseIPv6Address } from "../src/ops/parseIPv6Address.js";
+import { ipv6TransitionAddresses } from "../src/ops/ipv6TransitionAddresses.js";
 import { parseIPRange } from "../src/ops/parseIPRange.js";
 import { stripHttpHeaders } from "../src/ops/stripHttpHeaders.js";
 import { parseIPv4Header } from "../src/ops/parseIPv4Header.js";
 import { parseTcpHeaderOp } from "../src/ops/parseTcpHeader.js";
+import { parseTlsRecord } from "../src/ops/parseTlsRecord.js";
 import { parseUdpHeaderOp } from "../src/ops/parseUdpHeader.js";
 import { parseUri } from "../src/ops/parseUri.js";
+import { parseX509Certificate } from "../src/ops/parseX509Certificate.js";
+import { parseX509Crl } from "../src/ops/parseX509Crl.js";
 import { stripIPv4Header } from "../src/ops/stripIPv4Header.js";
 import { stripTcpHeader } from "../src/ops/stripTcpHeader.js";
 import { stripUdpHeader } from "../src/ops/stripUdpHeader.js";
+
+const TEST_CERT_PEM = `-----BEGIN CERTIFICATE-----
+MIIDbzCCAlegAwIBAgIUCABVjT3MsNUh+DVgwheQqZ0Q6dMwDQYJKoZIhvcNAQEL
+BQAwRzEeMBwGA1UEAwwVY3liZXJtYXN0ZXJjaGVmLmxvY2FsMRgwFgYDVQQKDA9D
+eWJlck1hc3RlckNoZWYxCzAJBgNVBAYTAlBMMB4XDTI2MDMxMTE3MzYwN1oXDTI3
+MDMxMTE3MzYwN1owRzEeMBwGA1UEAwwVY3liZXJtYXN0ZXJjaGVmLmxvY2FsMRgw
+FgYDVQQKDA9DeWJlck1hc3RlckNoZWYxCzAJBgNVBAYTAlBMMIIBIjANBgkqhkiG
+9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvkr3jvQXX+1anzhnV+3g9WxC+EvhCLozbhxT
+SjYoSNh9tDEZLuuB4MtGEoararWu7nSqToRFm5Aq31tE1HIi2YHV+HguZDYcLo68
+NMXVsRz+Sndtc4Hy96JzFDK5P5oFxxf5OptiMVSPqHF3wPYbojDyb+VdJ+cv+56k
+NStVHNc7s1fqQWdSBaI7RxeaOnd6Fa8ulkDbnqBNSXNPXYhCYK+5sIo5/uhq+LJY
+RpkSu8F30Y3FVEqT48RBIyHJBGS1VGc6BqQDAetD1kIyLobxjte+r0CH+4zxU0If
+yyWUPk5ZD5MUBG8HIwevyUOXtUMbUWEvpGbCb1k33SQv4DWMJQIDAQABo1MwUTAd
+BgNVHQ4EFgQUJasvV7cLiEsMmY+lY0z/BY77w7IwHwYDVR0jBBgwFoAUJasvV7cL
+iEsMmY+lY0z/BY77w7IwDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOC
+AQEAneZ+uwSUnQWXatfsILbsTOuO0b7wYtBW6W5XCMF/hstP4OWXAMDjnNxBzOtV
+Iic4kC+FrUI2D98LptdEuZgr0YQbg040KT8humgXaUl9ln4AXx/ftOA7vwHHQCOp
+HCG4qybefaX9pveQiXqFMVW9RjiuZ05nt51pbvoLPXc0xITRj9ln2u4emC72+gKJ
+8xpRJ+Bcn47/vdPU3UsZRe6xN3xu4sb25ormLgC6ST3KVC5midhT4k9s0HgoRd8/
+Dwhr8089H6EseuS53qNSz6YhSsqvmqXqRhZb5aZfBtTyxRnAaFyTSpY6L9leDsg1
+ChAElaYK6IS3khN6lXxpR1ETjQ==
+-----END CERTIFICATE-----`;
+
+const TEST_CRL_PEM = `-----BEGIN X509 CRL-----
+MIIBnjCBhwIBATANBgkqhkiG9w0BAQsFADBEMRswGQYDVQQDDBJDeWJlck1hc3Rl
+ckNoZWYgQ0ExGDAWBgNVBAoMD0N5YmVyTWFzdGVyQ2hlZjELMAkGA1UEBhMCUEwX
+DTI2MDMxMTE3MzYwN1oXDTI2MDQxMDE3MzYwN1qgDzANMAsGA1UdFAQEAgIQADAN
+BgkqhkiG9w0BAQsFAAOCAQEAdzX+KXLrrXZSo/AZ8d72ifNAYsvqTLjX020vtNzt
++vwkKf238xZUzWc3cjA3y0bmezudenVxgP3xDikx9rp3iIR1BjNsZ5aOnItdSbjJ
+nHs7xyeWOoBiv/fLXGyT5sLrI1GNFXaf8JiiYnwP5ZqHGkKnb3ul6LfKRk+7kE3P
+JnlE6+b4fpWF1ta9oS4uwb16G08KeFFnr6uop12P7VfABW6yFSjzE7RfTFjTflPy
+eYCY7W5FnmP4WbhFJSypYYE9IqBHPud7Rz35utY5/e68aNmBYB6FAfMne95vAOuS
+JlqbNkL/3MFnoDcndGWdfdmo9NH/62Frdy864yED9LGZ7g==
+-----END X509 CRL-----`;
 
 describe("network operations", () => {
   it("extracts unique valid IPv4 addresses", async () => {
@@ -193,6 +231,41 @@ describe("network operations", () => {
     });
   });
 
+  it("detects IPv6 transition address families", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(ipv6TransitionAddresses);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.ipv6TransitionAddresses" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: {
+        type: "string",
+        value: "2002:c000:0204::1 2001:0000:4136:e378:8000:63bf:3fff:fdd2 ::ffff:192.0.2.128"
+      }
+    });
+    expect(out.output).toEqual({
+      type: "json",
+      value: [
+        {
+          address: "2002:c000:0204::1",
+          scheme: "6to4",
+          embeddedIpv4: "192.0.2.4"
+        },
+        {
+          address: "2001:0000:4136:e378:8000:63bf:3fff:fdd2",
+          scheme: "teredo",
+          serverIpv4: "65.54.227.120",
+          clientIpv4: "192.0.2.45"
+        },
+        {
+          address: "::ffff:192.0.2.128",
+          scheme: "ipv4-mapped",
+          embeddedIpv4: "192.0.2.128"
+        }
+      ]
+    });
+  });
+
   it("queries DNS-over-HTTPS for domains", async () => {
     const prevFetch = globalThis.fetch;
     globalThis.fetch = () =>
@@ -224,6 +297,77 @@ describe("network operations", () => {
     } finally {
       globalThis.fetch = prevFetch;
     }
+  });
+
+  it("parses TLS record headers from hex input", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(parseTlsRecord);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.parseTlsRecord" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "16 03 03 00 04 01 00 00 00 17 03 03 00 00" }
+    });
+    expect(out.output).toEqual({
+      type: "json",
+      value: {
+        records: [
+          {
+            offset: 0,
+            contentType: "handshake",
+            version: "TLS 1.2",
+            length: 4,
+            handshakeType: "client_hello"
+          },
+          {
+            offset: 9,
+            contentType: "application_data",
+            version: "TLS 1.2",
+            length: 0,
+            handshakeType: null
+          }
+        ],
+        trailingBytes: 0
+      }
+    });
+  });
+
+  it("parses PEM X.509 certificates and CRLs", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(parseX509Certificate);
+    registry.register(parseX509Crl);
+
+    const certificate = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "network.parseX509Certificate" }] },
+      input: { type: "string", value: TEST_CERT_PEM }
+    });
+    expect(certificate.output).toEqual({
+      type: "json",
+      value: {
+        subject: "CN=cybermasterchef.local, O=CyberMasterChef, C=PL",
+        issuer: "CN=cybermasterchef.local, O=CyberMasterChef, C=PL",
+        serialNumber: "0800558d3dccb0d521f83560c21790a99d10e9d3",
+        validFrom: "2026-03-11T17:36:07Z",
+        validTo: "2027-03-11T17:36:07Z",
+        selfIssued: true
+      }
+    });
+
+    const crl = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "network.parseX509Crl" }] },
+      input: { type: "string", value: TEST_CRL_PEM }
+    });
+    expect(crl.output).toEqual({
+      type: "json",
+      value: {
+        issuer: "CN=CyberMasterChef CA, O=CyberMasterChef, C=PL",
+        thisUpdate: "2026-03-11T17:36:07Z",
+        nextUpdate: "2026-04-10T17:36:07Z",
+        revokedCertificates: 0
+      }
+    });
   });
 
   it("rejects non-allowlisted DNS resolver", async () => {

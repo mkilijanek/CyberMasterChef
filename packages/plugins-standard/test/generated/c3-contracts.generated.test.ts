@@ -1960,6 +1960,14 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "network.ipv6TransitionAddresses",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
     "operationId": "network.parseIPRange",
     "inputTypes": [
       "string"
@@ -1994,6 +2002,15 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "network.parseTlsRecord",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
     "operationId": "network.parseUdpHeader",
     "inputTypes": [
       "bytes",
@@ -2013,6 +2030,24 @@ const CONTRACTS = [
   {
     "operationId": "network.parseUserAgent",
     "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.parseX509Certificate",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.parseX509Crl",
+    "inputTypes": [
+      "bytes",
       "string"
     ],
     "outputType": "json",

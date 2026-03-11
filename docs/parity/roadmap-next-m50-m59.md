@@ -46,9 +46,9 @@ flowchart TD
    - Issue: `#80`
    - landed `network.changeIpFormat`, `network.extractMacAddresses`, and `network.parseUserAgent` with full targeted coverage and refreshed `C2/C3`
 7. `M56`: network/forensic parity wave 2
-   - Status: `PLANNED`
+   - Status: `DONE-IN-CODE`
    - Issue: `#81`
-   - close remaining network-protocol and malware-helper tails from the C2 board
+   - landed `network.ipv6TransitionAddresses`, `network.parseTlsRecord`, `network.parseX509Certificate`, and `network.parseX509Crl` with full targeted coverage and refreshed `C2/C3`
 8. `M57`: crypto parity wave 3
    - Status: `PLANNED`
    - Issue: `#82`
@@ -64,10 +64,10 @@ flowchart TD
 
 ## Current Progress Snapshot
 
-- Baseline parity checkpoint in the current repo state: `358/465` tracked operations implemented.
+- Baseline parity checkpoint in the current repo state: `362/465` tracked operations implemented.
 - Highest remaining parity pressure domains:
   - `crypto-hash-kdf`: `39/97`
-  - `network-protocol-parsers`: `24/39`
+  - `network-protocol-parsers`: `28/39`
   - `forensic-malware-helper`: `10/17`
   - `misc-uncategorized`: `98/119`
 - Release blockers entering this wave:
