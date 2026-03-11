@@ -21,7 +21,7 @@ The project targets deterministic behavior, parity tracking, and auditable CI/se
 - GitHub milestones are being extended through `M59` so release cutover stays behind the remaining parity closure work.
 - C-track snapshot:
   - `C1`: complete domain matrix + drift gate
-  - `C2`: `376` tracked operations implemented, with `crypto-hash-kdf` raised to `54/100` (`54%`) and `network-protocol-parsers` held at `28/39` (`71.79%`)
+  - `C2`: `381` tracked operations implemented, with `crypto-hash-kdf` raised to `59/100` (`59%`) and `network-protocol-parsers` held at `28/39` (`71.79%`)
   - `C3`: contract catalog + generated regression tests + CI gate
 
 ## Repository Layout

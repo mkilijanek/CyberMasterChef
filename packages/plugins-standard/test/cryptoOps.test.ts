@@ -16,6 +16,7 @@ import { a1z26CipherDecode } from "../src/ops/a1z26CipherDecode.js";
 import { baconCipherEncode } from "../src/ops/baconCipherEncode.js";
 import { baconCipherDecode } from "../src/ops/baconCipherDecode.js";
 import { bcryptParse } from "../src/ops/bcryptParse.js";
+import { bcryptVerify } from "../src/ops/bcryptVerify.js";
 import { hashMd5 } from "../src/ops/hashMd5.js";
 import { md4 } from "../src/ops/md4.js";
 import { ripemd160 } from "../src/ops/ripemd160.js";
@@ -36,9 +37,13 @@ import { xxhash64 } from "../src/ops/xxhash64.js";
 import { xxhash3 } from "../src/ops/xxhash3.js";
 import { xxhash128 } from "../src/ops/xxhash128.js";
 import { hmacSha1 } from "../src/ops/hmacSha1.js";
+import { hmacSha224 } from "../src/ops/hmacSha224.js";
 import { hmacSha256 } from "../src/ops/hmacSha256.js";
 import { hmacSha384 } from "../src/ops/hmacSha384.js";
 import { hmacSha512 } from "../src/ops/hmacSha512.js";
+import { hmacMd5 } from "../src/ops/hmacMd5.js";
+import { hmacRipemd160 } from "../src/ops/hmacRipemd160.js";
+import { hmacWhirlpool } from "../src/ops/hmacWhirlpool.js";
 import { hkdf } from "../src/ops/hkdf.js";
 import { pbkdf2 } from "../src/ops/pbkdf2.js";
 import { scrypt } from "../src/ops/scrypt.js";
@@ -198,6 +203,26 @@ describe("crypto operations", () => {
     expect(out.output.type).toBe("json");
     if (out.output.type !== "json") return;
     expect(out.output.value).toMatchObject({ isValid: true, version: "2b", cost: 10 });
+  });
+
+  it("verifies bcrypt hash", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(bcryptVerify);
+    const hash = "$2a$04$..CA.uOD/eaGAOmJB.yMBubqEtzdkvfegxfotQ8UAMQWLlq7JbHJW";
+
+    const ok = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "crypto.bcryptVerify", args: { hash } }] },
+      input: { type: "string", value: "password" }
+    });
+    expect(ok.output).toEqual({ type: "json", value: { matches: true } });
+
+    const bad = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "crypto.bcryptVerify", args: { hash } }] },
+      input: { type: "bytes", value: new TextEncoder().encode("wrong") }
+    });
+    expect(bad.output).toEqual({ type: "json", value: { matches: false } });
   });
 
   it("computes common hashes", async () => {
@@ -384,15 +409,23 @@ describe("crypto operations", () => {
   it("computes HMAC digests", async () => {
     const registry = new InMemoryRegistry();
     registry.register(hmacSha1);
+    registry.register(hmacSha224);
     registry.register(hmacSha256);
     registry.register(hmacSha384);
     registry.register(hmacSha512);
+    registry.register(hmacMd5);
+    registry.register(hmacRipemd160);
+    registry.register(hmacWhirlpool);
 
     const input = { type: "string", value: "hello" } as const;
     const ops = [
       {
         opId: "crypto.hmacSha1",
         expected: "b34ceac4516ff23a143e61d79d0fa7a4fbe5f266"
+      },
+      {
+        opId: "crypto.hmacSha224",
+        expected: "6b30a4ecbe38b6a90d7dd0ac3ef17aa68c0aa8bd5c79d2b219f4e6f6"
       },
       {
         opId: "crypto.hmacSha256",
@@ -407,6 +440,19 @@ describe("crypto operations", () => {
         opId: "crypto.hmacSha512",
         expected:
           "ff06ab36757777815c008d32c8e14a705b4e7bf310351a06a23b612dc4c7433e7757d20525a5593b71020ea2ee162d2311b247e9855862b270122419652c0c92"
+      },
+      {
+        opId: "crypto.hmacMd5",
+        expected: "04130747afca4d79e32e87cf2104f087"
+      },
+      {
+        opId: "crypto.hmacRipemd160",
+        expected: "43ab51f803a68a8b894cb32ee19e6854e9f4e468"
+      },
+      {
+        opId: "crypto.hmacWhirlpool",
+        expected:
+          "4264aa55d8b7ad8db6c6fe7d09dbc5955a3221185903a1506670ab036f2cc03b8685133a52bff64c5b4d38579040d674770af88d68682ed96633bf30dfa68035"
       }
     ];
 
@@ -518,6 +564,40 @@ describe("crypto operations", () => {
         input: { type: "string", value: "password" }
       })
     ).rejects.toThrow("costN must be a power of two");
+  });
+
+  it("validates bcrypt verify arguments", async () => {
+    await expect(
+      bcryptVerify.run({ input: { type: "string", value: "password" }, args: {} })
+    ).rejects.toThrow("Hash argument is required");
+    await expect(
+      bcryptVerify.run({ input: { type: "json", value: {} } as never, args: { hash: "x" } })
+    ).rejects.toThrow("Expected bytes or string input");
+  });
+
+  it("validates hash-wasm hmac arguments", async () => {
+    await expect(
+      hmacSha224.run({ input: { type: "string", value: "hello" }, args: {} })
+    ).rejects.toThrow("Key argument is required");
+    await expect(
+      hmacMd5.run({ input: { type: "json", value: {} } as never, args: { key: "key" } })
+    ).rejects.toThrow("Expected bytes or string input");
+    await expect(
+      hmacRipemd160.run({
+        input: { type: "bytes", value: new TextEncoder().encode("hello") },
+        args: { key: "a2V5", keyEncoding: "base64" }
+      })
+    ).resolves.toEqual({ type: "string", value: "43ab51f803a68a8b894cb32ee19e6854e9f4e468" });
+    await expect(
+      hmacWhirlpool.run({
+        input: { type: "string", value: "hello" },
+        args: { key: "6b6579", keyEncoding: "hex" }
+      })
+    ).resolves.toEqual({
+      type: "string",
+      value:
+        "4264aa55d8b7ad8db6c6fe7d09dbc5955a3221185903a1506670ab036f2cc03b8685133a52bff64c5b4d38579040d674770af88d68682ed96633bf30dfa68035"
+    });
   });
 
   it("derives argon2 hashes", async () => {

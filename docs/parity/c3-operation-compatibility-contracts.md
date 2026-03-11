@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 376
+Total contracts: 381
 
 ## Contract entries (compact)
 
@@ -474,6 +474,13 @@ Total contracts: 376
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.bcryptVerify
+  - name: Bcrypt Verify
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
 - crypto.hkdf
   - name: HKDF
   - domain: crypto-hash-kdf
@@ -481,6 +488,20 @@ Total contracts: 376
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.hmacMd5
+  - name: HMAC-MD5
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
+- crypto.hmacRipemd160
+  - name: HMAC-RIPEMD160
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - crypto.hmacSha1
   - name: HMAC-SHA1
   - domain: crypto-hash-kdf
@@ -488,6 +509,13 @@ Total contracts: 376
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.hmacSha224
+  - name: HMAC-SHA224
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - crypto.hmacSha256
   - name: HMAC-SHA256
   - domain: crypto-hash-kdf
@@ -509,6 +537,13 @@ Total contracts: 376
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.hmacWhirlpool
+  - name: HMAC-Whirlpool
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - crypto.pbkdf2
   - name: PBKDF2
   - domain: crypto-hash-kdf

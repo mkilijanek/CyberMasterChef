@@ -2079,6 +2079,40 @@
     }
   },
   {
+    "operationId": "crypto.bcryptVerify",
+    "name": "Bcrypt Verify",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [
+      {
+        "key": "hash",
+        "type": "string",
+        "label": "Bcrypt Hash",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected bytes or string input",
+        "Hash argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bcryptVerify.ts",
+      "description": "Verifies a password against a bcrypt hash string."
+    }
+  },
+  {
     "operationId": "crypto.hkdf",
     "name": "HKDF",
     "domain": "crypto-hash-kdf",
@@ -2145,6 +2179,76 @@
     }
   },
   {
+    "operationId": "crypto.hmacMd5",
+    "name": "HMAC-MD5",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "key",
+        "type": "string",
+        "label": "Key",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "keyEncoding",
+        "type": "select",
+        "label": "Key Encoding",
+        "defaultValue": "\"utf8\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/hmacMd5.ts",
+      "description": "Computes HMAC-MD5 for input data and a provided key."
+    }
+  },
+  {
+    "operationId": "crypto.hmacRipemd160",
+    "name": "HMAC-RIPEMD160",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "key",
+        "type": "string",
+        "label": "Key",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "keyEncoding",
+        "type": "select",
+        "label": "Key Encoding",
+        "defaultValue": "\"utf8\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/hmacRipemd160.ts",
+      "description": "Computes HMAC-RIPEMD160 for input data and a provided key."
+    }
+  },
+  {
     "operationId": "crypto.hmacSha1",
     "name": "HMAC-SHA1",
     "domain": "crypto-hash-kdf",
@@ -2183,6 +2287,41 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/hmacSha1.ts",
       "description": "Computes HMAC-SHA1 for input data and a provided key."
+    }
+  },
+  {
+    "operationId": "crypto.hmacSha224",
+    "name": "HMAC-SHA224",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "key",
+        "type": "string",
+        "label": "Key",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "keyEncoding",
+        "type": "select",
+        "label": "Key Encoding",
+        "defaultValue": "\"utf8\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/hmacSha224.ts",
+      "description": "Computes HMAC-SHA224 for input data and a provided key."
     }
   },
   {
@@ -2306,6 +2445,41 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/hmacSha512.ts",
       "description": "Computes HMAC-SHA512 for input data and a provided key."
+    }
+  },
+  {
+    "operationId": "crypto.hmacWhirlpool",
+    "name": "HMAC-Whirlpool",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "key",
+        "type": "string",
+        "label": "Key",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "keyEncoding",
+        "type": "select",
+        "label": "Key Encoding",
+        "defaultValue": "\"utf8\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/hmacWhirlpool.ts",
+      "description": "Computes HMAC-Whirlpool for input data and a provided key."
     }
   },
   {

@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 376
+    "implementedOpsCount": 381
   },
   "summary": [
     {
@@ -366,9 +366,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 100,
-      "implementedTotal": 54,
-      "missingEstimated": 46,
-      "coveragePct": 54,
+      "implementedTotal": 59,
+      "missingEstimated": 41,
+      "coveragePct": 59,
       "implementedOps": [
         {
           "id": "text.includes",
@@ -511,6 +511,11 @@
           "file": "bcryptParse.ts"
         },
         {
+          "id": "crypto.bcryptVerify",
+          "name": "Bcrypt Verify",
+          "file": "bcryptVerify.ts"
+        },
+        {
           "id": "hash.sha384",
           "name": "SHA-384",
           "file": "sha384.ts"
@@ -581,6 +586,11 @@
           "file": "hmacSha1.ts"
         },
         {
+          "id": "crypto.hmacSha224",
+          "name": "HMAC-SHA224",
+          "file": "hmacSha224.ts"
+        },
+        {
           "id": "crypto.hmacSha256",
           "name": "HMAC-SHA256",
           "file": "hmacSha256.ts"
@@ -594,6 +604,21 @@
           "id": "crypto.hmacSha512",
           "name": "HMAC-SHA512",
           "file": "hmacSha512.ts"
+        },
+        {
+          "id": "crypto.hmacMd5",
+          "name": "HMAC-MD5",
+          "file": "hmacMd5.ts"
+        },
+        {
+          "id": "crypto.hmacRipemd160",
+          "name": "HMAC-RIPEMD160",
+          "file": "hmacRipemd160.ts"
+        },
+        {
+          "id": "crypto.hmacWhirlpool",
+          "name": "HMAC-Whirlpool",
+          "file": "hmacWhirlpool.ts"
         },
         {
           "id": "crypto.hkdf",
@@ -2777,15 +2802,15 @@
   "topPriority": [
     {
       "priority": 1,
-      "domain": "crypto-hash-kdf",
-      "coveragePct": 54,
-      "missingEstimated": 46
-    },
-    {
-      "priority": 2,
       "domain": "forensic-malware-helper",
       "coveragePct": 58.82,
       "missingEstimated": 7
+    },
+    {
+      "priority": 2,
+      "domain": "crypto-hash-kdf",
+      "coveragePct": 59,
+      "missingEstimated": 41
     },
     {
       "priority": 3,
