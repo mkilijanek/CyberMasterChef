@@ -1,12 +1,19 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 316
+Total contracts: 320
 
 ## Contract entries (compact)
 
 - codec.fromBase32
   - name: From Base32
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- codec.fromBase45
+  - name: From Base45
   - domain: encodings-codecs
   - inputTypes: string
   - outputType: bytes
@@ -61,6 +68,13 @@ Total contracts: 316
   - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.fromMorseCode
+  - name: From Morse Code
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.fromOctal
   - name: From Octal
   - domain: encodings-codecs
@@ -70,6 +84,13 @@ Total contracts: 316
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.toBase32
   - name: To Base32
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toBase45
+  - name: To Base45
   - domain: encodings-codecs
   - inputTypes: bytes, string
   - outputType: string
@@ -121,6 +142,13 @@ Total contracts: 316
   - name: To Hex Content
   - domain: encodings-codecs
   - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toMorseCode
+  - name: To Morse Code
+  - domain: encodings-codecs
+  - inputTypes: string
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE

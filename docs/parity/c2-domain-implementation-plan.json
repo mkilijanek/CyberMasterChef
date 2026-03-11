@@ -2,16 +2,16 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 316
+    "implementedOpsCount": 320
   },
   "summary": [
     {
       "domain": "encodings-codecs",
       "description": "Encodings, binary/text codecs, canonical representation transforms.",
       "cyberChefTotal": 58,
-      "implementedTotal": 26,
-      "missingEstimated": 32,
-      "coveragePct": 44.83,
+      "implementedTotal": 30,
+      "missingEstimated": 28,
+      "coveragePct": 51.72,
       "implementedOps": [
         {
           "id": "codec.toBase64",
@@ -34,6 +34,16 @@
           "file": "fromBase32.ts"
         },
         {
+          "id": "codec.toBase45",
+          "name": "To Base45",
+          "file": "toBase45.ts"
+        },
+        {
+          "id": "codec.fromBase45",
+          "name": "From Base45",
+          "file": "fromBase45.ts"
+        },
+        {
           "id": "codec.toBase58",
           "name": "To Base58",
           "file": "toBase58.ts"
@@ -42,6 +52,16 @@
           "id": "codec.fromBase58",
           "name": "From Base58",
           "file": "fromBase58.ts"
+        },
+        {
+          "id": "codec.toMorseCode",
+          "name": "To Morse Code",
+          "file": "toMorseCode.ts"
+        },
+        {
+          "id": "codec.fromMorseCode",
+          "name": "From Morse Code",
+          "file": "fromMorseCode.ts"
         },
         {
           "id": "codec.toHex",
@@ -2485,8 +2505,8 @@
     {
       "priority": 3,
       "domain": "encodings-codecs",
-      "coveragePct": 44.83,
-      "missingEstimated": 32
+      "coveragePct": 51.72,
+      "missingEstimated": 28
     },
     {
       "priority": 4,

@@ -12,6 +12,14 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "codec.fromBase45",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": []
+  },
+  {
     "operationId": "codec.fromBase58",
     "inputTypes": [
       "string"
@@ -68,6 +76,14 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "codec.fromMorseCode",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "codec.fromOctal",
     "inputTypes": [
       "string"
@@ -77,6 +93,15 @@ const CONTRACTS = [
   },
   {
     "operationId": "codec.toBase32",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "codec.toBase45",
     "inputTypes": [
       "bytes",
       "string"
@@ -148,6 +173,14 @@ const CONTRACTS = [
     "operationId": "codec.toHexContent",
     "inputTypes": [
       "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "codec.toMorseCode",
+    "inputTypes": [
       "string"
     ],
     "outputType": "string",

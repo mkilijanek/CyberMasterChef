@@ -27,6 +27,34 @@
     }
   },
   {
+    "operationId": "codec.fromBase45",
+    "name": "From Base45",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Invalid Base45 input",
+        "Invalid Base45 triplet",
+        "Invalid Base45 pair",
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromBase45.ts",
+      "description": "Decodes RFC 9285 Base45 string into bytes."
+    }
+  },
+  {
     "operationId": "codec.fromBase58",
     "name": "From Base58",
     "domain": "encodings-codecs",
@@ -196,6 +224,30 @@
     }
   },
   {
+    "operationId": "codec.fromMorseCode",
+    "name": "From Morse Code",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromMorseCode.ts",
+      "description": "Decodes International Morse code using spaces and / between words."
+    }
+  },
+  {
     "operationId": "codec.fromOctal",
     "name": "From Octal",
     "domain": "encodings-codecs",
@@ -242,6 +294,31 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/toBase32.ts",
       "description": "Encodes bytes or string to RFC 4648 Base32."
+    }
+  },
+  {
+    "operationId": "codec.toBase45",
+    "name": "To Base45",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toBase45.ts",
+      "description": "Encodes bytes or string to RFC 9285 Base45."
     }
   },
   {
@@ -438,6 +515,30 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/toHexContent.ts",
       "description": "Encodes bytes or string into lowercase hex content (no separators)."
+    }
+  },
+  {
+    "operationId": "codec.toMorseCode",
+    "name": "To Morse Code",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toMorseCode.ts",
+      "description": "Encodes text into International Morse code using spaces and / between words."
     }
   },
   {

@@ -2,8 +2,12 @@ import { describe, expect, it } from "vitest";
 import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core";
 import { toBase32 } from "../src/ops/toBase32.js";
 import { fromBase32 } from "../src/ops/fromBase32.js";
+import { toBase45 } from "../src/ops/toBase45.js";
+import { fromBase45 } from "../src/ops/fromBase45.js";
 import { toBase58 } from "../src/ops/toBase58.js";
 import { fromBase58 } from "../src/ops/fromBase58.js";
+import { toMorseCode } from "../src/ops/toMorseCode.js";
+import { fromMorseCode } from "../src/ops/fromMorseCode.js";
 import { toCharcode } from "../src/ops/toCharcode.js";
 import { fromCharcode } from "../src/ops/fromCharcode.js";
 import { toDecimal } from "../src/ops/toDecimal.js";
@@ -48,6 +52,40 @@ describe("encoding operations", () => {
     expect(out.output.type).toBe("bytes");
     if (out.output.type !== "bytes") return;
     expect(out.output.value).toEqual(new TextEncoder().encode("hello"));
+  });
+
+  it("round-trips Base45 encoding", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(toBase45);
+    registry.register(fromBase45);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "codec.toBase45" }, { opId: "codec.fromBase45" }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "hello" }
+    });
+    expect(out.output.type).toBe("bytes");
+    if (out.output.type !== "bytes") return;
+    expect(out.output.value).toEqual(new TextEncoder().encode("hello"));
+  });
+
+  it("round-trips Morse code", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(toMorseCode);
+    registry.register(fromMorseCode);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "codec.toMorseCode" }, { opId: "codec.fromMorseCode" }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "SOS TEST" }
+    });
+    expect(out.output).toEqual({ type: "string", value: "SOS TEST" });
   });
 
   it("encodes to charcodes", async () => {
