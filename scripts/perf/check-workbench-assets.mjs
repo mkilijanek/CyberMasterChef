@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from "node:fs";
+import { readdirSync, readFileSync, statSync } from "node:fs";
 import { resolve } from "node:path";
 
 const repoRoot = resolve(import.meta.dirname, "..", "..");
@@ -8,15 +8,12 @@ const budgetsPath = resolve(repoRoot, "docs", "perf", "asset-budgets.json");
 const budgets = JSON.parse(readFileSync(budgetsPath, "utf-8"));
 const files = readdirSync(distAssetsDir);
 
-function findAsset(label, matcher) {
+function findAsset(label, matcher, pick = (hits) => hits[0] ?? null) {
   const hits = files.filter((file) => matcher(file));
   if (hits.length === 0) {
     throw new Error(`[perf-assets] missing asset for '${label}'`);
   }
-  if (hits.length > 1) {
-    throw new Error(`[perf-assets] multiple assets matched '${label}': ${hits.join(", ")}`);
-  }
-  const [hit] = hits;
+  const hit = pick(hits);
   if (!hit) {
     throw new Error(`[perf-assets] missing asset for '${label}'`);
   }
@@ -33,7 +30,13 @@ const targets = [
     label: "vendor.js",
     path: findAsset(
       "vendor.js",
-      (file) => /^vendor-[^.]+\.js$/.test(file) && !file.slice("vendor-".length).includes("-")
+      (file) => /^vendor-[^.]+\.js$/.test(file),
+      (hits) =>
+        [...hits].sort((left, right) => {
+          const leftSize = statSync(resolve(distAssetsDir, left)).size;
+          const rightSize = statSync(resolve(distAssetsDir, right)).size;
+          return rightSize - leftSize;
+        })[0] ?? null
     ),
     maxBytes: budgets.assets["vendor.js"]
   }
