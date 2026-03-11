@@ -12,6 +12,7 @@ Ship `CyberMasterChef 1.0.0` only after the tracked CyberChef functional surface
 - `C1`, `C2`, `C3` artifacts regenerated and committed
 - no open blocking security, CI, or release issues
 - README/docs index/master plan aligned with shipped scope
+- container image, compose setup, and GHCR release pipeline validated on `main`
 
 ## Required Validation
 
@@ -27,6 +28,16 @@ Ship `CyberMasterChef 1.0.0` only after the tracked CyberChef functional surface
 - `pnpm perf:assets`
 - `pnpm perf:check`
 - `pnpm release:readiness`
+- `pnpm docker:build`
+- `pnpm docker:test`
+
+## Container Delivery
+
+- Build a production Docker image from the monorepo using a multi-stage build and ship the workbench as a static runtime artifact.
+- Keep a baseline `docker-compose.yml` for local smoke validation and operator onboarding.
+- Build and smoke-test the image in GitHub Actions on `main`, pull requests, and release tags.
+- Publish versioned and `latest` images to `ghcr.io/mkilijanek/cybermasterchef` for release tags only.
+- Treat container build/test/publish failures as release blockers for `1.0.0` and later releases.
 
 ## Release Cut Procedure
 
@@ -34,13 +45,15 @@ Ship `CyberMasterChef 1.0.0` only after the tracked CyberChef functional surface
 2. Regenerate parity and release artifacts.
 3. Verify the CyberChef parity target and attach evidence in the release PR.
 4. Update changelog/release notes and rollback notes.
-5. Merge `dev -> main`.
-6. Tag and publish `1.0.0`.
-7. Verify post-release CI and operational dashboards.
+5. Build and smoke-test the Docker image and validate `docker-compose.yml`.
+6. Merge `dev -> main`.
+7. Tag and publish `1.0.0`, including GHCR images.
+8. Verify post-release CI, container publication, and operational dashboards.
 
 ## Exit Criteria
 
 - release PR approved with no unresolved comments
 - all required gates green on the release commit
 - tagged `1.0.0` artifact on `main`
+- `ghcr.io/mkilijanek/cybermasterchef` images published and smoke-verified for the release tag
 - post-release smoke validation complete

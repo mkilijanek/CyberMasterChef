@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 300
+    "implementedOpsCount": 304
   },
   "summary": [
     {
@@ -1840,9 +1840,9 @@
       "domain": "misc-uncategorized",
       "description": "Operations that require manual triage or do not fit current taxonomy.",
       "cyberChefTotal": 149,
-      "implementedTotal": 88,
-      "missingEstimated": 61,
-      "coveragePct": 59.06,
+      "implementedTotal": 92,
+      "missingEstimated": 57,
+      "coveragePct": 61.74,
       "implementedOps": [
         {
           "id": "text.prepend",
@@ -2273,6 +2273,26 @@
           "id": "hash.adler32",
           "name": "Adler-32",
           "file": "adler32.ts"
+        },
+        {
+          "id": "hash.fletcher8",
+          "name": "Fletcher-8",
+          "file": "fletcher8.ts"
+        },
+        {
+          "id": "hash.fletcher16",
+          "name": "Fletcher-16",
+          "file": "fletcher16.ts"
+        },
+        {
+          "id": "hash.fletcher32",
+          "name": "Fletcher-32",
+          "file": "fletcher32.ts"
+        },
+        {
+          "id": "hash.fletcher64",
+          "name": "Fletcher-64",
+          "file": "fletcher64.ts"
         },
         {
           "id": "hash.blake2b",

@@ -2,6 +2,10 @@ import { describe, expect, it } from "vitest";
 import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core";
 import { adler32Checksum } from "../src/ops/adler32.js";
 import { crc32Checksum } from "../src/ops/crc32.js";
+import { fletcher8Checksum } from "../src/ops/fletcher8.js";
+import { fletcher16Checksum } from "../src/ops/fletcher16.js";
+import { fletcher32Checksum } from "../src/ops/fletcher32.js";
+import { fletcher64Checksum } from "../src/ops/fletcher64.js";
 import { analyseHash } from "../src/ops/analyseHash.js";
 import { atbashCipher } from "../src/ops/atbashCipher.js";
 import { affineCipherEncode } from "../src/ops/affineCipherEncode.js";
@@ -52,6 +56,24 @@ describe("crypto operations", () => {
       input: { type: "string", value: "abc" }
     });
     expect(out.output).toEqual({ type: "string", value: "352441c2" });
+  });
+
+  it("computes Fletcher checksums", async () => {
+    const input = { type: "string", value: "abc" } as const;
+    const ops = [
+      { op: fletcher8Checksum, opId: "hash.fletcher8", expected: "19" },
+      { op: fletcher16Checksum, opId: "hash.fletcher16", expected: "4c27" },
+      { op: fletcher32Checksum, opId: "hash.fletcher32", expected: "25c5c462" },
+      { op: fletcher64Checksum, opId: "hash.fletcher64", expected: "6162630061626300" }
+    ];
+
+    for (const { op, opId, expected } of ops) {
+      const registry = new InMemoryRegistry();
+      registry.register(op);
+      const recipe: Recipe = { version: 1, steps: [{ opId }] };
+      const out = await runRecipe({ registry, recipe, input });
+      expect(out.output).toEqual({ type: "string", value: expected });
+    }
   });
 
   it("analyses hash candidates", async () => {

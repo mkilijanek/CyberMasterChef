@@ -1,0 +1,9 @@
+node_modules
+coverage
+dist
+tmp
+.git
+.github
+playwright-report
+test-results
+docs/perf

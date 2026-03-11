@@ -1,7 +1,7 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 300
+Implemented operations in repo: 304
 
 ## Priority order
 
@@ -288,10 +288,10 @@ Implemented operations in repo: 300
 ### misc-uncategorized
 - Description: Operations that require manual triage or do not fit current taxonomy.
 - CyberChef total: 149
-- Implemented total: 88
-- Estimated missing: 61
-- Coverage: 59.06%
-- Implemented ops in repo: 88
+- Implemented total: 92
+- Estimated missing: 57
+- Coverage: 61.74%
+- Implemented ops in repo: 92
 - Implemented operation IDs:
   - text.prepend (prepend.ts)
   - text.append (append.ts)

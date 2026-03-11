@@ -29,6 +29,7 @@ A clean-slate, modular, and secure workbench for data operations — successor t
 - [Performance Budget Report](perf/latest-benchmark-report.md)
 - [Release Train](release/release-train.md)
 - [Release 1.0.0 Plan](release/release-1.0.0-plan.md)
+- [Container Delivery](release/release-1.0.0-plan.md#container-delivery)
 - [Rollback and Dry-Run](release/rollback-and-dry-run.md)
 - [M10 Final Audit](release/m10-final-audit.md)
 - [Observability Baseline](operations/observability-baseline.md)

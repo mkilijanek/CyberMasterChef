@@ -31,7 +31,9 @@
     "security:audit": "pnpm audit --audit-level high",
     "perf:check": "TSX_TSCONFIG_PATH=./tsconfig.base.json node --import tsx scripts/perf/check-budgets.ts",
     "perf:assets": "node scripts/perf/check-workbench-assets.mjs",
-    "release:readiness": "node scripts/release/check-readiness.mjs"
+    "release:readiness": "node scripts/release/check-readiness.mjs",
+    "docker:build": "docker build -t cybermasterchef:local .",
+    "docker:test": "node scripts/docker/smoke-test-image.mjs cybermasterchef:local"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
