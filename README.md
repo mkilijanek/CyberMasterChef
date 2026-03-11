@@ -81,6 +81,7 @@ pnpm docker:test
 ## CI Gates (Required)
 
 - `c1` drift gate
+- `c1` reclassification gate
 - `c3` contracts + generated tests + validation
 - lint/typecheck/test/build
 - Playwright E2E

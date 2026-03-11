@@ -54,6 +54,7 @@ jobs:
             docs/perf/latest-benchmark-report.json
             docs/perf/latest-benchmark-report.md
             docs/parity/c1-operation-domain-summary.md
+            docs/parity/c1-misc-reclassification.md
             docs/parity/c2-domain-implementation-plan.md
             docs/parity/c3-operation-compatibility-contracts.md
       - name: Release Readiness Gate

@@ -15,7 +15,7 @@
     "test:e2e": "playwright test",
     "format": "prettier -w .",
     "ci": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
-    "ci:full": "pnpm c1:check && pnpm c3:check && pnpm security:csp-check && pnpm security:audit && pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm perf:assets && pnpm perf:check && pnpm release:readiness",
+    "ci:full": "pnpm c1:check && pnpm c1:reclassify-check && pnpm c3:check && pnpm security:csp-check && pnpm security:audit && pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm perf:assets && pnpm perf:check && pnpm release:readiness",
     "test:parity": "PARITY_THRESHOLD=0.90 node scripts/check-parity-coverage.mjs",
     "c1:domain-matrix": "node scripts/c1/generate-domain-matrix.mjs",
     "c1:check": "pnpm c1:domain-matrix && git diff --exit-code -- docs/parity/c1-operation-domain-matrix.csv docs/parity/c1-operation-domain-matrix.json docs/parity/c1-operation-domain-summary.md",
