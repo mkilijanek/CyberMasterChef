@@ -22,6 +22,7 @@ RUN pnpm build
 FROM nginx:1.29-alpine AS runtime
 
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY docker/nginx/security-headers.conf /etc/nginx/snippets/security-headers.conf
 COPY --from=build /app/packages/workbench/dist /usr/share/nginx/html
 
 EXPOSE 80

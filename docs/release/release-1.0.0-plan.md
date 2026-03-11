@@ -13,6 +13,7 @@ Ship `CyberMasterChef 1.0.0` only after the tracked CyberChef functional surface
 - no open blocking security, CI, or release issues
 - README/docs index/master plan aligned with shipped scope
 - container image, compose setup, and GHCR release pipeline validated on `main`
+- runtime header policy and CSP checklist aligned with the shipped nginx config
 
 ## Required Validation
 
@@ -22,6 +23,7 @@ Ship `CyberMasterChef 1.0.0` only after the tracked CyberChef functional surface
 - `pnpm c3:check`
 - `pnpm security:csp-check`
 - `pnpm security:audit`
+- `pnpm docker:test` must validate runtime headers as well as health/assets
 - `pnpm run ci`
 - `pnpm run ci:full`
 - `pnpm test:e2e`
@@ -37,6 +39,7 @@ Ship `CyberMasterChef 1.0.0` only after the tracked CyberChef functional surface
 - Build a production Docker image from the monorepo using a multi-stage build and ship the workbench as a static runtime artifact.
 - Keep a baseline `docker-compose.yml` for local smoke validation and operator onboarding.
 - Build and smoke-test the image in GitHub Actions on `main`, pull requests, and release tags.
+- Treat runtime header drift or CSP drift as a container release blocker, not just a docs issue.
 - Publish versioned and `latest` images to `ghcr.io/mkilijanek/cybermasterchef` for release tags only.
 - Treat container build/test/publish failures as release blockers for `1.0.0` and later releases.
 

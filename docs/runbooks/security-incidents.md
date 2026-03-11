@@ -17,7 +17,8 @@
 3. Re-check:
    - `pnpm security:audit`
    - CodeQL workflow
-   - runtime security controls (`pnpm security:csp-check`).
+   - runtime security controls (`pnpm security:csp-check`)
+   - container header and health validation (`pnpm docker:test`).
 
 ## Communication
 

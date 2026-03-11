@@ -669,6 +669,17 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "crypto.bcryptVerify",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": [
+      "hash"
+    ]
+  },
+  {
     "operationId": "crypto.hkdf",
     "inputTypes": [
       "bytes",
@@ -685,7 +696,43 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "crypto.hmacMd5",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "key",
+      "keyEncoding"
+    ]
+  },
+  {
+    "operationId": "crypto.hmacRipemd160",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "key",
+      "keyEncoding"
+    ]
+  },
+  {
     "operationId": "crypto.hmacSha1",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "key",
+      "keyEncoding"
+    ]
+  },
+  {
+    "operationId": "crypto.hmacSha224",
     "inputTypes": [
       "bytes",
       "string"
@@ -722,6 +769,18 @@ const CONTRACTS = [
   },
   {
     "operationId": "crypto.hmacSha512",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "key",
+      "keyEncoding"
+    ]
+  },
+  {
+    "operationId": "crypto.hmacWhirlpool",
     "inputTypes": [
       "bytes",
       "string"

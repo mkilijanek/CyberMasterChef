@@ -26,9 +26,9 @@ flowchart TD
    - Issue: `#74`
    - stabilize benchmark, asset, and CI perf gates against current build output; asset baselines refreshed to `1050000` bytes for `sandbox.worker.js` and `1110000` bytes for `vendor.js`, with Actions forced onto `Node 24`
 2. `M51`: security hardening final wave
-   - Status: `PLANNED`
+   - Status: `DONE-IN-CODE`
    - Issue: `#75`
-   - complete runtime/container/security-policy hardening and release-blocking security evidence
+   - completed runtime/container/security-policy hardening with enforced nginx security headers, cache/method restrictions, smoke-test header validation, and aligned CSP/runtime evidence
 3. `M52`: documentation and operational readiness
    - Status: `PLANNED`
    - Issue: `#76`

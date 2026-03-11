@@ -2,7 +2,7 @@
 
 A clean-slate, modular, and secure workbench for data operations — successor to CyberChef.
 
-Current parity checkpoint: `M57` is complete in code, `366` operations are implemented in repo, and the active release-closing wave is `M50-M59`.
+Current parity checkpoint: `381` operations are implemented in repo, `M58` is in progress, and the active release-closing wave is `M50-M59`.
 
 - Current release includes: Binary/URL codecs, `text.reverse`, auto-bake, run-to-step execution, deep-link sharing, search by operation ID with match counters, `Ctrl/Cmd+K` catalog focus shortcut, `Ctrl/Cmd+Shift+K` trace-filter focus shortcut, quick recipe JSON copy in Workbench, recipe-step duplication in editor, trace step counters with trace filtering/clear action (including filter reset on clear), filtered-count visibility, filtered-trace copy, CyberChef recipe import/export (Workbench + CLI) with detailed import warnings and import-source indicator, timeout-controlled execution in both Workbench and CLI, structured CLI output metadata, workbench image preview with output metadata, and an expanded golden recipe regression baseline.
 
@@ -29,10 +29,12 @@ Current parity checkpoint: `M57` is complete in code, `366` operations are imple
 - [M6 STIX/MISP Mapping](parity/m6-stix-misp-mapping.md)
 - [M5 Merge Readiness](parity/m5-merge-readiness.md)
 - [CSP Checklist](security/csp-checklist.md)
+- [Runtime Hardening](security/runtime-hardening.md)
 - [Performance Budget Report](perf/latest-benchmark-report.md)
 - [Release Train](release/release-train.md)
 - [Release 1.0.0 Plan](release/release-1.0.0-plan.md)
 - [Container Delivery](release/release-1.0.0-plan.md#container-delivery)
+- [Runtime Hardening](security/runtime-hardening.md)
 - [Rollback and Dry-Run](release/rollback-and-dry-run.md)
 - [M10 Final Audit](release/m10-final-audit.md)
 - [Observability Baseline](operations/observability-baseline.md)

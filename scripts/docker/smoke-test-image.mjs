@@ -1,4 +1,8 @@
 import { execFileSync } from "node:child_process";
+import {
+  assertSecurityHeaders,
+  extractAssetPaths
+} from "./smoke-test-lib.mjs";
 
 const image = process.argv[2];
 
@@ -22,6 +26,16 @@ function fetchStatus(url) {
     "/dev/null",
     "--write-out",
     "%{http_code}",
+    url
+  ]);
+}
+
+function fetchHeaders(url) {
+  return run("curl", [
+    "--fail",
+    "--silent",
+    "--show-error",
+    "--head",
     url
   ]);
 }
@@ -55,18 +69,19 @@ async function main() {
     if (!body.includes("CyberMasterChef")) {
       throw new Error("Workbench index does not contain expected title marker");
     }
+    assertSecurityHeaders(fetchHeaders("http://127.0.0.1:18080/"));
 
     const health = run("curl", ["--fail", "--silent", "http://127.0.0.1:18080/healthz"]);
     if (health.trim() !== "ok") {
       throw new Error("Health endpoint did not return ok");
     }
 
-    const assetMatches = [...body.matchAll(/(?:src|href)=\"(\/assets\/[^\"]+)\"/g)];
-    if (assetMatches.length === 0) {
+    const assetPaths = extractAssetPaths(body);
+    if (assetPaths.length === 0) {
       throw new Error("No built assets were referenced by index.html");
     }
 
-    for (const [, assetPath] of assetMatches) {
+    for (const assetPath of assetPaths) {
       const status = fetchStatus(`http://127.0.0.1:18080${assetPath}`);
       if (status !== "200") {
         throw new Error(`Asset fetch returned unexpected status ${status} for ${assetPath}`);

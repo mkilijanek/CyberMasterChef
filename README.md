@@ -18,6 +18,7 @@ The project targets deterministic behavior, parity tracking, and auditable CI/se
 - Next release objective: `1.0.0` with minimum `100%` functional coverage of the CyberChef reference set tracked in `docs/parity/*`.
 - Current execution wave: `M50-M59`, with `M53-M57` completed in code, `M58` in progress, and `M59` reserved for the `1.0.0` release cutover.
 - Release track also includes container delivery: Docker image, smoke-tested `docker-compose.yml`, and GHCR publication on release tags.
+- `M51` runtime hardening is enforced in the shipped nginx config and verified during `pnpm docker:test`.
 - GitHub milestones are being extended through `M59` so release cutover stays behind the remaining parity closure work.
 - C-track snapshot:
   - `C1`: complete domain matrix + drift gate
@@ -86,6 +87,7 @@ pnpm docker:test
 - lint/typecheck/test/build
 - Playwright E2E
 - CSP checklist + supply-chain audit
+- container runtime header validation in the image smoke test
 - performance budget gate
 - release readiness gate
 
@@ -111,6 +113,7 @@ pnpm docker:test
 - [Roadmap M50-M59](docs/parity/roadmap-next-m50-m59.md)
 - [Release 1.0.0 Plan](docs/release/release-1.0.0-plan.md)
 - [Container Delivery](docs/release/release-1.0.0-plan.md#container-delivery)
+- [Runtime Hardening](docs/security/runtime-hardening.md)
 - [Execution board](docs/parity/c2-execution-board.md)
 - [C3 contracts](docs/parity/c3-operation-compatibility-contracts.md)
 - [Triage corpus](docs/parity/triage-corpus.md)

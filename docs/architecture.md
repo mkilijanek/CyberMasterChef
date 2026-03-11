@@ -74,6 +74,10 @@ object-src 'none'
 frame-ancestors 'none'
 ```
 
+Production runtime also sets `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`,
+`Permissions-Policy`, `Cross-Origin-Opener-Policy`, and `Cross-Origin-Resource-Policy` on every
+response from the shipped container image.
+
 ## WASM roadmap
 
 High-priority candidates for WASM (Rust) — CPU-intensive ops:

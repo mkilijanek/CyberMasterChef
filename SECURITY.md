@@ -32,6 +32,18 @@ Content-Security-Policy:
   frame-ancestors 'none'
 ```
 
+Recommended companion headers for the static workbench runtime:
+
+- `X-Content-Type-Options: nosniff`
+- `X-Frame-Options: DENY`
+- `Referrer-Policy: no-referrer`
+- `Permissions-Policy: accelerometer=(), camera=(), microphone=(), payment=()`
+- `Cross-Origin-Opener-Policy: same-origin`
+- `Cross-Origin-Resource-Policy: same-origin`
+
+The shipped container image enforces these headers in `docker/nginx/default.conf`, and `pnpm docker:test`
+verifies them during image smoke validation.
+
 ### Supply chain
 
 - pnpm v10: use `allow-builds` allowlist for trusted native dependencies
