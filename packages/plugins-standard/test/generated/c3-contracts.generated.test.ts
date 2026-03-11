@@ -44,6 +44,14 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "codec.fromBase85",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": []
+  },
+  {
     "operationId": "codec.fromBinary",
     "inputTypes": [
       "string"
@@ -137,6 +145,15 @@ const CONTRACTS = [
   },
   {
     "operationId": "codec.toBase64",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "codec.toBase85",
     "inputTypes": [
       "bytes",
       "string"

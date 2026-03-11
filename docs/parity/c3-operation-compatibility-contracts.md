@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 322
+Total contracts: 324
 
 ## Contract entries (compact)
 
@@ -40,6 +40,13 @@ Total contracts: 322
   - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.fromBase85
+  - name: From Base85
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_ARGUMENT, INVALID_INPUT_TYPE
 - codec.fromBinary
   - name: From Binary
   - domain: encodings-codecs
@@ -119,6 +126,13 @@ Total contracts: 322
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.toBase64
   - name: To Base64
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toBase85
+  - name: To Base85
   - domain: encodings-codecs
   - inputTypes: bytes, string
   - outputType: string

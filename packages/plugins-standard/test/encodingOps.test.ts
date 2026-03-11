@@ -6,6 +6,8 @@ import { toBase45 } from "../src/ops/toBase45.js";
 import { fromBase45 } from "../src/ops/fromBase45.js";
 import { toBase62 } from "../src/ops/toBase62.js";
 import { fromBase62 } from "../src/ops/fromBase62.js";
+import { toBase85 } from "../src/ops/toBase85.js";
+import { fromBase85 } from "../src/ops/fromBase85.js";
 import { toBase58 } from "../src/ops/toBase58.js";
 import { fromBase58 } from "../src/ops/fromBase58.js";
 import { toMorseCode } from "../src/ops/toMorseCode.js";
@@ -97,6 +99,24 @@ describe("encoding operations", () => {
     const recipe: Recipe = {
       version: 1,
       steps: [{ opId: "codec.toBase62" }, { opId: "codec.fromBase62" }]
+    };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "hello" }
+    });
+    expect(out.output.type).toBe("bytes");
+    if (out.output.type !== "bytes") return;
+    expect(out.output.value).toEqual(new TextEncoder().encode("hello"));
+  });
+
+  it("round-trips Base85 encoding", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(toBase85);
+    registry.register(fromBase85);
+    const recipe: Recipe = {
+      version: 1,
+      steps: [{ opId: "codec.toBase85" }, { opId: "codec.fromBase85" }]
     };
     const out = await runRecipe({
       registry,

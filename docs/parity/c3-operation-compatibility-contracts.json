@@ -127,6 +127,33 @@
     }
   },
   {
+    "operationId": "codec.fromBase85",
+    "name": "From Base85",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_ARGUMENT",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Invalid Base85 zero shortcut placement",
+        "Invalid Base85 trailing group",
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromBase85.ts",
+      "description": "Decodes ASCII85/Base85 string into bytes."
+    }
+  },
+  {
     "operationId": "codec.fromBinary",
     "name": "From Binary",
     "domain": "encodings-codecs",
@@ -418,6 +445,31 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/toBase64.ts",
       "description": "Encodes bytes or string to Base64."
+    }
+  },
+  {
+    "operationId": "codec.toBase85",
+    "name": "To Base85",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toBase85.ts",
+      "description": "Encodes bytes or string to ASCII85/Base85."
     }
   },
   {

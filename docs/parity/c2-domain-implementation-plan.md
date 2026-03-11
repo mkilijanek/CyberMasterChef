@@ -1,13 +1,13 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 322
+Implemented operations in repo: 324
 
 ## Priority order
 
 - P1: forensic-malware-helper (coverage 31.25%, missing ~11)
 - P2: crypto-hash-kdf (coverage 40.21%, missing ~58)
-- P3: encodings-codecs (coverage 55.17%, missing ~26)
+- P3: encodings-codecs (coverage 58.62%, missing ~24)
 - P4: misc-uncategorized (coverage 60.69%, missing ~57)
 
 ## Domain summary
@@ -15,10 +15,10 @@ Implemented operations in repo: 322
 ### encodings-codecs
 - Description: Encodings, binary/text codecs, canonical representation transforms.
 - CyberChef total: 58
-- Implemented total: 32
-- Estimated missing: 26
-- Coverage: 55.17%
-- Implemented ops in repo: 32
+- Implemented total: 34
+- Estimated missing: 24
+- Coverage: 58.62%
+- Implemented ops in repo: 34
 - Implemented operation IDs:
   - codec.toBase64 (toBase64.ts)
   - codec.fromBase64 (fromBase64.ts)
@@ -28,6 +28,8 @@ Implemented operations in repo: 322
   - codec.fromBase45 (fromBase45.ts)
   - codec.toBase62 (toBase62.ts)
   - codec.fromBase62 (fromBase62.ts)
+  - codec.toBase85 (toBase85.ts)
+  - codec.fromBase85 (fromBase85.ts)
   - codec.toBase58 (toBase58.ts)
   - codec.fromBase58 (fromBase58.ts)
   - codec.toMorseCode (toMorseCode.ts)
@@ -38,8 +40,6 @@ Implemented operations in repo: 322
   - codec.fromBinary (fromBinary.ts)
   - codec.toCharcode (toCharcode.ts)
   - codec.fromCharcode (fromCharcode.ts)
-  - codec.toDecimal (toDecimal.ts)
-  - codec.fromDecimal (fromDecimal.ts)
 - Candidate operations (first 20):
   - Alphabet (FromBase58.mjs) [medium]
   - Alphabet (ToBase58.mjs) [medium]
