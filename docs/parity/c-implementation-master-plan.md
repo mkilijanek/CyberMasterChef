@@ -1,6 +1,6 @@
 # C Implementation Master Plan
 
-Updated: 2026-03-10 (M29-M33 quality roadmap added after the previous quality wave)
+Updated: 2026-03-11 (M34-M53 roadmap and release 1.0.0 track added)
 
 ## Sources
 
@@ -42,7 +42,7 @@ Deliver a complete, auditable, and operationally useful C-track:
 ### C2 Domain Implementation
 
 - Status: `[IN-PROGRESS]`
-- Realization (current): `~65%` of planned baseline wave scope for priority domains.
+- Realization (current): `~64%` of tracked CyberChef reference operation coverage by implemented operation count.
 - Completed baseline waves:
   - date-time baseline and telemetry parsing helpers
   - data-format baseline (JSON/CSV/YAML/XML/HTML + image/format conversions)
@@ -176,19 +176,34 @@ Deliver a complete, auditable, and operationally useful C-track:
   - `C3: 100% (contract generation + generated regression + CI gate)`
 - Combined C-track completion snapshot for milestone scope: `100% (M1-M10)`
 - Active focus for next execution queue:
-  - continue driving targeted unit coverage into remaining `cli` and `workbench` hotspots
+  - drive C2 from baseline completeness to full tracked CyberChef parity
   - keep coverage baselines auditable after each wave
-  - keep roadmap/master-plan traceability synchronized with GitHub issue state
+  - converge release governance and docs toward `1.0.0`
 
 ## Next Milestones Roadmap
 
-1. `M29`: CLI batch edge coverage.
-2. `M30`: CLI stdin/stdout tail coverage.
-3. `M31`: workbench `App.tsx` tail coverage.
-4. `M32`: coverage baseline refresh.
-5. `M33`: roadmap/master-plan refresh with issue traceability.
+1. `M34`: hash/checksum parity wave 1.
+2. `M35`: hash/KDF/checksum parity wave 2.
+3. `M36`: network parser baseline wave 1.
+4. `M37`: network parser baseline wave 2.
+5. `M38`: encoding/codec parity wave 1.
+6. `M39`: encoding/codec parity wave 2.
+7. `M40`: JSON/data-format completion.
+8. `M41`: XML/HTML/structured-format completion.
+9. `M42`: archive/container parity completion.
+10. `M43`: forensic helper expansion.
+11. `M44`: malware triage enrichment.
+12. `M45`: image/media safe-parity wave.
+13. `M46`: misc reclassification and gap closure.
+14. `M47`: contract corpus expansion.
+15. `M48`: CLI full-parity UX and reporting.
+16. `M49`: workbench full-parity UX wave.
+17. `M50`: performance and scale 1.0 gates.
+18. `M51`: security hardening final wave.
+19. `M52`: documentation and operational readiness.
+20. `M53`: release `1.0.0` candidate and cutover.
 
-Detailed stages: `docs/parity/roadmap-next-m29-m33.md`.
+Detailed stages: `docs/parity/roadmap-next-m34-m53.md`.
 
 ### M11-M13 Progress Snapshot
 
@@ -227,3 +242,11 @@ Detailed stages: `docs/parity/roadmap-next-m29-m33.md`.
 - `M31` `[DONE]`: workbench `App.tsx` cancel/control-state coverage expanded.
 - `M32` `[DONE]`: coverage baseline refreshed after the latest quality wave.
 - `M33` `[DONE]`: roadmap and master-plan synchronized for the M29-M33 wave.
+
+### M34-M53 Planned Track
+
+- `M34-M35`: close high-value crypto/hash/checksum parity gaps.
+- `M36-M39`: close parser and encoding/codec gaps from the current C2 priority board.
+- `M40-M47`: finish structured-format, archive, forensic, misc, and contract parity closure.
+- `M48-M49`: align CLI/workbench behavior with the expanded parity surface.
+- `M50-M53`: harden performance, security, docs, and release governance for `1.0.0`.

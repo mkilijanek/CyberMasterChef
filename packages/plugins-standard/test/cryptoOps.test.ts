@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core";
 import { adler32Checksum } from "../src/ops/adler32.js";
+import { crc32Checksum } from "../src/ops/crc32.js";
 import { analyseHash } from "../src/ops/analyseHash.js";
 import { atbashCipher } from "../src/ops/atbashCipher.js";
 import { affineCipherEncode } from "../src/ops/affineCipherEncode.js";
@@ -11,6 +12,7 @@ import { baconCipherEncode } from "../src/ops/baconCipherEncode.js";
 import { baconCipherDecode } from "../src/ops/baconCipherDecode.js";
 import { bcryptParse } from "../src/ops/bcryptParse.js";
 import { hashMd5 } from "../src/ops/hashMd5.js";
+import { ripemd160 } from "../src/ops/ripemd160.js";
 import { sha1 } from "../src/ops/sha1.js";
 import { sha224 } from "../src/ops/sha224.js";
 import { sha384 } from "../src/ops/sha384.js";
@@ -38,6 +40,18 @@ describe("crypto operations", () => {
       input: { type: "string", value: "Hello" }
     });
     expect(out.output).toEqual({ type: "string", value: "058c01f5" });
+  });
+
+  it("computes CRC-32 checksum", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(crc32Checksum);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "hash.crc32" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "abc" }
+    });
+    expect(out.output).toEqual({ type: "string", value: "352441c2" });
   });
 
   it("analyses hash candidates", async () => {
@@ -141,6 +155,7 @@ describe("crypto operations", () => {
   it("computes common hashes", async () => {
     const registry = new InMemoryRegistry();
     registry.register(hashMd5);
+    registry.register(ripemd160);
     registry.register(sha1);
     registry.register(sha224);
     registry.register(sha384);
@@ -153,6 +168,7 @@ describe("crypto operations", () => {
     const input = { type: "string", value: "hello" } as const;
     const ops = [
       { opId: "hash.md5", expected: "5d41402abc4b2a76b9719d911017c592" },
+      { opId: "hash.ripemd160", expected: "108f07b8382412612c048d07d13f814118445acd" },
       { opId: "hash.sha1", expected: "aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d" },
       {
         opId: "hash.sha224",

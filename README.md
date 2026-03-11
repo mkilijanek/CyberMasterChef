@@ -13,11 +13,13 @@ The project targets deterministic behavior, parity tracking, and auditable CI/se
 
 ## Current Status
 
-- Milestones `M1-M18`: completed.
-- Latest closure report: `docs/parity/roadmap-next-m14-m18.md`.
+- Milestones `M1-M33`: completed.
+- Latest closure report: `docs/parity/roadmap-next-m29-m33.md`.
+- Next release objective: `1.0.0` with minimum `100%` functional coverage of the CyberChef reference set tracked in `docs/parity/*`.
+- Current execution wave: `M34-M53`, with `M34` already started.
 - C-track snapshot:
   - `C1`: complete domain matrix + drift gate
-  - `C2`: baseline complete, including high-priority closure and runtime/perf gates
+  - `C2`: in active parity expansion toward full CyberChef functional coverage
   - `C3`: contract catalog + generated regression tests + CI gate
 
 ## Repository Layout
@@ -93,6 +95,8 @@ pnpm release:readiness
 
 - [Docs index](docs/index.md)
 - [Master plan](docs/parity/c-implementation-master-plan.md)
+- [Roadmap M34-M53](docs/parity/roadmap-next-m34-m53.md)
+- [Release 1.0.0 Plan](docs/release/release-1.0.0-plan.md)
 - [Execution board](docs/parity/c2-execution-board.md)
 - [C3 contracts](docs/parity/c3-operation-compatibility-contracts.md)
 - [Triage corpus](docs/parity/triage-corpus.md)
@@ -107,6 +111,7 @@ pnpm release:readiness
 - Work on branch `dev`.
 - Keep commits scoped and test-backed.
 - Update docs in the same PR as behavior changes.
+- Before every push, make sure README/docs/roadmap/parity artifacts for the changed scope are already committed.
 - Run parity/security/perf gates before push.
 
 ## License

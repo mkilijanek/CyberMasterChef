@@ -1,12 +1,12 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 298
+Implemented operations in repo: 300
 
 ## Priority order
 
 - P1: forensic-malware-helper (coverage 31.25%, missing ~11)
-- P2: crypto-hash-kdf (coverage 34.02%, missing ~64)
+- P2: crypto-hash-kdf (coverage 36.08%, missing ~62)
 - P3: encodings-codecs (coverage 41.38%, missing ~34)
 - P4: network-protocol-parsers (coverage 48%, missing ~13)
 
@@ -55,10 +55,10 @@ Implemented operations in repo: 298
 ### crypto-hash-kdf
 - Description: Cryptographic transforms, digests, MAC/KDF and cipher operations.
 - CyberChef total: 97
-- Implemented total: 33
-- Estimated missing: 64
-- Coverage: 34.02%
-- Implemented ops in repo: 33
+- Implemented total: 35
+- Estimated missing: 62
+- Coverage: 36.08%
+- Implemented ops in repo: 35
 - Implemented operation IDs:
   - text.includes (includesText.ts)
   - text.removeHashes (removeHashes.ts)
@@ -69,8 +69,10 @@ Implemented operations in repo: 298
   - forensic.extractSha1 (extractSha1.ts)
   - forensic.extractSha256 (extractSha256.ts)
   - forensic.extractSha512 (extractSha512.ts)
+  - hash.crc32 (crc32.ts)
   - hash.analyseHash (analyseHash.ts)
   - hash.md5 (hashMd5.ts)
+  - hash.ripemd160 (ripemd160.ts)
   - hash.sha1 (sha1.ts)
   - crypto.atbashCipher (atbashCipher.ts)
   - crypto.affineCipherEncode (affineCipherEncode.ts)
@@ -78,8 +80,6 @@ Implemented operations in repo: 298
   - crypto.a1z26CipherEncode (a1z26CipherEncode.ts)
   - crypto.a1z26CipherDecode (a1z26CipherDecode.ts)
   - crypto.baconCipherEncode (baconCipherEncode.ts)
-  - crypto.baconCipherDecode (baconCipherDecode.ts)
-  - crypto.bcryptParse (bcryptParse.ts)
 - Candidate operations (first 20):
   - a (AffineCipherDecode.mjs) [high]
   - a (AffineCipherEncode.mjs) [high]

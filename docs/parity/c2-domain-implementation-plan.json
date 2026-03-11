@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 298
+    "implementedOpsCount": 300
   },
   "summary": [
     {
@@ -241,9 +241,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 97,
-      "implementedTotal": 33,
-      "missingEstimated": 64,
-      "coveragePct": 34.02,
+      "implementedTotal": 35,
+      "missingEstimated": 62,
+      "coveragePct": 36.08,
       "implementedOps": [
         {
           "id": "text.includes",
@@ -291,6 +291,11 @@
           "file": "extractSha512.ts"
         },
         {
+          "id": "hash.crc32",
+          "name": "CRC-32",
+          "file": "crc32.ts"
+        },
+        {
           "id": "hash.analyseHash",
           "name": "Analyse Hash",
           "file": "analyseHash.ts"
@@ -299,6 +304,11 @@
           "id": "hash.md5",
           "name": "MD5",
           "file": "hashMd5.ts"
+        },
+        {
+          "id": "hash.ripemd160",
+          "name": "RIPEMD-160",
+          "file": "ripemd160.ts"
         },
         {
           "id": "hash.sha1",
@@ -2389,8 +2399,8 @@
     {
       "priority": 2,
       "domain": "crypto-hash-kdf",
-      "coveragePct": 34.02,
-      "missingEstimated": 64
+      "coveragePct": 36.08,
+      "missingEstimated": 62
     },
     {
       "priority": 3,

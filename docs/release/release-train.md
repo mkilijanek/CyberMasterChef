@@ -28,3 +28,8 @@
 - Branch from `main` (`hotfix/*`), minimal scoped patch.
 - Run `pnpm run ci:full`, `pnpm test:e2e`, and the rollback checklist before merge.
 - Back-merge hotfix to `dev` immediately after release.
+
+## Release 1.0.0 Track
+
+- Strategic plan: `docs/release/release-1.0.0-plan.md`
+- Parity roadmap feeding `1.0.0`: `docs/parity/roadmap-next-m34-m53.md`
