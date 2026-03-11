@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 355
+    "implementedOpsCount": 358
   },
   "summary": [
     {
@@ -1314,9 +1314,9 @@
       "domain": "regex-text-advanced",
       "description": "Regex and advanced text analysis/normalization operations.",
       "cyberChefTotal": 46,
-      "implementedTotal": 55,
+      "implementedTotal": 56,
       "missingEstimated": 0,
-      "coveragePct": 119.57,
+      "coveragePct": 121.74,
       "implementedOps": [
         {
           "id": "text.reverse",
@@ -1589,6 +1589,11 @@
           "file": "extractRegistryKeys.ts"
         },
         {
+          "id": "network.extractMacAddresses",
+          "name": "Extract MAC Addresses",
+          "file": "extractMacAddresses.ts"
+        },
+        {
           "id": "network.extractPorts",
           "name": "Extract Ports",
           "file": "extractPorts.ts"
@@ -1701,9 +1706,9 @@
       "domain": "network-protocol-parsers",
       "description": "Protocol/header/parsing operations for network/web payloads.",
       "cyberChefTotal": 39,
-      "implementedTotal": 22,
-      "missingEstimated": 17,
-      "coveragePct": 56.41,
+      "implementedTotal": 24,
+      "missingEstimated": 15,
+      "coveragePct": 61.54,
       "implementedOps": [
         {
           "id": "codec.urlEncode",
@@ -1714,6 +1719,16 @@
           "id": "codec.urlDecode",
           "name": "URL Decode",
           "file": "urlDecode.ts"
+        },
+        {
+          "id": "network.changeIpFormat",
+          "name": "Change IP Format",
+          "file": "changeIpFormat.ts"
+        },
+        {
+          "id": "network.parseUserAgent",
+          "name": "Parse User Agent",
+          "file": "parseUserAgent.ts"
         },
         {
           "id": "forensic.extractJwt",
@@ -2678,15 +2693,15 @@
     },
     {
       "priority": 2,
-      "domain": "network-protocol-parsers",
-      "coveragePct": 56.41,
-      "missingEstimated": 17
-    },
-    {
-      "priority": 3,
       "domain": "forensic-malware-helper",
       "coveragePct": 58.82,
       "missingEstimated": 7
+    },
+    {
+      "priority": 3,
+      "domain": "network-protocol-parsers",
+      "coveragePct": 61.54,
+      "missingEstimated": 15
     },
     {
       "priority": 4,

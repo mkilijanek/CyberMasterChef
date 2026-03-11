@@ -1,13 +1,13 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 355
+Implemented operations in repo: 358
 
 ## Priority order
 
 - P1: crypto-hash-kdf (coverage 40.21%, missing ~58)
-- P2: network-protocol-parsers (coverage 56.41%, missing ~17)
-- P3: forensic-malware-helper (coverage 58.82%, missing ~7)
+- P2: forensic-malware-helper (coverage 58.82%, missing ~7)
+- P3: network-protocol-parsers (coverage 61.54%, missing ~15)
 - P4: misc-uncategorized (coverage 82.35%, missing ~21)
 
 ## Domain summary
@@ -191,10 +191,10 @@ Implemented operations in repo: 355
 ### regex-text-advanced
 - Description: Regex and advanced text analysis/normalization operations.
 - CyberChef total: 46
-- Implemented total: 55
+- Implemented total: 56
 - Estimated missing: 0
-- Coverage: 119.57%
-- Implemented ops in repo: 55
+- Coverage: 121.74%
+- Implemented ops in repo: 56
 - Implemented operation IDs:
   - text.reverse (reverse.ts)
   - text.lowercase (lowercase.ts)
@@ -231,13 +231,15 @@ Implemented operations in repo: 355
 ### network-protocol-parsers
 - Description: Protocol/header/parsing operations for network/web payloads.
 - CyberChef total: 39
-- Implemented total: 22
-- Estimated missing: 17
-- Coverage: 56.41%
-- Implemented ops in repo: 22
+- Implemented total: 24
+- Estimated missing: 15
+- Coverage: 61.54%
+- Implemented ops in repo: 24
 - Implemented operation IDs:
   - codec.urlEncode (urlEncode.ts)
   - codec.urlDecode (urlDecode.ts)
+  - network.changeIpFormat (changeIpFormat.ts)
+  - network.parseUserAgent (parseUserAgent.ts)
   - forensic.extractJwt (extractJwt.ts)
   - network.extractIPs (extractIPs.ts)
   - network.extractIPv6 (extractIPv6.ts)
@@ -254,8 +256,6 @@ Implemented operations in repo: 355
   - network.parseUri (parseUri.ts)
   - network.stripIPv4Header (stripIPv4Header.ts)
   - network.stripTcpHeader (stripTcpHeader.ts)
-  - network.stripUdpHeader (stripUdpHeader.ts)
-  - network.extractUrls (extractUrls.ts)
 - Candidate operations (first 20):
   - DechunkHTTPResponse (DechunkHTTPResponse.mjs) [high]
   - DefangIPAddresses (DefangIPAddresses.mjs) [high]

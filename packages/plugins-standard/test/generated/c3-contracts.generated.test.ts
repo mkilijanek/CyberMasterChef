@@ -4,6 +4,28 @@ import { standardPlugin } from "../../src/index.js";
 
 const CONTRACTS = [
   {
+    "operationId": "bytes.bitShiftLeft",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": [
+      "amount"
+    ]
+  },
+  {
+    "operationId": "bytes.bitShiftRight",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": [
+      "amount"
+    ]
+  },
+  {
     "operationId": "bytes.dropBytes",
     "inputTypes": [
       "bytes",
@@ -163,6 +185,19 @@ const CONTRACTS = [
     ],
     "outputType": "bytes",
     "argKeys": [
+      "delimiter"
+    ]
+  },
+  {
+    "operationId": "codec.fromFloat",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "endianness",
+      "width",
       "delimiter"
     ]
   },
@@ -333,6 +368,18 @@ const CONTRACTS = [
     ],
     "outputType": "string",
     "argKeys": [
+      "delimiter"
+    ]
+  },
+  {
+    "operationId": "codec.toFloat",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": [
+      "endianness",
+      "width",
       "delimiter"
     ]
   },
@@ -1796,6 +1843,16 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "network.changeIpFormat",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "outputFormat"
+    ]
+  },
+  {
     "operationId": "network.dechunkHttpResponse",
     "inputTypes": [
       "bytes",
@@ -1844,6 +1901,14 @@ const CONTRACTS = [
   },
   {
     "operationId": "network.extractIPv6",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.extractMacAddresses",
     "inputTypes": [
       "string"
     ],
@@ -1939,6 +2004,14 @@ const CONTRACTS = [
   },
   {
     "operationId": "network.parseUri",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.parseUserAgent",
     "inputTypes": [
       "string"
     ],
@@ -2215,6 +2288,26 @@ const CONTRACTS = [
     "outputType": "number",
     "argKeys": [
       "value"
+    ]
+  },
+  {
+    "operationId": "text.escapeString",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "escapeLevel"
+    ]
+  },
+  {
+    "operationId": "text.expandAlphabetRange",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "delimiter"
     ]
   },
   {

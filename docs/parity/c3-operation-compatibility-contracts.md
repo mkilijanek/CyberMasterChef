@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 355
+Total contracts: 358
 
 ## Contract entries (compact)
 
@@ -1307,6 +1307,13 @@ Total contracts: 355
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.changeIpFormat
+  - name: Change IP Format
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - network.dechunkHttpResponse
   - name: Dechunk HTTP Response
   - domain: network-protocol-parsers
@@ -1345,6 +1352,13 @@ Total contracts: 355
 - network.extractIPv6
   - name: Extract IPv6
   - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.extractMacAddresses
+  - name: Extract MAC Addresses
+  - domain: regex-text-advanced
   - inputTypes: string
   - outputType: string
   - deterministic: true
@@ -1426,6 +1440,13 @@ Total contracts: 355
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- network.parseUserAgent
+  - name: Parse User Agent
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - network.stripHttpHeaders
   - name: Strip HTTP Headers
   - domain: network-protocol-parsers
