@@ -5,19 +5,19 @@ Implemented operations in repo: 366
 
 ## Priority order
 
-- P1: crypto-hash-kdf (coverage 46.39%, missing ~52)
+- P1: crypto-hash-kdf (coverage 45%, missing ~55)
 - P2: forensic-malware-helper (coverage 58.82%, missing ~7)
 - P3: network-protocol-parsers (coverage 71.79%, missing ~11)
-- P4: misc-uncategorized (coverage 80.67%, missing ~23)
+- P4: misc-uncategorized (coverage 82.05%, missing ~21)
 
 ## Domain summary
 
 ### encodings-codecs
 - Description: Encodings, binary/text codecs, canonical representation transforms.
-- CyberChef total: 58
+- CyberChef total: 57
 - Implemented total: 49
-- Estimated missing: 9
-- Coverage: 84.48%
+- Estimated missing: 8
+- Coverage: 85.96%
 - Implemented ops in repo: 49
 - Implemented operation IDs:
   - codec.toBase64 (toBase64.ts)
@@ -54,10 +54,10 @@ Implemented operations in repo: 366
 
 ### crypto-hash-kdf
 - Description: Cryptographic transforms, digests, MAC/KDF and cipher operations.
-- CyberChef total: 97
+- CyberChef total: 100
 - Implemented total: 45
-- Estimated missing: 52
-- Coverage: 46.39%
+- Estimated missing: 55
+- Coverage: 45%
 - Implemented ops in repo: 45
 - Implemented operation IDs:
   - text.includes (includesText.ts)
@@ -300,10 +300,10 @@ Implemented operations in repo: 366
 
 ### misc-uncategorized
 - Description: Operations that require manual triage or do not fit current taxonomy.
-- CyberChef total: 119
+- CyberChef total: 117
 - Implemented total: 96
-- Estimated missing: 23
-- Coverage: 80.67%
+- Estimated missing: 21
+- Coverage: 82.05%
 - Implemented ops in repo: 96
 - Implemented operation IDs:
   - bytes.bitShiftLeft (bitShiftLeft.ts)

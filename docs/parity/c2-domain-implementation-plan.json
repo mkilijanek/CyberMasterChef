@@ -8,10 +8,10 @@
     {
       "domain": "encodings-codecs",
       "description": "Encodings, binary/text codecs, canonical representation transforms.",
-      "cyberChefTotal": 58,
+      "cyberChefTotal": 57,
       "implementedTotal": 49,
-      "missingEstimated": 9,
-      "coveragePct": 84.48,
+      "missingEstimated": 8,
+      "coveragePct": 85.96,
       "implementedOps": [
         {
           "id": "codec.toBase64",
@@ -365,10 +365,10 @@
     {
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
-      "cyberChefTotal": 97,
+      "cyberChefTotal": 100,
       "implementedTotal": 45,
-      "missingEstimated": 52,
-      "coveragePct": 46.39,
+      "missingEstimated": 55,
+      "coveragePct": 45,
       "implementedOps": [
         {
           "id": "text.includes",
@@ -2134,10 +2134,10 @@
     {
       "domain": "misc-uncategorized",
       "description": "Operations that require manual triage or do not fit current taxonomy.",
-      "cyberChefTotal": 119,
+      "cyberChefTotal": 117,
       "implementedTotal": 96,
-      "missingEstimated": 23,
-      "coveragePct": 80.67,
+      "missingEstimated": 21,
+      "coveragePct": 82.05,
       "implementedOps": [
         {
           "id": "bytes.bitShiftLeft",
@@ -2728,8 +2728,8 @@
     {
       "priority": 1,
       "domain": "crypto-hash-kdf",
-      "coveragePct": 46.39,
-      "missingEstimated": 52
+      "coveragePct": 45,
+      "missingEstimated": 55
     },
     {
       "priority": 2,
@@ -2746,8 +2746,8 @@
     {
       "priority": 4,
       "domain": "misc-uncategorized",
-      "coveragePct": 80.67,
-      "missingEstimated": 23
+      "coveragePct": 82.05,
+      "missingEstimated": 21
     }
   ]
 }

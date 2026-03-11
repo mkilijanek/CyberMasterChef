@@ -66,10 +66,10 @@ flowchart TD
 
 - Baseline parity checkpoint in the current repo state: `366/465` tracked operations implemented.
 - Highest remaining parity pressure domains:
-  - `crypto-hash-kdf`: `45/97`
+  - `crypto-hash-kdf`: `45/100`
   - `network-protocol-parsers`: `28/39`
   - `forensic-malware-helper`: `10/17`
-  - `misc-uncategorized`: `96/119`
+  - `misc-uncategorized`: `96/117`
 - Release blockers entering this wave:
   - release sequencing must move behind the remaining parity closure, not ahead of it
   - performance/security/docs evidence needs to stay current with each parity wave
