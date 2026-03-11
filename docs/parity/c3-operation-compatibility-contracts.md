@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 307
+Total contracts: 311
 
 ## Contract entries (compact)
 
@@ -1125,6 +1125,13 @@ Total contracts: 307
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.parseIPv4Header
+  - name: Parse IPv4 Header
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - network.parseIPv6Address
   - name: Parse IPv6 Address
   - domain: network-protocol-parsers
@@ -1139,6 +1146,27 @@ Total contracts: 307
   - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.stripIPv4Header
+  - name: Strip IPv4 Header
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.stripTcpHeader
+  - name: Strip TCP Header
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- network.stripUdpHeader
+  - name: Strip UDP Header
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
 - text.append
   - name: Append
   - domain: misc-uncategorized

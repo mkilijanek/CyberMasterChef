@@ -14,6 +14,10 @@ import { dnsOverHttps } from "../src/ops/dnsOverHttps.js";
 import { parseIPv6Address } from "../src/ops/parseIPv6Address.js";
 import { parseIPRange } from "../src/ops/parseIPRange.js";
 import { stripHttpHeaders } from "../src/ops/stripHttpHeaders.js";
+import { parseIPv4Header } from "../src/ops/parseIPv4Header.js";
+import { stripIPv4Header } from "../src/ops/stripIPv4Header.js";
+import { stripTcpHeader } from "../src/ops/stripTcpHeader.js";
+import { stripUdpHeader } from "../src/ops/stripUdpHeader.js";
 
 describe("network operations", () => {
   it("extracts unique valid IPv4 addresses", async () => {
@@ -322,5 +326,85 @@ describe("network operations", () => {
     expect(out.output.type).toBe("bytes");
     if (out.output.type !== "bytes") return;
     expect(new TextDecoder().decode(out.output.value)).toBe("hello");
+  });
+
+  it("parses IPv4 headers into normalized metadata", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(parseIPv4Header);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.parseIPv4Header" }] };
+    const packet = new Uint8Array([
+      0x45, 0x00, 0x00, 0x17, 0x12, 0x34, 0x40, 0x00, 0x40, 0x11, 0x00, 0x00,
+      0xc0, 0xa8, 0x01, 0x0a, 0x08, 0x08, 0x08, 0x08, 0x61, 0x62, 0x63
+    ]);
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "bytes", value: packet }
+    });
+    expect(out.output.type).toBe("json");
+    if (out.output.type !== "json") return;
+    expect(out.output.value).toMatchObject({
+      version: 4,
+      headerLengthBytes: 20,
+      totalLength: 23,
+      ttl: 64,
+      protocolNumber: 17,
+      protocolName: "UDP",
+      source: "192.168.1.10",
+      destination: "8.8.8.8"
+    });
+  });
+
+  it("strips IPv4 headers and returns payload bytes", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(stripIPv4Header);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.stripIPv4Header" }] };
+    const packet = new Uint8Array([
+      0x45, 0x00, 0x00, 0x17, 0x12, 0x34, 0x40, 0x00, 0x40, 0x11, 0x00, 0x00,
+      0xc0, 0xa8, 0x01, 0x0a, 0x08, 0x08, 0x08, 0x08, 0x61, 0x62, 0x63
+    ]);
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "bytes", value: packet }
+    });
+    expect(out.output.type).toBe("bytes");
+    if (out.output.type !== "bytes") return;
+    expect(new TextDecoder().decode(out.output.value)).toBe("abc");
+  });
+
+  it("strips TCP headers and returns payload bytes", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(stripTcpHeader);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.stripTcpHeader" }] };
+    const segment = new Uint8Array([
+      0x00, 0x50, 0x13, 0x88, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00,
+      0x50, 0x18, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x68, 0x69
+    ]);
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "bytes", value: segment }
+    });
+    expect(out.output.type).toBe("bytes");
+    if (out.output.type !== "bytes") return;
+    expect(new TextDecoder().decode(out.output.value)).toBe("hi");
+  });
+
+  it("strips UDP headers and returns payload bytes", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(stripUdpHeader);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.stripUdpHeader" }] };
+    const datagram = new Uint8Array([
+      0x13, 0x89, 0x00, 0x35, 0x00, 0x0a, 0x00, 0x00, 0x6f, 0x6b
+    ]);
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "bytes", value: datagram }
+    });
+    expect(out.output.type).toBe("bytes");
+    if (out.output.type !== "bytes") return;
+    expect(new TextDecoder().decode(out.output.value)).toBe("ok");
   });
 });

@@ -32,20 +32,20 @@ flowchart TD
 ## Milestones
 
 1. `M34`: hash/checksum parity wave 1
-   - Status: `IN-PROGRESS`
+   - Status: `DONE-IN-CODE`
    - Issue: `#58`
    - add low-risk missing checksum and digest operations
    - update crypto golden/unit coverage and C2 parity counts
 2. `M35`: hash/KDF/checksum parity wave 2
-   - Status: `PLANNED`
+   - Status: `DONE-IN-CODE`
    - Issue: `#59`
    - close remaining medium-complexity hash/KDF operations needed for parity
 3. `M36`: network parser baseline wave 1
-   - Status: `PLANNED`
+   - Status: `DONE-IN-CODE`
    - Issue: `#60`
    - deliver core IP/range parsing and normalization operations
 4. `M37`: network parser baseline wave 2
-   - Status: `PLANNED`
+   - Status: `IN-PROGRESS`
    - Issue: `#61`
    - close remaining protocol/header parser gaps from the current priority board
 5. `M38`: encoding/codec parity wave 1
@@ -124,5 +124,6 @@ flowchart TD
 
 - `M34` `[DONE-IN-CODE]`: added `hash.crc32` and `hash.ripemd160`, regenerated C2 parity artifacts, and advanced the crypto/hash closure track.
 - `M35` `[DONE-IN-CODE]`: `hash.fletcher8`, `hash.fletcher16`, `hash.fletcher32`, and `hash.fletcher64` are implemented, tested, and correctly classified into the crypto parity domain.
-- `M36` `[IN-PROGRESS]`: `network.parseIPv6Address`, `network.parseIPRange`, and `network.stripHttpHeaders` are implemented and tested; GitHub milestones `M34-M53` were published and linked to issues `#58-#77`.
-- `M37-M53` `[PLANNED]`: not started yet in code; scoped here as the release path to `1.0.0`.
+- `M36` `[DONE-IN-CODE]`: `network.parseIPv6Address`, `network.parseIPRange`, and `network.stripHttpHeaders` are implemented and tested; GitHub milestones `M34-M53` were published and linked to issues `#58-#77`.
+- `M37` `[IN-PROGRESS]`: `network.parseIPv4Header`, `network.stripIPv4Header`, `network.stripTcpHeader`, and `network.stripUdpHeader` are implemented and tested, lifting network parity to `19/27` tracked operations.
+- `M38-M53` `[PLANNED]`: not started yet in code; scoped here as the release path to `1.0.0`.

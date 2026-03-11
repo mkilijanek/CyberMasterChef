@@ -4948,6 +4948,31 @@
     }
   },
   {
+    "operationId": "network.parseIPv4Header",
+    "name": "Parse IPv4 Header",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseIPv4Header.ts",
+      "description": "Parses an IPv4 packet header and returns normalized metadata."
+    }
+  },
+  {
     "operationId": "network.parseIPv6Address",
     "name": "Parse IPv6 Address",
     "domain": "network-protocol-parsers",
@@ -4995,6 +5020,88 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/stripHttpHeaders.ts",
       "description": "Strips HTTP headers and returns the payload body only."
+    }
+  },
+  {
+    "operationId": "network.stripIPv4Header",
+    "name": "Strip IPv4 Header",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/stripIPv4Header.ts",
+      "description": "Strips the IPv4 header and returns the packet payload bytes."
+    }
+  },
+  {
+    "operationId": "network.stripTcpHeader",
+    "name": "Strip TCP Header",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected bytes or string input",
+        "TCP header requires at least 20 bytes",
+        "Invalid TCP header length",
+        "TCP segment shorter than declared header length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/stripTcpHeader.ts",
+      "description": "Strips the TCP header and returns the segment payload bytes."
+    }
+  },
+  {
+    "operationId": "network.stripUdpHeader",
+    "name": "Strip UDP Header",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected bytes or string input",
+        "UDP header requires at least 8 bytes",
+        "Invalid UDP length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/stripUdpHeader.ts",
+      "description": "Strips the UDP header and returns the datagram payload bytes."
     }
   },
   {

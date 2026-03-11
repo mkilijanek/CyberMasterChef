@@ -1559,6 +1559,15 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "network.parseIPv4Header",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
     "operationId": "network.parseIPv6Address",
     "inputTypes": [
       "string"
@@ -1568,6 +1577,33 @@ const CONTRACTS = [
   },
   {
     "operationId": "network.stripHttpHeaders",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.stripIPv4Header",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.stripTcpHeader",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.stripUdpHeader",
     "inputTypes": [
       "bytes",
       "string"

@@ -1,14 +1,14 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 307
+Implemented operations in repo: 311
 
 ## Priority order
 
 - P1: forensic-malware-helper (coverage 31.25%, missing ~11)
 - P2: crypto-hash-kdf (coverage 40.21%, missing ~58)
 - P3: encodings-codecs (coverage 41.38%, missing ~34)
-- P4: network-protocol-parsers (coverage 55.56%, missing ~12)
+- P4: misc-uncategorized (coverage 59.86%, missing ~59)
 
 ## Domain summary
 
@@ -231,10 +231,10 @@ Implemented operations in repo: 307
 ### network-protocol-parsers
 - Description: Protocol/header/parsing operations for network/web payloads.
 - CyberChef total: 27
-- Implemented total: 15
-- Estimated missing: 12
-- Coverage: 55.56%
-- Implemented ops in repo: 15
+- Implemented total: 19
+- Estimated missing: 8
+- Coverage: 70.37%
+- Implemented ops in repo: 19
 - Implemented operation IDs:
   - codec.urlEncode (urlEncode.ts)
   - codec.urlDecode (urlDecode.ts)
@@ -248,6 +248,10 @@ Implemented operations in repo: 307
   - network.parseIPv6Address (parseIPv6Address.ts)
   - network.parseIPRange (parseIPRange.ts)
   - network.stripHttpHeaders (stripHttpHeaders.ts)
+  - network.parseIPv4Header (parseIPv4Header.ts)
+  - network.stripIPv4Header (stripIPv4Header.ts)
+  - network.stripTcpHeader (stripTcpHeader.ts)
+  - network.stripUdpHeader (stripUdpHeader.ts)
   - network.extractUrls (extractUrls.ts)
   - network.defangUrls (defangUrls.ts)
   - network.fangUrls (fangUrls.ts)

@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 307
+    "implementedOpsCount": 311
   },
   "summary": [
     {
@@ -1571,9 +1571,9 @@
       "domain": "network-protocol-parsers",
       "description": "Protocol/header/parsing operations for network/web payloads.",
       "cyberChefTotal": 27,
-      "implementedTotal": 15,
-      "missingEstimated": 12,
-      "coveragePct": 55.56,
+      "implementedTotal": 19,
+      "missingEstimated": 8,
+      "coveragePct": 70.37,
       "implementedOps": [
         {
           "id": "codec.urlEncode",
@@ -1634,6 +1634,26 @@
           "id": "network.stripHttpHeaders",
           "name": "Strip HTTP Headers",
           "file": "stripHttpHeaders.ts"
+        },
+        {
+          "id": "network.parseIPv4Header",
+          "name": "Parse IPv4 Header",
+          "file": "parseIPv4Header.ts"
+        },
+        {
+          "id": "network.stripIPv4Header",
+          "name": "Strip IPv4 Header",
+          "file": "stripIPv4Header.ts"
+        },
+        {
+          "id": "network.stripTcpHeader",
+          "name": "Strip TCP Header",
+          "file": "stripTcpHeader.ts"
+        },
+        {
+          "id": "network.stripUdpHeader",
+          "name": "Strip UDP Header",
+          "file": "stripUdpHeader.ts"
         },
         {
           "id": "network.extractUrls",
@@ -2445,9 +2465,9 @@
     },
     {
       "priority": 4,
-      "domain": "network-protocol-parsers",
-      "coveragePct": 55.56,
-      "missingEstimated": 12
+      "domain": "misc-uncategorized",
+      "coveragePct": 59.86,
+      "missingEstimated": 59
     }
   ]
 }
