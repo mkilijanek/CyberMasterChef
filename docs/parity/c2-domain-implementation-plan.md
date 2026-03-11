@@ -1,14 +1,14 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 366
+Implemented operations in repo: 372
 
 ## Priority order
 
-- P1: crypto-hash-kdf (coverage 45%, missing ~55)
+- P1: crypto-hash-kdf (coverage 50%, missing ~50)
 - P2: forensic-malware-helper (coverage 58.82%, missing ~7)
 - P3: network-protocol-parsers (coverage 71.79%, missing ~11)
-- P4: misc-uncategorized (coverage 82.05%, missing ~21)
+- P4: misc-uncategorized (coverage 82.91%, missing ~20)
 
 ## Domain summary
 
@@ -55,10 +55,10 @@ Implemented operations in repo: 366
 ### crypto-hash-kdf
 - Description: Cryptographic transforms, digests, MAC/KDF and cipher operations.
 - CyberChef total: 100
-- Implemented total: 45
-- Estimated missing: 55
-- Coverage: 45%
-- Implemented ops in repo: 45
+- Implemented total: 50
+- Estimated missing: 50
+- Coverage: 50%
+- Implemented ops in repo: 50
 - Implemented operation IDs:
   - text.includes (includesText.ts)
   - text.removeHashes (removeHashes.ts)
@@ -70,6 +70,7 @@ Implemented operations in repo: 366
   - forensic.extractSha256 (extractSha256.ts)
   - forensic.extractSha512 (extractSha512.ts)
   - hash.crc32 (crc32.ts)
+  - hash.crc64 (crc64.ts)
   - hash.fletcher8 (fletcher8.ts)
   - hash.fletcher16 (fletcher16.ts)
   - hash.fletcher32 (fletcher32.ts)
@@ -79,7 +80,6 @@ Implemented operations in repo: 366
   - hash.md4 (md4.ts)
   - hash.ripemd160 (ripemd160.ts)
   - hash.sha1 (sha1.ts)
-  - crypto.atbashCipher (atbashCipher.ts)
 - Candidate operations (first 20):
   - a (AffineCipherDecode.mjs) [high]
   - a (AffineCipherEncode.mjs) [high]
@@ -301,10 +301,10 @@ Implemented operations in repo: 366
 ### misc-uncategorized
 - Description: Operations that require manual triage or do not fit current taxonomy.
 - CyberChef total: 117
-- Implemented total: 96
-- Estimated missing: 21
-- Coverage: 82.05%
-- Implemented ops in repo: 96
+- Implemented total: 97
+- Estimated missing: 20
+- Coverage: 82.91%
+- Implemented ops in repo: 97
 - Implemented operation IDs:
   - bytes.bitShiftLeft (bitShiftLeft.ts)
   - bytes.bitShiftRight (bitShiftRight.ts)

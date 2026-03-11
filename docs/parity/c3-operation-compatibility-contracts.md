@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 366
+Total contracts: 372
 
 ## Contract entries (compact)
 
@@ -1034,6 +1034,13 @@ Total contracts: 366
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.crc64
+  - name: CRC-64
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.fletcher16
   - name: Fletcher-16
   - domain: crypto-hash-kdf
@@ -1139,8 +1146,43 @@ Total contracts: 366
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.sm3
+  - name: SM3
+  - domain: misc-uncategorized
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.whirlpool
   - name: Whirlpool
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.xxhash128
+  - name: xxHash128
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.xxhash3
+  - name: xxHash3
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.xxhash32
+  - name: xxHash32
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.xxhash64
+  - name: xxHash64
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string

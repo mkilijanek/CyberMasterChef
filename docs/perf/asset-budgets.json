@@ -1,7 +1,7 @@
 {
   "version": 1,
   "assets": {
-    "sandbox.worker.js": 960000,
+    "sandbox.worker.js": 1005000,
     "vendor.js": 1100000
   }
 }

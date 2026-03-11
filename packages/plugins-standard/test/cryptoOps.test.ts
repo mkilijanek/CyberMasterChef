@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core";
 import { adler32Checksum } from "../src/ops/adler32.js";
 import { crc32Checksum } from "../src/ops/crc32.js";
+import { crc64Checksum } from "../src/ops/crc64.js";
 import { fletcher8Checksum } from "../src/ops/fletcher8.js";
 import { fletcher16Checksum } from "../src/ops/fletcher16.js";
 import { fletcher32Checksum } from "../src/ops/fletcher32.js";
@@ -28,7 +29,12 @@ import { blake2b } from "../src/ops/blake2b.js";
 import { blake2s } from "../src/ops/blake2s.js";
 import { blake3 } from "../src/ops/blake3.js";
 import { keccak } from "../src/ops/keccak.js";
+import { sm3 } from "../src/ops/sm3.js";
 import { whirlpool } from "../src/ops/whirlpool.js";
+import { xxhash32 } from "../src/ops/xxhash32.js";
+import { xxhash64 } from "../src/ops/xxhash64.js";
+import { xxhash3 } from "../src/ops/xxhash3.js";
+import { xxhash128 } from "../src/ops/xxhash128.js";
 import { hmacSha1 } from "../src/ops/hmacSha1.js";
 import { hmacSha256 } from "../src/ops/hmacSha256.js";
 import { hmacSha384 } from "../src/ops/hmacSha384.js";
@@ -60,6 +66,18 @@ describe("crypto operations", () => {
       input: { type: "string", value: "abc" }
     });
     expect(out.output).toEqual({ type: "string", value: "352441c2" });
+  });
+
+  it("computes CRC-64 checksum", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(crc64Checksum);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "hash.crc64" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "hello" }
+    });
+    expect(out.output).toEqual({ type: "string", value: "9b1edae5dbb937b1" });
   });
 
   it("computes Fletcher checksums", async () => {
@@ -193,7 +211,12 @@ describe("crypto operations", () => {
     registry.register(blake2s);
     registry.register(blake3);
     registry.register(keccak);
+    registry.register(sm3);
     registry.register(whirlpool);
+    registry.register(xxhash32);
+    registry.register(xxhash64);
+    registry.register(xxhash3);
+    registry.register(xxhash128);
 
     const input = { type: "string", value: "hello" } as const;
     const ops = [
@@ -238,9 +261,29 @@ describe("crypto operations", () => {
         expected: "ea8f163db38682925e4491c5e58d4bb3506ef8c14eb78a86e908c5624a67200f"
       },
       {
+        opId: "hash.sm3",
+        expected: "becbbfaae6548b8bf0cfcad5a27183cd1be6093b1cceccc303d9c61d0a645268"
+      },
+      {
         opId: "hash.whirlpool",
         expected:
           "0a25f55d7308eca6b9567a7ed3bd1b46327f0f1ffdc804dd8bb5af40e88d78b88df0d002a89e2fdbd5876c523f1b67bc44e9f87047598e7548298ea1c81cfd73"
+      },
+      {
+        opId: "hash.xxhash32",
+        expected: "fb0077f9"
+      },
+      {
+        opId: "hash.xxhash64",
+        expected: "26c7827d889f6da3"
+      },
+      {
+        opId: "hash.xxhash3",
+        expected: "9555e8555c62dcfd"
+      },
+      {
+        opId: "hash.xxhash128",
+        expected: "b5e9c1ad071b3e7fc779cfaa5e523818"
       }
     ];
 
@@ -273,6 +316,9 @@ describe("crypto operations", () => {
   });
 
   it("rejects invalid input types for new hash operations", async () => {
+    await expect(
+      crc64Checksum.run({ input: { type: "json", value: {} } as never, args: {} })
+    ).rejects.toThrow("Expected bytes or string input");
     await expect(md4.run({ input: { type: "json", value: {} } as never, args: {} })).rejects.toThrow(
       "Expected bytes or string input"
     );
@@ -285,6 +331,50 @@ describe("crypto operations", () => {
     await expect(
       whirlpool.run({ input: { type: "json", value: {} } as never, args: {} })
     ).rejects.toThrow("Expected bytes or string input");
+    await expect(sm3.run({ input: { type: "json", value: {} } as never, args: {} })).rejects.toThrow(
+      "Expected bytes or string input"
+    );
+    await expect(
+      xxhash32.run({ input: { type: "json", value: {} } as never, args: {} })
+    ).rejects.toThrow("Expected bytes or string input");
+    await expect(
+      xxhash64.run({ input: { type: "json", value: {} } as never, args: {} })
+    ).rejects.toThrow("Expected bytes or string input");
+    await expect(
+      xxhash3.run({ input: { type: "json", value: {} } as never, args: {} })
+    ).rejects.toThrow("Expected bytes or string input");
+    await expect(
+      xxhash128.run({ input: { type: "json", value: {} } as never, args: {} })
+    ).rejects.toThrow("Expected bytes or string input");
+  });
+
+  it("computes new hashes for byte input", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(crc64Checksum);
+    registry.register(sm3);
+    registry.register(xxhash32);
+    registry.register(xxhash64);
+    registry.register(xxhash3);
+    registry.register(xxhash128);
+
+    const input = { type: "bytes", value: new Uint8Array([0, 1, 2, 3, 4]) } as const;
+    const ops = [
+      { opId: "hash.crc64", expected: "2ef6d326f445d75b" },
+      {
+        opId: "hash.sm3",
+        expected: "96eda336eb22ee830f1d1354ce363872497171a3eac3cdf1d251c88bd4d28d2f"
+      },
+      { opId: "hash.xxhash32", expected: "9ea1b7c4" },
+      { opId: "hash.xxhash64", expected: "dd0274386e26030c" },
+      { opId: "hash.xxhash3", expected: "b075753a84ca0fbe" },
+      { opId: "hash.xxhash128", expected: "9434532106a7c141c920d2347a85929b" }
+    ];
+
+    for (const { opId, expected } of ops) {
+      const recipe: Recipe = { version: 1, steps: [{ opId }] };
+      const out = await runRecipe({ registry, recipe, input });
+      expect(out.output).toEqual({ type: "string", value: expected });
+    }
   });
 
   it("computes HMAC digests", async () => {

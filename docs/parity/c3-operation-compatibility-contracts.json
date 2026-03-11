@@ -4604,6 +4604,31 @@
     }
   },
   {
+    "operationId": "hash.crc64",
+    "name": "CRC-64",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/crc64.ts",
+      "description": "Computes CRC-64 digest. Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.fletcher16",
     "name": "Fletcher-16",
     "domain": "crypto-hash-kdf",
@@ -4990,6 +5015,31 @@
     }
   },
   {
+    "operationId": "hash.sm3",
+    "name": "SM3",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sm3.ts",
+      "description": "Computes SM3 digest. Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.whirlpool",
     "name": "Whirlpool",
     "domain": "crypto-hash-kdf",
@@ -5012,6 +5062,106 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/whirlpool.ts",
       "description": "Computes Whirlpool digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.xxhash128",
+    "name": "xxHash128",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/xxhash128.ts",
+      "description": "Computes xxHash128 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.xxhash3",
+    "name": "xxHash3",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/xxhash3.ts",
+      "description": "Computes xxHash3 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.xxhash32",
+    "name": "xxHash32",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/xxhash32.ts",
+      "description": "Computes xxHash32 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.xxhash64",
+    "name": "xxHash64",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/xxhash64.ts",
+      "description": "Computes xxHash64 digest. Output is lowercase hex string."
     }
   },
   {

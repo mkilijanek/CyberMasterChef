@@ -4,7 +4,7 @@ Updated: 2026-03-11
 
 ## Objective
 
-Close the remaining parity gap from `355/465` tracked CyberChef reference operations to at least `100%` while keeping release-quality governance, security, performance, and documentation gates green for `1.0.0`.
+Close the remaining parity gap from `372/465` tracked CyberChef reference operations to at least `100%` while keeping release-quality governance, security, performance, and documentation gates green for `1.0.0`.
 
 ```mermaid
 flowchart TD
@@ -15,7 +15,7 @@ flowchart TD
   M54 --> M55["M55 Network/Forensic Parity Wave 1"]
   M55 --> M56["M56 Network/Forensic Parity Wave 2"]
   M56 --> M57["M57 Crypto Parity Wave 3"]
-  M57 --> M58["M58 Crypto Parity Wave 4 and Final Gap Closure"]
+  M57 --> M58["M58 Crypto Parity Wave 4"]
   M58 --> M59["M59 Release 1.0.0 Candidate and Cutover"]
 ```
 
@@ -24,7 +24,7 @@ flowchart TD
 1. `M50`: performance and scale 1.0 gates
    - Status: `IN-PROGRESS`
    - Issue: `#74`
-   - stabilize benchmark, asset, and CI perf gates against current build output; asset baseline refreshed to `960000` bytes for `sandbox.worker.js` and Actions forced onto `Node 24`
+   - stabilize benchmark, asset, and CI perf gates against current build output; asset baseline refreshed to `1005000` bytes for `sandbox.worker.js` and Actions forced onto `Node 24`
 2. `M51`: security hardening final wave
    - Status: `PLANNED`
    - Issue: `#75`
@@ -54,9 +54,9 @@ flowchart TD
    - Issue: `#82`
    - landed `hash.md4`, `hash.blake3`, `hash.keccak`, and `hash.whirlpool` with full targeted coverage and refreshed `C2/C3`
 9. `M58`: crypto parity wave 4 and final gap closure
-   - Status: `PLANNED`
+   - Status: `IN-PROGRESS`
    - Issue: `#83`
-   - take tracked reference coverage to at least `100%` and reconcile final C1/C2/C3 evidence
+   - landed `hash.crc64`, `hash.sm3`, `hash.xxhash32`, `hash.xxhash64`, `hash.xxhash3`, and `hash.xxhash128`; final parity closure remains open behind further crypto/security waves
 10. `M59`: release `1.0.0` candidate and cutover
     - Status: `PLANNED`
     - Issue: `#77`
@@ -64,9 +64,9 @@ flowchart TD
 
 ## Current Progress Snapshot
 
-- Baseline parity checkpoint in the current repo state: `366/465` tracked operations implemented.
+- Baseline parity checkpoint in the current repo state: `372/465` tracked operations implemented.
 - Highest remaining parity pressure domains:
-  - `crypto-hash-kdf`: `45/100`
+  - `crypto-hash-kdf`: `50/100`
   - `network-protocol-parsers`: `28/39`
   - `forensic-malware-helper`: `10/17`
   - `misc-uncategorized`: `96/117`

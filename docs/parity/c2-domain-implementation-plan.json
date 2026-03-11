@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 366
+    "implementedOpsCount": 372
   },
   "summary": [
     {
@@ -366,9 +366,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 100,
-      "implementedTotal": 45,
-      "missingEstimated": 55,
-      "coveragePct": 45,
+      "implementedTotal": 50,
+      "missingEstimated": 50,
+      "coveragePct": 50,
       "implementedOps": [
         {
           "id": "text.includes",
@@ -419,6 +419,11 @@
           "id": "hash.crc32",
           "name": "CRC-32",
           "file": "crc32.ts"
+        },
+        {
+          "id": "hash.crc64",
+          "name": "CRC-64",
+          "file": "crc64.ts"
         },
         {
           "id": "hash.fletcher8",
@@ -549,6 +554,26 @@
           "id": "hash.whirlpool",
           "name": "Whirlpool",
           "file": "whirlpool.ts"
+        },
+        {
+          "id": "hash.xxhash32",
+          "name": "xxHash32",
+          "file": "xxhash32.ts"
+        },
+        {
+          "id": "hash.xxhash64",
+          "name": "xxHash64",
+          "file": "xxhash64.ts"
+        },
+        {
+          "id": "hash.xxhash3",
+          "name": "xxHash3",
+          "file": "xxhash3.ts"
+        },
+        {
+          "id": "hash.xxhash128",
+          "name": "xxHash128",
+          "file": "xxhash128.ts"
         },
         {
           "id": "crypto.hmacSha1",
@@ -2135,9 +2160,9 @@
       "domain": "misc-uncategorized",
       "description": "Operations that require manual triage or do not fit current taxonomy.",
       "cyberChefTotal": 117,
-      "implementedTotal": 96,
-      "missingEstimated": 21,
-      "coveragePct": 82.05,
+      "implementedTotal": 97,
+      "missingEstimated": 20,
+      "coveragePct": 82.91,
       "implementedOps": [
         {
           "id": "bytes.bitShiftLeft",
@@ -2618,6 +2643,11 @@
           "id": "hash.adler32",
           "name": "Adler-32",
           "file": "adler32.ts"
+        },
+        {
+          "id": "hash.sm3",
+          "name": "SM3",
+          "file": "sm3.ts"
         }
       ],
       "implementationCandidates": [
@@ -2728,8 +2758,8 @@
     {
       "priority": 1,
       "domain": "crypto-hash-kdf",
-      "coveragePct": 45,
-      "missingEstimated": 55
+      "coveragePct": 50,
+      "missingEstimated": 50
     },
     {
       "priority": 2,
@@ -2746,8 +2776,8 @@
     {
       "priority": 4,
       "domain": "misc-uncategorized",
-      "coveragePct": 82.05,
-      "missingEstimated": 21
+      "coveragePct": 82.91,
+      "missingEstimated": 20
     }
   ]
 }
