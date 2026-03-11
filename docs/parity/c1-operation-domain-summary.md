@@ -6,9 +6,9 @@ Total operations: 465
 
 ## Domain counts
 
-- encodings-codecs: 58 (12.47%)
+- encodings-codecs: 57 (12.26%)
   - Encodings, binary/text codecs, canonical representation transforms.
-- crypto-hash-kdf: 97 (20.86%)
+- crypto-hash-kdf: 100 (21.51%)
   - Cryptographic transforms, digests, MAC/KDF and cipher operations.
 - compression-archive: 7 (1.51%)
   - Compression/decompression and archive container operations.
@@ -22,7 +22,7 @@ Total operations: 465
   - Protocol/header/parsing operations for network/web payloads.
 - forensic-malware-helper: 17 (3.66%)
   - IOC extraction, entropy/byte analysis and malware triage helpers.
-- misc-uncategorized: 119 (25.59%)
+- misc-uncategorized: 117 (25.16%)
   - Operations that require manual triage or do not fit current taxonomy.
 
 ## Misc/uncategorized preview (first 40)

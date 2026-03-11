@@ -27,7 +27,7 @@ const rules = [
     domain: "crypto-hash-kdf",
     confidence: "high",
     patterns: [
-      /aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i,
+      /aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\d|sha-\d|md\d|ripemd|keccak|whirlpool|xxhash|blake\d*|hash|checksum|crc/i,
       /fletcher/i
     ]
   },

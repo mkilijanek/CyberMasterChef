@@ -16,6 +16,7 @@ import { baconCipherEncode } from "../src/ops/baconCipherEncode.js";
 import { baconCipherDecode } from "../src/ops/baconCipherDecode.js";
 import { bcryptParse } from "../src/ops/bcryptParse.js";
 import { hashMd5 } from "../src/ops/hashMd5.js";
+import { md4 } from "../src/ops/md4.js";
 import { ripemd160 } from "../src/ops/ripemd160.js";
 import { sha1 } from "../src/ops/sha1.js";
 import { sha224 } from "../src/ops/sha224.js";
@@ -25,6 +26,9 @@ import { sha3_256 } from "../src/ops/sha3_256.js";
 import { sha3_512 } from "../src/ops/sha3_512.js";
 import { blake2b } from "../src/ops/blake2b.js";
 import { blake2s } from "../src/ops/blake2s.js";
+import { blake3 } from "../src/ops/blake3.js";
+import { keccak } from "../src/ops/keccak.js";
+import { whirlpool } from "../src/ops/whirlpool.js";
 import { hmacSha1 } from "../src/ops/hmacSha1.js";
 import { hmacSha256 } from "../src/ops/hmacSha256.js";
 import { hmacSha384 } from "../src/ops/hmacSha384.js";
@@ -177,6 +181,7 @@ describe("crypto operations", () => {
   it("computes common hashes", async () => {
     const registry = new InMemoryRegistry();
     registry.register(hashMd5);
+    registry.register(md4);
     registry.register(ripemd160);
     registry.register(sha1);
     registry.register(sha224);
@@ -186,10 +191,14 @@ describe("crypto operations", () => {
     registry.register(sha3_512);
     registry.register(blake2b);
     registry.register(blake2s);
+    registry.register(blake3);
+    registry.register(keccak);
+    registry.register(whirlpool);
 
     const input = { type: "string", value: "hello" } as const;
     const ops = [
       { opId: "hash.md5", expected: "5d41402abc4b2a76b9719d911017c592" },
+      { opId: "hash.md4", expected: "866437cb7a794bce2b727acc0362ee27" },
       { opId: "hash.ripemd160", expected: "108f07b8382412612c048d07d13f814118445acd" },
       { opId: "hash.sha1", expected: "aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d" },
       {
@@ -223,6 +232,15 @@ describe("crypto operations", () => {
       {
         opId: "hash.blake2s",
         expected: "19213bacc58dee6dbde3ceb9a47cbb330b3d86f8cca8997eb00be456f140ca25"
+      },
+      {
+        opId: "hash.blake3",
+        expected: "ea8f163db38682925e4491c5e58d4bb3506ef8c14eb78a86e908c5624a67200f"
+      },
+      {
+        opId: "hash.whirlpool",
+        expected:
+          "0a25f55d7308eca6b9567a7ed3bd1b46327f0f1ffdc804dd8bb5af40e88d78b88df0d002a89e2fdbd5876c523f1b67bc44e9f87047598e7548298ea1c81cfd73"
       }
     ];
 
@@ -231,6 +249,42 @@ describe("crypto operations", () => {
       const out = await runRecipe({ registry, recipe, input });
       expect(out.output).toEqual({ type: "string", value: expected });
     }
+
+    const keccak256 = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.keccak", args: { bits: 256 } }] },
+      input
+    });
+    expect(keccak256.output).toEqual({
+      type: "string",
+      value: "1c8aff950685c2ed4bc3174f3472287b56d9517b9c948127319a09a7a36deac8"
+    });
+
+    const keccakFallback = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.keccak", args: { bits: 123 } }] },
+      input
+    });
+    expect(keccakFallback.output).toEqual({
+      type: "string",
+      value:
+        "52fa80662e64c128f8389c9ea6c73d4c02368004bf4463491900d11aaadca39d47de1b01361f207c512cfa79f0f92c3395c67ff7928e3f5ce3e3c852b392f976"
+    });
+  });
+
+  it("rejects invalid input types for new hash operations", async () => {
+    await expect(md4.run({ input: { type: "json", value: {} } as never, args: {} })).rejects.toThrow(
+      "Expected bytes or string input"
+    );
+    await expect(
+      blake3.run({ input: { type: "json", value: {} } as never, args: {} })
+    ).rejects.toThrow("Expected bytes or string input");
+    await expect(
+      keccak.run({ input: { type: "json", value: {} } as never, args: {} })
+    ).rejects.toThrow("Expected bytes or string input");
+    await expect(
+      whirlpool.run({ input: { type: "json", value: {} } as never, args: {} })
+    ).rejects.toThrow("Expected bytes or string input");
   });
 
   it("computes HMAC digests", async () => {

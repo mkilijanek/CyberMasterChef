@@ -1,14 +1,14 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 362
+Implemented operations in repo: 366
 
 ## Priority order
 
-- P1: crypto-hash-kdf (coverage 40.21%, missing ~58)
+- P1: crypto-hash-kdf (coverage 46.39%, missing ~52)
 - P2: forensic-malware-helper (coverage 58.82%, missing ~7)
 - P3: network-protocol-parsers (coverage 71.79%, missing ~11)
-- P4: misc-uncategorized (coverage 82.35%, missing ~21)
+- P4: misc-uncategorized (coverage 80.67%, missing ~23)
 
 ## Domain summary
 
@@ -55,10 +55,10 @@ Implemented operations in repo: 362
 ### crypto-hash-kdf
 - Description: Cryptographic transforms, digests, MAC/KDF and cipher operations.
 - CyberChef total: 97
-- Implemented total: 39
-- Estimated missing: 58
-- Coverage: 40.21%
-- Implemented ops in repo: 39
+- Implemented total: 45
+- Estimated missing: 52
+- Coverage: 46.39%
+- Implemented ops in repo: 45
 - Implemented operation IDs:
   - text.includes (includesText.ts)
   - text.removeHashes (removeHashes.ts)
@@ -76,10 +76,10 @@ Implemented operations in repo: 362
   - hash.fletcher64 (fletcher64.ts)
   - hash.analyseHash (analyseHash.ts)
   - hash.md5 (hashMd5.ts)
+  - hash.md4 (md4.ts)
   - hash.ripemd160 (ripemd160.ts)
   - hash.sha1 (sha1.ts)
   - crypto.atbashCipher (atbashCipher.ts)
-  - crypto.affineCipherEncode (affineCipherEncode.ts)
 - Candidate operations (first 20):
   - a (AffineCipherDecode.mjs) [high]
   - a (AffineCipherEncode.mjs) [high]
@@ -301,10 +301,10 @@ Implemented operations in repo: 362
 ### misc-uncategorized
 - Description: Operations that require manual triage or do not fit current taxonomy.
 - CyberChef total: 119
-- Implemented total: 98
-- Estimated missing: 21
-- Coverage: 82.35%
-- Implemented ops in repo: 98
+- Implemented total: 96
+- Estimated missing: 23
+- Coverage: 80.67%
+- Implemented ops in repo: 96
 - Implemented operation IDs:
   - bytes.bitShiftLeft (bitShiftLeft.ts)
   - bytes.bitShiftRight (bitShiftRight.ts)

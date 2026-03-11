@@ -387,15 +387,6 @@
     "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
   },
   {
-    "index": 405,
-    "operationName": "Size (bytes)",
-    "file": "BLAKE3.mjs",
-    "originalCategory": "crypto/hash",
-    "domain": "encodings-codecs",
-    "confidence": "medium",
-    "matchedBy": "/base\\d+|base\\s?\\d+|bech32|hex|binary|octal|decimal|ascii|utf-?\\d+|utf8|utf16|utf32|charcode|braille|percent|url\\s?encode|url\\s?decode|encode\\s*text|decode\\s*text|rot\\d+|morse|a1z26|punycode|quoted\\s?printable|bytes?/i"
-  },
-  {
     "index": 415,
     "operationName": "Start",
     "file": "DropBytes.mjs",
@@ -528,7 +519,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 2,
@@ -537,7 +528,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 3,
@@ -546,7 +537,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 4,
@@ -555,7 +546,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 6,
@@ -564,7 +555,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 7,
@@ -573,7 +564,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 8,
@@ -582,7 +573,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 16,
@@ -591,7 +582,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 18,
@@ -600,7 +591,7 @@
     "originalCategory": "encoding/cipher",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 23,
@@ -609,7 +600,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 27,
@@ -618,7 +609,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 36,
@@ -627,7 +618,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 43,
@@ -636,7 +627,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 44,
@@ -645,7 +636,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 46,
@@ -654,7 +645,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 47,
@@ -663,7 +654,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 59,
@@ -672,7 +663,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 68,
@@ -681,7 +672,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 69,
@@ -690,7 +681,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 99,
@@ -699,7 +690,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 100,
@@ -708,7 +699,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 101,
@@ -717,7 +708,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 104,
@@ -726,7 +717,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 117,
@@ -735,7 +726,7 @@
     "originalCategory": "text/transform",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 129,
@@ -744,7 +735,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 130,
@@ -753,7 +744,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 131,
@@ -762,7 +753,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 132,
@@ -771,7 +762,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 151,
@@ -780,7 +771,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 152,
@@ -789,7 +780,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 154,
@@ -798,7 +789,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 156,
@@ -807,7 +798,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 161,
@@ -816,7 +807,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 162,
@@ -825,7 +816,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 163,
@@ -834,7 +825,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 171,
@@ -843,7 +834,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 201,
@@ -852,7 +843,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 227,
@@ -861,7 +852,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 228,
@@ -870,7 +861,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 230,
@@ -879,7 +870,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 231,
@@ -888,7 +879,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 233,
@@ -897,7 +888,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 234,
@@ -906,7 +897,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 235,
@@ -915,7 +906,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 236,
@@ -924,7 +915,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 237,
@@ -933,7 +924,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 238,
@@ -942,7 +933,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 240,
@@ -951,7 +942,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 241,
@@ -960,7 +951,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 243,
@@ -969,7 +960,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 244,
@@ -978,7 +969,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 247,
@@ -987,7 +978,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 248,
@@ -996,7 +987,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 253,
@@ -1005,7 +996,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 254,
@@ -1014,7 +1005,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 255,
@@ -1023,7 +1014,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 256,
@@ -1032,7 +1023,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 259,
@@ -1041,7 +1032,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 260,
@@ -1050,7 +1041,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 266,
@@ -1059,7 +1050,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 269,
@@ -1068,7 +1059,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 270,
@@ -1077,7 +1068,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 279,
@@ -1086,7 +1077,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 280,
@@ -1095,7 +1086,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 281,
@@ -1104,7 +1095,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 286,
@@ -1113,7 +1104,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 293,
@@ -1122,7 +1113,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 302,
@@ -1131,7 +1122,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 304,
@@ -1140,7 +1131,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 318,
@@ -1149,7 +1140,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 319,
@@ -1158,7 +1149,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 320,
@@ -1167,7 +1158,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 333,
@@ -1176,7 +1167,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 334,
@@ -1185,7 +1176,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 339,
@@ -1194,7 +1185,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 340,
@@ -1203,7 +1194,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 343,
@@ -1212,7 +1203,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 345,
@@ -1221,7 +1212,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 346,
@@ -1230,7 +1221,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 369,
@@ -1239,7 +1230,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 370,
@@ -1248,7 +1239,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 371,
@@ -1257,7 +1248,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 372,
@@ -1266,7 +1257,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 373,
@@ -1275,7 +1266,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 374,
@@ -1284,7 +1275,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 375,
@@ -1293,7 +1284,7 @@
     "originalCategory": "parsing/format",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 376,
@@ -1302,7 +1293,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 390,
@@ -1311,7 +1302,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 391,
@@ -1320,7 +1311,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 392,
@@ -1329,7 +1320,25 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
+  },
+  {
+    "index": 399,
+    "operationName": "Size",
+    "file": "BLAKE2b.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
+  },
+  {
+    "index": 400,
+    "operationName": "Size",
+    "file": "BLAKE2s.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 401,
@@ -1338,7 +1347,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 402,
@@ -1347,7 +1356,7 @@
     "originalCategory": "misc",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 403,
@@ -1356,7 +1365,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 404,
@@ -1365,7 +1374,16 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
+  },
+  {
+    "index": 405,
+    "operationName": "Size (bytes)",
+    "file": "BLAKE3.mjs",
+    "originalCategory": "crypto/hash",
+    "domain": "crypto-hash-kdf",
+    "confidence": "high",
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 426,
@@ -1374,7 +1392,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 456,
@@ -1383,7 +1401,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 459,
@@ -1392,7 +1410,7 @@
     "originalCategory": "crypto/hash",
     "domain": "crypto-hash-kdf",
     "confidence": "high",
-    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|hash|checksum|crc/i"
+    "matchedBy": "/aes|des|blowfish|chacha|rc4|rsa|dsa|ecc|ecdh|ecdsa|cipher|decrypt|encrypt|hmac|kdf|pbkdf|scrypt|bcrypt|argon|sha\\d|sha-\\d|md\\d|ripemd|keccak|whirlpool|xxhash|blake\\d*|hash|checksum|crc/i"
   },
   {
     "index": 34,
@@ -4036,24 +4054,6 @@
     "operationName": "Sigaba",
     "file": "SIGABA.mjs",
     "originalCategory": "misc",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 399,
-    "operationName": "Size",
-    "file": "BLAKE2b.mjs",
-    "originalCategory": "crypto/hash",
-    "domain": "misc-uncategorized",
-    "confidence": "low",
-    "matchedBy": "<no-rule-match>"
-  },
-  {
-    "index": 400,
-    "operationName": "Size",
-    "file": "BLAKE2s.mjs",
-    "originalCategory": "crypto/hash",
     "domain": "misc-uncategorized",
     "confidence": "low",
     "matchedBy": "<no-rule-match>"

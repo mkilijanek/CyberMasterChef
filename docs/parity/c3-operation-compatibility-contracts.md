@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 362
+Total contracts: 366
 
 ## Contract entries (compact)
 
@@ -1008,14 +1008,21 @@ Total contracts: 362
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.blake2b
   - name: BLAKE2b
-  - domain: misc-uncategorized
+  - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.blake2s
   - name: BLAKE2s
-  - domain: misc-uncategorized
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.blake3
+  - name: BLAKE3
+  - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string
   - deterministic: true
@@ -1050,6 +1057,20 @@ Total contracts: 362
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.fletcher8
   - name: Fletcher-8
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.keccak
+  - name: Keccak
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.md4
+  - name: MD4
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string
@@ -1113,6 +1134,13 @@ Total contracts: 362
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.sha512
   - name: SHA-512
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.whirlpool
+  - name: Whirlpool
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string

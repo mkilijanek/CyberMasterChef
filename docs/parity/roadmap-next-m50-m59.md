@@ -24,7 +24,7 @@ flowchart TD
 1. `M50`: performance and scale 1.0 gates
    - Status: `IN-PROGRESS`
    - Issue: `#74`
-   - stabilize benchmark, asset, and CI perf gates against current build output; asset baseline refreshed to `915000` bytes for `sandbox.worker.js` and Actions forced onto `Node 24`
+   - stabilize benchmark, asset, and CI perf gates against current build output; asset baseline refreshed to `960000` bytes for `sandbox.worker.js` and Actions forced onto `Node 24`
 2. `M51`: security hardening final wave
    - Status: `PLANNED`
    - Issue: `#75`
@@ -50,9 +50,9 @@ flowchart TD
    - Issue: `#81`
    - landed `network.ipv6TransitionAddresses`, `network.parseTlsRecord`, `network.parseX509Certificate`, and `network.parseX509Crl` with full targeted coverage and refreshed `C2/C3`
 8. `M57`: crypto parity wave 3
-   - Status: `PLANNED`
+   - Status: `DONE-IN-CODE`
    - Issue: `#82`
-   - add the next safe crypto/checksum operations with deterministic coverage and contracts
+   - landed `hash.md4`, `hash.blake3`, `hash.keccak`, and `hash.whirlpool` with full targeted coverage and refreshed `C2/C3`
 9. `M58`: crypto parity wave 4 and final gap closure
    - Status: `PLANNED`
    - Issue: `#83`
@@ -64,12 +64,12 @@ flowchart TD
 
 ## Current Progress Snapshot
 
-- Baseline parity checkpoint in the current repo state: `362/465` tracked operations implemented.
+- Baseline parity checkpoint in the current repo state: `366/465` tracked operations implemented.
 - Highest remaining parity pressure domains:
-  - `crypto-hash-kdf`: `39/97`
+  - `crypto-hash-kdf`: `45/97`
   - `network-protocol-parsers`: `28/39`
   - `forensic-malware-helper`: `10/17`
-  - `misc-uncategorized`: `98/119`
+  - `misc-uncategorized`: `96/119`
 - Release blockers entering this wave:
   - release sequencing must move behind the remaining parity closure, not ahead of it
   - performance/security/docs evidence needs to stay current with each parity wave

@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 362
+    "implementedOpsCount": 366
   },
   "summary": [
     {
@@ -366,9 +366,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 97,
-      "implementedTotal": 39,
-      "missingEstimated": 58,
-      "coveragePct": 40.21,
+      "implementedTotal": 45,
+      "missingEstimated": 52,
+      "coveragePct": 46.39,
       "implementedOps": [
         {
           "id": "text.includes",
@@ -451,6 +451,11 @@
           "file": "hashMd5.ts"
         },
         {
+          "id": "hash.md4",
+          "name": "MD4",
+          "file": "md4.ts"
+        },
+        {
           "id": "hash.ripemd160",
           "name": "RIPEMD-160",
           "file": "ripemd160.ts"
@@ -519,6 +524,31 @@
           "id": "hash.sha3_512",
           "name": "SHA3-512",
           "file": "sha3_512.ts"
+        },
+        {
+          "id": "hash.blake2b",
+          "name": "BLAKE2b",
+          "file": "blake2b.ts"
+        },
+        {
+          "id": "hash.blake2s",
+          "name": "BLAKE2s",
+          "file": "blake2s.ts"
+        },
+        {
+          "id": "hash.blake3",
+          "name": "BLAKE3",
+          "file": "blake3.ts"
+        },
+        {
+          "id": "hash.keccak",
+          "name": "Keccak",
+          "file": "keccak.ts"
+        },
+        {
+          "id": "hash.whirlpool",
+          "name": "Whirlpool",
+          "file": "whirlpool.ts"
         },
         {
           "id": "crypto.hmacSha1",
@@ -2105,9 +2135,9 @@
       "domain": "misc-uncategorized",
       "description": "Operations that require manual triage or do not fit current taxonomy.",
       "cyberChefTotal": 119,
-      "implementedTotal": 98,
-      "missingEstimated": 21,
-      "coveragePct": 82.35,
+      "implementedTotal": 96,
+      "missingEstimated": 23,
+      "coveragePct": 80.67,
       "implementedOps": [
         {
           "id": "bytes.bitShiftLeft",
@@ -2588,16 +2618,6 @@
           "id": "hash.adler32",
           "name": "Adler-32",
           "file": "adler32.ts"
-        },
-        {
-          "id": "hash.blake2b",
-          "name": "BLAKE2b",
-          "file": "blake2b.ts"
-        },
-        {
-          "id": "hash.blake2s",
-          "name": "BLAKE2s",
-          "file": "blake2s.ts"
         }
       ],
       "implementationCandidates": [
@@ -2708,8 +2728,8 @@
     {
       "priority": 1,
       "domain": "crypto-hash-kdf",
-      "coveragePct": 40.21,
-      "missingEstimated": 58
+      "coveragePct": 46.39,
+      "missingEstimated": 52
     },
     {
       "priority": 2,
@@ -2726,8 +2746,8 @@
     {
       "priority": 4,
       "domain": "misc-uncategorized",
-      "coveragePct": 82.35,
-      "missingEstimated": 21
+      "coveragePct": 80.67,
+      "missingEstimated": 23
     }
   ]
 }

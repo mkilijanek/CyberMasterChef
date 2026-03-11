@@ -1438,6 +1438,15 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "hash.blake3",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "hash.crc32",
     "inputTypes": [
       "bytes",
@@ -1475,6 +1484,26 @@ const CONTRACTS = [
   },
   {
     "operationId": "hash.fletcher8",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "hash.keccak",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "bits"
+    ]
+  },
+  {
+    "operationId": "hash.md4",
     "inputTypes": [
       "bytes",
       "string"
@@ -1556,6 +1585,15 @@ const CONTRACTS = [
   },
   {
     "operationId": "hash.sha512",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "hash.whirlpool",
     "inputTypes": [
       "bytes",
       "string"

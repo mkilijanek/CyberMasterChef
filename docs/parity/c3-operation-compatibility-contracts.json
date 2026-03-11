@@ -4506,7 +4506,7 @@
   {
     "operationId": "hash.blake2b",
     "name": "BLAKE2b",
-    "domain": "misc-uncategorized",
+    "domain": "crypto-hash-kdf",
     "inputTypes": [
       "bytes",
       "string"
@@ -4531,7 +4531,7 @@
   {
     "operationId": "hash.blake2s",
     "name": "BLAKE2s",
-    "domain": "misc-uncategorized",
+    "domain": "crypto-hash-kdf",
     "inputTypes": [
       "bytes",
       "string"
@@ -4551,6 +4551,31 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/blake2s.ts",
       "description": "Computes BLAKE2s digest (256-bit). Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.blake3",
+    "name": "BLAKE3",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/blake3.ts",
+      "description": "Computes BLAKE3 digest. Output is lowercase hex string."
     }
   },
   {
@@ -4676,6 +4701,63 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/fletcher8.ts",
       "description": "Computes Fletcher-8 checksum. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.keccak",
+    "name": "Keccak",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "bits",
+        "type": "select",
+        "label": "Bits",
+        "defaultValue": "\"512\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/keccak.ts",
+      "description": "Computes Keccak digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.md4",
+    "name": "MD4",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/md4.ts",
+      "description": "Computes MD4 digest. Output is lowercase hex string."
     }
   },
   {
@@ -4905,6 +4987,31 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/sha512.ts",
       "description": "Computes SHA-512 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.whirlpool",
+    "name": "Whirlpool",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/whirlpool.ts",
+      "description": "Computes Whirlpool digest. Output is lowercase hex string."
     }
   },
   {
