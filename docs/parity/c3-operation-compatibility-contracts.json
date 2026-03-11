@@ -1,5 +1,71 @@
 [
   {
+    "operationId": "bytes.bitShiftLeft",
+    "name": "Bit Shift Left",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "amount",
+        "type": "number",
+        "label": "Amount",
+        "defaultValue": "1"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Shift amount must be between 0 and 7",
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bitShiftLeft.ts",
+      "description": "Shifts each byte left by the selected amount."
+    }
+  },
+  {
+    "operationId": "bytes.bitShiftRight",
+    "name": "Bit Shift Right",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "amount",
+        "type": "number",
+        "label": "Amount",
+        "defaultValue": "1"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Shift amount must be between 0 and 7",
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bitShiftRight.ts",
+      "description": "Shifts each byte right by the selected amount."
+    }
+  },
+  {
     "operationId": "bytes.dropBytes",
     "name": "Drop bytes",
     "domain": "encodings-codecs",
@@ -505,6 +571,50 @@
     }
   },
   {
+    "operationId": "codec.fromFloat",
+    "name": "From Float",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "endianness",
+        "type": "select",
+        "label": "Endianness",
+        "defaultValue": "\"big\""
+      },
+      {
+        "key": "width",
+        "type": "select",
+        "label": "Width",
+        "defaultValue": "\"float32\""
+      },
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromFloat.ts",
+      "description": "Decodes IEEE-754 float bytes into numeric values."
+    }
+  },
+  {
     "operationId": "codec.fromHex",
     "name": "From Hex",
     "domain": "encodings-codecs",
@@ -1001,6 +1111,49 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/toDecimal.ts",
       "description": "Encodes bytes or string into decimal byte values."
+    }
+  },
+  {
+    "operationId": "codec.toFloat",
+    "name": "To Float",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "endianness",
+        "type": "select",
+        "label": "Endianness",
+        "defaultValue": "\"big\""
+      },
+      {
+        "key": "width",
+        "type": "select",
+        "label": "Width",
+        "defaultValue": "\"float32\""
+      },
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toFloat.ts",
+      "description": "Encodes numeric values into IEEE-754 float bytes."
     }
   },
   {
@@ -6934,6 +7087,69 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/endsWith.ts",
       "description": "Returns 1 if text ends with provided value, else 0."
+    }
+  },
+  {
+    "operationId": "text.escapeString",
+    "name": "Escape String",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "escapeLevel",
+        "type": "number",
+        "label": "Escape level",
+        "defaultValue": "1"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Escape level must be between 0 and 10",
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/escapeString.ts",
+      "description": "Escapes control characters, backslashes, and quotes repeatedly."
+    }
+  },
+  {
+    "operationId": "text.expandAlphabetRange",
+    "name": "Expand Alphabet Range",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/expandAlphabetRange.ts",
+      "description": "Expands inline ranges such as a-z, A-D, or 0-3."
     }
   },
   {

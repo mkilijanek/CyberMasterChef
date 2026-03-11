@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 349
+    "implementedOpsCount": 355
   },
   "summary": [
     {
@@ -2070,14 +2070,34 @@
       "domain": "misc-uncategorized",
       "description": "Operations that require manual triage or do not fit current taxonomy.",
       "cyberChefTotal": 119,
-      "implementedTotal": 92,
-      "missingEstimated": 27,
-      "coveragePct": 77.31,
+      "implementedTotal": 98,
+      "missingEstimated": 21,
+      "coveragePct": 82.35,
       "implementedOps": [
+        {
+          "id": "bytes.bitShiftLeft",
+          "name": "Bit Shift Left",
+          "file": "bitShiftLeft.ts"
+        },
+        {
+          "id": "bytes.bitShiftRight",
+          "name": "Bit Shift Right",
+          "file": "bitShiftRight.ts"
+        },
         {
           "id": "text.alternatingCaps",
           "name": "Alternating Caps",
           "file": "alternatingCaps.ts"
+        },
+        {
+          "id": "text.expandAlphabetRange",
+          "name": "Expand Alphabet Range",
+          "file": "expandAlphabetRange.ts"
+        },
+        {
+          "id": "text.escapeString",
+          "name": "Escape String",
+          "file": "escapeString.ts"
         },
         {
           "id": "text.prepend",
@@ -2495,6 +2515,16 @@
           "file": "removeMathSymbols.ts"
         },
         {
+          "id": "codec.fromFloat",
+          "name": "From Float",
+          "file": "fromFloat.ts"
+        },
+        {
+          "id": "codec.toFloat",
+          "name": "To Float",
+          "file": "toFloat.ts"
+        },
+        {
           "id": "date.isoWeekday",
           "name": "ISO Weekday",
           "file": "isoWeekday.ts"
@@ -2661,8 +2691,8 @@
     {
       "priority": 4,
       "domain": "misc-uncategorized",
-      "coveragePct": 77.31,
-      "missingEstimated": 27
+      "coveragePct": 82.35,
+      "missingEstimated": 21
     }
   ]
 }

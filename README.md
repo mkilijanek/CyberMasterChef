@@ -16,12 +16,12 @@ The project targets deterministic behavior, parity tracking, and auditable CI/se
 - Milestones `M1-M33`: completed.
 - Latest closure report: `docs/parity/roadmap-next-m29-m33.md`.
 - Next release objective: `1.0.0` with minimum `100%` functional coverage of the CyberChef reference set tracked in `docs/parity/*`.
-- Current execution wave: `M50-M59`, with `M50` in progress and `M59` reserved for the `1.0.0` release cutover.
+- Current execution wave: `M50-M59`, with `M53-M54` completed in code and `M59` reserved for the `1.0.0` release cutover.
 - Release track also includes container delivery: Docker image, smoke-tested `docker-compose.yml`, and GHCR publication on release tags.
 - GitHub milestones are being extended through `M59` so release cutover stays behind the remaining parity closure work.
 - C-track snapshot:
   - `C1`: complete domain matrix + drift gate
-  - `C2`: in active parity expansion toward full CyberChef functional coverage
+  - `C2`: `355` tracked operations implemented, with `misc-uncategorized` raised to `98/119` (`82.35%`)
   - `C3`: contract catalog + generated regression tests + CI gate
 
 ## Repository Layout
@@ -93,6 +93,7 @@ pnpm docker:test
 
 - Forensic triage modules with deterministic STIX/MISP export
 - Advanced fingerprinting: `imphash`, TLSH, ssdeep, PE/ELF/Mach-O baseline detection
+- New utility parity wave: `text.alternatingCaps`, `math.sum`, `math.subtract`, `math.multiply`, `math.divide`, `bytes.bitShiftLeft`, `bytes.bitShiftRight`, `text.expandAlphabetRange`, `text.escapeString`, `codec.toFloat`, `codec.fromFloat`
 - Forensic helper expansion: `Entropy`, `CTPH`, `Generate UUID`, `File Tree`, and deterministic `YARA Rules`
 - Extended media/file detection: `forensic.detectFileType` now recognizes `png`, `jpeg`, `gif`, `bmp`, `webp`, `avif`, `tiff`, and `svg`
 - Parity corpus expansion: golden corpus now covers image/media and deterministic forensic helper recipes at `30/30`

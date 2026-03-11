@@ -1,14 +1,14 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 349
+Implemented operations in repo: 355
 
 ## Priority order
 
 - P1: crypto-hash-kdf (coverage 40.21%, missing ~58)
 - P2: network-protocol-parsers (coverage 56.41%, missing ~17)
 - P3: forensic-malware-helper (coverage 58.82%, missing ~7)
-- P4: misc-uncategorized (coverage 77.31%, missing ~27)
+- P4: misc-uncategorized (coverage 82.35%, missing ~21)
 
 ## Domain summary
 
@@ -301,12 +301,16 @@ Implemented operations in repo: 349
 ### misc-uncategorized
 - Description: Operations that require manual triage or do not fit current taxonomy.
 - CyberChef total: 119
-- Implemented total: 92
-- Estimated missing: 27
-- Coverage: 77.31%
-- Implemented ops in repo: 92
+- Implemented total: 98
+- Estimated missing: 21
+- Coverage: 82.35%
+- Implemented ops in repo: 98
 - Implemented operation IDs:
+  - bytes.bitShiftLeft (bitShiftLeft.ts)
+  - bytes.bitShiftRight (bitShiftRight.ts)
   - text.alternatingCaps (alternatingCaps.ts)
+  - text.expandAlphabetRange (expandAlphabetRange.ts)
+  - text.escapeString (escapeString.ts)
   - text.prepend (prepend.ts)
   - text.append (append.ts)
   - text.slice (slice.ts)
@@ -322,10 +326,6 @@ Implemented operations in repo: 349
   - text.removeLetters (removeLetters.ts)
   - text.keepAlnum (keepAlnum.ts)
   - text.removeAlnum (removeAlnum.ts)
-  - text.removeVowels (removeVowels.ts)
-  - text.keepVowels (keepVowels.ts)
-  - text.endsWith (endsWith.ts)
-  - text.lowerFirst (lowerFirst.ts)
 - Candidate operations (first 20):
   - AlternatingCaps (AlternatingCaps.mjs) [low]
   - Amount (BitShiftLeft.mjs) [low]

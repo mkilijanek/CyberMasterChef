@@ -1,10 +1,24 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 349
+Total contracts: 355
 
 ## Contract entries (compact)
 
+- bytes.bitShiftLeft
+  - name: Bit Shift Left
+  - domain: misc-uncategorized
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- bytes.bitShiftRight
+  - name: Bit Shift Right
+  - domain: misc-uncategorized
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - bytes.dropBytes
   - name: Drop bytes
   - domain: encodings-codecs
@@ -122,6 +136,13 @@ Total contracts: 349
   - domain: encodings-codecs
   - inputTypes: string
   - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.fromFloat
+  - name: From Float
+  - domain: misc-uncategorized
+  - inputTypes: bytes, string
+  - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.fromHex
@@ -248,6 +269,13 @@ Total contracts: 349
   - domain: encodings-codecs
   - inputTypes: bytes, string
   - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toFloat
+  - name: To Float
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.toHex
@@ -1627,6 +1655,20 @@ Total contracts: 349
   - domain: misc-uncategorized
   - inputTypes: string
   - outputType: number
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.escapeString
+  - name: Escape String
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.expandAlphabetRange
+  - name: Expand Alphabet Range
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.firstLine

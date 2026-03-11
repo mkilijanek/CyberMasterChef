@@ -4,7 +4,7 @@ Updated: 2026-03-11
 
 ## Objective
 
-Close the remaining parity gap from `344/465` tracked CyberChef reference operations to at least `100%` while keeping release-quality governance, security, performance, and documentation gates green for `1.0.0`.
+Close the remaining parity gap from `355/465` tracked CyberChef reference operations to at least `100%` while keeping release-quality governance, security, performance, and documentation gates green for `1.0.0`.
 
 ```mermaid
 flowchart TD
@@ -34,13 +34,13 @@ flowchart TD
    - Issue: `#76`
    - align README, release docs, runbooks, diagrams, container/operator docs, and release evidence
 4. `M53`: misc/utility parity wave 1
-   - Status: `PLANNED`
+   - Status: `DONE-IN-CODE`
    - Issue: `#78`
-   - land low-risk arithmetic, formatting, and utility operations from `misc-uncategorized`
+   - landed `text.alternatingCaps`, `math.sum`, `math.subtract`, `math.multiply`, and `math.divide` with full targeted coverage and refreshed `C2/C3`
 5. `M54`: misc/utility parity wave 2
-   - Status: `PLANNED`
+   - Status: `DONE-IN-CODE`
    - Issue: `#79`
-   - close remaining low/medium-complexity text and numeric utility gaps
+   - landed `bytes.bitShiftLeft`, `bytes.bitShiftRight`, `text.expandAlphabetRange`, `text.escapeString`, `codec.toFloat`, and `codec.fromFloat` with full targeted coverage and refreshed `C2/C3`
 6. `M55`: network/forensic parity wave 1
    - Status: `PLANNED`
    - Issue: `#80`
@@ -64,12 +64,12 @@ flowchart TD
 
 ## Current Progress Snapshot
 
-- Baseline parity checkpoint entering this wave: `344/465` tracked operations implemented.
+- Baseline parity checkpoint in the current repo state: `355/465` tracked operations implemented.
 - Highest remaining parity pressure domains:
   - `crypto-hash-kdf`: `39/97`
   - `network-protocol-parsers`: `22/39`
   - `forensic-malware-helper`: `10/17`
-  - `misc-uncategorized`: `87/119`
+  - `misc-uncategorized`: `98/119`
 - Release blockers entering this wave:
   - release sequencing must move behind the remaining parity closure, not ahead of it
   - performance/security/docs evidence needs to stay current with each parity wave

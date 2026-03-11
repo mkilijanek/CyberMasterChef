@@ -12,10 +12,14 @@ describe("standardPlugin", () => {
       expect.arrayContaining([
         "codec.fromBase64",
         "codec.fromBinary",
+        "codec.fromFloat",
         "codec.fromHex",
         "codec.toBase64",
+        "codec.toFloat",
         "codec.toBinary",
         "codec.toHex",
+        "bytes.bitShiftLeft",
+        "bytes.bitShiftRight",
         "codec.urlDecode",
         "codec.urlEncode",
         "forensic.entropy",
@@ -24,6 +28,8 @@ describe("standardPlugin", () => {
         "math.sum",
         "math.divide",
         "text.alternatingCaps",
+        "text.expandAlphabetRange",
+        "text.escapeString",
         "text.reverse"
       ])
     );
