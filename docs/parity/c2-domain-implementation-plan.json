@@ -2,16 +2,16 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 326
+    "implementedOpsCount": 339
   },
   "summary": [
     {
       "domain": "encodings-codecs",
       "description": "Encodings, binary/text codecs, canonical representation transforms.",
       "cyberChefTotal": 58,
-      "implementedTotal": 36,
-      "missingEstimated": 22,
-      "coveragePct": 62.07,
+      "implementedTotal": 49,
+      "missingEstimated": 9,
+      "coveragePct": 84.48,
       "implementedOps": [
         {
           "id": "codec.toBase64",
@@ -84,6 +84,46 @@
           "file": "fromBase58.ts"
         },
         {
+          "id": "codec.toBase92",
+          "name": "To Base92",
+          "file": "toBase92.ts"
+        },
+        {
+          "id": "codec.fromBase92",
+          "name": "From Base92",
+          "file": "fromBase92.ts"
+        },
+        {
+          "id": "codec.toBraille",
+          "name": "To Braille",
+          "file": "toBraille.ts"
+        },
+        {
+          "id": "codec.fromBraille",
+          "name": "From Braille",
+          "file": "fromBraille.ts"
+        },
+        {
+          "id": "codec.toPunycode",
+          "name": "To Punycode",
+          "file": "toPunycode.ts"
+        },
+        {
+          "id": "codec.fromPunycode",
+          "name": "From Punycode",
+          "file": "fromPunycode.ts"
+        },
+        {
+          "id": "codec.toModhex",
+          "name": "To Modhex",
+          "file": "toModhex.ts"
+        },
+        {
+          "id": "codec.fromModhex",
+          "name": "From Modhex",
+          "file": "fromModhex.ts"
+        },
+        {
           "id": "codec.toMorseCode",
           "name": "To Morse Code",
           "file": "toMorseCode.ts"
@@ -152,6 +192,31 @@
           "id": "codec.fromHexContent",
           "name": "From Hex Content",
           "file": "fromHexContent.ts"
+        },
+        {
+          "id": "bytes.dropBytes",
+          "name": "Drop bytes",
+          "file": "dropBytes.ts"
+        },
+        {
+          "id": "bytes.takeBytes",
+          "name": "Take bytes",
+          "file": "takeBytes.ts"
+        },
+        {
+          "id": "bytes.dropNthBytes",
+          "name": "Drop nth bytes",
+          "file": "dropNthBytes.ts"
+        },
+        {
+          "id": "bytes.takeNthBytes",
+          "name": "Take nth bytes",
+          "file": "takeNthBytes.ts"
+        },
+        {
+          "id": "bytes.removeNullBytes",
+          "name": "Remove null bytes",
+          "file": "removeNullBytes.ts"
         },
         {
           "id": "text.rot13",
@@ -2540,9 +2605,9 @@
     },
     {
       "priority": 4,
-      "domain": "encodings-codecs",
-      "coveragePct": 62.07,
-      "missingEstimated": 22
+      "domain": "network-protocol-parsers",
+      "coveragePct": 75.86,
+      "missingEstimated": 7
     }
   ]
 }

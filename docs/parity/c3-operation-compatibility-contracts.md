@@ -1,10 +1,45 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 326
+Total contracts: 339
 
 ## Contract entries (compact)
 
+- bytes.dropBytes
+  - name: Drop bytes
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
+- bytes.dropNthBytes
+  - name: Drop nth bytes
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
+- bytes.removeNullBytes
+  - name: Remove null bytes
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
+- bytes.takeBytes
+  - name: Take bytes
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
+- bytes.takeNthBytes
+  - name: Take nth bytes
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - codec.fromBase32
   - name: From Base32
   - domain: encodings-codecs
@@ -47,6 +82,13 @@ Total contracts: 326
   - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_ARGUMENT, INVALID_INPUT_TYPE
+- codec.fromBase92
+  - name: From Base92
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.fromBech32
   - name: From Bech32
   - domain: encodings-codecs
@@ -59,6 +101,13 @@ Total contracts: 326
   - domain: encodings-codecs
   - inputTypes: string
   - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.fromBraille
+  - name: From Braille
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.fromCharcode
@@ -89,6 +138,13 @@ Total contracts: 326
   - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.fromModhex
+  - name: From Modhex
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.fromMorseCode
   - name: From Morse Code
   - domain: encodings-codecs
@@ -101,6 +157,13 @@ Total contracts: 326
   - domain: encodings-codecs
   - inputTypes: string
   - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.fromPunycode
+  - name: From Punycode
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.toBase32
@@ -145,6 +208,13 @@ Total contracts: 326
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toBase92
+  - name: To Base92
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.toBech32
   - name: To Bech32
   - domain: encodings-codecs
@@ -156,6 +226,13 @@ Total contracts: 326
   - name: To Binary
   - domain: encodings-codecs
   - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toBraille
+  - name: To Braille
+  - domain: encodings-codecs
+  - inputTypes: string
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
@@ -187,6 +264,13 @@ Total contracts: 326
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toModhex
+  - name: To Modhex
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.toMorseCode
   - name: To Morse Code
   - domain: encodings-codecs
@@ -198,6 +282,13 @@ Total contracts: 326
   - name: To Octal
   - domain: encodings-codecs
   - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.toPunycode
+  - name: To Punycode
+  - domain: encodings-codecs
+  - inputTypes: string
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE

@@ -1,5 +1,191 @@
 [
   {
+    "operationId": "bytes.dropBytes",
+    "name": "Drop bytes",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "start",
+        "type": "number",
+        "label": "Start",
+        "defaultValue": "0"
+      },
+      {
+        "key": "length",
+        "type": "number",
+        "label": "Length",
+        "defaultValue": "5"
+      },
+      {
+        "key": "applyToEachLine",
+        "type": "boolean",
+        "label": "Apply to each line",
+        "defaultValue": "false"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/dropBytes.ts",
+      "description": "Cuts a slice of the specified number of bytes out of the data."
+    }
+  },
+  {
+    "operationId": "bytes.dropNthBytes",
+    "name": "Drop nth bytes",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "every",
+        "type": "number",
+        "label": "Drop every",
+        "defaultValue": "4"
+      },
+      {
+        "key": "startingAt",
+        "type": "number",
+        "label": "Starting at",
+        "defaultValue": "0"
+      },
+      {
+        "key": "applyToEachLine",
+        "type": "boolean",
+        "label": "Apply to each line",
+        "defaultValue": "false"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/dropNthBytes.ts",
+      "description": "Drops every nth byte starting with a given byte."
+    }
+  },
+  {
+    "operationId": "bytes.removeNullBytes",
+    "name": "Remove null bytes",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/removeNullBytes.ts",
+      "description": "Removes all null bytes from the input."
+    }
+  },
+  {
+    "operationId": "bytes.takeBytes",
+    "name": "Take bytes",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "start",
+        "type": "number",
+        "label": "Start",
+        "defaultValue": "0"
+      },
+      {
+        "key": "length",
+        "type": "number",
+        "label": "Length",
+        "defaultValue": "5"
+      },
+      {
+        "key": "applyToEachLine",
+        "type": "boolean",
+        "label": "Apply to each line",
+        "defaultValue": "false"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/takeBytes.ts",
+      "description": "Takes a slice of the specified number of bytes from the data."
+    }
+  },
+  {
+    "operationId": "bytes.takeNthBytes",
+    "name": "Take nth bytes",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "every",
+        "type": "number",
+        "label": "Take every",
+        "defaultValue": "4"
+      },
+      {
+        "key": "startingAt",
+        "type": "number",
+        "label": "Starting at",
+        "defaultValue": "0"
+      },
+      {
+        "key": "applyToEachLine",
+        "type": "boolean",
+        "label": "Apply to each line",
+        "defaultValue": "false"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/takeNthBytes.ts",
+      "description": "Takes every nth byte starting with a given byte."
+    }
+  },
+  {
     "operationId": "codec.fromBase32",
     "name": "From Base32",
     "domain": "encodings-codecs",
@@ -154,6 +340,30 @@
     }
   },
   {
+    "operationId": "codec.fromBase92",
+    "name": "From Base92",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromBase92.ts",
+      "description": "Decodes Base92 text to bytes."
+    }
+  },
+  {
     "operationId": "codec.fromBech32",
     "name": "From Bech32",
     "domain": "encodings-codecs",
@@ -185,7 +395,14 @@
       "string"
     ],
     "outputType": "bytes",
-    "argsSchema": [],
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\"\""
+      }
+    ],
     "deterministic": true,
     "errorTaxonomy": {
       "categories": [
@@ -202,6 +419,30 @@
     }
   },
   {
+    "operationId": "codec.fromBraille",
+    "name": "From Braille",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromBraille.ts",
+      "description": "Converts six-dot braille symbols to text."
+    }
+  },
+  {
     "operationId": "codec.fromCharcode",
     "name": "From Charcode",
     "domain": "encodings-codecs",
@@ -209,7 +450,14 @@
       "string"
     ],
     "outputType": "bytes",
-    "argsSchema": [],
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\"\""
+      }
+    ],
     "deterministic": true,
     "errorTaxonomy": {
       "categories": [
@@ -233,7 +481,14 @@
       "string"
     ],
     "outputType": "bytes",
-    "argsSchema": [],
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\"\""
+      }
+    ],
     "deterministic": true,
     "errorTaxonomy": {
       "categories": [
@@ -299,32 +554,8 @@
     }
   },
   {
-    "operationId": "codec.fromMorseCode",
-    "name": "From Morse Code",
-    "domain": "encodings-codecs",
-    "inputTypes": [
-      "string"
-    ],
-    "outputType": "string",
-    "argsSchema": [],
-    "deterministic": true,
-    "errorTaxonomy": {
-      "categories": [
-        "EXECUTION_ERROR",
-        "INVALID_INPUT_TYPE"
-      ],
-      "examples": [
-        "Expected string input"
-      ]
-    },
-    "notes": {
-      "sourceFile": "packages/plugins-standard/src/ops/fromMorseCode.ts",
-      "description": "Decodes International Morse code using spaces and / between words."
-    }
-  },
-  {
-    "operationId": "codec.fromOctal",
-    "name": "From Octal",
+    "operationId": "codec.fromModhex",
+    "name": "From Modhex",
     "domain": "encodings-codecs",
     "inputTypes": [
       "string"
@@ -342,8 +573,107 @@
       ]
     },
     "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromModhex.ts",
+      "description": "Decodes Modhex text to bytes."
+    }
+  },
+  {
+    "operationId": "codec.fromMorseCode",
+    "name": "From Morse Code",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "letterDelimiter",
+        "type": "string",
+        "label": "Letter delimiter",
+        "defaultValue": "\" \""
+      },
+      {
+        "key": "wordDelimiter",
+        "type": "string",
+        "label": "Word delimiter",
+        "defaultValue": "\" / \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromMorseCode.ts",
+      "description": "Decodes International Morse code with configurable delimiters."
+    }
+  },
+  {
+    "operationId": "codec.fromOctal",
+    "name": "From Octal",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/fromOctal.ts",
       "description": "Decodes octal byte values into bytes."
+    }
+  },
+  {
+    "operationId": "codec.fromPunycode",
+    "name": "From Punycode",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "idn",
+        "type": "boolean",
+        "label": "Internationalised domain name",
+        "defaultValue": "false"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fromPunycode.ts",
+      "description": "Decodes Punycode or IDNA ASCII to Unicode text."
     }
   },
   {
@@ -497,6 +827,31 @@
     }
   },
   {
+    "operationId": "codec.toBase92",
+    "name": "To Base92",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toBase92.ts",
+      "description": "Encodes bytes or string to Base92."
+    }
+  },
+  {
     "operationId": "codec.toBech32",
     "name": "To Bech32",
     "domain": "encodings-codecs",
@@ -558,6 +913,30 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/toBinary.ts",
       "description": "Encodes bytes or string to binary octets."
+    }
+  },
+  {
+    "operationId": "codec.toBraille",
+    "name": "To Braille",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toBraille.ts",
+      "description": "Converts text to six-dot braille symbols."
     }
   },
   {
@@ -675,32 +1054,8 @@
     }
   },
   {
-    "operationId": "codec.toMorseCode",
-    "name": "To Morse Code",
-    "domain": "encodings-codecs",
-    "inputTypes": [
-      "string"
-    ],
-    "outputType": "string",
-    "argsSchema": [],
-    "deterministic": true,
-    "errorTaxonomy": {
-      "categories": [
-        "EXECUTION_ERROR",
-        "INVALID_INPUT_TYPE"
-      ],
-      "examples": [
-        "Expected string input"
-      ]
-    },
-    "notes": {
-      "sourceFile": "packages/plugins-standard/src/ops/toMorseCode.ts",
-      "description": "Encodes text into International Morse code using spaces and / between words."
-    }
-  },
-  {
-    "operationId": "codec.toOctal",
-    "name": "To Octal",
+    "operationId": "codec.toModhex",
+    "name": "To Modhex",
     "domain": "encodings-codecs",
     "inputTypes": [
       "bytes",
@@ -719,8 +1074,108 @@
       ]
     },
     "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toModhex.ts",
+      "description": "Encodes bytes or string to Modhex."
+    }
+  },
+  {
+    "operationId": "codec.toMorseCode",
+    "name": "To Morse Code",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "letterDelimiter",
+        "type": "string",
+        "label": "Letter delimiter",
+        "defaultValue": "\" \""
+      },
+      {
+        "key": "wordDelimiter",
+        "type": "string",
+        "label": "Word delimiter",
+        "defaultValue": "\" / \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toMorseCode.ts",
+      "description": "Encodes text into International Morse code with configurable delimiters."
+    }
+  },
+  {
+    "operationId": "codec.toOctal",
+    "name": "To Octal",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/toOctal.ts",
-      "description": "Encodes bytes or string into space-delimited octal byte values."
+      "description": "Encodes bytes or string into delimited octal byte values."
+    }
+  },
+  {
+    "operationId": "codec.toPunycode",
+    "name": "To Punycode",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "idn",
+        "type": "boolean",
+        "label": "Internationalised domain name",
+        "defaultValue": "false"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/toPunycode.ts",
+      "description": "Encodes Unicode text to Punycode or IDNA ASCII."
     }
   },
   {

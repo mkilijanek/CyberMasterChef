@@ -1,24 +1,24 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 326
+Implemented operations in repo: 339
 
 ## Priority order
 
 - P1: forensic-malware-helper (coverage 31.25%, missing ~11)
 - P2: crypto-hash-kdf (coverage 40.21%, missing ~58)
 - P3: misc-uncategorized (coverage 60.69%, missing ~57)
-- P4: encodings-codecs (coverage 62.07%, missing ~22)
+- P4: network-protocol-parsers (coverage 75.86%, missing ~7)
 
 ## Domain summary
 
 ### encodings-codecs
 - Description: Encodings, binary/text codecs, canonical representation transforms.
 - CyberChef total: 58
-- Implemented total: 36
-- Estimated missing: 22
-- Coverage: 62.07%
-- Implemented ops in repo: 36
+- Implemented total: 49
+- Estimated missing: 9
+- Coverage: 84.48%
+- Implemented ops in repo: 49
 - Implemented operation IDs:
   - codec.toBase64 (toBase64.ts)
   - codec.fromBase64 (fromBase64.ts)
@@ -34,12 +34,12 @@ Implemented operations in repo: 326
   - codec.fromBech32 (fromBech32.ts)
   - codec.toBase58 (toBase58.ts)
   - codec.fromBase58 (fromBase58.ts)
-  - codec.toMorseCode (toMorseCode.ts)
-  - codec.fromMorseCode (fromMorseCode.ts)
-  - codec.toHex (toHex.ts)
-  - codec.fromHex (fromHex.ts)
-  - codec.toBinary (toBinary.ts)
-  - codec.fromBinary (fromBinary.ts)
+  - codec.toBase92 (toBase92.ts)
+  - codec.fromBase92 (fromBase92.ts)
+  - codec.toBraille (toBraille.ts)
+  - codec.fromBraille (fromBraille.ts)
+  - codec.toPunycode (toPunycode.ts)
+  - codec.fromPunycode (fromPunycode.ts)
 - Candidate operations (first 20):
   - Alphabet (FromBase58.mjs) [medium]
   - Alphabet (ToBase58.mjs) [medium]

@@ -4,6 +4,67 @@ import { standardPlugin } from "../../src/index.js";
 
 const CONTRACTS = [
   {
+    "operationId": "bytes.dropBytes",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": [
+      "start",
+      "length",
+      "applyToEachLine"
+    ]
+  },
+  {
+    "operationId": "bytes.dropNthBytes",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": [
+      "every",
+      "startingAt",
+      "applyToEachLine"
+    ]
+  },
+  {
+    "operationId": "bytes.removeNullBytes",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": []
+  },
+  {
+    "operationId": "bytes.takeBytes",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": [
+      "start",
+      "length",
+      "applyToEachLine"
+    ]
+  },
+  {
+    "operationId": "bytes.takeNthBytes",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": [
+      "every",
+      "startingAt",
+      "applyToEachLine"
+    ]
+  },
+  {
     "operationId": "codec.fromBase32",
     "inputTypes": [
       "string"
@@ -52,6 +113,14 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "codec.fromBase92",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": []
+  },
+  {
     "operationId": "codec.fromBech32",
     "inputTypes": [
       "string"
@@ -65,6 +134,16 @@ const CONTRACTS = [
       "string"
     ],
     "outputType": "bytes",
+    "argKeys": [
+      "delimiter"
+    ]
+  },
+  {
+    "operationId": "codec.fromBraille",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
     "argKeys": []
   },
   {
@@ -73,7 +152,9 @@ const CONTRACTS = [
       "string"
     ],
     "outputType": "bytes",
-    "argKeys": []
+    "argKeys": [
+      "delimiter"
+    ]
   },
   {
     "operationId": "codec.fromDecimal",
@@ -81,7 +162,9 @@ const CONTRACTS = [
       "string"
     ],
     "outputType": "bytes",
-    "argKeys": []
+    "argKeys": [
+      "delimiter"
+    ]
   },
   {
     "operationId": "codec.fromHex",
@@ -100,12 +183,23 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "codec.fromModhex",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": []
+  },
+  {
     "operationId": "codec.fromMorseCode",
     "inputTypes": [
       "string"
     ],
     "outputType": "string",
-    "argKeys": []
+    "argKeys": [
+      "letterDelimiter",
+      "wordDelimiter"
+    ]
   },
   {
     "operationId": "codec.fromOctal",
@@ -113,7 +207,19 @@ const CONTRACTS = [
       "string"
     ],
     "outputType": "bytes",
-    "argKeys": []
+    "argKeys": [
+      "delimiter"
+    ]
+  },
+  {
+    "operationId": "codec.fromPunycode",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "idn"
+    ]
   },
   {
     "operationId": "codec.toBase32",
@@ -170,6 +276,15 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "codec.toBase92",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "codec.toBech32",
     "inputTypes": [
       "bytes",
@@ -190,6 +305,14 @@ const CONTRACTS = [
     "argKeys": [
       "delimiter"
     ]
+  },
+  {
+    "operationId": "codec.toBraille",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
   },
   {
     "operationId": "codec.toCharcode",
@@ -232,12 +355,24 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "codec.toModhex",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "codec.toMorseCode",
     "inputTypes": [
       "string"
     ],
     "outputType": "string",
-    "argKeys": []
+    "argKeys": [
+      "letterDelimiter",
+      "wordDelimiter"
+    ]
   },
   {
     "operationId": "codec.toOctal",
@@ -246,7 +381,19 @@ const CONTRACTS = [
       "string"
     ],
     "outputType": "string",
-    "argKeys": []
+    "argKeys": [
+      "delimiter"
+    ]
+  },
+  {
+    "operationId": "codec.toPunycode",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "idn"
+    ]
   },
   {
     "operationId": "codec.urlDecode",

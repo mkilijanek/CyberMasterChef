@@ -1,6 +1,16 @@
 import type { Operation } from "@cybermasterchef/core";
 
-function parseTokens(raw: string): string[] {
+function parseTokens(raw: string, delimiter: unknown): string[] {
+  const normalized = raw.trim();
+  if (!normalized) return [];
+
+  if (typeof delimiter === "string" && delimiter.length > 0) {
+    return normalized
+      .split(delimiter)
+      .map((token) => token.trim())
+      .filter(Boolean);
+  }
+
   return raw
     .trim()
     .split(/[\s,]+/)
@@ -14,10 +24,17 @@ export const fromDecimal: Operation = {
   description: "Decodes decimal byte values into bytes.",
   input: ["string"],
   output: "bytes",
-  args: [],
-  run: ({ input }) => {
+  args: [
+    {
+      key: "delimiter",
+      label: "Delimiter",
+      type: "string",
+      defaultValue: ""
+    }
+  ],
+  run: ({ input, args }) => {
     if (input.type !== "string") throw new Error("Expected string input");
-    const tokens = parseTokens(input.value);
+    const tokens = parseTokens(input.value, args.delimiter);
     if (tokens.length === 0) return { type: "bytes", value: new Uint8Array() };
 
     const out = new Uint8Array(tokens.length);

@@ -49,11 +49,11 @@ flowchart TD
    - Issue: `#61`
    - close remaining protocol/header parser gaps from the current priority board
 5. `M38`: encoding/codec parity wave 1
-   - Status: `IN-PROGRESS`
+   - Status: `DONE-IN-CODE`
    - Issue: `#62`
    - close delimiter-aware codec conversion gaps
 6. `M39`: encoding/codec parity wave 2
-   - Status: `PLANNED`
+   - Status: `DONE-IN-CODE`
    - Issue: `#63`
    - close remaining canonical representation and content-format transforms
 7. `M40`: JSON/data-format completion
@@ -126,5 +126,6 @@ flowchart TD
 - `M35` `[DONE-IN-CODE]`: `hash.fletcher8`, `hash.fletcher16`, `hash.fletcher32`, and `hash.fletcher64` are implemented, tested, and correctly classified into the crypto parity domain.
 - `M36` `[DONE-IN-CODE]`: `network.parseIPv6Address`, `network.parseIPRange`, and `network.stripHttpHeaders` are implemented and tested; GitHub milestones `M34-M53` were published and linked to issues `#58-#77`.
 - `M37` `[DONE-IN-CODE]`: `network.parseIPv4Header`, `network.parseTcpHeader`, `network.parseUdpHeader`, `network.parseUri`, `network.stripIPv4Header`, `network.stripTcpHeader`, and `network.stripUdpHeader` are implemented and tested, lifting network parity to `22/29` tracked operations.
-- `M38` `[IN-PROGRESS]`: `codec.toBase32`, `codec.fromBase32`, `codec.toBase45`, `codec.fromBase45`, `codec.toBase62`, `codec.fromBase62`, `codec.toBase85`, `codec.fromBase85`, `codec.toBech32`, `codec.fromBech32`, `codec.toMorseCode`, and `codec.fromMorseCode` are implemented and tested, lifting `encodings-codecs` to `36/58` tracked operations.
-- `M39-M53` `[PLANNED]`: not started yet in code; scoped here as the release path to `1.0.0`.
+- `M38` `[DONE-IN-CODE]`: delimiter-aware codec conversions are closed by `codec.fromBinary`, `codec.fromCharcode`, `codec.fromDecimal`, `codec.fromOctal`, `codec.toOctal`, `codec.toMorseCode`, and `codec.fromMorseCode`, with explicit unit coverage for the new delimiter branches.
+- `M39` `[DONE-IN-CODE]`: `codec.toBase92`, `codec.fromBase92`, `codec.toBraille`, `codec.fromBraille`, `codec.toPunycode`, `codec.fromPunycode`, `codec.toModhex`, `codec.fromModhex`, `bytes.dropBytes`, `bytes.takeBytes`, `bytes.dropNthBytes`, `bytes.takeNthBytes`, and `bytes.removeNullBytes` are implemented and tested, lifting `encodings-codecs` to `49/58` tracked operations.
+- `M40-M53` `[PLANNED]`: not started yet in code; scoped here as the remaining release path to `1.0.0`.

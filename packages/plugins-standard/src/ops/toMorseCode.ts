@@ -15,14 +15,31 @@ const MORSE_MAP = new Map<string, string>([
 export const toMorseCode: Operation = {
   id: "codec.toMorseCode",
   name: "To Morse Code",
-  description: "Encodes text into International Morse code using spaces and / between words.",
+  description: "Encodes text into International Morse code with configurable delimiters.",
   input: ["string"],
   output: "string",
-  args: [],
-  run: ({ input }) => {
+  args: [
+    {
+      key: "letterDelimiter",
+      label: "Letter delimiter",
+      type: "string",
+      defaultValue: " "
+    },
+    {
+      key: "wordDelimiter",
+      label: "Word delimiter",
+      type: "string",
+      defaultValue: " / "
+    }
+  ],
+  run: ({ input, args }) => {
     if (input.type !== "string") {
       throw new Error("Expected string input");
     }
+    const letterDelimiter =
+      typeof args.letterDelimiter === "string" ? args.letterDelimiter : " ";
+    const wordDelimiter =
+      typeof args.wordDelimiter === "string" ? args.wordDelimiter : " / ";
     const words = input.value.toUpperCase().trim().split(/\s+/).filter(Boolean);
     const encodedWords = words.map((word) =>
       Array.from(word).map((char) => {
@@ -31,8 +48,8 @@ export const toMorseCode: Operation = {
           throw new Error(`Unsupported Morse character: ${char}`);
         }
         return morse;
-      }).join(" ")
+      }).join(letterDelimiter)
     );
-    return { type: "string", value: encodedWords.join(" / ") };
+    return { type: "string", value: encodedWords.join(wordDelimiter) };
   }
 };
