@@ -24,7 +24,7 @@ flowchart TD
 1. `M50`: performance and scale 1.0 gates
    - Status: `IN-PROGRESS`
    - Issue: `#74`
-   - stabilize benchmark, asset, and CI perf gates against current build output; asset baseline refreshed to `1020000` bytes for `sandbox.worker.js` and Actions forced onto `Node 24`
+   - stabilize benchmark, asset, and CI perf gates against current build output; asset baselines refreshed to `1050000` bytes for `sandbox.worker.js` and `1110000` bytes for `vendor.js`, with Actions forced onto `Node 24`
 2. `M51`: security hardening final wave
    - Status: `PLANNED`
    - Issue: `#75`
