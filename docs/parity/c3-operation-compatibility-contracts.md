@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 372
+Total contracts: 376
 
 ## Contract entries (compact)
 
@@ -416,6 +416,34 @@ Total contracts: 372
   - domain: crypto-hash-kdf
   - inputTypes: string
   - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.argon2d
+  - name: Argon2d
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.argon2i
+  - name: Argon2i
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.argon2id
+  - name: Argon2id
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.argon2Verify
+  - name: Argon2 Verify
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
 - crypto.atbashCipher

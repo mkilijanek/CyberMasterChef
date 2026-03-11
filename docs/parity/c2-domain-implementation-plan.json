@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 372
+    "implementedOpsCount": 376
   },
   "summary": [
     {
@@ -366,9 +366,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 100,
-      "implementedTotal": 50,
-      "missingEstimated": 50,
-      "coveragePct": 50,
+      "implementedTotal": 54,
+      "missingEstimated": 46,
+      "coveragePct": 54,
       "implementedOps": [
         {
           "id": "text.includes",
@@ -609,6 +609,26 @@
           "id": "crypto.scrypt",
           "name": "scrypt",
           "file": "scrypt.ts"
+        },
+        {
+          "id": "crypto.argon2d",
+          "name": "Argon2d",
+          "file": "argon2d.ts"
+        },
+        {
+          "id": "crypto.argon2i",
+          "name": "Argon2i",
+          "file": "argon2i.ts"
+        },
+        {
+          "id": "crypto.argon2id",
+          "name": "Argon2id",
+          "file": "argon2id.ts"
+        },
+        {
+          "id": "crypto.argon2Verify",
+          "name": "Argon2 Verify",
+          "file": "argon2Verify.ts"
         },
         {
           "id": "hash.sha224",
@@ -2758,8 +2778,8 @@
     {
       "priority": 1,
       "domain": "crypto-hash-kdf",
-      "coveragePct": 50,
-      "missingEstimated": 50
+      "coveragePct": 54,
+      "missingEstimated": 46
     },
     {
       "priority": 2,

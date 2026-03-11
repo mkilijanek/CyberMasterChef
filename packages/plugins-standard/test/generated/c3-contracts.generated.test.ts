@@ -573,6 +573,68 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "crypto.argon2d",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "salt",
+      "saltEncoding",
+      "iterations",
+      "memorySize",
+      "parallelism",
+      "hashLength",
+      "outputType"
+    ]
+  },
+  {
+    "operationId": "crypto.argon2i",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "salt",
+      "saltEncoding",
+      "iterations",
+      "memorySize",
+      "parallelism",
+      "hashLength",
+      "outputType"
+    ]
+  },
+  {
+    "operationId": "crypto.argon2id",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "salt",
+      "saltEncoding",
+      "iterations",
+      "memorySize",
+      "parallelism",
+      "hashLength",
+      "outputType"
+    ]
+  },
+  {
+    "operationId": "crypto.argon2Verify",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": [
+      "hash"
+    ]
+  },
+  {
     "operationId": "crypto.atbashCipher",
     "inputTypes": [
       "string"

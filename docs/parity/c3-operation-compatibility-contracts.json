@@ -1737,6 +1737,244 @@
     }
   },
   {
+    "operationId": "crypto.argon2d",
+    "name": "Argon2d",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "salt",
+        "type": "string",
+        "label": "Salt",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "saltEncoding",
+        "type": "select",
+        "label": "Salt Encoding",
+        "defaultValue": "\"utf8\""
+      },
+      {
+        "key": "iterations",
+        "type": "number",
+        "label": "Iterations",
+        "defaultValue": "3"
+      },
+      {
+        "key": "memorySize",
+        "type": "number",
+        "label": "Memory (KiB)",
+        "defaultValue": "65536"
+      },
+      {
+        "key": "parallelism",
+        "type": "number",
+        "label": "Parallelism",
+        "defaultValue": "1"
+      },
+      {
+        "key": "hashLength",
+        "type": "number",
+        "label": "Hash Length",
+        "defaultValue": "32"
+      },
+      {
+        "key": "outputType",
+        "type": "select",
+        "label": "Output",
+        "defaultValue": "\"encoded\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/argon2d.ts",
+      "description": "Derives an Argon2d hash string or hex digest."
+    }
+  },
+  {
+    "operationId": "crypto.argon2i",
+    "name": "Argon2i",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "salt",
+        "type": "string",
+        "label": "Salt",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "saltEncoding",
+        "type": "select",
+        "label": "Salt Encoding",
+        "defaultValue": "\"utf8\""
+      },
+      {
+        "key": "iterations",
+        "type": "number",
+        "label": "Iterations",
+        "defaultValue": "3"
+      },
+      {
+        "key": "memorySize",
+        "type": "number",
+        "label": "Memory (KiB)",
+        "defaultValue": "65536"
+      },
+      {
+        "key": "parallelism",
+        "type": "number",
+        "label": "Parallelism",
+        "defaultValue": "1"
+      },
+      {
+        "key": "hashLength",
+        "type": "number",
+        "label": "Hash Length",
+        "defaultValue": "32"
+      },
+      {
+        "key": "outputType",
+        "type": "select",
+        "label": "Output",
+        "defaultValue": "\"encoded\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/argon2i.ts",
+      "description": "Derives an Argon2i hash string or hex digest."
+    }
+  },
+  {
+    "operationId": "crypto.argon2id",
+    "name": "Argon2id",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "salt",
+        "type": "string",
+        "label": "Salt",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "saltEncoding",
+        "type": "select",
+        "label": "Salt Encoding",
+        "defaultValue": "\"utf8\""
+      },
+      {
+        "key": "iterations",
+        "type": "number",
+        "label": "Iterations",
+        "defaultValue": "3"
+      },
+      {
+        "key": "memorySize",
+        "type": "number",
+        "label": "Memory (KiB)",
+        "defaultValue": "65536"
+      },
+      {
+        "key": "parallelism",
+        "type": "number",
+        "label": "Parallelism",
+        "defaultValue": "1"
+      },
+      {
+        "key": "hashLength",
+        "type": "number",
+        "label": "Hash Length",
+        "defaultValue": "32"
+      },
+      {
+        "key": "outputType",
+        "type": "select",
+        "label": "Output",
+        "defaultValue": "\"encoded\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/argon2id.ts",
+      "description": "Derives an Argon2id hash string or hex digest."
+    }
+  },
+  {
+    "operationId": "crypto.argon2Verify",
+    "name": "Argon2 Verify",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [
+      {
+        "key": "hash",
+        "type": "string",
+        "label": "Encoded Hash",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected bytes or string input",
+        "Hash argument is required"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/argon2Verify.ts",
+      "description": "Verifies a password against an encoded Argon2 hash string."
+    }
+  },
+  {
     "operationId": "crypto.atbashCipher",
     "name": "Atbash Cipher",
     "domain": "crypto-hash-kdf",

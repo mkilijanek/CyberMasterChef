@@ -373,6 +373,10 @@ import { hmacSha512 } from "./ops/hmacSha512.js";
 import { hkdf } from "./ops/hkdf.js";
 import { pbkdf2 } from "./ops/pbkdf2.js";
 import { scrypt } from "./ops/scrypt.js";
+import { argon2d } from "./ops/argon2d.js";
+import { argon2i } from "./ops/argon2i.js";
+import { argon2id } from "./ops/argon2id.js";
+import { argon2Verify } from "./ops/argon2Verify.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -747,6 +751,10 @@ export const standardPlugin: Plugin = {
     registry.register(hkdf);
     registry.register(pbkdf2);
     registry.register(scrypt);
+    registry.register(argon2d);
+    registry.register(argon2i);
+    registry.register(argon2id);
+    registry.register(argon2Verify);
     registry.register(sha224);
     registry.register(sha256);
   }

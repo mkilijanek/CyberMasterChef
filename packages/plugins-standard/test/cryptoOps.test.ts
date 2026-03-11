@@ -42,6 +42,10 @@ import { hmacSha512 } from "../src/ops/hmacSha512.js";
 import { hkdf } from "../src/ops/hkdf.js";
 import { pbkdf2 } from "../src/ops/pbkdf2.js";
 import { scrypt } from "../src/ops/scrypt.js";
+import { argon2d } from "../src/ops/argon2d.js";
+import { argon2i } from "../src/ops/argon2i.js";
+import { argon2id } from "../src/ops/argon2id.js";
+import { argon2Verify } from "../src/ops/argon2Verify.js";
 
 describe("crypto operations", () => {
   it("computes Adler-32 checksum", async () => {
@@ -514,5 +518,131 @@ describe("crypto operations", () => {
         input: { type: "string", value: "password" }
       })
     ).rejects.toThrow("costN must be a power of two");
+  });
+
+  it("derives argon2 hashes", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(argon2d);
+    registry.register(argon2i);
+    registry.register(argon2id);
+
+    const encodedCases = [
+      {
+        opId: "crypto.argon2d",
+        expected: "$argon2d$v=19$m=64,t=2,p=1$c29tZXNhbHQ$Us1acEuyS5qaT/6ahVZKIg"
+      },
+      {
+        opId: "crypto.argon2i",
+        expected: "$argon2i$v=19$m=64,t=2,p=1$c29tZXNhbHQ$uRkUb20yOYJF7x2+Gf6qbA"
+      },
+      {
+        opId: "crypto.argon2id",
+        expected: "$argon2id$v=19$m=64,t=2,p=1$c29tZXNhbHQ$CpahY97MNWo2uyGWQjji4g"
+      }
+    ];
+
+    for (const { opId, expected } of encodedCases) {
+      const out = await runRecipe({
+        registry,
+        recipe: {
+          version: 1,
+          steps: [
+            {
+              opId,
+              args: { salt: "somesalt", iterations: 2, memorySize: 64, hashLength: 16 }
+            }
+          ]
+        },
+        input: { type: "string", value: "password" }
+      });
+      expect(out.output).toEqual({ type: "string", value: expected });
+    }
+
+    const hexOut = await runRecipe({
+      registry,
+      recipe: {
+        version: 1,
+        steps: [
+          {
+            opId: "crypto.argon2id",
+            args: {
+              salt: "736f6d6573616c74",
+              saltEncoding: "hex",
+              iterations: 2,
+              memorySize: 64,
+              hashLength: 16,
+              outputType: "hex"
+            }
+          }
+        ]
+      },
+      input: { type: "bytes", value: new TextEncoder().encode("password") }
+    });
+    expect(hexOut.output).toEqual({ type: "string", value: "0a96a163decc356a36bb21964238e2e2" });
+  });
+
+  it("verifies argon2 hashes", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(argon2Verify);
+    const hash = "$argon2id$v=19$m=64,t=2,p=1$c29tZXNhbHQ$CpahY97MNWo2uyGWQjji4g";
+
+    const ok = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "crypto.argon2Verify", args: { hash } }] },
+      input: { type: "string", value: "password" }
+    });
+    expect(ok.output).toEqual({ type: "json", value: { matches: true } });
+
+    const bad = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "crypto.argon2Verify", args: { hash } }] },
+      input: { type: "bytes", value: new TextEncoder().encode("wrong") }
+    });
+    expect(bad.output).toEqual({ type: "json", value: { matches: false } });
+  });
+
+  it("validates argon2 arguments", async () => {
+    await expect(
+      argon2id.run({ input: { type: "string", value: "password" }, args: {} })
+    ).rejects.toThrow("Salt argument is required");
+    await expect(
+      argon2i.run({
+        input: { type: "string", value: "password" },
+        args: { salt: "salt", iterations: 0 }
+      })
+    ).rejects.toThrow("Iterations must be a positive number");
+    await expect(
+      argon2d.run({
+        input: { type: "string", value: "password" },
+        args: { salt: "salt", memorySize: 4 }
+      })
+    ).rejects.toThrow("Memory size must be at least 8 KiB");
+    await expect(
+      argon2d.run({
+        input: { type: "string", value: "password" },
+        args: { salt: "salt", parallelism: 17 }
+      })
+    ).rejects.toThrow("Parallelism must not exceed 16");
+    await expect(
+      argon2id.run({
+        input: { type: "string", value: "password" },
+        args: { salt: "salt", hashLength: 1025 }
+      })
+    ).rejects.toThrow("Hash length must not exceed 1024 bytes");
+    await expect(
+      argon2Verify.run({ input: { type: "string", value: "password" }, args: {} })
+    ).rejects.toThrow("Hash argument is required");
+    await expect(
+      argon2Verify.run({ input: { type: "json", value: {} } as never, args: { hash: "x" } })
+    ).rejects.toThrow("Expected bytes or string input");
+    await expect(
+      argon2d.run({ input: { type: "json", value: {} } as never, args: { salt: "salt" } })
+    ).rejects.toThrow("Expected bytes or string input");
+    await expect(
+      argon2i.run({ input: { type: "json", value: {} } as never, args: { salt: "salt" } })
+    ).rejects.toThrow("Expected bytes or string input");
+    await expect(
+      argon2id.run({ input: { type: "json", value: {} } as never, args: { salt: "salt" } })
+    ).rejects.toThrow("Expected bytes or string input");
   });
 });
