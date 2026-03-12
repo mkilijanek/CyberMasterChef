@@ -252,6 +252,97 @@
     }
   },
   {
+    "operationId": "codec.decodeText",
+    "name": "Decode Text",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "encoding",
+        "type": "string",
+        "label": "Encoding",
+        "defaultValue": "\"utf-8\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Decodes bytes into text using UTF-8 or UTF-16."
+    }
+  },
+  {
+    "operationId": "codec.encodeText",
+    "name": "Encode Text",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "encoding",
+        "type": "string",
+        "label": "Encoding",
+        "defaultValue": "\"utf-8\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Encodes text into bytes using UTF-8 or UTF-16."
+    }
+  },
+  {
     "operationId": "codec.fromBase32",
     "name": "From Base32",
     "domain": "encodings-codecs",
@@ -784,6 +875,121 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/fromPunycode.ts",
       "description": "Decodes Punycode or IDNA ASCII to Unicode text."
+    }
+  },
+  {
+    "operationId": "codec.hexToObjectIdentifier",
+    "name": "Hex To Object Identifier",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string",
+      "bytes"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Decodes DER-encoded object identifier hex into dotted notation."
+    }
+  },
+  {
+    "operationId": "codec.objectIdentifierToHex",
+    "name": "Object Identifier To Hex",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Encodes a dotted object identifier into DER hex form."
+    }
+  },
+  {
+    "operationId": "codec.pemToHex",
+    "name": "PEM To Hex",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Decodes PEM blocks into lowercase hexadecimal bytes."
     }
   },
   {
@@ -1658,6 +1864,89 @@
     }
   },
   {
+    "operationId": "crypto.a1z26Decode",
+    "name": "A1Z26 Decode",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Decodes A1Z26 positions into ASCII letters."
+    }
+  },
+  {
+    "operationId": "crypto.a1z26Encode",
+    "name": "A1Z26 Encode",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Encodes ASCII letters into A1Z26 positions."
+    }
+  },
+  {
     "operationId": "crypto.affineCipherDecode",
     "name": "Affine Cipher Decode",
     "domain": "crypto-hash-kdf",
@@ -1734,6 +2023,108 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/affineCipherEncode.ts",
       "description": "Encodes ASCII letters using the affine cipher (a*x+b mod 26)."
+    }
+  },
+  {
+    "operationId": "crypto.affineDecode",
+    "name": "Affine Decode",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "a",
+        "type": "number",
+        "label": "a",
+        "defaultValue": "5"
+      },
+      {
+        "key": "b",
+        "type": "number",
+        "label": "b",
+        "defaultValue": "8"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Decodes ASCII letters using the affine cipher inverse."
+    }
+  },
+  {
+    "operationId": "crypto.affineEncode",
+    "name": "Affine Encode",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "a",
+        "type": "number",
+        "label": "a",
+        "defaultValue": "5"
+      },
+      {
+        "key": "b",
+        "type": "number",
+        "label": "b",
+        "defaultValue": "8"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Encodes ASCII letters using the affine cipher."
     }
   },
   {
@@ -2069,6 +2460,44 @@
     }
   },
   {
+    "operationId": "crypto.atbash",
+    "name": "Atbash",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Applies the Atbash substitution cipher."
+    }
+  },
+  {
     "operationId": "crypto.atbashCipher",
     "name": "Atbash Cipher",
     "domain": "crypto-hash-kdf",
@@ -2146,6 +2575,89 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/baconCipherEncode.ts",
       "description": "Encodes letters into Bacon's cipher (A/B)."
+    }
+  },
+  {
+    "operationId": "crypto.baconDecode",
+    "name": "Bacon Decode",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Decodes Bacon's cipher back into ASCII letters."
+    }
+  },
+  {
+    "operationId": "crypto.baconEncode",
+    "name": "Bacon Encode",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Encodes ASCII letters into Bacon's cipher."
     }
   },
   {
@@ -2592,6 +3104,82 @@
     }
   },
   {
+    "operationId": "crypto.hkdfLegacy",
+    "name": "HKDF Legacy",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "salt",
+        "type": "string",
+        "label": "Salt",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "saltEncoding",
+        "type": "select",
+        "label": "Salt Encoding",
+        "defaultValue": "\"utf8\""
+      },
+      {
+        "key": "info",
+        "type": "string",
+        "label": "Info",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "infoEncoding",
+        "type": "select",
+        "label": "Info Encoding",
+        "defaultValue": "\"utf8\""
+      },
+      {
+        "key": "length",
+        "type": "number",
+        "label": "Key Length (bytes)",
+        "defaultValue": "32"
+      },
+      {
+        "key": "hash",
+        "type": "select",
+        "label": "Hash",
+        "defaultValue": "\"SHA-256\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Derives key material using HKDF."
+    }
+  },
+  {
     "operationId": "crypto.hmac",
     "name": "HMAC",
     "domain": "crypto-hash-kdf",
@@ -2747,6 +3335,58 @@
     },
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/hmacSha1.ts",
+      "description": "Computes HMAC-SHA1 for input data and a provided key."
+    }
+  },
+  {
+    "operationId": "crypto.hmacSha1Legacy",
+    "name": "HMAC-SHA1 Legacy",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "key",
+        "type": "string",
+        "label": "Key",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "keyEncoding",
+        "type": "select",
+        "label": "Key Encoding",
+        "defaultValue": "\"utf8\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
       "description": "Computes HMAC-SHA1 for input data and a provided key."
     }
   },
@@ -3005,6 +3645,76 @@
     }
   },
   {
+    "operationId": "crypto.pbkdf2Legacy",
+    "name": "PBKDF2 Legacy",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "salt",
+        "type": "string",
+        "label": "Salt",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "saltEncoding",
+        "type": "select",
+        "label": "Salt Encoding",
+        "defaultValue": "\"utf8\""
+      },
+      {
+        "key": "iterations",
+        "type": "number",
+        "label": "Iterations",
+        "defaultValue": "10000"
+      },
+      {
+        "key": "length",
+        "type": "number",
+        "label": "Key Length (bytes)",
+        "defaultValue": "32"
+      },
+      {
+        "key": "hash",
+        "type": "select",
+        "label": "Hash",
+        "defaultValue": "\"SHA-256\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Derives key material using PBKDF2."
+    }
+  },
+  {
     "operationId": "crypto.railFenceCipherDecode",
     "name": "Rail Fence Cipher Decode",
     "domain": "crypto-hash-kdf",
@@ -3204,6 +3914,88 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/scrypt.ts",
       "description": "Derives key material using scrypt (hex output)."
+    }
+  },
+  {
+    "operationId": "crypto.scryptLegacy",
+    "name": "scrypt Legacy",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "salt",
+        "type": "string",
+        "label": "Salt",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "saltEncoding",
+        "type": "select",
+        "label": "Salt Encoding",
+        "defaultValue": "\"utf8\""
+      },
+      {
+        "key": "length",
+        "type": "number",
+        "label": "Key Length (bytes)",
+        "defaultValue": "32"
+      },
+      {
+        "key": "costN",
+        "type": "number",
+        "label": "Cost (N)",
+        "defaultValue": "16384"
+      },
+      {
+        "key": "blockSizeR",
+        "type": "number",
+        "label": "Block Size (r)",
+        "defaultValue": "8"
+      },
+      {
+        "key": "parallelizationP",
+        "type": "number",
+        "label": "Parallelization (p)",
+        "defaultValue": "1"
+      },
+      {
+        "key": "maxmem",
+        "type": "number",
+        "label": "Max Memory (bytes)",
+        "defaultValue": "67108864"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Derives key material using scrypt."
     }
   },
   {
@@ -3637,6 +4429,44 @@
     }
   },
   {
+    "operationId": "forensic.analyseUUID",
+    "name": "Analyse UUID",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": false,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Parses UUIDs and reports variant/version metadata."
+    }
+  },
+  {
     "operationId": "forensic.basicPreTriage",
     "name": "Basic Pre-Triage",
     "domain": "misc-uncategorized",
@@ -3915,6 +4745,45 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/chiSquare.ts",
       "description": "Computes chi-square statistic against uniform byte distribution."
+    }
+  },
+  {
+    "operationId": "forensic.chiSquareStatistic",
+    "name": "Chi Square Statistic",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Calculates the chi-square statistic for byte frequency distribution."
     }
   },
   {
@@ -4334,6 +5203,109 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/generateUuid.ts",
       "description": "Generates UUID values in nil, random v4, or deterministic v5 mode."
+    }
+  },
+  {
+    "operationId": "forensic.generateUUID",
+    "name": "Generate UUID",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "version",
+        "type": "string",
+        "label": "Version",
+        "defaultValue": "\"v4\""
+      },
+      {
+        "key": "namespace",
+        "type": "string",
+        "label": "Namespace UUID",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "name",
+        "type": "string",
+        "label": "Name override",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": false,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Generates deterministic or random UUID values."
+    }
+  },
+  {
+    "operationId": "forensic.strings",
+    "name": "Strings",
+    "domain": "forensic-malware-helper",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "minLength",
+        "type": "number",
+        "label": "Min length",
+        "defaultValue": "4"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Extracts printable strings from binary input."
     }
   },
   {
@@ -5551,6 +6523,45 @@
     }
   },
   {
+    "operationId": "hash.blake2b512",
+    "name": "BLAKE2b-512",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Computes BLAKE2b-512 digest. Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.blake2s",
     "name": "BLAKE2s",
     "domain": "crypto-hash-kdf",
@@ -5573,6 +6584,45 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/blake2s.ts",
       "description": "Computes BLAKE2s digest (256-bit). Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.blake2s256",
+    "name": "BLAKE2s-256",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Computes BLAKE2s-256 digest. Output is lowercase hex string."
     }
   },
   {
@@ -6004,6 +7054,45 @@
     }
   },
   {
+    "operationId": "hash.md5Digest",
+    "name": "MD5 Digest",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Computes MD5 digest. Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.murmurHash3",
     "name": "MurmurHash3",
     "domain": "crypto-hash-kdf",
@@ -6107,6 +7196,45 @@
     }
   },
   {
+    "operationId": "hash.ripemd160Digest",
+    "name": "RIPEMD160 Digest",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Computes RIPEMD-160 digest. Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.sha0",
     "name": "SHA0",
     "domain": "crypto-hash-kdf",
@@ -6151,6 +7279,45 @@
     },
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/sha1.ts",
+      "description": "Computes SHA-1 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.sha1Digest",
+    "name": "SHA1 Digest",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
       "description": "Computes SHA-1 digest. Output is lowercase hex string."
     }
   },
@@ -6212,6 +7379,45 @@
     }
   },
   {
+    "operationId": "hash.sha224Digest",
+    "name": "SHA224 Digest",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Computes SHA-224 digest. Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.sha256",
     "name": "SHA-256",
     "domain": "crypto-hash-kdf",
@@ -6234,6 +7440,45 @@
     },
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/sha256.ts",
+      "description": "Computes SHA-256 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.sha256Digest",
+    "name": "SHA256 Digest",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
       "description": "Computes SHA-256 digest. Output is lowercase hex string."
     }
   },
@@ -6346,6 +7591,45 @@
     }
   },
   {
+    "operationId": "hash.sha384Digest",
+    "name": "SHA384 Digest",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Computes SHA-384 digest. Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.sha512",
     "name": "SHA-512",
     "domain": "crypto-hash-kdf",
@@ -6368,6 +7652,45 @@
     },
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/sha512.ts",
+      "description": "Computes SHA-512 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.sha512Digest",
+    "name": "SHA512 Digest",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
       "description": "Computes SHA-512 digest. Output is lowercase hex string."
     }
   },
@@ -7477,6 +8800,560 @@
     }
   },
   {
+    "operationId": "misc.alternatingCaps",
+    "name": "Alternating Caps",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Alternates character case across text."
+    }
+  },
+  {
+    "operationId": "misc.comment",
+    "name": "Comment",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string",
+      "bytes",
+      "json"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Passes input through unchanged to annotate recipes without changing data."
+    }
+  },
+  {
+    "operationId": "misc.divide",
+    "name": "Divide",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Divides numeric values."
+    }
+  },
+  {
+    "operationId": "misc.escapeString",
+    "name": "Escape String",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "escapeLevel",
+        "type": "number",
+        "label": "Escape level",
+        "defaultValue": "1"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Escapes control characters and quotes in strings."
+    }
+  },
+  {
+    "operationId": "misc.expandAlphabetRange",
+    "name": "Expand Alphabet Range",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Expands alphabetic ranges into explicit character sequences."
+    }
+  },
+  {
+    "operationId": "misc.fromFloat",
+    "name": "From Float",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "endianness",
+        "type": "select",
+        "label": "Endianness",
+        "defaultValue": "\"big\""
+      },
+      {
+        "key": "width",
+        "type": "select",
+        "label": "Width",
+        "defaultValue": "\"float32\""
+      },
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Decodes floating-point bytes into numeric text."
+    }
+  },
+  {
+    "operationId": "misc.hammingDistance",
+    "name": "Hamming Distance",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "other",
+        "type": "string",
+        "label": "Other",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Computes the Hamming distance between two equal-length strings."
+    }
+  },
+  {
+    "operationId": "misc.multiply",
+    "name": "Multiply",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Multiplies numeric values."
+    }
+  },
+  {
+    "operationId": "misc.subtract",
+    "name": "Subtract",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Subtracts numeric values."
+    }
+  },
+  {
+    "operationId": "misc.sum",
+    "name": "Sum",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Adds numeric values."
+    }
+  },
+  {
+    "operationId": "misc.swapEndianness",
+    "name": "Swap Endianness",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "wordSize",
+        "type": "number",
+        "label": "Word Size",
+        "defaultValue": "2"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Swaps the byte order of each fixed-width word in the input."
+    }
+  },
+  {
+    "operationId": "misc.toFloat",
+    "name": "To Float",
+    "domain": "misc-uncategorized",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "endianness",
+        "type": "select",
+        "label": "Endianness",
+        "defaultValue": "\"big\""
+      },
+      {
+        "key": "width",
+        "type": "select",
+        "label": "Width",
+        "defaultValue": "\"float32\""
+      },
+      {
+        "key": "delimiter",
+        "type": "string",
+        "label": "Delimiter",
+        "defaultValue": "\" \""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Encodes floating-point values into bytes."
+    }
+  },
+  {
     "operationId": "network.changeIpFormat",
     "name": "Change IP Format",
     "domain": "network-protocol-parsers",
@@ -7537,6 +9414,27 @@
     }
   },
   {
+    "operationId": "network.defangIpAddresses",
+    "name": "Defang IP Addresses",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/defangIpAddresses.ts",
+      "description": "Defangs IPv4 addresses by replacing dots with [.] markers."
+    }
+  },
+  {
     "operationId": "network.defangIPs",
     "name": "Defang IPs",
     "domain": "network-protocol-parsers",
@@ -7558,6 +9456,27 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/defangIPs.ts",
       "description": "Defangs IPv4 addresses by replacing dots with [.] markers."
+    }
+  },
+  {
+    "operationId": "network.defangUrl",
+    "name": "Defang URL",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/defangUrl.ts",
+      "description": "Defangs HTTP/HTTPS URLs by replacing protocol and host dots."
     }
   },
   {
@@ -7635,6 +9554,27 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/dnsOverHttps.ts",
       "description": "Queries DNS records over HTTPS for domains from input."
+    }
+  },
+  {
+    "operationId": "network.extractIpAddresses",
+    "name": "Extract IP Addresses",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractIpAddresses.ts",
+      "description": "Extracts unique IPv4 addresses from text input."
     }
   },
   {
@@ -7758,6 +9698,44 @@
     }
   },
   {
+    "operationId": "network.extractURLs",
+    "name": "Extract URLs",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Extracts unique HTTP/HTTPS URLs from text input."
+    }
+  },
+  {
     "operationId": "network.fangIPs",
     "name": "Fang IPs",
     "domain": "misc-uncategorized",
@@ -7779,6 +9757,27 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/fangIPs.ts",
       "description": "Reverts defanged IPv4 markers [.] back to regular dots."
+    }
+  },
+  {
+    "operationId": "network.fangUrl",
+    "name": "Fang URL",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fangUrl.ts",
+      "description": "Reverts common defanged URL markers back to standard URL form."
     }
   },
   {
@@ -7841,6 +9840,52 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/groupIPAddresses.ts",
       "description": "Groups IPv4 addresses by CIDR prefix and outputs group counts."
+    }
+  },
+  {
+    "operationId": "network.hexToPem",
+    "name": "Hex To PEM",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string",
+      "bytes"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "header",
+        "type": "string",
+        "label": "Header",
+        "defaultValue": "\"CERTIFICATE\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Encodes hex bytes into a PEM block with a configurable header."
     }
   },
   {
@@ -7921,6 +9966,44 @@
     }
   },
   {
+    "operationId": "network.parseIPv6",
+    "name": "Parse IPv6 Address",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Parses and normalizes an IPv6 address into compressed and expanded forms."
+    }
+  },
+  {
     "operationId": "network.parseIPv6Address",
     "name": "Parse IPv6 Address",
     "domain": "network-protocol-parsers",
@@ -7942,6 +10025,28 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/parseIPv6Address.ts",
       "description": "Parses and normalizes an IPv6 address into compressed and expanded forms."
+    }
+  },
+  {
+    "operationId": "network.parseTcp",
+    "name": "Parse TCP",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseTcp.ts",
+      "description": "Parses a TCP segment header and returns normalized metadata."
     }
   },
   {
@@ -7997,6 +10102,28 @@
     }
   },
   {
+    "operationId": "network.parseUdp",
+    "name": "Parse UDP",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/parseUdp.ts",
+      "description": "Parses a UDP datagram header and returns normalized metadata."
+    }
+  },
+  {
     "operationId": "network.parseUdpHeader",
     "name": "Parse UDP Header",
     "domain": "network-protocol-parsers",
@@ -8046,6 +10173,44 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/parseUri.ts",
       "description": "Parses an absolute URI into normalized components and query parameters."
+    }
+  },
+  {
+    "operationId": "network.parseURI",
+    "name": "Parse URI",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Parses an absolute URI into normalized components."
     }
   },
   {
@@ -8150,6 +10315,84 @@
     }
   },
   {
+    "operationId": "network.stripHTTPHeaders",
+    "name": "Strip HTTP Headers",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Removes HTTP headers and returns the message body bytes."
+    }
+  },
+  {
+    "operationId": "network.stripIpHeader",
+    "name": "Strip IP Header",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Removes the IPv4 header and returns payload bytes."
+    }
+  },
+  {
     "operationId": "network.stripIPv4Header",
     "name": "Strip IPv4 Header",
     "domain": "network-protocol-parsers",
@@ -8200,6 +10443,45 @@
     }
   },
   {
+    "operationId": "network.stripTCPHeader",
+    "name": "Strip TCP Header",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Removes the TCP header and returns the payload bytes."
+    }
+  },
+  {
     "operationId": "network.stripUdpHeader",
     "name": "Strip UDP Header",
     "domain": "network-protocol-parsers",
@@ -8222,6 +10504,121 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/stripUdpHeader.ts",
       "description": "Strips the UDP header and returns the datagram payload bytes."
+    }
+  },
+  {
+    "operationId": "network.stripUDPHeader",
+    "name": "Strip UDP Header",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Removes the UDP header and returns the payload bytes."
+    }
+  },
+  {
+    "operationId": "network.urlDecode",
+    "name": "URL Decode",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Decodes percent-encoded URLs back to plain text."
+    }
+  },
+  {
+    "operationId": "network.urlEncode",
+    "name": "URL Encode",
+    "domain": "network-protocol-parsers",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "UTF-16 input must contain an even number of bytes",
+        "Expected even-length hexadecimal input",
+        "OID arcs must be unsigned integers",
+        "OID must contain at least two arcs",
+        "OID first arc must be 0, 1, or 2",
+        "OID second arc must be between 0 and 39 when the first arc is 0 or 1",
+        "OID arcs must be safe positive integers",
+        "OID hex input cannot be empty",
+        "OID hex input ended mid-arc",
+        "No PEM block found",
+        "Expected string input",
+        "Expected bytes or string input",
+        "Word size must be an integer",
+        "Input length must be divisible by the word size",
+        "Inputs must be the same length"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/releaseParityAliasOps.ts",
+      "description": "Encodes reserved characters in URLs using percent-encoding."
     }
   },
   {
@@ -11149,6 +13546,78 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/rot13.ts",
       "description": "Applies ROT13 substitution for Latin letters."
+    }
+  },
+  {
+    "operationId": "text.rot13BruteForce",
+    "name": "ROT13 Brute Force",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/rot13BruteForce.ts",
+      "description": "Generates all Caesar rotations for Latin letters as brute-force candidates."
+    }
+  },
+  {
+    "operationId": "text.rot47",
+    "name": "ROT47",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/rot47.ts",
+      "description": "Applies ROT47 substitution for printable ASCII characters."
+    }
+  },
+  {
+    "operationId": "text.rot47BruteForce",
+    "name": "ROT47 Brute Force",
+    "domain": "encodings-codecs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/rot47BruteForce.ts",
+      "description": "Generates all ROT47 shifts for printable ASCII characters."
     }
   },
   {

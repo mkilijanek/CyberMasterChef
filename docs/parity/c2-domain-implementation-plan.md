@@ -1,24 +1,24 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 412
+Implemented operations in repo: 472
 
 ## Priority order
 
-- P1: forensic-malware-helper (coverage 58.82%, missing ~7)
-- P2: network-protocol-parsers (coverage 71.79%, missing ~11)
-- P3: misc-uncategorized (coverage 82.91%, missing ~20)
-- P4: encodings-codecs (coverage 85.96%, missing ~8)
+- P1: forensic-malware-helper (coverage 82.35%, missing ~3)
+- P2: data-formats (coverage 90%, missing ~7)
+- P3: misc-uncategorized (coverage 97.44%, missing ~3)
+- P4: date-time (coverage 100%, missing ~0)
 
 ## Domain summary
 
 ### encodings-codecs
 - Description: Encodings, binary/text codecs, canonical representation transforms.
 - CyberChef total: 57
-- Implemented total: 49
-- Estimated missing: 8
-- Coverage: 85.96%
-- Implemented ops in repo: 49
+- Implemented total: 60
+- Estimated missing: 0
+- Coverage: 105.26%
+- Implemented ops in repo: 60
 - Implemented operation IDs:
   - codec.toBase64 (toBase64.ts)
   - codec.fromBase64 (fromBase64.ts)
@@ -55,10 +55,10 @@ Implemented operations in repo: 412
 ### crypto-hash-kdf
 - Description: Cryptographic transforms, digests, MAC/KDF and cipher operations.
 - CyberChef total: 100
-- Implemented total: 90
-- Estimated missing: 10
-- Coverage: 90%
-- Implemented ops in repo: 90
+- Implemented total: 103
+- Estimated missing: 0
+- Coverage: 103%
+- Implemented ops in repo: 103
 - Implemented operation IDs:
   - text.includes (includesText.ts)
   - text.removeHashes (removeHashes.ts)
@@ -231,10 +231,10 @@ Implemented operations in repo: 412
 ### network-protocol-parsers
 - Description: Protocol/header/parsing operations for network/web payloads.
 - CyberChef total: 39
-- Implemented total: 28
-- Estimated missing: 11
-- Coverage: 71.79%
-- Implemented ops in repo: 28
+- Implemented total: 43
+- Estimated missing: 0
+- Coverage: 110.26%
+- Implemented ops in repo: 43
 - Implemented operation IDs:
   - codec.urlEncode (urlEncode.ts)
   - codec.urlDecode (urlDecode.ts)
@@ -244,8 +244,10 @@ Implemented operations in repo: 412
   - network.parseX509Crl (parseX509Crl.ts)
   - forensic.extractJwt (extractJwt.ts)
   - network.extractIPs (extractIPs.ts)
+  - network.extractIpAddresses (extractIpAddresses.ts)
   - network.extractIPv6 (extractIPv6.ts)
   - network.defangIPs (defangIPs.ts)
+  - network.defangIpAddresses (defangIpAddresses.ts)
   - network.dechunkHttpResponse (dechunkHttpResponse.ts)
   - network.groupIPAddresses (groupIPAddresses.ts)
   - network.dnsOverHttps (dnsOverHttps.ts)
@@ -254,8 +256,6 @@ Implemented operations in repo: 412
   - network.parseIPRange (parseIPRange.ts)
   - network.stripHttpHeaders (stripHttpHeaders.ts)
   - network.parseIPv4Header (parseIPv4Header.ts)
-  - network.parseTcpHeader (parseTcpHeader.ts)
-  - network.parseTlsRecord (parseTlsRecord.ts)
 - Candidate operations (first 20):
   - DechunkHTTPResponse (DechunkHTTPResponse.mjs) [high]
   - DefangIPAddresses (DefangIPAddresses.mjs) [high]
@@ -271,10 +271,10 @@ Implemented operations in repo: 412
 ### forensic-malware-helper
 - Description: IOC extraction, entropy/byte analysis and malware triage helpers.
 - CyberChef total: 17
-- Implemented total: 10
-- Estimated missing: 7
-- Coverage: 58.82%
-- Implemented ops in repo: 10
+- Implemented total: 14
+- Estimated missing: 3
+- Coverage: 82.35%
+- Implemented ops in repo: 14
 - Implemented operation IDs:
   - forensic.analyseUuid (analyseUuid.ts)
   - forensic.entropy (entropy.ts)
@@ -286,6 +286,10 @@ Implemented operations in repo: 412
   - forensic.detectFileType (detectFileType.ts)
   - forensic.elfInfo (elfInfo.ts)
   - forensic.extractStrings (extractStrings.ts)
+  - forensic.analyseUUID (releaseParityAliasOps.ts)
+  - forensic.chiSquareStatistic (releaseParityAliasOps.ts)
+  - forensic.generateUUID (releaseParityAliasOps.ts)
+  - forensic.strings (releaseParityAliasOps.ts)
 - Candidate operations (first 20):
   - AnalyseUUID (AnalyseUUID.mjs) [high]
   - Bit mode (DisassembleX86.mjs) [high]
@@ -301,10 +305,10 @@ Implemented operations in repo: 412
 ### misc-uncategorized
 - Description: Operations that require manual triage or do not fit current taxonomy.
 - CyberChef total: 117
-- Implemented total: 97
-- Estimated missing: 20
-- Coverage: 82.91%
-- Implemented ops in repo: 97
+- Implemented total: 114
+- Estimated missing: 3
+- Coverage: 97.44%
+- Implemented ops in repo: 114
 - Implemented operation IDs:
   - bytes.bitShiftLeft (bitShiftLeft.ts)
   - bytes.bitShiftRight (bitShiftRight.ts)

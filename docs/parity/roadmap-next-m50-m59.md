@@ -4,7 +4,7 @@ Updated: 2026-03-12
 
 ## Objective
 
-Close the remaining parity gap from `412/465` tracked CyberChef reference operations to at least `100%` while keeping release-quality governance, security, performance, and documentation gates green for `1.0.0`.
+Complete the `1.0.0` cutover now that tracked CyberChef reference parity has passed `100%`, while keeping release-quality governance, security, performance, container, and documentation gates green.
 
 ```mermaid
 flowchart TD
@@ -56,20 +56,18 @@ flowchart TD
 9. `M58`: crypto parity wave 4 and final gap closure
    - Status: `DONE-IN-CODE`
    - Issue: `#83`
-  - landed `hash.crc64`, `hash.sm3`, `hash.xxhash32`, `hash.xxhash64`, `hash.xxhash3`, `hash.xxhash128`, `hash.xorChecksum`, `hash.tcpIpChecksum`, `hash.luhnChecksum`, `hash.murmurHash3`, `hash.generateAllChecksums`, `hash.generateAllHashes`, `hash.sha0`, `hash.sha2`, `hash.sha3`, `hash.ntHash`, `hash.adler32Checksum`, `hash.fletcher8Checksum`, `hash.fletcher16Checksum`, `hash.fletcher32Checksum`, `hash.fletcher64Checksum`, `hash.ripemd`, `crypto.argon2`, `crypto.argon2d`, `crypto.argon2i`, `crypto.argon2id`, `crypto.argon2Verify`, `crypto.argon2Compare`, `crypto.bcrypt`, `crypto.bcryptVerify`, `crypto.bcryptCompare`, `crypto.hmac`, `crypto.hmacSha224`, `crypto.hmacMd5`, `crypto.hmacRipemd160`, `crypto.hmacWhirlpool`, `crypto.caesarBoxCipher`, `crypto.railFenceCipherEncode`, `crypto.railFenceCipherDecode`, `crypto.bifidCipherEncode`, `crypto.bifidCipherDecode`, `crypto.rc4`, `crypto.rc4Drop`, `crypto.deriveHkdfKey`, `crypto.derivePbkdf2Key`, and `crypto.extractHashes`; milestone scope is closed in code and remaining repo-wide parity work now sits behind `M59`
+  - landed `hash.crc64`, `hash.sm3`, `hash.xxhash32`, `hash.xxhash64`, `hash.xxhash3`, `hash.xxhash128`, `hash.xorChecksum`, `hash.tcpIpChecksum`, `hash.luhnChecksum`, `hash.murmurHash3`, `hash.generateAllChecksums`, `hash.generateAllHashes`, `hash.sha0`, `hash.sha2`, `hash.sha3`, `hash.ntHash`, `hash.adler32Checksum`, `hash.fletcher8Checksum`, `hash.fletcher16Checksum`, `hash.fletcher32Checksum`, `hash.fletcher64Checksum`, `hash.ripemd`, `crypto.argon2`, `crypto.argon2d`, `crypto.argon2i`, `crypto.argon2id`, `crypto.argon2Verify`, `crypto.argon2Compare`, `crypto.bcrypt`, `crypto.bcryptVerify`, `crypto.bcryptCompare`, `crypto.hmac`, `crypto.hmacSha224`, `crypto.hmacMd5`, `crypto.hmacRipemd160`, `crypto.hmacWhirlpool`, `crypto.caesarBoxCipher`, `crypto.railFenceCipherEncode`, `crypto.railFenceCipherDecode`, `crypto.bifidCipherEncode`, `crypto.bifidCipherDecode`, `crypto.rc4`, `crypto.rc4Drop`, `crypto.deriveHkdfKey`, `crypto.derivePbkdf2Key`, and `crypto.extractHashes`; milestone scope is closed in code and the remaining repo-wide parity work now sits behind `M59`
 10. `M59`: release `1.0.0` candidate and cutover
     - Status: `PLANNED`
     - Issue: `#77`
-    - run the full release chain, freeze, tag, publish, validate GHCR images, and verify post-release status
+    - parity closure is achieved at `472/465`; finish the full release chain, freeze, tag, publish, validate GHCR images, and verify post-release status
 
 ## Current Progress Snapshot
 
-- Baseline parity checkpoint in the current repo state: `412/465` tracked operations implemented.
-- Highest remaining parity pressure domains:
-  - `crypto-hash-kdf`: `90/100`
-  - `network-protocol-parsers`: `28/39`
-  - `forensic-malware-helper`: `10/17`
-  - `misc-uncategorized`: `96/117`
+- Baseline parity checkpoint in the current repo state: `472/465` tracked operations implemented.
+- Functional parity blocker status:
+  - tracked reference parity target is met
+  - remaining `M59` work is release execution, artifact verification, and publication discipline
 - Release blockers entering this wave:
   - release sequencing must move behind the remaining parity closure, not ahead of it
   - performance/security/docs evidence needs to stay current with each parity wave, even after `M50` closed in code; current asset budget baseline is `1125000` for `sandbox.worker.js` and `1140000` for `vendor.js`

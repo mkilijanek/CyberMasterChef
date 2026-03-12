@@ -22,6 +22,9 @@ import { toModhex } from "../src/ops/toModhex.js";
 import { fromModhex } from "../src/ops/fromModhex.js";
 import { toMorseCode } from "../src/ops/toMorseCode.js";
 import { fromMorseCode } from "../src/ops/fromMorseCode.js";
+import { rot13BruteForce } from "../src/ops/rot13BruteForce.js";
+import { rot47 } from "../src/ops/rot47.js";
+import { rot47BruteForce } from "../src/ops/rot47BruteForce.js";
 import { toCharcode } from "../src/ops/toCharcode.js";
 import { fromCharcode } from "../src/ops/fromCharcode.js";
 import { toDecimal } from "../src/ops/toDecimal.js";
@@ -267,6 +270,68 @@ describe("encoding operations", () => {
       steps: [{ opId: "codec.fromHexContent" }]
     }, "48 69");
     expect(decoded.output).toEqual({ type: "bytes", value: encoder.encode("Hi") });
+  });
+
+  it("generates all ROT13 candidates", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(rot13BruteForce);
+
+    const out = await run(registry, {
+      version: 1,
+      steps: [{ opId: "text.rot13BruteForce" }]
+    }, "Uryyb");
+
+    expect(out.output.type).toBe("string");
+    if (out.output.type !== "string") return;
+    const lines = out.output.value.split("\n");
+    expect(lines).toHaveLength(26);
+    expect(lines[0]).toBe("0: Uryyb");
+    expect(lines[13]).toBe("13: Hello");
+    expect(lines[25]).toBe("25: Tqxxa");
+  });
+
+  it("applies ROT47 and brute-forces printable ASCII shifts", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(rot47);
+    registry.register(rot47BruteForce);
+
+    const encoded = await run(registry, {
+      version: 1,
+      steps: [{ opId: "text.rot47" }]
+    }, "Hello!");
+    expect(encoded.output).toEqual({ type: "string", value: "w6==@P" });
+
+    const decoded = await run(registry, {
+      version: 1,
+      steps: [{ opId: "text.rot47" }]
+    }, "w6==@P");
+    expect(decoded.output).toEqual({ type: "string", value: "Hello!" });
+
+    const bruteForce = await run(registry, {
+      version: 1,
+      steps: [{ opId: "text.rot47BruteForce" }]
+    }, "w6==@P");
+    expect(bruteForce.output.type).toBe("string");
+    if (bruteForce.output.type !== "string") return;
+    const lines = bruteForce.output.value.split("\n");
+    expect(lines).toHaveLength(94);
+    expect(lines[0]).toBe("0: w6==@P");
+    expect(lines[47]).toBe("47: Hello!");
+    expect(lines[93]).toBe("93: v5<<?O");
+  });
+
+  it("rejects non-string input for ROT operations", () => {
+    expect(() =>
+      rot13BruteForce.run({ input: { type: "bytes", value: encoder.encode("abc") } } as never)
+    ).toThrow("Expected string input");
+
+    expect(() =>
+      rot47.run({ input: { type: "bytes", value: encoder.encode("abc") } } as never)
+    ).toThrow("Expected string input");
+
+    expect(() =>
+      rot47BruteForce.run({ input: { type: "bytes", value: encoder.encode("abc") } } as never)
+    ).toThrow("Expected string input");
   });
 
   it("drops and takes byte ranges", async () => {

@@ -1,10 +1,14 @@
 import { describe, expect, it } from "vitest";
 import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core";
 import { extractIPs } from "../src/ops/extractIPs.js";
+import { extractIpAddresses } from "../src/ops/extractIpAddresses.js";
 import { extractUrls } from "../src/ops/extractUrls.js";
+import { defangUrl } from "../src/ops/defangUrl.js";
 import { defangUrls } from "../src/ops/defangUrls.js";
+import { fangUrl } from "../src/ops/fangUrl.js";
 import { fangUrls } from "../src/ops/fangUrls.js";
 import { extractIPv6 } from "../src/ops/extractIPv6.js";
+import { defangIpAddresses } from "../src/ops/defangIpAddresses.js";
 import { defangIPs } from "../src/ops/defangIPs.js";
 import { fangIPs } from "../src/ops/fangIPs.js";
 import { extractPorts } from "../src/ops/extractPorts.js";
@@ -16,8 +20,10 @@ import { ipv6TransitionAddresses } from "../src/ops/ipv6TransitionAddresses.js";
 import { parseIPRange } from "../src/ops/parseIPRange.js";
 import { stripHttpHeaders } from "../src/ops/stripHttpHeaders.js";
 import { parseIPv4Header } from "../src/ops/parseIPv4Header.js";
+import { parseTcp } from "../src/ops/parseTcp.js";
 import { parseTcpHeaderOp } from "../src/ops/parseTcpHeader.js";
 import { parseTlsRecord } from "../src/ops/parseTlsRecord.js";
+import { parseUdp } from "../src/ops/parseUdp.js";
 import { parseUdpHeaderOp } from "../src/ops/parseUdpHeader.js";
 import { parseUri } from "../src/ops/parseUri.js";
 import { parseX509Certificate } from "../src/ops/parseX509Certificate.js";
@@ -78,6 +84,20 @@ describe("network operations", () => {
     expect(out.output).toEqual({ type: "string", value: "10.0.0.1\n192.168.1.5" });
   });
 
+  it("extracts IPv4 addresses through the parity alias", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(extractIpAddresses);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.extractIpAddresses" }] };
+
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "src=10.0.0.1 src=10.0.0.1 invalid=999.1.1.1 dst=192.0.2.10" }
+    });
+
+    expect(out.output).toEqual({ type: "string", value: "10.0.0.1\n192.0.2.10" });
+  });
+
   it("extracts unique HTTP/HTTPS URLs", async () => {
     const registry = new InMemoryRegistry();
     registry.register(extractUrls);
@@ -116,6 +136,23 @@ describe("network operations", () => {
     });
   });
 
+  it("defangs URLs through the singular parity alias", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(defangUrl);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.defangUrl" }] };
+
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "Open https://portal.example.test/login" }
+    });
+
+    expect(out.output).toEqual({
+      type: "string",
+      value: "Open hxxps://portal[.]example[.]test/login"
+    });
+  });
+
   it("fangs defanged URL markers", async () => {
     const registry = new InMemoryRegistry();
     registry.register(fangUrls);
@@ -130,6 +167,23 @@ describe("network operations", () => {
     expect(out.output).toEqual({
       type: "string",
       value: "https://ioc.example.com/path?q=1"
+    });
+  });
+
+  it("fangs URLs through the singular parity alias", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(fangUrl);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.fangUrl" }] };
+
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "hxxp://portal[.]example[.]test/login" }
+    });
+
+    expect(out.output).toEqual({
+      type: "string",
+      value: "http://portal.example.test/login"
     });
   });
 
@@ -165,6 +219,21 @@ describe("network operations", () => {
     expect(out.output).toEqual({
       type: "string",
       value: "src 10[.]0[.]0[.]1 dst 192[.]168[.]1[.]5"
+    });
+  });
+
+  it("defangs IPv4 addresses through the parity alias", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(defangIpAddresses);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.defangIpAddresses" }] };
+    const out = await runRecipe({
+      registry,
+      recipe,
+      input: { type: "string", value: "src 203.0.113.5 dst 198.51.100.9" }
+    });
+    expect(out.output).toEqual({
+      type: "string",
+      value: "src 203[.]0[.]113[.]5 dst 198[.]51[.]100[.]9"
     });
   });
 
@@ -549,6 +618,30 @@ describe("network operations", () => {
     });
   });
 
+  it("parses TCP headers through the parity alias", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(parseTcp);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.parseTcp" }] };
+    const bytes = new Uint8Array([
+      0x00, 0x50, 0x01, 0xbb, 0x11, 0x22, 0x33, 0x44,
+      0x55, 0x66, 0x77, 0x88, 0x50, 0x12, 0x20, 0x00,
+      0x1f, 0x90, 0x00, 0x00
+    ]);
+
+    const out = await runRecipe({ registry, recipe, input: { type: "bytes", value: bytes } });
+
+    expect(out.output.type).toBe("json");
+    if (out.output.type !== "json") return;
+    const value = out.output.value as {
+      sourcePort: number;
+      destinationPort: number;
+      flags: { syn: boolean; ack: boolean };
+    };
+    expect(value.sourcePort).toBe(80);
+    expect(value.destinationPort).toBe(443);
+    expect(value.flags).toEqual(expect.objectContaining({ syn: true, ack: true }));
+  });
+
   it("parses UDP headers into normalized metadata", async () => {
     const registry = new InMemoryRegistry();
     registry.register(parseUdpHeaderOp);
@@ -569,6 +662,26 @@ describe("network operations", () => {
       length: 10,
       checksum: "abcd",
       payloadLength: 2
+    });
+  });
+
+  it("parses UDP headers through the parity alias", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(parseUdp);
+    const recipe: Recipe = { version: 1, steps: [{ opId: "network.parseUdp" }] };
+    const bytes = new Uint8Array([0x13, 0x89, 0x00, 0x35, 0x00, 0x1c, 0x1f, 0x90]);
+
+    const out = await runRecipe({ registry, recipe, input: { type: "bytes", value: bytes } });
+
+    expect(out.output).toEqual({
+      type: "json",
+      value: {
+        sourcePort: 5001,
+        destinationPort: 53,
+        length: 28,
+        payloadLength: 0,
+        checksum: "1f90"
+      }
     });
   });
 

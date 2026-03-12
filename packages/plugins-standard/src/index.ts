@@ -112,6 +112,9 @@ import { trimQuotes } from "./ops/trimQuotes.js";
 import { surroundBrackets } from "./ops/surroundBrackets.js";
 import { surroundQuotes } from "./ops/surroundQuotes.js";
 import { rot13 } from "./ops/rot13.js";
+import { rot13BruteForce } from "./ops/rot13BruteForce.js";
+import { rot47 } from "./ops/rot47.js";
+import { rot47BruteForce } from "./ops/rot47BruteForce.js";
 import { maskDigits } from "./ops/maskDigits.js";
 import { removeNonAscii } from "./ops/removeNonAscii.js";
 import { keepNonAscii } from "./ops/keepNonAscii.js";
@@ -208,10 +211,14 @@ import { jsonMinify } from "./ops/jsonMinify.js";
 import { jsonBeautify } from "./ops/jsonBeautify.js";
 import { extractStrings } from "./ops/extractStrings.js";
 import { extractIPs } from "./ops/extractIPs.js";
+import { extractIpAddresses } from "./ops/extractIpAddresses.js";
 import { extractUrls } from "./ops/extractUrls.js";
 import { extractMacAddresses } from "./ops/extractMacAddresses.js";
+import { defangUrl } from "./ops/defangUrl.js";
 import { defangUrls } from "./ops/defangUrls.js";
+import { defangIpAddresses } from "./ops/defangIpAddresses.js";
 import { fangUrls } from "./ops/fangUrls.js";
+import { fangUrl } from "./ops/fangUrl.js";
 import { changeIpFormat } from "./ops/changeIpFormat.js";
 import { unixToWindowsFiletime } from "./ops/unixToWindowsFiletime.js";
 import { windowsFiletimeToUnix } from "./ops/windowsFiletimeToUnix.js";
@@ -314,8 +321,10 @@ import { parseIPRange } from "./ops/parseIPRange.js";
 import { stripHttpHeaders } from "./ops/stripHttpHeaders.js";
 import { parseIPv4Header } from "./ops/parseIPv4Header.js";
 import { parseTcpHeaderOp } from "./ops/parseTcpHeader.js";
+import { parseTcp } from "./ops/parseTcp.js";
 import { parseTlsRecord } from "./ops/parseTlsRecord.js";
 import { parseUdpHeaderOp } from "./ops/parseUdpHeader.js";
+import { parseUdp } from "./ops/parseUdp.js";
 import { parseUri } from "./ops/parseUri.js";
 import { stripIPv4Header } from "./ops/stripIPv4Header.js";
 import { stripTcpHeader } from "./ops/stripTcpHeader.js";
@@ -413,6 +422,7 @@ import { argon2Compare } from "./ops/argon2Compare.js";
 import { argon2i } from "./ops/argon2i.js";
 import { argon2id } from "./ops/argon2id.js";
 import { argon2Verify } from "./ops/argon2Verify.js";
+import { releaseParityAliasOps } from "./ops/releaseParityAliasOps.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
   version: "0.1.0",
@@ -526,6 +536,9 @@ export const standardPlugin: Plugin = {
     registry.register(surroundBrackets);
     registry.register(surroundQuotes);
     registry.register(rot13);
+    registry.register(rot13BruteForce);
+    registry.register(rot47);
+    registry.register(rot47BruteForce);
     registry.register(maskDigits);
     registry.register(removeNonAscii);
     registry.register(keepNonAscii);
@@ -692,9 +705,11 @@ export const standardPlugin: Plugin = {
     registry.register(htmlToTextOp);
     registry.register(extractStrings);
     registry.register(extractIPs);
+    registry.register(extractIpAddresses);
     registry.register(extractIPv6);
     registry.register(extractMacAddresses);
     registry.register(defangIPs);
+    registry.register(defangIpAddresses);
     registry.register(fangIPs);
     registry.register(extractPorts);
     registry.register(dechunkHttpResponse);
@@ -706,8 +721,10 @@ export const standardPlugin: Plugin = {
     registry.register(stripHttpHeaders);
     registry.register(parseIPv4Header);
     registry.register(parseTcpHeaderOp);
+    registry.register(parseTcp);
     registry.register(parseTlsRecord);
     registry.register(parseUdpHeaderOp);
+    registry.register(parseUdp);
     registry.register(parseUri);
     registry.register(stripIPv4Header);
     registry.register(stripTcpHeader);
@@ -744,7 +761,9 @@ export const standardPlugin: Plugin = {
     registry.register(rotateImage);
     registry.register(sharpenImage);
     registry.register(extractUrls);
+    registry.register(defangUrl);
     registry.register(defangUrls);
+    registry.register(fangUrl);
     registry.register(fangUrls);
     registry.register(adler32Checksum);
     registry.register(adler32ChecksumAlias);
@@ -829,5 +848,8 @@ export const standardPlugin: Plugin = {
     registry.register(argon2Verify);
     registry.register(sha224);
     registry.register(sha256);
+    for (const op of releaseParityAliasOps) {
+      registry.register(op);
+    }
   }
 };

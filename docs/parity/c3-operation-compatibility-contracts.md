@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 412
+Total contracts: 472
 
 ## Contract entries (compact)
 
@@ -54,6 +54,20 @@ Total contracts: 412
   - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR
+- codec.decodeText
+  - name: Decode Text
+  - domain: encodings-codecs
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.encodeText
+  - name: Encode Text
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.fromBase32
   - name: From Base32
   - domain: encodings-codecs
@@ -182,6 +196,27 @@ Total contracts: 412
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - codec.fromPunycode
   - name: From Punycode
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.hexToObjectIdentifier
+  - name: Hex To Object Identifier
+  - domain: encodings-codecs
+  - inputTypes: string, bytes
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.objectIdentifierToHex
+  - name: Object Identifier To Hex
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- codec.pemToHex
+  - name: PEM To Hex
   - domain: encodings-codecs
   - inputTypes: string
   - outputType: string
@@ -404,6 +439,20 @@ Total contracts: 412
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.a1z26Decode
+  - name: A1Z26 Decode
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.a1z26Encode
+  - name: A1Z26 Encode
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - crypto.affineCipherDecode
   - name: Affine Cipher Decode
   - domain: crypto-hash-kdf
@@ -418,6 +467,20 @@ Total contracts: 412
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.affineDecode
+  - name: Affine Decode
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.affineEncode
+  - name: Affine Encode
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - crypto.argon2
   - name: Argon2
   - domain: crypto-hash-kdf
@@ -460,6 +523,13 @@ Total contracts: 412
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.atbash
+  - name: Atbash
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - crypto.atbashCipher
   - name: Atbash Cipher
   - domain: crypto-hash-kdf
@@ -477,6 +547,20 @@ Total contracts: 412
 - crypto.baconCipherEncode
   - name: Bacon Cipher Encode
   - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.baconDecode
+  - name: Bacon Decode
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.baconEncode
+  - name: Bacon Encode
+  - domain: misc-uncategorized
   - inputTypes: string
   - outputType: string
   - deterministic: true
@@ -558,6 +642,13 @@ Total contracts: 412
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.hkdfLegacy
+  - name: HKDF Legacy
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - crypto.hmac
   - name: HMAC
   - domain: crypto-hash-kdf
@@ -586,6 +677,13 @@ Total contracts: 412
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.hmacSha1Legacy
+  - name: HMAC-SHA1 Legacy
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - crypto.hmacSha224
   - name: HMAC-SHA224
   - domain: crypto-hash-kdf
@@ -628,6 +726,13 @@ Total contracts: 412
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.pbkdf2Legacy
+  - name: PBKDF2 Legacy
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - crypto.railFenceCipherDecode
   - name: Rail Fence Cipher Decode
   - domain: crypto-hash-kdf
@@ -663,6 +768,13 @@ Total contracts: 412
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.scryptLegacy
+  - name: scrypt Legacy
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - date.dateTimeDelta
   - name: Date Time Delta
   - domain: date-time
@@ -761,6 +873,13 @@ Total contracts: 412
   - outputType: json
   - deterministic: false
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.analyseUUID
+  - name: Analyse UUID
+  - domain: forensic-malware-helper
+  - inputTypes: string
+  - outputType: json
+  - deterministic: false
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - forensic.basicPreTriage
   - name: Basic Pre-Triage
   - domain: misc-uncategorized
@@ -777,6 +896,13 @@ Total contracts: 412
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - forensic.chiSquare
   - name: Chi Square
+  - domain: forensic-malware-helper
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.chiSquareStatistic
+  - name: Chi Square Statistic
   - domain: forensic-malware-helper
   - inputTypes: bytes, string
   - outputType: string
@@ -893,6 +1019,20 @@ Total contracts: 412
   - inputTypes: string
   - outputType: string
   - deterministic: false
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.generateUUID
+  - name: Generate UUID
+  - domain: forensic-malware-helper
+  - inputTypes: string
+  - outputType: string
+  - deterministic: false
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- forensic.strings
+  - name: Strings
+  - domain: forensic-malware-helper
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - forensic.yaraRules
   - name: YARA Rules
@@ -1188,8 +1328,22 @@ Total contracts: 412
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.blake2b512
+  - name: BLAKE2b-512
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.blake2s
   - name: BLAKE2s
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.blake2s256
+  - name: BLAKE2s-256
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string
@@ -1314,6 +1468,13 @@ Total contracts: 412
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.md5Digest
+  - name: MD5 Digest
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.murmurHash3
   - name: MurmurHash3
   - domain: crypto-hash-kdf
@@ -1342,6 +1503,13 @@ Total contracts: 412
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.ripemd160Digest
+  - name: RIPEMD160 Digest
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.sha0
   - name: SHA0
   - domain: crypto-hash-kdf
@@ -1351,6 +1519,13 @@ Total contracts: 412
   - error categories: EXECUTION_ERROR
 - hash.sha1
   - name: SHA-1
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.sha1Digest
+  - name: SHA1 Digest
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string
@@ -1370,8 +1545,22 @@ Total contracts: 412
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.sha224Digest
+  - name: SHA224 Digest
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.sha256
   - name: SHA-256
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.sha256Digest
+  - name: SHA256 Digest
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string
@@ -1405,8 +1594,22 @@ Total contracts: 412
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.sha384Digest
+  - name: SHA384 Digest
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.sha512
   - name: SHA-512
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.sha512Digest
+  - name: SHA512 Digest
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string
@@ -1657,6 +1860,90 @@ Total contracts: 412
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- misc.alternatingCaps
+  - name: Alternating Caps
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- misc.comment
+  - name: Comment
+  - domain: misc-uncategorized
+  - inputTypes: string, bytes, json
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- misc.divide
+  - name: Divide
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- misc.escapeString
+  - name: Escape String
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- misc.expandAlphabetRange
+  - name: Expand Alphabet Range
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- misc.fromFloat
+  - name: From Float
+  - domain: misc-uncategorized
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- misc.hammingDistance
+  - name: Hamming Distance
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- misc.multiply
+  - name: Multiply
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- misc.subtract
+  - name: Subtract
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- misc.sum
+  - name: Sum
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- misc.swapEndianness
+  - name: Swap Endianness
+  - domain: misc-uncategorized
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- misc.toFloat
+  - name: To Float
+  - domain: misc-uncategorized
+  - inputTypes: string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - network.changeIpFormat
   - name: Change IP Format
   - domain: network-protocol-parsers
@@ -1671,6 +1958,13 @@ Total contracts: 412
   - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_ARGUMENT, INVALID_INPUT_TYPE
+- network.defangIpAddresses
+  - name: Defang IP Addresses
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - network.defangIPs
   - name: Defang IPs
   - domain: network-protocol-parsers
@@ -1678,6 +1972,13 @@ Total contracts: 412
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.defangUrl
+  - name: Defang URL
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - network.defangUrls
   - name: Defang URLs
   - domain: network-protocol-parsers
@@ -1692,6 +1993,13 @@ Total contracts: 412
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.extractIpAddresses
+  - name: Extract IP Addresses
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - network.extractIPs
   - name: Extract IPs
   - domain: network-protocol-parsers
@@ -1727,6 +2035,13 @@ Total contracts: 412
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.extractURLs
+  - name: Extract URLs
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - network.fangIPs
   - name: Fang IPs
   - domain: misc-uncategorized
@@ -1734,6 +2049,13 @@ Total contracts: 412
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.fangUrl
+  - name: Fang URL
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - network.fangUrls
   - name: Fang URLs
   - domain: network-protocol-parsers
@@ -1745,6 +2067,13 @@ Total contracts: 412
   - name: Group IP Addresses
   - domain: network-protocol-parsers
   - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.hexToPem
+  - name: Hex To PEM
+  - domain: encodings-codecs
+  - inputTypes: string, bytes
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
@@ -1769,6 +2098,13 @@ Total contracts: 412
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.parseIPv6
+  - name: Parse IPv6 Address
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - network.parseIPv6Address
   - name: Parse IPv6 Address
   - domain: network-protocol-parsers
@@ -1776,6 +2112,13 @@ Total contracts: 412
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.parseTcp
+  - name: Parse TCP
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - network.parseTcpHeader
   - name: Parse TCP Header
   - domain: network-protocol-parsers
@@ -1790,6 +2133,13 @@ Total contracts: 412
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.parseUdp
+  - name: Parse UDP
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - network.parseUdpHeader
   - name: Parse UDP Header
   - domain: network-protocol-parsers
@@ -1804,6 +2154,13 @@ Total contracts: 412
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- network.parseURI
+  - name: Parse URI
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - network.parseUserAgent
   - name: Parse User Agent
   - domain: network-protocol-parsers
@@ -1832,6 +2189,20 @@ Total contracts: 412
   - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.stripHTTPHeaders
+  - name: Strip HTTP Headers
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.stripIpHeader
+  - name: Strip IP Header
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - network.stripIPv4Header
   - name: Strip IPv4 Header
   - domain: network-protocol-parsers
@@ -1846,11 +2217,39 @@ Total contracts: 412
   - outputType: bytes
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.stripTCPHeader
+  - name: Strip TCP Header
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - network.stripUdpHeader
   - name: Strip UDP Header
   - domain: network-protocol-parsers
   - inputTypes: bytes, string
   - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.stripUDPHeader
+  - name: Strip UDP Header
+  - domain: network-protocol-parsers
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.urlDecode
+  - name: URL Decode
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- network.urlEncode
+  - name: URL Encode
+  - domain: network-protocol-parsers
+  - inputTypes: string
+  - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.alternatingCaps
@@ -2674,6 +3073,27 @@ Total contracts: 412
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - text.rot13
   - name: ROT13
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.rot13BruteForce
+  - name: ROT13 Brute Force
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.rot47
+  - name: ROT47
+  - domain: encodings-codecs
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- text.rot47BruteForce
+  - name: ROT47 Brute Force
   - domain: encodings-codecs
   - inputTypes: string
   - outputType: string

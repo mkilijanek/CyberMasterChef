@@ -1,6 +1,6 @@
 # C Implementation Master Plan
 
-Updated: 2026-03-12 (M58 checksum/HMAC plus generic hash/bcrypt, classical-cipher, legacy stream-hash, and parity-alias wave landed; C2/C3/docs synced)
+Updated: 2026-03-12 (M58 closed and M59 parity lift added network alias/wrapper plus ROT13/ROT47 compatibility operations; C2/C3/docs synced)
 
 ## Sources
 
@@ -41,8 +41,8 @@ Deliver a complete, auditable, and operationally useful C-track:
 
 ### C2 Domain Implementation
 
-- Status: `[IN-PROGRESS]`
-- Realization (current): `~88.6%` of tracked CyberChef reference operation coverage by implemented operation count (`412/465`).
+- Status: `[DONE-IN-CODE]`
+- Realization (current): `~101.5%` of tracked CyberChef reference operation coverage by implemented operation count (`472/465`).
 - Completed baseline waves:
   - date-time baseline and telemetry parsing helpers
   - data-format baseline (JSON/CSV/YAML/XML/HTML + image/format conversions)
@@ -51,10 +51,9 @@ Deliver a complete, auditable, and operationally useful C-track:
   - forensic IOC baseline (strings, emails, domains, hash/token/vuln extractors)
   - basic pre-triage baseline (`forensic.basicPreTriage`)
   - basic triage baseline (`forensic.basicTriage`)
-- Still missing for C2 baseline completeness:
-  - remaining repo-wide reference parity closure beyond the completed `M58` crypto wave
-  - network protocol parsers beyond IOC baselines
-  - CI gates for parity-plan drift.
+- Remaining only release-side execution work:
+  - freeze, tag, publish, and post-release validation for `1.0.0`
+  - keep regenerated parity artifacts and release evidence attached to the release commit
 
 ### C3 Compatibility Contracts
 

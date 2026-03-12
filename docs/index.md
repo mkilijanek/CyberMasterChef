@@ -2,7 +2,7 @@
 
 A clean-slate, modular, and secure workbench for data operations — successor to CyberChef.
 
-Current parity checkpoint: `412` operations are implemented in repo, `M58` is completed with the latest generic hash/bcrypt, classical-cipher, legacy stream-hash, checksum/HMAC, and parity-alias wave landed, and `M50-M58` are completed inside the active release-closing wave `M50-M59`.
+Current parity checkpoint: `472` operations are implemented in repo, which puts tracked CyberChef reference parity above `100%`; `M59` is now release-cutover work rather than parity-gap work.
 
 - Current release includes: Binary/URL codecs, `text.reverse`, auto-bake, run-to-step execution, deep-link sharing, search by operation ID with match counters, `Ctrl/Cmd+K` catalog focus shortcut, `Ctrl/Cmd+Shift+K` trace-filter focus shortcut, quick recipe JSON copy in Workbench, recipe-step duplication in editor, trace step counters with trace filtering/clear action (including filter reset on clear), filtered-count visibility, filtered-trace copy, CyberChef recipe import/export (Workbench + CLI) with detailed import warnings and import-source indicator, timeout-controlled execution in both Workbench and CLI, structured CLI output metadata, workbench image preview with output metadata, and an expanded golden recipe regression baseline.
 

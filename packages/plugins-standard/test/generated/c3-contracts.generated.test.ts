@@ -87,6 +87,27 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "codec.decodeText",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "encoding"
+    ]
+  },
+  {
+    "operationId": "codec.encodeText",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": [
+      "encoding"
+    ]
+  },
+  {
     "operationId": "codec.fromBase32",
     "inputTypes": [
       "string"
@@ -255,6 +276,31 @@ const CONTRACTS = [
     "argKeys": [
       "idn"
     ]
+  },
+  {
+    "operationId": "codec.hexToObjectIdentifier",
+    "inputTypes": [
+      "string",
+      "bytes"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "codec.objectIdentifierToHex",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "codec.pemToHex",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
   },
   {
     "operationId": "codec.toBase32",
@@ -551,6 +597,24 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "crypto.a1z26Decode",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "crypto.a1z26Encode",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "delimiter"
+    ]
+  },
+  {
     "operationId": "crypto.affineCipherDecode",
     "inputTypes": [
       "string"
@@ -563,6 +627,28 @@ const CONTRACTS = [
   },
   {
     "operationId": "crypto.affineCipherEncode",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "a",
+      "b"
+    ]
+  },
+  {
+    "operationId": "crypto.affineDecode",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "a",
+      "b"
+    ]
+  },
+  {
+    "operationId": "crypto.affineEncode",
     "inputTypes": [
       "string"
     ],
@@ -663,6 +749,14 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "crypto.atbash",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "crypto.atbashCipher",
     "inputTypes": [
       "string"
@@ -680,6 +774,24 @@ const CONTRACTS = [
   },
   {
     "operationId": "crypto.baconCipherEncode",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "delimiter"
+    ]
+  },
+  {
+    "operationId": "crypto.baconDecode",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "crypto.baconEncode",
     "inputTypes": [
       "string"
     ],
@@ -819,6 +931,22 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "crypto.hkdfLegacy",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "salt",
+      "saltEncoding",
+      "info",
+      "infoEncoding",
+      "length",
+      "hash"
+    ]
+  },
+  {
     "operationId": "crypto.hmac",
     "inputTypes": [
       "bytes",
@@ -857,6 +985,18 @@ const CONTRACTS = [
   },
   {
     "operationId": "crypto.hmacSha1",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "key",
+      "keyEncoding"
+    ]
+  },
+  {
+    "operationId": "crypto.hmacSha1Legacy",
     "inputTypes": [
       "bytes",
       "string"
@@ -943,6 +1083,21 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "crypto.pbkdf2Legacy",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "salt",
+      "saltEncoding",
+      "iterations",
+      "length",
+      "hash"
+    ]
+  },
+  {
     "operationId": "crypto.railFenceCipherDecode",
     "inputTypes": [
       "string"
@@ -987,6 +1142,23 @@ const CONTRACTS = [
   },
   {
     "operationId": "crypto.scrypt",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "salt",
+      "saltEncoding",
+      "length",
+      "costN",
+      "blockSizeR",
+      "parallelizationP",
+      "maxmem"
+    ]
+  },
+  {
+    "operationId": "crypto.scryptLegacy",
     "inputTypes": [
       "bytes",
       "string"
@@ -1133,6 +1305,14 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "forensic.analyseUUID",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
     "operationId": "forensic.basicPreTriage",
     "inputTypes": [
       "bytes",
@@ -1188,6 +1368,15 @@ const CONTRACTS = [
   },
   {
     "operationId": "forensic.chiSquare",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "forensic.chiSquareStatistic",
     "inputTypes": [
       "bytes",
       "string"
@@ -1335,6 +1524,29 @@ const CONTRACTS = [
       "version",
       "namespace",
       "name"
+    ]
+  },
+  {
+    "operationId": "forensic.generateUUID",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "version",
+      "namespace",
+      "name"
+    ]
+  },
+  {
+    "operationId": "forensic.strings",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "minLength"
     ]
   },
   {
@@ -1738,7 +1950,25 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "hash.blake2b512",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "hash.blake2s",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "hash.blake2s256",
     "inputTypes": [
       "bytes",
       "string"
@@ -1903,6 +2133,15 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "hash.md5Digest",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "hash.murmurHash3",
     "inputTypes": [
       "bytes",
@@ -1940,6 +2179,15 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "hash.ripemd160Digest",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "hash.sha0",
     "inputTypes": [
       "bytes",
@@ -1950,6 +2198,15 @@ const CONTRACTS = [
   },
   {
     "operationId": "hash.sha1",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "hash.sha1Digest",
     "inputTypes": [
       "bytes",
       "string"
@@ -1978,7 +2235,25 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "hash.sha224Digest",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "hash.sha256",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "hash.sha256Digest",
     "inputTypes": [
       "bytes",
       "string"
@@ -2025,7 +2300,25 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "hash.sha384Digest",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "hash.sha512",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "hash.sha512Digest",
     "inputTypes": [
       "bytes",
       "string"
@@ -2385,6 +2678,130 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "misc.alternatingCaps",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "misc.comment",
+    "inputTypes": [
+      "string",
+      "bytes",
+      "json"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "misc.divide",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "delimiter"
+    ]
+  },
+  {
+    "operationId": "misc.escapeString",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "escapeLevel"
+    ]
+  },
+  {
+    "operationId": "misc.expandAlphabetRange",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "delimiter"
+    ]
+  },
+  {
+    "operationId": "misc.fromFloat",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "endianness",
+      "width",
+      "delimiter"
+    ]
+  },
+  {
+    "operationId": "misc.hammingDistance",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "other"
+    ]
+  },
+  {
+    "operationId": "misc.multiply",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "delimiter"
+    ]
+  },
+  {
+    "operationId": "misc.subtract",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "delimiter"
+    ]
+  },
+  {
+    "operationId": "misc.sum",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "delimiter"
+    ]
+  },
+  {
+    "operationId": "misc.swapEndianness",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": [
+      "wordSize"
+    ]
+  },
+  {
+    "operationId": "misc.toFloat",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": [
+      "endianness",
+      "width",
+      "delimiter"
+    ]
+  },
+  {
     "operationId": "network.changeIpFormat",
     "inputTypes": [
       "string"
@@ -2404,7 +2821,23 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "network.defangIpAddresses",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "network.defangIPs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.defangUrl",
     "inputTypes": [
       "string"
     ],
@@ -2432,6 +2865,14 @@ const CONTRACTS = [
       "allowHosts",
       "timeoutMs"
     ]
+  },
+  {
+    "operationId": "network.extractIpAddresses",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
   },
   {
     "operationId": "network.extractIPs",
@@ -2474,7 +2915,23 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "network.extractURLs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "network.fangIPs",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.fangUrl",
     "inputTypes": [
       "string"
     ],
@@ -2499,6 +2956,17 @@ const CONTRACTS = [
     "argKeys": [
       "prefixLength",
       "includeCounts"
+    ]
+  },
+  {
+    "operationId": "network.hexToPem",
+    "inputTypes": [
+      "string",
+      "bytes"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "header"
     ]
   },
   {
@@ -2527,8 +2995,25 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "network.parseIPv6",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
     "operationId": "network.parseIPv6Address",
     "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.parseTcp",
+    "inputTypes": [
+      "bytes",
       "string"
     ],
     "outputType": "json",
@@ -2553,6 +3038,15 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "network.parseUdp",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
     "operationId": "network.parseUdpHeader",
     "inputTypes": [
       "bytes",
@@ -2563,6 +3057,14 @@ const CONTRACTS = [
   },
   {
     "operationId": "network.parseUri",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.parseURI",
     "inputTypes": [
       "string"
     ],
@@ -2605,6 +3107,24 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "network.stripHTTPHeaders",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.stripIpHeader",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": []
+  },
+  {
     "operationId": "network.stripIPv4Header",
     "inputTypes": [
       "bytes",
@@ -2623,12 +3143,46 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "network.stripTCPHeader",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": []
+  },
+  {
     "operationId": "network.stripUdpHeader",
     "inputTypes": [
       "bytes",
       "string"
     ],
     "outputType": "bytes",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.stripUDPHeader",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.urlDecode",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "network.urlEncode",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
     "argKeys": []
   },
   {
@@ -3593,6 +4147,30 @@ const CONTRACTS = [
   },
   {
     "operationId": "text.rot13",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "text.rot13BruteForce",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "text.rot47",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "text.rot47BruteForce",
     "inputTypes": [
       "string"
     ],

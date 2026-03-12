@@ -16,15 +16,15 @@ The project targets deterministic behavior, parity tracking, and auditable CI/se
 - Milestones `M1-M33`: completed.
 - Latest closure report: `docs/parity/roadmap-next-m29-m33.md`.
 - Next release objective: `1.0.0` with minimum `100%` functional coverage of the CyberChef reference set tracked in `docs/parity/*`.
-- Current execution wave: `M50-M59`, with `M50-M58` completed in code, including the final `M58` checksum/HMAC/Argon2 parity-alias closure wave, and `M59` reserved for the `1.0.0` release cutover.
+- Current execution wave: `M50-M59`, with `M50-M58` completed in code, `M59` lifting tracked CyberChef parity to `472/465`, and the remaining `1.0.0` work focused on release cutover and publication validation.
 - Release track also includes container delivery: Docker image, smoke-tested `docker-compose.yml`, and GHCR publication on release tags.
 - `M51` runtime hardening is enforced in the shipped nginx config and verified during `pnpm docker:test`.
-- GitHub milestones are being extended through `M59` so release cutover stays behind the remaining parity closure work.
+- GitHub milestones are extended through `M59` so release cutover stays behind parity evidence, container publication, and final governance checks.
 - `M50` performance gates are enforced through tested helper libraries behind `pnpm perf:assets`, `pnpm perf:check`, and `pnpm test:scripts`.
 - C-track snapshot:
   - `C1`: complete domain matrix + drift gate
-  - `C2`: `412` tracked operations implemented, with `crypto-hash-kdf` raised to `90/100` (`90%`) and `network-protocol-parsers` held at `28/39` (`71.79%`)
-  - `C3`: contract catalog + generated regression tests + CI gate
+  - `C2`: `472` tracked operations implemented, exceeding the tracked CyberChef reference set (`472/465`)
+  - `C3`: contract catalog + generated regression tests + CI gate for the current declared contract set
 
 ## Repository Layout
 
@@ -107,6 +107,7 @@ pnpm docker:test
 - Crypto checksum wave 2: `hash.murmurHash3`, `hash.generateAllChecksums`
 - Network expansion: `groupIPAddresses`
 - Network parity wave: `changeIpFormat`, `extractMacAddresses`, `parseUserAgent`
+- Release-parity wave: `network.defangIpAddresses`, `network.defangUrl`, `network.extractIpAddresses`, `network.fangUrl`, `network.parseTcp`, `network.parseUdp`, `text.rot13BruteForce`, `text.rot47`, `text.rot47BruteForce`
 
 ## Docs
 

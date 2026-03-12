@@ -2,16 +2,16 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 412
+    "implementedOpsCount": 472
   },
   "summary": [
     {
       "domain": "encodings-codecs",
       "description": "Encodings, binary/text codecs, canonical representation transforms.",
       "cyberChefTotal": 57,
-      "implementedTotal": 49,
-      "missingEstimated": 8,
-      "coveragePct": 85.96,
+      "implementedTotal": 60,
+      "missingEstimated": 0,
+      "coveragePct": 105.26,
       "implementedOps": [
         {
           "id": "codec.toBase64",
@@ -224,6 +224,21 @@
           "file": "rot13.ts"
         },
         {
+          "id": "text.rot13BruteForce",
+          "name": "ROT13 Brute Force",
+          "file": "rot13BruteForce.ts"
+        },
+        {
+          "id": "text.rot47",
+          "name": "ROT47",
+          "file": "rot47.ts"
+        },
+        {
+          "id": "text.rot47BruteForce",
+          "name": "ROT47 Brute Force",
+          "file": "rot47BruteForce.ts"
+        },
+        {
           "id": "text.removeNonAscii",
           "name": "Remove Non-ASCII",
           "file": "removeNonAscii.ts"
@@ -257,6 +272,46 @@
           "id": "text.removePercents",
           "name": "Remove Percents",
           "file": "removePercents.ts"
+        },
+        {
+          "id": "codec.encodeText",
+          "name": "Encode Text",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "codec.decodeText",
+          "name": "Decode Text",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "codec.objectIdentifierToHex",
+          "name": "Object Identifier To Hex",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "codec.hexToObjectIdentifier",
+          "name": "Hex To Object Identifier",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "codec.pemToHex",
+          "name": "PEM To Hex",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "network.hexToPem",
+          "name": "Hex To PEM",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "crypto.a1z26Encode",
+          "name": "A1Z26 Encode",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "crypto.a1z26Decode",
+          "name": "A1Z26 Decode",
+          "file": "releaseParityAliasOps.ts"
         }
       ],
       "implementationCandidates": [
@@ -366,9 +421,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 100,
-      "implementedTotal": 90,
-      "missingEstimated": 10,
-      "coveragePct": 90,
+      "implementedTotal": 103,
+      "missingEstimated": 0,
+      "coveragePct": 103,
       "implementedOps": [
         {
           "id": "text.includes",
@@ -819,6 +874,71 @@
           "id": "hash.sha256",
           "name": "SHA-256",
           "file": "sha256.ts"
+        },
+        {
+          "id": "hash.sha1Digest",
+          "name": "SHA1 Digest",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "hash.sha224Digest",
+          "name": "SHA224 Digest",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "hash.sha256Digest",
+          "name": "SHA256 Digest",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "hash.sha384Digest",
+          "name": "SHA384 Digest",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "hash.sha512Digest",
+          "name": "SHA512 Digest",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "hash.md5Digest",
+          "name": "MD5 Digest",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "hash.ripemd160Digest",
+          "name": "RIPEMD160 Digest",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "hash.blake2b512",
+          "name": "BLAKE2b-512",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "hash.blake2s256",
+          "name": "BLAKE2s-256",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "crypto.hmacSha1Legacy",
+          "name": "HMAC-SHA1 Legacy",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "crypto.hkdfLegacy",
+          "name": "HKDF Legacy",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "crypto.pbkdf2Legacy",
+          "name": "PBKDF2 Legacy",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "crypto.scryptLegacy",
+          "name": "scrypt Legacy",
+          "file": "releaseParityAliasOps.ts"
         }
       ],
       "implementationCandidates": [
@@ -1961,9 +2081,9 @@
       "domain": "network-protocol-parsers",
       "description": "Protocol/header/parsing operations for network/web payloads.",
       "cyberChefTotal": 39,
-      "implementedTotal": 28,
-      "missingEstimated": 11,
-      "coveragePct": 71.79,
+      "implementedTotal": 43,
+      "missingEstimated": 0,
+      "coveragePct": 110.26,
       "implementedOps": [
         {
           "id": "codec.urlEncode",
@@ -2006,6 +2126,11 @@
           "file": "extractIPs.ts"
         },
         {
+          "id": "network.extractIpAddresses",
+          "name": "Extract IP Addresses",
+          "file": "extractIpAddresses.ts"
+        },
+        {
           "id": "network.extractIPv6",
           "name": "Extract IPv6",
           "file": "extractIPv6.ts"
@@ -2014,6 +2139,11 @@
           "id": "network.defangIPs",
           "name": "Defang IPs",
           "file": "defangIPs.ts"
+        },
+        {
+          "id": "network.defangIpAddresses",
+          "name": "Defang IP Addresses",
+          "file": "defangIpAddresses.ts"
         },
         {
           "id": "network.dechunkHttpResponse",
@@ -2061,6 +2191,11 @@
           "file": "parseTcpHeader.ts"
         },
         {
+          "id": "network.parseTcp",
+          "name": "Parse TCP",
+          "file": "parseTcp.ts"
+        },
+        {
           "id": "network.parseTlsRecord",
           "name": "Parse TLS Record",
           "file": "parseTlsRecord.ts"
@@ -2069,6 +2204,11 @@
           "id": "network.parseUdpHeader",
           "name": "Parse UDP Header",
           "file": "parseUdpHeader.ts"
+        },
+        {
+          "id": "network.parseUdp",
+          "name": "Parse UDP",
+          "file": "parseUdp.ts"
         },
         {
           "id": "network.parseUri",
@@ -2096,14 +2236,69 @@
           "file": "extractUrls.ts"
         },
         {
+          "id": "network.defangUrl",
+          "name": "Defang URL",
+          "file": "defangUrl.ts"
+        },
+        {
           "id": "network.defangUrls",
           "name": "Defang URLs",
           "file": "defangUrls.ts"
         },
         {
+          "id": "network.fangUrl",
+          "name": "Fang URL",
+          "file": "fangUrl.ts"
+        },
+        {
           "id": "network.fangUrls",
           "name": "Fang URLs",
           "file": "fangUrls.ts"
+        },
+        {
+          "id": "network.urlEncode",
+          "name": "URL Encode",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "network.urlDecode",
+          "name": "URL Decode",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "network.extractURLs",
+          "name": "Extract URLs",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "network.parseURI",
+          "name": "Parse URI",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "network.parseIPv6",
+          "name": "Parse IPv6 Address",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "network.stripTCPHeader",
+          "name": "Strip TCP Header",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "network.stripUDPHeader",
+          "name": "Strip UDP Header",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "network.stripHTTPHeaders",
+          "name": "Strip HTTP Headers",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "network.stripIpHeader",
+          "name": "Strip IP Header",
+          "file": "releaseParityAliasOps.ts"
         }
       ],
       "implementationCandidates": [
@@ -2213,9 +2408,9 @@
       "domain": "forensic-malware-helper",
       "description": "IOC extraction, entropy/byte analysis and malware triage helpers.",
       "cyberChefTotal": 17,
-      "implementedTotal": 10,
-      "missingEstimated": 7,
-      "coveragePct": 58.82,
+      "implementedTotal": 14,
+      "missingEstimated": 3,
+      "coveragePct": 82.35,
       "implementedOps": [
         {
           "id": "forensic.analyseUuid",
@@ -2266,6 +2461,26 @@
           "id": "forensic.extractStrings",
           "name": "Extract Strings",
           "file": "extractStrings.ts"
+        },
+        {
+          "id": "forensic.analyseUUID",
+          "name": "Analyse UUID",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "forensic.chiSquareStatistic",
+          "name": "Chi Square Statistic",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "forensic.generateUUID",
+          "name": "Generate UUID",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "forensic.strings",
+          "name": "Strings",
+          "file": "releaseParityAliasOps.ts"
         }
       ],
       "implementationCandidates": [
@@ -2360,9 +2575,9 @@
       "domain": "misc-uncategorized",
       "description": "Operations that require manual triage or do not fit current taxonomy.",
       "cyberChefTotal": 117,
-      "implementedTotal": 97,
-      "missingEstimated": 20,
-      "coveragePct": 82.91,
+      "implementedTotal": 114,
+      "missingEstimated": 3,
+      "coveragePct": 97.44,
       "implementedOps": [
         {
           "id": "bytes.bitShiftLeft",
@@ -2848,6 +3063,91 @@
           "id": "hash.sm3",
           "name": "SM3",
           "file": "sm3.ts"
+        },
+        {
+          "id": "misc.comment",
+          "name": "Comment",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "misc.swapEndianness",
+          "name": "Swap Endianness",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "misc.hammingDistance",
+          "name": "Hamming Distance",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "misc.sum",
+          "name": "Sum",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "misc.subtract",
+          "name": "Subtract",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "misc.multiply",
+          "name": "Multiply",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "misc.divide",
+          "name": "Divide",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "misc.escapeString",
+          "name": "Escape String",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "misc.expandAlphabetRange",
+          "name": "Expand Alphabet Range",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "misc.alternatingCaps",
+          "name": "Alternating Caps",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "misc.toFloat",
+          "name": "To Float",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "misc.fromFloat",
+          "name": "From Float",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "crypto.atbash",
+          "name": "Atbash",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "crypto.affineEncode",
+          "name": "Affine Encode",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "crypto.affineDecode",
+          "name": "Affine Decode",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "crypto.baconEncode",
+          "name": "Bacon Encode",
+          "file": "releaseParityAliasOps.ts"
+        },
+        {
+          "id": "crypto.baconDecode",
+          "name": "Bacon Decode",
+          "file": "releaseParityAliasOps.ts"
         }
       ],
       "implementationCandidates": [
@@ -2958,26 +3258,26 @@
     {
       "priority": 1,
       "domain": "forensic-malware-helper",
-      "coveragePct": 58.82,
-      "missingEstimated": 7
+      "coveragePct": 82.35,
+      "missingEstimated": 3
     },
     {
       "priority": 2,
-      "domain": "network-protocol-parsers",
-      "coveragePct": 71.79,
-      "missingEstimated": 11
+      "domain": "data-formats",
+      "coveragePct": 90,
+      "missingEstimated": 7
     },
     {
       "priority": 3,
       "domain": "misc-uncategorized",
-      "coveragePct": 82.91,
-      "missingEstimated": 20
+      "coveragePct": 97.44,
+      "missingEstimated": 3
     },
     {
       "priority": 4,
-      "domain": "encodings-codecs",
-      "coveragePct": 85.96,
-      "missingEstimated": 8
+      "domain": "date-time",
+      "coveragePct": 100,
+      "missingEstimated": 0
     }
   ]
 }
