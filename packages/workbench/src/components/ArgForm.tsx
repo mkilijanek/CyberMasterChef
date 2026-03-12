@@ -38,7 +38,13 @@ export function ArgForm(props: {
                 className="input"
                 type="number"
                 value={typeof current === "number" ? String(current) : ""}
-                onChange={(e) => set(s.key, Number(e.target.value))}
+                onChange={(e) => {
+                  if (e.target.value.trim() === "") {
+                    set(s.key, s.defaultValue);
+                    return;
+                  }
+                  set(s.key, Number(e.target.value));
+                }}
               />
             </label>
           );

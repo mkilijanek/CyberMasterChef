@@ -19,6 +19,7 @@ import { OperationCatalog } from "./components/OperationCatalog";
 import { RecipeEditor } from "./components/RecipeEditor";
 import { IOPane } from "./components/IOPane";
 import { describeOutputPresentation } from "./outputPresentation";
+import { isCancellationError } from "./worker/cancellation";
 
 type Status = "ready" | "working" | "error";
 type SharedState = { recipe: Recipe; input: string };
@@ -60,6 +61,56 @@ const MAX_POOL_SIZE = 8;
 const DEFAULT_MAX_QUEUE = 64;
 const MIN_MAX_QUEUE = 1;
 const MAX_MAX_QUEUE = 256;
+const MAX_SHARE_STATE_CHARS = 4096;
+
+function safeStorageGet(key: string): string | null {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function safeStorageSet(key: string, value: string): void {
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    // ignore storage failures in restricted environments
+  }
+}
+
+function safeReplaceState(url: string): void {
+  try {
+    window.history.replaceState(null, "", url);
+  } catch {
+    // ignore history failures in restricted environments
+  }
+}
+
+async function safeClipboardWriteText(value: string): Promise<boolean> {
+  try {
+    await navigator.clipboard?.writeText(value);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function safePrompt(message: string, defaultValue = ""): string | null {
+  try {
+    return window.prompt(message, defaultValue);
+  } catch {
+    return null;
+  }
+}
+
+function safeConfirm(message: string): boolean {
+  try {
+    return window.confirm(message);
+  } catch {
+    return false;
+  }
+}
 
 export function isRecipe(value: unknown): value is Recipe {
   if (typeof value !== "object" || value === null) return false;
@@ -96,8 +147,8 @@ export function loadInitialState(): SharedState {
     }
   }
 
-  const recipeSaved = localStorage.getItem("recipe.v1");
-  const inputSaved = localStorage.getItem("input.v1");
+  const recipeSaved = safeStorageGet("recipe.v1");
+  const inputSaved = safeStorageGet("input.v1");
   let recipe = emptyRecipe();
   if (recipeSaved) {
     try {
@@ -110,36 +161,66 @@ export function loadInitialState(): SharedState {
   return { recipe, input: inputSaved ?? "" };
 }
 
+export function handleGlobalShortcut(args: {
+  event: KeyboardEvent;
+  status: Status;
+  cancelRun: () => void;
+  run: () => void;
+  focusSearch: () => void;
+  focusTrace: () => void;
+}): void {
+  const { event, status, cancelRun, run, focusSearch, focusTrace } = args;
+  if (event.key === "Escape" && status === "working") {
+    event.preventDefault();
+    cancelRun();
+    return;
+  }
+  if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+    event.preventDefault();
+    run();
+    return;
+  }
+  if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key.toLowerCase() === "k") {
+    event.preventDefault();
+    focusTrace();
+    return;
+  }
+  if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+    event.preventDefault();
+    focusSearch();
+  }
+}
+
 export function App(): React.JSX.Element {
   const { t } = useTranslation();
   const initial = React.useMemo(() => loadInitialState(), []);
   const [catalogQuery, setCatalogQuery] = React.useState<string>(
-    () => localStorage.getItem("catalogQuery.v1") ?? ""
+    () => safeStorageGet("catalogQuery.v1") ?? ""
   );
   const [traceQuery, setTraceQuery] = React.useState<string>(
-    () => localStorage.getItem("traceQuery.v1") ?? ""
+    () => safeStorageGet("traceQuery.v1") ?? ""
   );
   const [recipe, setRecipe] = React.useState<Recipe>(initial.recipe);
   const [input, setInput] = React.useState<string>(initial.input);
   const [autoBake, setAutoBake] = React.useState<boolean>(() => {
-    const saved = localStorage.getItem("autobake.v1");
+    const saved = safeStorageGet("autobake.v1");
     return saved === null ? false : saved === "1";
   });
   const [timeoutMs, setTimeoutMs] = React.useState<number>(() => {
-    const raw = localStorage.getItem("timeoutMs.v1");
+    const raw = safeStorageGet("timeoutMs.v1");
     if (raw === null) return DEFAULT_TIMEOUT_MS;
     const saved = Number(raw);
     if (!Number.isFinite(saved)) return DEFAULT_TIMEOUT_MS;
     return Math.min(MAX_TIMEOUT_MS, Math.max(MIN_TIMEOUT_MS, saved));
   });
   const [workerPoolSize, setWorkerPoolSize] = React.useState<number>(() => {
-    const raw = localStorage.getItem("workerPoolSize.v1");
+    const raw = safeStorageGet("workerPoolSize.v1");
     const parsed = raw === null ? DEFAULT_POOL_SIZE : Number(raw);
     if (!Number.isFinite(parsed)) return DEFAULT_POOL_SIZE;
     return Math.min(MAX_POOL_SIZE, Math.max(MIN_POOL_SIZE, Math.floor(parsed)));
   });
   const [workerMaxQueue, setWorkerMaxQueue] = React.useState<number>(() => {
-    const raw = localStorage.getItem("workerMaxQueue.v1");
+    const raw = safeStorageGet("workerMaxQueue.v1");
     const parsed = raw === null ? DEFAULT_MAX_QUEUE : Number(raw);
     if (!Number.isFinite(parsed)) return DEFAULT_MAX_QUEUE;
     return Math.min(MAX_MAX_QUEUE, Math.max(MIN_MAX_QUEUE, Math.floor(parsed)));
@@ -158,6 +239,7 @@ export function App(): React.JSX.Element {
   const [lastImportSource, setLastImportSource] = React.useState<"native" | "cyberchef" | null>(null);
   const [status, setStatus] = React.useState<Status>("ready");
   const [error, setError] = React.useState<string | null>(null);
+  const [shareStateTooLarge, setShareStateTooLarge] = React.useState<boolean>(false);
   const [poolStats, setPoolStats] = React.useState<PoolStats | null>(null);
   const [importWarnings, setImportWarnings] = React.useState<RecipeImportWarning[]>([]);
   const sandboxRef = React.useRef<ExecutionClient | null>(null);
@@ -196,17 +278,23 @@ export function App(): React.JSX.Element {
   }, []);
 
   React.useEffect(() => {
-    localStorage.setItem("recipe.v1", JSON.stringify(recipe));
-    localStorage.setItem("input.v1", input);
-    localStorage.setItem("autobake.v1", autoBake ? "1" : "0");
-    localStorage.setItem("timeoutMs.v1", String(timeoutMs));
-    localStorage.setItem("workerPoolSize.v1", String(workerPoolSize));
-    localStorage.setItem("workerMaxQueue.v1", String(workerMaxQueue));
-    localStorage.setItem("catalogQuery.v1", catalogQuery);
-    localStorage.setItem("traceQuery.v1", traceQuery);
+    safeStorageSet("recipe.v1", JSON.stringify(recipe));
+    safeStorageSet("input.v1", input);
+    safeStorageSet("autobake.v1", autoBake ? "1" : "0");
+    safeStorageSet("timeoutMs.v1", String(timeoutMs));
+    safeStorageSet("workerPoolSize.v1", String(workerPoolSize));
+    safeStorageSet("workerMaxQueue.v1", String(workerMaxQueue));
+    safeStorageSet("catalogQuery.v1", catalogQuery);
+    safeStorageSet("traceQuery.v1", traceQuery);
 
     const shared = toBase64Url(JSON.stringify({ recipe, input }));
-    window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${HASH_PREFIX}${shared}`);
+    if (shared.length > MAX_SHARE_STATE_CHARS) {
+      setShareStateTooLarge(true);
+      safeReplaceState(`${window.location.pathname}${window.location.search}`);
+      return;
+    }
+    setShareStateTooLarge(false);
+    safeReplaceState(`${window.location.pathname}${window.location.search}${HASH_PREFIX}${shared}`);
   }, [autoBake, catalogQuery, input, recipe, timeoutMs, traceQuery, workerMaxQueue, workerPoolSize]);
 
   const filteredTrace = React.useMemo(() => {
@@ -262,12 +350,12 @@ export function App(): React.JSX.Element {
       setOutputPreviewSrc(presentation.previewSrc);
       setStatus("ready");
     } catch (e) {
-      const msg = e instanceof Error ? e.message : String(e);
-      if (msg === "Aborted") {
+      if (isCancellationError(e)) {
         setError(t("runCancelled"));
         setStatus("ready");
         return;
       }
+      const msg = e instanceof Error ? e.message : String(e);
       setError(msg);
       setStatus("error");
     }
@@ -296,34 +384,34 @@ export function App(): React.JSX.Element {
 
   React.useEffect(() => {
     const onKeyDown = (ev: KeyboardEvent) => {
-      if (ev.key === "Escape" && status === "working") {
-        ev.preventDefault();
-        cancelRun();
-      }
-      if ((ev.ctrlKey || ev.metaKey) && ev.key === "Enter") {
-        ev.preventDefault();
-        void run();
-      }
-      if ((ev.ctrlKey || ev.metaKey) && ev.key.toLowerCase() === "k") {
-        ev.preventDefault();
-        searchInputRef.current?.focus();
-        searchInputRef.current?.select();
-      }
-      if ((ev.ctrlKey || ev.metaKey) && ev.shiftKey && ev.key.toLowerCase() === "k") {
-        ev.preventDefault();
-        traceSearchInputRef.current?.focus();
-        traceSearchInputRef.current?.select();
-      }
+      handleGlobalShortcut({
+        event: ev,
+        status,
+        cancelRun,
+        run: () => void run(),
+        focusSearch: () => {
+          searchInputRef.current?.focus();
+          searchInputRef.current?.select();
+        },
+        focusTrace: () => {
+          traceSearchInputRef.current?.focus();
+          traceSearchInputRef.current?.select();
+        }
+      });
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [run, status]);
 
   async function shareLink(): Promise<void> {
+    if (shareStateTooLarge) {
+      setError(t("shareStateTooLarge"));
+      setStatus("error");
+      return;
+    }
     const url = `${window.location.origin}${window.location.pathname}${window.location.search}${window.location.hash}`;
-    try {
-      await navigator.clipboard.writeText(url);
-    } catch {
+    const copied = await copyText(url);
+    if (!copied) {
       setError(t("shareFailed"));
       setStatus("error");
     }
@@ -411,7 +499,7 @@ export function App(): React.JSX.Element {
       recipe,
       input,
       trace,
-      outputType: output.length > 0 ? "text" : "empty"
+      outputType: outputMeta?.outputType ?? "string"
     };
     const payload = JSON.stringify(bundle, null, 2);
     const copied = await copyText(payload);
@@ -422,7 +510,7 @@ export function App(): React.JSX.Element {
   }
 
   function resetWorkspace(): void {
-    if (!window.confirm(t("resetConfirm"))) return;
+    if (!safeConfirm(t("resetConfirm"))) return;
     setRecipe(emptyRecipe());
     setInput("");
     setOutput("");
@@ -446,19 +534,16 @@ export function App(): React.JSX.Element {
   }
 
   async function copyText(value: string): Promise<boolean> {
-    try {
-      await navigator.clipboard.writeText(value);
-      return true;
-    } catch {
-      return false;
-    }
+    const copied = await safeClipboardWriteText(value);
+    if (copied) return true;
+    return safePrompt(t("copyPrompt"), value) !== null;
   }
 
   async function exportNativeRecipe(): Promise<void> {
     const payload = stringifyRecipe(recipe);
     const copied = await copyText(payload);
     if (!copied) {
-      window.prompt(t("copyPrompt"), payload);
+      safePrompt(t("copyPrompt"), payload);
     }
   }
 
@@ -466,12 +551,12 @@ export function App(): React.JSX.Element {
     const payload = exportCyberChefRecipe(recipe);
     const copied = await copyText(payload);
     if (!copied) {
-      window.prompt(t("copyPrompt"), payload);
+      safePrompt(t("copyPrompt"), payload);
     }
   }
 
   function importAnyRecipe(): void {
-    const raw = window.prompt(t("importPrompt"), "");
+    const raw = safePrompt(t("importPrompt"), "");
     if (!raw) return;
     try {
       let parsed: Recipe;
@@ -692,6 +777,11 @@ export function App(): React.JSX.Element {
               percent: Math.round(queueSaturationRatio * 100),
               maxQueue: workerMaxQueue
             })}
+          </div>
+        ) : null}
+        {shareStateTooLarge ? (
+          <div className="warning" role="status" aria-live="polite">
+            {t("shareStateTooLarge")}
           </div>
         ) : null}
       </header>

@@ -19,6 +19,7 @@ The project targets deterministic behavior, parity tracking, and auditable CI/se
 - Current execution wave: `M50-M59`, with `M50-M58` completed in code, `M59` lifting tracked CyberChef parity to `472/465`, and the remaining `1.0.0` work focused on release cutover and publication validation.
 - Release track also includes container delivery: Docker image, smoke-tested `docker-compose.yml`, and GHCR publication on release tags.
 - `M51` runtime hardening is enforced in the shipped nginx config and verified during `pnpm docker:test`.
+- Workbench share links now drop oversized URL-hash state instead of emitting unstable links for very large recipe/input payloads.
 - GitHub milestones are extended through `M59` so release cutover stays behind parity evidence, container publication, and final governance checks.
 - `M50` performance gates are enforced through tested helper libraries behind `pnpm perf:assets`, `pnpm perf:check`, and `pnpm test:scripts`.
 - C-track snapshot:
@@ -56,7 +57,9 @@ Requirements:
 ```bash
 pnpm install
 pnpm dev
-docker compose up --build -d
+docker compose up -d
+# or build locally:
+docker compose --profile local up --build -d
 ```
 
 ## Core Commands

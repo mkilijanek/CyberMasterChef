@@ -11,6 +11,7 @@
   "autoBake": "Auto-bake",
   "shareLink": "Kopiuj link",
   "shareFailed": "Nie udało się skopiować linku",
+  "shareStateTooLarge": "Link współdzielenia wyłączony: receptura i wejście są zbyt duże dla stanu w URL",
   "cancel": "Anuluj",
   "runCancelled": "Uruchomienie anulowane",
   "exportRecipe": "Eksport receptury",

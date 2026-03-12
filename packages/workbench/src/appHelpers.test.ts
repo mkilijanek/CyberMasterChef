@@ -50,4 +50,17 @@ describe("App helpers", () => {
     window.location.hash = `#state=${toBase64Url(JSON.stringify({ recipe: { version: 2 }, input: 7 }))}`;
     expect(loadInitialState()).toEqual({ recipe: storedRecipe, input: "storage-input" });
   });
+
+  it("degrades gracefully when localStorage access throws", () => {
+    vi.stubGlobal("localStorage", {
+      getItem() {
+        throw new Error("storage-disabled");
+      },
+      setItem() {
+        throw new Error("storage-disabled");
+      }
+    });
+
+    expect(loadInitialState()).toEqual({ recipe: emptyRecipe(), input: "" });
+  });
 });

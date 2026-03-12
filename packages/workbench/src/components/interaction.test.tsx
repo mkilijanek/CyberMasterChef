@@ -53,6 +53,11 @@ describe("component interactions", () => {
     expect(nextValue).toEqual({ n: 7 });
 
     act(() => {
+      inputs[1]?.props.onChange({ target: { value: "" } });
+    });
+    expect(nextValue).toEqual({ n: 1 });
+
+    act(() => {
       inputs[2]?.props.onChange({ target: { checked: true } });
     });
     expect(nextValue).toEqual({ b: true });

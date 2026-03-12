@@ -620,7 +620,7 @@ describe("cli helpers", () => {
           expect.objectContaining({
             file: join(batchDir, "folder"),
             ok: false,
-            error: "Failed to read or process input file"
+            error: expect.stringContaining("Failed to read or process input file:")
           })
         ])
       );

@@ -65,6 +65,9 @@ Commit `pnpm-lock.yaml` to the repo for reproducible builds.
 - CLI integration tests run `src/main.ts` via `node --import tsx` to avoid IPC restrictions in sandboxed environments.
 - `packages/workbench/src/worker/runtime.test.ts` (worker protocol cancel/timeout/race)
 - `packages/workbench/src/worker/poolClient.test.ts` (pool queueing, worker assignment, priority)
+- Workbench cancellation is task-scoped: cancelling a run targets the requested or last-issued task instead of flushing every active slot.
+- Worker-pool retries pass through the same queue-capacity discipline as first-pass enqueue.
+- Persistence/share UX degrades safely when `localStorage`, clipboard, prompt/confirm, or `history.replaceState` are restricted by the environment.
 - E2E Playwright:
   - `e2e/workbench.spec.ts` (import, run-to-step, share link, timeout config persistence)
   - `e2e/workbench-negative.spec.ts` (invalid import, no-compatible-import, empty-search states)
@@ -150,6 +153,7 @@ CLI behavior:
 - `--batch-fail-empty` treats empty input files as explicit per-file errors.
 - `--batch-fail-fast` stops processing on first failed file.
 - `--batch-continue-on-error` keeps processing despite per-file failures.
+- Batch error rows preserve the original read/process failure message after a stable `Failed to read or process input file:` prefix.
 - `--list-ops` prints available operation IDs/names and exits.
 - `--list-ops-json` prints full operation metadata as JSON and exits.
 - `--list-ops-filter <query>` filters both list outputs by ID/name/description.

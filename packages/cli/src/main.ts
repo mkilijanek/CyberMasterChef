@@ -19,6 +19,7 @@ import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import pkg from "../package.json";
 import { describeOutput, type OutputMetadata } from "./outputMeta.js";
+import { randomUuid } from "./randomUuid.js";
 
 const DEFAULT_TIMEOUT_MS = 10_000;
 
@@ -671,7 +672,7 @@ async function executeOne(rawInput: string): Promise<{
   const rendered = renderOutput(res.output, opts);
   const outputMeta = describeOutput(res.output, rendered);
   const reproBundle = {
-    runId: crypto.randomUUID(),
+    runId: randomUuid(),
     startedAt,
     endedAt: startedAt + elapsed,
     durationMs: elapsed,
@@ -764,13 +765,14 @@ if (opts.batchInputDir) {
         recipeHash: run.reproBundle.recipeHash,
         inputHash: run.reproBundle.inputHash
       };
-    } catch {
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : String(error);
       return {
         file: filePath,
         ok: false,
         durationMs: 0,
         outputType: "string",
-        error: "Failed to read or process input file"
+        error: `Failed to read or process input file: ${detail}`
       };
     }
   }

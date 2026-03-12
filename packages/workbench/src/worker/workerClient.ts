@@ -1,6 +1,7 @@
 import type { DataValue, Recipe } from "@cybermasterchef/core";
 import type { WorkerRequest, WorkerResponse } from "./protocol";
 import type { ExecutionClient } from "./clientTypes";
+import { randomUuid } from "./randomUuid";
 
 export class SandboxClient implements ExecutionClient {
   private readonly worker: Worker;
@@ -86,7 +87,7 @@ export class SandboxClient implements ExecutionClient {
   }> {
     if (this.disposed) throw new Error("SandboxClient is disposed");
     await this.init();
-    const id = crypto.randomUUID();
+    const id = randomUuid();
     this.activeId = id;
     return await new Promise((resolve, reject) => {
       this.pending.set(id, { resolve, reject });
@@ -102,9 +103,9 @@ export class SandboxClient implements ExecutionClient {
     });
   }
 
-  cancelActive(): void {
-    if (!this.activeId) return;
-    const id = this.activeId;
+  cancelActive(taskId?: string): void {
+    const id = taskId ?? this.activeId;
+    if (!id || this.activeId !== id) return;
     const req: WorkerRequest = { type: "cancel", id };
     this.worker.postMessage(req);
   }

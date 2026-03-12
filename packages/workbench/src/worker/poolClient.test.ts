@@ -44,6 +44,7 @@ class FakeClient implements ExecutionClient {
 
 class ControlledClient implements ExecutionClient {
   public readonly order: string[] = [];
+  public readonly cancelledTaskIds: string[] = [];
   private releaseCurrent: (() => void) | null = null;
   async init(): Promise<void> {}
   async bake(recipe: Recipe, input: DataValue): Promise<BakeResult> {
@@ -58,7 +59,9 @@ class ControlledClient implements ExecutionClient {
     this.releaseCurrent?.();
     this.releaseCurrent = null;
   }
-  cancelActive(): void {}
+  cancelActive(taskId?: string): void {
+    if (taskId) this.cancelledTaskIds.push(taskId);
+  }
   dispose(): void {}
 }
 
@@ -80,6 +83,40 @@ class RejectingClient implements ExecutionClient {
   async init(): Promise<void> {}
   bake(): Promise<BakeResult> {
     return Promise.reject(new Error("Aborted"));
+  }
+  cancelActive(): void {}
+  dispose(): void {}
+}
+
+class CountingInitClient implements ExecutionClient {
+  public initCalls = 0;
+  async init(): Promise<void> {
+    this.initCalls += 1;
+    await new Promise((resolve) => setTimeout(resolve, 5));
+  }
+  async bake(): Promise<BakeResult> {
+    return makeResult("init-ok");
+  }
+  cancelActive(): void {}
+  dispose(): void {}
+}
+
+class RetryCapacityClient implements ExecutionClient {
+  public releaseBlocker: (() => void) | null = null;
+  private retried = false;
+  async init(): Promise<void> {}
+  async bake(_recipe: Recipe, input: DataValue): Promise<BakeResult> {
+    const marker = input.type === "string" ? input.value : "";
+    if (marker === "retry" && !this.retried) {
+      this.retried = true;
+      throw new Error("Transient failure");
+    }
+    if (marker === "blocker") {
+      await new Promise<void>((resolve) => {
+        this.releaseBlocker = resolve;
+      });
+    }
+    return makeResult(`run-${marker}`);
   }
   cancelActive(): void {}
   dispose(): void {}
@@ -149,8 +186,33 @@ describe("WorkerPoolClient", () => {
     pool.cancelActive();
     controlled.release();
 
-    await expect(queued).rejects.toThrow("Cancelled while waiting in queue");
+    await expect(queued).rejects.toThrow("Cancelled queued task:");
     await expect(running).resolves.toBeTruthy();
+  });
+
+  it("cancels only the targeted active task instead of every slot", async () => {
+    const first = new ControlledClient();
+    const second = new ControlledClient();
+    let created = 0;
+    const pool = new WorkerPoolClient({
+      size: 2,
+      clientFactory: () => (created++ === 0 ? first : second)
+    });
+    const recipe: Recipe = { version: 1, steps: [] };
+
+    const runningA = await pool.enqueue(recipe, { type: "string", value: "running-a" });
+    const runningB = await pool.enqueue(recipe, { type: "string", value: "running-b" });
+
+    await new Promise((r) => setTimeout(r, 5));
+    pool.cancelActive(runningA.taskId);
+
+    expect(first.cancelledTaskIds).toEqual([runningA.taskId]);
+    expect(second.cancelledTaskIds).toEqual([]);
+
+    first.release();
+    second.release();
+    await expect(runningA.result).resolves.toBeTruthy();
+    await expect(runningB.result).resolves.toBeTruthy();
   });
 
   it("rejects enqueue when queue limit is exceeded", async () => {
@@ -189,7 +251,7 @@ describe("WorkerPoolClient", () => {
     await expect(overflow).rejects.toThrow("Worker queue limit exceeded (1)");
     pool.cancelActive();
     controlled.release();
-    await expect(queued).rejects.toThrow("Cancelled while waiting in queue");
+    await expect(queued).rejects.toThrow("Cancelled queued task:");
     await expect(running).resolves.toBeTruthy();
   });
 
@@ -246,6 +308,35 @@ describe("WorkerPoolClient", () => {
     expect(delays).toEqual([10]);
   });
 
+  it("rejects retry when queue is already at capacity", async () => {
+    const retryCallbacks: Array<() => void> = [];
+    const client = new RetryCapacityClient();
+    const pool = new WorkerPoolClient({
+      size: 1,
+      maxQueue: 1,
+      maxAttempts: 2,
+      clientFactory: () => client,
+      shouldRetry: () => true,
+      scheduleRetry: (fn) => {
+        retryCallbacks.push(fn);
+      }
+    });
+    const recipe: Recipe = { version: 1, steps: [] };
+
+    const retrying = pool.bake(recipe, { type: "string", value: "retry" });
+    await new Promise((resolve) => setTimeout(resolve, 5));
+    const blocking = pool.bake(recipe, { type: "string", value: "blocker" });
+    const queued = pool.bake(recipe, { type: "string", value: "queued" });
+
+    await new Promise((resolve) => setTimeout(resolve, 5));
+    retryCallbacks[0]?.();
+
+    await expect(retrying).rejects.toThrow("Worker queue limit exceeded (1) during retry");
+    client.releaseBlocker?.();
+    await expect(blocking).resolves.toBeTruthy();
+    await expect(queued).resolves.toBeTruthy();
+  });
+
   it("reports stats, dispose rejects queued work, and init rejects after dispose", async () => {
     const controlled = new ControlledClient();
     const pool = new WorkerPoolClient({
@@ -270,6 +361,22 @@ describe("WorkerPoolClient", () => {
     await expect(queued.result).rejects.toThrow("Worker pool disposed");
     await expect(running.result).resolves.toBeTruthy();
     await expect(pool.init()).rejects.toThrow("WorkerPoolClient is disposed");
+  });
+
+  it("deduplicates concurrent init calls across enqueue requests", async () => {
+    const client = new CountingInitClient();
+    const pool = new WorkerPoolClient({
+      size: 1,
+      clientFactory: () => client
+    });
+    const recipe: Recipe = { version: 1, steps: [] };
+
+    const first = pool.enqueue(recipe, { type: "string", value: "a" });
+    const second = pool.enqueue(recipe, { type: "string", value: "b" });
+    const third = pool.enqueue(recipe, { type: "string", value: "c" });
+
+    await Promise.all([first, second, third]);
+    expect(client.initCalls).toBe(1);
   });
 
   it("does not retry aborted errors when retry policy rejects them", async () => {

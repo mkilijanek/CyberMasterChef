@@ -1,6 +1,8 @@
 import type { DataValue, Recipe } from "@cybermasterchef/core";
 import type { BakeResult, ExecutionClient } from "./clientTypes";
+import { isCancellationError } from "./cancellation";
 import { SandboxClient } from "./workerClient";
+import { randomUuid } from "./randomUuid";
 
 type QueueTask = {
   id: string;
@@ -23,7 +25,7 @@ type WorkerSlot = {
 };
 
 function nextTaskId(): string {
-  return crypto.randomUUID();
+  return randomUuid();
 }
 
 export class WorkerPoolClient implements ExecutionClient {
@@ -39,6 +41,8 @@ export class WorkerPoolClient implements ExecutionClient {
   private maxQueueDepthObserved = 0;
   private queueOverflowCount = 0;
   private disposed = false;
+  private initPromise: Promise<void> | null = null;
+  private lastIssuedTaskId: string | null = null;
 
   constructor(opts?: {
     size?: number;
@@ -58,7 +62,7 @@ export class WorkerPoolClient implements ExecutionClient {
       opts?.shouldRetry ??
       ((error) => {
         const msg = error instanceof Error ? error.message : String(error);
-        return !/aborted|cancel|disposed|queue limit/i.test(msg);
+        return !isCancellationError(error) && !/disposed|queue limit/i.test(msg);
       });
     this.retryBaseDelayMs = Math.max(0, Math.floor(opts?.retryBaseDelayMs ?? 25));
     this.retryMaxDelayMs = Math.max(this.retryBaseDelayMs, Math.floor(opts?.retryMaxDelayMs ?? 1000));
@@ -75,7 +79,15 @@ export class WorkerPoolClient implements ExecutionClient {
 
   async init(): Promise<void> {
     if (this.disposed) throw new Error("WorkerPoolClient is disposed");
-    await Promise.all(this.slots.map((s) => s.client.init()));
+    if (!this.initPromise) {
+      this.initPromise = Promise.all(this.slots.map((s) => s.client.init()))
+        .then(() => undefined)
+        .catch((error) => {
+          this.initPromise = null;
+          throw error;
+        });
+    }
+    await this.initPromise;
   }
 
   async bake(
@@ -95,6 +107,7 @@ export class WorkerPoolClient implements ExecutionClient {
     await this.init();
     const priority = opts?.priority ?? "normal";
     const taskId = nextTaskId();
+    let accepted = false;
     const result = new Promise<BakeResult>((resolve, reject) => {
       if (this.queue.length >= this.maxQueue) {
         this.queueOverflowCount++;
@@ -118,19 +131,23 @@ export class WorkerPoolClient implements ExecutionClient {
       } else {
         this.queue.push(task);
       }
+      accepted = true;
       this.maxQueueDepthObserved = Math.max(this.maxQueueDepthObserved, this.queue.length);
       this.pumpQueue();
     });
+    if (accepted) this.lastIssuedTaskId = taskId;
     return { taskId, result };
   }
 
-  cancelActive(): void {
+  cancelActive(taskId?: string): void {
+    const targetTaskId = taskId ?? this.lastIssuedTaskId;
+    if (!targetTaskId) return;
+    if (this.cancelQueued(targetTaskId)) return;
     for (const slot of this.slots) {
-      if (slot.busy) slot.client.cancelActive();
-    }
-    while (this.queue.length > 0) {
-      const task = this.queue.shift();
-      task?.reject(new Error("Cancelled while waiting in queue"));
+      if (slot.busy && slot.activeTaskId === targetTaskId) {
+        slot.client.cancelActive(targetTaskId);
+        return;
+      }
     }
   }
 
@@ -161,6 +178,8 @@ export class WorkerPoolClient implements ExecutionClient {
   dispose(): void {
     if (this.disposed) return;
     this.disposed = true;
+    this.initPromise = null;
+    this.lastIssuedTaskId = null;
     for (const slot of this.slots) {
       slot.client.dispose();
     }
@@ -213,6 +232,11 @@ export class WorkerPoolClient implements ExecutionClient {
           };
           const retryDelayMs = this.nextRetryDelayMs(retryTask.attempt);
           this.scheduleRetry(() => {
+            if (this.queue.length >= this.maxQueue) {
+              this.queueOverflowCount++;
+              task.reject(new Error(`Worker queue limit exceeded (${this.maxQueue}) during retry`));
+              return;
+            }
             this.queue.unshift(retryTask);
             this.maxQueueDepthObserved = Math.max(this.maxQueueDepthObserved, this.queue.length);
             this.pumpQueue();

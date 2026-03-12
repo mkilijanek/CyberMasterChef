@@ -61,7 +61,7 @@ vi.mock("./worker/poolClient", () => {
   return { WorkerPoolClient };
 });
 
-import { App, toBase64Url } from "./App";
+import { App, handleGlobalShortcut, toBase64Url } from "./App";
 
 function makeBakeResult(overrides?: Partial<BakeResult>): BakeResult {
   return {
@@ -281,8 +281,8 @@ describe("App behavior", () => {
   it("handles share/import/export/reset error flows", async () => {
     bakeMock.mockResolvedValue(makeBakeResult());
     clipboardWriteText.mockRejectedValueOnce(new Error("copy-failed"));
-    clipboardWriteText.mockRejectedValueOnce(new Error("copy-failed"));
     promptMock
+      .mockReturnValueOnce("manual-copy")
       .mockReturnValueOnce("not-json")
       .mockReturnValueOnce(JSON.stringify({ version: 1, steps: [{ opId: "codec.toHex" }] }))
       .mockReturnValueOnce("manual-copy")
@@ -298,7 +298,7 @@ describe("App behavior", () => {
       findByTestId(root, "share-link-button").props.onClick();
       return flushPromises();
     });
-    expect(flattenText(root.toJSON())).toContain("Error: Could not copy link");
+    expect(flattenText(root.toJSON())).not.toContain("Error: Could not copy link");
 
     await act(() => {
       findByTestId(root, "import-recipe-button").props.onClick();
@@ -398,6 +398,31 @@ describe("App behavior", () => {
     });
   });
 
+  it("prioritizes Ctrl/Cmd+Shift+K over Ctrl/Cmd+K", async () => {
+    const searchFocus = vi.fn();
+    const traceFocus = vi.fn();
+    const preventDefault = vi.fn();
+
+    handleGlobalShortcut({
+      event: {
+        key: "K",
+        ctrlKey: true,
+        metaKey: false,
+        shiftKey: true,
+        preventDefault
+      } as unknown as KeyboardEvent,
+      status: "ready",
+      cancelRun: vi.fn(),
+      run: vi.fn(),
+      focusSearch: searchFocus,
+      focusTrace: traceFocus
+    });
+
+    expect(preventDefault).toHaveBeenCalledTimes(1);
+    expect(traceFocus).toHaveBeenCalledTimes(1);
+    expect(searchFocus).not.toHaveBeenCalled();
+  });
+
   it("loads shared hash state into the app", async () => {
     const recipe = { version: 1, steps: [{ opId: "codec.toHex" }] };
     window.location.hash = `#state=${toBase64Url(JSON.stringify({ recipe, input: "hash-input" }))}`;
@@ -467,6 +492,34 @@ describe("App behavior", () => {
     });
     expect(localStorageState.get("traceQuery.v1")).toBe("");
     expect(flattenText(root.toJSON())).not.toContain("No trace rows match this filter");
+  });
+
+  it("removes oversized share state from URL and blocks share-link copy", async () => {
+    localStorageState.set(
+      "input.v1",
+      "x".repeat(5000)
+    );
+
+    let root!: ReturnType<typeof create>;
+    await act(async () => {
+      root = create(<App />);
+      await flushPromises();
+    });
+
+    expect(replaceStateMock).toHaveBeenCalledWith(null, "", "/");
+    expect(flattenText(root.toJSON())).toContain(
+      "Share link disabled: recipe and input are too large for URL state"
+    );
+
+    await act(() => {
+      findByTestId(root, "share-link-button").props.onClick();
+      return flushPromises();
+    });
+
+    expect(clipboardWriteText).not.toHaveBeenCalled();
+    expect(flattenText(root.toJSON())).toContain(
+      "Error: Share link disabled: recipe and input are too large for URL state"
+    );
   });
 
   it("imports CyberChef recipes with warnings", async () => {

@@ -31,6 +31,6 @@ export interface ExecutionClient {
     input: DataValue,
     opts?: { timeoutMs?: number; priority?: "normal" | "high" }
   ): Promise<BakeResult>;
-  cancelActive(): void;
+  cancelActive(taskId?: string): void;
   dispose(): void;
 }
