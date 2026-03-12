@@ -24,7 +24,7 @@ flowchart TD
 1. `M50`: performance and scale 1.0 gates
    - Status: `DONE-IN-CODE`
    - Issue: `#74`
-   - stabilized benchmark, asset, and CI perf gates against current build output; asset baselines refreshed to `1050000` bytes for `sandbox.worker.js` and `1110000` bytes for `vendor.js`, Actions forced onto `Node 24`, and perf helpers moved behind targeted script tests with full changed-file coverage
+   - stabilized benchmark, asset, and CI perf gates against current build output; asset baselines refreshed to `1125000` bytes for `sandbox.worker.js` and `1140000` bytes for `vendor.js`, Actions forced onto `Node 24`, and perf helpers moved behind targeted script tests with full changed-file coverage
 2. `M51`: security hardening final wave
    - Status: `DONE-IN-CODE`
    - Issue: `#75`
@@ -72,7 +72,7 @@ flowchart TD
   - `misc-uncategorized`: `96/117`
 - Release blockers entering this wave:
   - release sequencing must move behind the remaining parity closure, not ahead of it
-  - performance/security/docs evidence needs to stay current with each parity wave, even after `M50` closed in code; current asset budget baseline is `1110000` for `sandbox.worker.js` and `1140000` for `vendor.js`
+  - performance/security/docs evidence needs to stay current with each parity wave, even after `M50` closed in code; current asset budget baseline is `1125000` for `sandbox.worker.js` and `1140000` for `vendor.js`
   - GitHub milestone/issue tracking must expand from `M53` to `M59`
 
 ## Exit Criteria
