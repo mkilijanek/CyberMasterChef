@@ -338,6 +338,8 @@ import { fletcher64Checksum } from "./ops/fletcher64.js";
 import { xorChecksumOp } from "./ops/xorChecksum.js";
 import { tcpIpChecksumOp } from "./ops/tcpIpChecksum.js";
 import { luhnChecksumOp } from "./ops/luhnChecksum.js";
+import { murmurHash3Op } from "./ops/murmurHash3.js";
+import { generateAllChecksumsOp } from "./ops/generateAllChecksums.js";
 import { analyseHash } from "./ops/analyseHash.js";
 import { hashMd5 } from "./ops/hashMd5.js";
 import { md4 } from "./ops/md4.js";
@@ -728,6 +730,8 @@ export const standardPlugin: Plugin = {
     registry.register(xorChecksumOp);
     registry.register(tcpIpChecksumOp);
     registry.register(luhnChecksumOp);
+    registry.register(murmurHash3Op);
+    registry.register(generateAllChecksumsOp);
     registry.register(analyseHash);
     registry.register(hashMd5);
     registry.register(md4);

@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 384
+Total contracts: 386
 
 ## Contract entries (compact)
 
@@ -1132,6 +1132,13 @@ Total contracts: 384
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.generateAllChecksums
+  - name: Generate All Checksums
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.keccak
   - name: Keccak
   - domain: crypto-hash-kdf
@@ -1155,6 +1162,13 @@ Total contracts: 384
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.md5
   - name: MD5
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.murmurHash3
+  - name: MurmurHash3
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string

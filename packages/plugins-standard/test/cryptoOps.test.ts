@@ -10,6 +10,8 @@ import { fletcher64Checksum } from "../src/ops/fletcher64.js";
 import { xorChecksumOp } from "../src/ops/xorChecksum.js";
 import { tcpIpChecksumOp } from "../src/ops/tcpIpChecksum.js";
 import { luhnChecksumOp } from "../src/ops/luhnChecksum.js";
+import { murmurHash3Op } from "../src/ops/murmurHash3.js";
+import { generateAllChecksumsOp } from "../src/ops/generateAllChecksums.js";
 import { analyseHash } from "../src/ops/analyseHash.js";
 import { atbashCipher } from "../src/ops/atbashCipher.js";
 import { affineCipherEncode } from "../src/ops/affineCipherEncode.js";
@@ -154,6 +156,45 @@ describe("crypto operations", () => {
       input: { type: "string", value: "A1" }
     });
     expect(hexadecimal.output).toEqual({ type: "string", value: "4" });
+  });
+
+  it("computes MurmurHash3 and aggregate checksums", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(murmurHash3Op);
+    registry.register(generateAllChecksumsOp);
+
+    const murmur = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.murmurHash3" }] },
+      input: { type: "string", value: "hello" }
+    });
+    expect(murmur.output).toEqual({ type: "string", value: "248bfa47" });
+
+    const murmurTail3 = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.murmurHash3" }] },
+      input: { type: "string", value: "abc" }
+    });
+    expect(murmurTail3.output).toEqual({ type: "string", value: "b3dd93fa" });
+
+    const aggregate = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.generateAllChecksums" }] },
+      input: { type: "string", value: "abc" }
+    });
+    expect(aggregate.output.type).toBe("json");
+    if (aggregate.output.type !== "json") return;
+    expect(aggregate.output.value).toMatchObject({
+      adler32: "024d0127",
+      crc32: "352441c2",
+      crc64: "2cd8094a1a277627",
+      fletcher16: "4c27",
+      xorChecksum: "60",
+      tcpIpChecksum: "3b9d",
+      md5: "900150983cd24fb0d6963f7d28e17f72",
+      sha1: "a9993e364706816aba3e25717850c26c9cd0d89d",
+      sha256: "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+    });
   });
 
   it("analyses hash candidates", async () => {
@@ -412,6 +453,12 @@ describe("crypto operations", () => {
     expect(() =>
       luhnChecksumOp.run({ input: { type: "string", value: "G" }, args: { radix: 16 } })
     ).toThrow("Input contains characters outside radix 16");
+    expect(() =>
+      murmurHash3Op.run({ input: { type: "json", value: {} } as never, args: {} })
+    ).toThrow("Expected bytes or string input");
+    await expect(
+      generateAllChecksumsOp.run({ input: { type: "json", value: {} } as never, args: {} })
+    ).rejects.toThrow("Expected bytes or string input");
     await expect(
       crc64Checksum.run({ input: { type: "json", value: {} } as never, args: {} })
     ).rejects.toThrow("Expected bytes or string input");

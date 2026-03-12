@@ -1,12 +1,12 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 384
+Implemented operations in repo: 386
 
 ## Priority order
 
 - P1: forensic-malware-helper (coverage 58.82%, missing ~7)
-- P2: crypto-hash-kdf (coverage 62%, missing ~38)
+- P2: crypto-hash-kdf (coverage 64%, missing ~36)
 - P3: network-protocol-parsers (coverage 71.79%, missing ~11)
 - P4: misc-uncategorized (coverage 82.91%, missing ~20)
 
@@ -55,10 +55,10 @@ Implemented operations in repo: 384
 ### crypto-hash-kdf
 - Description: Cryptographic transforms, digests, MAC/KDF and cipher operations.
 - CyberChef total: 100
-- Implemented total: 62
-- Estimated missing: 38
-- Coverage: 62%
-- Implemented ops in repo: 62
+- Implemented total: 64
+- Estimated missing: 36
+- Coverage: 64%
+- Implemented ops in repo: 64
 - Implemented operation IDs:
   - text.includes (includesText.ts)
   - text.removeHashes (removeHashes.ts)
@@ -78,8 +78,8 @@ Implemented operations in repo: 384
   - hash.xorChecksum (xorChecksum.ts)
   - hash.tcpIpChecksum (tcpIpChecksum.ts)
   - hash.luhnChecksum (luhnChecksum.ts)
-  - hash.analyseHash (analyseHash.ts)
-  - hash.md5 (hashMd5.ts)
+  - hash.murmurHash3 (murmurHash3.ts)
+  - hash.generateAllChecksums (generateAllChecksums.ts)
 - Candidate operations (first 20):
   - a (AffineCipherDecode.mjs) [high]
   - a (AffineCipherEncode.mjs) [high]

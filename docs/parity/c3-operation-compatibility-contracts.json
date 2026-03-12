@@ -5141,6 +5141,31 @@
     }
   },
   {
+    "operationId": "hash.generateAllChecksums",
+    "name": "Generate All Checksums",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/generateAllChecksums.ts",
+      "description": "Generates a deterministic checksum and digest summary for the input."
+    }
+  },
+  {
     "operationId": "hash.keccak",
     "name": "Keccak",
     "domain": "crypto-hash-kdf",
@@ -5253,6 +5278,38 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/hashMd5.ts",
       "description": "Computes MD5 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.murmurHash3",
+    "name": "MurmurHash3",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "seed",
+        "type": "number",
+        "label": "Seed",
+        "defaultValue": "0"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/murmurHash3.ts",
+      "description": "Computes MurmurHash3 x86 32-bit digest. Output is lowercase hex string."
     }
   },
   {

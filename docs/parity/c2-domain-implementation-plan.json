@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 384
+    "implementedOpsCount": 386
   },
   "summary": [
     {
@@ -366,9 +366,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 100,
-      "implementedTotal": 62,
-      "missingEstimated": 38,
-      "coveragePct": 62,
+      "implementedTotal": 64,
+      "missingEstimated": 36,
+      "coveragePct": 64,
       "implementedOps": [
         {
           "id": "text.includes",
@@ -459,6 +459,16 @@
           "id": "hash.luhnChecksum",
           "name": "Luhn Checksum",
           "file": "luhnChecksum.ts"
+        },
+        {
+          "id": "hash.murmurHash3",
+          "name": "MurmurHash3",
+          "file": "murmurHash3.ts"
+        },
+        {
+          "id": "hash.generateAllChecksums",
+          "name": "Generate All Checksums",
+          "file": "generateAllChecksums.ts"
         },
         {
           "id": "hash.analyseHash",
@@ -2824,8 +2834,8 @@
     {
       "priority": 2,
       "domain": "crypto-hash-kdf",
-      "coveragePct": 62,
-      "missingEstimated": 38
+      "coveragePct": 64,
+      "missingEstimated": 36
     },
     {
       "priority": 3,

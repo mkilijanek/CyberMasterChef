@@ -1622,6 +1622,15 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "hash.generateAllChecksums",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
     "operationId": "hash.keccak",
     "inputTypes": [
       "bytes",
@@ -1659,6 +1668,17 @@ const CONTRACTS = [
     ],
     "outputType": "string",
     "argKeys": []
+  },
+  {
+    "operationId": "hash.murmurHash3",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "seed"
+    ]
   },
   {
     "operationId": "hash.ripemd160",
