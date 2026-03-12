@@ -1633,6 +1633,16 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "hash.luhnChecksum",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "radix"
+    ]
+  },
+  {
     "operationId": "hash.md4",
     "inputTypes": [
       "bytes",
@@ -1732,7 +1742,25 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "hash.tcpIpChecksum",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "hash.whirlpool",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "hash.xorChecksum",
     "inputTypes": [
       "bytes",
       "string"
