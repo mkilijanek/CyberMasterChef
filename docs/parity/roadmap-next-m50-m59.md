@@ -72,7 +72,7 @@ flowchart TD
   - `misc-uncategorized`: `96/117`
 - Release blockers entering this wave:
   - release sequencing must move behind the remaining parity closure, not ahead of it
-  - performance/security/docs evidence needs to stay current with each parity wave, even after `M50` closed in code
+  - performance/security/docs evidence needs to stay current with each parity wave, even after `M50` closed in code; current asset budget baseline is `1110000` for `sandbox.worker.js` and `1140000` for `vendor.js`
   - GitHub milestone/issue tracking must expand from `M53` to `M59`
 
 ## Exit Criteria
