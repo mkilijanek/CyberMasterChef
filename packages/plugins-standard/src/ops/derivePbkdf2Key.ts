@@ -39,5 +39,5 @@ export const derivePbkdf2Key: Operation = {
       defaultValue: "SHA-256"
     }
   ],
-  run: pbkdf2.run
+  run: (ctx) => pbkdf2.run(ctx)
 };

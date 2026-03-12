@@ -8,5 +8,5 @@ export const argon2Compare: Operation = {
   input: ["bytes", "string"],
   output: "json",
   args: [{ key: "hash", label: "Encoded Hash", type: "string", defaultValue: "" }],
-  run: argon2Verify.run
+  run: (ctx) => argon2Verify.run(ctx)
 };

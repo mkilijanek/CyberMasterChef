@@ -45,5 +45,5 @@ export const deriveHkdfKey: Operation = {
       defaultValue: "SHA-256"
     }
   ],
-  run: hkdf.run
+  run: (ctx) => hkdf.run(ctx)
 };

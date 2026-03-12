@@ -8,5 +8,5 @@ export const bcryptCompare: Operation = {
   input: ["bytes", "string"],
   output: "json",
   args: [{ key: "hash", label: "Bcrypt Hash", type: "string", defaultValue: "" }],
-  run: bcryptVerify.run
+  run: (ctx) => bcryptVerify.run(ctx)
 };
