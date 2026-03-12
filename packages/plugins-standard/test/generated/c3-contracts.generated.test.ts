@@ -872,6 +872,29 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "crypto.rc4",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": [
+      "passphrase"
+    ]
+  },
+  {
+    "operationId": "crypto.rc4Drop",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argKeys": [
+      "passphrase",
+      "drop"
+    ]
+  },
+  {
     "operationId": "crypto.scrypt",
     "inputTypes": [
       "bytes",
@@ -1755,7 +1778,24 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "hash.ntHash",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "hash.ripemd160",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "hash.sha0",
     "inputTypes": [
       "bytes",
       "string"
