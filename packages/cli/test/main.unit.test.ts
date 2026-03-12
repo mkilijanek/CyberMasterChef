@@ -606,24 +606,22 @@ describe("cli helpers", () => {
         error?: string;
       }>;
       expect(report).toHaveLength(3);
-      expect(report).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({
-            file: join(batchDir, "a.txt"),
-            ok: true,
-            error: "Skipped empty input file"
-          }),
-          expect.objectContaining({
-            file: join(batchDir, "b.txt"),
-            ok: true
-          }),
-          expect.objectContaining({
-            file: join(batchDir, "folder"),
-            ok: false,
-            error: expect.stringContaining("Failed to read or process input file:")
-          })
-        ])
-      );
+      expect(
+        report.some(
+          (entry) =>
+            entry.file === join(batchDir, "a.txt") &&
+            entry.ok &&
+            entry.error === "Skipped empty input file"
+        )
+      ).toBe(true);
+      expect(
+        report.some((entry) => entry.file === join(batchDir, "b.txt") && entry.ok)
+      ).toBe(true);
+      expect(
+        report.some((entry) => entry.file === join(batchDir, "folder") && !entry.ok)
+      ).toBe(true);
+      const folderEntry = report.find((entry) => entry.file === join(batchDir, "folder"));
+      expect(folderEntry?.error).toContain("Failed to read or process input file:");
 
       writeFileSync(join(batchDir, "0-empty.txt"), "", "utf-8");
       writeFileSync(join(batchDir, "1-ok.txt"), "abc", "utf-8");
