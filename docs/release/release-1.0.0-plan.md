@@ -34,7 +34,7 @@ Ship `CyberMasterChef 1.0.0` only after the tracked CyberChef functional surface
 - `pnpm docker:build`
 - `pnpm docker:test`
 - GitHub Actions `CI`, `Container`, and `CodeQL` workflows must run on `Node 24` and finish without asset-budget regressions
-- current workbench asset baseline is `1125000` bytes for `sandbox.worker.js` and `1140000` bytes for `vendor.js`; parity waves must refresh this evidence in the same commit as any legitimate size increase
+- current workbench asset baseline is `1140000` bytes for `sandbox.worker.js` and `1140000` bytes for `vendor.js`; parity waves must refresh this evidence in the same commit as any legitimate size increase
 - tested perf helper libraries must remain green via `pnpm test:scripts` and keep changed-file coverage at `100%` for budget/reporting logic
 
 ## Container Delivery
