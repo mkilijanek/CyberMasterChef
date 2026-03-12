@@ -21,6 +21,9 @@ const here = dirname(fileURLToPath(import.meta.url));
 const packageRoot = dirname(here);
 const repoRoot = dirname(dirname(packageRoot));
 const sourceEntry = join(packageRoot, "src", "main.ts");
+const packageVersion = (
+  JSON.parse(readFileSync(join(packageRoot, "package.json"), "utf-8")) as { version: string }
+).version;
 
 afterEach(() => {
   stdoutWrite.mockReset();
@@ -691,6 +694,6 @@ describe("cli helpers", () => {
     });
 
     expect(run.status).toBe(0);
-    expect(run.stdout.trim()).toMatch(/^0\.1\.0$/);
+    expect(run.stdout.trim()).toBe(packageVersion);
   });
 });

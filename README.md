@@ -116,6 +116,7 @@ pnpm docker:test
 - [Roadmap M34-M53](docs/parity/roadmap-next-m34-m53.md)
 - [Roadmap M50-M59](docs/parity/roadmap-next-m50-m59.md)
 - [Release 1.0.0 Plan](docs/release/release-1.0.0-plan.md)
+- [Release Notes 1.0.0](docs/release/release-notes-1.0.0.md)
 - [Release Evidence Checklist](docs/release/release-evidence-checklist.md)
 - [Container Delivery](docs/release/release-1.0.0-plan.md#container-delivery)
 - [Runtime Hardening](docs/security/runtime-hardening.md)

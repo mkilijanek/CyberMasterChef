@@ -33,6 +33,7 @@ Current parity checkpoint: `472` operations are implemented in repo, which puts 
 - [Performance Budget Report](perf/latest-benchmark-report.md)
 - [Release Train](release/release-train.md)
 - [Release 1.0.0 Plan](release/release-1.0.0-plan.md)
+- [Release Notes 1.0.0](release/release-notes-1.0.0.md)
 - [Release Evidence Checklist](release/release-evidence-checklist.md)
 - [Container Delivery](release/release-1.0.0-plan.md#container-delivery)
 - [Runtime Hardening](security/runtime-hardening.md)
