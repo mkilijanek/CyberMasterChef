@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 390
+Total contracts: 395
 
 ## Contract entries (compact)
 
@@ -488,6 +488,27 @@ Total contracts: 390
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.bifidCipherDecode
+  - name: Bifid Cipher Decode
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.bifidCipherEncode
+  - name: Bifid Cipher Encode
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.caesarBoxCipher
+  - name: Caesar Box Cipher
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - crypto.hkdf
   - name: HKDF
   - domain: crypto-hash-kdf
@@ -558,6 +579,20 @@ Total contracts: 390
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.railFenceCipherDecode
+  - name: Rail Fence Cipher Decode
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.railFenceCipherEncode
+  - name: Rail Fence Cipher Encode
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - crypto.scrypt
   - name: scrypt
   - domain: crypto-hash-kdf

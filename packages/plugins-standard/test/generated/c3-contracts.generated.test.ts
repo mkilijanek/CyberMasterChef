@@ -693,6 +693,38 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "crypto.bifidCipherDecode",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "keyword",
+      "period"
+    ]
+  },
+  {
+    "operationId": "crypto.bifidCipherEncode",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "keyword",
+      "period"
+    ]
+  },
+  {
+    "operationId": "crypto.caesarBoxCipher",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "size"
+    ]
+  },
+  {
     "operationId": "crypto.hkdf",
     "inputTypes": [
       "bytes",
@@ -817,6 +849,26 @@ const CONTRACTS = [
       "iterations",
       "length",
       "hash"
+    ]
+  },
+  {
+    "operationId": "crypto.railFenceCipherDecode",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "rails"
+    ]
+  },
+  {
+    "operationId": "crypto.railFenceCipherEncode",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "rails"
     ]
   },
   {

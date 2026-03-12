@@ -21,6 +21,12 @@ import { a1z26CipherEncode } from "../src/ops/a1z26CipherEncode.js";
 import { a1z26CipherDecode } from "../src/ops/a1z26CipherDecode.js";
 import { baconCipherEncode } from "../src/ops/baconCipherEncode.js";
 import { baconCipherDecode } from "../src/ops/baconCipherDecode.js";
+import { caesarBoxCipher } from "../src/ops/caesarBoxCipher.js";
+import { railFenceCipherEncode } from "../src/ops/railFenceCipherEncode.js";
+import { railFenceCipherDecode } from "../src/ops/railFenceCipherDecode.js";
+import { bifidCipherEncode } from "../src/ops/bifidCipherEncode.js";
+import { bifidCipherDecode } from "../src/ops/bifidCipherDecode.js";
+import { createPolybiusSquare, bifidEncodeText, bifidDecodeText } from "../src/ops/polybiusUtils.js";
 import { bcrypt } from "../src/ops/bcrypt.js";
 import { bcryptParse } from "../src/ops/bcryptParse.js";
 import { bcryptVerify } from "../src/ops/bcryptVerify.js";
@@ -317,6 +323,144 @@ describe("crypto operations", () => {
       input: { type: "string", value: "abc" }
     });
     expect(out.output).toEqual({ type: "string", value: "ABC" });
+  });
+
+  it("applies Caesar box cipher", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(caesarBoxCipher);
+    const out = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "crypto.caesarBoxCipher", args: { size: 4 } }] },
+      input: { type: "string", value: "WEAREDISCOVERED" }
+    });
+    expect(out.output).toEqual({ type: "string", value: "WECREDOEAIVDRSEX" });
+
+    const defaultSize = await caesarBoxCipher.run({
+      input: { type: "string", value: "ABCD" },
+      args: { size: "2" }
+    });
+    expect(defaultSize).toEqual({ type: "string", value: "ACBD" });
+
+    const empty = await caesarBoxCipher.run({
+      input: { type: "string", value: "" },
+      args: {}
+    });
+    expect(empty).toEqual({ type: "string", value: "" });
+  });
+
+  it("encodes and decodes rail fence cipher", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(railFenceCipherEncode);
+    registry.register(railFenceCipherDecode);
+    const encoded = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "crypto.railFenceCipherEncode", args: { rails: 3 } }] },
+      input: { type: "string", value: "WEAREDISCOVEREDFLEEATONCE" }
+    });
+    expect(encoded.output).toEqual({ type: "string", value: "WECRLTEERDSOEEFEAOCAIVDEN" });
+
+    const decoded = await runRecipe({
+      registry,
+      recipe: {
+        version: 1,
+        steps: [{ opId: "crypto.railFenceCipherDecode", args: { rails: "3" } }]
+      },
+      input: { type: "string", value: "WECRLTEERDSOEEFEAOCAIVDEN" }
+    });
+    expect(decoded.output).toEqual({ type: "string", value: "WEAREDISCOVEREDFLEEATONCE" });
+
+    const single = await railFenceCipherEncode.run({
+      input: { type: "string", value: "A" },
+      args: { rails: 3 }
+    });
+    expect(single).toEqual({ type: "string", value: "A" });
+
+    const directStringRail = await railFenceCipherEncode.run({
+      input: { type: "string", value: "HELLO" },
+      args: { rails: "3" }
+    });
+    expect(directStringRail).toEqual({ type: "string", value: "HOELL" });
+
+    const defaultRailsFromBlank = await railFenceCipherEncode.run({
+      input: { type: "string", value: "HELLO" },
+      args: { rails: " " }
+    });
+    expect(defaultRailsFromBlank).toEqual({ type: "string", value: "HOELL" });
+
+    const singleDecoded = await railFenceCipherDecode.run({
+      input: { type: "string", value: "A" },
+      args: { rails: 3 }
+    });
+    expect(singleDecoded).toEqual({ type: "string", value: "A" });
+  });
+
+  it("encodes and decodes bifid cipher", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(bifidCipherEncode);
+    registry.register(bifidCipherDecode);
+
+    const encoded = await runRecipe({
+      registry,
+      recipe: {
+        version: 1,
+        steps: [{ opId: "crypto.bifidCipherEncode", args: { keyword: "", period: 5 } }]
+      },
+      input: { type: "string", value: "FLEEATONCE" }
+    });
+    expect(encoded.output).toEqual({ type: "string", value: "HAAEVSLDSP" });
+
+    const decoded = await runRecipe({
+      registry,
+      recipe: {
+        version: 1,
+        steps: [{ opId: "crypto.bifidCipherDecode", args: { keyword: "", period: 5 } }]
+      },
+      input: { type: "string", value: "HAAEVSLDSP" }
+    });
+    expect(decoded.output).toEqual({ type: "string", value: "FLEEATONCE" });
+
+    const normalizedJ = await bifidCipherEncode.run({
+      input: { type: "string", value: "JIG" },
+      args: { keyword: "", period: "5" }
+    });
+    expect(normalizedJ).toEqual({ type: "string", value: "GIR" });
+
+    expect(createPolybiusSquare("JIGGLE")).toEqual([
+      "I",
+      "G",
+      "L",
+      "E",
+      "A",
+      "B",
+      "C",
+      "D",
+      "F",
+      "H",
+      "K",
+      "M",
+      "N",
+      "O",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "U",
+      "V",
+      "W",
+      "X",
+      "Y",
+      "Z"
+    ]);
+    expect(createPolybiusSquare(42)).toHaveLength(25);
+    expect(bifidEncodeText("123", "", 5)).toBe("");
+    expect(bifidDecodeText("", "", 5)).toBe("");
+    expect(bifidEncodeText("FLEEATONCE", "", " ")).toBe("HAAEVSLDSP");
+    expect(bifidDecodeText("HAAEVSLDSP", "", "5")).toBe("FLEEATONCE");
+    expect(bifidDecodeText("HAAEVSLDSP", "", " ")).toBe("FLEEATONCE");
+    expect(() => bifidDecodeText("ABC", "", "1")).toThrow(
+      "Period must be an integer greater than or equal to 2"
+    );
   });
 
   it("parses bcrypt hash", async () => {
@@ -685,6 +829,48 @@ describe("crypto operations", () => {
     await expect(
       sha3.run({ input: { type: "json", value: {} } as never, args: {} })
     ).rejects.toThrow("Expected bytes or string input");
+    expect(() =>
+      caesarBoxCipher.run({ input: { type: "bytes", value: new Uint8Array() } as never, args: {} })
+    ).toThrow("Expected string input");
+    expect(() =>
+      caesarBoxCipher.run({ input: { type: "string", value: "abc" }, args: { size: 1 } })
+    ).toThrow("Size must be an integer greater than or equal to 2");
+    expect(() =>
+      railFenceCipherEncode.run({
+        input: { type: "string", value: "abc" },
+        args: { rails: 1 }
+      })
+    ).toThrow("Rails must be an integer greater than or equal to 2");
+    expect(() =>
+      railFenceCipherEncode.run({
+        input: { type: "bytes", value: new Uint8Array() } as never,
+        args: { rails: 3 }
+      })
+    ).toThrow("Expected string input");
+    expect(() =>
+      railFenceCipherDecode.run({
+        input: { type: "bytes", value: new Uint8Array() } as never,
+        args: { rails: 3 }
+      })
+    ).toThrow("Expected string input");
+    expect(() =>
+      bifidCipherEncode.run({
+        input: { type: "bytes", value: new Uint8Array() } as never,
+        args: { keyword: "", period: 5 }
+      })
+    ).toThrow("Expected string input");
+    expect(() =>
+      bifidCipherEncode.run({
+        input: { type: "string", value: "abc" },
+        args: { keyword: "J", period: 1 }
+      })
+    ).toThrow("Period must be an integer greater than or equal to 2");
+    expect(() =>
+      bifidCipherDecode.run({
+        input: { type: "bytes", value: new Uint8Array() } as never,
+        args: { keyword: "", period: 5 }
+      })
+    ).toThrow("Expected string input");
   });
 
   it("computes new hashes for byte input", async () => {

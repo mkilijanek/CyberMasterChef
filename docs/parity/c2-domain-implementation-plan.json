@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 390
+    "implementedOpsCount": 395
   },
   "summary": [
     {
@@ -366,9 +366,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 100,
-      "implementedTotal": 68,
-      "missingEstimated": 32,
-      "coveragePct": 68,
+      "implementedTotal": 73,
+      "missingEstimated": 27,
+      "coveragePct": 73,
       "implementedOps": [
         {
           "id": "text.includes",
@@ -539,6 +539,31 @@
           "id": "crypto.baconCipherDecode",
           "name": "Bacon Cipher Decode",
           "file": "baconCipherDecode.ts"
+        },
+        {
+          "id": "crypto.caesarBoxCipher",
+          "name": "Caesar Box Cipher",
+          "file": "caesarBoxCipher.ts"
+        },
+        {
+          "id": "crypto.railFenceCipherEncode",
+          "name": "Rail Fence Cipher Encode",
+          "file": "railFenceCipherEncode.ts"
+        },
+        {
+          "id": "crypto.railFenceCipherDecode",
+          "name": "Rail Fence Cipher Decode",
+          "file": "railFenceCipherDecode.ts"
+        },
+        {
+          "id": "crypto.bifidCipherEncode",
+          "name": "Bifid Cipher Encode",
+          "file": "bifidCipherEncode.ts"
+        },
+        {
+          "id": "crypto.bifidCipherDecode",
+          "name": "Bifid Cipher Decode",
+          "file": "bifidCipherDecode.ts"
         },
         {
           "id": "crypto.bcrypt",
@@ -2853,15 +2878,15 @@
     },
     {
       "priority": 2,
-      "domain": "crypto-hash-kdf",
-      "coveragePct": 68,
-      "missingEstimated": 32
-    },
-    {
-      "priority": 3,
       "domain": "network-protocol-parsers",
       "coveragePct": 71.79,
       "missingEstimated": 11
+    },
+    {
+      "priority": 3,
+      "domain": "crypto-hash-kdf",
+      "coveragePct": 73,
+      "missingEstimated": 27
     },
     {
       "priority": 4,

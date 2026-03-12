@@ -2161,6 +2161,112 @@
     }
   },
   {
+    "operationId": "crypto.bifidCipherDecode",
+    "name": "Bifid Cipher Decode",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "keyword",
+        "type": "string",
+        "label": "Keyword",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "period",
+        "type": "number",
+        "label": "Period",
+        "defaultValue": "5"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bifidCipherDecode.ts",
+      "description": "Decodes text produced by the Bifid cipher using a Polybius square."
+    }
+  },
+  {
+    "operationId": "crypto.bifidCipherEncode",
+    "name": "Bifid Cipher Encode",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "keyword",
+        "type": "string",
+        "label": "Keyword",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "period",
+        "type": "number",
+        "label": "Period",
+        "defaultValue": "5"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bifidCipherEncode.ts",
+      "description": "Encodes text with the Bifid cipher using a Polybius square."
+    }
+  },
+  {
+    "operationId": "crypto.caesarBoxCipher",
+    "name": "Caesar Box Cipher",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "size",
+        "type": "number",
+        "label": "Size",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Size must be an integer greater than or equal to 2",
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/caesarBoxCipher.ts",
+      "description": "Transposes text through a square Caesar box and returns the columnar readout."
+    }
+  },
+  {
     "operationId": "crypto.hkdf",
     "name": "HKDF",
     "domain": "crypto-hash-kdf",
@@ -2589,6 +2695,69 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/pbkdf2.ts",
       "description": "Derives key material using PBKDF2 (hex output)."
+    }
+  },
+  {
+    "operationId": "crypto.railFenceCipherDecode",
+    "name": "Rail Fence Cipher Decode",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "rails",
+        "type": "number",
+        "label": "Rails",
+        "defaultValue": "3"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/railFenceCipherDecode.ts",
+      "description": "Decodes text produced by the zig-zag rail fence transposition cipher."
+    }
+  },
+  {
+    "operationId": "crypto.railFenceCipherEncode",
+    "name": "Rail Fence Cipher Encode",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "rails",
+        "type": "number",
+        "label": "Rails",
+        "defaultValue": "3"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Rails must be an integer greater than or equal to 2",
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/railFenceCipherEncode.ts",
+      "description": "Encodes text with the zig-zag rail fence transposition cipher."
     }
   },
   {
