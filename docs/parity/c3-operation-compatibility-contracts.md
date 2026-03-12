@@ -421,8 +421,8 @@ Total contracts: 404
 - crypto.argon2Compare
   - name: Argon2 Compare
   - domain: crypto-hash-kdf
-  - inputTypes: 
-  - outputType: 
+  - inputTypes: bytes, string
+  - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR
 - crypto.argon2d
@@ -484,8 +484,8 @@ Total contracts: 404
 - crypto.bcryptCompare
   - name: Bcrypt Compare
   - domain: crypto-hash-kdf
-  - inputTypes: 
-  - outputType: 
+  - inputTypes: bytes, string
+  - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR
 - crypto.bcryptParse
@@ -526,15 +526,15 @@ Total contracts: 404
 - crypto.deriveHkdfKey
   - name: Derive HKDF Key
   - domain: crypto-hash-kdf
-  - inputTypes: 
-  - outputType: 
+  - inputTypes: bytes, string
+  - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR
 - crypto.derivePbkdf2Key
   - name: Derive PBKDF2 Key
   - domain: crypto-hash-kdf
-  - inputTypes: 
-  - outputType: 
+  - inputTypes: bytes, string
+  - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR
 - crypto.extractHashes

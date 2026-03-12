@@ -573,6 +573,17 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "crypto.argon2Compare",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": [
+      "hash"
+    ]
+  },
+  {
     "operationId": "crypto.argon2d",
     "inputTypes": [
       "bytes",
@@ -674,6 +685,17 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "crypto.bcryptCompare",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": [
+      "hash"
+    ]
+  },
+  {
     "operationId": "crypto.bcryptParse",
     "inputTypes": [
       "string"
@@ -723,6 +745,45 @@ const CONTRACTS = [
     "argKeys": [
       "size"
     ]
+  },
+  {
+    "operationId": "crypto.deriveHkdfKey",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "salt",
+      "saltEncoding",
+      "info",
+      "infoEncoding",
+      "length",
+      "hash"
+    ]
+  },
+  {
+    "operationId": "crypto.derivePbkdf2Key",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "salt",
+      "saltEncoding",
+      "iterations",
+      "length",
+      "hash"
+    ]
+  },
+  {
+    "operationId": "crypto.extractHashes",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
   },
   {
     "operationId": "crypto.hkdf",
