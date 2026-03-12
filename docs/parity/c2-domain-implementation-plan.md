@@ -1,14 +1,14 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 404
+Implemented operations in repo: 412
 
 ## Priority order
 
 - P1: forensic-malware-helper (coverage 58.82%, missing ~7)
 - P2: network-protocol-parsers (coverage 71.79%, missing ~11)
-- P3: crypto-hash-kdf (coverage 82%, missing ~18)
-- P4: misc-uncategorized (coverage 82.91%, missing ~20)
+- P3: misc-uncategorized (coverage 82.91%, missing ~20)
+- P4: encodings-codecs (coverage 85.96%, missing ~8)
 
 ## Domain summary
 
@@ -55,10 +55,10 @@ Implemented operations in repo: 404
 ### crypto-hash-kdf
 - Description: Cryptographic transforms, digests, MAC/KDF and cipher operations.
 - CyberChef total: 100
-- Implemented total: 82
-- Estimated missing: 18
-- Coverage: 82%
-- Implemented ops in repo: 82
+- Implemented total: 90
+- Estimated missing: 10
+- Coverage: 90%
+- Implemented ops in repo: 90
 - Implemented operation IDs:
   - text.includes (includesText.ts)
   - text.removeHashes (removeHashes.ts)
@@ -69,17 +69,17 @@ Implemented operations in repo: 404
   - forensic.extractSha1 (extractSha1.ts)
   - forensic.extractSha256 (extractSha256.ts)
   - forensic.extractSha512 (extractSha512.ts)
+  - hash.adler32Checksum (adler32Checksum.ts)
   - hash.crc32 (crc32.ts)
   - hash.crc64 (crc64.ts)
   - hash.fletcher8 (fletcher8.ts)
+  - hash.fletcher8Checksum (fletcher8Checksum.ts)
   - hash.fletcher16 (fletcher16.ts)
+  - hash.fletcher16Checksum (fletcher16Checksum.ts)
   - hash.fletcher32 (fletcher32.ts)
+  - hash.fletcher32Checksum (fletcher32Checksum.ts)
   - hash.fletcher64 (fletcher64.ts)
-  - hash.xorChecksum (xorChecksum.ts)
-  - hash.tcpIpChecksum (tcpIpChecksum.ts)
-  - hash.luhnChecksum (luhnChecksum.ts)
-  - hash.murmurHash3 (murmurHash3.ts)
-  - hash.generateAllChecksums (generateAllChecksums.ts)
+  - hash.fletcher64Checksum (fletcher64Checksum.ts)
 - Candidate operations (first 20):
   - a (AffineCipherDecode.mjs) [high]
   - a (AffineCipherEncode.mjs) [high]

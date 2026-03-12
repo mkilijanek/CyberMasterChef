@@ -573,6 +573,23 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "crypto.argon2",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "salt",
+      "saltEncoding",
+      "iterations",
+      "memorySize",
+      "parallelism",
+      "hashLength",
+      "outputType"
+    ]
+  },
+  {
     "operationId": "crypto.argon2Compare",
     "inputTypes": [
       "bytes",
@@ -798,6 +815,19 @@ const CONTRACTS = [
       "info",
       "infoEncoding",
       "length",
+      "hash"
+    ]
+  },
+  {
+    "operationId": "crypto.hmac",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "key",
+      "keyEncoding",
       "hash"
     ]
   },
@@ -1682,6 +1712,15 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "hash.adler32Checksum",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "hash.analyseHash",
     "inputTypes": [
       "string"
@@ -1744,7 +1783,25 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "hash.fletcher16Checksum",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "hash.fletcher32",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "hash.fletcher32Checksum",
     "inputTypes": [
       "bytes",
       "string"
@@ -1762,7 +1819,25 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "hash.fletcher64Checksum",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
     "operationId": "hash.fletcher8",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "hash.fletcher8Checksum",
     "inputTypes": [
       "bytes",
       "string"
@@ -1841,6 +1916,15 @@ const CONTRACTS = [
   {
     "operationId": "hash.ntHash",
     "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": []
+  },
+  {
+    "operationId": "hash.ripemd",
+    "inputTypes": [
+      "bytes",
       "string"
     ],
     "outputType": "string",

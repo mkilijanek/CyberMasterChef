@@ -1737,6 +1737,71 @@
     }
   },
   {
+    "operationId": "crypto.argon2",
+    "name": "Argon2",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "salt",
+        "type": "string",
+        "label": "Salt",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "saltEncoding",
+        "type": "select",
+        "label": "Salt Encoding",
+        "defaultValue": "\"utf8\""
+      },
+      {
+        "key": "iterations",
+        "type": "number",
+        "label": "Iterations",
+        "defaultValue": "3"
+      },
+      {
+        "key": "memorySize",
+        "type": "number",
+        "label": "Memory (KiB)",
+        "defaultValue": "65536"
+      },
+      {
+        "key": "parallelism",
+        "type": "number",
+        "label": "Parallelism",
+        "defaultValue": "1"
+      },
+      {
+        "key": "hashLength",
+        "type": "number",
+        "label": "Hash Length",
+        "defaultValue": "32"
+      },
+      {
+        "key": "outputType",
+        "type": "select",
+        "label": "Output",
+        "defaultValue": "\"encoded\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/argon2.ts",
+      "description": "Derives an Argon2id hash string or hex digest."
+    }
+  },
+  {
     "operationId": "crypto.argon2Compare",
     "name": "Argon2 Compare",
     "domain": "crypto-hash-kdf",
@@ -2524,6 +2589,54 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/hkdf.ts",
       "description": "Derives key material using HKDF (hex output)."
+    }
+  },
+  {
+    "operationId": "crypto.hmac",
+    "name": "HMAC",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "key",
+        "type": "string",
+        "label": "Key",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "keyEncoding",
+        "type": "select",
+        "label": "Key Encoding",
+        "defaultValue": "\"utf8\""
+      },
+      {
+        "key": "hash",
+        "type": "select",
+        "label": "Hash",
+        "defaultValue": "\"SHA-256\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Expected bytes or string input",
+        "Key argument is required",
+        "WebCrypto is not available in this environment",
+        "Unsupported HMAC hash"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/hmac.ts",
+      "description": "Computes HMAC for input data and a provided key."
     }
   },
   {
@@ -5367,6 +5480,28 @@
     }
   },
   {
+    "operationId": "hash.adler32Checksum",
+    "name": "Adler32 Checksum",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/adler32Checksum.ts",
+      "description": "Computes Adler-32 checksum. Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.analyseHash",
     "name": "Analyse Hash",
     "domain": "crypto-hash-kdf",
@@ -5541,6 +5676,28 @@
     }
   },
   {
+    "operationId": "hash.fletcher16Checksum",
+    "name": "Fletcher16 Checksum",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fletcher16Checksum.ts",
+      "description": "Computes Fletcher-16 checksum. Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.fletcher32",
     "name": "Fletcher-32",
     "domain": "crypto-hash-kdf",
@@ -5562,6 +5719,28 @@
     },
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/fletcher32.ts",
+      "description": "Computes Fletcher-32 checksum. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.fletcher32Checksum",
+    "name": "Fletcher32 Checksum",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fletcher32Checksum.ts",
       "description": "Computes Fletcher-32 checksum. Output is lowercase hex string."
     }
   },
@@ -5591,6 +5770,28 @@
     }
   },
   {
+    "operationId": "hash.fletcher64Checksum",
+    "name": "Fletcher64 Checksum",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fletcher64Checksum.ts",
+      "description": "Computes Fletcher-64 checksum. Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.fletcher8",
     "name": "Fletcher-8",
     "domain": "crypto-hash-kdf",
@@ -5612,6 +5813,28 @@
     },
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/fletcher8.ts",
+      "description": "Computes Fletcher-8 checksum. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.fletcher8Checksum",
+    "name": "Fletcher8 Checksum",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/fletcher8Checksum.ts",
       "description": "Computes Fletcher-8 checksum. Output is lowercase hex string."
     }
   },
@@ -5834,6 +6057,28 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/ntHash.ts",
       "description": "Computes the NT hash (MD4 over UTF-16LE text). Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.ripemd",
+    "name": "RIPEMD",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/ripemd.ts",
+      "description": "Computes RIPEMD-160 digest. Output is lowercase hex string."
     }
   },
   {

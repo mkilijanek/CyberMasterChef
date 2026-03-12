@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 404
+    "implementedOpsCount": 412
   },
   "summary": [
     {
@@ -366,9 +366,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 100,
-      "implementedTotal": 82,
-      "missingEstimated": 18,
-      "coveragePct": 82,
+      "implementedTotal": 90,
+      "missingEstimated": 10,
+      "coveragePct": 90,
       "implementedOps": [
         {
           "id": "text.includes",
@@ -416,6 +416,11 @@
           "file": "extractSha512.ts"
         },
         {
+          "id": "hash.adler32Checksum",
+          "name": "Adler32 Checksum",
+          "file": "adler32Checksum.ts"
+        },
+        {
           "id": "hash.crc32",
           "name": "CRC-32",
           "file": "crc32.ts"
@@ -431,9 +436,19 @@
           "file": "fletcher8.ts"
         },
         {
+          "id": "hash.fletcher8Checksum",
+          "name": "Fletcher8 Checksum",
+          "file": "fletcher8Checksum.ts"
+        },
+        {
           "id": "hash.fletcher16",
           "name": "Fletcher-16",
           "file": "fletcher16.ts"
+        },
+        {
+          "id": "hash.fletcher16Checksum",
+          "name": "Fletcher16 Checksum",
+          "file": "fletcher16Checksum.ts"
         },
         {
           "id": "hash.fletcher32",
@@ -441,9 +456,19 @@
           "file": "fletcher32.ts"
         },
         {
+          "id": "hash.fletcher32Checksum",
+          "name": "Fletcher32 Checksum",
+          "file": "fletcher32Checksum.ts"
+        },
+        {
           "id": "hash.fletcher64",
           "name": "Fletcher-64",
           "file": "fletcher64.ts"
+        },
+        {
+          "id": "hash.fletcher64Checksum",
+          "name": "Fletcher64 Checksum",
+          "file": "fletcher64Checksum.ts"
         },
         {
           "id": "hash.xorChecksum",
@@ -499,6 +524,11 @@
           "id": "hash.ripemd160",
           "name": "RIPEMD-160",
           "file": "ripemd160.ts"
+        },
+        {
+          "id": "hash.ripemd",
+          "name": "RIPEMD",
+          "file": "ripemd.ts"
         },
         {
           "id": "hash.sha1",
@@ -681,6 +711,11 @@
           "file": "hmacSha1.ts"
         },
         {
+          "id": "crypto.hmac",
+          "name": "HMAC",
+          "file": "hmac.ts"
+        },
+        {
           "id": "crypto.hmacSha224",
           "name": "HMAC-SHA224",
           "file": "hmacSha224.ts"
@@ -749,6 +784,11 @@
           "id": "crypto.argon2d",
           "name": "Argon2d",
           "file": "argon2d.ts"
+        },
+        {
+          "id": "crypto.argon2",
+          "name": "Argon2",
+          "file": "argon2.ts"
         },
         {
           "id": "crypto.argon2Compare",
@@ -2929,15 +2969,15 @@
     },
     {
       "priority": 3,
-      "domain": "crypto-hash-kdf",
-      "coveragePct": 82,
-      "missingEstimated": 18
-    },
-    {
-      "priority": 4,
       "domain": "misc-uncategorized",
       "coveragePct": 82.91,
       "missingEstimated": 20
+    },
+    {
+      "priority": 4,
+      "domain": "encodings-codecs",
+      "coveragePct": 85.96,
+      "missingEstimated": 8
     }
   ]
 }

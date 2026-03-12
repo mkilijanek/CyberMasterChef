@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 404
+Total contracts: 412
 
 ## Contract entries (compact)
 
@@ -418,6 +418,13 @@ Total contracts: 404
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.argon2
+  - name: Argon2
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - crypto.argon2Compare
   - name: Argon2 Compare
   - domain: crypto-hash-kdf
@@ -546,6 +553,13 @@ Total contracts: 404
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - crypto.hkdf
   - name: HKDF
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.hmac
+  - name: HMAC
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string
@@ -1153,6 +1167,13 @@ Total contracts: 404
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.adler32Checksum
+  - name: Adler32 Checksum
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - hash.analyseHash
   - name: Analyse Hash
   - domain: crypto-hash-kdf
@@ -1202,6 +1223,13 @@ Total contracts: 404
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.fletcher16Checksum
+  - name: Fletcher16 Checksum
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - hash.fletcher32
   - name: Fletcher-32
   - domain: crypto-hash-kdf
@@ -1209,6 +1237,13 @@ Total contracts: 404
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.fletcher32Checksum
+  - name: Fletcher32 Checksum
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - hash.fletcher64
   - name: Fletcher-64
   - domain: crypto-hash-kdf
@@ -1216,6 +1251,13 @@ Total contracts: 404
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.fletcher64Checksum
+  - name: Fletcher64 Checksum
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - hash.fletcher8
   - name: Fletcher-8
   - domain: crypto-hash-kdf
@@ -1223,6 +1265,13 @@ Total contracts: 404
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.fletcher8Checksum
+  - name: Fletcher8 Checksum
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - hash.generateAllChecksums
   - name: Generate All Checksums
   - domain: crypto-hash-kdf
@@ -1279,6 +1328,13 @@ Total contracts: 404
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.ripemd
+  - name: RIPEMD
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - hash.ripemd160
   - name: RIPEMD-160
   - domain: crypto-hash-kdf

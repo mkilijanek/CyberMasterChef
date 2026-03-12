@@ -1,12 +1,17 @@
 import { describe, expect, it } from "vitest";
 import { InMemoryRegistry, bytesToHex, runRecipe, type Recipe } from "@cybermasterchef/core";
 import { adler32Checksum } from "../src/ops/adler32.js";
+import { adler32ChecksumAlias } from "../src/ops/adler32Checksum.js";
 import { crc32Checksum } from "../src/ops/crc32.js";
 import { crc64Checksum } from "../src/ops/crc64.js";
 import { fletcher8Checksum } from "../src/ops/fletcher8.js";
+import { fletcher8ChecksumAlias } from "../src/ops/fletcher8Checksum.js";
 import { fletcher16Checksum } from "../src/ops/fletcher16.js";
+import { fletcher16ChecksumAlias } from "../src/ops/fletcher16Checksum.js";
 import { fletcher32Checksum } from "../src/ops/fletcher32.js";
+import { fletcher32ChecksumAlias } from "../src/ops/fletcher32Checksum.js";
 import { fletcher64Checksum } from "../src/ops/fletcher64.js";
+import { fletcher64ChecksumAlias } from "../src/ops/fletcher64Checksum.js";
 import { xorChecksumOp } from "../src/ops/xorChecksum.js";
 import { tcpIpChecksumOp } from "../src/ops/tcpIpChecksum.js";
 import { luhnChecksumOp } from "../src/ops/luhnChecksum.js";
@@ -38,6 +43,7 @@ import { hashMd5 } from "../src/ops/hashMd5.js";
 import { md4 } from "../src/ops/md4.js";
 import { ntHash, toUtf16LeBytes } from "../src/ops/ntHash.js";
 import { ripemd160 } from "../src/ops/ripemd160.js";
+import { ripemd } from "../src/ops/ripemd.js";
 import { sha1 } from "../src/ops/sha1.js";
 import { sha0, sha0Digest } from "../src/ops/sha0.js";
 import { sha2 } from "../src/ops/sha2.js";
@@ -58,6 +64,7 @@ import { xxhash64 } from "../src/ops/xxhash64.js";
 import { xxhash3 } from "../src/ops/xxhash3.js";
 import { xxhash128 } from "../src/ops/xxhash128.js";
 import { hmacSha1 } from "../src/ops/hmacSha1.js";
+import { hmac } from "../src/ops/hmac.js";
 import { hmacSha224 } from "../src/ops/hmacSha224.js";
 import { hmacSha256 } from "../src/ops/hmacSha256.js";
 import { hmacSha384 } from "../src/ops/hmacSha384.js";
@@ -72,6 +79,7 @@ import { hkdf } from "../src/ops/hkdf.js";
 import { pbkdf2 } from "../src/ops/pbkdf2.js";
 import { scrypt } from "../src/ops/scrypt.js";
 import { argon2d } from "../src/ops/argon2d.js";
+import { argon2 } from "../src/ops/argon2.js";
 import { argon2Compare } from "../src/ops/argon2Compare.js";
 import { argon2i } from "../src/ops/argon2i.js";
 import { argon2id } from "../src/ops/argon2id.js";
@@ -88,6 +96,13 @@ describe("crypto operations", () => {
       input: { type: "string", value: "Hello" }
     });
     expect(out.output).toEqual({ type: "string", value: "058c01f5" });
+  });
+
+  it("computes Adler-32 through parity alias", () => {
+    expect(adler32ChecksumAlias.run({ input: { type: "string", value: "Hello" }, args: {} })).toEqual({
+      type: "string",
+      value: "058c01f5"
+    });
   });
 
   it("computes CRC-32 checksum", async () => {
@@ -129,6 +144,23 @@ describe("crypto operations", () => {
       const recipe: Recipe = { version: 1, steps: [{ opId }] };
       const out = await runRecipe({ registry, recipe, input });
       expect(out.output).toEqual({ type: "string", value: expected });
+    }
+  });
+
+  it("computes Fletcher checksums through parity aliases", () => {
+    const input = { type: "string", value: "abc" } as const;
+    const ops = [
+      { op: fletcher8ChecksumAlias, expected: "19" },
+      { op: fletcher16ChecksumAlias, expected: "4c27" },
+      { op: fletcher32ChecksumAlias, expected: "25c5c462" },
+      { op: fletcher64ChecksumAlias, expected: "6162630061626300" }
+    ];
+
+    for (const { op, expected } of ops) {
+      expect(op.run({ input, args: {} })).toEqual({
+        type: "string",
+        value: expected
+      });
     }
   });
 
@@ -592,6 +624,24 @@ describe("crypto operations", () => {
     ).resolves.toEqual({ type: "json", value: { matches: true } });
   });
 
+  it("hashes with Argon2 through parity alias", async () => {
+    const hash = await argon2.run({
+      input: { type: "string", value: "password" },
+      args: {
+        salt: "12345678",
+        saltEncoding: "utf8",
+        iterations: 2,
+        memorySize: 8192,
+        parallelism: 1,
+        hashLength: 16,
+        outputType: "encoded"
+      }
+    });
+    expect(hash.type).toBe("string");
+    if (hash.type !== "string") return;
+    expect(hash.value).toContain("$argon2id$");
+  });
+
   it("hashes input with bcrypt", async () => {
     const registry = new InMemoryRegistry();
     registry.register(bcrypt);
@@ -653,6 +703,7 @@ describe("crypto operations", () => {
     registry.register(hashMd5);
     registry.register(md4);
     registry.register(ripemd160);
+    registry.register(ripemd);
     registry.register(sha1);
     registry.register(sha2);
     registry.register(sha224);
@@ -677,6 +728,7 @@ describe("crypto operations", () => {
       { opId: "hash.md5", expected: "5d41402abc4b2a76b9719d911017c592" },
       { opId: "hash.md4", expected: "866437cb7a794bce2b727acc0362ee27" },
       { opId: "hash.ripemd160", expected: "108f07b8382412612c048d07d13f814118445acd" },
+      { opId: "hash.ripemd", expected: "108f07b8382412612c048d07d13f814118445acd" },
       { opId: "hash.sha1", expected: "aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d" },
       {
         opId: "hash.sha224",
@@ -1018,6 +1070,7 @@ describe("crypto operations", () => {
 
   it("computes HMAC digests", async () => {
     const registry = new InMemoryRegistry();
+    registry.register(hmac);
     registry.register(hmacSha1);
     registry.register(hmacSha224);
     registry.register(hmacSha256);
@@ -1029,6 +1082,11 @@ describe("crypto operations", () => {
 
     const input = { type: "string", value: "hello" } as const;
     const ops = [
+      {
+        opId: "crypto.hmac",
+        args: { key: "key", keyEncoding: "utf8", hash: "SHA-256" },
+        expected: "9307b3b915efb5171ff14d8cb55fbcc798c6c0ef1456d66ded1a6aa723a58b7b"
+      },
       {
         opId: "crypto.hmacSha1",
         expected: "b34ceac4516ff23a143e61d79d0fa7a4fbe5f266"
@@ -1066,14 +1124,23 @@ describe("crypto operations", () => {
       }
     ];
 
-    for (const { opId, expected } of ops) {
+    for (const { opId, expected, args } of ops) {
       const recipe: Recipe = {
         version: 1,
-        steps: [{ opId, args: { key: "key", keyEncoding: "utf8" } }]
+        steps: [{ opId, args: args ?? { key: "key", keyEncoding: "utf8" } }]
       };
       const out = await runRecipe({ registry, recipe, input });
       expect(out.output).toEqual({ type: "string", value: expected });
     }
+  });
+
+  it("rejects unsupported generic HMAC algorithms", async () => {
+    await expect(
+      hmac.run({
+        input: { type: "string", value: "hello" },
+        args: { key: "key", keyEncoding: "utf8", hash: "nope" }
+      })
+    ).rejects.toThrow("Unsupported HMAC hash");
   });
 
   it("derives PBKDF2 keys", async () => {
