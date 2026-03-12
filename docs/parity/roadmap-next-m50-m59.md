@@ -4,7 +4,7 @@ Updated: 2026-03-12
 
 ## Objective
 
-Close the remaining parity gap from `399/465` tracked CyberChef reference operations to at least `100%` while keeping release-quality governance, security, performance, and documentation gates green for `1.0.0`.
+Close the remaining parity gap from `404/465` tracked CyberChef reference operations to at least `100%` while keeping release-quality governance, security, performance, and documentation gates green for `1.0.0`.
 
 ```mermaid
 flowchart TD
@@ -56,7 +56,7 @@ flowchart TD
 9. `M58`: crypto parity wave 4 and final gap closure
    - Status: `IN-PROGRESS`
    - Issue: `#83`
-  - landed `hash.crc64`, `hash.sm3`, `hash.xxhash32`, `hash.xxhash64`, `hash.xxhash3`, `hash.xxhash128`, `hash.xorChecksum`, `hash.tcpIpChecksum`, `hash.luhnChecksum`, `hash.murmurHash3`, `hash.generateAllChecksums`, `hash.generateAllHashes`, `hash.sha0`, `hash.sha2`, `hash.sha3`, `hash.ntHash`, `crypto.argon2d`, `crypto.argon2i`, `crypto.argon2id`, `crypto.argon2Verify`, `crypto.bcrypt`, `crypto.bcryptVerify`, `crypto.hmacSha224`, `crypto.hmacMd5`, `crypto.hmacRipemd160`, `crypto.hmacWhirlpool`, `crypto.caesarBoxCipher`, `crypto.railFenceCipherEncode`, `crypto.railFenceCipherDecode`, `crypto.bifidCipherEncode`, `crypto.bifidCipherDecode`, `crypto.rc4`, and `crypto.rc4Drop`; final parity closure remains open behind further crypto/security waves
+  - landed `hash.crc64`, `hash.sm3`, `hash.xxhash32`, `hash.xxhash64`, `hash.xxhash3`, `hash.xxhash128`, `hash.xorChecksum`, `hash.tcpIpChecksum`, `hash.luhnChecksum`, `hash.murmurHash3`, `hash.generateAllChecksums`, `hash.generateAllHashes`, `hash.sha0`, `hash.sha2`, `hash.sha3`, `hash.ntHash`, `crypto.argon2d`, `crypto.argon2i`, `crypto.argon2id`, `crypto.argon2Verify`, `crypto.argon2Compare`, `crypto.bcrypt`, `crypto.bcryptVerify`, `crypto.bcryptCompare`, `crypto.hmacSha224`, `crypto.hmacMd5`, `crypto.hmacRipemd160`, `crypto.hmacWhirlpool`, `crypto.caesarBoxCipher`, `crypto.railFenceCipherEncode`, `crypto.railFenceCipherDecode`, `crypto.bifidCipherEncode`, `crypto.bifidCipherDecode`, `crypto.rc4`, `crypto.rc4Drop`, `crypto.deriveHkdfKey`, `crypto.derivePbkdf2Key`, and `crypto.extractHashes`; final parity closure remains open behind further crypto/security waves
 10. `M59`: release `1.0.0` candidate and cutover
     - Status: `PLANNED`
     - Issue: `#77`
@@ -64,9 +64,9 @@ flowchart TD
 
 ## Current Progress Snapshot
 
-- Baseline parity checkpoint in the current repo state: `399/465` tracked operations implemented.
+- Baseline parity checkpoint in the current repo state: `404/465` tracked operations implemented.
 - Highest remaining parity pressure domains:
-  - `crypto-hash-kdf`: `77/100`
+  - `crypto-hash-kdf`: `82/100`
   - `network-protocol-parsers`: `28/39`
   - `forensic-malware-helper`: `10/17`
   - `misc-uncategorized`: `96/117`

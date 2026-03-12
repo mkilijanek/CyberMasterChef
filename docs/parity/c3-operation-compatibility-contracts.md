@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 399
+Total contracts: 404
 
 ## Contract entries (compact)
 
@@ -418,6 +418,13 @@ Total contracts: 399
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.argon2Compare
+  - name: Argon2 Compare
+  - domain: crypto-hash-kdf
+  - inputTypes: 
+  - outputType: 
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - crypto.argon2d
   - name: Argon2d
   - domain: crypto-hash-kdf
@@ -474,6 +481,13 @@ Total contracts: 399
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
+- crypto.bcryptCompare
+  - name: Bcrypt Compare
+  - domain: crypto-hash-kdf
+  - inputTypes: 
+  - outputType: 
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - crypto.bcryptParse
   - name: Bcrypt Parse
   - domain: crypto-hash-kdf
@@ -504,6 +518,27 @@ Total contracts: 399
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - crypto.caesarBoxCipher
   - name: Caesar Box Cipher
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.deriveHkdfKey
+  - name: Derive HKDF Key
+  - domain: crypto-hash-kdf
+  - inputTypes: 
+  - outputType: 
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
+- crypto.derivePbkdf2Key
+  - name: Derive PBKDF2 Key
+  - domain: crypto-hash-kdf
+  - inputTypes: 
+  - outputType: 
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
+- crypto.extractHashes
+  - name: Extract Hashes
   - domain: crypto-hash-kdf
   - inputTypes: string
   - outputType: string

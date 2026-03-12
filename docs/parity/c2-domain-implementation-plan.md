@@ -1,13 +1,13 @@
 # C2 Domain Implementation Plan
 
 Generated: 1970-01-01T00:00:00.000Z
-Implemented operations in repo: 399
+Implemented operations in repo: 404
 
 ## Priority order
 
 - P1: forensic-malware-helper (coverage 58.82%, missing ~7)
 - P2: network-protocol-parsers (coverage 71.79%, missing ~11)
-- P3: crypto-hash-kdf (coverage 77%, missing ~23)
+- P3: crypto-hash-kdf (coverage 82%, missing ~18)
 - P4: misc-uncategorized (coverage 82.91%, missing ~20)
 
 ## Domain summary
@@ -55,10 +55,10 @@ Implemented operations in repo: 399
 ### crypto-hash-kdf
 - Description: Cryptographic transforms, digests, MAC/KDF and cipher operations.
 - CyberChef total: 100
-- Implemented total: 77
-- Estimated missing: 23
-- Coverage: 77%
-- Implemented ops in repo: 77
+- Implemented total: 82
+- Estimated missing: 18
+- Coverage: 82%
+- Implemented ops in repo: 82
 - Implemented operation IDs:
   - text.includes (includesText.ts)
   - text.removeHashes (removeHashes.ts)

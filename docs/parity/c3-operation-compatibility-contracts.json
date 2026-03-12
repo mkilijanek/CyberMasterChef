@@ -1737,6 +1737,25 @@
     }
   },
   {
+    "operationId": "crypto.argon2Compare",
+    "name": "Argon2 Compare",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [],
+    "outputType": "",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/argon2Compare.ts",
+      "description": "Compares a password against an encoded Argon2 hash string."
+    }
+  },
+  {
     "operationId": "crypto.argon2d",
     "name": "Argon2d",
     "domain": "crypto-hash-kdf",
@@ -2103,6 +2122,25 @@
     }
   },
   {
+    "operationId": "crypto.bcryptCompare",
+    "name": "Bcrypt Compare",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [],
+    "outputType": "",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bcryptCompare.ts",
+      "description": "Compares a password against a bcrypt hash string."
+    }
+  },
+  {
     "operationId": "crypto.bcryptParse",
     "name": "Bcrypt Parse",
     "domain": "crypto-hash-kdf",
@@ -2264,6 +2302,68 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/caesarBoxCipher.ts",
       "description": "Transposes text through a square Caesar box and returns the columnar readout."
+    }
+  },
+  {
+    "operationId": "crypto.deriveHkdfKey",
+    "name": "Derive HKDF Key",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [],
+    "outputType": "",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/deriveHkdfKey.ts",
+      "description": "Derives key material using HKDF (hex output)."
+    }
+  },
+  {
+    "operationId": "crypto.derivePbkdf2Key",
+    "name": "Derive PBKDF2 Key",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [],
+    "outputType": "",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/derivePbkdf2Key.ts",
+      "description": "Derives key material using PBKDF2 (hex output)."
+    }
+  },
+  {
+    "operationId": "crypto.extractHashes",
+    "name": "Extract Hashes",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/extractHashes.ts",
+      "description": "Extracts unique hex digest values from text input."
     }
   },
   {

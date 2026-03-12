@@ -31,6 +31,7 @@ import { bifidCipherEncode } from "../src/ops/bifidCipherEncode.js";
 import { bifidCipherDecode } from "../src/ops/bifidCipherDecode.js";
 import { createPolybiusSquare, bifidEncodeText, bifidDecodeText } from "../src/ops/polybiusUtils.js";
 import { bcrypt } from "../src/ops/bcrypt.js";
+import { bcryptCompare } from "../src/ops/bcryptCompare.js";
 import { bcryptParse } from "../src/ops/bcryptParse.js";
 import { bcryptVerify } from "../src/ops/bcryptVerify.js";
 import { hashMd5 } from "../src/ops/hashMd5.js";
@@ -64,10 +65,14 @@ import { hmacSha512 } from "../src/ops/hmacSha512.js";
 import { hmacMd5 } from "../src/ops/hmacMd5.js";
 import { hmacRipemd160 } from "../src/ops/hmacRipemd160.js";
 import { hmacWhirlpool } from "../src/ops/hmacWhirlpool.js";
+import { extractHashes } from "../src/ops/extractHashes.js";
+import { deriveHkdfKey } from "../src/ops/deriveHkdfKey.js";
+import { derivePbkdf2Key } from "../src/ops/derivePbkdf2Key.js";
 import { hkdf } from "../src/ops/hkdf.js";
 import { pbkdf2 } from "../src/ops/pbkdf2.js";
 import { scrypt } from "../src/ops/scrypt.js";
 import { argon2d } from "../src/ops/argon2d.js";
+import { argon2Compare } from "../src/ops/argon2Compare.js";
 import { argon2i } from "../src/ops/argon2i.js";
 import { argon2id } from "../src/ops/argon2id.js";
 import { argon2Verify } from "../src/ops/argon2Verify.js";
@@ -577,6 +582,16 @@ describe("crypto operations", () => {
     expect(bad.output).toEqual({ type: "json", value: { matches: false } });
   });
 
+  it("compares bcrypt through parity alias", async () => {
+    const hash = "$2a$04$..CA.uOD/eaGAOmJB.yMBubqEtzdkvfegxfotQ8UAMQWLlq7JbHJW";
+    await expect(
+      bcryptCompare.run({
+        input: { type: "string", value: "password" },
+        args: { hash }
+      })
+    ).resolves.toEqual({ type: "json", value: { matches: true } });
+  });
+
   it("hashes input with bcrypt", async () => {
     const registry = new InMemoryRegistry();
     registry.register(bcrypt);
@@ -1082,6 +1097,13 @@ describe("crypto operations", () => {
       type: "string",
       value: "632c2812e46d4604102ba7618e9d6d7d2f8128f6266b4a03264d2a0460b7dcb3"
     });
+
+    await expect(
+      derivePbkdf2Key.run({
+        input: { type: "string", value: "password" },
+        args: { salt: "salt", saltEncoding: "utf8", iterations: 1000, length: 32, hash: "SHA-256" }
+      })
+    ).resolves.toEqual(out.output);
   });
 
   it("derives HKDF keys", async () => {
@@ -1112,6 +1134,20 @@ describe("crypto operations", () => {
       type: "string",
       value: "790773b8093544d7052c18034ec05ddbf2753a2b9a23783a868b95143f516357"
     });
+
+    await expect(
+      deriveHkdfKey.run({
+        input: { type: "string", value: "input key material" },
+        args: {
+          salt: "salt",
+          saltEncoding: "utf8",
+          info: "context",
+          infoEncoding: "utf8",
+          length: 32,
+          hash: "SHA-256"
+        }
+      })
+    ).resolves.toEqual(out.output);
   });
 
   it("derives scrypt keys with bounded params", async () => {
@@ -1164,6 +1200,9 @@ describe("crypto operations", () => {
   it("validates bcrypt verify arguments", async () => {
     await expect(
       bcryptVerify.run({ input: { type: "string", value: "password" }, args: {} })
+    ).rejects.toThrow("Hash argument is required");
+    await expect(
+      bcryptCompare.run({ input: { type: "string", value: "password" }, args: {} })
     ).rejects.toThrow("Hash argument is required");
     await expect(
       bcryptVerify.run({ input: { type: "json", value: {} } as never, args: { hash: "x" } })
@@ -1256,6 +1295,49 @@ describe("crypto operations", () => {
     expect(hexOut.output).toEqual({ type: "string", value: "0a96a163decc356a36bb21964238e2e2" });
   });
 
+  it("compares argon2 hashes through parity alias", async () => {
+    const encoded = await argon2id.run({
+      input: { type: "string", value: "password" },
+      args: { iterations: 2, memorySize: 64, hashLength: 16, parallelism: 1, salt: "somesalt" }
+    });
+    expect(encoded.type).toBe("string");
+    if (encoded.type !== "string") return;
+
+    await expect(
+      argon2Compare.run({
+        input: { type: "string", value: "password" },
+        args: { hash: encoded.value }
+      })
+    ).resolves.toEqual({ type: "json", value: { matches: true } });
+  });
+
+  it("extracts mixed hash values", () => {
+    expect(
+      extractHashes.run({
+        input: {
+          type: "string",
+          value:
+            "md5=5d41402abc4b2a76b9719d911017c592 sha1=A94A8FE5CCB19BA61C4C0873D391E987982FBBD3 " +
+            "sha256=9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 " +
+            "dup=5D41402ABC4B2A76B9719D911017C592"
+        },
+        args: {}
+      })
+    ).toEqual({
+      type: "string",
+      value:
+        "5d41402abc4b2a76b9719d911017c592\n" +
+        "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3\n" +
+        "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"
+    });
+    expect(
+      extractHashes.run({
+        input: { type: "string", value: "no digests here" },
+        args: {}
+      })
+    ).toEqual({ type: "string", value: "" });
+  });
+
   it("verifies argon2 hashes", async () => {
     const registry = new InMemoryRegistry();
     registry.register(argon2Verify);
@@ -1307,6 +1389,12 @@ describe("crypto operations", () => {
     await expect(
       argon2Verify.run({ input: { type: "string", value: "password" }, args: {} })
     ).rejects.toThrow("Hash argument is required");
+    await expect(
+      argon2Compare.run({ input: { type: "string", value: "password" }, args: {} })
+    ).rejects.toThrow("Hash argument is required");
+    expect(() =>
+      extractHashes.run({ input: { type: "bytes", value: new Uint8Array() } as never, args: {} })
+    ).toThrow("Expected string input");
     await expect(
       argon2Verify.run({ input: { type: "json", value: {} } as never, args: { hash: "x" } })
     ).rejects.toThrow("Expected bytes or string input");
