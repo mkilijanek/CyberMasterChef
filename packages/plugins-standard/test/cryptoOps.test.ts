@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { InMemoryRegistry, runRecipe, type Recipe } from "@cybermasterchef/core";
+import { InMemoryRegistry, bytesToHex, runRecipe, type Recipe } from "@cybermasterchef/core";
 import { adler32Checksum } from "../src/ops/adler32.js";
 import { crc32Checksum } from "../src/ops/crc32.js";
 import { crc64Checksum } from "../src/ops/crc64.js";
@@ -24,6 +24,9 @@ import { baconCipherDecode } from "../src/ops/baconCipherDecode.js";
 import { caesarBoxCipher } from "../src/ops/caesarBoxCipher.js";
 import { railFenceCipherEncode } from "../src/ops/railFenceCipherEncode.js";
 import { railFenceCipherDecode } from "../src/ops/railFenceCipherDecode.js";
+import { rc4 } from "../src/ops/rc4.js";
+import { rc4Drop } from "../src/ops/rc4Drop.js";
+import { normalizeRc4Drop, normalizeRc4Key, rc4Transform } from "../src/ops/rc4Utils.js";
 import { bifidCipherEncode } from "../src/ops/bifidCipherEncode.js";
 import { bifidCipherDecode } from "../src/ops/bifidCipherDecode.js";
 import { createPolybiusSquare, bifidEncodeText, bifidDecodeText } from "../src/ops/polybiusUtils.js";
@@ -32,8 +35,10 @@ import { bcryptParse } from "../src/ops/bcryptParse.js";
 import { bcryptVerify } from "../src/ops/bcryptVerify.js";
 import { hashMd5 } from "../src/ops/hashMd5.js";
 import { md4 } from "../src/ops/md4.js";
+import { ntHash, toUtf16LeBytes } from "../src/ops/ntHash.js";
 import { ripemd160 } from "../src/ops/ripemd160.js";
 import { sha1 } from "../src/ops/sha1.js";
+import { sha0, sha0Digest } from "../src/ops/sha0.js";
 import { sha2 } from "../src/ops/sha2.js";
 import { sha224 } from "../src/ops/sha224.js";
 import { sha384 } from "../src/ops/sha384.js";
@@ -463,6 +468,80 @@ describe("crypto operations", () => {
     );
   });
 
+  it("computes SHA0 and NT hash", async () => {
+    expect(bytesToHex(sha0Digest(new TextEncoder().encode("abc")))).toBe(
+      "0164b8a914cd2a5e74c4f7ff082c4d97f1edf880"
+    );
+
+    const sha0Out = await sha0.run({
+      input: { type: "string", value: "abc" },
+      args: {}
+    });
+    expect(sha0Out).toEqual({
+      type: "string",
+      value: "0164b8a914cd2a5e74c4f7ff082c4d97f1edf880"
+    });
+
+    expect(Array.from(toUtf16LeBytes("AĄ"))).toEqual([0x41, 0x00, 0x04, 0x01]);
+
+    const ntHashOut = await ntHash.run({
+      input: { type: "string", value: "password" },
+      args: {}
+    });
+    expect(ntHashOut).toEqual({
+      type: "string",
+      value: "8846f7eaee8fb117ad06bdd830b7586c"
+    });
+  });
+
+  it("applies RC4 and RC4-drop transforms", async () => {
+    const plaintext = new TextEncoder().encode("Plaintext");
+    const key = normalizeRc4Key("Key");
+    expect(normalizeRc4Drop(undefined)).toBe(0);
+    expect(normalizeRc4Drop(" ")).toBe(0);
+    expect(normalizeRc4Drop("256")).toBe(256);
+
+    const transformed = rc4Transform(plaintext, key);
+    expect(bytesToHex(transformed)).toBe("bbf316e8d940af0ad3");
+
+    const registry = new InMemoryRegistry();
+    registry.register(rc4);
+    registry.register(rc4Drop);
+
+    const encrypted = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "crypto.rc4", args: { passphrase: "Key" } }] },
+      input: { type: "string", value: "Plaintext" }
+    });
+    expect(encrypted.output.type).toBe("bytes");
+    if (encrypted.output.type !== "bytes") return;
+    expect(bytesToHex(encrypted.output.value)).toBe("bbf316e8d940af0ad3");
+
+    const decrypted = await rc4.run({
+      input: encrypted.output,
+      args: { passphrase: "Key" }
+    });
+    expect(decrypted.type).toBe("bytes");
+    if (decrypted.type !== "bytes") return;
+    expect(new TextDecoder().decode(decrypted.value)).toBe("Plaintext");
+
+    const dropped = await rc4Drop.run({
+      input: { type: "string", value: "Plaintext" },
+      args: { passphrase: "Key", drop: "256" }
+    });
+    expect(dropped.type).toBe("bytes");
+    if (dropped.type !== "bytes") return;
+    expect(bytesToHex(dropped.value)).toBe(bytesToHex(rc4Transform(plaintext, key, 256)));
+
+    const zeroDrop = await rc4Drop.run({
+      input: { type: "bytes", value: plaintext },
+      args: { passphrase: "Key", drop: 0 }
+    });
+    expect(zeroDrop.type).toBe("bytes");
+    if (zeroDrop.type !== "bytes") return;
+    expect(bytesToHex(zeroDrop.value)).toBe("bbf316e8d940af0ad3");
+  });
+
   it("parses bcrypt hash", async () => {
     const registry = new InMemoryRegistry();
     registry.register(bcryptParse);
@@ -826,9 +905,15 @@ describe("crypto operations", () => {
     await expect(
       sha2.run({ input: { type: "json", value: {} } as never, args: {} })
     ).rejects.toThrow("Expected bytes or string input");
+    expect(() => sha0.run({ input: { type: "json", value: {} } as never, args: {} })).toThrow(
+      "Expected bytes or string input"
+    );
     await expect(
       sha3.run({ input: { type: "json", value: {} } as never, args: {} })
     ).rejects.toThrow("Expected bytes or string input");
+    await expect(
+      ntHash.run({ input: { type: "bytes", value: new Uint8Array() } as never, args: {} })
+    ).rejects.toThrow("Expected string input");
     expect(() =>
       caesarBoxCipher.run({ input: { type: "bytes", value: new Uint8Array() } as never, args: {} })
     ).toThrow("Expected string input");
@@ -871,6 +956,20 @@ describe("crypto operations", () => {
         args: { keyword: "", period: 5 }
       })
     ).toThrow("Expected string input");
+    expect(() => normalizeRc4Key("")).toThrow("Passphrase must be a non-empty string");
+    expect(() => normalizeRc4Drop(-1)).toThrow("Drop must be a non-negative integer");
+    expect(() =>
+      rc4.run({
+        input: { type: "string", value: "abc" },
+        args: { passphrase: "" }
+      })
+    ).toThrow("Passphrase must be a non-empty string");
+    expect(() =>
+      rc4Drop.run({
+        input: { type: "string", value: "abc" },
+        args: { passphrase: "key", drop: -1 }
+      })
+    ).toThrow("Drop must be a non-negative integer");
   });
 
   it("computes new hashes for byte input", async () => {

@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 395
+    "implementedOpsCount": 399
   },
   "summary": [
     {
@@ -366,9 +366,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 100,
-      "implementedTotal": 73,
-      "missingEstimated": 27,
-      "coveragePct": 73,
+      "implementedTotal": 77,
+      "missingEstimated": 23,
+      "coveragePct": 77,
       "implementedOps": [
         {
           "id": "text.includes",
@@ -491,6 +491,11 @@
           "file": "md4.ts"
         },
         {
+          "id": "hash.ntHash",
+          "name": "NT Hash",
+          "file": "ntHash.ts"
+        },
+        {
           "id": "hash.ripemd160",
           "name": "RIPEMD-160",
           "file": "ripemd160.ts"
@@ -499,6 +504,11 @@
           "id": "hash.sha1",
           "name": "SHA-1",
           "file": "sha1.ts"
+        },
+        {
+          "id": "hash.sha0",
+          "name": "SHA0",
+          "file": "sha0.ts"
         },
         {
           "id": "hash.sha2",
@@ -554,6 +564,16 @@
           "id": "crypto.railFenceCipherDecode",
           "name": "Rail Fence Cipher Decode",
           "file": "railFenceCipherDecode.ts"
+        },
+        {
+          "id": "crypto.rc4",
+          "name": "RC4",
+          "file": "rc4.ts"
+        },
+        {
+          "id": "crypto.rc4Drop",
+          "name": "RC4 Drop",
+          "file": "rc4Drop.ts"
         },
         {
           "id": "crypto.bifidCipherEncode",
@@ -2885,8 +2905,8 @@
     {
       "priority": 3,
       "domain": "crypto-hash-kdf",
-      "coveragePct": 73,
-      "missingEstimated": 27
+      "coveragePct": 77,
+      "missingEstimated": 23
     },
     {
       "priority": 4,

@@ -2761,6 +2761,70 @@
     }
   },
   {
+    "operationId": "crypto.rc4",
+    "name": "RC4",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "passphrase",
+        "type": "string",
+        "label": "Passphrase",
+        "defaultValue": "\"\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/rc4.ts",
+      "description": "Encrypts or decrypts bytes with the RC4 stream cipher."
+    }
+  },
+  {
+    "operationId": "crypto.rc4Drop",
+    "name": "RC4 Drop",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "bytes",
+    "argsSchema": [
+      {
+        "key": "passphrase",
+        "type": "string",
+        "label": "Passphrase",
+        "defaultValue": "\"\""
+      },
+      {
+        "key": "drop",
+        "type": "number",
+        "label": "Drop",
+        "defaultValue": "768"
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/rc4Drop.ts",
+      "description": "Encrypts or decrypts bytes with RC4 after discarding the first keystream bytes."
+    }
+  },
+  {
     "operationId": "crypto.scrypt",
     "name": "scrypt",
     "domain": "crypto-hash-kdf",
@@ -5555,6 +5619,30 @@
     }
   },
   {
+    "operationId": "hash.ntHash",
+    "name": "NT Hash",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/ntHash.ts",
+      "description": "Computes the NT hash (MD4 over UTF-16LE text). Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.ripemd160",
     "name": "RIPEMD-160",
     "domain": "crypto-hash-kdf",
@@ -5577,6 +5665,28 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/ripemd160.ts",
       "description": "Computes RIPEMD-160 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.sha0",
+    "name": "SHA0",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR"
+      ],
+      "examples": []
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sha0.ts",
+      "description": "Computes SHA-0 digest. Output is lowercase hex string."
     }
   },
   {

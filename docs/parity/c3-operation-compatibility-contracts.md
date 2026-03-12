@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 395
+Total contracts: 399
 
 ## Contract entries (compact)
 
@@ -593,6 +593,20 @@ Total contracts: 395
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.rc4
+  - name: RC4
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
+- crypto.rc4Drop
+  - name: RC4 Drop
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: bytes
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - crypto.scrypt
   - name: scrypt
   - domain: crypto-hash-kdf
@@ -1223,6 +1237,13 @@ Total contracts: 395
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.ntHash
+  - name: NT Hash
+  - domain: crypto-hash-kdf
+  - inputTypes: string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.ripemd160
   - name: RIPEMD-160
   - domain: crypto-hash-kdf
@@ -1230,6 +1251,13 @@ Total contracts: 395
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.sha0
+  - name: SHA0
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR
 - hash.sha1
   - name: SHA-1
   - domain: crypto-hash-kdf
