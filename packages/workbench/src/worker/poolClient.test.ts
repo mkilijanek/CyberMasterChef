@@ -94,8 +94,8 @@ class CountingInitClient implements ExecutionClient {
     this.initCalls += 1;
     await new Promise((resolve) => setTimeout(resolve, 5));
   }
-  async bake(): Promise<BakeResult> {
-    return makeResult("init-ok");
+  bake(): Promise<BakeResult> {
+    return Promise.resolve(makeResult("init-ok"));
   }
   cancelActive(): void {}
   dispose(): void {}

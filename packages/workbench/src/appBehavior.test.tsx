@@ -398,7 +398,7 @@ describe("App behavior", () => {
     });
   });
 
-  it("prioritizes Ctrl/Cmd+Shift+K over Ctrl/Cmd+K", async () => {
+  it("prioritizes Ctrl/Cmd+Shift+K over Ctrl/Cmd+K", () => {
     const searchFocus = vi.fn();
     const traceFocus = vi.fn();
     const preventDefault = vi.fn();
