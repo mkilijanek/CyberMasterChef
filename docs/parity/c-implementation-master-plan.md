@@ -1,6 +1,6 @@
 # C Implementation Master Plan
 
-Updated: 2026-03-11 (M50 performance gate closure, M50-M59 roadmap, release sequencing correction, container delivery plan, and GitHub milestone tracking added)
+Updated: 2026-03-12 (M58 generic hash/bcrypt parity wave landed; C2/C3/docs synced)
 
 ## Sources
 
@@ -42,7 +42,7 @@ Deliver a complete, auditable, and operationally useful C-track:
 ### C2 Domain Implementation
 
 - Status: `[IN-PROGRESS]`
-- Realization (current): `~74%` of tracked CyberChef reference operation coverage by implemented operation count.
+- Realization (current): `~84%` of tracked CyberChef reference operation coverage by implemented operation count (`390/465`).
 - Completed baseline waves:
   - date-time baseline and telemetry parsing helpers
   - data-format baseline (JSON/CSV/YAML/XML/HTML + image/format conversions)
@@ -52,7 +52,7 @@ Deliver a complete, auditable, and operationally useful C-track:
   - basic pre-triage baseline (`forensic.basicPreTriage`)
   - basic triage baseline (`forensic.basicTriage`)
 - Still missing for C2 baseline completeness:
-  - higher-priority crypto/hash/kdf expansion beyond extractor helpers
+  - higher-priority crypto/hash/kdf expansion beyond the current generic hash/bcrypt wave
   - network protocol parsers beyond IOC baselines
   - CI gates for parity-plan drift.
 

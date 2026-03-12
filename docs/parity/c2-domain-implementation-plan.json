@@ -2,7 +2,7 @@
   "generatedAt": "1970-01-01T00:00:00.000Z",
   "source": {
     "c1MatrixPath": "docs/parity/c1-operation-domain-matrix.json",
-    "implementedOpsCount": 386
+    "implementedOpsCount": 390
   },
   "summary": [
     {
@@ -366,9 +366,9 @@
       "domain": "crypto-hash-kdf",
       "description": "Cryptographic transforms, digests, MAC/KDF and cipher operations.",
       "cyberChefTotal": 100,
-      "implementedTotal": 64,
-      "missingEstimated": 36,
-      "coveragePct": 64,
+      "implementedTotal": 68,
+      "missingEstimated": 32,
+      "coveragePct": 68,
       "implementedOps": [
         {
           "id": "text.includes",
@@ -471,6 +471,11 @@
           "file": "generateAllChecksums.ts"
         },
         {
+          "id": "hash.generateAllHashes",
+          "name": "Generate All Hashes",
+          "file": "generateAllHashes.ts"
+        },
+        {
           "id": "hash.analyseHash",
           "name": "Analyse Hash",
           "file": "analyseHash.ts"
@@ -494,6 +499,11 @@
           "id": "hash.sha1",
           "name": "SHA-1",
           "file": "sha1.ts"
+        },
+        {
+          "id": "hash.sha2",
+          "name": "SHA2",
+          "file": "sha2.ts"
         },
         {
           "id": "crypto.atbashCipher",
@@ -531,6 +541,11 @@
           "file": "baconCipherDecode.ts"
         },
         {
+          "id": "crypto.bcrypt",
+          "name": "Bcrypt",
+          "file": "bcrypt.ts"
+        },
+        {
           "id": "crypto.bcryptParse",
           "name": "Bcrypt Parse",
           "file": "bcryptParse.ts"
@@ -549,6 +564,11 @@
           "id": "hash.sha512",
           "name": "SHA-512",
           "file": "sha512.ts"
+        },
+        {
+          "id": "hash.sha3",
+          "name": "SHA3",
+          "file": "sha3.ts"
         },
         {
           "id": "hash.sha3_256",
@@ -2834,8 +2854,8 @@
     {
       "priority": 2,
       "domain": "crypto-hash-kdf",
-      "coveragePct": 64,
-      "missingEstimated": 36
+      "coveragePct": 68,
+      "missingEstimated": 32
     },
     {
       "priority": 3,

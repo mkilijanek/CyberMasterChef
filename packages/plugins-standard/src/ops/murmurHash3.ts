@@ -23,14 +23,19 @@ function murmurHash3(bytes: Uint8Array, seed = 0): number {
   switch (bytes.length & 3) {
     case 3:
       tail ^= bytes[tailIndex + 2]! << 16;
+    // falls through
     case 2:
       tail ^= bytes[tailIndex + 1]! << 8;
+    // falls through
     case 1:
       tail ^= bytes[tailIndex]!;
       tail = Math.imul(tail, c1);
       tail = (tail << 15) | (tail >>> 17);
       tail = Math.imul(tail, c2);
       hash ^= tail;
+      break;
+    default:
+      break;
   }
 
   hash ^= bytes.length;

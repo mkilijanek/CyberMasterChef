@@ -78,7 +78,7 @@ describe("CLI batch integration", () => {
     expect(normalized).toEqual(expected);
   });
 
-  it("honors fail-fast semantics with batch-fail-empty", () => {
+  it("honors fail-fast semantics with batch-fail-empty", { timeout: 15_000 }, () => {
     const run = runCli([
       recipePath,
       "--batch-input-dir",

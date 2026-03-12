@@ -661,6 +661,19 @@ const CONTRACTS = [
     ]
   },
   {
+    "operationId": "crypto.bcrypt",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "rounds",
+      "salt",
+      "saltEncoding"
+    ]
+  },
+  {
     "operationId": "crypto.bcryptParse",
     "inputTypes": [
       "string"
@@ -1631,6 +1644,15 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "hash.generateAllHashes",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argKeys": []
+  },
+  {
     "operationId": "hash.keccak",
     "inputTypes": [
       "bytes",
@@ -1699,6 +1721,17 @@ const CONTRACTS = [
     "argKeys": []
   },
   {
+    "operationId": "hash.sha2",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "bits"
+    ]
+  },
+  {
     "operationId": "hash.sha224",
     "inputTypes": [
       "bytes",
@@ -1715,6 +1748,17 @@ const CONTRACTS = [
     ],
     "outputType": "string",
     "argKeys": []
+  },
+  {
+    "operationId": "hash.sha3",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argKeys": [
+      "bits"
+    ]
   },
   {
     "operationId": "hash.sha3_256",

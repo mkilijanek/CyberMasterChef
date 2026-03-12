@@ -1,7 +1,7 @@
 # C3 Operation Compatibility Contracts
 
 Generated: 1970-01-01T00:00:00.000Z
-Total contracts: 386
+Total contracts: 390
 
 ## Contract entries (compact)
 
@@ -467,6 +467,13 @@ Total contracts: 386
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- crypto.bcrypt
+  - name: Bcrypt
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE, INVALID_ARGUMENT
 - crypto.bcryptParse
   - name: Bcrypt Parse
   - domain: crypto-hash-kdf
@@ -1139,6 +1146,13 @@ Total contracts: 386
   - outputType: json
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.generateAllHashes
+  - name: Generate All Hashes
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: json
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.keccak
   - name: Keccak
   - domain: crypto-hash-kdf
@@ -1188,6 +1202,13 @@ Total contracts: 386
   - outputType: string
   - deterministic: true
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.sha2
+  - name: SHA2
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.sha224
   - name: SHA-224
   - domain: crypto-hash-kdf
@@ -1197,6 +1218,13 @@ Total contracts: 386
   - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
 - hash.sha256
   - name: SHA-256
+  - domain: crypto-hash-kdf
+  - inputTypes: bytes, string
+  - outputType: string
+  - deterministic: true
+  - error categories: EXECUTION_ERROR, INVALID_INPUT_TYPE
+- hash.sha3
+  - name: SHA3
   - domain: crypto-hash-kdf
   - inputTypes: bytes, string
   - outputType: string

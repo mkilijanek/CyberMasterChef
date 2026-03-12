@@ -8,7 +8,16 @@ const PNG_BASE64 =
 const ZIP_BYTES = new Uint8Array([0x50, 0x4b, 0x03, 0x04, 0, 0, 0, 0]);
 
 function defaultArgs(op: Operation): Record<string, unknown> {
-  return Object.fromEntries(op.args.map((arg) => [arg.key, arg.defaultValue]));
+  const args = Object.fromEntries(op.args.map((arg) => [arg.key, arg.defaultValue]));
+  if (op.id === "crypto.bcrypt") {
+    return {
+      ...args,
+      rounds: 4,
+      salt: "0123456789abcdef",
+      saltEncoding: "utf8"
+    };
+  }
+  return args;
 }
 
 function sampleInput(op: Operation): DataValue {

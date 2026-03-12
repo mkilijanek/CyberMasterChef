@@ -2055,6 +2055,54 @@
     }
   },
   {
+    "operationId": "crypto.bcrypt",
+    "name": "Bcrypt",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "rounds",
+        "type": "number",
+        "label": "Rounds",
+        "defaultValue": "10"
+      },
+      {
+        "key": "salt",
+        "type": "string",
+        "label": "Salt",
+        "defaultValue": "\"0123456789abcdef\""
+      },
+      {
+        "key": "saltEncoding",
+        "type": "select",
+        "label": "Salt Encoding",
+        "defaultValue": "\"utf8\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE",
+        "INVALID_ARGUMENT"
+      ],
+      "examples": [
+        "Rounds must be an integer between 4 and 31",
+        "Expected bytes or string input",
+        "Salt argument is required",
+        "Salt must decode to exactly 16 bytes"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/bcrypt.ts",
+      "description": "Hashes input with bcrypt and returns the encoded bcrypt hash string."
+    }
+  },
+  {
     "operationId": "crypto.bcryptParse",
     "name": "Bcrypt Parse",
     "domain": "crypto-hash-kdf",
@@ -5166,6 +5214,31 @@
     }
   },
   {
+    "operationId": "hash.generateAllHashes",
+    "name": "Generate All Hashes",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "json",
+    "argsSchema": [],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/generateAllHashes.ts",
+      "description": "Computes a deterministic set of common hash digests and returns them as JSON."
+    }
+  },
+  {
     "operationId": "hash.keccak",
     "name": "Keccak",
     "domain": "crypto-hash-kdf",
@@ -5364,6 +5437,38 @@
     }
   },
   {
+    "operationId": "hash.sha2",
+    "name": "SHA2",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "bits",
+        "type": "select",
+        "label": "Bits",
+        "defaultValue": "\"256\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sha2.ts",
+      "description": "Computes SHA-2 digest for the selected output size. Output is lowercase hex string."
+    }
+  },
+  {
     "operationId": "hash.sha224",
     "name": "SHA-224",
     "domain": "crypto-hash-kdf",
@@ -5412,6 +5517,38 @@
     "notes": {
       "sourceFile": "packages/plugins-standard/src/ops/sha256.ts",
       "description": "Computes SHA-256 digest. Output is lowercase hex string."
+    }
+  },
+  {
+    "operationId": "hash.sha3",
+    "name": "SHA3",
+    "domain": "crypto-hash-kdf",
+    "inputTypes": [
+      "bytes",
+      "string"
+    ],
+    "outputType": "string",
+    "argsSchema": [
+      {
+        "key": "bits",
+        "type": "select",
+        "label": "Bits",
+        "defaultValue": "\"512\""
+      }
+    ],
+    "deterministic": true,
+    "errorTaxonomy": {
+      "categories": [
+        "EXECUTION_ERROR",
+        "INVALID_INPUT_TYPE"
+      ],
+      "examples": [
+        "Expected bytes or string input"
+      ]
+    },
+    "notes": {
+      "sourceFile": "packages/plugins-standard/src/ops/sha3.ts",
+      "description": "Computes SHA-3 digest for the selected output size. Output is lowercase hex string."
     }
   },
   {

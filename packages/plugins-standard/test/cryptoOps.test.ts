@@ -12,6 +12,7 @@ import { tcpIpChecksumOp } from "../src/ops/tcpIpChecksum.js";
 import { luhnChecksumOp } from "../src/ops/luhnChecksum.js";
 import { murmurHash3Op } from "../src/ops/murmurHash3.js";
 import { generateAllChecksumsOp } from "../src/ops/generateAllChecksums.js";
+import { generateAllHashesOp } from "../src/ops/generateAllHashes.js";
 import { analyseHash } from "../src/ops/analyseHash.js";
 import { atbashCipher } from "../src/ops/atbashCipher.js";
 import { affineCipherEncode } from "../src/ops/affineCipherEncode.js";
@@ -20,15 +21,18 @@ import { a1z26CipherEncode } from "../src/ops/a1z26CipherEncode.js";
 import { a1z26CipherDecode } from "../src/ops/a1z26CipherDecode.js";
 import { baconCipherEncode } from "../src/ops/baconCipherEncode.js";
 import { baconCipherDecode } from "../src/ops/baconCipherDecode.js";
+import { bcrypt } from "../src/ops/bcrypt.js";
 import { bcryptParse } from "../src/ops/bcryptParse.js";
 import { bcryptVerify } from "../src/ops/bcryptVerify.js";
 import { hashMd5 } from "../src/ops/hashMd5.js";
 import { md4 } from "../src/ops/md4.js";
 import { ripemd160 } from "../src/ops/ripemd160.js";
 import { sha1 } from "../src/ops/sha1.js";
+import { sha2 } from "../src/ops/sha2.js";
 import { sha224 } from "../src/ops/sha224.js";
 import { sha384 } from "../src/ops/sha384.js";
 import { sha512 } from "../src/ops/sha512.js";
+import { sha3 } from "../src/ops/sha3.js";
 import { sha3_256 } from "../src/ops/sha3_256.js";
 import { sha3_512 } from "../src/ops/sha3_512.js";
 import { blake2b } from "../src/ops/blake2b.js";
@@ -197,6 +201,41 @@ describe("crypto operations", () => {
     });
   });
 
+  it("computes aggregate hashes", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(generateAllHashesOp);
+
+    const aggregate = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.generateAllHashes" }] },
+      input: { type: "string", value: "abc" }
+    });
+    expect(aggregate.output.type).toBe("json");
+    if (aggregate.output.type !== "json") return;
+    expect(aggregate.output.value).toMatchObject({
+      md4: "a448017aaf21d8525fc10ae87aa6729d",
+      md5: "900150983cd24fb0d6963f7d28e17f72",
+      ripemd160: "8eb208f7e05d987a9b044a8e98c6b087f15a0bfc",
+      sha1: "a9993e364706816aba3e25717850c26c9cd0d89d",
+      sha224: "23097d223405d8228642a477bda255b32aadbce4bda0b3f7e36c9da7",
+      sha256: "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+      sha384:
+        "cb00753f45a35e8bb5a03d699ac65007272c32ab0eded1631a8b605a43ff5bed8086072ba1e7cc2358baeca134c825a7",
+      sha512:
+        "ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f",
+      sha3_256: "3a985da74fe225b2045c172d6bd390bd855f086e3e9d525b46bfe24511431532",
+      sha3_512:
+        "b751850b1a57168a5693cd924b6b096e08f621827444f70d884f5d0240d2712e10e116e9192af3c91a7ec57647e3934057340b4cf408d5a56592f8274eec53f0",
+      blake2b:
+        "ba80a53f981c4d0d6a2797b69f12f6e94c212f14685ac4b74b12bb6fdbffa2d17d87c5392aab792dc252d5de4533cc9518d38aa8dbf1925ab92386edd4009923",
+      blake2s: "508c5e8c327c14e2e1a72ba34eeb452f37458b209ed63a294d999b4c86675982",
+      blake3: "6437b3ac38465133ffb63b75273a8db548c558465d79db03fd359c6cd5bd9d85",
+      sm3: "66c7f0f462eeedd9d1f2d46bdc10e4e24167c4875cf2f7a2297da02b8f4ba8e0",
+      whirlpool:
+        "4e2448a4c6f486bb16b6562c73b4020bf3043e3a731bce721ae1b303d97e6d4c7181eebdb6c57e277d0e34957114cbd6c797fc9d95d8b582d225292076d4eef5"
+    });
+  });
+
   it("analyses hash candidates", async () => {
     const registry = new InMemoryRegistry();
     registry.register(analyseHash);
@@ -315,15 +354,73 @@ describe("crypto operations", () => {
     expect(bad.output).toEqual({ type: "json", value: { matches: false } });
   });
 
+  it("hashes input with bcrypt", async () => {
+    const registry = new InMemoryRegistry();
+    registry.register(bcrypt);
+
+    const hashed = await runRecipe({
+      registry,
+      recipe: {
+        version: 1,
+        steps: [
+          {
+            opId: "crypto.bcrypt",
+            args: { rounds: 4, salt: "0123456789abcdef", saltEncoding: "utf8" }
+          }
+        ]
+      },
+      input: { type: "string", value: "password" }
+    });
+    expect(hashed.output.type).toBe("string");
+    if (hashed.output.type !== "string") return;
+    expect(hashed.output.value).toBe(
+      "$2a$04$KBCwKxOzLha2MUDgW0PjXehyC7kcbJmICs4eWpZZOlh/QJzfSPPHe"
+    );
+
+    registry.register(bcryptVerify);
+    const verified = await runRecipe({
+      registry,
+      recipe: {
+        version: 1,
+        steps: [{ opId: "crypto.bcryptVerify", args: { hash: hashed.output.value } }]
+      },
+      input: { type: "string", value: "password" }
+    });
+    expect(verified.output).toEqual({ type: "json", value: { matches: true } });
+
+    const bytesWithHexSalt = await bcrypt.run({
+      input: { type: "bytes", value: new TextEncoder().encode("password") },
+      args: {
+        rounds: "4",
+        salt: "30313233343536373839616263646566",
+        saltEncoding: "hex"
+      }
+    });
+    expect(bytesWithHexSalt).toEqual({
+      type: "string",
+      value: "$2a$04$KBCwKxOzLha2MUDgW0PjXehyC7kcbJmICs4eWpZZOlh/QJzfSPPHe"
+    });
+
+    const defaultRounds = await bcrypt.run({
+      input: { type: "string", value: "password" },
+      args: { salt: "0123456789abcdef", saltEncoding: "utf8" }
+    });
+    expect(defaultRounds.type).toBe("string");
+    if (defaultRounds.type !== "string") return;
+    expect(defaultRounds.value).toMatch(/^\$2a\$10\$/);
+  });
+
   it("computes common hashes", async () => {
     const registry = new InMemoryRegistry();
     registry.register(hashMd5);
     registry.register(md4);
     registry.register(ripemd160);
     registry.register(sha1);
+    registry.register(sha2);
     registry.register(sha224);
     registry.register(sha384);
     registry.register(sha512);
+    registry.register(sha3);
     registry.register(sha3_256);
     registry.register(sha3_512);
     registry.register(blake2b);
@@ -432,6 +529,69 @@ describe("crypto operations", () => {
       value:
         "52fa80662e64c128f8389c9ea6c73d4c02368004bf4463491900d11aaadca39d47de1b01361f207c512cfa79f0f92c3395c67ff7928e3f5ce3e3c852b392f976"
     });
+
+    const sha2_224 = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.sha2", args: { bits: 224 } }] },
+      input
+    });
+    expect(sha2_224.output).toEqual({
+      type: "string",
+      value: "ea09ae9cc6768c50fcee903ed054556e5bfc8347907f12598aa24193"
+    });
+
+    const sha2_fallback = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.sha2", args: { bits: 123 } }] },
+      input
+    });
+    expect(sha2_fallback.output).toEqual({
+      type: "string",
+      value: "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
+    });
+
+    const sha2_384 = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.sha2", args: { bits: 384 } }] },
+      input
+    });
+    expect(sha2_384.output).toEqual({
+      type: "string",
+      value:
+        "59e1748777448c69de6b800d7a33bbfb9ff1b463e44354c3553bcdb9c666fa90125a3c79f90397bdf5f6a13de828684f"
+    });
+
+    const sha2_512 = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.sha2", args: { bits: "512" } }] },
+      input
+    });
+    expect(sha2_512.output).toEqual({
+      type: "string",
+      value:
+        "9b71d224bd62f3785d96d46ad3ea3d73319bfbc2890caadae2dff72519673ca72323c3d99ba5c11d7c7acc6e14b8c5da0c4663475c2e5c3adef46f73bcdec043"
+    });
+
+    const sha3_224 = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.sha3", args: { bits: 224 } }] },
+      input
+    });
+    expect(sha3_224.output).toEqual({
+      type: "string",
+      value: "b87f88c72702fff1748e58b87e9141a42c0dbedc29a78cb0d4a5cd81"
+    });
+
+    const sha3_fallback = await runRecipe({
+      registry,
+      recipe: { version: 1, steps: [{ opId: "hash.sha3", args: { bits: 123 } }] },
+      input
+    });
+    expect(sha3_fallback.output).toEqual({
+      type: "string",
+      value:
+        "75d527c368f2efe848ecf6b073a36767800805e9eef2b1857d5f984f036eb6df891d75f72d9b154518c1cd58835286d1da9a38deba3de98b5a53e5ed78a84976"
+    });
   });
 
   it("rejects invalid input types for new hash operations", async () => {
@@ -488,6 +648,42 @@ describe("crypto operations", () => {
     ).rejects.toThrow("Expected bytes or string input");
     await expect(
       xxhash128.run({ input: { type: "json", value: {} } as never, args: {} })
+    ).rejects.toThrow("Expected bytes or string input");
+    await expect(
+      generateAllHashesOp.run({ input: { type: "json", value: {} } as never, args: {} })
+    ).rejects.toThrow("Expected bytes or string input");
+    await expect(
+      bcrypt.run({ input: { type: "json", value: {} } as never, args: {} })
+    ).rejects.toThrow("Expected bytes or string input");
+    await expect(
+      bcrypt.run({
+        input: { type: "string", value: "abc" },
+        args: { rounds: 3, salt: "0123456789abcdef", saltEncoding: "utf8" }
+      })
+    ).rejects.toThrow("Rounds must be an integer between 4 and 31");
+    await expect(
+      bcrypt.run({
+        input: { type: "string", value: "abc" },
+        args: { rounds: 4, salt: "", saltEncoding: "utf8" }
+      })
+    ).rejects.toThrow("Salt argument is required");
+    await expect(
+      bcrypt.run({
+        input: { type: "string", value: "abc" },
+        args: { rounds: 4, salt: "short", saltEncoding: "utf8" }
+      })
+    ).rejects.toThrow("Salt must decode to exactly 16 bytes");
+    await expect(
+      bcrypt.run({
+        input: { type: "string", value: "abc" },
+        args: { rounds: 4, salt: 123, saltEncoding: "utf8" } as never
+      })
+    ).rejects.toThrow("Salt argument is required");
+    await expect(
+      sha2.run({ input: { type: "json", value: {} } as never, args: {} })
+    ).rejects.toThrow("Expected bytes or string input");
+    await expect(
+      sha3.run({ input: { type: "json", value: {} } as never, args: {} })
     ).rejects.toThrow("Expected bytes or string input");
   });
 
