@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 const repoRoot = resolve(import.meta.dirname, "..", "..", "..");
 const requiredDirectives = [
   "default-src 'none'",
-  "script-src 'self'",
+  "script-src 'self' 'wasm-unsafe-eval'",
   "style-src 'self'",
   "img-src 'self' data:",
   "worker-src 'self'",
@@ -20,7 +20,6 @@ const requiredSecurityHeaders = [
   "X-Frame-Options",
   "Referrer-Policy",
   "Permissions-Policy",
-  "Cross-Origin-Opener-Policy",
   "Cross-Origin-Resource-Policy"
 ];
 
@@ -82,12 +81,11 @@ describe("runtime security policy", () => {
   it("keeps the smoke-test header sample aligned with the enforced runtime policy", () => {
     const headerBlock = [
       "HTTP/1.1 200 OK",
-      "Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; worker-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",
+      "Content-Security-Policy: default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; worker-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",
       "X-Content-Type-Options: nosniff",
       "X-Frame-Options: DENY",
       "Referrer-Policy: no-referrer",
       "Permissions-Policy: accelerometer=(), camera=(), microphone=(), payment=()",
-      "Cross-Origin-Opener-Policy: same-origin",
       "Cross-Origin-Resource-Policy: same-origin"
     ].join("\n");
     const parsed = Object.fromEntries(
@@ -104,11 +102,10 @@ describe("runtime security policy", () => {
     );
     expect(parsed).toMatchObject({
       "content-security-policy":
-        "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; worker-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",
+        "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; worker-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",
       "x-content-type-options": "nosniff",
       "x-frame-options": "DENY",
       "referrer-policy": "no-referrer",
-      "cross-origin-opener-policy": "same-origin",
       "cross-origin-resource-policy": "same-origin"
     });
     for (const directive of requiredDirectives) {

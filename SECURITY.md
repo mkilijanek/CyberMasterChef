@@ -22,7 +22,7 @@ Set these HTTP headers on your server:
 ```
 Content-Security-Policy:
   default-src 'none';
-  script-src 'self';
+  script-src 'self' 'wasm-unsafe-eval';
   style-src 'self';
   img-src 'self' data:;
   worker-src 'self';
@@ -43,6 +43,9 @@ Recommended companion headers for the static workbench runtime:
 
 The shipped container image enforces these headers in `docker/nginx/default.conf`, and `pnpm docker:test`
 verifies them during image smoke validation.
+
+`'wasm-unsafe-eval'` is intentionally enabled so browser-safe hashing fallbacks based on WebAssembly
+can run when `WebCrypto.subtle` is unavailable.
 
 ### Supply chain
 

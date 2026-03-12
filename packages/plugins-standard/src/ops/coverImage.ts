@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { loadSharp } from "./sharpLoader.js";
 
 export const coverImage: Operation = {
   id: "image.cover",
@@ -22,7 +23,7 @@ export const coverImage: Operation = {
   ],
   run: async ({ input, args }) => {
     if (input.type !== "bytes") throw new Error("Expected bytes input");
-    const { default: sharp } = await import("sharp");
+    const sharp = await loadSharp();
 
     const width = typeof args.width === "number" ? Math.max(1, args.width) : 512;
     const height = typeof args.height === "number" ? Math.max(1, args.height) : 512;

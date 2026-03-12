@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { loadSharp } from "./sharpLoader.js";
 
 export const blurImage: Operation = {
   id: "image.blur",
@@ -16,7 +17,7 @@ export const blurImage: Operation = {
   ],
   run: async ({ input, args }) => {
     if (input.type !== "bytes") throw new Error("Expected bytes input");
-    const { default: sharp } = await import("sharp");
+    const sharp = await loadSharp();
     const rawSigma = typeof args.sigma === "number" ? args.sigma : 2;
     const sigma = Math.max(0.3, Math.min(100, rawSigma));
 

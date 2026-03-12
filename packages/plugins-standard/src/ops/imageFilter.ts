@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { loadSharp } from "./sharpLoader.js";
 
 export const imageFilter: Operation = {
   id: "image.filter",
@@ -21,7 +22,7 @@ export const imageFilter: Operation = {
   ],
   run: async ({ input, args }) => {
     if (input.type !== "bytes") throw new Error("Expected bytes input");
-    const { default: sharp } = await import("sharp");
+    const sharp = await loadSharp();
 
     const filter =
       args.filter === "sepia" || args.filter === "negate" ? args.filter : "grayscale";

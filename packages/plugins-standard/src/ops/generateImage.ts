@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { loadSharp } from "./sharpLoader.js";
 
 export const generateImage: Operation = {
   id: "image.generate",
@@ -23,7 +24,7 @@ export const generateImage: Operation = {
     }
   ],
   run: async ({ args }) => {
-    const { default: sharp } = await import("sharp");
+    const sharp = await loadSharp();
     const width = typeof args.width === "number" ? Math.max(1, args.width) : 256;
     const height = typeof args.height === "number" ? Math.max(1, args.height) : 256;
     const color = typeof args.color === "string" ? args.color : "#000000";

@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { loadSharp } from "./sharpLoader.js";
 
 export const sharpenImage: Operation = {
   id: "image.sharpen",
@@ -11,7 +12,7 @@ export const sharpenImage: Operation = {
   ],
   run: async ({ input, args }) => {
     if (input.type !== "bytes") throw new Error("Expected bytes input");
-    const { default: sharp } = await import("sharp");
+    const sharp = await loadSharp();
     const sigma = typeof args.sigma === "number" ? Math.max(0.1, args.sigma) : 1;
     const output = await sharp(Buffer.from(input.value)).sharpen(sigma).toBuffer();
     return { type: "bytes", value: new Uint8Array(output) };

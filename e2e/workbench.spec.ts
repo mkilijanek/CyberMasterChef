@@ -47,3 +47,15 @@ test("timeout value persists across reload", async ({ page }) => {
   await page.reload();
   await expect(page.getByTestId("timeout-input")).toHaveValue("250");
 });
+
+test("adds SHA-256 step from catalog and runs it", async ({ page }) => {
+  await page.goto("/");
+  await page.getByTestId("catalog-search-input").fill("sha-256");
+  await page.locator(".list .buttonSmall").first().click();
+  await expect(page.getByTestId("recipe-run-to-step-0")).toBeVisible();
+  await page.getByTestId("io-input").fill("abc");
+  await page.getByTestId("run-button").click();
+  await expect(page.getByTestId("io-output")).toHaveValue(
+    "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+  );
+});

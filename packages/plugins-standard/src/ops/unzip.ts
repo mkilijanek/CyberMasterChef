@@ -1,5 +1,4 @@
 import type { Operation } from "@cybermasterchef/core";
-import JSZip from "jszip";
 
 function bytesToBase64(bytes: Uint8Array): string {
   if (typeof Buffer !== "undefined") {
@@ -21,6 +20,7 @@ export const unzip: Operation = {
   args: [],
   run: async ({ input }) => {
     if (input.type !== "bytes") throw new Error("Expected bytes input");
+    const { default: JSZip } = await import("jszip");
     const zipFile = await JSZip.loadAsync(input.value);
     const entries = [] as Array<{
       name: string;

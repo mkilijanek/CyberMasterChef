@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { loadSharp } from "./sharpLoader.js";
 
 export const flipImage: Operation = {
   id: "image.flip",
@@ -12,7 +13,7 @@ export const flipImage: Operation = {
   ],
   run: async ({ input, args }) => {
     if (input.type !== "bytes") throw new Error("Expected bytes input");
-    const { default: sharp } = await import("sharp");
+    const sharp = await loadSharp();
 
     const horizontal =
       typeof args.horizontal === "boolean" ? args.horizontal : true;

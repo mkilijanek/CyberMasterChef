@@ -64,7 +64,7 @@ All recipe execution happens inside a Web Worker:
 
 ```
 default-src 'none'
-script-src 'self'
+script-src 'self' 'wasm-unsafe-eval'
 style-src 'self'
 img-src 'self' data:
 worker-src 'self'

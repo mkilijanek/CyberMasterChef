@@ -1,7 +1,7 @@
 export const requiredSecurityHeaders = {
   "content-security-policy": [
     "default-src 'none'",
-    "script-src 'self'",
+    "script-src 'self' 'wasm-unsafe-eval'",
     "style-src 'self'",
     "img-src 'self' data:",
     "worker-src 'self'",
@@ -14,7 +14,6 @@ export const requiredSecurityHeaders = {
   "x-frame-options": ["DENY"],
   "referrer-policy": ["no-referrer"],
   "permissions-policy": ["accelerometer=()", "camera=()", "microphone=()", "payment=()"],
-  "cross-origin-opener-policy": ["same-origin"],
   "cross-origin-resource-policy": ["same-origin"]
 };
 

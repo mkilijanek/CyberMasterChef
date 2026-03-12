@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { loadSharp } from "./sharpLoader.js";
 
 export const imageMetadata: Operation = {
   id: "image.metadata",
@@ -9,7 +10,7 @@ export const imageMetadata: Operation = {
   args: [],
   run: async ({ input }) => {
     if (input.type !== "bytes") throw new Error("Expected bytes input");
-    const { default: sharp } = await import("sharp");
+    const sharp = await loadSharp();
     const meta = await sharp(Buffer.from(input.value)).metadata();
 
     return {

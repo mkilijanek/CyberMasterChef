@@ -1,5 +1,12 @@
 import { OperationJsonParseError, type Operation } from "@cybermasterchef/core";
-import protobuf from "protobufjs";
+
+type ProtobufModule = {
+  parse: (schema: string) => { root: { lookupType: (messageType: string) => {
+    verify: (payload: Record<string, unknown>) => string | null;
+    fromObject: (payload: Record<string, unknown>) => unknown;
+    encode: (message: unknown) => { finish: () => Uint8Array };
+  } } };
+};
 
 function parseJson(opId: string, value: string): unknown {
   try {
@@ -20,7 +27,7 @@ export const protobufEncode: Operation = {
     { key: "schema", label: "Schema (.proto)", type: "string", defaultValue: "" },
     { key: "messageType", label: "Message Type", type: "string", defaultValue: "" }
   ],
-  run: ({ input, args }) => {
+  run: async ({ input, args }) => {
     const schema = typeof args.schema === "string" ? args.schema : "";
     const messageType = typeof args.messageType === "string" ? args.messageType : "";
     if (!schema) throw new Error("Schema argument is required");
@@ -35,6 +42,7 @@ export const protobufEncode: Operation = {
       throw new Error("Expected string or json input");
     }
 
+    const protobuf = (await import("protobufjs")) as unknown as ProtobufModule;
     const root = protobuf.parse(schema).root;
     const type = root.lookupType(messageType);
     const errMsg = type.verify(payload as Record<string, unknown>);

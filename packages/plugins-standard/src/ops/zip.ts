@@ -1,5 +1,4 @@
 import type { Operation } from "@cybermasterchef/core";
-import JSZip from "jszip";
 
 export const zip: Operation = {
   id: "compression.zip",
@@ -46,6 +45,7 @@ export const zip: Operation = {
     const data =
       input.type === "bytes" ? input.value : new TextEncoder().encode(input.value);
 
+    const { default: JSZip } = await import("jszip");
     const zipFile = new JSZip();
     zipFile.file(filename, data);
 

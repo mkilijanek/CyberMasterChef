@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { loadSharp } from "./sharpLoader.js";
 
 function escapeXml(value: string): string {
   return value
@@ -37,7 +38,7 @@ export const addTextToImage: Operation = {
   ],
   run: async ({ input, args }) => {
     if (input.type !== "bytes") throw new Error("Expected bytes input");
-    const { default: sharp } = await import("sharp");
+    const sharp = await loadSharp();
 
     const text = typeof args.text === "string" ? args.text : "CyberMasterChef";
     const color = typeof args.color === "string" ? args.color : "#ffffff";

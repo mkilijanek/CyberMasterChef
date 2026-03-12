@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { loadSharp } from "./sharpLoader.js";
 
 export const renderImage: Operation = {
   id: "image.render",
@@ -21,7 +22,7 @@ export const renderImage: Operation = {
   ],
   run: async ({ input, args }) => {
     if (input.type !== "string") throw new Error("Expected string input");
-    const { default: sharp } = await import("sharp");
+    const sharp = await loadSharp();
     const format = args.format === "jpeg" || args.format === "webp" ? args.format : "png";
     const output = await sharp(Buffer.from(input.value)).toFormat(format).toBuffer();
     return { type: "bytes", value: new Uint8Array(output) };

@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { InMemoryRegistry, bytesToHex, runRecipe, type Recipe } from "@cybermasterchef/core";
 import { adler32Checksum } from "../src/ops/adler32.js";
 import { adler32ChecksumAlias } from "../src/ops/adler32Checksum.js";
@@ -45,6 +45,7 @@ import { ntHash, toUtf16LeBytes } from "../src/ops/ntHash.js";
 import { ripemd160 } from "../src/ops/ripemd160.js";
 import { ripemd } from "../src/ops/ripemd.js";
 import { sha1 } from "../src/ops/sha1.js";
+import { sha256 } from "../src/ops/sha256.js";
 import { sha0, sha0Digest } from "../src/ops/sha0.js";
 import { sha2 } from "../src/ops/sha2.js";
 import { sha224 } from "../src/ops/sha224.js";
@@ -86,6 +87,10 @@ import { argon2id } from "../src/ops/argon2id.js";
 import { argon2Verify } from "../src/ops/argon2Verify.js";
 
 describe("crypto operations", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
   it("computes Adler-32 checksum", async () => {
     const registry = new InMemoryRegistry();
     registry.register(adler32Checksum);
@@ -281,6 +286,20 @@ describe("crypto operations", () => {
       sm3: "66c7f0f462eeedd9d1f2d46bdc10e4e24167c4875cf2f7a2297da02b8f4ba8e0",
       whirlpool:
         "4e2448a4c6f486bb16b6562c73b4020bf3043e3a731bce721ae1b303d97e6d4c7181eebdb6c57e277d0e34957114cbd6c797fc9d95d8b582d225292076d4eef5"
+    });
+  });
+
+  it("computes SHA-256 without WebCrypto subtle fallback", async () => {
+    vi.stubGlobal("crypto", {});
+
+    const output = await sha256.run({
+      input: { type: "string", value: "abc" },
+      args: {}
+    });
+
+    expect(output).toEqual({
+      type: "string",
+      value: "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
     });
   });
 

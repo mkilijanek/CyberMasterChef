@@ -5,7 +5,7 @@ This checklist defines minimum policy directives required for production deploym
 ## Required directives
 
 - `default-src 'none'`
-- `script-src 'self'`
+- `script-src 'self' 'wasm-unsafe-eval'`
 - `style-src 'self'`
 - `img-src 'self' data:`
 - `connect-src 'none'`

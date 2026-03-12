@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { loadSharp } from "./sharpLoader.js";
 
 export const imageBrightnessContrast: Operation = {
   id: "image.brightnessContrast",
@@ -12,7 +13,7 @@ export const imageBrightnessContrast: Operation = {
   ],
   run: async ({ input, args }) => {
     if (input.type !== "bytes") throw new Error("Expected bytes input");
-    const { default: sharp } = await import("sharp");
+    const sharp = await loadSharp();
 
     const brightness = typeof args.brightness === "number" ? args.brightness : 0;
     const contrast = typeof args.contrast === "number" ? args.contrast : 0;

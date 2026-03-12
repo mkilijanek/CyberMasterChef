@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { loadSharp } from "./sharpLoader.js";
 
 const FORMATS = ["png", "jpeg", "webp", "avif", "tiff"] as const;
 
@@ -19,7 +20,7 @@ export const convertImageFormat: Operation = {
   ],
   run: async ({ input, args }) => {
     if (input.type !== "bytes") throw new Error("Expected bytes input");
-    const { default: sharp } = await import("sharp");
+    const sharp = await loadSharp();
     const format = FORMATS.includes(args.format as (typeof FORMATS)[number])
       ? (args.format as (typeof FORMATS)[number])
       : "png";

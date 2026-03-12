@@ -10,7 +10,8 @@ This runbook covers the static workbench container published as
 ## Local Operator Flow
 
 1. Start the service:
-   - `docker compose up --build -d`
+   - `docker compose up -d`
+   - local build path: `docker compose --profile local up --build -d`
 2. Verify health:
    - `curl http://127.0.0.1:8080/healthz`
 3. Follow logs when diagnosing runtime issues:

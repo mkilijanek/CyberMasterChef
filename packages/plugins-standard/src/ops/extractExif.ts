@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { loadSharp } from "./sharpLoader.js";
 
 export const extractExif: Operation = {
   id: "image.extractExif",
@@ -9,7 +10,7 @@ export const extractExif: Operation = {
   args: [],
   run: async ({ input }) => {
     if (input.type !== "bytes") throw new Error("Expected bytes input");
-    const { default: sharp } = await import("sharp");
+    const sharp = await loadSharp();
     const exifReader = (await import("exif-reader")) as {
       default: (buffer: Buffer) => Record<string, unknown>;
     };

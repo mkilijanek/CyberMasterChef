@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { loadSharp } from "./sharpLoader.js";
 
 export const invertImage: Operation = {
   id: "image.invert",
@@ -9,7 +10,7 @@ export const invertImage: Operation = {
   args: [],
   run: async ({ input }) => {
     if (input.type !== "bytes") throw new Error("Expected bytes input");
-    const { default: sharp } = await import("sharp");
+    const sharp = await loadSharp();
     const output = await sharp(Buffer.from(input.value)).negate({ alpha: false }).toBuffer();
     return { type: "bytes", value: new Uint8Array(output) };
   }

@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { loadSharp } from "./sharpLoader.js";
 
 export const imageOpacity: Operation = {
   id: "image.opacity",
@@ -11,7 +12,7 @@ export const imageOpacity: Operation = {
   ],
   run: async ({ input, args }) => {
     if (input.type !== "bytes") throw new Error("Expected bytes input");
-    const { default: sharp } = await import("sharp");
+    const sharp = await loadSharp();
     const opacity = typeof args.opacity === "number" ? args.opacity : 1;
     const clamped = Math.max(0, Math.min(1, opacity));
 

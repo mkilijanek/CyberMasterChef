@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { loadSharp } from "./sharpLoader.js";
 
 export const cropImage: Operation = {
   id: "image.crop",
@@ -14,7 +15,7 @@ export const cropImage: Operation = {
   ],
   run: async ({ input, args }) => {
     if (input.type !== "bytes") throw new Error("Expected bytes input");
-    const { default: sharp } = await import("sharp");
+    const sharp = await loadSharp();
 
     const left = typeof args.left === "number" ? Math.max(0, Math.floor(args.left)) : 0;
     const top = typeof args.top === "number" ? Math.max(0, Math.floor(args.top)) : 0;

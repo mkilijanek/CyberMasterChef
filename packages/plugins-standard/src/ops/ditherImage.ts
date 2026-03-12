@@ -1,4 +1,5 @@
 import type { Operation } from "@cybermasterchef/core";
+import { loadSharp } from "./sharpLoader.js";
 
 export const ditherImage: Operation = {
   id: "image.dither",
@@ -16,7 +17,7 @@ export const ditherImage: Operation = {
   ],
   run: async ({ input, args }) => {
     if (input.type !== "bytes") throw new Error("Expected bytes input");
-    const { default: sharp } = await import("sharp");
+    const sharp = await loadSharp();
 
     const threshold =
       typeof args.threshold === "number" ? Math.max(0, Math.min(255, args.threshold)) : 128;
