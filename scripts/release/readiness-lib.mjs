@@ -66,16 +66,34 @@ export function validateReleaseEvidenceDocs(repoRoot) {
 
   const containerOpsPath = resolve(repoRoot, "docs", "runbooks", "container-operations.md");
   const containerOps = readFileSync(containerOpsPath, "utf8");
-  const requiredOpsEntries = [
-    "`docker compose up --build -d`",
-    "`docker compose logs -f cybermasterchef`",
-    "`/healthz`",
-    "GHCR",
-    "rollback"
+  const requiredOpsChecks = [
+    {
+      ok:
+        containerOps.includes("`docker compose up -d`") &&
+        containerOps.includes("`docker compose --profile local up --build -d`"),
+      message:
+        "[release] container operations runbook missing default GHCR and local-profile startup commands"
+    },
+    {
+      ok: containerOps.includes("`docker compose logs -f cybermasterchef`"),
+      message: "[release] container operations runbook missing entry: `docker compose logs -f cybermasterchef`"
+    },
+    {
+      ok: containerOps.includes("`/healthz`"),
+      message: "[release] container operations runbook missing entry: `/healthz`"
+    },
+    {
+      ok: containerOps.includes("GHCR"),
+      message: "[release] container operations runbook missing entry: GHCR"
+    },
+    {
+      ok: containerOps.toLowerCase().includes("rollback"),
+      message: "[release] container operations runbook missing entry: rollback"
+    }
   ];
-  for (const entry of requiredOpsEntries) {
-    if (!containerOps.includes(entry)) {
-      throw new Error(`[release] container operations runbook missing entry: ${entry}`);
+  for (const check of requiredOpsChecks) {
+    if (!check.ok) {
+      throw new Error(check.message);
     }
   }
 }

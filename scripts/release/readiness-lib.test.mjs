@@ -37,7 +37,8 @@ function setupRepoFixture() {
   writeFileSync(
     resolve(repoRoot, "docs/runbooks/container-operations.md"),
     [
-      "`docker compose up --build -d`",
+      "`docker compose up -d`",
+      "`docker compose --profile local up --build -d`",
       "`docker compose logs -f cybermasterchef`",
       "`/healthz`",
       "GHCR",
@@ -113,7 +114,7 @@ test("validateReleaseEvidenceDocs rejects missing checklist and ops entries", ()
     writeFileSync(resolve(repoRoot, "docs/runbooks/container-operations.md"), "`/healthz`\n", "utf8");
     assert.throws(
       () => validateReleaseEvidenceDocs(repoRoot),
-      /container operations runbook missing entry: `docker compose up --build -d`/
+      /container operations runbook missing default GHCR and local-profile startup commands/
     );
   } finally {
     rmSync(repoRoot, { recursive: true, force: true });
