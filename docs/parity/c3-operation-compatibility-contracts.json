@@ -7434,7 +7434,6 @@
         "INVALID_INPUT_TYPE"
       ],
       "examples": [
-        "WebCrypto is not available in this environment",
         "Expected bytes or string input"
       ]
     },
