@@ -15,8 +15,8 @@ The project targets deterministic behavior, parity tracking, and auditable CI/se
 
 - Milestones `M1-M33`: completed.
 - Latest closure report: `docs/parity/roadmap-next-m29-m33.md`.
-- Next release objective: `1.0.0` with minimum `100%` functional coverage of the CyberChef reference set tracked in `docs/parity/*`.
-- Current execution wave: `M50-M59`, with `M50-M58` completed in code, `M59` lifting tracked CyberChef parity to `472/465`, and the remaining `1.0.0` work focused on release cutover and publication validation.
+- Latest release: `1.0.1`, a patch stabilization cut on top of the `1.0.0` parity baseline and release train.
+- Current parity checkpoint remains `472/465`, with the latest patch line focused on runtime/browser fallback hardening, release gate alignment, and CI stability.
 - Release track also includes container delivery: Docker image, smoke-tested `docker-compose.yml`, and GHCR publication on release tags.
 - `M51` runtime hardening is enforced in the shipped nginx config and verified during `pnpm docker:test`.
 - Workbench share links now drop oversized URL-hash state instead of emitting unstable links for very large recipe/input payloads.
@@ -119,6 +119,7 @@ pnpm docker:test
 - [Roadmap M34-M53](docs/parity/roadmap-next-m34-m53.md)
 - [Roadmap M50-M59](docs/parity/roadmap-next-m50-m59.md)
 - [Release 1.0.0 Plan](docs/release/release-1.0.0-plan.md)
+- [Release Notes 1.0.1](docs/release/release-notes-1.0.1.md)
 - [Release Notes 1.0.0](docs/release/release-notes-1.0.0.md)
 - [Release Evidence Checklist](docs/release/release-evidence-checklist.md)
 - [Container Delivery](docs/release/release-1.0.0-plan.md#container-delivery)

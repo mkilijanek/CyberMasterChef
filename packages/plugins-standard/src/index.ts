@@ -425,7 +425,7 @@ import { argon2Verify } from "./ops/argon2Verify.js";
 import { releaseParityAliasOps } from "./ops/releaseParityAliasOps.js";
 export const standardPlugin: Plugin = {
   pluginId: "plugins-standard",
-  version: "1.0.0",
+  version: "1.0.1",
   register(registry: OperationRegistry): void {
     registry.register(toBase64);
     registry.register(fromBase64);

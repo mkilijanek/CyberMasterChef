@@ -27,7 +27,7 @@ interface Operation {
 ```ts
 const myPlugin: Plugin = {
   pluginId: "my-plugin",
-  version: "1.0.0",
+  version: "1.0.1",
   register(registry) {
     registry.register(myOperation);
   }
