@@ -51,7 +51,7 @@ jobs:
         run: pnpm perf:check
       - name: Upload Quality Artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: quality-artifacts
           path: |
