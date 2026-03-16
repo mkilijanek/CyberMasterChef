@@ -34,7 +34,7 @@
     "ssdeep.js": "^0.0.3",
     "tar-stream": "^3.1.8",
     "tlsh": "^1.0.8",
-    "xml-formatter": "^3.6.7",
+    "xml-formatter": "^3.7.0",
     "yaml": "^2.8.2"
   },
   "scripts": {
